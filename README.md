@@ -1,7 +1,7 @@
 # Ultimate No Mercy
 
-An unofficial, fan-made native PC port of **WWF No Mercy** (Nintendo 64) with the **Ultimate No Mercy** arcade mod, and
-a modded decompilation of the game in progress.
+An unofficial, fan-made native PC port of **WWF No Mercy** (Nintendo 64) with the **Ultimate No Mercy** mod, and a
+modded decompilation of the game in progress.
 
 > **No game data is included, here or in the releases.** You need your own copy of the game: the program is built from,
 > and runs on, the ROM you supply. This project is not affiliated with or endorsed by Nintendo, THQ, WWE, AKI Corporation
@@ -15,10 +15,11 @@ a modded decompilation of the game in progress.
 - **A decompilation in progress (non-matching).** The game's own code is being converted to readable C++
   (`exe/WWFNoMercyRecomp/src/game/lifted.cpp`), each converted function random-tested against the original; what is not
   converted yet still runs as N64Recomp's translation. The mod's code is converted the same way (`mod_native.cpp`).
-- **The Ultimate No Mercy mod.** An arcade around the game (coins, attract mode, the operator menu), Royal Rumble, up to 32
-  in the ring, Lumberjack matches, the six-man engine, custom stories, your own wrestler and arena folders, and more
-  Superstars and arenas made from your own copies of other AKI games. `mod/README.txt` (the release's
-  `ARCADE README.txt`) describes it.
+- **The Ultimate No Mercy mod.** The full game -- No Mercy's own title, menus and modes -- with the mod's enhancements:
+  Royal Rumble with up to 32 in the ring, Lumberjack matches, the six-man engine, custom stories, your own wrestler and
+  arena folders, more Superstars and arenas made from your own copies of other AKI games, an in-game settings menu (F2),
+  full control remapping, and an optional **Arcade Mode** (credits, continues and an attract loop, for a coin-op feel).
+  `mod/README.txt` (the release's `ARCADE README.txt`) describes it all.
 - **Windows for now.** Linux, macOS and Steam Deck are goals, not available yet.
 
 ## Playing
@@ -44,10 +45,42 @@ a modded decompilation of the game in progress.
    the content packs and the wrestler folders -- with a status window (about a minute or two with every ROM; the WWE '13
    commentary is made in the background afterwards). Nothing is downloaded and nothing leaves your PC. Later starts only
    build again when you add a new ROM (or put an empty `content\reimport.txt` in to ask for it).
-5. 5 / 6 insert a coin for player 1 / 2, 1 / 2 start; F2 is the operator menu (settings, controls, quit); F11 or
-   Alt+Enter toggles fullscreen. `README.txt` in the download has the details.
+5. The game starts in **Regular mode**: No Mercy's own title, menus and modes, with all of the mod's enhancements. Press
+   **F2** any time for the settings menu (below). **F11** or **Alt+Enter** toggles fullscreen.
 
 Windows may warn that the program is unsigned (SmartScreen): "More info", then "Run anyway".
+
+## Settings (F2)
+
+**F2** opens the in-game settings menu at any time, in any mode -- the game waits behind it.
+
+- **Navigate:** UP / DOWN choose, LEFT / RIGHT (or Enter) change, Esc goes back -- arrow keys, or a controller's d-pad
+  and A. **SAVE AND EXIT** (or F2 again) keeps your changes; **EXIT WITHOUT SAVING** puts them back.
+- **What's in it:** game mode (Regular, or the optional Arcade Mode), game settings (speed, unlock everything, Titantron
+  videos, No Mercy Plus themes and videos, merging the same wrestler from different games into one box), picture, sound
+  and feel, commentary, Royal Rumble, Lumberjack Match, wrestler options, coin / credit settings (for Arcade Mode),
+  **controls**, an input test, restore factory settings, and quit.
+- **Arcade Mode** (optional): credits, continues and an attract loop with INSERT COIN, like the coin-op. **5** / **6**
+  insert a coin for player 1 / 2 and **1** / **2** start. It takes effect from the next start.
+- Settings are saved in `mod_config\nomercy_arcade.json`. Every option is explained in `ARCADE README.txt` in the
+  download.
+
+## Controls
+
+- **Gamepads** (Xbox, PlayStation and most others; about 2,000 are recognised automatically) and the **keyboard** for
+  player 1. The first controller is player 1, the second player 2 (**F2 > CONTROLS > SWAP CONTROLLERS 1/2**).
+- **Default gamepad layout:** move with the d-pad or left stick; A = A, X = B, left-stick click = Z, LT / RT = L / R,
+  Y / B = C-up / C-down, LB / RB = C-left / C-right, the **right stick** = the N64 analog stick (taunts and specials),
+  **R3** (right-stick click) = SPECIAL (a one-button taunt, or the finisher in a tie-up), START = start.
+- **Remap anything:** **F2 > CONTROLS > KEYBOARD (P1)**, **ALL CONTROLLERS** or **P1 .. P4 CONTROLLER: BUTTONS & STICK**.
+  Pick a row, press Enter (or A), then the key, button or stick you want. DELETE clears a row; RESET TO DEFAULTS puts
+  the factory buttons back. Every N64 input can be bound, including the analog stick and SPECIAL. Changes are saved at
+  once (`controls_n64.json`).
+- **A pad or arcade encoder that isn't recognised:** **F2 > CONTROLS > P1 / P2 CONTROLLER SETUP** asks you to press each
+  control in turn (Space skips one, Esc cancels). Set the analog stick and SPECIAL afterwards on the BUTTONS & STICK page.
+- **Control mode:** N64 (the default) or 6-BUTTON (an 8-way joystick and six buttons, for a cabinet), in
+  **F2 > CONTROLS > CONTROL MODE**.
+- **F2 > INPUT TEST** shows every control as you press it.
 
 ## Updating
 
