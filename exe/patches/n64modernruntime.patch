@@ -1,0 +1,61 @@
+diff --git a/librecomp/src/mod_config_api.cpp b/librecomp/src/mod_config_api.cpp
+index 79995cb..3338674 100644
+--- a/librecomp/src/mod_config_api.cpp
++++ b/librecomp/src/mod_config_api.cpp
+@@ -34,6 +34,24 @@ void recomp_get_config_double(uint8_t* rdram, recomp_context* ctx, size_t mod_in
+     }
+ }
+ 
++// [wcw] A mod sets one of its own options, which is saved like a change made in the Mods menu (the mod's config
++// file): recomp_set_config_u32(option_id, value). The value takes the option's type: a Bool's true / false, a
++// Number's value, an Enum's index. (A program without a Mods menu, standalone, keeps its mods' settings this way.)
++void recomp_set_config_u32(uint8_t* rdram, recomp_context* ctx, size_t mod_index) {
++    const std::string option_id = _arg_string<0>(rdram, ctx);
++    const uint32_t value = _arg<1, uint32_t>(rdram, ctx);
++    recomp::config::ConfigValueVariant cur = recomp::mods::get_mod_config_value(mod_index, option_id);
++    if (std::holds_alternative<bool>(cur)) {
++        recomp::mods::set_mod_config_value(mod_index, option_id, recomp::config::ConfigValueVariant{ value != 0 });
++    }
++    else if (std::holds_alternative<double>(cur)) {
++        recomp::mods::set_mod_config_value(mod_index, option_id, recomp::config::ConfigValueVariant{ double(int32_t(value)) });
++    }
++    else if (std::holds_alternative<uint32_t>(cur)) {
++        recomp::mods::set_mod_config_value(mod_index, option_id, recomp::config::ConfigValueVariant{ value });
++    }
++}
++
+ template <typename StringType>
+ void return_string(uint8_t* rdram, recomp_context* ctx, const StringType& str) {
+     // Allocate space in the recomp heap to hold the string, including the null terminator.
+@@ -118,6 +136,7 @@ void recomp::mods::register_config_exports() {
+     recomp::overlays::register_ext_base_export("recomp_get_config_u32", recomp_get_config_u32);
+     recomp::overlays::register_ext_base_export("recomp_get_config_double", recomp_get_config_double);
+     recomp::overlays::register_ext_base_export("recomp_get_config_string", recomp_get_config_string);
++    recomp::overlays::register_ext_base_export("recomp_set_config_u32", recomp_set_config_u32);
+     recomp::overlays::register_base_export("recomp_free_config_string", recomp_free_config_string);
+     recomp::overlays::register_ext_base_export("recomp_get_mod_version", recomp_get_mod_version);
+     recomp::overlays::register_ext_base_export("recomp_change_save_file", recomp_change_save_file);
+diff --git a/librecomp/src/save_backups.cpp b/librecomp/src/save_backups.cpp
+index 0751323..fd54161 100644
+--- a/librecomp/src/save_backups.cpp
++++ b/librecomp/src/save_backups.cpp
+@@ -1,5 +1,6 @@
+ #include "librecomp/save_backups.hpp"
+ 
++#include <algorithm>
+ #include <chrono>
+ #include <cstdio>
+ #include <ctime>
+@@ -118,7 +119,12 @@ namespace recomp {
+                 return std::nullopt;
+             }
+ 
++#if defined(_LIBCPP_VERSION)
++            // libc++ (llvm-mingw builds) has no clock_cast; file_clock converts itself.
++            const auto sys = std::chrono::time_point_cast<std::chrono::system_clock::duration>(std::chrono::file_clock::to_sys(ftime));
++#else
+             const auto sys = std::chrono::clock_cast<std::chrono::system_clock>(ftime);
++#endif
+             return from_time_t(std::chrono::system_clock::to_time_t(sys));
+         }
+ 

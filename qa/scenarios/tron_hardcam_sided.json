@@ -1,0 +1,39 @@
+{
+  "about": "the Titantron's picture (hard camera) with the arena's sided pieces re-sided for it (tron.c sided_find; 2026-10-28 evening, the user: the table and the right barricade drawn over the crowd in it): the game's own cameras for 35 s (the TV's sides change: the pieces learnt), then the camera behind the table looking at the stage",
+  "wrestlers": [
+    "STEVE AUSTIN",
+    "THE ROCK"
+  ],
+  "control": [
+    "cpu",
+    "cpu"
+  ],
+  "arena": "RAW IS WAR",
+  "matches": 0,
+  "seconds": 110,
+  "shots": 3.0,
+  "options": {
+    "titantron_screens": true,
+    "titantron_live": true
+  },
+  "camera": {
+    "eye": [
+      330,
+      230,
+      -1150
+    ],
+    "at": [
+      -20,
+      90,
+      150
+    ],
+    "from": 35
+  },
+  "expect": [
+    {
+      "name": "the match started",
+      "when": "any",
+      "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+    }
+  ]
+}

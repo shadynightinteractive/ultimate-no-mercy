@@ -1,0 +1,36 @@
+{
+  "about": "a stick's spring-back is not a press the other way (2026-11-23, the user: 'a phantom left input ... noticeable on select menu mostly'). A singles match, pad 1 Austin (the factory bindings: the d-pad's LEFT / RIGHT also on the left stick). Every 6 s: (A) the left stick right 300 ms, then left 30 ms at once -- a spring-back past the centre: '[pads] player 1: LEFT left out for a moment ... after RIGHT' and no 'real push' for it; (B) right 300 ms, then left 400 ms -- a real reversal: 'left out' then 'LEFT held 5x ms: a real push, it counts'; (C) the d-pad right 300 ms, then the d-pad left 30 ms: a real button, never touched -- no line. Read game_stderr.txt after the run (arcade_pads.cpp arcade_pads_snapback).",
+  "wrestlers": [
+    "STEVE AUSTIN",
+    "THE ROCK"
+  ],
+  "arena": "RAW IS WAR",
+  "control": [
+    "pad1",
+    "pad2"
+  ],
+  "matches": 0,
+  "seconds": 60,
+  "shots": 5,
+  "pads": [
+    "20.0 1 +leftx 300",
+    "20.3 1 -leftx 30",
+    "22.0 1 +leftx 300",
+    "22.3 1 -leftx 400",
+    "24.0 1 dpright 300",
+    "24.3 1 dpleft 30",
+    "20.0 repeat 6"
+  ],
+  "expect": [
+    {
+      "name": "the match started",
+      "when": "any",
+      "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "nobody's position went bad",
+      "when": "always",
+      "check": "finite(s0_x, s0_y, s0_z, s1_x, s1_y, s1_z)"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "about": "(2026-11-17, pipefix: 0x0322 rock_on_austin is only in qa\\wrestlers_test: the scenario sets WCW_WRESTLERS_DIR to it -- without, it stuck on the Superstar Select, qa084.) visualfix 2026-11-15, the user's playtest item 2 (second part): 'a separator line on the Titantron during videos'. Not found in the code (the video's two halves meet exactly; a native video is one texture, clamped). This captures it: a folder wrestler's Titantron video (the test pattern, qa/wrestlers_test) on RAW IS WAR's screen during the entrances, the game's cameras, shots every 0.25 s while the entrance runs. LOOK at the screen in the close shots: a line across it, where (the middle: the video's halves; a panel's edge: the arena's own screen), with 0.84 (hold_edges) and with 0.83.",
+  "match": "rumble",
+  "wrestlers": [
+    "0x0322",
+    "0x0001"
+  ],
+  "control": [
+    "cpu"
+  ],
+  "arena": "RAW IS WAR",
+  "options": {
+    "rumble_entrants": 4,
+    "rumble_interval": 60,
+    "titantron_screens": true,
+    "titantron_live": true
+  },
+  "matches": 1,
+  "seconds": 90,
+  "shots": 0.25,
+  "shot_when": "$c.mode -eq 0 -and $c.screen -eq 42 -and $c.entrance_step -ge 1 -and $c.entrance_step -le 29",
+  "expect": [
+    {
+      "name": "the entrances ran",
+      "when": "any",
+      "check": "mode == 0 and screen == 42 and entrance_step >= 1 and entrance_step <= 29"
+    }
+  ],
+  "env": {
+    "WCW_WRESTLERS_DIR": "<source>\\qa\\wrestlers_test"
+  }
+}

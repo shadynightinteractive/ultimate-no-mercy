@@ -1,0 +1,13 @@
+{
+ "about": "WrestleMania 2000's DROZ: what the handler is told for him (wm2kall, 2026-11-13). Everything else comes from the ROM.",
+ "string_id": "droz_wm2000",
+ "key": "droz_wm2000",
+ "wm2000": {
+  "roster_index": 31,
+  "game_id": "0x0503"
+ },
+ "moveset": {
+  "reference_ordinal": 4,
+  "reference_why": "none in No Mercy's stock roster (the mod's Droz is a port): Kane, as for a man of 200 lbs and over"
+ }
+}

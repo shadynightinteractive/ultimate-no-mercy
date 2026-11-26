@@ -1,0 +1,35 @@
+{
+  "about": "the SURVIVOR SERIES screen during a match, seen from behind the ring (data/tron_all/TRON_ALL.md): the hard camera's picture on the arena's screen, the wrestlers on it (2026-11-01 overnight QA: made from tron_armageddon_ring.json for this arena)",
+  "wrestlers": [
+    "STEVE AUSTIN",
+    "THE ROCK"
+  ],
+  "arena": "SURVIVOR SERIES",
+  "control": [
+    "cpu",
+    "cpu"
+  ],
+  "matches": 1,
+  "seconds": 75,
+  "shots": 6,
+  "options": {},
+  "camera": {
+    "eye": [
+      0,
+      260,
+      -650
+    ],
+    "at": [
+      0,
+      170,
+      900
+    ]
+  },
+  "expect": [
+    {
+      "name": "the match started",
+      "when": "any",
+      "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+    }
+  ]
+}

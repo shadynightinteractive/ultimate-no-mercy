@@ -1,0 +1,45 @@
+{
+  "about": "2026-10-31, The Giant (0x010A): his strong front grapples 25 / 50 are Revenge's (list place 46) -- No Mercy's Military Press (790) byte for byte, a move the game's own movesets have only in slots 35 / 55: every front grapple of his (entries 1..60) done as 25; idle player 2. The press played whole (the lift over his head, the drop), not the stand-off a strong slot falls to when its move has no variants: the shots looked at",
+  "wrestlers": [
+    "THE GIANT",
+    "THE ROCK"
+  ],
+  "control": [
+    "cpu",
+    "pad2"
+  ],
+  "arena": "SMACKDOWN",
+  "matches": 1,
+  "seconds": 200,
+  "shots": 0.5,
+  "force": {
+    "slot": 0,
+    "entries": [
+      1,
+      60
+    ],
+    "as": 25
+  },
+  "expect": [
+    {
+      "name": "the match started",
+      "when": "any",
+      "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "grapples forced",
+      "when": "any",
+      "check": "forced >= 1"
+    },
+    {
+      "name": "the Military Press played",
+      "when": "match",
+      "check": "s0_move >= 790 and s0_move <= 799"
+    },
+    {
+      "name": "nobody's position went bad",
+      "when": "always",
+      "check": "finite(s0_x, s0_y, s0_z, s1_x, s1_y, s1_z)"
+    }
+  ]
+}

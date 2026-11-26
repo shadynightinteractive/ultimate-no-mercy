@@ -1,0 +1,31 @@
+{
+  "about": "the ported Superstars after their palettes were made No Mercy size (gen/nmpal.py, 2026-10-27): Bret Hart (Revenge) vs The Blue Meanie (WrestleMania 2000), CPU vs CPU -- how they look (screenshots) and that the match runs",
+  "wrestlers": [
+    "BRET HART",
+    "THE BLUE MEANIE"
+  ],
+  "control": [
+    "cpu",
+    "cpu"
+  ],
+  "matches": 1,
+  "seconds": 180,
+  "shots": 8,
+  "expect": [
+    {
+      "name": "the match started",
+      "when": "any",
+      "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "Bret is in it",
+      "when": "match",
+      "check": "s0_id == 0x060D or s1_id == 0x060D"
+    },
+    {
+      "name": "no model's matrices ever went bad",
+      "when": "always",
+      "check": "bad_mtx == 0"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+ "about": "WrestleMania 2000's STEPHANIE McMAHON: what the handler is told for him (wm2kall, 2026-11-13). Everything else comes from the ROM.",
+ "string_id": "stephanie_mcmahon_wm2000",
+ "key": "stephanie_mcmahon_wm2000",
+ "wm2000": {
+  "roster_index": 74,
+  "game_id": "0x0A08"
+ },
+ "moveset": {
+  "reference_ordinal": 51,
+  "reference_why": "No Mercy's own"
+ }
+}

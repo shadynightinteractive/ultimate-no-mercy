@@ -1,0 +1,34 @@
+{
+  "about": "JR and King from the side and above, as the user saw them (2026-10-27: the chairs thick blocks half in the barricade, the two of them far from the table, arms out straight): a camera at the table's end on the ring side, looking along it",
+  "wrestlers": [
+    "STEVE AUSTIN",
+    "THE ROCK"
+  ],
+  "arena": "RAW IS WAR",
+  "control": [
+    "cpu",
+    "cpu"
+  ],
+  "matches": 1,
+  "seconds": 60,
+  "shots": 3,
+  "camera": {
+    "eye": [
+      -330,
+      300,
+      -540
+    ],
+    "at": [
+      -20,
+      70,
+      -690
+    ]
+  },
+  "expect": [
+    {
+      "name": "the match started",
+      "when": "any",
+      "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+    }
+  ]
+}

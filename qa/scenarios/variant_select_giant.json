@@ -1,0 +1,58 @@
+{
+  "about": "2026-11-01: The Giant (0x010A) folded into Big Show's box as his costume variants (src/variants.c { 0x0201, 0x010A, VW_BIG_SHOW }). One player's Versus (qa_versus) with qa_variant 1: on Big Show's box a tour of the Type arrows -- C-right x8 (Big Show Type 1-4, The Giant Type 1-4, Big Show's Type 1 again), C-left (The Giant's Type 4), C-right (Big Show Type 1), 1.25 s apart for the shots -- then C-right on to The Giant's Type 1 and A; the CPU's pick on controller 1: The Rock. The match: The Giant (his entrance, music, name, model) vs The Rock. state.csv bs_tries = the select's Superstar under the cursor | costume << 16 | 1 << 24; bs_grabs / bs_step = picks 1 and 2 (ID | costume << 16)",
+  "match": "arcade",
+  "wrestlers": [
+    "0x010A",
+    "0x0001"
+  ],
+  "costumes": [
+    0,
+    0
+  ],
+  "matches": 0,
+  "seconds": 600,
+  "shots": 1.0,
+  "options": {
+    "free_play": true,
+    "attract_demos": false,
+    "qa_versus": 30,
+    "qa_variant": 1
+  },
+  "expect": [
+    {
+      "name": "the select: Big Show, Type 1",
+      "when": "any",
+      "check": "bs_tries == 0x01000201"
+    },
+    {
+      "name": "Big Show, Type 4",
+      "when": "any",
+      "check": "bs_tries == 0x01030201"
+    },
+    {
+      "name": "past him: The Giant (his own ID), Type 1",
+      "when": "any",
+      "check": "bs_tries == 0x0100010A"
+    },
+    {
+      "name": "The Giant, Type 3 (the black trunks)",
+      "when": "any",
+      "check": "bs_tries == 0x0102010A"
+    },
+    {
+      "name": "player 1 picked The Giant, Type 1",
+      "when": "any",
+      "check": "bs_grabs == 0x0000010A"
+    },
+    {
+      "name": "the CPU's pick: The Rock",
+      "when": "any",
+      "check": "(bs_step & 0xFFFF) == 0x0001"
+    },
+    {
+      "name": "the match: 0x010A (player 1) vs The Rock (CPU)",
+      "when": "any",
+      "check": "mode == -2 and match_frames != 0xFFFF and match_frames > 120 and s0_id == 0x010A and s0_pad == 1 and s1_id == 0x0001 and s1_pad == 0"
+    }
+  ]
+}

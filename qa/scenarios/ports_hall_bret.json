@@ -1,0 +1,35 @@
+{
+  "about": "the Revenge ports (2026-10-28): SCOTT HALL vs BRET HART -- models, size, hands / skin, moves",
+  "wrestlers": [
+    "SCOTT HALL",
+    "BRET HART"
+  ],
+  "control": [
+    "cpu",
+    "cpu"
+  ],
+  "matches": 1,
+  "seconds": 90,
+  "shots": 3,
+  "expect": [
+    {
+      "name": "the match started",
+      "when": "any",
+      "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "Bret is in it",
+      "when": "match",
+      "check": "s0_id == 0x060D or s1_id == 0x060D"
+    },
+    {
+      "name": "no model's matrices ever went bad",
+      "when": "always",
+      "check": "bad_mtx == 0"
+    }
+  ],
+  "costumes": [
+    0,
+    0
+  ]
+}

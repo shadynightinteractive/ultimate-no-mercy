@@ -1,0 +1,70 @@
+{
+ "about": "revmoves2 (2026-11-20; Farooq on pad 2 with nothing pressed, so once down he stays down long and a dive comes down ON him -- with him CPU the dives of 900 s all missed; the user, round 2: 'Ultimo Dragon does the jump, but he clips to standing immediately after'): his match as he played it -- AKI Man (Revenge import 0x0379, slot 0) against Farooq (WrestleMania 2000 import 0x03AA) -- a handicap match, Ultimo and Kidman (0x0361) against Farooq, so Farooq is down often and the down-target dives come (in singles, 420 s: no dive at all); Ultimo is CPU here (the user had pad 1: the dive's states don't depend on who presses), his turnbuckle moves (entries 250-274: the down-target dives and the others, so he climbs more often -- one dive in 600 s with 261-264 only) all done as his entry 261, 'revenge:1be3_1be4@<move>'. Revenge's dive is a dive with a cover (five roles, its second the landing INTO a cover, as No Mercy's 12430, a dive flagged 0x200); played on No Mercy's 12380 (a dive without one: its second role is a landing that stands him up) the game played the cover landing and stood him up out of it. With the fix it stays on 12380 (a dive at a lying man) with the cover flag (his moves.json records: byte 0x22 = 0x22): a hit square on the man goes from the cover landing into the pin (Ultimo 68, Farooq 69), any other hit lands with Revenge's own landing (the fifth role = its fourth file) and he gets up; no clip. Shots while he dives, covers, and the step after a dive. Matches one after another until the time is up.",
+ "match": "handicap",
+ "wrestlers": [
+  "0x0379",
+  "0x0361",
+  "0x03AA"
+ ],
+ "costumes": [
+  0,
+  0,
+  0
+ ],
+ "control": [
+  "cpu",
+  "cpu",
+  "pad2"
+ ],
+ "arena": "RAW IS WAR",
+ "matches": 0,
+ "seconds": 900,
+ "speed": 4,
+ "shots": 120.0,
+ "shot_when": "($c.s0_phase -ge 121 -and $c.s0_phase -le 125) -or $c.s0_phase -eq 68 -or ($c.s0_state -ge 121 -and $c.s0_state -le 125 -and $c.s0_phase -eq 48)",
+ "force": {
+  "slot": 0,
+  "entries": [
+   250,
+   274
+  ],
+  "as": 264
+ },
+ "expect": [
+  {
+   "name": "the match started",
+   "when": "any",
+   "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+  },
+  {
+   "name": "AKI Man and Kidman (Revenge) against Farooq (WrestleMania 2000)",
+   "when": "match",
+   "check": "s0_id == 0x0379 and s1_id == 0x0361 and s2_id == 0x03AA"
+  },
+  {
+   "name": "AKI Man dove off the turnbuckle with his library dive (121-125)",
+   "when": "any",
+   "check": "s0_phase >= 121 and s0_phase <= 125"
+  },
+  {
+   "name": "a dive of his came down on Farooq lying: Farooq hit (99) or covered (69)",
+   "when": "any",
+   "check": "((s0_phase >= 121 and s0_phase <= 125) or s0_phase == 68) and (s2_phase == 99 or s2_phase == 69)"
+  },
+  {
+   "name": "his dive went into its cover (AKI Man 68, Farooq 69) on No Mercy's 12380 with the cover (record byte 0x22 = 0x22): a hit square on the lying man goes from the cover landing to the pin",
+   "when": "any",
+   "check": "s0_phase == 68 and s2_phase == 69 and s0_move == 12380"
+  },
+  {
+   "name": "no model's matrices ever went bad",
+   "when": "always",
+   "check": "bad_mtx == 0"
+  },
+  {
+   "name": "nobody's position went bad",
+   "when": "always",
+   "check": "finite(s0_x, s0_y, s0_z, s1_x, s1_y, s1_z, s2_x, s2_y, s2_z)"
+  }
+ ]
+}

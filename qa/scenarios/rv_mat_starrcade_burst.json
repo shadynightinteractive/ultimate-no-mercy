@@ -1,0 +1,32 @@
+{
+  "about": "revvisual: rv_mat_starrcade with the game's own cameras, a picture every 0.5 s (to see the logo as the player does)",
+  "wrestlers": [
+    "THE ROCK",
+    "STEVE AUSTIN"
+  ],
+  "control": [
+    "cpu",
+    "cpu"
+  ],
+  "arena": "STARRCADE",
+  "matches": 1,
+  "seconds": 30,
+  "shots": 0.5,
+  "expect": [
+    {
+      "name": "the match started",
+      "when": "any",
+      "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "the arena is STARRCADE (arena_current 16)",
+      "when": "any",
+      "check": "venue == 16 and stage == 2"
+    },
+    {
+      "name": "nobody's position went bad",
+      "when": "always",
+      "check": "finite(s0_x, s0_y, s0_z, s1_x, s1_y, s1_z)"
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+ "about": "(the presses at the game's controller read: logic.c qa_ringstage_pad) A fight on the stage, CPU against the player: the player walks up as in ringstage_walk, then strikes and grapples; the CPU follows him up the aisle (src/arena_ringstage.c ringstage_ai) and fights him on the deck. LOOK: both on the deck, moves and falls land on it, shadows under them, the screen and logo behind, the Titantron picture still drawn; JR and King at the table; no count-out number on the stage.",
+ "wrestlers": [
+  "THE ROCK",
+  "STEVE AUSTIN"
+ ],
+ "costumes": [
+  0,
+  0
+ ],
+ "arena": "RAW IS WAR",
+ "control": [
+  "pad1",
+  "cpu"
+ ],
+ "matches": 1,
+ "seconds": 300,
+ "shots": 1.5,
+ "options": {
+  "qa_ringstage": 77
+ },
+ "expect": [
+  {
+   "name": "the match started",
+   "when": "any",
+   "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+  },
+  {
+   "name": "nobody's position went bad",
+   "when": "always",
+   "check": "finite(s0_x, s0_y, s0_z, s1_x, s1_y, s1_z)"
+  },
+  {
+   "name": "RAW: no area change up to the stage (bs_tries: the area in play, never 10)",
+   "when": "always",
+   "check": "bs_tries != 10"
+  },
+  {
+   "name": "the walker (slot 1, pad 2) got to the deck",
+   "when": "any",
+   "check": "s0_z > 2305"
+  },
+  {
+   "name": "the CPU came up too",
+   "when": "any",
+   "check": "s1_z > 2285"
+  },
+  {
+   "name": "both on the deck together",
+   "when": "any",
+   "check": "s0_z > 2305 and s1_z > 2305"
+  },
+  {
+   "name": "a fight there: the CPU's man hit or holding on the deck (state not standing)",
+   "when": "any",
+   "check": "s0_z > 2305 and s1_z > 2305 and s1_state != 1 and s1_state != 2 and s1_state != 3"
+  }
+ ],
+ "shot_when": "$c.s1_z -gt 2200"
+}

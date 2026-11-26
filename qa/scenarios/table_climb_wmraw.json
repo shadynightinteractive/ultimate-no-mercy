@@ -1,0 +1,51 @@
+{
+  "about": "table_climb in the WM 2000 arena: every 10 s THE ROCK (the CPU) is put beside the announce table, at the announcers' depth or its front, from the right or the left, and runs at it (qa_table). The table's walls (announce.c: its front at -455, back on the barricade's -690 line) and the game's -z barricade walls stand (arena_ring.c leaves them alone for this arena): never up at the table's height away from the ring and the table's top, never past the barricade",
+  "wrestlers": [
+    "THE ROCK",
+    "KANE"
+  ],
+  "control": [
+    "cpu",
+    "pad2"
+  ],
+  "arena": "RAW IS WAR WM 2000",
+  "matches": 1,
+  "seconds": 200,
+  "shots": 0.5,
+  "options": {
+    "qa_table": 1,
+    "announcers": true
+  },
+  "expect": [
+    {
+      "name": "the match started",
+      "when": "any",
+      "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "the arena is ours (arena_current 13)",
+      "when": "any",
+      "check": "venue == 13 and stage == 2"
+    },
+    {
+      "name": "runs at the table made",
+      "when": "end",
+      "check": "forced >= 8"
+    },
+    {
+      "name": "never up at the table's height off the table and away from the ring",
+      "when": "always",
+      "check": "not (s0_y > 45 and not (abs(s0_x) < 280 and abs(s0_z) < 280) and not (abs(s0_x) < 120 and s0_z > -620 and s0_z < -440) and s0_z < 500)"
+    },
+    {
+      "name": "never past the -z barricade",
+      "when": "always",
+      "check": "s0_z > -700 and s1_z > -700"
+    },
+    {
+      "name": "nobody's position went bad",
+      "when": "always",
+      "check": "finite(s0_x, s0_y, s0_z, s1_x, s1_y, s1_z)"
+    }
+  ]
+}

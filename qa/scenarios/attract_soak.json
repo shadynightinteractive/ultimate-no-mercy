@@ -1,0 +1,16 @@
+{
+  "about": "2026-11-09: the arcade left in its attract loop for ten minutes at normal speed, no presses: for the converted system-call functions (threads, messages, timers, overlay DMA): no stall, no thread starved (lift_sys2 TEST_PLAN section 5)",
+  "match": "arcade",
+  "matches": 0,
+  "seconds": 620,
+  "shots": 10.0,
+  "options": {
+    "free_play": false,
+    "attract_demos": true
+  },
+  "pads": [],
+  "expect": [
+    { "name": "no model's matrices ever went bad", "when": "always", "check": "bad_mtx == 0" },
+    { "name": "still running at the end: about ten minutes of frames", "when": "end", "check": "frame > 30000" }
+  ]
+}

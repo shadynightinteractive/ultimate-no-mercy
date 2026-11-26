@@ -1,0 +1,11 @@
+{
+  "about": "2026-11-07, the two modes phase 2 (W10, finding out): on the Royal Rumble's NUMBER page (Regular, qa_reg 257), what moves its number widget -- five ways in turn, 1.5 s apart (qa_reg_right 1): the d-pad RIGHT as the menus' own press, the d-pad RIGHT on the controller, the stick right briefly, C-right, the stick held right a second. state.csv bs_step on screen 9 = the widget row's +0x4C | +0x4D << 8 | +0x4E << 16 | the ways tried << 24. No checks: read the numbers and the shots.",
+  "match": "arcade",
+  "wrestlers": [ "STEVE AUSTIN", null ],
+  "matches": 0,
+  "seconds": 260,
+  "shots": 3.0,
+  "options": { "game_mode": "Regular", "qa_modes": 1, "qa_reg": 265, "qa_reg_right": 1, "rumble_entrants": 12, "rumble_ring": 5, "rumble_interval": 10 },
+  "expect": [],
+  "shot_when": "$c.mode -eq 0 -and $c.screen -eq 9"
+}

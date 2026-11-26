@@ -1,0 +1,43 @@
+{
+  "about": "visualfix 2026-11-15: vf_nitro_banners with WCW_NATIVE_PLANES=0 (the renderer's later layers counted per matrix, as before 0.84): the negative control -- qa_checks.py flicker must FIND the flicker here, else the check can't see it.",
+  "wrestlers": [
+    "HOLLYWOOD HOGAN",
+    "KEVIN NASH"
+  ],
+  "control": [
+    "cpu",
+    "cpu"
+  ],
+  "arena": "MONDAY NITRO",
+  "matches": 1,
+  "seconds": 60,
+  "shots": 0.25,
+  "camera": {
+    "eye": [
+      0,
+      300,
+      1350
+    ],
+    "at": [
+      0,
+      300,
+      2216
+    ],
+    "from": 20
+  },
+  "expect": [
+    {
+      "name": "the match started",
+      "when": "any",
+      "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "the arena is MONDAY NITRO (arena_current 10)",
+      "when": "any",
+      "check": "venue == 10 and stage == 2"
+    }
+  ],
+  "env": {
+    "WCW_NATIVE_PLANES": "0"
+  }
+}

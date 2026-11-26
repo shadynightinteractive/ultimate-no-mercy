@@ -1,0 +1,34 @@
+{
+  "about": "overnight QA 2026-11-11: folder_video with 0x0606 named second (the first rumble run-in?), to see which song his run-in asks for",
+  "match": "rumble",
+  "wrestlers": [
+    "0x0322",
+    "0x0606"
+  ],
+  "control": [
+    "cpu"
+  ],
+  "arena": "RAW IS WAR",
+  "options": {
+    "rumble_entrants": 4,
+    "rumble_interval": 60,
+    "titantron_screens": true,
+    "titantron_live": true
+  },
+  "matches": 1,
+  "seconds": 120,
+  "shots": 0.5,
+  "shot_when": "$c.mode -eq 0 -and $c.screen -eq 42 -and $c.entrance_step -ge 1 -and $c.entrance_step -le 29",
+  "expect": [
+    {
+      "name": "the entrances ran",
+      "when": "any",
+      "check": "mode == 0 and screen == 42 and entrance_step >= 1 and entrance_step <= 29"
+    },
+    {
+      "name": "the arena is RAW IS WAR",
+      "when": "any",
+      "check": "venue == 0 and stage == 2"
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "about": "2026-11-01, Sting (WCW/nWo Revenge's, 0x010B; data\revport\\ports4\\PORTS4.md): his holds (qa_fsub 1: every entry whose move, or a move it goes on to, is a submission -- the holds' Revenge blocks, gen/revanims.py rev_block) forced in turn; idle player 2; both men where they belong from the grab through the release: the shots looked at",
+  "wrestlers": [
+    "STING",
+    "THE ROCK"
+  ],
+  "control": [
+    "cpu",
+    "pad2"
+  ],
+  "arena": "SMACKDOWN",
+  "matches": 4,
+  "seconds": 480,
+  "shots": 0.5,
+  "force": {
+    "slot": 0,
+    "entries": [
+      0,
+      291
+    ],
+    "as": 0
+  },
+  "options": {
+    "qa_fsub": 1
+  },
+  "expect": [
+    {
+      "name": "the match started",
+      "when": "any",
+      "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "holds forced",
+      "when": "any",
+      "check": "forced >= 1"
+    },
+    {
+      "name": "nobody's position went bad",
+      "when": "always",
+      "check": "finite(s0_x, s0_y, s0_z, s1_x, s1_y, s1_z)"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+ "about": "WrestleMania 2000's MR. ASS: what the handler is told for him (wm2kall, 2026-11-13). Everything else comes from the ROM.",
+ "string_id": "mr_ass_wm2000",
+ "key": "mr_ass_wm2000",
+ "wm2000": {
+  "roster_index": 21,
+  "game_id": "0x0302"
+ },
+ "moveset": {
+  "reference_ordinal": 12,
+  "reference_why": "No Mercy's own"
+ }
+}

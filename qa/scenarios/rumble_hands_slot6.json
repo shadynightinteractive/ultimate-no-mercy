@@ -1,0 +1,51 @@
+{
+ "about": "2026-11-15 (gameplayfix, item 12): the Nitro Royal Rumble crash -- a model with WrestleMania 2000-style hands in slot 6 or past it, after the hands' pictures were first loaded in a match with six slots (wm_keep copied a palette to address 0). Two Rumbles: the first with 6 in the ring at once (qa_rr_ring_first), the second with 10; every entrant a wrestler from a folder (qa_rr_folders: the Revenge and WrestleMania 2000 imports have WrestleMania 2000-style hands -- the crashes' slots 6 and 8 held such Revenge imports), one every 10 s. Before the fix (mod/src/hands.c): CRASH in the second Rumble once such a model takes slot 6..9. After: PASS",
+ "match": "rumble",
+ "wrestlers": [
+  "BRET HART"
+ ],
+ "control": [
+  "cpu"
+ ],
+ "arena": "MONDAY NITRO",
+ "options": {
+  "rumble_entrants": 14,
+  "rumble_interval": 10,
+  "qa_rr_ring_first": 6,
+  "qa_rr_ring": 10,
+  "qa_rr_out": 1,
+  "qa_rr_out_after": 150,
+  "qa_rr_folders": 1
+ },
+ "matches": 2,
+ "seconds": 1500,
+ "speed": 6,
+ "shots": 20,
+ "expect": [
+  {
+   "name": "the Rumble started",
+   "when": "any",
+   "check": "stage == 2 and mode == -2 and match_frames != 0xFFFF and match_frames > 30"
+  },
+  {
+   "name": "the second Rumble has room for 10 (its slot count)",
+   "when": "match",
+   "check": "slots >= 10"
+  },
+  {
+   "name": "seven or more in the ring at once (slots 6.. used)",
+   "when": "match",
+   "check": "in_ring >= 7"
+  },
+  {
+   "name": "both Rumbles ended (no crash)",
+   "when": "end",
+   "check": "matches >= 2"
+  },
+  {
+   "name": "no model's matrices ever went bad",
+   "when": "always",
+   "check": "bad_mtx == 0"
+  }
+ ]
+}

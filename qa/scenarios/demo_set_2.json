@@ -1,0 +1,25 @@
+{
+  "about": "2026-11-06: what the title's attract demo set 2 is (its set-up flags carry a kind bit beyond the format: 0x10 / 0x40) -- the pictures name it; 6x",
+  "match": "singles",
+  "demo_set": 2,
+  "wrestlers": [
+    "STEVE AUSTIN",
+    "THE ROCK"
+  ],
+  "control": [
+    "cpu",
+    "cpu"
+  ],
+  "arena": "RAW IS WAR",
+  "matches": 1,
+  "seconds": 120,
+  "speed": 6,
+  "shots": 3,
+  "expect": [
+    {
+      "name": "the match started",
+      "when": "any",
+      "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+    }
+  ]
+}

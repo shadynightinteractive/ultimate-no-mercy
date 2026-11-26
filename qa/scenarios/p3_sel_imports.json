@@ -1,0 +1,36 @@
+{
+ "about": "phase3 (2026-11-19): a WCW/nWo Revenge wrestler imported natively on the first start (AKI Man 0x0379, his folder built by the game from the player's Revenge ROM) on the Superstar Select: his box under the cursor, his photo. qa_variant 1: state.csv bs_tries = the select's Superstar under the cursor | costume << 16 | 1 << 24 (qa_versus alone puts its menu cursor there instead)",
+ "match": "arcade",
+ "wrestlers": [
+  "0x0379",
+  "0x03C7"
+ ],
+ "costumes": [
+  0,
+  0
+ ],
+ "matches": 0,
+ "seconds": 240,
+ "shots": 0.5,
+ "options": {
+  "free_play": true,
+  "attract_demos": false,
+  "qa_versus": 20,
+  "qa_variant": 1
+ },
+ "env": {
+  "SDL_GAMECONTROLLER_IGNORE_DEVICES_EXCEPT": "0x0000/0x0000"
+ },
+ "expect": [
+  {
+   "name": "his box on the select, under the cursor",
+   "when": "any",
+   "check": "(bs_tries & 0x1000000) != 0 and (bs_tries & 0xFFFF) == 0x0379"
+  },
+  {
+   "name": "no model's matrices ever went bad",
+   "when": "always",
+   "check": "bad_mtx == 0"
+  }
+ ]
+}

@@ -1,0 +1,35 @@
+{
+  "about": "the hard camera checked: the TV camera put where the Titantron hard camera is (tron.c hc_eye / hc_at), so the TV picture (the game ordering the scene for that camera) is the reference for the screen picture (dumped from RAM)",
+  "wrestlers": [
+    "STEVE AUSTIN",
+    "THE ROCK"
+  ],
+  "arena": "RAW IS WAR",
+  "control": [
+    "cpu",
+    "cpu"
+  ],
+  "matches": 1,
+  "seconds": 45,
+  "shots": 4,
+  "options": {},
+  "camera": {
+    "eye": [
+      820,
+      270,
+      0
+    ],
+    "at": [
+      0,
+      105,
+      0
+    ]
+  },
+  "expect": [
+    {
+      "name": "the match started",
+      "when": "any",
+      "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+    }
+  ]
+}

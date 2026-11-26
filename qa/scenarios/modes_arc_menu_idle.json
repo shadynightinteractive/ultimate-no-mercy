@@ -1,0 +1,15 @@
+{
+  "about": "2026-11-07, the two modes phase 2 (W11): Arcade, MENU IDLE 30 s -- as menu_from_attract, a coin and Start during an attract demo -> the championship list; then nothing pressed: 30 s on, the game ends quietly (no GAME OVER words, the credits kept) and the cabinet is back in its attract loop. state.csv (qa_modes): bs_tries >> 28 = the arcade's phase (0 ATTRACT, 1 PLAY, 2 GAMEOVER); rr_next (not on the title) = frames idle at a menu | games ended so << 24.",
+  "match": "arcade",
+  "matches": 0,
+  "seconds": 330,
+  "shots": 2.0,
+  "options": { "free_play": false, "attract_demos": true, "qa_modes": 1, "menu_idle_secs": 30 },
+  "pads": [ "185.0 1 back 200", "186.0 1 start 200" ],
+  "expect": [
+    { "name": "a game was started (PLAY) and reached the championship list", "when": "any", "check": "(bs_tries >> 28) == 1 and mode == 0 and screen == 22" },
+    { "name": "idle 30 s at the menu: the game ended (once)", "when": "any", "check": "(rr_next >> 24) == 1" },
+    { "name": "back in the attract loop at the end", "when": "end", "check": "(bs_tries >> 28) == 0" }
+  ],
+  "shot_when": "$c.screen -eq 22 -or $c.screen -eq 0"
+}

@@ -1,0 +1,35 @@
+{
+  "about": "2026-10-31, the user: 'Try to do it with RAW is War now. This time stage stays in the same place, ramp stays the same. Just replace the worse quality stage with the closeup stage.' -- RAW IS WAR's stage up close in a match (a fixed camera by the ramp's foot, a little to the side, looking up at the stage): the close set's stage (gen/arenas_raw.py) where the old one was, the old ramp meeting its deck, the Titantron (the hard camera) on its screen. Run with -Installed for the old set from the same camera.",
+  "wrestlers": [
+    "STEVE AUSTIN",
+    "THE ROCK"
+  ],
+  "arena": "RAW IS WAR",
+  "control": [
+    "cpu",
+    "cpu"
+  ],
+  "matches": 1,
+  "seconds": 50,
+  "shots": 6,
+  "options": {},
+  "camera": {
+    "eye": [
+      420,
+      420,
+      1250
+    ],
+    "at": [
+      0,
+      330,
+      2450
+    ]
+  },
+  "expect": [
+    {
+      "name": "the match started",
+      "when": "any",
+      "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+    }
+  ]
+}

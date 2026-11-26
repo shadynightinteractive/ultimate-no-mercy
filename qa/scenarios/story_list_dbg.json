@@ -1,0 +1,26 @@
+{
+  "about": "the Custom Story list (the game's page 12, 2026-10-28 evening): the arcade as shipped, the row chosen, the list left up (qa_story 2 + 8) -- its rows: the stories' pictures",
+  "match": "arcade",
+  "wrestlers": [
+    "STEVE AUSTIN",
+    null
+  ],
+  "matches": 0,
+  "seconds": 230,
+  "shots": 10.0,
+  "options": {
+    "free_play": true,
+    "attract_demos": false,
+    "custom_story": 1,
+    "qa_story": 10,
+    "qa_list_dbg": 1
+  },
+  "expect": [
+    {
+      "name": "the list came up",
+      "when": "any",
+      "check": "screen == 12"
+    }
+  ],
+  "shot_when": "$c.screen -eq 12 -or $c.screen -eq 22"
+}

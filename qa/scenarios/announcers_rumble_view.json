@@ -1,0 +1,15 @@
+{
+  "about": "King standing at his own place (by the barricade, x 55 z -637) seen from about the camera of the user's Royal Rumble screenshot (high, on the table's side, looking over the ring): does he land where he appeared there (bottom middle, in front of the ropes)?",
+  "wrestlers": ["THE ROCK", "STEVE AUSTIN"],
+  "arena": "ROYAL RUMBLE",
+  "control": ["cpu", "cpu"],
+  "options": { "announcers": true, "commentary": true, "qa_ann_stand": 1 },
+  "camera": { "eye": [0, 330, -1250], "at": [0, 40, 50] },
+  "matches": 0,
+  "seconds": 50,
+  "shots": 4,
+  "expect": [
+    { "name": "the match started", "when": "any", "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30" },
+    { "name": "King stays at his place", "when": "always", "check": "king_bones == 0 or (abs(king_x - 55) < 1 and abs(king_z + 637) < 1)" }
+  ]
+}

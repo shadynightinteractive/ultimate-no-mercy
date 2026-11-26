@@ -1,0 +1,61 @@
+{
+  "about": "no2k15 (2026-11-23): F2's MERGE SAME WRESTLERS on (auto_merge 1) with the two WWE 2K15 test slots taken out: The Rock's family is No Mercy's Rock (0x0001) then WrestleMania 2000's (0x03A2), no third member (it was THE ROCK 2K15, 0x011B). One player's Versus with qa_variant 1: on The Rock's box a tour of the Type arrows -- C-right x8: Rock Type 1-4, WM2000 Rock Type 1-4, then The Rock's Type 1 again (the family has eight) -- C-left (WM2000 Rock Type 4), C-right (Rock Type 1), then A; the CPU's pick: the Undertaker. qa_removal 2 dumps the pages. parity.py (automerge's) checks the game's auto-merge lines against the editor's. state.csv bs_tries = the Superstar under the cursor | costume << 16 | 1 << 24",
+  "match": "arcade",
+  "wrestlers": [
+    "0x0001",
+    "0x0003"
+  ],
+  "costumes": [
+    0,
+    0
+  ],
+  "matches": 0,
+  "seconds": 600,
+  "shots": 1.0,
+  "options": {
+    "free_play": true,
+    "attract_demos": false,
+    "qa_versus": 30,
+    "qa_variant": 1,
+    "qa_variant_tour": 8,
+    "auto_merge": 1,
+    "qa_removal": 2
+  },
+  "expect": [
+    {
+      "name": "the select: The Rock, Type 1",
+      "when": "any",
+      "check": "bs_tries == 0x01000001"
+    },
+    {
+      "name": "The Rock, Type 4",
+      "when": "any",
+      "check": "bs_tries == 0x01030001"
+    },
+    {
+      "name": "past him in the same box: WrestleMania 2000's Rock (his own number), Type 1",
+      "when": "any",
+      "check": "bs_tries == 0x010003A2"
+    },
+    {
+      "name": "WrestleMania 2000's Rock, Type 4",
+      "when": "any",
+      "check": "bs_tries == 0x010303A2"
+    },
+    {
+      "name": "never a 2K15 slot under any cursor",
+      "when": "always",
+      "check": "(bs_tries & 0xFFFF) != 0x011A and (bs_tries & 0xFFFF) != 0x011B"
+    },
+    {
+      "name": "player 1 picked The Rock, his Type 1",
+      "when": "any",
+      "check": "bs_grabs == 0x00000001"
+    },
+    {
+      "name": "the match: The Rock (player 1) vs the Undertaker (CPU)",
+      "when": "any",
+      "check": "mode == -2 and match_frames != 0xFFFF and match_frames > 120 and s0_id == 0x0001 and s0_pad == 1 and s1_id == 0x0003"
+    }
+  ]
+}

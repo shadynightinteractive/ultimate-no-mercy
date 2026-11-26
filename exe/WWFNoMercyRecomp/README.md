@@ -1,0 +1,409 @@
+# WWF No Mercy: Recompiled
+
+WWF No Mercy: Recompiled is a project that uses
+[N64Recomp](https://github.com/N64Recomp/N64Recomp) to **statically recompile** the
+Nintendo 64 game *WWF No Mercy* into a native PC port, running on the
+[N64ModernRuntime](https://github.com/N64Recomp/N64ModernRuntime) with
+[RT64](https://github.com/rt64/rt64) as the rendering engine. It is the fifth
+project in the AKI wrestling recompilation family, after
+[WCW vs. nWo World Tour: Recompiled](https://github.com/jessetbh/WCWvsNWOWorldTourRecomp),
+[WCW/nWo Revenge: Recompiled](https://github.com/jessetbh/WCWnWoRevengeRecomp),
+[WWF WrestleMania 2000: Recompiled](https://github.com/jessetbh/WWFWrestleMania2000Recomp),
+and
+[Virtual Pro Wrestling 64: Recompiled](https://github.com/jessetbh/VPW64Recomp),
+sharing their runtime stack and conventions. No Mercy is WrestleMania 2000's direct
+sequel, so that project is this one's closest reference.
+
+### **This repository and its releases do not contain game assets. The original game is required to build or run this project.**
+
+> **Status: beta.** The game boots, renders at high resolution, plays music and
+> sound effects, takes keyboard and gamepad input through the menus and matches,
+> rumbles, and the cartridge flash save persists automatically across sessions.
+> See [Known Issues](#known-issues) for what's still rough.
+
+<div align="center">
+  <img src="docs/screenshots/gameplay.png" width="640" alt="In-ring gameplay rendered at high resolution">
+  <br>
+  <img src="docs/screenshots/title.png" width="318" alt="Title screen">
+  <img src="docs/screenshots/wrestler-select.png" width="318" alt="Superstar select">
+</div>
+
+## Table of Contents
+* [System Requirements](#system-requirements)
+* [Features](#features)
+* [Compared with Emulation](#compared-with-emulation)
+* [FAQ](#faq)
+* [Known Issues](#known-issues)
+* [Lighting](#lighting-ray-tracing)
+* [Mods and ROM Hacks](#mods-and-rom-hacks)
+* [Building](#building)
+* [Libraries Used and Projects Referenced](#libraries-used-and-projects-referenced)
+* [Special Thanks](#special-thanks)
+
+## System Requirements
+
+Currently a **Windows** build is targeted; other operating systems may be supported
+later.
+
+A GPU supporting Direct3D 12.0 (Shader Model 6) or Vulkan 1.2 is required. A CPU
+supporting the SSE4.1 instruction set is also required (Intel Core 2 Penryn series or
+AMD Bulldozer and newer).
+
+## Features
+
+* Plug and play — assets load directly from your ROM, no extraction step
+* Hardware-accelerated high-resolution rendering through RT64 with the original
+  N64 visual effects intact
+* Widescreen support
+* In-game config menus with full input rebinding for keyboard and controller
+* Default mappings tailored to the AKI control scheme (d-pad movement, analog taunts)
+* Flash cartridge save emulation with automatic persistence, plus rumble
+* Smoother motion (Experimental): 60 and 120 fps through frame interpolation (Settings → Graphics → Framerate)
+* Ray tracing (Experimental): real shadows from the arena lights, ambient occlusion, and a lighting rig for
+  every arena, every entrance stage and the five backstage areas, which you can change yourself (see [Lighting](#lighting-ray-tracing)); needs D3D12 and a DirectX
+  Raytracing 1.1 GPU
+* CRT filter (Experimental): Composite, S-Video, RF or RGB signal, USA or Japan TV colors, and an optional CRT Beam
+  Simulator (V-Sync and a 120 Hz+ display)
+* HDR (Experimental): **HDR Picture** (Auto, Brighter, Balanced, CRT Detail, Custom) sets the brightness for your
+  display; Auto leaves the CRT filter headroom for a full-strength phosphor mask
+* Mods menu with a bundled free camera, cheats and a Quick Match testing tool (see
+  [Mods and ROM Hacks](#mods-and-rom-hacks))
+
+## Compared with Emulation
+
+What the port takes care of that emulator setups for this game often need fiddling for:
+
+* **No plugins or emulator settings.** One renderer (RT64) is built in: there is nothing to pick, tune or swap
+  when something looks wrong.
+* **Widescreen, 60/120 fps and high resolution are built in**, not emulator-specific hacks.
+* **Saves are just files.** Flash cartridge saves are written automatically to
+  `%LOCALAPPDATA%\NoMercyRecompiled\saves\` (or next to the exe in portable mode), with a backup copy. No save states or
+  pak images to manage.
+* **Controls set up for this game**, rebindable in the game's own menu, for keyboard and controllers, with rumble.
+* **ROM hacks without a special setup.** Many hacks run as patch mods on top of your clean ROM, switched on in
+  the Mods menu, instead of needing a particular emulator version, plugin and settings (see
+  [Mods and ROM Hacks](#mods-and-rom-hacks)).
+
+## Planned Features
+
+* Linux support
+
+## FAQ
+
+#### What is static recompilation?
+
+Static recompilation is the process of automatically translating an application from
+one platform to another — here, the game's original MIPS machine code is translated
+into C and compiled for modern PCs. For details, see
+[N64Recomp](https://github.com/N64Recomp/N64Recomp). **This is not an emulator and not
+a decompilation.**
+
+#### How is this related to a decompilation project?
+
+It isn't — no public decompilation of WWF No Mercy exists. Unlike most
+recompilation ports, which borrow symbol names from a decomp, this project generates
+its own symbol metadata from scratch via a [splat](https://github.com/ethteck/splat)
+disassembly (see `disasm/` and `syms/`), transferring libultra identifications from
+its sister project WWF WrestleMania 2000 by machine-code fingerprinting.
+
+#### Which ROM does it use?
+
+This project is **only** a port of WWF No Mercy, and it only accepts one specific
+ROM: the USA **Rev 1** release
+(SHA1 `91CEE3D096F4A76644D8B35B9AEAD6448909ABD1`). The original USA release (Rev 0,
+which shipped the infamous save-erasure bug) and other regions are **not** accepted.
+**It is not an emulator and it cannot run any arbitrary ROM.**
+
+#### Where is the savefile stored?
+
+- Windows: `%LOCALAPPDATA%\NoMercyRecompiled\saves\`
+
+No Mercy saves everything — game progress, unlocks ("SmackDown Mall" purchases), and
+created wrestlers — to the cartridge's flash memory; the port persists that flash
+image to disk automatically. Configuration files and the log file live one level up
+in the same app folder.
+
+#### Can you run this project as a portable application?
+
+Yes — place a file named `portable.txt` in the same folder as the executable and
+saves, config files, and the stored ROM will be kept next to the executable instead.
+
+#### Can I mod the game?
+
+Yes: the **Mods** menu (Settings → Mods) installs, configures and switches `.nrm` mods, and many ROM hacks run as
+patch mods. A free camera (F6), cheats and a Quick Match testing tool come bundled. See
+[Mods and ROM Hacks](#mods-and-rom-hacks).
+
+## Known Issues
+
+This is a beta. Known rough edges:
+
+* First launch may pause briefly while shaders compile for your GPU.
+* Only the USA Rev 1 ROM is accepted (see the FAQ) — other dumps are rejected at
+  intake by design.
+* **Ray tracing at Quality or Ultra with 60/120 fps is very demanding** in this game and can slow it down
+  on mid-range GPUs. Use Performance or Balanced at 60/120 fps, or 30 fps for Quality/Ultra.
+* The old **HDR Brightness** setting is replaced by **HDR Picture**; it starts on Auto.
+* Ray tracing, frame interpolation, the CRT filter and HDR are experimental. If something looks wrong,
+  turn the feature off and please report it with your log file
+  (`%LOCALAPPDATA%\NoMercyRecompiled\NoMercyRecompiled.log`).
+
+Please report anything else through the issue tracker.
+
+## Lighting (Ray Tracing)
+
+With Ray Tracing on, the lights come from `assets\rt_lights.json` in the game's folder (next to
+`NoMercyRecompiled.exe`; for AKI Launcher installs, the game's install folder). You can edit it with any text editor while
+the game runs: the game reloads it within a second, so you see each change straight away.
+
+The file has three parts:
+
+- `"default"`: the rig for any scene without its own preset.
+- `"room"`: the generated fallback for small rooms without a preset (ceiling lights spread over the room).
+- `"venues"`: one preset per venue. A venue is recognized by its `"match"` list of texture hashes (the textures
+  it draws); a preset only changes the fields it sets, the rest come from `"default"`.
+
+The main fields (distances are in game units, Y is up, and in arenas `[0, 0, 0]` is the middle of the ring):
+
+| Field | What it does |
+|---|---|
+| `"lights"` | Up to 8 lights: `[x, y, z, weight]`, or `[x, y, z, weight, r, g, b]` for a colored one. Lower lights cast longer shadows. |
+| `"color"` | Tints every light, `[r, g, b]` (brightness stays the same). |
+| `"size"` | Width of each light: bigger = softer shadows. |
+| `"shadow"`, `"characterShadow"` | Shadow strength (0 to 1) on the world and on the wrestlers. |
+| `"radius"` | How far from the center shadows land. |
+| `"glows"` | Up to 4 glowing spots (screens, lamps): `[x, y, z, intensity, range]`, optionally `, r, g, b` and a flicker amount. |
+| `"outsideDarkness"`, `"outsideEdge"` | Darkens everything beyond the radius (the crowd), easing in over `outsideEdge` units: the "house lights down" look. 0 = off. |
+| `"litAreas"` | Up to 2 places, `[x, z, radius, edge]`, kept out of that darkness (an entrance stage, for example). |
+| `"anchor": "scene"` | Positions become offsets from the scene's center and floor, for rooms that sit anywhere in the world. |
+
+The top of the file documents every field.
+
+#### The Lighting editor
+
+The game has a live editor for all of this:
+
+1. Close the game, open `%LOCALAPPDATA%\NoMercyRecompiled\graphics.json` (or `graphics.json` next to the exe in portable mode)
+   and set `"developer_mode": true`.
+2. Start the game and press **F1** to open the RT64 inspector. Its **Lighting** window shows the venue the game
+   detected and has sliders for every field, a split-screen view (ray tracing on one half only), and **Save**, which
+   writes `rt_lights.json`.
+3. To light a venue that has no preset yet, go there, type a name and press **New venue from current scene**: it
+   fills in the venue's textures for you.
+
+The bundled free camera (F6, see below) helps you look at the venue from anywhere while you work.
+
+Releases replace `assets\rt_lights.json`, so keep a copy of your edits. To keep your own file somewhere else, set
+the environment variable `WCW_RT_LIGHTS_FILE` to its full path before starting the game.
+
+## Mods and ROM Hacks
+
+This port loads mods in the `.nrm` format used by the N64: Recompiled projects.
+
+#### Bundled mods
+
+Three mods come with the game and are kept up to date by it. They do nothing until you use them:
+
+- **Camera**: a free camera. Press **F6** and fly around with WASD (Space/Ctrl up and down, Shift for speed) and the
+  mouse; press F6 again to give the camera back to the game.
+- **Cheat Codes**: on/off cheats for this game, plus a box for your own GameShark codes. All off by default.
+- **Quick Match (testing)**: a developer tool that skips the intro and starts a CPU-vs-CPU match in a chosen venue.
+  Off by default; leave it off for normal play.
+
+Their options are in Settings → Mods. To turn one off, switch it off there (deleting its file doesn't stick: the
+game puts it back).
+
+#### Installing a mod
+
+Copy the `.nrm` file into the game's mods folder, or use **Install Mods** in the Mods menu (or drag the file onto
+the window):
+
+- Windows: `%LOCALAPPDATA%\NoMercyRecompiled\mods\` (or `mods\` next to the executable in portable mode)
+
+New mods are switched on by default. Mods are applied when the game starts, so restart after changing them. To
+remove a mod, delete its file.
+
+#### Texture packs
+
+The game loads RT64 texture packs: replacement textures, for example HD versions. A pack is a folder or an `.rtz`
+file (a zip) with an `rt64.json` at its root. Copy it into the mods folder, or install an `.rtz` from the Mods menu.
+It shows up in the Mods menu and can be switched on and off while you play.
+
+To make your own:
+
+1. **Dump.** Start the game with `--dump-textures` (for example, a shortcut to `NoMercyRecompiled.exe --dump-textures`).
+   Every texture the game draws is saved once, as a PNG named by its hash, in `texture_dump\pack\` next to the
+   mods folder. Play the screens you want to change, then quit. Start the game without the option to stop dumping.
+2. **Edit.** Change the PNGs in any image editor. Keep the file names. Any size works (2x or 4x gives HD
+   textures); keep the aspect ratio. Delete the PNGs you didn't change.
+3. **Load.** Copy the `pack` folder into the mods folder and give it a name: that's the pack's name in the Mods menu.
+
+The dump folder also holds raw texture data, which RT64's `texture_hasher --rice` uses to map packs made for other
+emulators (Rice/GLideN64 file names) to this game's textures; see RT64's
+[texture pack guide](https://github.com/rt64/rt64/blob/main/TEXTURE-PACKS.md). Dumped textures are the game's own
+art: don't share packs that contain unedited dumps.
+
+#### Making your own mod
+
+A mod is a small C program compiled for the N64's MIPS CPU. The runtime links it into the recompiled game, where it
+can run code when a game function is called (a *hook*) or replace a game function (a *patch*).
+
+The bundled mods are open source in [AKI Mods](https://github.com/jessetbh/AkiMods): working examples, and a
+build script that does everything below for all six games at once.
+
+You need:
+
+- a C compiler with a MIPS backend: [`zig cc`](https://ziglang.org/) works out of the box (the Clang that ships
+  with Visual Studio has no MIPS backend), plus `ld.lld`;
+- `RecompModTool`, built from [N64Recomp](https://github.com/N64Recomp/N64Recomp);
+- `modding.h` and `mod.ld` from the [MMRecompModTemplate](https://github.com/Zelda64Recomp/MMRecompModTemplate)
+  (both work as they are; ignore its Majora's Mask headers);
+- this repository's `syms/dump.toml`, which lists every function in the game.
+
+There's no decompilation of this game, so functions go by their address (`func_80001234`). `syms/dump.toml` and the
+disassembly in `disasm\` are the map; `func_800012B0` runs at least once per frame, which makes it a good first hook:
+
+```c
+#include "modding.h"
+
+RECOMP_HOOK("func_800012B0") void my_mod_on_frame(void) {
+    // runs every frame, before the game's own code
+}
+```
+
+Compile and link (the `+nooddspreg` feature matters: without it floating-point code comes out wrong):
+
+```
+zig cc -target mips-freestanding-none -mcpu=mips2 -mabi=32 -O2 -G0 -mno-abicalls -mno-odd-spreg -Xclang -target-feature -Xclang +nooddspreg -fno-builtin -nostdinc -ffreestanding -ffunction-sections -c my_mod.c -o my_mod.o
+ld.lld my_mod.o -nostdlib -T mod.ld --unresolved-symbols=ignore-all --emit-relocs -e 0 --no-nmagic -gc-sections -o mod.elf
+```
+
+Describe the mod in a `mod.toml` and pack it:
+
+```toml
+[manifest]
+id = "my_mod"
+version = "1.0.0"
+display_name = "My Mod"
+short_description = "What it does."
+authors = [ "you" ]
+game_id = "wwfnomercy"
+minimum_recomp_version = "0.1.0"
+dependencies = []
+optional_dependencies = []
+native_libraries = []
+
+[inputs]
+elf_path = "mod.elf"
+mod_filename = "my_mod"
+func_reference_syms_file = "path/to/syms/dump.toml"
+data_reference_syms_files = []
+additional_files = []
+```
+
+```
+RecompModTool mod.toml out
+```
+
+That writes `out\my_mod.nrm`, ready to install. Options declared under `[[manifest.config_options]]` appear in the
+Mods menu; read them with the runtime's `recomp_get_config_u32` / `_double` / `_string` exports (declare them with
+`RECOMP_IMPORT("*", ...)`). The game also exports keyboard and mouse input to mods (`recomp_get_key_down`,
+`recomp_get_mouse_dx`, ...; the full list is in `src/main/main.cpp`). There's no `recomp_printf`, and a mod that
+imports a function the runtime doesn't have won't load. New mods are switched on as soon as they're installed, so a
+mod you share should do nothing until the player turns it on.
+
+#### ROM hacks as patch mods
+
+Many ROM hacks can run as a *patch mod*: a mod that holds only a patch against the stock ROM. The game applies it to
+your own ROM when it starts, and any game code the hack changes is recompiled on the fly. It works for hacks that:
+
+- are built on the same ROM this port uses (see the ROM's SHA1 above), and
+- change code only inside the game's existing functions (data changes of any size are fine).
+
+Hacks that add new code, rebuild or move the game's code, or are made for another revision need a full recompile and
+can't run as patch mods. Only one patch mod can be on at a time; each one keeps its own saves in
+`saves\<mod id>\`, apart from the stock game's.
+
+To make one from a hack ROM you have patched yourself:
+
+1. Get a checkout of this repository, a checkout of [AKI Mods](https://github.com/jessetbh/AkiMods) next to it (the
+   patch-mod tool is shared by all six ports and lives there), and [Python 3](https://www.python.org/).
+2. Put your stock ROM in the repository root as `nomercy.z64`, and generate `RecompiledFuncs\` (the recompile step in
+   [BUILDING.md](BUILDING.md)). You don't need to build the game itself.
+3. Make sure the hack ROM is big-endian `.z64` (convert `.n64` / `.v64` dumps first).
+4. Run:
+
+```
+python tools\romhack\make_patch_mod.py --base nomercy.z64 --hack my_hack.z64 --game-id wwfnomercy --id my_hack --name "My Hack" --out my_hack.nrm
+```
+
+The tool reports what the hack changes: data only, changed functions (fine: they're recompiled when the game
+starts), or code that escapes its functions or lies outside them (needs a full recompile: the tool refuses to write
+the mod). Without `--out` it only prints the report, a quick way to check a hack. Then install `my_hack.nrm` like any
+other mod. If the hack changes a function this port repaired after recompiling, the report marks it REPAIRED and the
+game's log notes it when the mod loads: such a hack may need testing. More detail in
+[tools/romhack/README.md](tools/romhack/README.md).
+
+Patch mods can contain the hack's and the original game's data, so **don't share patch mods you don't have the rights
+to**: make your own from your own ROMs.
+
+Known results for No Mercy:
+
+- Work as patch mods: *WWF No Mercy (Unlocked)* (everything unlocked).
+- Need a full recompile: *WWF No Mercy Plus* (v2.1, V3), *ECW Born to be Wired*, *ECW House Party Mixtape*, *Project Outsider Extreme*: all relinked or built on another base.
+
+## Building
+
+See [BUILDING.md](BUILDING.md).
+
+## Libraries Used and Projects Referenced
+
+* [N64Recomp](https://github.com/N64Recomp/N64Recomp) — the static recompiler this
+  port is built with
+* [N64ModernRuntime](https://github.com/N64Recomp/N64ModernRuntime) — the modern
+  runtime (ultramodern + librecomp)
+* [RT64](https://github.com/rt64/rt64) — the rendering engine
+* [librashader](https://github.com/SnowflakePowered/librashader) with guest's CRT shaders, and the
+  [Blur Busters CRT Beam Simulator](https://github.com/blurbusters/crt-beam-simulator), for the CRT filter
+* [RecompFrontend](https://github.com/N64Recomp/RecompFrontend) — launcher, config
+  menus, and input stack
+* [RmlUi](https://github.com/mikke89/RmlUi) for building the menus and launcher
+* [lunasvg](https://github.com/sammycage/lunasvg) for SVG rendering, used by RmlUi
+* [FreeType](https://freetype.org/) for font rendering, used by RmlUi
+* [SDL2](https://www.libsdl.org/) for windowing, input, and audio
+* [moodycamel::ConcurrentQueue](https://github.com/cameron314/concurrentqueue) for
+  semaphores and fast, lock-free MPMC queues
+* [Gamepad Motion Helpers](https://github.com/JibbSmart/GamepadMotionHelpers) for
+  sensor fusion and calibration algorithms
+* [DirectX Shader Compiler](https://github.com/microsoft/DirectXShaderCompiler),
+  [zstd](https://github.com/facebook/zstd),
+  [nativefiledialog-extended](https://github.com/btzy/nativefiledialog-extended), and
+  [plume](https://github.com/renderbag/plume) via RT64
+* [splat](https://github.com/ethteck/splat) / spimdisasm for the disassembly that
+  produces this project's symbol metadata
+* [Inter](https://rsms.me/inter/), [Noto Emoji](https://fonts.google.com/noto), and
+  [PromptFont](https://shinmera.com/promptfont) fonts (OFL; PromptFont license in
+  `assets/promptfont/`)
+* [SDL_GameControllerDB](https://github.com/gabomdq/SDL_GameControllerDB) for
+  community controller mappings
+* [WCW vs. nWo World Tour: Recompiled](https://github.com/jessetbh/WCWvsNWOWorldTourRecomp),
+  [WCW/nWo Revenge: Recompiled](https://github.com/jessetbh/WCWnWoRevengeRecomp),
+  [WWF WrestleMania 2000: Recompiled](https://github.com/jessetbh/WWFWrestleMania2000Recomp),
+  [Virtual Pro Wrestling 64: Recompiled](https://github.com/jessetbh/VPW64Recomp),
+  [Bomberman Hero: Recompiled](https://github.com/RevoSucks/BMHeroRecomp), and
+  [Zelda64Recomp](https://github.com/Zelda64Recomp/Zelda64Recomp) as reference
+  projects for structure and conventions
+
+## Special Thanks
+
+* [Wiseguy](https://github.com/Mr-Wiseguy) and
+  [DarioSamo](https://github.com/DarioSamo) for creating N64Recomp and RT64.
+* [Gadge64](https://github.com/Gadge64) for the frame interpolation behind the 60 and 120 fps
+  Framerate options ([#5](https://github.com/jessetbh/WWFNoMercyRecomp/pull/5)), which the
+  whole family of ports now uses.
+* [RevoSucks](https://github.com/RevoSucks) and the Bomberman Hero: Recompiled
+  project, the template for this port's sister projects and therefore for this one.
+* The Zelda64Recomp team for establishing the conventions the whole recomp ecosystem
+  follows.
+* ethteck and the splat/spimdisasm contributors — the disassembly tooling that made a
+  no-decomp recompilation possible.

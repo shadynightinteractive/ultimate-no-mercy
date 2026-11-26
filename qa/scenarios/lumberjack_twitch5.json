@@ -1,0 +1,165 @@
+{
+  "about": "2026-11-23 ljrole (ROUND 7, the lumberjacks a role of the game's computer player): lumberjack_twitch over FIVE matches, without the per-step trace -- the user's twelve (qa_lj_set 1), player 1 at his controller (qa_lj_p1 3), the walk-out probe every 30 s. Every phase within its jitter limit at every match's end. 2026-11-23 ljtwitch: the twitching check, as the user played it -- Steve Austin (player 1 at his controller, qa_lj_p1 3: after his opponent, out by himself now and then) against Kurt Angle, with the twelve lumberjacks of the user's 11-23 match (qa_lj_set 1: Savage, D-Lo Brown, La Parka, Brickowski, Taka Michinoku, British Bulldog, Shane McMahon, Han Zo Mon, Raven, Sting, X-Pac, Dean Malenko -- ten imported men), three matches. The user: 'There's still some twitching' / 'Its not just when they're at posts' / 'Check when they're idle outside the ring, thats where I notice most'. The jitter measure (lumberjack.c qa_jitter: every man every step -- turns reversed within 1/3 s of any size, animation files switched back within 2/3 s or restarted, states switched back, steps reversed) by what each man is doing: lj_p idle outside the ring (at the post or anywhere on the floor in no job), lj_q walking (the intro too), lj_r on a man / brawling / busy, lj_s the competitors out. The per-step trace (qa_lj_trace 4) is in the game's log for the analysis (scratch jit.py). ljround8 (2026-11-23): the aggression (hits a minute out on each competitor, the CPU as much as the player), the holds' throw / grapple-move split, the escape loop (0) and the intro's stops (0) checked.",
+  "match": "singles",
+  "wrestlers": [
+    "STEVE AUSTIN",
+    "0x0302"
+  ],
+  "costumes": [
+    0,
+    0
+  ],
+  "control": [
+    "pad1",
+    "cpu"
+  ],
+  "arena": "RAW IS WAR",
+  "options": {
+    "qa_lumberjacks": 12,
+    "qa_lj_set": 1,
+    "qa_lj_out": 30,
+    "qa_lj_p1": 3
+  },
+  "matches": 5,
+  "seconds": 2400,
+  "speed": 6,
+  "shots": 10,
+  "shot_when": "$c.match_state -eq 1",
+  "pads": [
+    "9999 1 back 10",
+    "9999 2 back 10"
+  ],
+  "expect": [
+    {
+      "name": "the match started",
+      "when": "any",
+      "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "player 1 (slot 0) is driven by a controller -- the human path, as the user plays it",
+      "when": "match",
+      "check": "(lj_o >> 31) == 1"
+    },
+    {
+      "name": "the user's twelve lumberjacks (qa_lj_set 1): Savage, D-Lo Brown first",
+      "when": "match",
+      "check": "lj_j == (0x0108 | 0x03BC << 16)"
+    },
+    {
+      "name": "ljtwitch: the lumberjacks IDLE outside the ring stand still -- at their posts, anywhere else on the floor in no job, or walking back to their posts (the user, 11-23: 'There's still some twitching' / 'Check when they're idle outside the ring, thats where I notice most'): at most one jitter event a 5 lumberjack-seconds -- a turn reversed within 1/3 s (both turns 3 of 4096 or more), the walk / stand files switched back within 2/3 s, a step reversing the last one's way. Before the fix (937b34d): 6 to 11 a lumberjack-second, lumberjacks stuck turning back and forth by their posts for seconds",
+      "when": "always",
+      "check": "match_state != 4 or (lj_p >> 16) == 0 or (lj_p & 0xFFFF) * 5 <= (lj_p >> 16)"
+    },
+    {
+      "name": "ljtwitch: the lumberjacks WALKING DOWN THE RAMP in the intro walk steadily: at most one jitter event a lumberjack-second (before the fix: a walker behind another stood a step and walked a step every 8 steps, 2.9 a second; walking back to the post is in the idle check)",
+      "when": "always",
+      "check": "match_state != 4 or (lj_q >> 16) == 0 or (lj_q & 0xFFFF) <= (lj_q >> 16)"
+    },
+    {
+      "name": "ljtwitch: the lumberjacks ON A MAN (the swarm, the roll-in's roller), brawling, leaving the ring, down, in a move or whipped: at most 4 jitter events a lumberjack-second -- hits and moves knock men about, but no walking on the spot, no turning left and right each step (before the fix: 7 to 9 a second, rollers turning between two corners each step, the swarm walking into the apron for seconds)",
+      "when": "always",
+      "check": "match_state != 4 or (lj_r >> 16) == 0 or (lj_r & 0xFFFF) <= 4 * (lj_r >> 16)"
+    },
+    {
+      "name": "ljtwitch: the jitter measure ran -- at a match's end, 300 lumberjack-seconds or more idle outside the ring and 20 walking measured",
+      "when": "match",
+      "check": "match_state == 4 and (lj_p >> 16) >= 300 and (lj_q >> 16) >= 20"
+    },
+    {
+      "name": "ljround8 / ROUND 9 (at every match's end, over the run so far): the lumberjacks attack the COMPUTER's competitor as much as the player's (the user: 'They attack the player more than the CPU') -- their hits a lumberjack-minute on him, over every match of the run (lj_y), at least 3/4 of the rate on player 1, each with 60 lumberjack-seconds or more, else not judged (ROUND 9: one match's handful of hits was no measure -- r8's lumberjack_twitch5 match 5, the CPU 4 hits in 57 lumberjack-seconds against the player's 21 in 135, the run's whole 7 in 87 against 42 in 484)",
+      "when": "always",
+      "check": "match_state != 4 or (((lj_y >> 8) & 0xFF) < 15 or (lj_y >> 24) < 15 or ((lj_y >> 16) & 0xFF) * ((lj_y >> 8) & 0xFF) * 4 >= (lj_y & 0xFF) * (lj_y >> 24) * 3)"
+    },
+    {
+      "name": "ljround8 (at every match's end): the lumberjacks are aggressive -- at least 6 of their hits a minute on a man out there (both competitors together, out 30 s or more in all; ef8edd4: 3.4-7.0, mostly under 6)",
+      "when": "always",
+      "check": "match_state != 4 or ((((lj_t >> 8) & 0xFFF) + ((lj_u >> 8) & 0xFFF)) < 30 or ((lj_t & 0xFF) + (lj_u & 0xFF)) * 60 >= 6 * (((lj_t >> 8) & 0xFFF) + ((lj_u >> 8) & 0xFFF)))"
+    },
+    {
+      "name": "ljround8 / ROUND 9 (at every match's end): once a lumberjack holds a man (from the front or from behind, anywhere), the throw in about 60% and the game's own grapple move about 40% (the user) -- the throw 40-80% with 5 holds or more",
+      "when": "always",
+      "check": "match_state != 4 or ((lj_v & 0xFF) + ((lj_v >> 8) & 0xFF) < 5 or ((lj_v & 0xFF) * 5 >= ((lj_v & 0xFF) + ((lj_v >> 8) & 0xFF)) * 2 and (lj_v & 0xFF) * 5 <= ((lj_v & 0xFF) + ((lj_v >> 8) & 0xFF)) * 4))"
+    },
+    {
+      "name": "ljround8 (at every match's end, its whole match): the escape loop is gone -- no competitor heading back in gets out of a lumberjack's hold from behind (the user's 'Lumberjack tries to back grapple, CPU player knocks back with his elbow to escape the grapple, repeat'; ROUND 9: a hold from behind is turned to the front by R only once the throw in is decided, the user's way; else the game's own move from behind), and no spell out with two such escapes",
+      "when": "always",
+      "check": "match_state != 4 or (((lj_v >> 16) & 0xFF) == 0 and (lj_v >> 24) == 0)"
+    },
+    {
+      "name": "ljround8 (at every match's end): the intro's walk is continuous -- no walker stops once he has set off (the user: 'they seem to pause in the aisle ... They should all just walk'), every walker counted",
+      "when": "always",
+      "check": "match_state != 4 or ((lj_w & 0xFF) == 0 and ((lj_w >> 16) & 0xFF) == (lj_a & 0xFF))"
+    },
+    {
+      "name": "ROUND 9 (the user 2026-11-24: 'CPUs can do whatever moves they want'): the lumberjacks do the game's own grapple moves on a man out on the floor",
+      "when": "any",
+      "check": "(lj_x & 0xFF) >= 1"
+    },
+    {
+      "name": "ROUND 9: ... and by the apron's edge (the man under 370 out) -- no place ruled out",
+      "when": "any",
+      "check": "((lj_x >> 8) & 0xFF) >= 1"
+    },
+    {
+      "name": "ROUND 9: ... and by the barricade or in the aisle (the man 430 out or more)",
+      "when": "any",
+      "check": "((lj_x >> 16) & 0xFF) >= 1"
+    },
+    {
+      "name": "ROUND 9 (the user: 'regular back grapple functionality ... needs to stay'): the lumberjacks grab men from behind (the game's rear grapple)",
+      "when": "any",
+      "check": "(lj_w >> 24) >= 1"
+    },
+    {
+      "name": "ljround10 (at every match's end): no lumberjack idle within striking distance of a competitor out there -- no spell of 2 s on his feet within 85 of him, not on him (the user 2026-11-24: 'Lumberjacks shouldn't be idle when a wrestler is out of the ring in striking distance ever'; then: 'Half a second is ok.. I just meant extended idle')",
+      "when": "always",
+      "check": "match_state != 4 or (lj_z & 0xFF) == 0"
+    }
+  ],
+  "report_only": [
+    {
+      "name": "ljtwitch: jitter -- lumberjacks idle outside the ring (events, lumberjack-seconds)",
+      "value": "(lj_p & 0xFFFF, lj_p >> 16)"
+    },
+    {
+      "name": "ljtwitch: jitter -- the intro's walk down the ramp (events, lumberjack-seconds)",
+      "value": "(lj_q & 0xFFFF, lj_q >> 16)"
+    },
+    {
+      "name": "ljtwitch: jitter -- lumberjacks on a man / brawling / busy (events, lumberjack-seconds)",
+      "value": "(lj_r & 0xFFFF, lj_r >> 16)"
+    },
+    {
+      "name": "ljtwitch: jitter -- the competitors out on the floor (events, man-seconds; report-only: mostly the game's own -- blows, falls, his computer player)",
+      "value": "(lj_s & 0xFFFF, lj_s >> 16)"
+    },
+    {
+      "name": "ljround8: the lumberjacks' hits on competitor 0 outside / his seconds out / the lumberjack-seconds on him",
+      "value": "(lj_t & 0xFF, (lj_t >> 8) & 0xFFF, lj_t >> 20)"
+    },
+    {
+      "name": "ljround8: the lumberjacks' hits on competitor 1 outside / his seconds out / the lumberjack-seconds on him",
+      "value": "(lj_u & 0xFF, (lj_u >> 8) & 0xFFF, lj_u >> 20)"
+    },
+    {
+      "name": "ljround8 / ROUND 9: the holds' decisions -- the throw in / a grapple move",
+      "value": "(lj_v & 0xFF, (lj_v >> 8) & 0xFF)"
+    },
+    {
+      "name": "ljround8: holds from behind (all) / got out of by a man heading back in / escape loops",
+      "value": "(lj_w >> 24, (lj_v >> 16) & 0xFF, lj_v >> 24)"
+    },
+    {
+      "name": "ljround8: the intro -- walkers' stops / most by one / walkers",
+      "value": "(lj_w & 0xFF, (lj_w >> 8) & 0xFF, (lj_w >> 16) & 0xFF)"
+    },
+    {
+      "name": "ROUND 9: the lumberjacks' grapple moves on a man outside / by the apron's edge / by the barricade or aisle / from behind",
+      "value": "(lj_x & 0xFF, (lj_x >> 8) & 0xFF, (lj_x >> 16) & 0xFF, lj_x >> 24)"
+    },
+    {
+      "name": "ljround10: idle spells / idle seconds / ramp-stage whips / put on a man in reach",
+      "value": "(lj_z & 0xFF, (lj_z >> 8) & 0xFF, (lj_z >> 16) & 0xFF, lj_z >> 24)"
+    }
+  ]
+}

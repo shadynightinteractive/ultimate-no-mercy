@@ -1,0 +1,49 @@
+{
+ "about": "every stage playable where it stands (gen/arenas_collide.py): the player walks up the aisle to the stage in BASH AT THE BEACH, the CPU follows, they fight there (front z 1250, 93 walls). LOOK: no fade or area change, feet on the floor, the walls where the models are, the camera, shadows, the fist/prop crashes",
+ "wrestlers": [
+  "THE ROCK",
+  "STEVE AUSTIN"
+ ],
+ "costumes": [
+  0,
+  0
+ ],
+ "arena": "BASH AT THE BEACH",
+ "control": [
+  "pad1",
+  "cpu"
+ ],
+ "matches": 1,
+ "seconds": 200,
+ "shots": 2.0,
+ "options": {
+  "qa_ringstage": 77
+ },
+ "expect": [
+  {
+   "name": "the match started",
+   "when": "any",
+   "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+  },
+  {
+   "name": "nobody's position went bad",
+   "when": "always",
+   "check": "finite(s0_x, s0_y, s0_z, s1_x, s1_y, s1_z)"
+  },
+  {
+   "name": "no area change up the aisle (bs_tries: the area in play)",
+   "when": "always",
+   "check": "bs_tries < 10"
+  },
+  {
+   "name": "the walker got to the stage",
+   "when": "any",
+   "check": "s0_z > 1250"
+  },
+  {
+   "name": "the CPU came up too",
+   "when": "any",
+   "check": "s1_z > 1230"
+  }
+ ]
+}

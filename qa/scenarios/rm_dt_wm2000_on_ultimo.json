@@ -1,0 +1,65 @@
+{
+ "about": "revmoves (2026-11-20, the user: Ultimo Dragon double-teamed in a 2-on-1, two CPU men pulling his legs -- 'he ended up standing while the CPU opponents did their animation on air'; his match was against two WrestleMania 2000 Kanes): a handicap match, Mankind and Dude Love (WrestleMania 2000 imports 0x03B1 / 0x03A4, a team: entry 163 'wm2000:4190@4610', WrestleMania 2000's Wishbone Split on No Mercy's 4610) against Ultimo Dragon (Revenge import 0x0376), all CPU. Slot 0's double teams (entries 163-165) done as 163. The man in a double team plays the lead's move's third animation (wrestler_state_133_double_teamed_man: file + 2); a library move had only its pair, so he played a number that was no animation of the move and got up while the two went on. Matches one after another until the time is up (\"matches\": 0: a two-on-one match ends quickly).",
+ "match": "handicap",
+ "wrestlers": [
+  "0x03B1",
+  "0x03A4",
+  "0x0376"
+ ],
+ "costumes": [
+  0,
+  0,
+  0
+ ],
+ "control": [
+  "cpu",
+  "cpu",
+  "cpu"
+ ],
+ "arena": "RAW IS WAR",
+ "matches": 0,
+ "seconds": 900,
+ "speed": 6,
+ "shots": 5.0,
+ "shot_when": "$c.s0_phase -eq 131 -or $c.s2_phase -eq 133 -or $c.s2_state -eq 133",
+ "force": {
+  "slot": 0,
+  "entries": [
+   163,
+   165
+  ],
+  "as": 163
+ },
+ "expect": [
+  {
+   "name": "the match started",
+   "when": "any",
+   "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+  },
+  {
+   "name": "Mankind, Dude Love (WM2000) against Ultimo Dragon (Revenge)",
+   "when": "match",
+   "check": "s0_id == 0x03B1 and s1_id == 0x03A4 and s2_id == 0x0376"
+  },
+  {
+   "name": "slot 0 led a double team with his library move (131, the move played on No Mercy's 4610)",
+   "when": "any",
+   "check": "s0_phase == 131 and s0_move == 4610"
+  },
+  {
+   "name": "the man never left a double team, but to lie down (49 / 57 / 71, as No Mercy's own end), while its lead still played it (the user's: he ended up standing while they went on)",
+   "when": "always",
+   "check": "not ((s0_state == 133 and s0_phase != 133 and s0_phase != 49 and s0_phase != 57 and s0_phase != 71 and (s1_phase == 131 or s2_phase == 131)) or (s1_state == 133 and s1_phase != 133 and s1_phase != 49 and s1_phase != 57 and s1_phase != 71 and (s0_phase == 131 or s2_phase == 131)) or (s2_state == 133 and s2_phase != 133 and s2_phase != 49 and s2_phase != 57 and s2_phase != 71 and (s0_phase == 131 or s1_phase == 131)))"
+  },
+  {
+   "name": "no model's matrices ever went bad",
+   "when": "always",
+   "check": "bad_mtx == 0"
+  },
+  {
+   "name": "nobody's position went bad",
+   "when": "always",
+   "check": "finite(s0_x, s0_y, s0_z, s1_x, s1_y, s1_z, s2_x, s2_y, s2_z)"
+  }
+ ]
+}

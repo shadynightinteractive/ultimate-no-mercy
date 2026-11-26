@@ -1,0 +1,49 @@
+{
+ "about": "RAW IS WAR WM 2000, its own arena: the same (it must not get No Mercy's RAW's joined set): the whip at the aisle's end changes area; no lift.",
+ "wrestlers": [
+  "THE ROCK",
+  "STEVE AUSTIN"
+ ],
+ "costumes": [
+  0,
+  0
+ ],
+ "arena": "RAW IS WAR WM 2000",
+ "control": [
+  "pad1",
+  "pad2"
+ ],
+ "matches": 1,
+ "seconds": 160,
+ "shots": 2.0,
+ "options": {
+  "qa_ringstage": 7
+ },
+ "expect": [
+  {
+   "name": "the match started",
+   "when": "any",
+   "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+  },
+  {
+   "name": "nobody's position went bad",
+   "when": "always",
+   "check": "finite(s0_x, s0_y, s0_z, s1_x, s1_y, s1_z)"
+  },
+  {
+   "name": "the area change still happens",
+   "when": "any",
+   "check": "bs_tries >= 10"
+  },
+  {
+   "name": "no lift, ever",
+   "when": "always",
+   "check": "bs_grabs == 0"
+  },
+  {
+   "name": "the man never past the aisle's old end while in the ring's area",
+   "when": "always",
+   "check": "bs_tries >= 10 or s1_z < 900"
+  }
+ ]
+}

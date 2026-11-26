@@ -1,0 +1,19 @@
+{
+  "about": "2026-10-30: which N64 button the scripted 'y' is on the Superstar Select (WCW_INPUT_LOG), and Random's result",
+  "match": "arcade",
+  "matches": 0,
+  "seconds": 150,
+  "shots": 0.5,
+  "options": {
+    "free_play": true,
+    "attract_demos": false
+  },
+  "pads": [
+    "60.0 1 start 200",
+    "64.0 1 start 200",
+    "68.0 1 a 200",
+    "80.0 1 y 300",
+    "88.0 1 y 300"
+  ],
+  "expect": []
+}

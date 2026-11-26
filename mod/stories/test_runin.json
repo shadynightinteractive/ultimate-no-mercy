@@ -1,0 +1,33 @@
+{
+  "title": "Test: a run-in",
+  "championship": "world",
+  "cast": { "rival": "the_rock" },
+  "vars": { "heat": 0 },
+  "start": "grudge",
+  "nodes": {
+    "grudge": {
+      "chapter": "BAD BLOOD",
+      "pages": ["{rival} has had enough of {player}.", "Tonight it's one on one... or is it?"],
+      "match": { "type": "single", "slots": ["player", "rival"], "runins": [{ "who": "kane", "helps": "opponents" }] },
+      "requirement": "Singles match. Watch your back.\nWin to earn a title shot.",
+      "branches": [
+        { "if": "win", "money": 500, "set": { "heat": "+1" }, "pages": ["You survived the ambush!"], "next": "title" },
+        { "next": "rematch", "pages": ["{rival}, {kane} over {player}."] }
+      ]
+    },
+    "rematch": {
+      "chapter": "SECOND CHANCE",
+      "pages": ["One more shot at {rival}."],
+      "match": { "type": "single", "slots": ["player", "rival"] },
+      "requirement": "Singles match. {player} vs {rival}.\nNo tricks this time.",
+      "branches": [ { "if": "win", "next": "title" }, { "next": "end" } ]
+    },
+    "title": {
+      "chapter": "THE TITLE SHOT",
+      "pages": ["Heat earned: it all comes down to this."],
+      "match": { "type": "single", "slots": ["player", "triple_h"] },
+      "requirement": "World title match.",
+      "branches": [ { "next": "end" } ]
+    }
+  }
+}

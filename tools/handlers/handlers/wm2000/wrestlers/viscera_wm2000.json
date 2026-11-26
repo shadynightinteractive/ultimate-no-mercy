@@ -1,0 +1,13 @@
+{
+ "about": "WrestleMania 2000's VISCERA: what the handler is told for him (wm2kall, 2026-11-13). Everything else comes from the ROM.",
+ "string_id": "viscera_wm2000",
+ "key": "viscera_wm2000",
+ "wm2000": {
+  "roster_index": 13,
+  "game_id": "0x0108"
+ },
+ "moveset": {
+  "reference_ordinal": 45,
+  "reference_why": "No Mercy's own"
+ }
+}

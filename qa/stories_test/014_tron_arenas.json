@@ -1,0 +1,516 @@
+{
+ "title": "Upgrade test F: Titantrons",
+ "menu": "Upgrade Test F",
+ "cast": {
+  "boss": "VINCE McMAHON",
+  "rival": "THE ROCK"
+ },
+ "nodes": {
+  "n0": {
+   "chapter": "RAW IS WAR",
+   "scene": {
+    "place": "ring",
+    "cast": [
+     {
+      "who": "player",
+      "at": 1
+     }
+    ],
+    "steps": [
+     {
+      "say": "RAW IS WAR: on the Titantron next.",
+      "who": "player"
+     },
+     {
+      "tron": "boss",
+      "say": "TRON in RAW IS WAR"
+     },
+     {
+      "commentary": "jr",
+      "say": "TABLE in RAW IS WAR"
+     }
+    ]
+   },
+   "match": {
+    "slots": [
+     "player",
+     "rival"
+    ],
+    "arena": "RAW IS WAR",
+    "script": [
+     {
+      "when": "time 0:05",
+      "do": "end",
+      "winner": "player"
+     }
+    ]
+   },
+   "requirement": "RAW IS WAR",
+   "branches": [
+    {
+     "next": "n1"
+    }
+   ]
+  },
+  "n1": {
+   "chapter": "NO MERCY",
+   "scene": {
+    "place": "ring",
+    "cast": [
+     {
+      "who": "player",
+      "at": 1
+     }
+    ],
+    "steps": [
+     {
+      "say": "NO MERCY: on the Titantron next.",
+      "who": "player"
+     },
+     {
+      "tron": "boss",
+      "say": "TRON in NO MERCY"
+     },
+     {
+      "commentary": "jr",
+      "say": "TABLE in NO MERCY"
+     }
+    ]
+   },
+   "match": {
+    "slots": [
+     "player",
+     "rival"
+    ],
+    "arena": "NO MERCY",
+    "script": [
+     {
+      "when": "time 0:05",
+      "do": "end",
+      "winner": "player"
+     }
+    ]
+   },
+   "requirement": "NO MERCY",
+   "branches": [
+    {
+     "next": "n2"
+    }
+   ]
+  },
+  "n2": {
+   "chapter": "SMACKDOWN",
+   "scene": {
+    "place": "ring",
+    "cast": [
+     {
+      "who": "player",
+      "at": 1
+     }
+    ],
+    "steps": [
+     {
+      "say": "SMACKDOWN: on the Titantron next.",
+      "who": "player"
+     },
+     {
+      "tron": "boss",
+      "say": "TRON in SMACKDOWN"
+     },
+     {
+      "commentary": "jr",
+      "say": "TABLE in SMACKDOWN"
+     }
+    ]
+   },
+   "match": {
+    "slots": [
+     "player",
+     "rival"
+    ],
+    "arena": "SMACKDOWN",
+    "script": [
+     {
+      "when": "time 0:05",
+      "do": "end",
+      "winner": "player"
+     }
+    ]
+   },
+   "requirement": "SMACKDOWN",
+   "branches": [
+    {
+     "next": "n3"
+    }
+   ]
+  },
+  "n3": {
+   "chapter": "KING OF THE RING",
+   "scene": {
+    "place": "ring",
+    "cast": [
+     {
+      "who": "player",
+      "at": 1
+     }
+    ],
+    "steps": [
+     {
+      "say": "KING OF THE RING: on the Titantron next.",
+      "who": "player"
+     },
+     {
+      "tron": "boss",
+      "say": "TRON in KING OF THE RING"
+     },
+     {
+      "commentary": "jr",
+      "say": "TABLE in KING OF THE RING"
+     }
+    ]
+   },
+   "match": {
+    "slots": [
+     "player",
+     "rival"
+    ],
+    "arena": "KING OF THE RING",
+    "script": [
+     {
+      "when": "time 0:05",
+      "do": "end",
+      "winner": "player"
+     }
+    ]
+   },
+   "requirement": "KING OF THE RING",
+   "branches": [
+    {
+     "next": "n4"
+    }
+   ]
+  },
+  "n4": {
+   "chapter": "SURVIVOR SERIES",
+   "scene": {
+    "place": "ring",
+    "cast": [
+     {
+      "who": "player",
+      "at": 1
+     }
+    ],
+    "steps": [
+     {
+      "say": "SURVIVOR SERIES: on the Titantron next.",
+      "who": "player"
+     },
+     {
+      "tron": "boss",
+      "say": "TRON in SURVIVOR SERIES"
+     },
+     {
+      "commentary": "jr",
+      "say": "TABLE in SURVIVOR SERIES"
+     }
+    ]
+   },
+   "match": {
+    "slots": [
+     "player",
+     "rival"
+    ],
+    "arena": "SURVIVOR SERIES",
+    "script": [
+     {
+      "when": "time 0:05",
+      "do": "end",
+      "winner": "player"
+     }
+    ]
+   },
+   "requirement": "SURVIVOR SERIES",
+   "branches": [
+    {
+     "next": "n5"
+    }
+   ]
+  },
+  "n5": {
+   "chapter": "WRESTLEMANIA",
+   "scene": {
+    "place": "ring",
+    "cast": [
+     {
+      "who": "player",
+      "at": 1
+     }
+    ],
+    "steps": [
+     {
+      "say": "WRESTLEMANIA: on the Titantron next.",
+      "who": "player"
+     },
+     {
+      "tron": "boss",
+      "say": "TRON in WRESTLEMANIA"
+     },
+     {
+      "commentary": "jr",
+      "say": "TABLE in WRESTLEMANIA"
+     }
+    ]
+   },
+   "match": {
+    "slots": [
+     "player",
+     "rival"
+    ],
+    "arena": "WRESTLEMANIA",
+    "script": [
+     {
+      "when": "time 0:05",
+      "do": "end",
+      "winner": "player"
+     }
+    ]
+   },
+   "requirement": "WRESTLEMANIA",
+   "branches": [
+    {
+     "next": "n6"
+    }
+   ]
+  },
+  "n6": {
+   "chapter": "BACKLASH",
+   "scene": {
+    "place": "ring",
+    "cast": [
+     {
+      "who": "player",
+      "at": 1
+     }
+    ],
+    "steps": [
+     {
+      "say": "BACKLASH: on the Titantron next.",
+      "who": "player"
+     },
+     {
+      "tron": "boss",
+      "say": "TRON in BACKLASH"
+     },
+     {
+      "commentary": "jr",
+      "say": "TABLE in BACKLASH"
+     }
+    ]
+   },
+   "match": {
+    "slots": [
+     "player",
+     "rival"
+    ],
+    "arena": "BACKLASH",
+    "script": [
+     {
+      "when": "time 0:05",
+      "do": "end",
+      "winner": "player"
+     }
+    ]
+   },
+   "requirement": "BACKLASH",
+   "branches": [
+    {
+     "next": "n7"
+    }
+   ]
+  },
+  "n7": {
+   "chapter": "BASH AT THE BEACH",
+   "scene": {
+    "place": "ring",
+    "cast": [
+     {
+      "who": "player",
+      "at": 1
+     }
+    ],
+    "steps": [
+     {
+      "say": "BASH AT THE BEACH: on the Titantron next.",
+      "who": "player"
+     },
+     {
+      "tron": "boss",
+      "say": "TRON in BASH AT THE BEACH"
+     },
+     {
+      "commentary": "jr",
+      "say": "TABLE in BASH AT THE BEACH"
+     }
+    ]
+   },
+   "match": {
+    "slots": [
+     "player",
+     "rival"
+    ],
+    "arena": "BASH AT THE BEACH",
+    "script": [
+     {
+      "when": "time 0:05",
+      "do": "end",
+      "winner": "player"
+     }
+    ]
+   },
+   "requirement": "BASH AT THE BEACH",
+   "branches": [
+    {
+     "next": "n8"
+    }
+   ]
+  },
+  "n8": {
+   "chapter": "RAW IS WAR WM 2000",
+   "scene": {
+    "place": "ring",
+    "cast": [
+     {
+      "who": "player",
+      "at": 1
+     }
+    ],
+    "steps": [
+     {
+      "say": "RAW IS WAR WM 2000: on the Titantron next.",
+      "who": "player"
+     },
+     {
+      "tron": "boss",
+      "say": "TRON in RAW IS WAR WM 2000"
+     },
+     {
+      "commentary": "jr",
+      "say": "TABLE in RAW IS WAR WM 2000"
+     }
+    ]
+   },
+   "match": {
+    "slots": [
+     "player",
+     "rival"
+    ],
+    "arena": "RAW IS WAR WM 2000",
+    "script": [
+     {
+      "when": "time 0:05",
+      "do": "end",
+      "winner": "player"
+     }
+    ]
+   },
+   "requirement": "RAW IS WAR WM 2000",
+   "branches": [
+    {
+     "next": "n9"
+    }
+   ]
+  },
+  "n9": {
+   "chapter": "SUNDAY NIGHT HEAT",
+   "scene": {
+    "place": "ring",
+    "cast": [
+     {
+      "who": "player",
+      "at": 1
+     }
+    ],
+    "steps": [
+     {
+      "say": "SUNDAY NIGHT HEAT: on the Titantron next.",
+      "who": "player"
+     },
+     {
+      "tron": "boss",
+      "say": "TRON in SUNDAY NIGHT HEAT"
+     },
+     {
+      "commentary": "jr",
+      "say": "TABLE in SUNDAY NIGHT HEAT"
+     }
+    ]
+   },
+   "match": {
+    "slots": [
+     "player",
+     "rival"
+    ],
+    "arena": "SUNDAY NIGHT HEAT",
+    "script": [
+     {
+      "when": "time 0:05",
+      "do": "end",
+      "winner": "player"
+     }
+    ]
+   },
+   "requirement": "SUNDAY NIGHT HEAT",
+   "branches": [
+    {
+     "next": "n10"
+    }
+   ]
+  },
+  "n10": {
+   "chapter": "SUMMERSLAM",
+   "scene": {
+    "place": "ring",
+    "cast": [
+     {
+      "who": "player",
+      "at": 1
+     }
+    ],
+    "steps": [
+     {
+      "say": "SUMMERSLAM: on the Titantron next.",
+      "who": "player"
+     },
+     {
+      "tron": "boss",
+      "say": "TRON in SUMMERSLAM"
+     },
+     {
+      "commentary": "jr",
+      "say": "TABLE in SUMMERSLAM"
+     }
+    ]
+   },
+   "match": {
+    "slots": [
+     "player",
+     "rival"
+    ],
+    "arena": "SUMMERSLAM",
+    "script": [
+     {
+      "when": "time 0:05",
+      "do": "end",
+      "winner": "player"
+     }
+    ]
+   },
+   "requirement": "SUMMERSLAM",
+   "branches": [
+    {
+     "next": "end"
+    }
+   ]
+  }
+ }
+}

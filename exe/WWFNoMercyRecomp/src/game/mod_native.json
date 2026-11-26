@@ -1,0 +1,4234 @@
+{
+ "files": [
+  "announce",
+  "arcctl",
+  "arena",
+  "arena_entrance",
+  "arena_ring",
+  "arena_ringstage",
+  "bigshow",
+  "commentary",
+  "draw",
+  "files",
+  "gameplay",
+  "hands",
+  "hd",
+  "hooks_recomp",
+  "logic",
+  "media",
+  "movex",
+  "parts",
+  "roster",
+  "save",
+  "skel",
+  "story",
+  "tron",
+  "util",
+  "variants"
+ ],
+ "functions": {
+  "81095210": {
+   "file": "mod/src/draw.c",
+   "name": "str_len",
+   "proved_sha1": "bc146732d8f702df",
+   "report": "modrep_nat_81095210 200000 200000 0 7f 7 - 200000"
+  },
+  "8109522C": {
+   "file": "mod/src/draw.c",
+   "name": "str_num",
+   "proved_sha1": "fc628e48fad8dc67",
+   "report": "modrep_nat_8109522C 250000 250000 0 fffffffffffffffff 68 - 200000"
+  },
+  "8109533C": {
+   "file": "mod/src/draw.c",
+   "name": "draw_menu_frame",
+   "proved_sha1": "a2492ce71a81fb25",
+   "report": "modrep_nat_8109533C 200000 200000 0 f 4 - 200000"
+  },
+  "8109534C": {
+   "file": "mod/src/draw.c",
+   "name": "draw_begin",
+   "proved_sha1": "6fd66a637534a752",
+   "report": "modrep_nat_8109534C 200000 200000 0 fff 12 - 200000"
+  },
+  "810955BC": {
+   "file": "mod/src/draw.c",
+   "name": "draw_gtext",
+   "proved_sha1": "66001ea350e826c5",
+   "report": "modrep_nat_810955BC 250021 249994 0 3ffffffff 34 - 200000"
+  },
+  "81095644": {
+   "file": "mod/src/draw.c",
+   "name": "ptext_width",
+   "proved_sha1": "fbabae00e1526d73",
+   "report": "modrep_nat_81095644 200000 200000 0 1ff 9 - 200000"
+  },
+  "81095668": {
+   "file": "mod/src/draw.c",
+   "name": "draw_ptext",
+   "proved_sha1": "ebcf26672013014e",
+   "report": "modrep_nat_81095668 250047 249993 0 ffffffffffffffffff 72 - 200000"
+  },
+  "81095788": {
+   "file": "mod/src/draw.c",
+   "name": "draw_fill",
+   "proved_sha1": "d46481216b6cbd6e",
+   "report": "modrep_nat_81095788 250037 249991 0 7ffffff 27 - 200000"
+  },
+  "810957F4": {
+   "file": "mod/src/draw.c",
+   "name": "draw_gtext_service",
+   "proved_sha1": "05448ab3cc803358",
+   "report": "modrep_nat_810957F4 270000 270000 0 3fffffffffffffffffffffff 94 - 200000"
+  },
+  "81095CE4": {
+   "file": "mod/src/draw.c",
+   "name": "dl_big_begin",
+   "proved_sha1": "020a1645de4a668d",
+   "report": "modrep_nat_81095CE4 250000 250000 0 1fffff 21 - 200000"
+  },
+  "81095D38": {
+   "file": "mod/src/draw.c",
+   "name": "dl_big_end",
+   "proved_sha1": "4f325200031e6624",
+   "report": "modrep_nat_81095D38 200000 200000 0 3ff 10 - 200000"
+  },
+  "81095D60": {
+   "file": "mod/src/draw.c",
+   "name": "dl_big_done",
+   "proved_sha1": "ab6fafaafcda03a4",
+   "report": "modrep_nat_81095D60 250000 250000 0 3fff 14 - 200000"
+  },
+  "81095D98": {
+   "file": "mod/src/draw.c",
+   "name": "draw_frame_begin",
+   "proved_sha1": "a1a2c4e2efbe4e25",
+   "report": "modrep_nat_81095D98 250000 250000 0 1fff 13 - 200000"
+  },
+  "81096400": {
+   "file": "mod/src/draw.c",
+   "name": "flush_cb",
+   "proved_sha1": "c874e61f2ad57e97",
+   "report": "modrep_nat_81096400 270000 270000 0 1ffffff 25 - 200000"
+  },
+  "810983C0": {
+   "file": "mod/src/logic.c",
+   "name": "nm_mode",
+   "proved_sha1": "a8b0ead499c4aebd",
+   "report": "modrep_nat_810983C0 250000 250000 0 7ffffffffffffffffffffffffffff 115 - 200000"
+  },
+  "8109858C": {
+   "file": "mod/src/logic.c",
+   "name": "arcade_roster_opt",
+   "proved_sha1": "c8838227de2cc540",
+   "report": "modrep_nat_8109858C 270024 269897 0 7ffffffffffffffffffff 83 - 200000"
+  },
+  "810986D8": {
+   "file": "mod/src/logic.c",
+   "name": "roster_opts_load",
+   "proved_sha1": "8cfbb69868d179e7",
+   "report": "modrep_nat_810986D8 250000 250000 0 1fffffffffffffffffffffffff 101 - 200000"
+  },
+  "81098C00": {
+   "file": "mod/src/logic.c",
+   "name": "storylist_file",
+   "proved_sha1": "4cc67d4c93c3d2db",
+   "report": "modrep_nat_81098C00 250000 250000 0 1ffffffffffffffffffffffffffffff 121 - 200000"
+  },
+  "81099794": {
+   "file": "mod/src/logic.c",
+   "name": "champ_custom_defs",
+   "proved_sha1": "1447de96e4a5e8be",
+   "report": "modrep_nat_81099794 270000 270000 0 1fffffffffffffffffffffffffffffffffffffff 157 - 200000"
+  },
+  "81099A08": {
+   "file": "mod/src/logic.c",
+   "name": "arcade_rules_preset_done",
+   "proved_sha1": "c9fd225b468e43ac",
+   "report": "modrep_nat_81099A08 250000 250000 0 1fffff 21 - 200000"
+  },
+  "81099A5C": {
+   "file": "mod/src/logic.c",
+   "name": "arcade_menu_action_done",
+   "proved_sha1": "3fbba29e507126a7",
+   "report": "modrep_nat_81099A5C 250000 250000 0 ffffffffff 40 - 200000"
+  },
+  "81099AFC": {
+   "file": "mod/src/logic.c",
+   "name": "arcade_number_setup",
+   "proved_sha1": "69a29d5a9a8f841b",
+   "report": "modrep_nat_81099AFC 250000 250000 0 1ffffffff 33 - 200000"
+  },
+  "8109A250": {
+   "file": "mod/src/logic.c",
+   "name": "arcade_row_update",
+   "proved_sha1": "1989f5adccd9a811",
+   "report": "modrep_nat_8109A250 270000 270000 0 fffffffffffffffffff 76 - 200000"
+  },
+  "8109A380": {
+   "file": "mod/src/logic.c",
+   "name": "arcade_row_update_done",
+   "proved_sha1": "4e202dd2e1e82de0",
+   "report": "modrep_nat_8109A380 200000 200000 0 7ff 11 - 200000"
+  },
+  "8109A3AC": {
+   "file": "mod/src/logic.c",
+   "name": "arcade_number_confirm_done",
+   "proved_sha1": "364e510e8ea6b471",
+   "report": "modrep_nat_8109A3AC 250000 250000 0 1fffffffffffffffffffffffffffffffffffffff 157 - 200000"
+  },
+  "8109B0B8": {
+   "file": "mod/src/logic.c",
+   "name": "arcade_not_a_wrestler",
+   "proved_sha1": "13d0281850e82e21",
+   "report": "modrep_nat_8109B0B8 200000 200000 0 7f 7 - 200000"
+  },
+  "8109B60C": {
+   "file": "mod/src/logic.c",
+   "name": "arcade_picked_lumberjacks",
+   "proved_sha1": "3404220f11ebe4b2",
+   "report": "modrep_nat_8109B60C 275221 244086 0 7ffffffff 35 - 200000"
+  },
+  "8109D224": {
+   "file": "mod/src/logic.c",
+   "name": "arcade_rr_entrant",
+   "proved_sha1": "c7450a998e723bbb",
+   "report": "modrep_nat_8109D224 270000 270000 0 3ffffffffffffffffffffffffffffffffffffffffffffffffffffffff 226 - 200000"
+  },
+  "8109D5AC": {
+   "file": "mod/src/logic.c",
+   "name": "ring_void_guard",
+   "proved_sha1": "bc7de50e7335e2e4",
+   "report": "modrep_nat_8109D5AC 270000 270000 0 1ffffffffffffffffffffffffffffffffffff 145 - 200000"
+  },
+  "8109E98C": {
+   "file": "mod/src/logic.c",
+   "name": "rr_walk_in_step",
+   "proved_sha1": "e490237c001bf9cd",
+   "report": "modrep_nat_8109E98C 250000 250000 0 3fffffffffffffffffffffffff 102 - 200000"
+  },
+  "810A3544": {
+   "file": "mod/src/logic.c",
+   "name": "exh_rows_in",
+   "proved_sha1": "f97c46769702f190",
+   "report": "modrep_nat_810A3544 250000 250000 0 3fffffff 30 - 200000"
+  },
+  "810A35BC": {
+   "file": "mod/src/logic.c",
+   "name": "custom_row_on",
+   "proved_sha1": "668603075534848f",
+   "report": "modrep_nat_810A35BC 250000 250000 0 ffffffff 32 - 200000"
+  },
+  "810A3A70": {
+   "file": "mod/src/logic.c",
+   "name": "list_fade_in",
+   "proved_sha1": "320b0e39ea6dfa8f",
+   "report": "modrep_nat_810A3A70 250000 250000 0 7fffffff 31 - 200000"
+  },
+  "810A3AEC": {
+   "file": "mod/src/logic.c",
+   "name": "sel_hover",
+   "proved_sha1": "0833fa23cf96b0e8",
+   "report": "modrep_nat_810A3AEC 270000 270000 0 1fffffffffffff 53 - 200000"
+  },
+  "810A40F0": {
+   "file": "mod/src/logic.c",
+   "name": "entrance_video_step",
+   "proved_sha1": "13d1f9e54057ac3d",
+   "report": "modrep_nat_810A40F0 250000 250000 0 3fff 14 - 200000"
+  },
+  "810A4128": {
+   "file": "mod/src/logic.c",
+   "name": "arcade_entrant_video",
+   "proved_sha1": "1164a5cd4ba1dbe8",
+   "report": "modrep_nat_810A4128 250000 250000 0 7fffff 23 - 200000"
+  },
+  "810A4674": {
+   "file": "mod/src/logic.c",
+   "name": "arcade_fast_getup",
+   "proved_sha1": "16e681c5e95f68b0",
+   "report": "modrep_nat_810A4674 200000 200000 0 7 3 - 200000"
+  },
+  "810A4680": {
+   "file": "mod/src/logic.c",
+   "name": "arcade_rumble_ai_on",
+   "proved_sha1": "f126fc6bebc89c6c",
+   "report": "modrep_nat_810A4680 200000 200000 0 7 3 - 200000"
+  },
+  "810A468C": {
+   "file": "mod/src/logic.c",
+   "name": "arcade_match_step",
+   "proved_sha1": "1f49921912725bd0",
+   "report": "modrep_nat_810A468C 270000 270000 0 3ffffffffffffffffffffffffffffffffffffffffffff 178 - 200000"
+  },
+  "810A4954": {
+   "file": "mod/src/logic.c",
+   "name": "arcade_story_page",
+   "proved_sha1": "c3137ddc64622848",
+   "report": "modrep_nat_810A4954 270000 270000 0 fffffffffffffffffffff 84 - 200000"
+  },
+  "810A4AA4": {
+   "file": "mod/src/logic.c",
+   "name": "arcade_qa_sprite_request",
+   "proved_sha1": "e503028124e13ed0",
+   "report": "modrep_nat_810A4AA4 250000 250000 0 ffff 16 - 200000"
+  },
+  "810A4AE4": {
+   "file": "mod/src/logic.c",
+   "name": "arcade_qa_sprite_draw",
+   "proved_sha1": "816a2b7140a3fd2d",
+   "report": "modrep_nat_810A4AE4 270000 270000 0 1fffffffffff 45 - 200000"
+  },
+  "810A4B98": {
+   "file": "mod/src/logic.c",
+   "name": "arcade_menu_sprites",
+   "proved_sha1": "3b481384cc158cc2",
+   "report": "modrep_nat_810A4B98 270000 270000 0 1ffffffffffffffffff 73 - 200000"
+  },
+  "810A4CBC": {
+   "file": "mod/src/logic.c",
+   "name": "sprite_hide",
+   "proved_sha1": "dfc727ca110f0d55",
+   "report": "modrep_nat_810A4CBC 270000 270000 0 1ffffffff 33 - 200000"
+  },
+  "810A4D40": {
+   "file": "mod/src/logic.c",
+   "name": "arcade_entrance_cam",
+   "proved_sha1": "2eceb2cccaeb0c67",
+   "report": "modrep_nat_810A4D40 250000 250000 0 1fffffffff 37 - 200000"
+  },
+  "810A4DD4": {
+   "file": "mod/src/logic.c",
+   "name": "qa_hook_preset",
+   "proved_sha1": "e8f073e8b666e791",
+   "report": "modrep_nat_810A4DD4 200000 200000 0 7 3 - 200000"
+  },
+  "810A4DE0": {
+   "file": "mod/src/logic.c",
+   "name": "qa_hook_preset_done",
+   "proved_sha1": "763a5379ea67a954",
+   "report": "modrep_nat_810A4DE0 270000 270000 0 fffffffffffffffffffffffffffffffffffff 148 - 200000"
+  },
+  "810A5030": {
+   "file": "mod/src/logic.c",
+   "name": "qa_hook_demo_flags",
+   "proved_sha1": "36ddc994f56d3f5b",
+   "report": "modrep_nat_810A5030 250000 250000 0 7fffffffffff 47 - 200000"
+  },
+  "810A50EC": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "arcade_on_demo_setup",
+   "proved_sha1": "1ae6259335be8d3c",
+   "report": "modrep_nat_810A50EC 200000 200000 0 7f 7 - 200000"
+  },
+  "810A5108": {
+   "file": "mod/src/logic.c",
+   "name": "qa_table_input",
+   "proved_sha1": "9d59c7c4f0820183",
+   "report": "modrep_nat_810A5108 450000 450000 0 7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 399 - 200000"
+  },
+  "810B231C": {
+   "file": "mod/src/logic.c",
+   "name": "start_game_over",
+   "proved_sha1": "b2798fabdcfb89c0",
+   "report": "modrep_nat_810B231C 250000 250000 0 1ffffffffffffffffffffffff 97 - 200000"
+  },
+  "810B2634": {
+   "file": "mod/src/logic.c",
+   "name": "menu_choose",
+   "proved_sha1": "a6bf50185812cba7",
+   "report": "modrep_nat_810B2634 250000 250000 0 fffffffffffffffffff 76 - 200000"
+  },
+  "810B2764": {
+   "file": "mod/src/logic.c",
+   "name": "unlock_everything",
+   "proved_sha1": "8d1c2c9e894a012e",
+   "report": "modrep_nat_810B2764 270000 270000 0 7fffffffffffffffffffffffffffff 119 - 200000"
+  },
+  "810B397C": {
+   "file": "mod/src/logic.c",
+   "name": "survival_open",
+   "proved_sha1": "abde08a7dea2ffad",
+   "report": "modrep_nat_810B397C 250000 250000 0 7fffffffffffff 55 - 200000"
+  },
+  "810B3A58": {
+   "file": "mod/src/logic.c",
+   "name": "vs_open",
+   "proved_sha1": "b4fb1b1d1e56dc22",
+   "report": "modrep_nat_810B3A58 250000 250000 0 7ffffffffffffffff 67 - 200000"
+  },
+  "810B3B64": {
+   "file": "mod/src/logic.c",
+   "name": "vs_back",
+   "proved_sha1": "1110b90b5e19b426",
+   "report": "modrep_nat_810B3B64 250000 250000 0 fffffffffffffff 60 - 200000"
+  },
+  "810B3C54": {
+   "file": "mod/src/logic.c",
+   "name": "rr_open",
+   "proved_sha1": "1073dd42728e1f44",
+   "report": "modrep_nat_810B3C54 250000 250000 0 1ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 313 - 200000"
+  },
+  "810B6FB0": {
+   "file": "mod/src/logic.c",
+   "name": "demo_label_off",
+   "proved_sha1": "7adde01a5882c8a5",
+   "report": "modrep_nat_810B6FB0 270000 270000 0 7ffffffffffffffffffffffffffffffffffffffffffffff 187 - 200000"
+  },
+  "810B729C": {
+   "file": "mod/src/logic.c",
+   "name": "set_goal",
+   "proved_sha1": "e9acf0af4788e49c",
+   "report": "modrep_nat_810B729C 250000 250000 0 7fffffffffffff 55 - 200000"
+  },
+  "810B7378": {
+   "file": "mod/src/logic.c",
+   "name": "set_phase",
+   "proved_sha1": "9ea6ddec671fa606",
+   "report": "modrep_nat_810B7378 200000 200000 0 7fffffff 31 - 200000"
+  },
+  "810B73F4": {
+   "file": "mod/src/logic.c",
+   "name": "say_text",
+   "proved_sha1": "5145b14b7fe52066",
+   "report": "modrep_nat_810B73F4 270000 269935 0 ffffffffffffff 56 - 200000"
+  },
+  "810B7654": {
+   "file": "mod/src/logic.c",
+   "name": "watch_match",
+   "proved_sha1": "779e12af5f1f7088",
+   "report": "modrep_nat_810B7654 270000 270000 0 ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 328 - 200000"
+  },
+  "810B7B74": {
+   "file": "mod/src/logic.c",
+   "name": "menu_idle",
+   "proved_sha1": "8289e2bbd6ddc715",
+   "report": "modrep_nat_810B7B74 270000 270000 0 ffffffffffffffffffffffffff 104 - 200000"
+  },
+  "810B8920": {
+   "file": "mod/src/logic.c",
+   "name": "resume_single",
+   "proved_sha1": "706379649f7440ea",
+   "report": "modrep_nat_810B8920 270000 270000 0 3ffffffffffffffffffffffffffffffffff 138 - 200000"
+  },
+  "810B8B48": {
+   "file": "mod/src/logic.c",
+   "name": "story_card_skip",
+   "proved_sha1": "d83da8900bb43b73",
+   "report": "modrep_nat_810B8B48 250000 250000 0 7fffffffffffffffffffffff 95 - 200000"
+  },
+  "810B9140": {
+   "file": "mod/src/logic.c",
+   "name": "rrm_put",
+   "proved_sha1": "d23bf247f6ef31ca",
+   "report": "modrep_nat_810B9140 200000 200000 0 1fffffffffffffffffffffffffffff 117 - 200000"
+  },
+  "810B980C": {
+   "file": "mod/src/logic.c",
+   "name": "qa_sin",
+   "proved_sha1": "e2f4adbbd6800ade",
+   "report": "modrep_nat_810B980C 228973 200000 0 1fffffffffffffffff 69 - 200000"
+  },
+  "810B9920": {
+   "file": "mod/src/logic.c",
+   "name": "qps_put",
+   "proved_sha1": "432750de97130826",
+   "report": "modrep_nat_810B9920 200000 200000 0 7fffff 23 - 200000"
+  },
+  "810B997C": {
+   "file": "mod/src/logic.c",
+   "name": "qa_bs_back_grapple",
+   "proved_sha1": "22eb580abb0049d1",
+   "report": "modrep_nat_810B997C 250000 250000 0 ffffffffffffffffffffffff 96 - 200000"
+  },
+  "810BAB24": {
+   "file": "mod/src/logic.c",
+   "name": "qr_pick_more",
+   "proved_sha1": "31236b6659a28045",
+   "report": "modrep_nat_810BAB24 250000 250000 0 fffffffffffffffffffffffffffffffffff 140 - 200000"
+  },
+  "810BBA1C": {
+   "file": "mod/src/logic.c",
+   "name": "menu_nav_raw",
+   "proved_sha1": "1200dd7069bf3adb",
+   "report": "modrep_nat_810BBA1C 250000 250000 0 fffffffffffffffffffffffffffffffff 132 - 200000"
+  },
+  "810BBC2C": {
+   "file": "mod/src/logic.c",
+   "name": "match_quittable",
+   "proved_sha1": "65d104f3e99b4f7f",
+   "report": "modrep_nat_810BBC2C 270000 270000 0 1ffffffffffffffffffffffffffff 113 - 200000"
+  },
+  "810BBDF0": {
+   "file": "mod/src/logic.c",
+   "name": "save_settings",
+   "proved_sha1": "886849627d8b70d8",
+   "report": "modrep_nat_810BBDF0 250000 250000 0 ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 304 - 200000"
+  },
+  "810BD22C": {
+   "file": "mod/src/logic.c",
+   "name": "bind_pos",
+   "proved_sha1": "e11f9d4b2c5214f6",
+   "report": "modrep_nat_810BD22C 250000 250000 0 fffffffffffffffffffffffffffff 116 - 200000"
+  },
+  "810BD3FC": {
+   "file": "mod/src/logic.c",
+   "name": "bind_begin",
+   "proved_sha1": "f661fdf315bf4c5c",
+   "report": "modrep_nat_810BD3FC 250000 250000 0 fffffffffffff 52 - 200000"
+  },
+  "810BD4CC": {
+   "file": "mod/src/logic.c",
+   "name": "qa_bs_free",
+   "proved_sha1": "5881cc2c17334d8d",
+   "report": "modrep_nat_810BD4CC 250000 250000 0 1ffffffffffffffff 65 - 200000"
+  },
+  "810BD5D0": {
+   "file": "mod/src/logic.c",
+   "name": "page_items",
+   "proved_sha1": "9e597385495a3dee",
+   "report": "modrep_nat_810BD5D0 250000 250000 0 ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 1224 - 200000"
+  },
+  "810BE8F0": {
+   "file": "mod/src/logic.c",
+   "name": "menu_cam_put",
+   "proved_sha1": "bff2e2392d714905",
+   "report": "modrep_nat_810BE8F0 200198 200000 0 1ffffffffff 41 - 200000"
+  },
+  "810BE994": {
+   "file": "mod/src/logic.c",
+   "name": "menu_cam_multiplay",
+   "proved_sha1": "34a876ee05588b07",
+   "report": "modrep_nat_810BE994 450000 450000 0 1fffffffffffffffffff 77 - 200000"
+  },
+  "810BF014": {
+   "file": "mod/src/gameplay.c",
+   "name": "arcade_down_anim",
+   "proved_sha1": "cc15ba94ec588ac3",
+   "report": "modrep_nat_810BF014 250000 250000 0 3ffffffffffffffffffffffffffffff 122 - 200000"
+  },
+  "810BFAF8": {
+   "file": "mod/src/gameplay.c",
+   "name": "rr_choose",
+   "proved_sha1": "20d821591f9e6e1a",
+   "report": "modrep_nat_810BFAF8 252622 248910 0 3fffffffffffffffffffffffffffff 118 - 200000"
+  },
+  "810BFCD0": {
+   "file": "mod/src/gameplay.c",
+   "name": "rope_of",
+   "proved_sha1": "3a48d9cb2addf6b8",
+   "report": "modrep_nat_810BFCD0 202010 200000 0 1ffffffffffff 49 - 200000"
+  },
+  "810BFD94": {
+   "file": "mod/src/gameplay.c",
+   "name": "dpad_to",
+   "proved_sha1": "22255eb3c40d7ed1",
+   "report": "modrep_nat_810BFD94 200402 200000 0 7fffffffffff 47 - 200000"
+  },
+  "810BFF0C": {
+   "file": "mod/src/gameplay.c",
+   "name": "scene_world",
+   "proved_sha1": "f1a7210a6a110ffc",
+   "report": "modrep_nat_810BFF0C 250000 250000 0 1fffffffffffffffff 69 - 200000"
+  },
+  "810C0020": {
+   "file": "mod/src/gameplay.c",
+   "name": "scene_tree",
+   "proved_sha1": "141c7481f0a7ca34",
+   "report": "modrep_nat_810C0020 250211 249960 0 1fffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 237 - 200000"
+  },
+  "810C03D4": {
+   "file": "mod/src/gameplay.c",
+   "name": "sqrt_f",
+   "proved_sha1": "044e025de7b89b62",
+   "report": "modrep_nat_810C03D4 200175 200000 0 1fffffffffffffffffff 77 - 200000"
+  },
+  "810C0508": {
+   "file": "mod/src/announce.c",
+   "name": "sqrt_f",
+   "proved_sha1": "6058fedffd5f01b3",
+   "report": "modrep_nat_810C0508 200175 200000 0 1fffffffffffffffffff 77 - 200000"
+  },
+  "810C063C": {
+   "file": "mod/src/gameplay.c",
+   "name": "mtx_bad",
+   "proved_sha1": "906885f03717c08f",
+   "report": "modrep_nat_810C063C 250000 250000 0 1ffffffffffffffffffffffff 97 - 200000"
+  },
+  "810C07C0": {
+   "file": "mod/src/bigshow.c",
+   "name": "bigshow_benoit",
+   "proved_sha1": "e192757d432b973e",
+   "report": "modrep_nat_810C07C0 250000 250000 0 fffff 20 - 200000"
+  },
+  "810C0810": {
+   "file": "mod/src/bigshow.c",
+   "name": "bigshow_is_on",
+   "proved_sha1": "538d1a43db669d8b",
+   "report": "modrep_nat_810C0810 200000 200000 0 7 3 - 200000"
+  },
+  "810C1FE8": {
+   "file": "mod/src/bigshow.c",
+   "name": "bigshow_stand_in",
+   "proved_sha1": "328e53e6ed758c0d",
+   "report": "modrep_nat_810C1FE8 250000 250000 0 ffff 16 - 200000"
+  },
+  "810C2308": {
+   "file": "mod/src/media.c",
+   "name": "media_folder_video",
+   "proved_sha1": "3f5a7cef9d6bd3ae",
+   "report": "modrep_nat_810C2308 250000 250000 0 7fffffffffffff 55 - 200000"
+  },
+  "810C23E4": {
+   "file": "mod/src/media.c",
+   "name": "entrance_table_loaded",
+   "proved_sha1": "9771701fe8f97a75",
+   "report": "modrep_nat_810C23E4 270000 270000 0 1ffffffffff 41 - 200000"
+  },
+  "810C2488": {
+   "file": "mod/src/media.c",
+   "name": "media_entrance_tables",
+   "proved_sha1": "143a866bcac75e7d",
+   "report": "modrep_nat_810C2488 317942 317942 0 3fffffffffffffffffffffffffffffffffffffff 158 - 200000"
+  },
+  "810C2700": {
+   "file": "mod/src/media.c",
+   "name": "media_video_picked",
+   "proved_sha1": "8f60d12d68a9f7df",
+   "report": "modrep_nat_810C2700 270000 270000 0 3ffffffffffffffffffffffffffffffffff 138 - 200000"
+  },
+  "810C2CC8": {
+   "file": "mod/src/media.c",
+   "name": "media_file_pre",
+   "proved_sha1": "0242e5ed15458b21",
+   "report": "modrep_nat_810C2CC8 270000 269859 0 1ffffffffffffffffffffffffff 105 - 200000"
+  },
+  "810C3264": {
+   "file": "mod/src/media.c",
+   "name": "media_slot_song",
+   "proved_sha1": "cbb10c3bfb77f2c8",
+   "report": "modrep_nat_810C3264 250000 250000 0 7f 7 - 200000"
+  },
+  "810C35D4": {
+   "file": "mod/src/media.c",
+   "name": "media_entrant_song",
+   "proved_sha1": "34b7a9873f3e642d",
+   "report": "modrep_nat_810C35D4 250000 250000 0 fffffffff 36 - 200000"
+  },
+  "810C3664": {
+   "file": "mod/src/media.c",
+   "name": "media_winner_song",
+   "proved_sha1": "b131cc9e7627183a",
+   "report": "modrep_nat_810C3664 250000 250000 0 fffffffffffffffffffffff 92 - 200000"
+  },
+  "810C37D4": {
+   "file": "mod/src/media.c",
+   "name": "media_slot_fx",
+   "proved_sha1": "10f934dcbeb4423b",
+   "report": "modrep_nat_810C37D4 250000 250000 0 1fff 13 - 200000"
+  },
+  "810C4910": {
+   "file": "mod/src/media.c",
+   "name": "themes_audio_dma",
+   "proved_sha1": "a47ee35e02e24504",
+   "report": "modrep_nat_810C4910 254467 249045 0 3fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 270 - 200000"
+  },
+  "810C5118": {
+   "file": "mod/src/media.c",
+   "name": "silent_wave",
+   "proved_sha1": "4a70fe74ac084777",
+   "report": "modrep_nat_810C5118 250000 250000 0 fffff 20 - 200000"
+  },
+  "810C69AC": {
+   "file": "mod/src/commentary.c",
+   "name": "say",
+   "proved_sha1": "8362f2a9abbac856",
+   "report": "modrep_nat_810C69AC 250000 250000 0 fffffffffffff 52 - 200000"
+  },
+  "810C6A7C": {
+   "file": "mod/src/commentary.c",
+   "name": "who_hurt",
+   "proved_sha1": "0e99aabed23b7201",
+   "report": "modrep_nat_810C6A7C 282295 240147 0 3ffffffffffffffffff 74 - 200000"
+  },
+  "810C6BA4": {
+   "file": "mod/src/commentary.c",
+   "name": "hit_done",
+   "proved_sha1": "99c79cd6a0add5dd",
+   "report": "modrep_nat_810C6BA4 253225 249109 0 1fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 333 - 200000"
+  },
+  "810C70D8": {
+   "file": "mod/src/commentary.c",
+   "name": "commentary_settings",
+   "proved_sha1": "0a9e4c05e878ebb4",
+   "report": "modrep_nat_810C70D8 200000 200000 0 1ffff 17 - 200000"
+  },
+  "810C711C": {
+   "file": "mod/src/roster.c",
+   "name": "roster_folder_photo",
+   "proved_sha1": "e69254196ca84e83",
+   "report": "modrep_nat_810C711C 200000 200000 0 7ffffffff 35 - 200000"
+  },
+  "810C71A8": {
+   "file": "mod/src/roster.c",
+   "name": "ext_total",
+   "proved_sha1": "0ef9dd113d8f7a86",
+   "report": "modrep_nat_810C71A8 250988 249797 0 fffffffffffffffffffffff 92 - 200000"
+  },
+  "810C7318": {
+   "file": "mod/src/roster.c",
+   "name": "roster_folder_hd_of_photo",
+   "proved_sha1": "a6dcf607824120df",
+   "report": "modrep_nat_810C7318 250000 250000 0 7ffffffff 35 - 200000"
+  },
+  "810C73A4": {
+   "file": "mod/src/roster.c",
+   "name": "roster_folder_of_photo",
+   "proved_sha1": "ec43d3d721677b8c",
+   "report": "modrep_nat_810C73A4 250000 250000 0 fffffffff 36 - 200000"
+  },
+  "810C7434": {
+   "file": "mod/src/roster.c",
+   "name": "roster_seat_folder",
+   "proved_sha1": "f3c322f03a64da76",
+   "report": "modrep_nat_810C7434 200000 200000 0 3fff 14 - 200000"
+  },
+  "810C746C": {
+   "file": "mod/src/roster.c",
+   "name": "roster_folder_key",
+   "proved_sha1": "ded714e1ed8fdd89",
+   "report": "modrep_nat_810C746C 270000 270000 0 1fffffffffffff 53 - 200000"
+  },
+  "810C7540": {
+   "file": "mod/src/roster.c",
+   "name": "roster_folder_base_looks",
+   "proved_sha1": "187eb35489be2d2e",
+   "report": "modrep_nat_810C7540 250000 250000 0 7fffffffffffff 55 - 200000"
+  },
+  "810C761C": {
+   "file": "mod/src/roster.c",
+   "name": "roster_folder_size",
+   "proved_sha1": "39222ebef60ec34d",
+   "report": "modrep_nat_810C761C 200000 200000 0 3ffffff 26 - 200000"
+  },
+  "810C7684": {
+   "file": "mod/src/roster.c",
+   "name": "roster_folder_looks",
+   "proved_sha1": "ae37c2a7899027e0",
+   "report": "modrep_nat_810C7684 270000 270000 0 ffffffffffffffff 64 - 200000"
+  },
+  "810C7914": {
+   "file": "mod/src/roster.c",
+   "name": "roster_staging",
+   "proved_sha1": "2c71172914f9aa1f",
+   "report": "modrep_nat_810C7914 200000 200000 0 1ff 9 - 200000"
+  },
+  "810C7938": {
+   "file": "mod/src/roster.c",
+   "name": "roster_probe",
+   "proved_sha1": "a7715878886b724c",
+   "report": "modrep_nat_810C7938 200000 200000 0 7 3 - 200000"
+  },
+  "810C7944": {
+   "file": "mod/src/roster.c",
+   "name": "roster_folder_id_at",
+   "proved_sha1": "115fbb88bcc9b672",
+   "report": "modrep_nat_810C7944 200035 200000 0 ffffffff 32 - 200000"
+  },
+  "810C79C4": {
+   "file": "mod/src/roster.c",
+   "name": "roster_is_folder_id",
+   "proved_sha1": "18b8f0617c3e3c9b",
+   "report": "modrep_nat_810C79C4 252941 249563 0 7fffffffff 39 - 200000"
+  },
+  "810C7B1C": {
+   "file": "mod/src/roster.c",
+   "name": "roster_id_to_ord",
+   "proved_sha1": "cdc411c3d3ea2cef",
+   "report": "modrep_nat_810C7B1C 250000 250000 0 1fffffff 29 - 200000"
+  },
+  "810C7B90": {
+   "file": "mod/src/roster.c",
+   "name": "roster_id_removed",
+   "proved_sha1": "bda4d76ed8e7ab73",
+   "report": "modrep_nat_810C7B90 265873 246566 0 fffffffffffffffffffff 84 - 200000"
+  },
+  "810C7CE0": {
+   "file": "mod/src/roster.c",
+   "name": "roster_ord_is_new",
+   "proved_sha1": "f03b7f73172b4b78",
+   "report": "modrep_nat_810C7CE0 250000 250000 0 7 3 - 200000"
+  },
+  "810C7CEC": {
+   "file": "mod/src/roster.c",
+   "name": "roster_removed_n",
+   "proved_sha1": "a4147ee5ba917615",
+   "report": "modrep_nat_810C7CEC 250000 250000 0 fffffffffffffff 60 - 200000"
+  },
+  "810C7DDC": {
+   "file": "mod/src/roster.c",
+   "name": "roster_removed_qa",
+   "proved_sha1": "dee5aee0d69ae481",
+   "report": "modrep_nat_810C7DDC 250000 250000 0 1fffffffffffffff 61 - 200000"
+  },
+  "810C7ED0": {
+   "file": "mod/src/roster.c",
+   "name": "removal_s",
+   "proved_sha1": "03dd82f82cbd523e",
+   "report": "modrep_nat_810C7ED0 251247 249789 0 3fffffff 30 - 200000"
+  },
+  "810C8074": {
+   "file": "mod/src/roster.c",
+   "name": "removal_num",
+   "proved_sha1": "14852ed2fd608bad",
+   "report": "modrep_nat_810C8074 253152 249110 0 7ffffffffffffffffffff 83 - 200000"
+  },
+  "810C81C0": {
+   "file": "mod/src/roster.c",
+   "name": "removal_say",
+   "proved_sha1": "e8f3c70f16aa1c0f",
+   "report": "modrep_nat_810C81C0 200000 200000 0 1fff 13 - 200000"
+  },
+  "810C8908": {
+   "file": "mod/src/roster.c",
+   "name": "box_removed",
+   "proved_sha1": "aa340bf85cb8949f",
+   "report": "modrep_nat_810C8908 250000 250000 0 1ffffffffffffffffffffff 89 - 200000"
+  },
+  "810C8A6C": {
+   "file": "mod/src/roster.c",
+   "name": "roster_ord_to_id",
+   "proved_sha1": "76303385fdcbb3eb",
+   "report": "modrep_nat_810C8A6C 250000 250000 0 7ffffffffffffffffffff 83 - 200000"
+  },
+  "810C9688": {
+   "file": "mod/src/roster.c",
+   "name": "roster_entrance_song",
+   "proved_sha1": "d082a5b05dc6b96d",
+   "report": "modrep_nat_810C9688 250000 250000 0 7fffffffffffffffffffffffffffffffffffffffff 167 - 200000"
+  },
+  "810C9924": {
+   "file": "mod/src/roster.c",
+   "name": "roster_record",
+   "proved_sha1": "059dea9f781beed4",
+   "report": "modrep_nat_810C9924 250000 250000 0 ffffffffffffffffffffff 88 - 200000"
+  },
+  "810C9A84": {
+   "file": "mod/src/roster.c",
+   "name": "roster_entrance_fx",
+   "proved_sha1": "6b01e47f0995a77a",
+   "report": "modrep_nat_810C9A84 250000 250000 0 ffffffffffffffffffffffffffffffffff 136 - 200000"
+  },
+  "810C9CA4": {
+   "file": "mod/src/roster.c",
+   "name": "roster_moves",
+   "proved_sha1": "fc5a13b13ba1baf6",
+   "report": "modrep_nat_810C9CA4 250000 250000 0 3ffffffffffffffffff 74 - 200000"
+  },
+  "810CA0A4": {
+   "file": "mod/src/roster.c",
+   "name": "stock_read",
+   "proved_sha1": "522cafc4d6587faa",
+   "report": "modrep_nat_810CA0A4 250000 250000 0 1ffffffffffffffffffffffffffff 113 - 200000"
+  },
+  "810CAA14": {
+   "file": "mod/src/roster.c",
+   "name": "ext_build",
+   "proved_sha1": "a42108e588001422",
+   "report": "modrep_nat_810CAA14 250000 250000 0 1ffffffffffffffffffffffffffffffffffffffff 161 - 200000"
+  },
+  "810CCE20": {
+   "file": "mod/src/roster.c",
+   "name": "roster_class",
+   "proved_sha1": "e0d6847ddc226fc9",
+   "report": "modrep_nat_810CCE20 250000 250000 0 ffffffffffff 48 - 200000"
+  },
+  "810CCEE0": {
+   "file": "mod/src/roster.c",
+   "name": "roster_not_drawn",
+   "proved_sha1": "414848a55747d4fe",
+   "report": "modrep_nat_810CCEE0 250000 250000 0 7fffffffffffff 55 - 200000"
+  },
+  "810CCFBC": {
+   "file": "mod/src/roster.c",
+   "name": "roster_rivals",
+   "proved_sha1": "072bd1470080b905",
+   "report": "modrep_nat_810CCFBC 270000 270000 0 3ffffffffffffffffffffffffffffffffffffffff 162 - 200000"
+  },
+  "810CD244": {
+   "file": "mod/src/roster.c",
+   "name": "rv_names",
+   "proved_sha1": "3c4b00e1372a485f",
+   "report": "modrep_nat_810CD244 264212 246703 0 3ffffffffffffffffffffffffffff 114 - 200000"
+  },
+  "810CD40C": {
+   "file": "mod/src/roster.c",
+   "name": "roster_pages_from_file",
+   "proved_sha1": "26a36db29112dee7",
+   "report": "modrep_nat_810CD40C 270000 270000 0 3fffffffffff 46 - 200000"
+  },
+  "810CD4C4": {
+   "file": "mod/src/roster.c",
+   "name": "roster_boxes_to_rumble",
+   "proved_sha1": "6d5136d01bd12196",
+   "report": "modrep_nat_810CD4C4 200000 200000 0 3ffff 18 - 200000"
+  },
+  "810CDE0C": {
+   "file": "mod/src/roster.c",
+   "name": "roster_stand_in",
+   "proved_sha1": "debfff3d0db351cc",
+   "report": "modrep_nat_810CDE0C 250000 250000 0 3ffffffffffffffffffffffffffffffffffffffffffff 178 - 200000"
+  },
+  "810CE0D4": {
+   "file": "mod/src/roster.c",
+   "name": "roster_page_of",
+   "proved_sha1": "c0565e566db3fd6e",
+   "report": "modrep_nat_810CE0D4 290895 237411 0 1fffffffffff 45 - 200000"
+  },
+  "810CE188": {
+   "file": "mod/src/roster.c",
+   "name": "roster_page_box",
+   "proved_sha1": "f2b59159c5b01fab",
+   "report": "modrep_nat_810CE188 250000 250000 0 3fffffff 30 - 200000"
+  },
+  "810CE200": {
+   "file": "mod/src/roster.c",
+   "name": "roster_build_pages",
+   "proved_sha1": "34d90c2659c20b0a",
+   "report": "modrep_nat_810CE200 250000 250000 0 ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 280 - 200000"
+  },
+  "810CFBB8": {
+   "file": "mod/src/roster.c",
+   "name": "roster_pages_from_save",
+   "proved_sha1": "7c4645baca4ad6dc",
+   "report": "modrep_nat_810CFBB8 250000 250000 0 3fffffffffffffffffffffffffffffffffffffffffff 174 - 200000"
+  },
+  "810D0388": {
+   "file": "mod/src/roster.c",
+   "name": "roster_save_one",
+   "proved_sha1": "832bc45ad874d999",
+   "report": "modrep_nat_810D0388 200000 200000 0 7f 7 - 200000"
+  },
+  "810D139C": {
+   "file": "mod/src/roster.c",
+   "name": "roster_copy_saved",
+   "proved_sha1": "70b778c1c2f8fc7e",
+   "report": "modrep_nat_810D139C 250000 250000 0 7fffffffffffffffff 71 - 200000"
+  },
+  "810D14B8": {
+   "file": "mod/src/roster.c",
+   "name": "roster_stats_alloc",
+   "proved_sha1": "6156ff8a33fd5d81",
+   "report": "modrep_nat_810D14B8 250000 250000 0 1ffffffff 33 - 200000"
+  },
+  "810D3C1C": {
+   "file": "mod/src/roster.c",
+   "name": "roster_bigshow_moveset",
+   "proved_sha1": "7bf977573129456d",
+   "report": "modrep_nat_810D3C1C 200000 200000 0 f 4 - 200000"
+  },
+  "810D642C": {
+   "file": "mod/src/roster.c",
+   "name": "roster_folder_of_ord",
+   "proved_sha1": "b4e59216e6b69f6f",
+   "report": "modrep_nat_810D642C 200000 200000 0 fffff 20 - 200000"
+  },
+  "810D647C": {
+   "file": "mod/src/roster.c",
+   "name": "roster_ord_of_folder",
+   "proved_sha1": "85b1cf744b633b93",
+   "report": "modrep_nat_810D647C 200000 200000 0 1ffffffff 33 - 200000"
+  },
+  "810D728C": {
+   "file": "mod/src/roster.c",
+   "name": "rel_get",
+   "proved_sha1": "e11df2b6c1b37d6d",
+   "report": "modrep_nat_810D728C 200000 200000 0 3ffffffffffffffffffffffffffffff 122 - 200000"
+  },
+  "810D7474": {
+   "file": "mod/src/roster.c",
+   "name": "rv_add",
+   "proved_sha1": "3fa4ed26245c2a8c",
+   "report": "modrep_nat_810D7474 251110 249685 0 ffffffffffffffffffffff 88 - 200000"
+  },
+  "810D7EDC": {
+   "file": "mod/src/roster.c",
+   "name": "page_name_set",
+   "proved_sha1": "5a1f8b51f4027bc9",
+   "report": "modrep_nat_810D7EDC 200000 200000 0 7fffffffffffffffff 71 - 200000"
+  },
+  "810D7FF8": {
+   "file": "mod/src/roster.c",
+   "name": "ring_layout",
+   "proved_sha1": "fa625767efbc6b66",
+   "report": "modrep_nat_810D7FF8 255068 248891 0 7fffffffffffffffffffffffffffffffffffffffff 167 - 200000"
+  },
+  "810D84B0": {
+   "file": "mod/src/roster.c",
+   "name": "hbk_page",
+   "proved_sha1": "b2c9fb96e86737ca",
+   "report": "modrep_nat_810D84B0 270000 270000 0 1ffffffffffffffffffffffffff 105 - 200000"
+  },
+  "810D8654": {
+   "file": "mod/src/variants.c",
+   "name": "variant_wrestler_hidden",
+   "proved_sha1": "58e490156d7783a0",
+   "report": "modrep_nat_810D8654 250000 250000 0 ffff 16 - 200000"
+  },
+  "810D8694": {
+   "file": "mod/src/variants.c",
+   "name": "variants_any_hidden",
+   "proved_sha1": "709f38b67579172f",
+   "report": "modrep_nat_810D8694 250000 250000 0 ffffff 24 - 200000"
+  },
+  "810D88B8": {
+   "file": "mod/src/variants.c",
+   "name": "slot_kept",
+   "proved_sha1": "79f01ab7cb54b704",
+   "report": "modrep_nat_810D88B8 250000 250000 0 7ffffffffffffffff 67 - 200000"
+  },
+  "810D89C4": {
+   "file": "mod/src/variants.c",
+   "name": "fam_head",
+   "proved_sha1": "bdf79168cd6fbf7e",
+   "report": "modrep_nat_810D89C4 250000 250000 0 3fffffffffffffff 62 - 200000"
+  },
+  "810D8ABC": {
+   "file": "mod/src/variants.c",
+   "name": "fl_s",
+   "proved_sha1": "1b902b6f67a84f5f",
+   "report": "modrep_nat_810D8ABC 251249 249780 0 3fffffff 30 - 200000"
+  },
+  "810D8E10": {
+   "file": "mod/src/variants.c",
+   "name": "variant_family_n",
+   "proved_sha1": "fe3538ac839f1a50",
+   "report": "modrep_nat_810D8E10 250000 250000 0 3fffffffffff 46 - 200000"
+  },
+  "810D902C": {
+   "file": "mod/src/variants.c",
+   "name": "variant_family_at",
+   "proved_sha1": "23a47ec9da34f56d",
+   "report": "modrep_nat_810D902C 250000 250000 0 3ffffff 26 - 200000"
+  },
+  "810D9724": {
+   "file": "mod/src/variants.c",
+   "name": "variant_cursor_box",
+   "proved_sha1": "fee04e8e901e722c",
+   "report": "modrep_nat_810D9724 200000 200000 0 7 3 - 200000"
+  },
+  "810D98A8": {
+   "file": "mod/src/variants.c",
+   "name": "sel_type_step",
+   "proved_sha1": "15cfce35a08a3688",
+   "report": "modrep_nat_810D98A8 274855 244174 0 1ffffffffffffffffffffffffffffffffffffffffffffffffffffff 217 - 200000"
+  },
+  "810D9D40": {
+   "file": "mod/src/variants.c",
+   "name": "first_free",
+   "proved_sha1": "2ba9e631106701a9",
+   "report": "modrep_nat_810D9D40 255861 248687 0 3ffffffffffffffffffffffffffffffffffffffffffff 178 - 200000"
+  },
+  "810DA0F8": {
+   "file": "mod/src/variants.c",
+   "name": "live_at",
+   "proved_sha1": "60f780ce3af68447",
+   "report": "modrep_nat_810DA0F8 273901 245031 0 1fffffffffffffffff 69 - 200000"
+  },
+  "810DBD9C": {
+   "file": "mod/src/variants.c",
+   "name": "variant_shown_look",
+   "proved_sha1": "75e70af2484c6c33",
+   "report": "modrep_nat_810DBD9C 250000 250000 0 1fffffffff 37 - 200000"
+  },
+  "810DBE30": {
+   "file": "mod/src/variants.c",
+   "name": "sel_family",
+   "proved_sha1": "10ecffd5d3b8b018",
+   "report": "modrep_nat_810DBE30 450000 450000 0 ffffffffffffffffffffffffff 104 - 200000"
+  },
+  "810DC190": {
+   "file": "mod/src/files.c",
+   "name": "ext_file_own",
+   "proved_sha1": "23a208f70f80e426",
+   "report": "modrep_nat_810DC190 286214 286214 0 3fffffffffffffffffffffffffffffffffffffffffffffff 190 - 200000"
+  },
+  "810DC488": {
+   "file": "mod/src/files.c",
+   "name": "files_ext_read",
+   "proved_sha1": "be30476d7088f569",
+   "report": "modrep_nat_810DC488 250000 250000 0 1fffffffffffff 53 - 200000"
+  },
+  "810DC7A0": {
+   "file": "mod/src/files.c",
+   "name": "files_read",
+   "proved_sha1": "5d211f53154a0ad9",
+   "report": "modrep_nat_810DC7A0 250000 250000 0 ffffffffffffffffffffffffffff 112 - 200000"
+  },
+  "810DC960": {
+   "file": "mod/src/files.c",
+   "name": "photo_tlut",
+   "proved_sha1": "3c40fd86b52847d4",
+   "report": "modrep_nat_810DC960 250000 250000 0 3ffffffffffffffffffffffffffffffffffffffffffffffffffff 210 - 200000"
+  },
+  "810DCCA8": {
+   "file": "mod/src/files.c",
+   "name": "photo_ci4",
+   "proved_sha1": "6200b3d0e300e3c0",
+   "report": "modrep_nat_810DCCA8 250000 250000 0 7ffffffffffffffffffffffffffffffffffffffffffffffffffff 211 - 200000"
+  },
+  "810DCFF4": {
+   "file": "mod/src/parts.c",
+   "name": "parts_costume_key",
+   "proved_sha1": "3cb5810467ad0262",
+   "report": "modrep_nat_810DCFF4 200000 200000 0 7ff 11 - 200000"
+  },
+  "810DD020": {
+   "file": "mod/src/parts.c",
+   "name": "parts_fields_put",
+   "proved_sha1": "86f7970d725f3534",
+   "report": "modrep_nat_810DD020 250000 250000 0 3fff 14 - 200000"
+  },
+  "810DD058": {
+   "file": "mod/src/parts.c",
+   "name": "stock_looks_offset",
+   "proved_sha1": "4b6202fba2648c18",
+   "report": "modrep_nat_810DD058 200000 200000 0 7f 7 - 200000"
+  },
+  "810DD218": {
+   "file": "mod/src/parts.c",
+   "name": "parts_size_put",
+   "proved_sha1": "9a1b076a4f770135",
+   "report": "modrep_nat_810DD218 250000 250000 0 1fffff 21 - 200000"
+  },
+  "810DDCA8": {
+   "file": "mod/src/skel.c",
+   "name": "skel_visible",
+   "proved_sha1": "21eef5fd16cac1fa",
+   "report": "modrep_nat_810DDCA8 250623 249862 0 7ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 283 - 200000"
+  },
+  "810DE114": {
+   "file": "mod/src/skel.c",
+   "name": "skel_origin",
+   "proved_sha1": "43f8455b179b8baa",
+   "report": "modrep_nat_810DE114 250000 250000 0 3f 6 - 200000"
+  },
+  "810DE12C": {
+   "file": "mod/src/skel.c",
+   "name": "skel_show",
+   "proved_sha1": "977340b525a978a6",
+   "report": "modrep_nat_810DE12C 270000 270000 0 3ffffffffffffffffffffffffffffffffffffffffff 170 - 200000"
+  },
+  "810DE3D4": {
+   "file": "mod/src/skel.c",
+   "name": "skel_textures",
+   "proved_sha1": "3a3c46e4d3352e09",
+   "report": "modrep_nat_810DE3D4 270000 270000 0 7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 511 - 200000"
+  },
+  "810DFD4C": {
+   "file": "mod/src/skel.c",
+   "name": "pal_group_guard",
+   "proved_sha1": "07474763bb7eebb1",
+   "report": "modrep_nat_810DFD4C 270000 270000 0 7ffffffffffffffffffffffff 99 - 200000"
+  },
+  "810DFED8": {
+   "file": "mod/src/hd.c",
+   "name": "hd_zbuf_wanted",
+   "proved_sha1": "1a1e0832198a10d7",
+   "report": "modrep_nat_810DFED8 200000 200000 0 7 3 - 200000"
+  },
+  "810DFEE4": {
+   "file": "mod/src/hd.c",
+   "name": "hd_dbg_pose",
+   "proved_sha1": "2633ce7c6e07c213",
+   "report": "modrep_nat_810DFEE4 200000 200000 0 1fff 13 - 200000"
+  },
+  "810DFF18": {
+   "file": "mod/src/hd.c",
+   "name": "hd_zdl_orig",
+   "proved_sha1": "65cd1a56f63a648d",
+   "report": "modrep_nat_810DFF18 450000 450000 0 1ff 9 - 200000"
+  },
+  "810E1830": {
+   "file": "mod/src/hd.c",
+   "name": "hd_frame_done",
+   "proved_sha1": "c20f53b14fa7188f",
+   "report": "modrep_nat_810E1830 250000 250000 0 fffffffffff 44 - 200000"
+  },
+  "810E18E0": {
+   "file": "mod/src/hands.c",
+   "name": "hands_wm_load",
+   "proved_sha1": "0a707ea0ab7af940",
+   "report": "modrep_nat_810E18E0 250000 250000 0 7ffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 235 - 200000"
+  },
+  "810E1C8C": {
+   "file": "mod/src/hands.c",
+   "name": "hands_wm_keep",
+   "proved_sha1": "eb21f886e0a065a3",
+   "report": "modrep_nat_810E1C8C 250000 250000 0 3fff 14 - 200000"
+  },
+  "810E2808": {
+   "file": "mod/src/movex.c",
+   "name": "movex_legdrop_entry",
+   "proved_sha1": "f03a787d2ac5cfe4",
+   "report": "modrep_nat_810E2808 250000 250000 0 3ff 10 - 200000"
+  },
+  "810E2830": {
+   "file": "mod/src/movex.c",
+   "name": "movex_qa_entry",
+   "proved_sha1": "3f6a69caa3b6a3e8",
+   "report": "modrep_nat_810E2830 250000 250000 0 fffffffffffffffffffff 84 - 200000"
+  },
+  "810E2980": {
+   "file": "mod/src/movex.c",
+   "name": "movex_qa_subs",
+   "proved_sha1": "542472a9c0c6990b",
+   "report": "modrep_nat_810E2980 250000 250000 0 ffffffffffffffffffffffff 96 - 200000"
+  },
+  "810E2B00": {
+   "file": "mod/src/movex.c",
+   "name": "movex_qa_own",
+   "proved_sha1": "29b3b8374e9467a0",
+   "report": "modrep_nat_810E2B00 250000 250000 0 7fffffffff 39 - 200000"
+  },
+  "810E2E9C": {
+   "file": "mod/src/movex.c",
+   "name": "movex_pre",
+   "proved_sha1": "9474a0b4a39e9a61",
+   "report": "modrep_nat_810E2E9C 250000 250000 0 3ffffffffffff 50 - 200000"
+  },
+  "810E3E34": {
+   "file": "mod/src/movex.c",
+   "name": "movex_chain_pick",
+   "proved_sha1": "2d7dec4fcc16d7e9",
+   "report": "modrep_nat_810E3E34 450000 450000 0 fffffffffffffffffffffff 92 - 200000"
+  },
+  "810E3FA4": {
+   "file": "mod/src/movex.c",
+   "name": "movex_chain_step",
+   "proved_sha1": "4a98dde2e49d3bcb",
+   "report": "modrep_nat_810E3FA4 250000 250000 0 ffffffffffffffffffffffffffffff 120 - 200000"
+  },
+  "810E4184": {
+   "file": "mod/src/movex.c",
+   "name": "movex_anim",
+   "proved_sha1": "f78d9d5bd58e8f8c",
+   "report": "modrep_nat_810E4184 250000 250000 0 1fffffffffffff 53 - 200000"
+  },
+  "810E4258": {
+   "file": "mod/src/movex.c",
+   "name": "anim_frames",
+   "proved_sha1": "c5691cee44ad63e7",
+   "report": "modrep_nat_810E4258 250000 250000 0 3ffffffffff 42 - 200000"
+  },
+  "810E4300": {
+   "file": "mod/src/movex.c",
+   "name": "anim_speed",
+   "proved_sha1": "de1048f012330288",
+   "report": "modrep_nat_810E4300 250000 250000 0 1ffffffffffff 49 - 200000"
+  },
+  "810E43C4": {
+   "file": "mod/src/movex.c",
+   "name": "anim_endpose",
+   "proved_sha1": "6c4422c6681819ab",
+   "report": "modrep_nat_810E43C4 250000 250000 0 7ffffffffff 43 - 200000"
+  },
+  "810E4470": {
+   "file": "mod/src/movex.c",
+   "name": "anim_recpart",
+   "proved_sha1": "aa8b146fee56823f",
+   "report": "modrep_nat_810E4470 250000 250000 0 fffffffffffffff 60 - 200000"
+  },
+  "810E4560": {
+   "file": "mod/src/movex.c",
+   "name": "anim_pose_now",
+   "proved_sha1": "29c5b3c96db011d6",
+   "report": "modrep_nat_810E4560 250000 250000 0 7ffffffffffffffffff 75 - 200000"
+  },
+  "810E468C": {
+   "file": "mod/src/movex.c",
+   "name": "anim_details",
+   "proved_sha1": "c8892ae554f20c40",
+   "report": "modrep_nat_810E468C 250000 250000 0 ffffffffffffffffffffffffffffffffffff 144 - 200000"
+  },
+  "810E48CC": {
+   "file": "mod/src/movex.c",
+   "name": "anim_stream",
+   "proved_sha1": "537ed8532bdae124",
+   "report": "modrep_nat_810E48CC 250000 250000 0 3ffffffffffffffffffffffffffffffffffffffffffff 178 - 200000"
+  },
+  "810E4B94": {
+   "file": "mod/src/announce.c",
+   "name": "ann_listed",
+   "proved_sha1": "8134240c058090f9",
+   "report": "modrep_nat_810E4B94 250000 250000 0 7ffffffffffff 51 - 200000"
+  },
+  "810E4C60": {
+   "file": "mod/src/announce.c",
+   "name": "ann_zdl_orig",
+   "proved_sha1": "b2c234e1548d14db",
+   "report": "modrep_nat_810E4C60 270000 270000 0 ffffffff 32 - 200000"
+  },
+  "810E4CE0": {
+   "file": "mod/src/announce.c",
+   "name": "ann_zbuf_wanted",
+   "proved_sha1": "dbefef7a179d251a",
+   "report": "modrep_nat_810E4CE0 200000 200000 0 7f 7 - 200000"
+  },
+  "810E4CFC": {
+   "file": "mod/src/announce.c",
+   "name": "announce_file",
+   "proved_sha1": "22192df438af31aa",
+   "report": "modrep_nat_810E4CFC 250000 250000 0 1ffffff 25 - 200000"
+  },
+  "810E50F0": {
+   "file": "mod/src/announce.c",
+   "name": "wr_put",
+   "proved_sha1": "0072b216aa2e493f",
+   "report": "modrep_nat_810E50F0 200000 200000 0 7fff 15 - 200000"
+  },
+  "810E512C": {
+   "file": "mod/src/announce.c",
+   "name": "announce_table_move",
+   "proved_sha1": "1a06ce386133e462",
+   "report": "modrep_nat_810E512C 250000 250000 0 3fffffff 30 - 200000"
+  },
+  "810E51A4": {
+   "file": "mod/src/announce.c",
+   "name": "announce_scene",
+   "proved_sha1": "9bd4848babe6698a",
+   "report": "modrep_nat_810E51A4 250000 250000 0 fffffffffffffffffffffffffffffffffffff 148 - 200000"
+  },
+  "810E53F4": {
+   "file": "mod/src/announce.c",
+   "name": "teardown",
+   "proved_sha1": "a68d6336fce3d88a",
+   "report": "modrep_nat_810E53F4 250000 250000 0 ffffffffffffffffffffff 88 - 200000"
+  },
+  "810E5FAC": {
+   "file": "mod/src/announce.c",
+   "name": "build_chair",
+   "proved_sha1": "541f3815c63e1116",
+   "report": "modrep_nat_810E5FAC 250000 250000 0 3ffffffffffffffffffffff 90 - 200000"
+  },
+  "810E9B98": {
+   "file": "mod/src/announce.c",
+   "name": "mtx_badf",
+   "proved_sha1": "c4cd364cac68ac90",
+   "report": "modrep_nat_810E9B98 250000 250000 0 7ffffffffffffffff 67 - 200000"
+  },
+  "810E9CA4": {
+   "file": "mod/src/announce.c",
+   "name": "announce_watch",
+   "proved_sha1": "7843bad0e3b8cd6a",
+   "report": "modrep_nat_810E9CA4 250000 250000 0 3ffffffffffffffffff 74 - 200000"
+  },
+  "810E9DCC": {
+   "file": "mod/src/announce.c",
+   "name": "qa_camera_mul",
+   "proved_sha1": "bd45edf80b5363f4",
+   "report": "modrep_nat_810E9DCC 200000 200000 0 3ffffffff 34 - 200000"
+  },
+  "810E9E54": {
+   "file": "mod/src/announce.c",
+   "name": "look_view",
+   "proved_sha1": "707f04f058914aee",
+   "report": "modrep_nat_810E9E54 297981 200000 0 7fffffffffffffffffffffffffffffff 127 - 200000"
+  },
+  "810EA050": {
+   "file": "mod/src/announce.c",
+   "name": "announce_where",
+   "proved_sha1": "94b58d41c3db9493",
+   "report": "modrep_nat_810EA050 200000 200000 0 fffffffffffffffffffffffffffffffffff 140 - 200000"
+  },
+  "810EA280": {
+   "file": "mod/src/announce.c",
+   "name": "announce_frame",
+   "proved_sha1": "8d473a0720d0cbf1",
+   "report": "modrep_nat_810EA280 200000 200000 0 3 2 - 200000"
+  },
+  "810EA288": {
+   "file": "mod/src/announce.c",
+   "name": "announce_owner",
+   "proved_sha1": "70fcf05a11562c68",
+   "report": "modrep_nat_810EA288 250000 250000 0 fffffffffffffffffffff 84 - 200000"
+  },
+  "810EA67C": {
+   "file": "mod/src/announce.c",
+   "name": "free_part",
+   "proved_sha1": "32292df9fd9671b9",
+   "report": "modrep_nat_810EA67C 200000 200000 0 1ffffffffffffffff 65 - 200000"
+  },
+  "810EA780": {
+   "file": "mod/src/announce.c",
+   "name": "mtx_mul",
+   "proved_sha1": "d60bb9d653ee67d8",
+   "report": "modrep_nat_810EA780 1454616 200000 0 7fffffffffffffffffffffffffffffffff 135 - 200000"
+  },
+  "810EA99C": {
+   "file": "mod/src/arcctl.c",
+   "name": "arcctl_port",
+   "proved_sha1": "58efe337c475eab8",
+   "report": "modrep_nat_810EA99C 270000 270000 0 3fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 414 - 200000"
+  },
+  "810EBFB8": {
+   "file": "mod/src/arcctl.c",
+   "name": "arcctl_draw",
+   "proved_sha1": "cef73b7a2e750c2d",
+   "report": "modrep_nat_810EBFB8 372961 369522 0 1fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 357 - 200000"
+  },
+  "810EC380": {
+   "file": "mod/src/arcctl.c",
+   "name": "w_in",
+   "proved_sha1": "55864bbb3dfc9ea1",
+   "report": "modrep_nat_810EC380 250000 250000 0 1ffffffff 33 - 200000"
+  },
+  "810EC5D0": {
+   "file": "mod/src/story.c",
+   "name": "story_card_text",
+   "proved_sha1": "d8daaaea594ea72b",
+   "report": "modrep_nat_810EC5D0 450000 450000 0 1ffffffffffff 49 - 200000"
+  },
+  "810ECF28": {
+   "file": "mod/src/story.c",
+   "name": "story_scene_text",
+   "proved_sha1": "499ee9f75e52d428",
+   "report": "modrep_nat_810ECF28 250000 250000 0 1fffffffffffffffffffffffffffffffff 133 - 200000"
+  },
+  "810EDC78": {
+   "file": "mod/src/story.c",
+   "name": "story_active",
+   "proved_sha1": "3f88773e9fc78ff6",
+   "report": "modrep_nat_810EDC78 200000 200000 0 f 4 - 200000"
+  },
+  "810EDC88": {
+   "file": "mod/src/story.c",
+   "name": "story_xarena",
+   "proved_sha1": "a17907770110cba1",
+   "report": "modrep_nat_810EDC88 205818 200000 0 1ffffff 25 - 200000"
+  },
+  "810EDCEC": {
+   "file": "mod/src/story.c",
+   "name": "story_save_swap",
+   "proved_sha1": "fdd6599276cea96e",
+   "report": "modrep_nat_810EDCEC 250000 250000 0 7fffffffffffffffff 71 - 200000"
+  },
+  "810EFEA8": {
+   "file": "mod/src/story.c",
+   "name": "story_rescan",
+   "proved_sha1": "f2d45fb23a61549a",
+   "report": "modrep_nat_810EFEA8 250000 250000 0 1ffffffffffffff 57 - 200000"
+  },
+  "810EFF8C": {
+   "file": "mod/src/story.c",
+   "name": "story_count",
+   "proved_sha1": "34b7f253dee67e08",
+   "report": "modrep_nat_810EFF8C 250000 250000 0 1ffffffffffffffff 65 - 200000"
+  },
+  "810F0204": {
+   "file": "mod/src/story.c",
+   "name": "story_belt",
+   "proved_sha1": "e19fa63d4ceff1c0",
+   "report": "modrep_nat_810F0204 250000 250000 0 3fffffffffffffffffffff 86 - 200000"
+  },
+  "810F035C": {
+   "file": "mod/src/story.c",
+   "name": "story_error",
+   "proved_sha1": "949954d9501b0d61",
+   "report": "modrep_nat_810F035C 250000 250000 0 1ffffffffffffffffffffff 89 - 200000"
+  },
+  "810F04C0": {
+   "file": "mod/src/story.c",
+   "name": "story_start_builtin",
+   "proved_sha1": "416fa4b85bdeee50",
+   "report": "modrep_nat_810F04C0 250000 250000 0 fffffffffffffffffffffff 92 - 200000"
+  },
+  "810F0630": {
+   "file": "mod/src/story.c",
+   "name": "story_tron_video",
+   "proved_sha1": "d9bd22965a02a384",
+   "report": "modrep_nat_810F0630 250000 250000 0 7ff 11 - 200000"
+  },
+  "810F0AD0": {
+   "file": "mod/src/story.c",
+   "name": "apply_sets",
+   "proved_sha1": "846a94ac3b6813d2",
+   "report": "modrep_nat_810F0AD0 462416 224365 0 7ffffffffffffffffffffffffffffffffff 139 - 200000"
+  },
+  "810F1188": {
+   "file": "mod/src/story.c",
+   "name": "story_arena_now",
+   "proved_sha1": "ae0975c21b9cec69",
+   "report": "modrep_nat_810F1188 205417 200000 0 7fffffffffff 47 - 200000"
+  },
+  "810F1244": {
+   "file": "mod/src/story.c",
+   "name": "run_conds",
+   "proved_sha1": "c51a668e71dab8dd",
+   "report": "modrep_nat_810F1244 250000 250000 0 3fffffffffffffffffffffffffff 110 - 200000"
+  },
+  "810F13FC": {
+   "file": "mod/src/story.c",
+   "name": "story_branch",
+   "proved_sha1": "3d1e26a4e8757c96",
+   "report": "modrep_nat_810F13FC 270000 270000 0 1ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 241 - 200000"
+  },
+  "810F17C0": {
+   "file": "mod/src/story.c",
+   "name": "game_cond",
+   "proved_sha1": "b1a28066e0d834a3",
+   "report": "modrep_nat_810F17C0 250000 250000 0 7fffffffffffffffffffff 87 - 200000"
+  },
+  "810F1A0C": {
+   "file": "mod/src/story.c",
+   "name": "story_co_call",
+   "proved_sha1": "796bbfdb6bd894f6",
+   "report": "modrep_nat_810F1A0C 200000 200000 0 1ffffffff 33 - 200000"
+  },
+  "810F1A90": {
+   "file": "mod/src/story.c",
+   "name": "cam_sqrt",
+   "proved_sha1": "9aa39d4caffd8c46",
+   "report": "modrep_nat_810F1A90 200175 200000 0 1fffffffffffffffffff 77 - 200000"
+  },
+  "810F44FC": {
+   "file": "mod/src/save.c",
+   "name": "save_restore",
+   "proved_sha1": "eda10720c28901ef",
+   "report": "modrep_nat_810F44FC 250000 250000 0 fffffffffffffffffffffffffffffffff 132 - 200000"
+  },
+  "810F470C": {
+   "file": "mod/src/save.c",
+   "name": "save_sidecar_loaded",
+   "proved_sha1": "7541e4ec5e053010",
+   "report": "modrep_nat_810F470C 200000 200000 0 3f 6 - 200000"
+  },
+  "810F4724": {
+   "file": "mod/src/save.c",
+   "name": "save_sidecar_read",
+   "proved_sha1": "e21c16343cb6ae64",
+   "report": "modrep_nat_810F4724 200000 200000 0 7 3 - 200000"
+  },
+  "810F4A48": {
+   "file": "mod/src/save.c",
+   "name": "qa_new_champion",
+   "proved_sha1": "eb7a0ec294af203f",
+   "report": "modrep_nat_810F4A48 200000 200000 0 7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 239 - 200000"
+  },
+  "810F4E04": {
+   "file": "mod/src/util.c",
+   "name": "memcpy",
+   "proved_sha1": "d7a1c387ea216ec5",
+   "report": "modrep_nat_810F4E04 427918 200000 0 7ff 11 - 200000"
+  },
+  "810F4E30": {
+   "file": "mod/src/tron.c",
+   "name": "tron_frame_begin",
+   "proved_sha1": "c884df8effde2546",
+   "report": "modrep_nat_810F4E30 250000 250000 0 1fff 13 - 200000"
+  },
+  "810F51AC": {
+   "file": "mod/src/tron.c",
+   "name": "tron_forget_patches",
+   "proved_sha1": "213e83515f0ffc6c",
+   "report": "modrep_nat_810F51AC 200000 200000 0 7 3 - 200000"
+  },
+  "810F51B8": {
+   "file": "mod/src/tron.c",
+   "name": "tron_native_cancel",
+   "proved_sha1": "5eda5f0dd463c78f",
+   "report": "modrep_nat_810F51B8 200000 200000 0 3fffff 22 - 200000"
+  },
+  "810F5210": {
+   "file": "mod/src/tron.c",
+   "name": "tron_ring_song",
+   "proved_sha1": "2e6e653bbd5f0467",
+   "report": "modrep_nat_810F5210 200000 200000 0 fff 12 - 200000"
+  },
+  "810F5240": {
+   "file": "mod/src/tron.c",
+   "name": "tron_music",
+   "proved_sha1": "4b5a0eed20c23c4e",
+   "report": "modrep_nat_810F5240 270000 270000 0 ffffffffffffffffffffff 88 - 200000"
+  },
+  "810F53A0": {
+   "file": "mod/src/tron.c",
+   "name": "tron_video_picked",
+   "proved_sha1": "1ce1853df9debd72",
+   "report": "modrep_nat_810F53A0 200000 200000 0 1ffff 17 - 200000"
+  },
+  "810F53E4": {
+   "file": "mod/src/tron.c",
+   "name": "tron_story",
+   "proved_sha1": "1dcedcf50b6cd7e1",
+   "report": "modrep_nat_810F53E4 200000 200000 0 1ffff 17 - 200000"
+  },
+  "810F5428": {
+   "file": "mod/src/tron.c",
+   "name": "tron_story_arena",
+   "proved_sha1": "fa0bdb34543670a9",
+   "report": "modrep_nat_810F5428 200000 200000 0 7 3 - 200000"
+  },
+  "810F5434": {
+   "file": "mod/src/tron.c",
+   "name": "tron_screen_place",
+   "proved_sha1": "d224ce64a56353a6",
+   "report": "modrep_nat_810F5434 250000 250000 0 3fffffffffffffff 62 - 200000"
+  },
+  "810F552C": {
+   "file": "mod/src/tron.c",
+   "name": "tron_qa",
+   "proved_sha1": "d4683236908b449d",
+   "report": "modrep_nat_810F552C 200000 200000 0 3ffffff 26 - 200000"
+  },
+  "810F5594": {
+   "file": "mod/src/tron.c",
+   "name": "tron_mode",
+   "proved_sha1": "ea06f2e3c83d64ac",
+   "report": "modrep_nat_810F5594 270000 270000 0 3ffffffffffffffffffffffff 98 - 200000"
+  },
+  "810F571C": {
+   "file": "mod/src/tron.c",
+   "name": "tron_main",
+   "proved_sha1": "62d531ca33b4c949",
+   "report": "modrep_nat_810F571C 250000 250000 0 3ffffffffffffffffffffffffffffff 122 - 200000"
+  },
+  "810F70C4": {
+   "file": "mod/src/tron.c",
+   "name": "hc_camera",
+   "proved_sha1": "357625c56720b4c7",
+   "report": "modrep_nat_810F70C4 250000 250000 0 1fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 245 - 200000"
+  },
+  "810F7394": {
+   "file": "mod/src/tron.c",
+   "name": "hc_mvp",
+   "proved_sha1": "0491ca45817bc986",
+   "report": "modrep_nat_810F7394 252926 200000 0 ffffffffffffffff 64 - 200000"
+  },
+  "810F7494": {
+   "file": "mod/src/tron.c",
+   "name": "hc_sqrt",
+   "proved_sha1": "bea3b2cbfc83afab",
+   "report": "modrep_nat_810F7494 200175 200000 0 1ffffffffffffffff 65 - 200000"
+  },
+  "810F7840": {
+   "file": "mod/src/tron.c",
+   "name": "mtx_fixed",
+   "proved_sha1": "03d7b58172158cfb",
+   "report": "modrep_nat_810F7840 898573 216880 0 3fffffffffffff 54 - 200000"
+  },
+  "810F9DC8": {
+   "file": "mod/src/tron.c",
+   "name": "anim_find",
+   "proved_sha1": "ede15e66af679f65",
+   "report": "modrep_nat_810F9DC8 250000 250000 0 7ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 283 - 200000"
+  },
+  "810FA234": {
+   "file": "mod/src/arena.c",
+   "name": "arena_raw_anim",
+   "proved_sha1": "d560b643873bcfcf",
+   "report": "modrep_nat_810FA234 270000 270000 0 ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 288 - 200000"
+  },
+  "810FA6B4": {
+   "file": "mod/src/arena.c",
+   "name": "arena_current",
+   "proved_sha1": "44d634a357ee1244",
+   "report": "modrep_nat_810FA6B4 250000 250000 0 7fffffffffffffffffffff 87 - 200000"
+  },
+  "810FA810": {
+   "file": "mod/src/arena.c",
+   "name": "arena_file",
+   "proved_sha1": "29175d665fbda42f",
+   "report": "modrep_nat_810FA810 251287 250000 0 1ffffffffffffffffffffffffff 105 - 200000"
+  },
+  "810FA9B4": {
+   "file": "mod/src/arena.c",
+   "name": "arena_count",
+   "proved_sha1": "1096164a687304ee",
+   "report": "modrep_nat_810FA9B4 250000 250000 0 7ffffffffffffff 59 - 200000"
+  },
+  "810FB524": {
+   "file": "mod/src/arena.c",
+   "name": "arena_there",
+   "proved_sha1": "35244919b34456e2",
+   "report": "modrep_nat_810FB524 250000 250000 0 1ffffffffffffffffffff 81 - 200000"
+  },
+  "810FB668": {
+   "file": "mod/src/arena.c",
+   "name": "arena_venue",
+   "proved_sha1": "22b85a984b9f38e4",
+   "report": "modrep_nat_810FB668 250000 250000 0 1ffffffffffffffffff 73 - 200000"
+  },
+  "810FB78C": {
+   "file": "mod/src/arena.c",
+   "name": "arena_choose",
+   "proved_sha1": "2d961d095230fd40",
+   "report": "modrep_nat_810FB78C 250000 250000 0 ffffff 24 - 200000"
+  },
+  "810FBED4": {
+   "file": "mod/src/arena.c",
+   "name": "arena_picked",
+   "proved_sha1": "3b3c454f7e4b8e78",
+   "report": "modrep_nat_810FBED4 200000 200000 0 7 3 - 200000"
+  },
+  "810FBEE0": {
+   "file": "mod/src/arena.c",
+   "name": "arena_has_table",
+   "proved_sha1": "fda9a0124f195b2e",
+   "report": "modrep_nat_810FBEE0 250000 250000 0 f 4 - 200000"
+  },
+  "810FBEF0": {
+   "file": "mod/src/arena.c",
+   "name": "arena_ringstage_of",
+   "proved_sha1": "38fc4c5629363cc5",
+   "report": "modrep_nat_810FBEF0 250000 250000 0 fffffffffffffffffffffffffff 108 - 200000"
+  },
+  "810FC9E8": {
+   "file": "mod/src/arena.c",
+   "name": "arena_hook_build",
+   "proved_sha1": "81616256bae27956",
+   "report": "modrep_nat_810FC9E8 250000 250000 0 3ffff 18 - 200000"
+  },
+  "810FCA30": {
+   "file": "mod/src/arena.c",
+   "name": "arena_hook_scene",
+   "proved_sha1": "512a53a16a56f732",
+   "report": "modrep_nat_810FCA30 250000 250000 0 ffff 16 - 200000"
+  },
+  "810FD9F8": {
+   "file": "mod/src/arena.c",
+   "name": "arena_page_pad",
+   "proved_sha1": "35f14e7e218477f8",
+   "report": "modrep_nat_810FD9F8 256883 247153 0 ffffff 24 - 200000"
+  },
+  "810FDA58": {
+   "file": "mod/src/arena.c",
+   "name": "arena_frame",
+   "proved_sha1": "38af75ad44503038",
+   "report": "modrep_nat_810FDA58 200000 200000 0 ffffff 24 - 200000"
+  },
+  "810FDE30": {
+   "file": "mod/src/arena_ringstage.c",
+   "name": "ringstage_front",
+   "proved_sha1": "57319d5e9ee8953c",
+   "report": "modrep_nat_810FDE30 200000 200000 0 1ff 9 - 200000"
+  },
+  "810FDE54": {
+   "file": "mod/src/arena_ringstage.c",
+   "name": "ringstage_ground_at",
+   "proved_sha1": "ada42517957e4766",
+   "report": "modrep_nat_810FDE54 250000 250000 0 7ffff 19 - 200000"
+  },
+  "810FE628": {
+   "file": "mod/src/arena_ringstage.c",
+   "name": "ringstage_take",
+   "proved_sha1": "e02a288a676a1933",
+   "report": "modrep_nat_810FE628 250000 250000 0 fffffffffffffffffffff 84 - 200000"
+  },
+  "810FE9F8": {
+   "file": "mod/src/arena_ringstage.c",
+   "name": "ringstage_lift",
+   "proved_sha1": "a0824b5cd7a5c1ec",
+   "report": "modrep_nat_810FE9F8 255518 249041 0 3fffffffffffffffffffffffffffff 118 - 200000"
+  },
+  "810FEBD0": {
+   "file": "mod/src/arena_ringstage.c",
+   "name": "ringstage_replay_lift",
+   "proved_sha1": "9440ef32fd87b4e8",
+   "report": "modrep_nat_810FEBD0 255978 249059 0 3fffffff 30 - 200000"
+  },
+  "810FF668": {
+   "file": "mod/src/arena_ringstage.c",
+   "name": "ringstage_shadow",
+   "proved_sha1": "f34d06c690f6ca56",
+   "report": "modrep_nat_810FF668 250000 250000 0 3ffffffffff 42 - 200000"
+  },
+  "810FF710": {
+   "file": "mod/src/arena_ringstage.c",
+   "name": "ringstage_shadow_call",
+   "proved_sha1": "33b137c49fa8f63f",
+   "report": "modrep_nat_810FF710 250000 250000 0 3fffffffffff 46 - 200000"
+  },
+  "810FF7C8": {
+   "file": "mod/src/arena_ringstage.c",
+   "name": "ringstage_door_open",
+   "proved_sha1": "c9f8a4454e1b3c97",
+   "report": "modrep_nat_810FF7C8 250000 250000 0 7fffffffffffffffffffffffffffffffff 135 - 200000"
+  },
+  "810FF9E4": {
+   "file": "mod/src/arena_ringstage.c",
+   "name": "ringstage_area_change",
+   "proved_sha1": "052c776f330a05cc",
+   "report": "modrep_nat_810FF9E4 250000 250000 0 fffffffffffffffff 68 - 200000"
+  },
+  "811005D8": {
+   "file": "mod/src/arena_ringstage.c",
+   "name": "clear_line",
+   "proved_sha1": "e0a597fd6622f092",
+   "report": "modrep_nat_811005D8 200814 200000 0 3ffffffffffffffffffffffffff 106 - 200000"
+  },
+  "81101008": {
+   "file": "mod/src/arena_ringstage.c",
+   "name": "walls_clear",
+   "proved_sha1": "7cce15fe42086918",
+   "report": "modrep_nat_81101008 250613 249915 0 1ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 305 - 200000"
+  },
+  "811026BC": {
+   "file": "mod/src/arena_ringstage.c",
+   "name": "qa_back_mid",
+   "proved_sha1": "283c60be0e876c02",
+   "report": "modrep_nat_811026BC 250797 249896 0 ffffffffffffffff 64 - 200000"
+  },
+  "811027BC": {
+   "file": "mod/src/arena_entrance.c",
+   "name": "arena_entrance_fill",
+   "proved_sha1": "086e1d88897f14eb",
+   "report": "modrep_nat_811027BC 250000 250000 0 7ffffffffffffffffffffffff 99 - 200000"
+  },
+  "81103320": {
+   "file": "mod/src/arena_ring.c",
+   "name": "arena_ring_set",
+   "proved_sha1": "66598f1682401f83",
+   "report": "modrep_nat_81103320 250000 250000 0 1fffff 21 - 200000"
+  },
+  "81103374": {
+   "file": "mod/src/arena_ring.c",
+   "name": "arena_ring_table",
+   "proved_sha1": "c13b4afb078343bc",
+   "report": "modrep_nat_81103374 250000 250000 0 1f 5 - 200000"
+  },
+  "81103388": {
+   "file": "mod/src/arena_ring.c",
+   "name": "arena_ring_qa",
+   "proved_sha1": "151a6c8905b38a79",
+   "report": "modrep_nat_81103388 270000 270000 0 1fffffffffffffffffffffffffffffffffffff 149 - 200000"
+  },
+  "8110397C": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "arcade_on_frame",
+   "proved_sha1": "4ee1c57d650fd277",
+   "report": "modrep_nat_8110397C 200000 200000 0 7f 7 - 200000"
+  },
+  "8111F914": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "plat_view_hd_pack",
+   "proved_sha1": "350a89493dfa7e45",
+   "report": "modrep_nat_8111F914 200000 200000 0 7f 7 - 200000"
+  },
+  "8111F930": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "arcade_on_frame_list",
+   "proved_sha1": "0603061f5d62a0f1",
+   "report": "modrep_nat_8111F930 250000 250000 0 3ffff 18 - 200000"
+  },
+  "8111F978": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "arcade_on_frame_list_end",
+   "proved_sha1": "3b5802b75e4edfc3",
+   "report": "modrep_nat_8111F978 200000 200000 0 1ff 9 - 200000"
+  },
+  "8111F99C": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "arcade_on_frame_list_sent",
+   "proved_sha1": "821885b1d37aa300",
+   "report": "modrep_nat_8111F99C 200000 200000 0 7f 7 - 200000"
+  },
+  "8111F9B8": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "plat_view_tron",
+   "proved_sha1": "cfe0509e5be3f066",
+   "report": "modrep_nat_8111F9B8 200000 200000 0 7f 7 - 200000"
+  },
+  "8111F9D4": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "plat_entrance_media",
+   "proved_sha1": "4280962857dd45ac",
+   "report": "modrep_nat_8111F9D4 200000 200000 0 7f 7 - 200000"
+  },
+  "8111F9F0": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "arcade_on_frame_take",
+   "proved_sha1": "409091ff46ec9708",
+   "report": "modrep_nat_8111F9F0 200000 200000 0 1fff 13 - 200000"
+  },
+  "8111FA24": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "arcade_on_frame_taken",
+   "proved_sha1": "1216fc07e7aa0a55",
+   "report": "modrep_nat_8111FA24 200000 200000 0 7f 7 - 200000"
+  },
+  "8111FA40": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "arcade_on_scene_request",
+   "proved_sha1": "6bb552bdd6a22fe5",
+   "report": "modrep_nat_8111FA40 250000 250000 0 ffffffff 32 - 200000"
+  },
+  "8111FAC0": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "plat_heap_test",
+   "proved_sha1": "d2d90dc1e479eac7",
+   "report": "modrep_nat_8111FAC0 200000 200000 0 7f 7 - 200000"
+  },
+  "8111FADC": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "arcade_on_rules_preset",
+   "proved_sha1": "e2126084eaf75b30",
+   "report": "modrep_nat_8111FADC 200000 200000 0 7f 7 - 200000"
+  },
+  "8111FAF8": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "arcade_on_menu_action",
+   "proved_sha1": "11f27f4039c0c10c",
+   "report": "modrep_nat_8111FAF8 200000 200000 0 7 3 - 200000"
+  },
+  "8111FB04": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "arcade_on_menu_action_done",
+   "proved_sha1": "239b7eb3ccd221e8",
+   "report": "modrep_nat_8111FB04 200000 200000 0 1fff 13 - 200000"
+  },
+  "8111FB38": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "arcade_on_number_confirm",
+   "proved_sha1": "7e004c4e489cf3df",
+   "report": "modrep_nat_8111FB38 200000 200000 0 7f 7 - 200000"
+  },
+  "8111FB54": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "arcade_on_number_setup",
+   "proved_sha1": "83e89db75835d256",
+   "report": "modrep_nat_8111FB54 200000 200000 0 7f 7 - 200000"
+  },
+  "8111FB70": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "arcade_on_number_setup_done",
+   "proved_sha1": "4c7357dd914f80a0",
+   "report": "modrep_nat_8111FB70 200000 200000 0 7f 7 - 200000"
+  },
+  "8111FB8C": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "arcade_on_row_update",
+   "proved_sha1": "083e72685c924426",
+   "report": "modrep_nat_8111FB8C 200000 200000 0 7f 7 - 200000"
+  },
+  "8111FBA8": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "arcade_on_row_update_done",
+   "proved_sha1": "0a0748367fe3a996",
+   "report": "modrep_nat_8111FBA8 200000 200000 0 7f 7 - 200000"
+  },
+  "8111FBC4": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "arcade_on_pages_skip",
+   "proved_sha1": "507da33071895759",
+   "report": "modrep_nat_8111FBC4 200000 200000 0 7f 7 - 200000"
+  },
+  "8111FBE0": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "arcade_on_cpu",
+   "proved_sha1": "8ba5a16b09f80264",
+   "report": "modrep_nat_8111FBE0 200000 200000 0 7 3 - 200000"
+  },
+  "8111FBEC": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "arcade_on_cpu_done",
+   "proved_sha1": "ffa6a811cdd906a9",
+   "report": "modrep_nat_8111FBEC 200000 200000 0 ffff 16 - 200000"
+  },
+  "8111FC2C": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "plat_reserve",
+   "proved_sha1": "9267ad9608ea719e",
+   "report": "modrep_nat_8111FC2C 200000 200000 0 7f 7 - 200000"
+  },
+  "8111FC48": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "plat_wrestler_hd_count",
+   "proved_sha1": "5b752fcafc709d44",
+   "report": "modrep_nat_8111FC48 200000 200000 0 7f 7 - 200000"
+  },
+  "8111FC64": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "plat_wrestler_hd_meta",
+   "proved_sha1": "e4227ac594169f8b",
+   "report": "modrep_nat_8111FC64 200000 200000 0 7f 7 - 200000"
+  },
+  "8111FC80": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "plat_arena_folder_count",
+   "proved_sha1": "9a45a62c9e985512",
+   "report": "modrep_nat_8111FC80 200000 200000 0 7f 7 - 200000"
+  },
+  "8111FC9C": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "plat_arena_folder_get",
+   "proved_sha1": "1602deab7881f255",
+   "report": "modrep_nat_8111FC9C 200000 200000 0 7f 7 - 200000"
+  },
+  "8111FCB8": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "plat_arena_folder_file",
+   "proved_sha1": "1b8f80975a815197",
+   "report": "modrep_nat_8111FCB8 200000 200000 0 fffffff 28 - 200000"
+  },
+  "8111FD28": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "plat_pack",
+   "proved_sha1": "3087b30e51e5ef61",
+   "report": "modrep_nat_8111FD28 200000 200000 0 1ffff 17 - 200000"
+  },
+  "8111FD6C": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "plat_wrestler_video_count",
+   "proved_sha1": "c5a30579afbf5608",
+   "report": "modrep_nat_8111FD6C 200000 200000 0 7f 7 - 200000"
+  },
+  "8111FD88": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "plat_wrestler_video_get",
+   "proved_sha1": "09180805815198aa",
+   "report": "modrep_nat_8111FD88 200000 200000 0 7f 7 - 200000"
+  },
+  "8111FDA4": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "plat_wrestler_theme_count",
+   "proved_sha1": "eeeefe7bc8e9ad55",
+   "report": "modrep_nat_8111FDA4 200000 200000 0 7f 7 - 200000"
+  },
+  "8111FDC0": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "plat_wrestler_theme_get",
+   "proved_sha1": "11c15d668a82ef77",
+   "report": "modrep_nat_8111FDC0 200000 200000 0 7f 7 - 200000"
+  },
+  "8111FDDC": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "plat_wrestler_count",
+   "proved_sha1": "6d9289acc1a4d89d",
+   "report": "modrep_nat_8111FDDC 200000 200000 0 7f 7 - 200000"
+  },
+  "8111FDF8": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "plat_stock_count",
+   "proved_sha1": "8120b67f3243d63d",
+   "report": "modrep_nat_8111FDF8 200000 200000 0 7f 7 - 200000"
+  },
+  "8111FE14": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "plat_stock_get",
+   "proved_sha1": "fc50367ea09e76b2",
+   "report": "modrep_nat_8111FE14 200000 200000 0 7f 7 - 200000"
+  },
+  "8111FE30": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "plat_stock_photo",
+   "proved_sha1": "16e3554d0feb621d",
+   "report": "modrep_nat_8111FE30 200000 200000 0 7f 7 - 200000"
+  },
+  "8111FE4C": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "plat_stock_note",
+   "proved_sha1": "37bd62ff8aa92323",
+   "report": "modrep_nat_8111FE4C 200000 200000 0 fff 12 - 200000"
+  },
+  "8111FE7C": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "plat_removed_count",
+   "proved_sha1": "332833cff4189cca",
+   "report": "modrep_nat_8111FE7C 200000 200000 0 7f 7 - 200000"
+  },
+  "8111FE98": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "plat_removed_get",
+   "proved_sha1": "8cec7e6f54f3bd52",
+   "report": "modrep_nat_8111FE98 200000 200000 0 7f 7 - 200000"
+  },
+  "8111FEB4": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "plat_removal_text",
+   "proved_sha1": "75e9616c0f64b947",
+   "report": "modrep_nat_8111FEB4 200000 200000 0 7f 7 - 200000"
+  },
+  "8111FED0": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "plat_family_of",
+   "proved_sha1": "9b1f276f5b2a7ca7",
+   "report": "modrep_nat_8111FED0 200000 200000 0 7f 7 - 200000"
+  },
+  "8111FEEC": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "plat_family_size",
+   "proved_sha1": "8570b525106dc8cc",
+   "report": "modrep_nat_8111FEEC 200000 200000 0 7f 7 - 200000"
+  },
+  "8111FF08": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "plat_family_variant",
+   "proved_sha1": "618b08909f73dce6",
+   "report": "modrep_nat_8111FF08 200000 200000 0 7f 7 - 200000"
+  },
+  "8111FF24": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "plat_family_text",
+   "proved_sha1": "0c3fe709032c11a4",
+   "report": "modrep_nat_8111FF24 200000 200000 0 7f 7 - 200000"
+  },
+  "8111FF40": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "plat_family_slot",
+   "proved_sha1": "9515c5113a175d87",
+   "report": "modrep_nat_8111FF40 200000 200000 0 7f 7 - 200000"
+  },
+  "8111FF5C": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "plat_hidden",
+   "proved_sha1": "8f1dc6f1219f99b7",
+   "report": "modrep_nat_8111FF5C 200000 200000 0 7f 7 - 200000"
+  },
+  "8111FF78": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "plat_wrestler_class",
+   "proved_sha1": "62c531423ad60b7e",
+   "report": "modrep_nat_8111FF78 200000 200000 0 7f 7 - 200000"
+  },
+  "8111FF94": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "plat_rivals",
+   "proved_sha1": "b59bad2c50582744",
+   "report": "modrep_nat_8111FF94 200000 200000 0 7f 7 - 200000"
+  },
+  "8111FFB0": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "plat_family_rest",
+   "proved_sha1": "f45dfb5236eb009f",
+   "report": "modrep_nat_8111FFB0 200000 200000 0 7f 7 - 200000"
+  },
+  "8111FFCC": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "plat_wrestler_file",
+   "proved_sha1": "3301b47fec69c4e2",
+   "report": "modrep_nat_8111FFCC 200000 200000 0 7f 7 - 200000"
+  },
+  "8111FFE8": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "plat_wrestler_model",
+   "proved_sha1": "777809ec032c9eb7",
+   "report": "modrep_nat_8111FFE8 200000 200000 0 7f 7 - 200000"
+  },
+  "81120004": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "plat_wrestler_model_note",
+   "proved_sha1": "497c850bf866be4e",
+   "report": "modrep_nat_81120004 200000 200000 0 7f 7 - 200000"
+  },
+  "81120020": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "plat_wrestler_model_where",
+   "proved_sha1": "10f38e2ae56d6c82",
+   "report": "modrep_nat_81120020 200000 200000 0 7f 7 - 200000"
+  },
+  "8112003C": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "plat_wrestler_model_check",
+   "proved_sha1": "aa1acd7061ded5a5",
+   "report": "modrep_nat_8112003C 200000 200000 0 7f 7 - 200000"
+  },
+  "81120058": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "plat_wrestler_file_pool",
+   "proved_sha1": "54b15f59153449ed",
+   "report": "modrep_nat_81120058 200000 200000 0 7f 7 - 200000"
+  },
+  "81120074": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "plat_wrestler_get",
+   "proved_sha1": "b935433b9d6c870c",
+   "report": "modrep_nat_81120074 200000 200000 0 7f 7 - 200000"
+  },
+  "81120090": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "plat_wrestler_slots",
+   "proved_sha1": "80e4ee8c256af7ac",
+   "report": "modrep_nat_81120090 200000 200000 0 7f 7 - 200000"
+  },
+  "811200AC": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "plat_moves_note",
+   "proved_sha1": "d863e90250c08ab4",
+   "report": "modrep_nat_811200AC 200000 200000 0 7f 7 - 200000"
+  },
+  "811200C8": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "plat_move_own",
+   "proved_sha1": "30081666aba9659a",
+   "report": "modrep_nat_811200C8 200000 200000 0 7f 7 - 200000"
+  },
+  "811200E4": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "plat_move_lib_n",
+   "proved_sha1": "86dfa19bf6d289bb",
+   "report": "modrep_nat_811200E4 200000 200000 0 7f 7 - 200000"
+  },
+  "81120100": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "plat_move_lib_stamp",
+   "proved_sha1": "f2f51b6948906864",
+   "report": "modrep_nat_81120100 200000 200000 0 7f 7 - 200000"
+  },
+  "8112011C": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "plat_wrestler_edit",
+   "proved_sha1": "e26cbd1c3de81cba",
+   "report": "modrep_nat_8112011C 200000 200000 0 7f 7 - 200000"
+  },
+  "81120138": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "plat_anim_meta",
+   "proved_sha1": "9f1ab426a85fdde0",
+   "report": "modrep_nat_81120138 200000 200000 0 7f 7 - 200000"
+  },
+  "81120154": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "plat_anim_rom",
+   "proved_sha1": "374f99f66467e1bd",
+   "report": "modrep_nat_81120154 200000 200000 0 7f 7 - 200000"
+  },
+  "81120170": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "plat_anim_read",
+   "proved_sha1": "23eb641820710c4c",
+   "report": "modrep_nat_81120170 200000 200000 0 7f 7 - 200000"
+  },
+  "8112018C": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "plat_movex_where",
+   "proved_sha1": "8164b9bfd3b236f1",
+   "report": "modrep_nat_8112018C 200000 200000 0 7f 7 - 200000"
+  },
+  "811201A8": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "plat_wrestler_find",
+   "proved_sha1": "a9ee8b660f4f4d6e",
+   "report": "modrep_nat_811201A8 200000 200000 0 7f 7 - 200000"
+  },
+  "811201C4": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "plat_wrestler_id",
+   "proved_sha1": "2c890a28ae3c4063",
+   "report": "modrep_nat_811201C4 200000 200000 0 7f 7 - 200000"
+  },
+  "811201E0": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "plat_seat_note",
+   "proved_sha1": "e5720b19b9275b77",
+   "report": "modrep_nat_811201E0 200000 200000 0 7f 7 - 200000"
+  },
+  "811201FC": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "plat_sidecar_put",
+   "proved_sha1": "2d7765aac8852884",
+   "report": "modrep_nat_811201FC 200000 200000 0 7f 7 - 200000"
+  },
+  "81120218": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "plat_sidecar_get",
+   "proved_sha1": "54b74264dae032e5",
+   "report": "modrep_nat_81120218 200000 200000 0 7f 7 - 200000"
+  },
+  "81120234": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "plat_heap_note",
+   "proved_sha1": "28d3c692556cddae",
+   "report": "modrep_nat_81120234 200000 200000 0 7f 7 - 200000"
+  },
+  "81120250": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "arcade_on_page_wait",
+   "proved_sha1": "69fbb26299a6a29a",
+   "report": "modrep_nat_81120250 200000 200000 0 3fff 14 - 200000"
+  },
+  "81120288": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "arcade_on_sprite_request",
+   "proved_sha1": "ae6b83dda1b91f5c",
+   "report": "modrep_nat_81120288 200000 200000 0 7f 7 - 200000"
+  },
+  "811202A4": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "arcade_on_sprite_draw",
+   "proved_sha1": "3528fa01c4e54156",
+   "report": "modrep_nat_811202A4 200000 200000 0 ff 8 - 200000"
+  },
+  "811202C4": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "arcade_on_menu_sprites",
+   "proved_sha1": "4753bd7742e58241",
+   "report": "modrep_nat_811202C4 200000 200000 0 7f 7 - 200000"
+  },
+  "811202E0": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "arcade_on_camera",
+   "proved_sha1": "6d403318db21d807",
+   "report": "modrep_nat_811202E0 200000 200000 0 7 3 - 200000"
+  },
+  "811202EC": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "arcade_on_overlay",
+   "proved_sha1": "bfdb91a6ec9c0210",
+   "report": "modrep_nat_811202EC 200000 200000 0 7f 7 - 200000"
+  },
+  "81120308": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "arcade_on_match_step",
+   "proved_sha1": "4a935c608c930355",
+   "report": "modrep_nat_81120308 200000 200000 0 7f 7 - 200000"
+  },
+  "81120324": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "arcade_on_camera_built",
+   "proved_sha1": "011679c062e23dff",
+   "report": "modrep_nat_81120324 200000 200000 0 1fff 13 - 200000"
+  },
+  "81120358": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "plat_key_down",
+   "proved_sha1": "a0449dc71cacb12a",
+   "report": "modrep_nat_81120358 200000 200000 0 ff 8 - 200000"
+  },
+  "81120378": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "plat_hd_blend",
+   "proved_sha1": "22bbc4b16510a8eb",
+   "report": "modrep_nat_81120378 200000 200000 0 7f 7 - 200000"
+  },
+  "81120394": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "plat_hd_hand",
+   "proved_sha1": "12264cf09e0fca05",
+   "report": "modrep_nat_81120394 200000 200000 0 7f 7 - 200000"
+  },
+  "811203B0": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "plat_hd_time",
+   "proved_sha1": "f5c9eca0c2a188bf",
+   "report": "modrep_nat_811203B0 200000 200000 0 7f 7 - 200000"
+  },
+  "811203CC": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "plat_config",
+   "proved_sha1": "7db9303009655736",
+   "report": "modrep_nat_811203CC 270000 270000 0 3ffffffff 34 - 200000"
+  },
+  "81120454": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "plat_picture",
+   "proved_sha1": "a5b31f14b31e4c7e",
+   "report": "modrep_nat_81120454 200000 200000 0 7f 7 - 200000"
+  },
+  "81120470": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "plat_host",
+   "proved_sha1": "d2acdcf6cfebffae",
+   "report": "modrep_nat_81120470 200000 200000 0 7f 7 - 200000"
+  },
+  "8112048C": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "plat_view_replace",
+   "proved_sha1": "d00a5a40afe49f05",
+   "report": "modrep_nat_8112048C 200000 200000 0 7f 7 - 200000"
+  },
+  "811204A8": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "plat_config_set",
+   "proved_sha1": "59aeb288d33e8bc5",
+   "report": "modrep_nat_811204A8 270000 270000 0 1ffffffffff 41 - 200000"
+  },
+  "8112054C": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "plat_comm_event",
+   "proved_sha1": "4face8ee9ad493f2",
+   "report": "modrep_nat_8112054C 200000 200000 0 7f 7 - 200000"
+  },
+  "81120568": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "plat_comm_tick",
+   "proved_sha1": "a045188f1acdff69",
+   "report": "modrep_nat_81120568 200000 200000 0 7f 7 - 200000"
+  },
+  "81120584": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "plat_comm_config",
+   "proved_sha1": "98eb47dba6a6b809",
+   "report": "modrep_nat_81120584 200000 200000 0 7f 7 - 200000"
+  },
+  "811205A0": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "plat_comm_reset",
+   "proved_sha1": "77cdb7ec8b9f5731",
+   "report": "modrep_nat_811205A0 200000 200000 0 7f 7 - 200000"
+  },
+  "811205BC": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "plat_pad_name",
+   "proved_sha1": "c061ec595c872c21",
+   "report": "modrep_nat_811205BC 200000 200000 0 7f 7 - 200000"
+  },
+  "811205D8": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "plat_pad_buttons",
+   "proved_sha1": "6b67fd6d71b544ef",
+   "report": "modrep_nat_811205D8 200000 200000 0 7f 7 - 200000"
+  },
+  "811205F4": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "plat_pad_learn_start",
+   "proved_sha1": "8081ac1b985f1db4",
+   "report": "modrep_nat_811205F4 200000 200000 0 7f 7 - 200000"
+  },
+  "81120610": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "plat_pad_learn_read",
+   "proved_sha1": "c7ab133831472d87",
+   "report": "modrep_nat_81120610 200000 200000 0 7f 7 - 200000"
+  },
+  "8112062C": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "plat_pad_learn_apply",
+   "proved_sha1": "04bae8d8d8c4be90",
+   "report": "modrep_nat_8112062C 200000 200000 0 7f 7 - 200000"
+  },
+  "81120648": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "plat_pad_swap",
+   "proved_sha1": "b8a9979579102bd9",
+   "report": "modrep_nat_81120648 200000 200000 0 7f 7 - 200000"
+  },
+  "81120664": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "plat_quit",
+   "proved_sha1": "db872b1a743a6b00",
+   "report": "modrep_nat_81120664 200000 200000 0 7f 7 - 200000"
+  },
+  "81120680": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "plat_bind_name",
+   "proved_sha1": "57e71bb5afd03b9d",
+   "report": "modrep_nat_81120680 200000 200000 0 7f 7 - 200000"
+  },
+  "8112069C": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "plat_bind_start",
+   "proved_sha1": "63a0531ad69d8961",
+   "report": "modrep_nat_8112069C 200000 200000 0 7f 7 - 200000"
+  },
+  "811206B8": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "plat_bind_poll",
+   "proved_sha1": "3d3475263cff0033",
+   "report": "modrep_nat_811206B8 200000 200000 0 7f 7 - 200000"
+  },
+  "811206D4": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "plat_bind_clear",
+   "proved_sha1": "8a0282bcba8286e0",
+   "report": "modrep_nat_811206D4 200000 200000 0 7f 7 - 200000"
+  },
+  "811206F0": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "plat_bind_reset",
+   "proved_sha1": "5ab10650a9636153",
+   "report": "modrep_nat_811206F0 200000 200000 0 7f 7 - 200000"
+  },
+  "8112070C": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "plat_bind_stick",
+   "proved_sha1": "d7aad34acf0c5fe3",
+   "report": "modrep_nat_8112070C 200000 200000 0 7f 7 - 200000"
+  },
+  "81120728": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "plat_story_scan",
+   "proved_sha1": "a28cdf0914ee2b5a",
+   "report": "modrep_nat_81120728 200000 200000 0 7f 7 - 200000"
+  },
+  "81120744": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "plat_story_menu",
+   "proved_sha1": "2fa635740985e797",
+   "report": "modrep_nat_81120744 200000 200000 0 7f 7 - 200000"
+  },
+  "81120760": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "plat_story_error",
+   "proved_sha1": "cabe623977be8d4d",
+   "report": "modrep_nat_81120760 200000 200000 0 7f 7 - 200000"
+  },
+  "8112077C": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "plat_story_pack",
+   "proved_sha1": "8410d2165692dfc8",
+   "report": "modrep_nat_8112077C 200000 200000 0 7f 7 - 200000"
+  },
+  "81120798": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "plat_pages_pack",
+   "proved_sha1": "1a58ab98afe94b34",
+   "report": "modrep_nat_81120798 200000 200000 0 7f 7 - 200000"
+  },
+  "811207B4": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "plat_game_call",
+   "proved_sha1": "4a4314c57cd994a1",
+   "report": "modrep_nat_811207B4 250000 250000 0 7ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 363 - 200000"
+  },
+  "81120D60": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "plat_sprite_request",
+   "proved_sha1": "bf0a2358bce060f6",
+   "report": "modrep_nat_81120D60 200000 200000 0 ff 8 - 200000"
+  },
+  "81120D80": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "plat_game_text",
+   "proved_sha1": "7b4b0289793bc7bb",
+   "report": "modrep_nat_81120D80 200000 200000 0 7f 7 - 200000"
+  },
+  "81120D9C": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "plat_game_text_free",
+   "proved_sha1": "68a81a9e5af6792d",
+   "report": "modrep_nat_81120D9C 200000 200000 0 7f 7 - 200000"
+  },
+  "81120DB8": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "plat_sound",
+   "proved_sha1": "34f3c8730e8f8109",
+   "report": "modrep_nat_81120DB8 200000 200000 0 7f 7 - 200000"
+  },
+  "81120DD4": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "arcade_on_finalize",
+   "proved_sha1": "bc1b8534f4688e3a",
+   "report": "modrep_nat_81120DD4 200000 200000 0 7f 7 - 200000"
+  },
+  "81120DF0": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "arcade_on_finalize_done",
+   "proved_sha1": "7344aa1c2c70b649",
+   "report": "modrep_nat_81120DF0 200000 200000 0 7f 7 - 200000"
+  },
+  "81120E0C": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "arcade_on_match_setup",
+   "proved_sha1": "9d6b95bcb719eafb",
+   "report": "modrep_nat_81120E0C 200000 200000 0 7f 7 - 200000"
+  },
+  "81120E28": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "arcade_on_rumble_frame",
+   "proved_sha1": "e0608751b7dac774",
+   "report": "modrep_nat_81120E28 200000 200000 0 1ff 9 - 200000"
+  },
+  "81120E4C": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "arcade_on_hud",
+   "proved_sha1": "ec4e2acf22fa2cec",
+   "report": "modrep_nat_81120E4C 200000 200000 0 7f 7 - 200000"
+  },
+  "81120E68": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "bigshow_on_pack_record",
+   "proved_sha1": "1fd8b96e56939fbb",
+   "report": "modrep_nat_81120E68 200000 200000 0 7f 7 - 200000"
+  },
+  "81120E84": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "bigshow_on_pack_record_done",
+   "proved_sha1": "121f59eae10603bd",
+   "report": "modrep_nat_81120E84 200000 200000 0 7f 7 - 200000"
+  },
+  "81120EA0": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "bigshow_on_pack_moves",
+   "proved_sha1": "2fa53c3e5599782c",
+   "report": "modrep_nat_81120EA0 200000 200000 0 7f 7 - 200000"
+  },
+  "81120EBC": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "bigshow_on_pack_moves_done",
+   "proved_sha1": "f35228b71730e465",
+   "report": "modrep_nat_81120EBC 200000 200000 0 7f 7 - 200000"
+  },
+  "81120ED8": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "roster_on_unpack",
+   "proved_sha1": "8aa13eb1a28f0986",
+   "report": "modrep_nat_81120ED8 200000 200000 0 7f 7 - 200000"
+  },
+  "81120EF4": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "roster_on_unpack_done",
+   "proved_sha1": "5aca21345faea097",
+   "report": "modrep_nat_81120EF4 200000 200000 0 7f 7 - 200000"
+  },
+  "81120F10": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "roster_on_match_moves",
+   "proved_sha1": "e3a5f18fae632617",
+   "report": "modrep_nat_81120F10 200000 200000 0 7f 7 - 200000"
+  },
+  "81120F2C": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "roster_on_match_moves_done",
+   "proved_sha1": "70c1f0972b604176",
+   "report": "modrep_nat_81120F2C 200000 200000 0 7f 7 - 200000"
+  },
+  "81120F48": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "tron_on_music_stop",
+   "proved_sha1": "c616bc0604f1eb44",
+   "report": "modrep_nat_81120F48 200000 200000 0 1ff 9 - 200000"
+  },
+  "81120F6C": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "media_on_menu_video",
+   "proved_sha1": "b0a2e348a051eecc",
+   "report": "modrep_nat_81120F6C 200000 200000 0 7f 7 - 200000"
+  },
+  "81120F88": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "announce_on_table_setup",
+   "proved_sha1": "af92c75641b49fac",
+   "report": "modrep_nat_81120F88 200000 200000 0 7f 7 - 200000"
+  },
+  "81120FA4": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "announce_on_table_frame",
+   "proved_sha1": "3e4d4af019e69449",
+   "report": "modrep_nat_81120FA4 200000 200000 0 7f 7 - 200000"
+  },
+  "81120FC0": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "plat_guard",
+   "proved_sha1": "466bfb7d83b9c7b0",
+   "report": "modrep_nat_81120FC0 200000 200000 0 7fffff 23 - 200000"
+  },
+  "8112101C": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "plat_wmport_rom",
+   "proved_sha1": "9b35ea2f383357ed",
+   "report": "modrep_nat_8112101C 200000 200000 0 3 2 - 200000"
+  },
+  "81121024": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "plat_wmport_read",
+   "proved_sha1": "e3fa93b0deeb3638",
+   "report": "modrep_nat_81121024 442489 200000 0 ffffffff 32 - 200000"
+  },
+  "811210A4": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "plat_content_read",
+   "proved_sha1": "4030b045d7527c87",
+   "report": "modrep_nat_811210A4 430252 200000 0 7fffffff 31 - 200000"
+  },
+  "81121120": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "bigshow_on_story_part",
+   "proved_sha1": "ed1ee11e789c2eeb",
+   "report": "modrep_nat_81121120 200000 200000 0 7f 7 - 200000"
+  },
+  "8112113C": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "bigshow_on_story_rival",
+   "proved_sha1": "cbb4c3d4e232110f",
+   "report": "modrep_nat_8112113C 200000 200000 0 7f 7 - 200000"
+  },
+  "81121158": {
+   "file": "mod/recomp/hooks_recomp.c",
+   "name": "bigshow_on_story_pick",
+   "proved_sha1": "e7b2b2e5f923a777",
+   "report": "modrep_nat_81121158 200000 200000 0 7f 7 - 200000"
+  }
+ },
+ "gameplay": {
+  "8109537C": {
+   "file": "mod/src/draw.c",
+   "name": "build_assets",
+   "random_test": [
+    "report_native.txt: modrep_nat_8109537C 339295 339295 0 ffffffffffffe7ffffffffffffffffffffff 144 - 200000"
+   ],
+   "size": 144,
+   "text_sha1": "e54f657494eb9e41",
+   "tier": "gameplay"
+  },
+  "81096464": {
+   "file": "mod/src/draw.c",
+   "name": "emit_list",
+   "random_test": [
+    "report_native.txt: modrep_nat_81096464 379641 300733 28818 1ffffffffffffffffffffffffffffffc0ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffcffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffcfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 1769 memory-count@100000078:converted=5C,original=6B 200000"
+   ],
+   "size": 1658,
+   "text_sha1": "1554409187caf9a1",
+   "tier": "gameplay"
+  },
+  "81097E4C": {
+   "file": "mod/src/draw.c",
+   "name": "emit_char",
+   "random_test": [],
+   "size": 111,
+   "text_sha1": "c1975d32f6fa9bec",
+   "tier": "gameplay"
+  },
+  "81098008": {
+   "file": "mod/src/logic.c",
+   "name": "arcade_heap_service",
+   "random_test": [
+    "report_native.txt: modrep_nat_81098008 270336 264548 0 3fffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 238 - 200000",
+    "report_native_s2.txt: modrep_nat_81098008 270347 265566 0 3fffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 238 - 200000",
+    "report_native_fd.txt: modrep_nat_81098008 330312 310551 1 3fffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 238 args@3:a0:converted=36D15CB2,original=3FEE14A2 200000",
+    "report_native_fs.txt: modrep_nat_81098008 330285 310968 0 3fffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 238 - 200000",
+    "report_native_ft.txt: modrep_nat_81098008 330306 309434 1 3fffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 238 args@3:a0:converted=3F12B740,original=173655E0 200000"
+   ],
+   "size": 238,
+   "text_sha1": "bdc45a57f58e8111",
+   "tier": "gameplay"
+  },
+  "81098DE4": {
+   "file": "mod/src/logic.c",
+   "name": "arcade_overlay_loaded",
+   "random_test": [
+    "report_native.txt: modrep_nat_81098DE4 270000 270000 965 fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 620 args@3:a2:converted=80100978,original=8014C0A8 200000"
+   ],
+   "size": 620,
+   "text_sha1": "c055586bbe5ed10b",
+   "tier": "gameplay"
+  },
+  "81099B80": {
+   "file": "mod/src/logic.c",
+   "name": "arcade_number_setup_done",
+   "random_test": [
+    "report_native.txt: modrep_nat_81099B80 450000 450000 1344 fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 436 memory@815405C4:converted=4B,original=0 200000"
+   ],
+   "size": 436,
+   "text_sha1": "336c990367a634a3",
+   "tier": "gameplay"
+  },
+  "8109A620": {
+   "file": "mod/src/logic.c",
+   "name": "arcade_rr_finalize_pre",
+   "random_test": [
+    "report_native.txt: modrep_nat_8109A620 317182 317182 6451 1ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 433 args@E:a0:converted=454,original=80100454 200000"
+   ],
+   "size": 433,
+   "text_sha1": "e5360d05dbc05eeb",
+   "tier": "gameplay"
+  },
+  "8109ACE4": {
+   "file": "mod/src/logic.c",
+   "name": "arcade_rr_offer",
+   "random_test": [
+    "report_native.txt: modrep_nat_8109ACE4 277497 242459 17728 1fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 245 args@3:a1:converted=FF99,original=FFFFFF99 200000"
+   ],
+   "size": 245,
+   "text_sha1": "4bd7572b8c4d8f41",
+   "tier": "gameplay"
+  },
+  "8109B698": {
+   "file": "mod/src/logic.c",
+   "name": "arcade_rr_finalize_post",
+   "random_test": [],
+   "size": 1337,
+   "text_sha1": "73e41f8a754195f5",
+   "tier": "gameplay",
+   "whole_only": "locals past the original's frame (it keeps them in registers): rt_qa_field.ids at (0xC8u) (64 bytes); rt_qa_field.looks at (0xC8u + 64) (32 bytes)"
+  },
+  "8109CB7C": {
+   "file": "mod/src/logic.c",
+   "name": "rr_draw_field_from",
+   "random_test": [
+    "report_native.txt: modrep_nat_8109CB7C 281004 243468 648 1fffffffffffffffffffffffffffffffffffffffffffffffff 197 args@5A:a0:converted=DF1A,original=0 200000"
+   ],
+   "size": 197,
+   "text_sha1": "0aae7c32fa120f60",
+   "tier": "gameplay"
+  },
+  "8109CE90": {
+   "file": "mod/src/logic.c",
+   "name": "arcade_rr_match_setup",
+   "random_test": [
+    "report_native.txt: modrep_nat_8109CE90 450000 450000 0 1ffffffffffffffffffffffffffffffc07ffffffffffffffffffffffff 229 - 200000"
+   ],
+   "size": 229,
+   "text_sha1": "a868892d4d05ae07",
+   "tier": "gameplay"
+  },
+  "8109D7F0": {
+   "file": "mod/src/logic.c",
+   "name": "arcade_elim_check",
+   "random_test": [
+    "report_native.txt: modrep_nat_8109D7F0 450000 450000 0 ffffffffffe03ff87ffff007fffffffffffffffffffffffffffffffffffffffffffffffffffff 308 - 200000"
+   ],
+   "size": 308,
+   "text_sha1": "fa132fcdf54269da",
+   "tier": "gameplay"
+  },
+  "8109DCC0": {
+   "file": "mod/src/logic.c",
+   "name": "arcade_rr_frame",
+   "random_test": [
+    "report_native.txt: modrep_nat_8109DCC0 417591 417591 0 1fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffbffffffffffffffffffffffffffffffffffffcffffffffffffffffffffffffffff 613 - 200000"
+   ],
+   "size": 613,
+   "text_sha1": "96f19c862e4c8e53",
+   "tier": "gameplay"
+  },
+  "8109E654": {
+   "file": "mod/src/logic.c",
+   "name": "rumble_capture",
+   "random_test": [
+    "report_native.txt: modrep_nat_8109E654 450000 450000 0 3fffffffffffffffffffbfffffffffffffffffffffffffffffff 206 - 200000"
+   ],
+   "size": 206,
+   "text_sha1": "6027a9733ca2a944",
+   "tier": "gameplay"
+  },
+  "8109EB24": {
+   "file": "mod/src/logic.c",
+   "name": "arcade_rr_hud",
+   "random_test": [
+    "report_native.txt: modrep_nat_8109EB24 200000 0 1 0 634 crashed:C0000005"
+   ],
+   "size": 634,
+   "text_sha1": "d326f0943dcf972a",
+   "tier": "gameplay"
+  },
+  "8109F50C": {
+   "file": "mod/src/logic.c",
+   "name": "arcade_pad_hook",
+   "random_test": [],
+   "size": 2451,
+   "text_sha1": "fba5ffe400385e36",
+   "tier": "gameplay",
+   "whole_only": "locals past the original's frame (it keeps them in registers): regular_pads.ob at (0xB0u) (8 bytes); regular_pads.oe at (0xB0u + 8) (8 bytes); regular_pads.ox at (0xB0u + 8 + 8) (8 bytes); regular_pads.oy at (0xB0u + 8 + 8 + 8) (8 bytes)"
+  },
+  "810A1B58": {
+   "file": "mod/src/logic.c",
+   "name": "load_settings",
+   "random_test": [],
+   "size": 1270,
+   "text_sha1": "ce10ec0d4eeb50a8",
+   "tier": "gameplay"
+  },
+  "810A2F30": {
+   "file": "mod/src/logic.c",
+   "name": "number_page_frame",
+   "random_test": [
+    "report_native.txt: modrep_nat_810A2F30 270000 270000 2596 1fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 389 memory-count@80148020:converted=7,original=9 200000"
+   ],
+   "size": 389,
+   "text_sha1": "bc25889404352a4c",
+   "tier": "gameplay"
+  },
+  "810A363C": {
+   "file": "mod/src/logic.c",
+   "name": "exh_lumberjack_pad",
+   "random_test": [
+    "report_native.txt: modrep_nat_810A363C 270000 270000 20052 1fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 269 args@3:a2:converted=0,original=1 200000"
+   ],
+   "size": 269,
+   "text_sha1": "b2428897f9a73285",
+   "tier": "gameplay"
+  },
+  "810A3BC0": {
+   "file": "mod/src/logic.c",
+   "name": "players_restore",
+   "random_test": [
+    "report_native.txt: modrep_nat_810A3BC0 450000 450000 0 7ffffffffffffffffffc0ffc0fe1ffffffffffffffffffff 191 - 200000"
+   ],
+   "size": 191,
+   "text_sha1": "e091048aef499728",
+   "tier": "gameplay"
+  },
+  "810A3EBC": {
+   "file": "mod/src/logic.c",
+   "name": "pads_out",
+   "random_test": [
+    "report_native.txt: modrep_nat_810A3EBC 270000 270000 1 1fffffffffffffffffffffffffffffffffff 141 memory@80063360:converted=36,original=82 200000"
+   ],
+   "size": 141,
+   "text_sha1": "5baf98f8b25391cb",
+   "tier": "gameplay"
+  },
+  "810A4184": {
+   "file": "mod/src/logic.c",
+   "name": "arcade_demo_setup_done",
+   "random_test": [],
+   "size": 316,
+   "text_sha1": "5a6764d7fcd8e6bf",
+   "tier": "gameplay",
+   "whole_only": "locals past the original's frame (it keeps them in registers): qa_demo_setup.ids at (0x90u) (64 bytes); qa_demo_setup.looks at (0x90u + 64) (32 bytes)"
+  },
+  "810A5744": {
+   "file": "mod/src/logic.c",
+   "name": "qa_move_entry",
+   "random_test": [
+    "report_native.txt: modrep_nat_810A5744 447735 445327 0 ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff80ffffffffff80ffffffffffffffffffffffffffffffffff 592 - 200000"
+   ],
+   "size": 592,
+   "text_sha1": "3c7eb6c539073af1",
+   "tier": "gameplay"
+  },
+  "810B24A0": {
+   "file": "mod/src/logic.c",
+   "name": "menu_confirm",
+   "random_test": [
+    "report_native.txt: modrep_nat_810B24A0 450000 450000 0 1fffffe000007fffffffffffff 101 - 200000"
+   ],
+   "size": 101,
+   "text_sha1": "6350c0a5a6c2c27a",
+   "tier": "gameplay"
+  },
+  "810B2940": {
+   "file": "mod/src/logic.c",
+   "name": "exh_lumberjack_slot",
+   "random_test": [
+    "report_native.txt: modrep_nat_810B2940 270000 269939 0 fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 348 - 200000",
+    "report_native_s2.txt: modrep_nat_810B2940 270000 269934 0 fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 348 - 200000",
+    "report_native_fd.txt: modrep_nat_810B2940 420000 419700 77093 fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 348 memory-count@81586BA7:converted=8,original=6 200000",
+    "report_native_fs.txt: modrep_nat_810B2940 420000 419677 236608 fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 348 memory-count@81586BA5:converted=71,original=6F 200000",
+    "report_native_ft.txt: modrep_nat_810B2940 450000 449629 121093 fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 348 memory-count@81586BA6:converted=D,original=B 200000"
+   ],
+   "size": 348,
+   "text_sha1": "450d413477e85249",
+   "tier": "gameplay"
+  },
+  "810B2EB0": {
+   "file": "mod/src/logic.c",
+   "name": "list_open",
+   "random_test": [
+    "report_native.txt: modrep_nat_810B2EB0 250000 250000 20980 1ffffffffffffffffffffffffffffffffffffffffffffffff 193 args@2:a0:converted=97FA623D,original=81580000 200000"
+   ],
+   "size": 193,
+   "text_sha1": "6fed34b805410b66",
+   "tier": "gameplay"
+  },
+  "810B31B4": {
+   "file": "mod/src/logic.c",
+   "name": "custom_frame",
+   "random_test": [
+    "report_native.txt: modrep_nat_810B31B4 450000 450000 307266 3ffffffffffffffff03ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 498 args@1:a1:converted=0,original=B 200000"
+   ],
+   "size": 498,
+   "text_sha1": "498fadaa645dc45d",
+   "tier": "gameplay"
+  },
+  "810B4138": {
+   "file": "mod/src/logic.c",
+   "name": "qa_frame",
+   "random_test": [
+    "report_native.txt: modrep_nat_810B4138 372983 372983 38481 3fffffffffffffffffffffffffffffffffffffffffffffffffffffffffe07ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 602 memory-count@80102999:converted=80,original=81 200000"
+   ],
+   "size": 602,
+   "text_sha1": "4c29c7030fe7c899",
+   "tier": "gameplay"
+  },
+  "810B74D4": {
+   "file": "mod/src/logic.c",
+   "name": "draw_credits",
+   "random_test": [
+    "report_native.txt: modrep_nat_810B74D4 270000 269966 0 ffffffffffffffffffffffff 96 - 200000",
+    "report_native_s2.txt: modrep_nat_810B74D4 270000 269960 0 ffffffffffffffffffffffff 96 - 200000",
+    "report_native_fd.txt: modrep_nat_810B74D4 330000 329816 0 ffffffffffffffffffffffff 96 - 200000",
+    "report_native_fs.txt: modrep_nat_810B74D4 330000 329814 0 ffffffffffffffffffffffff 96 - 200000",
+    "report_native_ft.txt: modrep_nat_810B74D4 330000 329824 1 ffffffffffffffffffffffff 96 memory@815853B0:converted=F0,original=20 200000"
+   ],
+   "size": 96,
+   "text_sha1": "5bed1b29629363cf",
+   "tier": "gameplay"
+  },
+  "810B7D14": {
+   "file": "mod/src/logic.c",
+   "name": "challenge_decided",
+   "random_test": [
+    "report_native.txt: modrep_nat_810B7D14 250177 249971 822 fffffffffffffffffffffffff 100 memory-count@815854C8:converted=13,original=10 200000"
+   ],
+   "size": 100,
+   "text_sha1": "0eb147149d4ce2ca",
+   "tier": "gameplay"
+  },
+  "810B8CC4": {
+   "file": "mod/src/logic.c",
+   "name": "menu_choose_action",
+   "random_test": [
+    "report_native.txt: modrep_nat_810B8CC4 450000 450000 0 7ffff03fffffffffff 71 - 200000"
+   ],
+   "size": 71,
+   "text_sha1": "8b93739fa0fd0cd8",
+   "tier": "gameplay"
+  },
+  "810B8DE0": {
+   "file": "mod/src/logic.c",
+   "name": "continue_screen",
+   "random_test": [
+    "report_native.txt: modrep_nat_810B8DE0 250034 249995 122 ffffffffffffffffffffffffffffffffffffffffffffffffffffff 216 memory-count@815853B2:converted=7,original=8 200000"
+   ],
+   "size": 216,
+   "text_sha1": "0a9443356e19943a",
+   "tier": "gameplay"
+  },
+  "810B9314": {
+   "file": "mod/src/logic.c",
+   "name": "label_text_draw",
+   "random_test": [
+    "report_native.txt: modrep_nat_810B9314 301726 289311 1 3fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 318 memory@81585434:converted=40,original=1 200000"
+   ],
+   "size": 318,
+   "text_sha1": "ff093e94cb506e4c",
+   "tier": "gameplay"
+  },
+  "810B9AFC": {
+   "file": "mod/src/logic.c",
+   "name": "menu_change",
+   "random_test": [
+    "report_native.txt: modrep_nat_810B9AFC 250000 250000 74302 3ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 290 memory-count@800457A6:converted=0,original=2 200000"
+   ],
+   "size": 290,
+   "text_sha1": "97b22d4e7bd6911d",
+   "tier": "gameplay"
+  },
+  "810B9F84": {
+   "file": "mod/src/logic.c",
+   "name": "menu_open",
+   "random_test": [
+    "report_native.txt: modrep_nat_810B9F84 250000 250000 48308 7ffffffffffff 51 args@0:a1:converted=0,original=81580000 200000"
+   ],
+   "size": 51,
+   "text_sha1": "b12f57844a58e31c",
+   "tier": "gameplay"
+  },
+  "810BA050": {
+   "file": "mod/src/logic.c",
+   "name": "menu_action",
+   "random_test": [
+    "report_native.txt: modrep_nat_810BA050 270000 270000 223 1fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 693 args@0:a2:converted=B45F3B13,original=81540000 200000"
+   ],
+   "size": 693,
+   "text_sha1": "c8c38e3dd5c6feae",
+   "tier": "gameplay"
+  },
+  "810BAD54": {
+   "file": "mod/src/logic.c",
+   "name": "list_rows",
+   "random_test": [
+    "report_native.txt: modrep_nat_810BAD54 250000 250000 938 1fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 245 args@1:a1:converted=801007A8,original=30 200000"
+   ],
+   "size": 245,
+   "text_sha1": "bd808c2c7c28f23f",
+   "tier": "gameplay"
+  },
+  "810BB128": {
+   "file": "mod/src/logic.c",
+   "name": "qa_regular_rumble",
+   "random_test": [
+    "report_native.txt: modrep_nat_810BB128 450000 450000 203079 1fffffffffffffffffffffffffffffffffffffffffffffff0007ffffffffffffffffffffffffffffffffffffffffffffffffffffffffff80000ffffff800000fffffffffffffffff 573 memory-count@81585444:converted=0,original=1 200000"
+   ],
+   "size": 573,
+   "text_sha1": "ade0891fa22f1c13",
+   "tier": "gameplay"
+  },
+  "810BC2B0": {
+   "file": "mod/src/logic.c",
+   "name": "auto_pick_c",
+   "random_test": [
+    "report_native.txt: modrep_nat_810BC2B0 297054 290597 18479 7ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 563 memory-count@815853DC:converted=A,original=4 200000"
+   ],
+   "size": 563,
+   "text_sha1": "037585e35d6acd9c",
+   "tier": "gameplay"
+  },
+  "810BCB7C": {
+   "file": "mod/src/logic.c",
+   "name": "list_close",
+   "random_test": [
+    "report_native.txt: modrep_nat_810BCB7C 250000 250000 6012 1ffffffffffffffffffffffffffffffffffffff 153 memory-count@80148016:converted=20,original=2B 200000"
+   ],
+   "size": 153,
+   "text_sha1": "2de2b90426ba539a",
+   "tier": "gameplay"
+  },
+  "810BCDE0": {
+   "file": "mod/src/logic.c",
+   "name": "qa_op_frame",
+   "random_test": [
+    "report_native.txt: modrep_nat_810BCDE0 270000 270000 858 7ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 275 args@0:a1:converted=FFFF,original=81580000 200000"
+   ],
+   "size": 275,
+   "text_sha1": "142a6294686cf917",
+   "tier": "gameplay"
+  },
+  "810BF1FC": {
+   "file": "mod/src/gameplay.c",
+   "name": "arcade_rumble_ai",
+   "random_test": [
+    "report_native.txt: modrep_nat_810BF1FC 450000 449243 610064 7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 575 calls@6:converted=0,original=5C 200000"
+   ],
+   "size": 575,
+   "text_sha1": "87228e5e69845473",
+   "tier": "gameplay"
+  },
+  "810C081C": {
+   "file": "mod/src/bigshow.c",
+   "name": "bigshow_frame",
+   "random_test": [
+    "report_native.txt: modrep_nat_810C081C 450000 450000 442246 ffffffffffffffffffffffffffffffffffffffffffffffffffff80007ffffffffffffffffffffffffffffffff 356 memory-count@8158B2F7:converted=2F4,original=2F2 200000"
+   ],
+   "size": 356,
+   "text_sha1": "da53ce8e5cd11d4b",
+   "tier": "gameplay"
+  },
+  "810C0DAC": {
+   "file": "mod/src/bigshow.c",
+   "name": "bigshow_pack_pre",
+   "random_test": [
+    "report_native.txt: modrep_nat_810C0DAC 333712 333712 5806 1ffffffffffffffffffffffffffffffffffffffffffffffffffffff 217 memory@8010145D:converted=8A,original=0 200000"
+   ],
+   "size": 217,
+   "text_sha1": "5e036af712ee4485",
+   "tier": "gameplay"
+  },
+  "810C1110": {
+   "file": "mod/src/bigshow.c",
+   "name": "bigshow_pack_post",
+   "random_test": [
+    "report_native.txt: modrep_nat_810C1110 229587 200000 7246 fffff 20 memory-count@1000001B2:converted=B3,original=B0 200000"
+   ],
+   "size": 20,
+   "text_sha1": "c861033371571968",
+   "tier": "gameplay"
+  },
+  "810C1160": {
+   "file": "mod/src/bigshow.c",
+   "name": "bigshow_story_tables",
+   "random_test": [
+    "report_native.txt: modrep_nat_810C1160 258203 258203 0 3ffffffffffffffffffffffffffffffffffffff9fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe0000067ffffffffffffffffffffffffff 930 - 196096"
+   ],
+   "size": 930,
+   "text_sha1": "6d93335715f40bd5",
+   "tier": "gameplay"
+  },
+  "810C2028": {
+   "file": "mod/src/bigshow.c",
+   "name": "rm_put",
+   "random_test": [
+    "report_native.txt: modrep_nat_810C2028 250854 249775 1399 ffffffffffffffffffffffffffffffffffffffffffffff 184 args@5:a0:converted=FFFF,original=7FFFFFFF 200000"
+   ],
+   "size": 184,
+   "text_sha1": "97a18e76614aed04",
+   "tier": "gameplay"
+  },
+  "810C2928": {
+   "file": "mod/src/media.c",
+   "name": "media_video_select",
+   "random_test": [
+    "report_native.txt: modrep_nat_810C2928 450000 450000 323 ffffffffffffffffffffffffffffffffffffffff3fffffffffffffffff 232 memory@8015CD4D:converted=98,original=C1 200000"
+   ],
+   "size": 232,
+   "text_sha1": "79db45b0c0594b3d",
+   "tier": "gameplay"
+  },
+  "810C2E6C": {
+   "file": "mod/src/media.c",
+   "name": "media_file_post",
+   "random_test": [
+    "report_native.txt: modrep_nat_810C2E6C 387811 222452 14 3fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 254 args@0:a0:converted=EFFFFFFF,original=0 200000"
+   ],
+   "size": 254,
+   "text_sha1": "6da3d0a3a46c298a",
+   "tier": "gameplay"
+  },
+  "810C3280": {
+   "file": "mod/src/media.c",
+   "name": "media_user_song",
+   "random_test": [
+    "report_native.txt: modrep_nat_810C3280 450000 450000 0 1fdfffffffffffffffffffffffffffffffffffffffffffffffffff 213 - 200000"
+   ],
+   "size": 213,
+   "text_sha1": "870f2b43e19d4fca",
+   "tier": "gameplay"
+  },
+  "810C3808": {
+   "file": "mod/src/media.c",
+   "name": "media_play_sound",
+   "random_test": [
+    "report_native.txt: modrep_nat_810C3808 270000 269995 0 1ffffffffffffffffffffffffffffffffffffffffffffffffffffff 217 - 200000",
+    "report_native_s2.txt: modrep_nat_810C3808 270000 269997 0 1ffffffffffffffffffffffffffffffffffffffffffffffffffffff 217 - 200000",
+    "report_native_fd.txt: modrep_nat_810C3808 420102 420072 10237 1ffffffffffffffffffffffffffffffffffffffffffffffffffffff 217 memory-count@8159B708:converted=17,original=15 200000",
+    "report_native_fs.txt: modrep_nat_810C3808 420734 420710 35947 1ffffffffffffffffffffffffffffffffffffffffffffffffffffff 217 memory-count@81599ECA:converted=10,original=F 200000",
+    "report_native_ft.txt: modrep_nat_810C3808 450000 449927 22885 1ffffffffffffffffffffffffffffffffffffffffffffffffffffff 217 memory@81599EC8:converted=F8,original=0 200000"
+   ],
+   "size": 217,
+   "text_sha1": "d29b1f33370c49a0",
+   "tier": "gameplay"
+  },
+  "810C3B6C": {
+   "file": "mod/src/media.c",
+   "name": "media_frame",
+   "random_test": [
+    "report_native.txt: modrep_nat_810C3B6C 446705 446630 0 1ffffffffffffffffffffffffffffffc000000000000000000000000007ffffffffffff8000000000000000000000000000000000000000000000000000e3fffffffffffff0000000ffc00000000000000000000000000000001fffffffffffffffffffffffffffffffffffffff 873 - 200000"
+   ],
+   "size": 873,
+   "text_sha1": "d1f13332d1d6232b",
+   "tier": "gameplay"
+  },
+  "810C4D48": {
+   "file": "mod/src/media.c",
+   "name": "media_tron_frame",
+   "random_test": [
+    "report_native.txt: modrep_nat_810C4D48 250000 250000 23 fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 244 calls@B:converted=0,original=B6 200000"
+   ],
+   "size": 244,
+   "text_sha1": "18842fb7551cc003",
+   "tier": "gameplay"
+  },
+  "810C5168": {
+   "file": "mod/src/commentary.c",
+   "name": "commentary_frame",
+   "random_test": [
+    "report_native.txt: modrep_nat_810C5168 384816 384700 160239 1fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffc7ffffffffffffffffffffffffffffffffffffffffbfffffffffffffffffffffffffffffffffffffffffffffffffffffffffbfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 1605 calls@1E:converted=805FFF90,original=805FFF78 200000"
+   ],
+   "size": 1553,
+   "text_sha1": "debbb626bd6100c0",
+   "tier": "gameplay"
+  },
+  "810C7784": {
+   "file": "mod/src/roster.c",
+   "name": "ext_of_id",
+   "random_test": [
+    "report_native.txt: modrep_nat_810C7784 134656 113079 0 fffffffffffffffffffffffff 100 - 91590"
+   ],
+   "size": 100,
+   "text_sha1": "f16aaffa81d18bec",
+   "tier": "gameplay"
+  },
+  "810C7A60": {
+   "file": "mod/src/roster.c",
+   "name": "roster_id_on",
+   "random_test": [
+    "report_native.txt: modrep_nat_810C7A60 250000 250000 98205 7fffffffffff 47 return@0:converted=0,original=80100609 200000"
+   ],
+   "size": 47,
+   "text_sha1": "6aa6c7f32d9a5c7a",
+   "tier": "gameplay"
+  },
+  "810C7F48": {
+   "file": "mod/src/roster.c",
+   "name": "removal_who",
+   "random_test": [],
+   "size": 75,
+   "text_sha1": "dec3cc287e2935fd",
+   "tier": "gameplay"
+  },
+  "810C81F4": {
+   "file": "mod/src/roster.c",
+   "name": "roster_random_ord",
+   "random_test": [
+    "report_native.txt: modrep_nat_810C81F4 277404 244043 89210 fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 340 args@0:a0:converted=638A,original=0 200000"
+   ],
+   "size": 340,
+   "text_sha1": "086191d0b48cde46",
+   "tier": "gameplay"
+  },
+  "810C8744": {
+   "file": "mod/src/roster.c",
+   "name": "ext_wanted",
+   "random_test": [
+    "report_native.txt: modrep_nat_810C8744 450000 450000 53016 07fffffffffffffffffffffffffff 113 memory@81608AB4:converted=0,original=91 200000"
+   ],
+   "size": 113,
+   "text_sha1": "65c94b1e208ca4f6",
+   "tier": "gameplay"
+  },
+  "810C8BB8": {
+   "file": "mod/src/roster.c",
+   "name": "seat_take",
+   "random_test": [
+    "report_native.txt: modrep_nat_810C8BB8 271010 269518 0 fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 692 - 200000",
+    "report_native_s2.txt: modrep_nat_810C8BB8 281019 279392 0 fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 692 - 200000",
+    "report_native_fd.txt: modrep_nat_810C8BB8 398384 396665 5 fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 692 calls@8:converted=D75DADAB,original=805DADAB 200000",
+    "report_native_fs.txt: modrep_nat_810C8BB8 404140 402391 0 fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 692 - 200000",
+    "report_native_ft.txt: modrep_nat_810C8BB8 361520 359876 0 fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 692 - 200000"
+   ],
+   "size": 692,
+   "text_sha1": "08ccd4a12092064b",
+   "tier": "gameplay"
+  },
+  "810CA268": {
+   "file": "mod/src/roster.c",
+   "name": "roster_build_record",
+   "random_test": [
+    "report_native.txt: modrep_nat_810CA268 433523 433523 377689 7fffffffffffffffffffffffffffffffffffffffff9ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 491 args@1:a0:converted=80100784,original=1 200000"
+   ],
+   "size": 491,
+   "text_sha1": "acd30e4cb84ab5b8",
+   "tier": "gameplay"
+  },
+  "810CAC98": {
+   "file": "mod/src/roster.c",
+   "name": "roster_load_moves",
+   "random_test": [],
+   "size": 225,
+   "text_sha1": "7bfa0e05cfba10db",
+   "tier": "gameplay",
+   "whole_only": "locals past the original's frame (it keeps them in registers): roster_load_moves.info at (0x58u) (32 bytes)"
+  },
+  "810CB01C": {
+   "file": "mod/src/roster.c",
+   "name": "rm_relations",
+   "random_test": [
+    "report_native.txt: modrep_nat_810CB01C 420442 420266 318 1fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 533 memory-count@815E67C5:converted=189,original=18A 200000"
+   ],
+   "size": 533,
+   "text_sha1": "fcc2e985e082859e",
+   "tier": "gameplay",
+   "whole_only": "locals past the original's frame (it keeps them in registers): removal_who.h at (0x90u) (((NSize<char>::value * (u32)(6) + 7u) & ~7u) bytes; its own frame had it at 0x0); removal_num.c at (0x90u + ((NSize<char>::value * (u32)(6) + 7u) & ~7u)) (((NSize<char>::value * (u32)(2) + 7u) & ~7u) bytes; its own frame had it at 0x0)"
+  },
+  "810CB870": {
+   "file": "mod/src/roster.c",
+   "name": "roster_build_all",
+   "random_test": [],
+   "size": 1183,
+   "text_sha1": "ad9e72791cd1fde7",
+   "tier": "gameplay"
+  },
+  "810CCAEC": {
+   "file": "mod/src/roster.c",
+   "name": "ext_build_all",
+   "random_test": [
+    "report_native.txt: modrep_nat_810CCAEC 289872 157028 0 1fffffffffffffffffffffffffffffffffffffffffffffffffff 205 - 129944"
+   ],
+   "size": 205,
+   "text_sha1": "43dd20eb2a5db93f",
+   "tier": "gameplay"
+  },
+  "810CD50C": {
+   "file": "mod/src/roster.c",
+   "name": "glayout_run",
+   "random_test": [],
+   "size": 576,
+   "text_sha1": "acbc1a0570f14aad",
+   "tier": "gameplay",
+   "whole_only": "locals past the original's frame (it keeps them in registers): glayout_run.name at (0x80u) (16 bytes)"
+  },
+  "810CE660": {
+   "file": "mod/src/roster.c",
+   "name": "layout",
+   "random_test": [],
+   "size": 1366,
+   "text_sha1": "d2f248d746b44ce3",
+   "tier": "gameplay",
+   "whole_only": "locals past the original's frame (it keeps them in registers): removal_who.h at (0x88u) (((NSize<char>::value * (u32)(6) + 7u) & ~7u) bytes; its own frame had it at 0x0); removal_num.c at (0x88u + ((NSize<char>::value * (u32)(6) + 7u) & ~7u)) (((NSize<char>::value * (u32)(2) + 7u) & ~7u) bytes; its own frame had it at 0x0); json_layout.name at (0x88u + ((NSize<char>::value * (u32)(6) + 7u) & ~7u) + ((NSize<char>::value * (u32)(2) + 7u) & ~7u)) (24 bytes); json_layout.name at (0x88u + ((NSize<char>::value * (u32)(6) + 7u) & ~7u) + ((NSize<char>::value * (u32)(2) + 7u) & ~7u) + 24) (8 bytes)"
+  },
+  "810CFE70": {
+   "file": "mod/src/roster.c",
+   "name": "roster_pages_to_save",
+   "random_test": [],
+   "size": 326,
+   "text_sha1": "bc31573d3a3e8490",
+   "tier": "gameplay",
+   "whole_only": "locals past the original's frame (it keeps them in registers): roster_pages_to_save.n at (0x48u) (8 bytes)"
+  },
+  "810D03A4": {
+   "file": "mod/src/roster.c",
+   "name": "save_one",
+   "random_test": [
+    "report_native.txt: modrep_nat_810D03A4 450000 449996 2 7ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff803fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 763 calls@1:converted=2B0980EF,original=28CF72C9 200000"
+   ],
+   "size": 763,
+   "text_sha1": "1498b04f8a1096b5",
+   "tier": "gameplay"
+  },
+  "810D0F90": {
+   "file": "mod/src/roster.c",
+   "name": "roster_pack_one",
+   "random_test": [
+    "report_native.txt: modrep_nat_810D0F90 270000 270000 76398 7ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 259 args@1:a0:converted=0,original=45 200000"
+   ],
+   "size": 259,
+   "text_sha1": "cbf3030ffab9082a",
+   "tier": "gameplay"
+  },
+  "810D153C": {
+   "file": "mod/src/roster.c",
+   "name": "roster_moves_pre",
+   "random_test": [],
+   "size": 81,
+   "text_sha1": "435aaa090d964054",
+   "tier": "gameplay",
+   "whole_only": "locals past the original's frame (it keeps them in registers): removal_who.h at (0x28u) (((NSize<char>::value * (u32)(6) + 7u) & ~7u) bytes; its own frame had it at 0x0); removal_num.c at (0x28u + ((NSize<char>::value * (u32)(6) + 7u) & ~7u)) (((NSize<char>::value * (u32)(2) + 7u) & ~7u) bytes; its own frame had it at 0x0); roster_load_moves.info at (0x28u + ((NSize<char>::value * (u32)(6) + 7u) & ~7u) + ((NSize<char>::value * (u32)(2) + 7u) & ~7u)) (32 bytes)"
+  },
+  "810D1680": {
+   "file": "mod/src/roster.c",
+   "name": "cells_on",
+   "random_test": [
+    "report_native.txt: modrep_nat_810D1680 450000 450000 231455 007fffffffff80000000003fffffffffff800000001fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 488 args@1:a0:converted=0,original=80100F58 200000"
+   ],
+   "size": 488,
+   "text_sha1": "87611cde101105ed",
+   "tier": "gameplay"
+  },
+  "810D1E20": {
+   "file": "mod/src/roster.c",
+   "name": "roster_moves_post",
+   "random_test": [
+    "report_native.txt: modrep_nat_810D1E20 253643 249285 98418 1ffffffffffffffffffffffffffffff 121 memory-count@800000CA:converted=4,original=28 200000"
+   ],
+   "size": 121,
+   "text_sha1": "068701adc2708997",
+   "tier": "gameplay"
+  },
+  "810D2004": {
+   "file": "mod/src/roster.c",
+   "name": "roster_match_moves_pre",
+   "random_test": [
+    "report_native.txt: modrep_nat_810D2004 414972 414972 126390 7ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 299 calls@5:converted=5AB102FF,original=90 200000"
+   ],
+   "size": 299,
+   "text_sha1": "c035555c00669620",
+   "tier": "gameplay"
+  },
+  "810D24B0": {
+   "file": "mod/src/roster.c",
+   "name": "roster_match_moves_post",
+   "random_test": [
+    "report_native.txt: modrep_nat_810D24B0 176354 168260 130816 fffffffcffffffffffffffffffffffffffffffffffffffffffffffffffffffffe007ffffffffffffffffffffffffffffffffffffffffffff8000003fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 776 args@0:a2:converted=FFFFFFBA,original=8010 127218"
+   ],
+   "size": 776,
+   "text_sha1": "5d2c4b8c90941bf1",
+   "tier": "gameplay"
+  },
+  "810D30D0": {
+   "file": "mod/src/roster.c",
+   "name": "mu_match_build",
+   "random_test": [
+    "report_native.txt: modrep_nat_810D30D0 24576 916 0 7ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 723 - 699"
+   ],
+   "size": 723,
+   "text_sha1": "fbc0cd96c0cfa3c5",
+   "tier": "gameplay"
+  },
+  "810D3C2C": {
+   "file": "mod/src/roster.c",
+   "name": "roster_frame",
+   "random_test": [],
+   "size": 964,
+   "text_sha1": "0fd0e4296dc8a32f",
+   "tier": "gameplay",
+   "whole_only": "locals past the original's frame (it keeps them in registers): removal_who.h at (0x70u) (((NSize<char>::value * (u32)(6) + 7u) & ~7u) bytes; its own frame had it at 0x0); removal_num.c at (0x70u + ((NSize<char>::value * (u32)(6) + 7u) & ~7u)) (((NSize<char>::value * (u32)(2) + 7u) & ~7u) bytes; its own frame had it at 0x0); benoit_build.recs at (0x70u + ((NSize<char>::value * (u32)(6) + 7u) & ~7u) + ((NSize<char>::value * (u32)(2) + 7u) & ~7u)) (8 bytes); benoit_build.moves at (0x70u + ((NSize<char>::value * (u32)(6) + 7u) & ~7u) + ((NSize<char>::value * (u32)(2) + 7u) & ~7u) + 8) (8 bytes)"
+  },
+  "810D4B3C": {
+   "file": "mod/src/roster.c",
+   "name": "place_ext",
+   "random_test": [
+    "report_native.txt: modrep_nat_810D4B3C 196550 137504 141275 3fffffffffffffffffffffffffffffffffffffffffdfffffffffffe7fff3f3fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff0000000000003ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffcffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 1346 args@3:a0:converted=80100074,original=80100DBC 103037"
+   ],
+   "size": 1346,
+   "text_sha1": "b786bfdb9c03acc1",
+   "tier": "gameplay",
+   "whole_only": "locals past the original's frame (it keeps them in registers): removal_who.h at (0x90u) (((NSize<char>::value * (u32)(6) + 7u) & ~7u) bytes; its own frame had it at 0x0); removal_num.c at (0x90u + ((NSize<char>::value * (u32)(6) + 7u) & ~7u)) (((NSize<char>::value * (u32)(2) + 7u) & ~7u) bytes; its own frame had it at 0x0)"
+  },
+  "810D6044": {
+   "file": "mod/src/roster.c",
+   "name": "roster_menus_frame",
+   "random_test": [
+    "report_native.txt: modrep_nat_810D6044 250204 249945 0 3ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 250 - 200000",
+    "report_native_s2.txt: modrep_nat_810D6044 250162 249948 1 3ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 250 calls@7DB:converted=B7B65CC7,original=B9845667 200000"
+   ],
+   "size": 250,
+   "text_sha1": "49533507741456a3",
+   "tier": "gameplay"
+  },
+  "810D6500": {
+   "file": "mod/src/roster.c",
+   "name": "folder_finish",
+   "random_test": [
+    "report_native.txt: modrep_nat_810D6500 428283 428276 231653 3ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 722 args@1:a0:converted=D40E968C,original=FFFE0000 200000"
+   ],
+   "size": 722,
+   "text_sha1": "dc1924ca673f7cb9",
+   "tier": "gameplay"
+  },
+  "810D7048": {
+   "file": "mod/src/roster.c",
+   "name": "folder_list_set",
+   "random_test": [
+    "report_native.txt: modrep_nat_810D7048 250006 250000 2146 1ffffffffffffffffffffffffffffffffffff 145 args@1:a0:converted=6825,original=0 200000"
+   ],
+   "size": 145,
+   "text_sha1": "b99677c31ad89d69",
+   "tier": "gameplay"
+  },
+  "810D75D4": {
+   "file": "mod/src/roster.c",
+   "name": "box_ok",
+   "random_test": [
+    "report_native.txt: modrep_nat_810D75D4 253082 249431 48091 3ffffffffffffffffffff 82 calls@5:converted=252658D3,original=268A0329 200000"
+   ],
+   "size": 82,
+   "text_sha1": "616a748211b2de1a",
+   "tier": "gameplay"
+  },
+  "810D771C": {
+   "file": "mod/src/roster.c",
+   "name": "box_ord",
+   "random_test": [
+    "report_native.txt: modrep_nat_810D771C 325229 323936 128850 3fffffffffff3fffffffffffffffffffffffffffffffffffffffffffffffffffffffff 278 args@1:a0:converted=3F3F,original=3F3F3F3F 200000"
+   ],
+   "size": 278,
+   "text_sha1": "331c0ca8eed31ef9",
+   "tier": "gameplay",
+   "whole_only": "locals past the original's frame (it keeps them in registers): removal_who.h at (0x48u) (((NSize<char>::value * (u32)(6) + 7u) & ~7u) bytes; its own frame had it at 0x0)"
+  },
+  "810D7B74": {
+   "file": "mod/src/roster.c",
+   "name": "gl_emit",
+   "random_test": [
+    "report_native.txt: modrep_nat_810D7B74 341154 337710 1 3ffffffffffffffffffffffffffffffffffffffffffffffffffffff 218 calls@39:converted=2B0980EF,original=268A0329 200000"
+   ],
+   "size": 218,
+   "text_sha1": "910533224551ce2e",
+   "tier": "gameplay"
+  },
+  "810D8294": {
+   "file": "mod/src/roster.c",
+   "name": "twin_differ",
+   "random_test": [
+    "report_native.txt: modrep_nat_810D8294 93952 93696 0 7fffffffffffffffffffffffffffffffff 135 - 72704"
+   ],
+   "size": 135,
+   "text_sha1": "34406e8b4dac0bf4",
+   "tier": "gameplay"
+  },
+  "810D86F4": {
+   "file": "mod/src/variants.c",
+   "name": "variant_slot_heir",
+   "random_test": [
+    "report_native.txt: modrep_nat_810D86F4 250000 250000 20 1ffffffffffffffffffffffffffff 113 args@A:a0:converted=F78,original=80100F78 200000"
+   ],
+   "size": 113,
+   "text_sha1": "563df2472bfe7283",
+   "tier": "gameplay"
+  },
+  "810D8B34": {
+   "file": "mod/src/variants.c",
+   "name": "fl_who",
+   "random_test": [],
+   "size": 75,
+   "text_sha1": "374f2b3b189425ab",
+   "tier": "gameplay"
+  },
+  "810D8C60": {
+   "file": "mod/src/variants.c",
+   "name": "variants_removed_with",
+   "random_test": [
+    "report_native.txt: modrep_nat_810D8C60 270000 270000 211 ffffffffffffffff 64 args@6:a0:converted=B74,original=80100B74 200000"
+   ],
+   "size": 64,
+   "text_sha1": "f3372c13e28f499e",
+   "tier": "gameplay"
+  },
+  "810D8D60": {
+   "file": "mod/src/variants.c",
+   "name": "variant_base_of",
+   "random_test": [
+    "report_native.txt: modrep_nat_810D8D60 250000 250000 36262 fffffffffff 44 return@0:converted=F,original=F000F 200000"
+   ],
+   "size": 44,
+   "text_sha1": "0fd8a0c20e4fae29",
+   "tier": "gameplay"
+  },
+  "810D8EC8": {
+   "file": "mod/src/variants.c",
+   "name": "fam_wrestlers",
+   "random_test": [
+    "report_native.txt: modrep_nat_810D8EC8 138496 101206 0 1ffffffffffffffffffffff 89 - 80116"
+   ],
+   "size": 89,
+   "text_sha1": "4001b32827cb4bb7",
+   "tier": "gameplay"
+  },
+  "810D9094": {
+   "file": "mod/src/variants.c",
+   "name": "variant_hidden",
+   "random_test": [
+    "report_native.txt: modrep_nat_810D9094 250000 250000 2850 7ffffffffffffffffffffffffffffff 123 calls@C:converted=235669C1,original=274A701E 200000"
+   ],
+   "size": 123,
+   "text_sha1": "077bca143ca5879a",
+   "tier": "gameplay"
+  },
+  "810D9280": {
+   "file": "mod/src/variants.c",
+   "name": "variant_same_man",
+   "random_test": [
+    "report_native.txt: modrep_nat_810D9280 250000 250000 143 1ffffffffffffffffffffffff 97 return@0:converted=1,original=0 200000"
+   ],
+   "size": 97,
+   "text_sha1": "89b0504f4dc54470",
+   "tier": "gameplay"
+  },
+  "810D9404": {
+   "file": "mod/src/variants.c",
+   "name": "variant_pick_member",
+   "random_test": [
+    "report_native.txt: modrep_nat_810D9404 221952 157522 21283 ffffffffffffffffffffffffffffffffffffffffffffffffff 200 args@2:a2:converted=805FFFB8,original=805FFFD4 126390"
+   ],
+   "size": 200,
+   "text_sha1": "d6b826d4f4a70020",
+   "tier": "gameplay",
+   "whole_only": "locals past the original's frame (it keeps them in registers): variant_family_at.out (its own frame had it at 0x10) at (0x58u) (8 bytes)"
+  },
+  "810D9730": {
+   "file": "mod/src/variants.c",
+   "name": "variant_box_for",
+   "random_test": [
+    "report_native.txt: modrep_nat_810D9730 250692 249792 19 3fffffffffffffffffffffff 94 calls@C:converted=FFFFFFFF,original=274A701E 200000"
+   ],
+   "size": 94,
+   "text_sha1": "c1070cea4ee28279",
+   "tier": "gameplay"
+  },
+  "810D9C0C": {
+   "file": "mod/src/variants.c",
+   "name": "box_family",
+   "random_test": [
+    "report_native.txt: modrep_nat_810D9C0C 358470 358470 7068 1fffffffffffffffffff 77 calls@16:converted=2624ADBD,original=274A701E 200000"
+   ],
+   "size": 77,
+   "text_sha1": "5fb010a380afd04a",
+   "tier": "gameplay"
+  },
+  "810DA008": {
+   "file": "mod/src/variants.c",
+   "name": "live_n",
+   "random_test": [
+    "report_native.txt: modrep_nat_810DA008 204288 163317 0 fffffffffffffff 60 - 129234"
+   ],
+   "size": 60,
+   "text_sha1": "5371fe2faff4d8fe",
+   "tier": "gameplay"
+  },
+  "810DA20C": {
+   "file": "mod/src/variants.c",
+   "name": "say_variant",
+   "random_test": [],
+   "size": 487,
+   "text_sha1": "1b16fe315c8908fe",
+   "tier": "gameplay",
+   "whole_only": "locals past the original's frame (it keeps them in registers): fl_who.h at (0x38u) (((NSize<char>::value * (u32)(6) + 7u) & ~7u) bytes; its own frame had it at 0x0); fl_num.c at (0x38u + ((NSize<char>::value * (u32)(6) + 7u) & ~7u)) (8 bytes)"
+  },
+  "810DA9A8": {
+   "file": "mod/src/variants.c",
+   "name": "variant_random_pick",
+   "random_test": [
+    "report_native.txt: modrep_nat_810DA9A8 250000 250000 53641 1fffffffffffffffffffffff 93 args@8:a2:converted=805FFFD0,original=805FFFE4 200000"
+   ],
+   "size": 93,
+   "text_sha1": "45b478ee4e56cf9e",
+   "tier": "gameplay",
+   "whole_only": "locals past the original's frame (it keeps them in registers): variant_family_at.out (its own frame had it at 0x10) at (0x40u) (8 bytes)"
+  },
+  "810DAB1C": {
+   "file": "mod/src/variants.c",
+   "name": "variant_select_frame",
+   "random_test": [],
+   "size": 1184,
+   "text_sha1": "a04b6687ba8f24cf",
+   "tier": "gameplay",
+   "whole_only": "locals past the original's frame (it keeps them in registers): fl_num.c at (0x80u) (8 bytes); family_number.fam_number_text at (0x80u + 8) (16 bytes); fl_hex.h at (0x80u + 8 + 16) (8 bytes)"
+  },
+  "810DBFD0": {
+   "file": "mod/src/files.c",
+   "name": "files_pool_send",
+   "random_test": [
+    "report_native.txt: modrep_nat_810DBFD0 30841 30841 0 ffff3fefffffffffffffffffffff 112 - 23552"
+   ],
+   "size": 112,
+   "text_sha1": "6e3ef6cdf27a9b39",
+   "tier": "gameplay"
+  },
+  "810DC55C": {
+   "file": "mod/src/files.c",
+   "name": "files_info",
+   "random_test": [],
+   "size": 145,
+   "text_sha1": "d3d66e6ce069c3e3",
+   "tier": "gameplay",
+   "whole_only": "its original stops for good (pause_self)"
+  },
+  "810DD074": {
+   "file": "mod/src/parts.c",
+   "name": "parts_unpack",
+   "random_test": [
+    "report_native.txt: modrep_nat_810DD074 450000 450000 0 1f00007cfffffffffefffffffff 105 - 200000"
+   ],
+   "size": 105,
+   "text_sha1": "35caf65f8112aed6",
+   "tier": "gameplay"
+  },
+  "810DD26C": {
+   "file": "mod/src/parts.c",
+   "name": "parts_model_post",
+   "random_test": [],
+   "size": 582,
+   "text_sha1": "bc66141b4f0dfe18",
+   "tier": "gameplay",
+   "whole_only": "locals past the original's frame (it keeps them in registers): folder_costume.l at (0x90u) (64 bytes)"
+  },
+  "810DDB84": {
+   "file": "mod/src/parts.c",
+   "name": "parts_file",
+   "random_test": [
+    "report_native.txt: modrep_nat_810DDB84 450000 450000 0 1ffefffffefffffffff 73 - 200000"
+   ],
+   "size": 73,
+   "text_sha1": "81b1e64fb6430265",
+   "tier": "gameplay"
+  },
+  "810DEBD0": {
+   "file": "mod/src/skel.c",
+   "name": "skel_setup",
+   "random_test": [
+    "report_native.txt: modrep_nat_810DEBD0 271691 269547 178 7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 1119 calls@DD:converted=7E,original=0 200000"
+   ],
+   "size": 1119,
+   "text_sha1": "ba8e333860cb7ade",
+   "tier": "gameplay"
+  },
+  "810DFF3C": {
+   "file": "mod/src/hd.c",
+   "name": "hd_frame",
+   "random_test": [
+    "report_native.txt: modrep_nat_810DFF3C 450000 447358 43737 1ffffffffffffffffffff80ffffffffffffffffffffffffffffffffffffffffffff0f0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001fffffffffffffffffffffffffffffffffffffffffffff 1597 args@0:a2:converted=E3B3AD0C,original=C30 200000"
+   ],
+   "size": 1597,
+   "text_sha1": "3e6902e1d7ab5cbc",
+   "tier": "gameplay"
+  },
+  "810E2B9C": {
+   "file": "mod/src/movex.c",
+   "name": "movex_qa_same_place",
+   "random_test": [],
+   "size": 192,
+   "text_sha1": "c53d64142ec2588d",
+   "tier": "gameplay",
+   "whole_only": "locals past the original's frame (it keeps them in registers): movex_qa_same_place.la at (0x0u) (8 bytes); movex_qa_same_place.lb at (0x0u + 8) (8 bytes)"
+  },
+  "810E4D60": {
+   "file": "mod/src/announce.c",
+   "name": "announce_table_guard",
+   "random_test": [
+    "report_native.txt: modrep_nat_810E4D60 386178 386178 135 fffffffffffffffffffffffffffffffffffffffffffffffffffffffff 228 calls@0:converted=800003E0,original=FFFFFFFF 200000"
+   ],
+   "size": 228,
+   "text_sha1": "522d1c559251d37d",
+   "tier": "gameplay"
+  },
+  "810E5554": {
+   "file": "mod/src/announce.c",
+   "name": "build",
+   "random_test": [
+    "report_native.txt: modrep_nat_810E5554 330752 316778 0 3ffffffe0000001fffffffffffffffffffffffffffffffffffffffffffffffffdfff7ffffffffffffffffff81e1fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 662 - 200000"
+   ],
+   "size": 662,
+   "text_sha1": "bc4b7035cbccb54d",
+   "tier": "gameplay"
+  },
+  "810E6114": {
+   "file": "mod/src/announce.c",
+   "name": "announce_table_frame",
+   "random_test": [],
+   "size": 3531,
+   "text_sha1": "81ecbf78d86154aa",
+   "tier": "gameplay",
+   "whole_only": "locals past the original's frame (it keeps them in registers): pose_bones.t at (0x408u) (64 bytes); pose_bones.r at (0x408u + 64) (64 bytes)"
+  },
+  "810E9840": {
+   "file": "mod/src/announce.c",
+   "name": "blend",
+   "random_test": [
+    "report_native.txt: modrep_nat_810E9840 8830352 161745 0 3fe7fffffffffffff3fffffffffffffcffffffffffffffffffffff 214 - 11937"
+   ],
+   "size": 214,
+   "text_sha1": "7736b6ed49e6934c",
+   "tier": "gameplay"
+  },
+  "810EA3D8": {
+   "file": "mod/src/announce.c",
+   "name": "announce_qa",
+   "random_test": [
+    "report_native.txt: modrep_nat_810EA3D8 270000 270000 0 1ffffffffffffffffffffffffffffffffffffffffff 169 - 200000",
+    "report_native_s2.txt: modrep_nat_810EA3D8 270000 270000 0 1ffffffffffffffffffffffffffffffffffffffffff 169 - 200000",
+    "report_native_fd.txt: modrep_nat_810EA3D8 330000 330000 4 1ffffffffffffffffffffffffffffffffffffffffff 169 memory@81624738:converted=20,original=FF 200000",
+    "report_native_fs.txt: modrep_nat_810EA3D8 330000 330000 2 1ffffffffffffffffffffffffffffffffffffffffff 169 memory@81624738:converted=FF,original=EC 200000",
+    "report_native_ft.txt: modrep_nat_810EA3D8 330000 330000 8 1ffffffffffffffffffffffffffffffffffffffffff 169 memory-count@8162473C:converted=34,original=31 200000"
+   ],
+   "size": 169,
+   "text_sha1": "f675ec9deac70baf",
+   "tier": "gameplay"
+  },
+  "810EB014": {
+   "file": "mod/src/arcctl.c",
+   "name": "arcctl_frame",
+   "random_test": [],
+   "size": 883,
+   "text_sha1": "2b330f50557cfd64",
+   "tier": "gameplay",
+   "whole_only": "locals past the original's frame (it keeps them in registers): focus_dir.mx at (0xF8u) (8 bytes); focus_dir.my at (0xF8u + 8) (8 bytes); focus_dir.o at (0xF8u + 8 + 8) (8 bytes); focus_dir.sx at (0xF8u + 8 + 8 + 8) (8 bytes); focus_dir.sy at (0xF8u + 8 + 8 + 8 + 8) (8 bytes)"
+  },
+  "810EBDE0": {
+   "file": "mod/src/arcctl.c",
+   "name": "opponents",
+   "random_test": [
+    "report_native.txt: modrep_nat_810EBDE0 507505 412951 0 3effffffffffffffffffffffffffff 118 - 200000"
+   ],
+   "size": 118,
+   "text_sha1": "f0309e37519770d7",
+   "tier": "gameplay"
+  },
+  "810EC404": {
+   "file": "mod/src/arcctl.c",
+   "name": "head_on_screen",
+   "random_test": [],
+   "size": 115,
+   "text_sha1": "6950deb30a8e0374",
+   "tier": "gameplay"
+  },
+  "810EC694": {
+   "file": "mod/src/story.c",
+   "name": "ours",
+   "random_test": [
+    "report_native.txt: modrep_nat_810EC694 450028 446020 21232 0000fffffff33fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 549 return@0:converted=81412340,original=8148ED00 200000"
+   ],
+   "size": 549,
+   "text_sha1": "fe821c9f9450cd79",
+   "tier": "gameplay"
+  },
+  "810ED13C": {
+   "file": "mod/src/story.c",
+   "name": "story_install",
+   "random_test": [
+    "report_native.txt: modrep_nat_810ED13C 440852 438121 55 3ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 434 memory-count@80125CFC:converted=77,original=76 200000"
+   ],
+   "size": 434,
+   "text_sha1": "c771048eeb66b4ca",
+   "tier": "gameplay"
+  },
+  "810ED804": {
+   "file": "mod/src/story.c",
+   "name": "resolve_slots",
+   "random_test": [
+    "report_native.txt: modrep_nat_810ED804 450000 450000 0 1fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 285 - 200000",
+    "report_native_s2.txt: modrep_nat_810ED804 450000 450000 1 1fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 285 memory-count@800FBE68:converted=8,original=0 200000"
+   ],
+   "size": 285,
+   "text_sha1": "7d5a7827f8757746",
+   "tier": "gameplay"
+  },
+  "810EDE08": {
+   "file": "mod/src/story.c",
+   "name": "story_stop",
+   "random_test": [
+    "report_native.txt: modrep_nat_810EDE08 450000 449244 5 7ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 267 ran-long@0:converted=1,original=0 200000"
+   ],
+   "size": 267,
+   "text_sha1": "99b65288571d2caf",
+   "tier": "gameplay"
+  },
+  "810EE234": {
+   "file": "mod/src/story.c",
+   "name": "story_start",
+   "random_test": [
+    "report_native.txt: modrep_nat_810EE234 316654 316591 7484 3fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 438 args@C:a1:converted=F68,original=80100F68 200000"
+   ],
+   "size": 438,
+   "text_sha1": "1c90f4711ebca34b",
+   "tier": "gameplay"
+  },
+  "810EE90C": {
+   "file": "mod/src/story.c",
+   "name": "story_begin",
+   "random_test": [
+    "report_native.txt: modrep_nat_810EE90C 361040 102325 0 ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 296 - 87665"
+   ],
+   "size": 296,
+   "text_sha1": "67c2038cf48c17a9",
+   "tier": "gameplay"
+  },
+  "810EEDAC": {
+   "file": "mod/src/story.c",
+   "name": "story_set_node",
+   "random_test": [
+    "report_native.txt: modrep_nat_810EEDAC 250000 250000 112826 7ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 323 args@4:a1:converted=360,original=80100360 200000"
+   ],
+   "size": 323,
+   "text_sha1": "f91ab9cd38d86be6",
+   "tier": "gameplay"
+  },
+  "810EF2B8": {
+   "file": "mod/src/story.c",
+   "name": "story_frame",
+   "random_test": [
+    "report_native.txt: modrep_nat_810EF2B8 352709 350503 494422 fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffbfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 764 calls@0:converted=72A43B6,original=BEFBF0CE 200000"
+   ],
+   "size": 764,
+   "text_sha1": "bafd444c6603d2e3",
+   "tier": "gameplay"
+  },
+  "810F0090": {
+   "file": "mod/src/story.c",
+   "name": "story_title",
+   "random_test": [
+    "report_native.txt: modrep_nat_810F0090 250000 250000 161937 1fffffffffffffffffffffff 93 return@0:converted=814A3FDC,original=8148ED00 200000"
+   ],
+   "size": 93,
+   "text_sha1": "4bd14d2271a14c1d",
+   "tier": "gameplay"
+  },
+  "810F065C": {
+   "file": "mod/src/story.c",
+   "name": "story_scene_cond",
+   "random_test": [
+    "report_native.txt: modrep_nat_810F065C 270000 269999 0 1fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 285 - 200000",
+    "report_native_s2.txt: modrep_nat_810F065C 278266 278266 0 1fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 285 - 200000",
+    "report_native_fd.txt: modrep_nat_810F065C 342020 342017 0 1fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 285 - 200000",
+    "report_native_fs.txt: modrep_nat_810F065C 360000 359905 0 1fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 285 - 200000",
+    "report_native_ft.txt: modrep_nat_810F065C 360000 359950 21 1fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 285 return@0:converted=FFFFFFFF,original=0 200000"
+   ],
+   "size": 285,
+   "text_sha1": "7a7781ca08c8f903",
+   "tier": "gameplay"
+  },
+  "810F0CFC": {
+   "file": "mod/src/story.c",
+   "name": "story_cam_cut",
+   "random_test": [
+    "report_native.txt: modrep_nat_810F0CFC 542913 394786 0 ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff1fffffffffff0ffcffffffffffffff 368 - 200000"
+   ],
+   "size": 291,
+   "text_sha1": "0535f2ecfc10ad5c",
+   "tier": "gameplay"
+  },
+  "810F1BC4": {
+   "file": "mod/src/story.c",
+   "name": "term",
+   "random_test": [
+    "report_native.txt: modrep_nat_810F1BC4 270002 269972 0 fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 300 - 200000",
+    "report_native_s2.txt: modrep_nat_810F1BC4 270003 269938 0 fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 300 - 200000",
+    "report_native_fd.txt: modrep_nat_810F1BC4 330002 329815 0 fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 300 - 200000",
+    "report_native_fs.txt: modrep_nat_810F1BC4 330000 329754 1 fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 300 args@1:a1:converted=6BA3,original=1006 200000",
+    "report_native_ft.txt: modrep_nat_810F1BC4 330004 329867 0 fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 300 - 200000"
+   ],
+   "size": 300,
+   "text_sha1": "df416d6aee366730",
+   "tier": "gameplay"
+  },
+  "810F2074": {
+   "file": "mod/src/save.c",
+   "name": "save_removal_report",
+   "random_test": [],
+   "size": 452,
+   "text_sha1": "7388fe3162c21e85",
+   "tier": "gameplay",
+   "whole_only": "locals past the original's frame (it keeps them in registers): save_removal_report.pos at (0x80u) (8 bytes)"
+  },
+  "810F2784": {
+   "file": "mod/src/save.c",
+   "name": "save_removal_frame",
+   "random_test": [
+    "report_native.txt: modrep_nat_810F2784 298265 298265 8768 7ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 819 memory@817488B4:converted=0,original=FF 200000"
+   ],
+   "size": 819,
+   "text_sha1": "2b8bb5e12664f916",
+   "tier": "gameplay"
+  },
+  "810F3450": {
+   "file": "mod/src/save.c",
+   "name": "save_sanitize",
+   "random_test": [],
+   "size": 1067,
+   "text_sha1": "738937f056891457",
+   "tier": "gameplay",
+   "whole_only": "locals past the original's frame (it keeps them in registers): clean_titles.pos at (0xA8u) (8 bytes); clean_presets.pos at (0xA8u + 8) (8 bytes); presets_back_out.at at (0xA8u + 8 + 8) (8 bytes)"
+  },
+  "810F4730": {
+   "file": "mod/src/save.c",
+   "name": "save_sidecar_frame",
+   "random_test": [
+    "report_native.txt: modrep_nat_810F4730 289196 289196 7 3fffffffffffffffffffffffffffffffffffffffffffffffff 198 calls@4:converted=FFFFFFFF,original=49115B92 200000"
+   ],
+   "size": 198,
+   "text_sha1": "ebdfe9625320cdb1",
+   "tier": "gameplay"
+  },
+  "810F4E64": {
+   "file": "mod/src/tron.c",
+   "name": "tron_scene_begin",
+   "random_test": [
+    "report_native.txt: modrep_nat_810F4E64 360682 270117 1 3ffffffffffffffffffffffffffffffffffffffffffffffffffff 210 memory@817496FC:converted=72,original=64 200000"
+   ],
+   "size": 210,
+   "text_sha1": "e1da4de866452be8",
+   "tier": "gameplay"
+  },
+  "810F5904": {
+   "file": "mod/src/tron.c",
+   "name": "tron_hardcam_build",
+   "random_test": [
+    "report_native.txt: modrep_nat_810F5904 368960 305164 268 1fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff007fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe0ff3ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 1585 memory-count@8174B7F4:converted=133,original=13D 200000"
+   ],
+   "size": 1520,
+   "text_sha1": "5212805cd249ac0e",
+   "tier": "gameplay"
+  },
+  "810F7598": {
+   "file": "mod/src/tron.c",
+   "name": "panels_draw",
+   "random_test": [
+    "report_native.txt: modrep_nat_810F7598 322196 254979 0 3ffffffffffffffffffffffffffffffffffffffffff 170 - 200000",
+    "report_native_s2.txt: modrep_nat_810F7598 322154 255061 0 3ffffffffffffffffffffffffffffffffffffffffff 170 - 200000",
+    "report_native_fd.txt: modrep_nat_810F7598 382291 311868 0 3ffffffffffffffffffffffffffffffffffffffffff 170 - 200000",
+    "report_native_fs.txt: modrep_nat_810F7598 382325 312127 0 3ffffffffffffffffffffffffffffffffffffffffff 170 - 200000",
+    "report_native_ft.txt: modrep_nat_810F7598 382733 311710 12 3ffffffffffffffffffffffffffffffffffffffffff 170 memory-count@81540CF1:converted=4572,original=4570 200000"
+   ],
+   "size": 170,
+   "text_sha1": "350ad0b3d1b16305",
+   "tier": "gameplay"
+  },
+  "810F7918": {
+   "file": "mod/src/tron.c",
+   "name": "mask_compose",
+   "random_test": [
+    "report_native.txt: modrep_nat_810F7918 322443 255153 0 fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 324 - 200000",
+    "report_native_s2.txt: modrep_nat_810F7918 322507 255090 60 fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 324 memory-count@81749701:converted=3341,original=16B8 200000"
+   ],
+   "size": 324,
+   "text_sha1": "9a568af49f477fe1",
+   "tier": "gameplay"
+  },
+  "810F7E28": {
+   "file": "mod/src/tron.c",
+   "name": "tron_scene_end",
+   "random_test": [
+    "report_native.txt: modrep_nat_810F7E28 415072 404523 2355 1ffffffffffffffffffff3fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 953 args@1:a1:converted=CAEF49C4,original=5500 200000"
+   ],
+   "size": 768,
+   "text_sha1": "bab4f1b51d5356cc",
+   "tier": "gameplay"
+  },
+  "810F8A28": {
+   "file": "mod/src/tron.c",
+   "name": "panel_apply",
+   "random_test": [],
+   "size": 174,
+   "text_sha1": "5eb4ae3264a86206",
+   "tier": "gameplay"
+  },
+  "810F8CE0": {
+   "file": "mod/src/tron.c",
+   "name": "list_scan",
+   "random_test": [
+    "report_native.txt: modrep_nat_810F8CE0 412534 409871 0 ffffffffffc7fffffffff1ffffffffffffffffffffffffffffffe7ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe7ffffffffffffffffffff 680 - 200000"
+   ],
+   "size": 680,
+   "text_sha1": "5218c146eb46f64c",
+   "tier": "gameplay"
+  },
+  "810F9780": {
+   "file": "mod/src/tron.c",
+   "name": "panel_patch",
+   "random_test": [
+    "report_native.txt: modrep_nat_810F9780 450000 450000 0 00000000000000000000000000000000000000000003ffe00000000000000000000000000000000000000000000000000000000000000000000000000000ffffffffffffffffffff 576 - 200000"
+   ],
+   "size": 402,
+   "text_sha1": "ff20b89b2fbe5d4e",
+   "tier": "gameplay"
+  },
+  "810FAAA0": {
+   "file": "mod/src/arena.c",
+   "name": "arena_random",
+   "random_test": [
+    "report_native.txt: modrep_nat_810FAAA0 250000 250000 250000 1ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 673 calls@1:converted=266363D5,original=2958A529 200000"
+   ],
+   "size": 673,
+   "text_sha1": "e67e13f82443fb4b",
+   "tier": "gameplay"
+  },
+  "810FB7EC": {
+   "file": "mod/src/arena.c",
+   "name": "arena_tabs",
+   "random_test": [
+    "report_native.txt: modrep_nat_810FB7EC 250000 250000 206693 3ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 442 memory@81753D78:converted=C,original=81 200000"
+   ],
+   "size": 442,
+   "text_sha1": "f8ae71bbd2041bcd",
+   "tier": "gameplay"
+  },
+  "810FC0A0": {
+   "file": "mod/src/arena.c",
+   "name": "arena_scene",
+   "random_test": [
+    "report_native.txt: modrep_nat_810FC0A0 450000 450000 11027 1ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 273 calls@490:converted=FFFFFFFF,original=D968D9B2 200000"
+   ],
+   "size": 273,
+   "text_sha1": "a6de0ba31cc3d231",
+   "tier": "gameplay"
+  },
+  "810FC4E4": {
+   "file": "mod/src/arena.c",
+   "name": "arena_take",
+   "random_test": [
+    "report_native.txt: modrep_nat_810FC4E4 450000 450000 0 7ffffffffffffffffffffffffffffffffffffffe7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 543 - 200000"
+   ],
+   "size": 321,
+   "text_sha1": "f127e1900592a318",
+   "tier": "gameplay"
+  },
+  "810FCA70": {
+   "file": "mod/src/arena.c",
+   "name": "arena_page_frame",
+   "random_test": [
+    "report_native.txt: modrep_nat_810FCA70 438619 435124 778 7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe7ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 815 memory-count@81753C58:converted=114,original=113 200000"
+   ],
+   "size": 815,
+   "text_sha1": "ee6d0aa0b06422ff",
+   "tier": "gameplay"
+  },
+  "810FD72C": {
+   "file": "mod/src/arena.c",
+   "name": "pg_tables",
+   "random_test": [
+    "report_native.txt: modrep_nat_810FD72C 451108 447639 0 7fffffffffffffffff3ffffffffffffffffffffffffff 179 - 200000"
+   ],
+   "size": 179,
+   "text_sha1": "6cd7c9421edafbbe",
+   "tier": "gameplay"
+  },
+  "810FDAB8": {
+   "file": "mod/src/arena.c",
+   "name": "walls_take",
+   "random_test": [],
+   "size": 222,
+   "text_sha1": "492b2936cd1c1c92",
+   "tier": "gameplay"
+  },
+  "810FDEA0": {
+   "file": "mod/src/arena_ringstage.c",
+   "name": "ground",
+   "random_test": [
+    "report_native.txt: modrep_nat_810FDEA0 270235 269942 0 3ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 482 - 200000",
+    "report_native_s2.txt: modrep_nat_810FDEA0 270222 269933 0 3ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 482 - 200000",
+    "report_native_fd.txt: modrep_nat_810FDEA0 330268 329936 1 3ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 482 float-return@0:converted=0,original=432A9943 200000",
+    "report_native_fs.txt: modrep_nat_810FDEA0 395552 395214 0 3ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 482 - 200000",
+    "report_native_ft.txt: modrep_nat_810FDEA0 353705 353406 0 3ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 482 - 200000"
+   ],
+   "size": 482,
+   "text_sha1": "b29d69da57550e32",
+   "tier": "gameplay"
+  },
+  "810FE778": {
+   "file": "mod/src/arena_ringstage.c",
+   "name": "ringstage_rumble_start",
+   "random_test": [
+    "report_native.txt: modrep_nat_810FE778 450000 450000 0 ffffffffffffffffff81ff00ffffffffffffffff 160 - 200000"
+   ],
+   "size": 160,
+   "text_sha1": "6b01a772d445bd52",
+   "tier": "gameplay"
+  },
+  "810FEC48": {
+   "file": "mod/src/arena_ringstage.c",
+   "name": "ringstage_cam_call",
+   "random_test": [],
+   "size": 648,
+   "text_sha1": "41e720d4303e3f14",
+   "tier": "gameplay",
+   "whole_only": "locals past the original's frame (it keeps them in registers): ringstage_cam_step.ring_state at (0x100u) (72 bytes); ringstage_cam_step.deck_final at (0x100u + 72) (24 bytes)"
+  },
+  "810FFAF4": {
+   "file": "mod/src/arena_ringstage.c",
+   "name": "ringstage_ai",
+   "random_test": [
+    "report_native.txt: modrep_nat_810FFAF4 403276 398978 1441 1fffffffffffffffffffffffffffffffffffffffffffffffdffffffffffffffffffffff9fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 697 calls@0:converted=FFFFFFFF,original=0 200000"
+   ],
+   "size": 697,
+   "text_sha1": "4c5aa08a475f4478",
+   "tier": "gameplay"
+  },
+  "81100780": {
+   "file": "mod/src/arena_ringstage.c",
+   "name": "cell_near",
+   "random_test": [
+    "report_native.txt: modrep_nat_81100780 450410 449874 239 7fffffffffffffffffffffffffffffffffffffffffffffffffff1ffffffffffffffffffffffffffffffffffffff 363 memory@80100184:converted=64,original=44 200000"
+   ],
+   "size": 363,
+   "text_sha1": "0254151c2ab04ee5",
+   "tier": "gameplay"
+  },
+  "81100D2C": {
+   "file": "mod/src/arena_ringstage.c",
+   "name": "map_from",
+   "random_test": [
+    "report_native.txt: modrep_nat_81100D2C 270092 269963 0 7fffffffffffffffffffffffffffffffffffffffffffff 183 - 200000",
+    "report_native_s2.txt: modrep_nat_81100D2C 270078 269966 0 7fffffffffffffffffffffffffffffffffffffffffffff 183 - 200000",
+    "report_native_fd.txt: modrep_nat_81100D2C 330083 329903 0 7fffffffffffffffffffffffffffffffffffffffffffff 183 - 200000",
+    "report_native_fs.txt: modrep_nat_81100D2C 330073 329920 0 7fffffffffffffffffffffffffffffffffffffffffffff 183 - 200000",
+    "report_native_ft.txt: modrep_nat_81100D2C 330100 329886 1 7fffffffffffffffffffffffffffffffffffffffffffff 183 memory@8177BAB6:converted=44,original=0 200000"
+   ],
+   "size": 183,
+   "text_sha1": "98acaad45b65fef2",
+   "tier": "gameplay"
+  },
+  "811014CC": {
+   "file": "mod/src/arena_ringstage.c",
+   "name": "ringstage_ai_post",
+   "random_test": [
+    "report_native.txt: modrep_nat_811014CC 250007 249984 0 7fffffffffffffffffffffffffffffffffffffffff 167 - 200000",
+    "report_native_s2.txt: modrep_nat_811014CC 270010 269415 0 7fffffffffffffffffffffffffffffffffffffffff 167 - 200000",
+    "report_native_fd.txt: modrep_nat_811014CC 330014 327699 0 7fffffffffffffffffffffffffffffffffffffffff 167 - 200000",
+    "report_native_fs.txt: modrep_nat_811014CC 330007 327868 1 7fffffffffffffffffffffffffffffffffffffffff 167 memory-count@8177BA30:converted=9,original=6 200000",
+    "report_native_ft.txt: modrep_nat_811014CC 330011 327773 2 7fffffffffffffffffffffffffffffffffffffffff 167 memory@8177BA30:converted=94,original=FD 200000"
+   ],
+   "size": 167,
+   "text_sha1": "726a1670a28c8ead",
+   "tier": "gameplay"
+  },
+  "81101768": {
+   "file": "mod/src/arena_ringstage.c",
+   "name": "ringstage_qa",
+   "random_test": [],
+   "size": 981,
+   "text_sha1": "aac2d559dfa6601b",
+   "tier": "gameplay",
+   "whole_only": "locals past the original's frame (it keeps them in registers): qa_spot.i at (0x90u) (8 bytes); qa_spot.k at (0x90u + 8) (8 bytes)"
+  },
+  "81102948": {
+   "file": "mod/src/arena_ring.c",
+   "name": "arena_ring_fill",
+   "random_test": [
+    "report_native.txt: modrep_nat_81102948 250000 250000 28884 3fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff 630 memory-count@80100F24:converted=1E4,original=1D8 200000"
+   ],
+   "size": 630,
+   "text_sha1": "c83361cf85210b8d",
+   "tier": "gameplay"
+  }
+ },
+ "gameplay_candidates": "tools/modnative/whole/candidates.json",
+ "gameplay_compile_refused": {},
+ "gameplay_only": null,
+ "gameplay_refused": {},
+ "header_sha1": "fa7edb2305ee7861",
+ "nrm_hash": "67F431C3E5894FC7",
+ "refused": {},
+ "text_sha1": "25884842cdd2ef0f",
+ "whole_text_sha1": "3c4e00990b5aede7"
+}

@@ -1,0 +1,33 @@
+{
+  "about": "the entrances' close shots in the WM 2000 arena (steps 5 / 11: the close scene, scene index 7 made WM2000's 3D set at the origin): the screen with the entrant's video, WWF.com, the doorway behind the Superstar, the grate deck carried to the camera, the walkway; the placement (CLOSE_POSE_Z) and the light (LIT) to look at",
+  "match": "rumble",
+  "wrestlers": [
+    "HOLLYWOOD HOGAN"
+  ],
+  "control": [
+    "cpu"
+  ],
+  "arena": "RAW IS WAR WM 2000",
+  "options": {
+    "rumble_entrants": 4,
+    "rumble_interval": 60,
+    "titantron_screens": true,
+    "titantron_live": true
+  },
+  "matches": 1,
+  "seconds": 120,
+  "shots": 0.5,
+  "shot_when": "$c.mode -eq 0 -and $c.screen -eq 42 -and $c.entrance_step -ge 1 -and $c.entrance_step -le 29",
+  "expect": [
+    {
+      "name": "the entrances ran",
+      "when": "any",
+      "check": "mode == 0 and screen == 42 and entrance_step >= 1 and entrance_step <= 29"
+    },
+    {
+      "name": "the arena is ours (arena_current 13)",
+      "when": "any",
+      "check": "venue == 13 and stage == 2"
+    }
+  ]
+}

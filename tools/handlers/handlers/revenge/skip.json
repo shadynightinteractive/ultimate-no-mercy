@@ -1,0 +1,10 @@
+{
+ "about": "Revenge roster records that are NOT a wrestler of their own (2026-11-14, revfix): Revenge itself draws another man for them, so the handler makes no folder for them. Each with what Revenge shows -- its own Costume Change screen with his code poked in and Default pressed (rig\\cc_all.py; scratch\\agents\\revfix\\rig\\cap\\cc_<code>.png, sheet work\\cc_managers.png) and its own match (scratch\\agents\\revbody\\rig\\cap\\rv_<code>_*.png). None of them can be picked in Revenge. Delete an entry to import him anyway.",
+ "codes": {
+  "0x806": {"name": "Ted Debisas", "shows": "Vincent -- the nWo's bald security man in the nWo T-shirt and jeans (costume 50, the same as Vincent's and James Bandenderg's); the handler's old capture of this record even came out Scott Hall's (his nWo look, part for part)."},
+  "0x807": {"name": "James Bandenderg", "shows": "Vincent -- the same man as 0x808, costume 50, part for part the same look."},
+  "0x903": {"name": "Jackreen", "shows": "Sting -- his 'Crow' look of Revenge (black coat, his face paint, the baseball bat): Revenge's frame-4 attire 6, mask 1. Revenge has no Jacqueline model."},
+  "0x904": {"name": "Sister Sherri", "shows": "Sting -- the same 'Crow' look (frame-4 attire 6, mask 2); her record also uses Sting's own moveset file (0x1F7). Revenge has no Sherri model."},
+  "0x905": {"name": "Woman", "shows": "a bearded man in a white T-shirt (costume 32 of frame 2, a man's body and head) -- not Woman; Revenge has no model of her."}
+ }
+}

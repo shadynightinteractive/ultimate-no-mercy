@@ -1,0 +1,17 @@
+{
+  "about": "the arcade from its attract loop: a coin and Start during an attract demo -> the one-player menu (2026-10-28: it came up small, the user)",
+  "match": "arcade",
+  "matches": 0,
+  "seconds": 260,
+  "shots": 2.0,
+  "options": {
+    "free_play": false,
+    "attract_demos": true
+  },
+  "pads": [
+    "185.0 1 back 200",
+    "186.0 1 start 200"
+  ],
+  "expect": [],
+  "shot_when": "$c.mode -eq -6"
+}

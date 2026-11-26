@@ -1,0 +1,82 @@
+{
+ "about": "WCW/nWo Revenge port: what was chosen by hand for him (moved out of mod\\gen's tables by handlers\\extract_fixes.py, 2026-11-12). Edit here; the handler reads nothing else that is his alone.",
+ "string_id": "hollywood_hogan",
+ "key": "hogan",
+ "legacy_game_id": "0x0105",
+ "name": "HOLLYWOOD HOGAN",
+ "short_name": "HOGAN",
+ "height": 19,
+ "weight": 175,
+ "music_slot": 65,
+ "video": 0,
+ "revenge": {
+  "moveset_file": "0x17F",
+  "code": "0x201"
+ },
+ "moveset": {
+  "reference_ordinal": 1,
+  "allies": [
+   "0x0106",
+   "0x0107"
+  ],
+  "weight_class": [
+   1,
+   1,
+   0
+  ],
+  "stance": null,
+  "slot_overrides": {
+   "30": 16250,
+   "94": 3390,
+   "188": 5690,
+   "213": 8670,
+   "214": 9120
+  },
+  "no_struggling_slam": true,
+  "extra": [
+   {
+    "about": "his leg drop, his finisher (the user, 2026-10-30): No Mercy's Leg Drop (7980, his Revenge drop byte for byte) with a finisher's record, past the moveset's entries, as the built-in port has it (mod movex.c LEGDROP_MOVE); his ground strike at a lying man's head with SPECIAL takes it",
+    "move": 7980,
+    "use": "legdrop",
+    "special": true,
+    "record": {
+     "6": 40,
+     "7": 0,
+     "8": -15,
+     "18": 5,
+     "19": 2
+    }
+   }
+  ]
+ },
+ "costumes": [
+  {
+   "capture": "hh_c0",
+   "slot": 0
+  },
+  {
+   "capture": "at_hh1",
+   "slot": 0
+  },
+  {
+   "capture": "at_hh2",
+   "slot": 0
+  },
+  {
+   "capture": "at_hh3",
+   "slot": 0
+  }
+ ],
+ "skin": "no_mercy",
+ "photo_number": 114,
+ "photo": {
+  "photo": 114,
+  "shot": "data/revport/ports/cap/cc_hogan.png",
+  "box": [
+   195,
+   21,
+   245,
+   71
+  ]
+ }
+}

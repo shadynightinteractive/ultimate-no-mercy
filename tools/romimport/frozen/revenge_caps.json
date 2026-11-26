@@ -1,0 +1,781 @@
+{
+ "about": "Revenge model captures the generators read, as recipes: per tag its folder and per slot [model code, costume (its colour rows), attire, mask] as the rig set them (read once from each capture: code 0x8006A2A4 + 2 slot, attire 0x8007DFBC + 2 slot, mask 0x8007DFB0 + 2 slot; the costume whose colour rows reproduce it). Our data: the rig's plan.",
+ "tags": {
+  "L12": {
+   "dir": "revport/cap",
+   "slots": [
+    [
+     8,
+     0,
+     9,
+     0
+    ],
+    [
+     270,
+     0,
+     4,
+     0
+    ]
+   ]
+  },
+  "at_bn1": {
+   "dir": "revport/attires/cap",
+   "slots": [
+    [
+     8,
+     1,
+     9,
+     0
+    ],
+    [
+     270,
+     1,
+     4,
+     0
+    ]
+   ]
+  },
+  "at_bn2": {
+   "dir": "revport/attires/cap",
+   "slots": [
+    [
+     8,
+     2,
+     9,
+     1
+    ],
+    [
+     270,
+     2,
+     4,
+     0
+    ]
+   ]
+  },
+  "at_bn3": {
+   "dir": "revport/attires/cap",
+   "slots": [
+    [
+     8,
+     3,
+     57,
+     1
+    ],
+    [
+     270,
+     3,
+     4,
+     0
+    ]
+   ]
+  },
+  "at_gi1": {
+   "dir": "revport/attires/cap",
+   "slots": [
+    [
+     2,
+     1,
+     19,
+     0
+    ],
+    [
+     515,
+     1,
+     26,
+     0
+    ]
+   ]
+  },
+  "at_gi2": {
+   "dir": "revport/attires/cap",
+   "slots": [
+    [
+     2,
+     2,
+     0,
+     0
+    ],
+    [
+     515,
+     2,
+     53,
+     0
+    ]
+   ]
+  },
+  "at_gi3": {
+   "dir": "revport/attires/cap",
+   "slots": [
+    [
+     2,
+     3,
+     0,
+     0
+    ],
+    [
+     515,
+     3,
+     25,
+     0
+    ]
+   ]
+  },
+  "at_gp1": {
+   "dir": "revport/attires/cap",
+   "slots": [
+    [
+     10,
+     1,
+     12,
+     0
+    ],
+    [
+     7,
+     1,
+     29,
+     0
+    ]
+   ]
+  },
+  "at_gp2": {
+   "dir": "revport/attires/cap",
+   "slots": [
+    [
+     10,
+     2,
+     12,
+     0
+    ],
+    [
+     7,
+     2,
+     29,
+     0
+    ]
+   ]
+  },
+  "at_gp3": {
+   "dir": "revport/attires/cap",
+   "slots": [
+    [
+     10,
+     3,
+     12,
+     0
+    ],
+    [
+     7,
+     3,
+     32,
+     0
+    ]
+   ]
+  },
+  "at_hh1": {
+   "dir": "revport/attires/cap",
+   "slots": [
+    [
+     513,
+     1,
+     19,
+     2
+    ],
+    [
+     515,
+     1,
+     26,
+     0
+    ]
+   ]
+  },
+  "at_hh2": {
+   "dir": "revport/attires/cap",
+   "slots": [
+    [
+     513,
+     2,
+     21,
+     1
+    ],
+    [
+     515,
+     2,
+     53,
+     0
+    ]
+   ]
+  },
+  "at_hh3": {
+   "dir": "revport/attires/cap",
+   "slots": [
+    [
+     513,
+     3,
+     20,
+     0
+    ],
+    [
+     515,
+     3,
+     25,
+     0
+    ]
+   ]
+  },
+  "at_ho1": {
+   "dir": "revport/attires/cap",
+   "slots": [
+    [
+     516,
+     1,
+     28,
+     0
+    ],
+    [
+     515,
+     1,
+     26,
+     0
+    ]
+   ]
+  },
+  "at_ho2": {
+   "dir": "revport/attires/cap",
+   "slots": [
+    [
+     516,
+     2,
+     27,
+     0
+    ],
+    [
+     515,
+     2,
+     53,
+     0
+    ]
+   ]
+  },
+  "at_ho3": {
+   "dir": "revport/attires/cap",
+   "slots": [
+    [
+     516,
+     3,
+     28,
+     0
+    ],
+    [
+     515,
+     3,
+     25,
+     0
+    ]
+   ]
+  },
+  "at_hz1": {
+   "dir": "revport/attires/cap",
+   "slots": [
+    [
+     11,
+     1,
+     13,
+     0
+    ],
+    [
+     264,
+     1,
+     19,
+     0
+    ]
+   ]
+  },
+  "at_hz2": {
+   "dir": "revport/attires/cap",
+   "slots": [
+    [
+     11,
+     2,
+     14,
+     0
+    ],
+    [
+     264,
+     2,
+     4,
+     0
+    ]
+   ]
+  },
+  "at_hz3": {
+   "dir": "revport/attires/cap",
+   "slots": [
+    [
+     11,
+     3,
+     13,
+     0
+    ],
+    [
+     264,
+     3,
+     3,
+     0
+    ]
+   ]
+  },
+  "at_rb1": {
+   "dir": "revport/attires/cap",
+   "slots": [
+    [
+     772,
+     1,
+     2,
+     1
+    ],
+    [
+     525,
+     1,
+     10,
+     0
+    ]
+   ]
+  },
+  "at_rb2": {
+   "dir": "revport/attires/cap",
+   "slots": [
+    [
+     772,
+     2,
+     2,
+     5
+    ],
+    [
+     525,
+     2,
+     20,
+     0
+    ]
+   ]
+  },
+  "at_rb3": {
+   "dir": "revport/attires/cap",
+   "slots": [
+    [
+     772,
+     3,
+     4,
+     2
+    ],
+    [
+     525,
+     3,
+     18,
+     0
+    ]
+   ]
+  },
+  "at_sl1": {
+   "dir": "revport/attires/cap",
+   "slots": [
+    [
+     1,
+     1,
+     0,
+     0
+    ],
+    [
+     3,
+     1,
+     3,
+     0
+    ]
+   ]
+  },
+  "at_sl2": {
+   "dir": "revport/attires/cap",
+   "slots": [
+    [
+     1,
+     2,
+     1,
+     2
+    ],
+    [
+     3,
+     2,
+     3,
+     0
+    ]
+   ]
+  },
+  "at_sl3": {
+   "dir": "revport/attires/cap",
+   "slots": [
+    [
+     1,
+     3,
+     2,
+     0
+    ],
+    [
+     3,
+     3,
+     4,
+     0
+    ]
+   ]
+  },
+  "at_st1": {
+   "dir": "revport/attires/cap",
+   "slots": [
+    [
+     5,
+     1,
+     0,
+     0
+    ],
+    [
+     518,
+     1,
+     6,
+     1
+    ]
+   ]
+  },
+  "at_st2": {
+   "dir": "revport/attires/cap",
+   "slots": [
+    [
+     5,
+     2,
+     2,
+     0
+    ],
+    [
+     518,
+     2,
+     7,
+     2
+    ]
+   ]
+  },
+  "at_st3": {
+   "dir": "revport/attires/cap",
+   "slots": [
+    [
+     5,
+     3,
+     1,
+     0
+    ],
+    [
+     518,
+     3,
+     7,
+     1
+    ]
+   ]
+  },
+  "at_sv1": {
+   "dir": "revport/attires/cap",
+   "slots": [
+    [
+     514,
+     1,
+     23,
+     0
+    ],
+    [
+     519,
+     1,
+     31,
+     0
+    ]
+   ]
+  },
+  "at_sv2": {
+   "dir": "revport/attires/cap",
+   "slots": [
+    [
+     514,
+     2,
+     24,
+     3
+    ],
+    [
+     519,
+     2,
+     31,
+     0
+    ]
+   ]
+  },
+  "at_sv3": {
+   "dir": "revport/attires/cap",
+   "slots": [
+    [
+     514,
+     3,
+     23,
+     1
+    ],
+    [
+     519,
+     3,
+     31,
+     0
+    ]
+   ]
+  },
+  "bret_c1": {
+   "dir": "revport/cap",
+   "slots": [
+    [
+     8,
+     0,
+     9,
+     1
+    ],
+    [
+     270,
+     0,
+     4,
+     0
+    ]
+   ]
+  },
+  "gi_c0": {
+   "dir": "revport/ports3/cap",
+   "slots": [
+    [
+     2,
+     0,
+     0,
+     0
+    ],
+    [
+     515,
+     0,
+     25,
+     0
+    ]
+   ]
+  },
+  "gp_c0": {
+   "dir": "revport/ports4/cap",
+   "slots": [
+    [
+     10,
+     0,
+     12,
+     0
+    ],
+    [
+     7,
+     0,
+     29,
+     0
+    ]
+   ]
+  },
+  "hh_c0": {
+   "dir": "revport/ports/cap",
+   "slots": [
+    [
+     513,
+     0,
+     19,
+     0
+    ],
+    [
+     515,
+     0,
+     25,
+     0
+    ]
+   ]
+  },
+  "ho_c0": {
+   "dir": "revport/ports/cap",
+   "slots": [
+    [
+     516,
+     0,
+     27,
+     0
+    ],
+    [
+     515,
+     0,
+     25,
+     0
+    ]
+   ]
+  },
+  "hz_c0": {
+   "dir": "revport/ports4/cap",
+   "slots": [
+    [
+     11,
+     0,
+     14,
+     0
+    ],
+    [
+     264,
+     0,
+     4,
+     0
+    ]
+   ]
+  },
+  "hz_c1": {
+   "dir": "revport/ports4/cap",
+   "slots": [
+    [
+     11,
+     0,
+     13,
+     0
+    ],
+    [
+     264,
+     0,
+     3,
+     0
+    ]
+   ]
+  },
+  "rb_c0": {
+   "dir": "revport/ports4/cap",
+   "slots": [
+    [
+     772,
+     0,
+     3,
+     0
+    ],
+    [
+     525,
+     0,
+     20,
+     0
+    ]
+   ]
+  },
+  "rb_c1": {
+   "dir": "revport/ports4/cap",
+   "slots": [
+    [
+     772,
+     0,
+     4,
+     0
+    ],
+    [
+     525,
+     0,
+     20,
+     0
+    ]
+   ]
+  },
+  "sl_c0": {
+   "dir": "revport/ports4/cap",
+   "slots": [
+    [
+     1,
+     0,
+     0,
+     1
+    ],
+    [
+     3,
+     0,
+     5,
+     0
+    ]
+   ]
+  },
+  "st_c0": {
+   "dir": "revport/ports4/cap",
+   "slots": [
+    [
+     5,
+     0,
+     0,
+     0
+    ],
+    [
+     518,
+     0,
+     6,
+     0
+    ]
+   ]
+  },
+  "st_c2": {
+   "dir": "revport/ports4/cap",
+   "slots": [
+    [
+     5,
+     2,
+     2,
+     0
+    ],
+    [
+     518,
+     0,
+     7,
+     0
+    ]
+   ]
+  },
+  "sv_c0": {
+   "dir": "revport/ports2/cap",
+   "slots": [
+    [
+     514,
+     0,
+     22,
+     2
+    ],
+    [
+     519,
+     0,
+     31,
+     0
+    ]
+   ]
+  },
+  "sv_c3": {
+   "dir": "revport/ports2/cap",
+   "slots": [
+    [
+     514,
+     0,
+     22,
+     0
+    ],
+    [
+     519,
+     0,
+     31,
+     0
+    ]
+   ]
+  }
+ },
+ "auto_stand_ins": {
+  "about": "handlers_rig revenge cap auto.pkl: rig capture_all.py poked the managers' codes 0x806 / 0x807 (one pair a costume, slots 0 / 1), which have no model of their own (their model list is shared); what the rig captured in those slots is its start state's other men: slot 0 code 0x204 costume 0, slot 1 code 0x002 costume 0 (checked: all 8 entries reproduce). code -> [code, costume] loaded instead.",
+  "2054": [
+   516,
+   0
+  ],
+  "2055": [
+   2,
+   0
+  ]
+ }
+}

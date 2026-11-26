@@ -1,0 +1,61 @@
+{
+ "title": "startup_pair_15_too_big.json",
+ "menu": "Pair Test",
+ "championship": "world",
+ "cast": {
+  "rival": {
+   "game_number": "0x1000"
+  }
+ },
+ "start": "one",
+ "nodes": {
+  "one": {
+   "chapter": "PAIR TEST",
+   "pages": [
+    "{rival} waits for {player}."
+   ],
+   "scene": [
+    {
+     "place": "locker room",
+     "cast": [
+      "player",
+      {
+       "who": "rival"
+      }
+     ]
+    },
+    {
+     "say": "You're done, {player}!",
+     "who": "rival"
+    }
+   ],
+   "match": {
+    "type": "single",
+    "slots": [
+     "player",
+     "rival"
+    ],
+    "runins": [
+     {
+      "who": "kane",
+      "helps": "opponents",
+      "at": "0:45"
+     }
+    ]
+   },
+   "requirement": "Pair test: {player} vs {rival}.",
+   "branches": [
+    {
+     "if": "win",
+     "set": {
+      "rival": "kane"
+     },
+     "next": "end"
+    },
+    {
+     "next": "end"
+    }
+   ]
+  }
+ }
+}

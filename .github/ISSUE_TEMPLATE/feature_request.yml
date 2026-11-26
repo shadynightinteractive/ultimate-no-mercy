@@ -1,0 +1,24 @@
+name: Feature request
+description: An idea or a wish for Ultimate No Mercy.
+title: "[Idea]: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for the idea! Please search the existing issues first -- someone may have asked already.
+        Requests to support another mod or source game are welcome here too.
+  - type: textarea
+    id: idea
+    attributes:
+      label: What would you like?
+      description: Describe the feature, and how you would use it.
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why?
+      description: What it would make better, or what it would fix for you.
+    validations:
+      required: false

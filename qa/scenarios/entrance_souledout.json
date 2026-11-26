@@ -1,0 +1,33 @@
+{
+  "about": "2026-11-01 evening (arenas-rev, 0.38.22): SOULED OUT's entrance close shots: its own close scene (Revenge's 3D stage) -- 2026-10-31, the user: 'import Bash at the Beach arena' -- 2026-10-30, the user: 'the entrances match WM 2000 arena in the closeup of the entrance. Doesn't Revenge have closeup versions of the arenas we can use?' -- SOULED OUT's entrance close shots (steps 5 / 11: the entrance overlay's close scene, venue + 10; arena_entrance.c makes scene index 7 Revenge's stage, gen/arenas_entrance.py): a Royal Rumble's first two entrances (Hogan, then an entrant) -- the close shots looked at: Revenge's stage behind them, not WrestleMania's letters",
+  "match": "rumble",
+  "wrestlers": [
+    "HOLLYWOOD HOGAN"
+  ],
+  "control": [
+    "cpu"
+  ],
+  "arena": "SOULED OUT",
+  "options": {
+    "rumble_entrants": 4,
+    "rumble_interval": 60,
+    "titantron_screens": true,
+    "titantron_live": true
+  },
+  "matches": 1,
+  "seconds": 120,
+  "shots": 0.5,
+  "shot_when": "$c.mode -eq 0 -and $c.screen -eq 42 -and $c.entrance_step -ge 1 -and $c.entrance_step -le 29",
+  "expect": [
+    {
+      "name": "the entrances ran",
+      "when": "any",
+      "check": "mode == 0 and screen == 42 and entrance_step >= 1 and entrance_step <= 29"
+    },
+    {
+      "name": "the arena is ours (arena_current 14)",
+      "when": "any",
+      "check": "venue == 14 and stage == 2"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "about": "a custom story from the list (the championship page showing the folder's stories, 2026-10-28 evening): chosen (qa_story 2), the CPU plays (1), up to its first match's end",
+  "match": "arcade",
+  "wrestlers": [
+    "STEVE AUSTIN",
+    null
+  ],
+  "matches": 0,
+  "seconds": 420,
+  "shots": 5.0,
+  "options": {
+    "free_play": true,
+    "attract_demos": false,
+    "custom_story": 1,
+    "qa_story": 3
+  },
+  "expect": [
+    {
+      "name": "the custom story ran",
+      "when": "any",
+      "check": "matches >= 10000"
+    }
+  ],
+  "shot_when": "$c.screen -eq 23 -or $c.screen -eq 22 -or $c.screen -eq 25"
+}

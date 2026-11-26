@@ -1,0 +1,45 @@
+{
+  "about": "tronflicker 2026-11-21, the user: 'the titantron is clipping to black again every couple of seconds briefly' (their Arcade: La Parka vs Ultimo Dragon, Revenge imports with no video of their own). vis_match_trace's way: a CPU vs CPU singles match with the live Titantron, the game's own cameras, at the real pace; the runner sets WCW_VIEW_TRACE to count what the Titantron shows picture by picture (camera / kept / cleared / the video in memory -- in native-only mode nothing writes that memory: black). La Parka (0x0370) vs Ultimo Dragon (0x0376), neither with a video, at RAW IS WAR.",
+  "wrestlers": [
+    "0x0370",
+    "0x0376"
+  ],
+  "costumes": [
+    0,
+    0
+  ],
+  "arena": "RAW IS WAR",
+  "control": [
+    "cpu",
+    "cpu"
+  ],
+  "options": {
+    "titantron_screens": true,
+    "titantron_live": true
+  },
+  "matches": 1,
+  "seconds": 100,
+  "shots": 25,
+  "expect": [
+    {
+      "name": "the match started",
+      "when": "any",
+      "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "the arena is RAW IS WAR",
+      "when": "match",
+      "check": "venue == 0"
+    },
+    {
+      "name": "the two Superstars asked for",
+      "when": "match",
+      "check": "s0_id == 0x0370 and s1_id == 0x0376"
+    },
+    {
+      "name": "no position ever went bad",
+      "when": "always",
+      "check": "finite(s0_x, s0_y, s0_z, s1_x, s1_y, s1_z)"
+    }
+  ]
+}

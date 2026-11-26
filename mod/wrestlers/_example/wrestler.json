@@ -1,0 +1,11 @@
+{
+  "about": "A template: copy this folder and rename it without the underscore: the folder's name is his ID. Change the name. He starts as a copy of based_on (an ID, a name, or a number); everything else is optional. To keep his ID whatever the folder is called, add \"id\": \"my_wrestler\".",
+  "based_on": "the_rock",
+  "name": "MY WRESTLER",
+  "short_name": "MINE",
+  "nick": "",
+  "height": 14,
+  "weight": 150,
+  "music": 5,
+  "video": 0
+}

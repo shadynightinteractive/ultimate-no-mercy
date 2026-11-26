@@ -1,0 +1,41 @@
+{
+  "about": "2026-10-30, the user: 'There is a bug on the announce table with JR and King. If you run up holding run and quickly dash up on top, to the side of JR and King ... it brings you up not only to the table, but you can stay at that height and clip out completely of any boundaries' -- every 10 s THE ROCK (the CPU) is put beside the announce table, at the announcers' depth or its front, from the right or the left, and runs at it (qa_table). Never up at the table's height (y 90) away from the ring and the table's top",
+  "wrestlers": [
+    "THE ROCK",
+    "KANE"
+  ],
+  "control": [
+    "cpu",
+    "pad2"
+  ],
+  "arena": "SMACKDOWN",
+  "matches": 1,
+  "seconds": 200,
+  "shots": 0.5,
+  "options": {
+    "qa_table": 1,
+    "announcers": true
+  },
+  "expect": [
+    {
+      "name": "the match started",
+      "when": "any",
+      "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "runs at the table made",
+      "when": "end",
+      "check": "forced >= 8"
+    },
+    {
+      "name": "never up at the table's height off the table and away from the ring",
+      "when": "always",
+      "check": "not (s0_y > 45 and not (abs(s0_x) < 280 and abs(s0_z) < 280) and not (abs(s0_x) < 120 and s0_z > -620 and s0_z < -440) and s0_z < 500)"
+    },
+    {
+      "name": "nobody's position went bad",
+      "when": "always",
+      "check": "finite(s0_x, s0_y, s0_z, s1_x, s1_y, s1_z)"
+    }
+  ]
+}

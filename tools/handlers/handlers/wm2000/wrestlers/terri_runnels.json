@@ -1,0 +1,13 @@
+{
+ "about": "WrestleMania 2000's TERRI RUNNELS: what the handler is told for him (wm2kall, 2026-11-13). Everything else comes from the ROM.",
+ "string_id": "terri_runnels",
+ "key": "terri_runnels",
+ "wm2000": {
+  "roster_index": 68,
+  "game_id": "0x0A02"
+ },
+ "moveset": {
+  "reference_ordinal": 53,
+  "reference_why": "No Mercy's own"
+ }
+}

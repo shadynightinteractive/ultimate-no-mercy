@@ -1,0 +1,40 @@
+{
+  "about": "2026-11-22 guestref: a Guest Referee match (set-up kind 0x81: one on one with a guest referee -- the menus' Guest Referee > Single Match), all three the computer's: Steve Austin vs The Rock, Mankind the referee, on RAW IS WAR. The user: 'please QA guest referee mode. Camera is off'. The match camera's eye and the point it looks at go into lj_a .. lj_c every step (qa_camprobe), the three men's places into s0 .. s2: the run's camera is measured against who it frames (guestref_cam.py).",
+  "match": "triple",
+  "setup_flags": 129,
+  "wrestlers": [
+    "STEVE AUSTIN",
+    "THE ROCK",
+    "MANKIND"
+  ],
+  "costumes": [
+    0,
+    0,
+    0
+  ],
+  "control": [
+    "cpu",
+    "cpu",
+    "cpu"
+  ],
+  "arena": "RAW IS WAR",
+  "options": {
+    "qa_camprobe": 1
+  },
+  "matches": 1,
+  "seconds": 300,
+  "speed": 4,
+  "shots": 6,
+  "expect": [
+    {
+      "name": "the match started",
+      "when": "any",
+      "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "a referee match: the match flags hold 0x80000 (the guest referee) with the singles bits 0x1400",
+      "when": "match",
+      "check": "(flags & 0x81400) == 0x81400"
+    }
+  ]
+}

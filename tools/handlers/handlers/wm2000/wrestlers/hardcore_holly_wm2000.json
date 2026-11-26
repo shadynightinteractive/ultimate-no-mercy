@@ -1,0 +1,13 @@
+{
+ "about": "WrestleMania 2000's HARDCORE HOLLY: what the handler is told for him (wm2kall, 2026-11-13). Everything else comes from the ROM.",
+ "string_id": "hardcore_holly_wm2000",
+ "key": "hardcore_holly_wm2000",
+ "wm2000": {
+  "roster_index": 40,
+  "game_id": "0x0702"
+ },
+ "moveset": {
+  "reference_ordinal": 37,
+  "reference_why": "No Mercy's own"
+ }
+}

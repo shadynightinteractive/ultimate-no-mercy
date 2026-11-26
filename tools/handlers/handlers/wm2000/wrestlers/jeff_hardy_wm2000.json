@@ -1,0 +1,13 @@
+{
+ "about": "WrestleMania 2000's JEFF HARDY: what the handler is told for him (wm2kall, 2026-11-13). Everything else comes from the ROM.",
+ "string_id": "jeff_hardy_wm2000",
+ "key": "jeff_hardy_wm2000",
+ "wm2000": {
+  "roster_index": 44,
+  "game_id": "0x0803"
+ },
+ "moveset": {
+  "reference_ordinal": 32,
+  "reference_why": "No Mercy's own"
+ }
+}

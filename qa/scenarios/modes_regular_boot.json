@@ -1,0 +1,24 @@
+{
+  "about": "2026-11-07, the two modes phase 1: Regular from power-on -- the original's legal page, logos, intro movie and title (its own PRESS START, no INSERT COIN / CREDITS), nobody touching anything until the title is up; then Start (qa_reg 1: on the title 2 s, as a player's controller 1) -> the Rumble Pak notice -> the game's own main menu; 3 s there, F2 opened on GAME SETTINGS for 5 s (qa_reg 2: the GAME MODE row reads REGULAR; TITANTRON LIVE CAMERA reads OFF -- set off here, so the settings were loaded in Regular), EXIT WITHOUT SAVING; quit 10 s later (qa_reg 8). state.csv (qa_modes): bs_tries bit 0 the running mode (0 Regular), bits 4-7 the migration (0: none, settings_version 5 already), bit 24 F2 open; bs_grabs the driver's step (QR_MAIN 2, QR_F2 3, QR_DONE 13) | the F2 page << 8; bs_step the arcade's menu changes found in the menus' data: bit 15 the data loaded, low byte the championship list's rows (10, the game's own), bits 8-12 BELT tab moved / Survival / Custom Story / GBC as Royal Rumble / Ladder label -- all 0 in Regular",
+  "match": "arcade",
+  "matches": 0,
+  "seconds": 260,
+  "shots": 1.0,
+  "options": {
+    "game_mode": "Regular",
+    "settings_version": 5,
+    "qa_modes": 1,
+    "qa_reg": 11,
+    "titantron_live": false
+  },
+  "expect": [
+    { "name": "Regular all along (the running mode 0)", "when": "always", "check": "(bs_tries & 1) == 0" },
+    { "name": "the arcade's phase never left ATTRACT (no coin-op ran)", "when": "always", "check": "(bs_tries >> 28) == 0" },
+    { "name": "the title came up (the menus' screen 0)", "when": "any", "check": "mode == 0 and screen == 0 and (bs_step & 0x8000) != 0" },
+    { "name": "the game's own main menu (Multi Play / Single Play / Options)", "when": "any", "check": "mode == 0 and screen in (2, 3, 4) and (bs_grabs & 255) >= 2" },
+    { "name": "F2 opened over it, GAME SETTINGS", "when": "any", "check": "((bs_tries >> 24) & 1) == 1 and ((bs_grabs >> 8) & 255) == 1" },
+    { "name": "after EXIT WITHOUT SAVING (the settings read again): still Regular, the driver done", "when": "any", "check": "(bs_grabs & 255) == 13 and (bs_tries & 1) == 0 and ((bs_tries >> 24) & 1) == 0" },
+    { "name": "none of the arcade's menu changes in the menus' data, the list's own 10 rows", "when": "always", "check": "(bs_step & 0x8000) == 0 or (bs_step & 0x1FFF) == 10" }
+  ],
+  "shot_when": "$c.screen -ge 0 -and $c.screen -le 4"
+}

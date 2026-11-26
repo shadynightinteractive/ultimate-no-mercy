@@ -1,0 +1,3600 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "story.schema.json",
+ "title": "Ultimate No Mercy custom story",
+ "description": "Made by mod/gen/storyschema.py from the compiler's tables (mod/gen/storyc.py). The compiler checks more than this (text limits, who is on screen, names); its messages say what's wrong.",
+ "type": "object",
+ "required": [
+  "nodes"
+ ],
+ "properties": {
+  "$schema": {
+   "type": "string"
+  },
+  "title": {
+   "type": "string"
+  },
+  "menu": {
+   "type": "string",
+   "maxLength": 24
+  },
+  "championship": {
+   "enum": [
+    "european",
+    "hardcore",
+    "ic",
+    "intercontinental",
+    "light heavyweight",
+    "lightheavy",
+    "tag",
+    "women's",
+    "womens",
+    "world"
+   ]
+  },
+  "cast": {
+   "type": "object",
+   "maxProperties": 4,
+   "additionalProperties": {
+    "oneOf": [
+     {
+      "oneOf": [
+       {
+        "type": "string",
+        "description": "A role (player, partner, champion, champion2, or one of \"cast\") or a Superstar's string ID (\"the_rock\", a wrestler folder's name).",
+        "examples": [
+         "al_snow",
+         "albert",
+         "andre_the_giant",
+         "big_boss_man",
+         "big_show",
+         "booker_t",
+         "booker_t_b",
+         "bradshaw",
+         "bret_hart",
+         "bret_hart_b",
+         "british_bulldog",
+         "buh_buh_ray_dudley",
+         "bull_buchanan",
+         "cactus_jack",
+         "chris_benoit",
+         "chris_jericho",
+         "christian",
+         "chyna",
+         "crash",
+         "d_von_dudley",
+         "dean_malenko",
+         "dlo_brown",
+         "droz",
+         "earl_hebner",
+         "eddie_guerrero",
+         "edge",
+         "eric_bischoff",
+         "essa_rios",
+         "faarooq",
+         "funaki",
+         "gangrel",
+         "godfather",
+         "goldberg",
+         "grand_master_sexay",
+         "hardcore_holly",
+         "ho",
+         "hollywood_hogan",
+         "ivory",
+         "jeff_hardy",
+         "jeff_jarrett",
+         "jim_neidhart",
+         "jim_ross",
+         "joey_abs",
+         "kane",
+         "ken_shamrock",
+         "kevin_nash",
+         "kurt_angle",
+         "lex_luger",
+         "linda_mcmahon",
+         "lita",
+         "mae_young",
+         "mankind",
+         "mark_henry",
+         "matt_hardy",
+         "mick_foley",
+         "mideon",
+         "mosh",
+         "mr_ass",
+         "mr_perfect",
+         "perry_saturn",
+         "pete_gas",
+         "randy_savage",
+         "randy_savage_b",
+         "raven",
+         "rey_mysterio",
+         "rey_mysterio_b",
+         "rick_steiner",
+         "rikishi",
+         "road_dogg",
+         "roddy_piper",
+         "rodney",
+         "scott_hall",
+         "scott_steiner",
+         "scott_steiner_b",
+         "scotty_too_hotty",
+         "shane_mcmahon",
+         "shawn_michaels",
+         "stephanie_mcmahon",
+         "steve_austin",
+         "steve_blackman",
+         "steven_richards",
+         "stevie_ray",
+         "stevie_ray_b",
+         "sting",
+         "taka_michinoku",
+         "tazz",
+         "terri",
+         "test",
+         "the_blue_meanie",
+         "the_giant",
+         "the_kat",
+         "the_rock",
+         "thrasher",
+         "tiger_ali_singh",
+         "tori",
+         "triple_h",
+         "trish_stratus",
+         "undertaker",
+         "undertaker_1999",
+         "val_venis",
+         "vince_mcmahon",
+         "viscera",
+         "william_regal",
+         "x_pac"
+        ]
+       },
+       {
+        "type": "object",
+        "description": "A Superstar by his string ID and his game number: the number when it is his, else the string ID.",
+        "minProperties": 1,
+        "additionalProperties": false,
+        "properties": {
+         "id": {
+          "type": "string"
+         },
+         "game_number": {
+          "type": [
+           "string",
+           "integer"
+          ]
+         }
+        }
+       }
+      ]
+     },
+     {
+      "type": "array",
+      "items": {
+       "oneOf": [
+        {
+         "type": "string",
+         "description": "A role (player, partner, champion, champion2, or one of \"cast\") or a Superstar's string ID (\"the_rock\", a wrestler folder's name).",
+         "examples": [
+          "al_snow",
+          "albert",
+          "andre_the_giant",
+          "big_boss_man",
+          "big_show",
+          "booker_t",
+          "booker_t_b",
+          "bradshaw",
+          "bret_hart",
+          "bret_hart_b",
+          "british_bulldog",
+          "buh_buh_ray_dudley",
+          "bull_buchanan",
+          "cactus_jack",
+          "chris_benoit",
+          "chris_jericho",
+          "christian",
+          "chyna",
+          "crash",
+          "d_von_dudley",
+          "dean_malenko",
+          "dlo_brown",
+          "droz",
+          "earl_hebner",
+          "eddie_guerrero",
+          "edge",
+          "eric_bischoff",
+          "essa_rios",
+          "faarooq",
+          "funaki",
+          "gangrel",
+          "godfather",
+          "goldberg",
+          "grand_master_sexay",
+          "hardcore_holly",
+          "ho",
+          "hollywood_hogan",
+          "ivory",
+          "jeff_hardy",
+          "jeff_jarrett",
+          "jim_neidhart",
+          "jim_ross",
+          "joey_abs",
+          "kane",
+          "ken_shamrock",
+          "kevin_nash",
+          "kurt_angle",
+          "lex_luger",
+          "linda_mcmahon",
+          "lita",
+          "mae_young",
+          "mankind",
+          "mark_henry",
+          "matt_hardy",
+          "mick_foley",
+          "mideon",
+          "mosh",
+          "mr_ass",
+          "mr_perfect",
+          "perry_saturn",
+          "pete_gas",
+          "randy_savage",
+          "randy_savage_b",
+          "raven",
+          "rey_mysterio",
+          "rey_mysterio_b",
+          "rick_steiner",
+          "rikishi",
+          "road_dogg",
+          "roddy_piper",
+          "rodney",
+          "scott_hall",
+          "scott_steiner",
+          "scott_steiner_b",
+          "scotty_too_hotty",
+          "shane_mcmahon",
+          "shawn_michaels",
+          "stephanie_mcmahon",
+          "steve_austin",
+          "steve_blackman",
+          "steven_richards",
+          "stevie_ray",
+          "stevie_ray_b",
+          "sting",
+          "taka_michinoku",
+          "tazz",
+          "terri",
+          "test",
+          "the_blue_meanie",
+          "the_giant",
+          "the_kat",
+          "the_rock",
+          "thrasher",
+          "tiger_ali_singh",
+          "tori",
+          "triple_h",
+          "trish_stratus",
+          "undertaker",
+          "undertaker_1999",
+          "val_venis",
+          "vince_mcmahon",
+          "viscera",
+          "william_regal",
+          "x_pac"
+         ]
+        },
+        {
+         "type": "object",
+         "description": "A Superstar by his string ID and his game number: the number when it is his, else the string ID.",
+         "minProperties": 1,
+         "additionalProperties": false,
+         "properties": {
+          "id": {
+           "type": "string"
+          },
+          "game_number": {
+           "type": [
+            "string",
+            "integer"
+           ]
+          }
+         }
+        }
+       ]
+      },
+      "minItems": 1,
+      "maxItems": 8,
+      "description": "A recast: the first of these who isn't the player (or another role's man)."
+     }
+    ]
+   }
+  },
+  "vars": {
+   "type": "object",
+   "maxProperties": 32,
+   "additionalProperties": {
+    "type": "integer"
+   }
+  },
+  "start": {
+   "type": "string"
+  },
+  "nodes": {
+   "type": "object",
+   "minProperties": 1,
+   "additionalProperties": {
+    "type": "object",
+    "required": [
+     "match"
+    ],
+    "properties": {
+     "chapter": {
+      "type": "string"
+     },
+     "pages": {
+      "type": "array",
+      "items": {
+       "oneOf": [
+        {
+         "type": "string",
+         "description": "Text. \\n starts a line. {role} / {string_id} = his name; {role.nickname}, {role.catchphrase}, {role.signoff}, {role.finisher}, {role.insult} = his voice (filled in as it plays)."
+        },
+        {
+         "type": "object",
+         "description": "One line per player: Superstars' string IDs, \"group:<name>\", and \"default\" (required).",
+         "required": [
+          "default"
+         ],
+         "properties": {
+          "default": {
+           "type": "string",
+           "description": "Text. \\n starts a line. {role} / {string_id} = his name; {role.nickname}, {role.catchphrase}, {role.signoff}, {role.finisher}, {role.insult} = his voice (filled in as it plays)."
+          }
+         },
+         "additionalProperties": {
+          "type": "string",
+          "description": "Text. \\n starts a line. {role} / {string_id} = his name; {role.nickname}, {role.catchphrase}, {role.signoff}, {role.finisher}, {role.insult} = his voice (filled in as it plays)."
+         }
+        }
+       ]
+      }
+     },
+     "scene": {
+      "oneOf": [
+       {
+        "$ref": "#/$defs/steps"
+       },
+       {
+        "type": "object",
+        "properties": {
+         "place": {
+          "enum": [
+           "bar",
+           "boiler room",
+           "dressing room",
+           "entrance",
+           "garage",
+           "hall",
+           "hallway",
+           "locker room",
+           "parking lot",
+           "pool hall",
+           "ramp",
+           "ring",
+           "sports lounge",
+           "stage"
+          ]
+         },
+         "cast": {
+          "type": "array",
+          "items": {
+           "oneOf": [
+            {
+             "oneOf": [
+              {
+               "type": "string",
+               "description": "A role (player, partner, champion, champion2, or one of \"cast\") or a Superstar's string ID (\"the_rock\", a wrestler folder's name).",
+               "examples": [
+                "al_snow",
+                "albert",
+                "andre_the_giant",
+                "big_boss_man",
+                "big_show",
+                "booker_t",
+                "booker_t_b",
+                "bradshaw",
+                "bret_hart",
+                "bret_hart_b",
+                "british_bulldog",
+                "buh_buh_ray_dudley",
+                "bull_buchanan",
+                "cactus_jack",
+                "chris_benoit",
+                "chris_jericho",
+                "christian",
+                "chyna",
+                "crash",
+                "d_von_dudley",
+                "dean_malenko",
+                "dlo_brown",
+                "droz",
+                "earl_hebner",
+                "eddie_guerrero",
+                "edge",
+                "eric_bischoff",
+                "essa_rios",
+                "faarooq",
+                "funaki",
+                "gangrel",
+                "godfather",
+                "goldberg",
+                "grand_master_sexay",
+                "hardcore_holly",
+                "ho",
+                "hollywood_hogan",
+                "ivory",
+                "jeff_hardy",
+                "jeff_jarrett",
+                "jim_neidhart",
+                "jim_ross",
+                "joey_abs",
+                "kane",
+                "ken_shamrock",
+                "kevin_nash",
+                "kurt_angle",
+                "lex_luger",
+                "linda_mcmahon",
+                "lita",
+                "mae_young",
+                "mankind",
+                "mark_henry",
+                "matt_hardy",
+                "mick_foley",
+                "mideon",
+                "mosh",
+                "mr_ass",
+                "mr_perfect",
+                "perry_saturn",
+                "pete_gas",
+                "randy_savage",
+                "randy_savage_b",
+                "raven",
+                "rey_mysterio",
+                "rey_mysterio_b",
+                "rick_steiner",
+                "rikishi",
+                "road_dogg",
+                "roddy_piper",
+                "rodney",
+                "scott_hall",
+                "scott_steiner",
+                "scott_steiner_b",
+                "scotty_too_hotty",
+                "shane_mcmahon",
+                "shawn_michaels",
+                "stephanie_mcmahon",
+                "steve_austin",
+                "steve_blackman",
+                "steven_richards",
+                "stevie_ray",
+                "stevie_ray_b",
+                "sting",
+                "taka_michinoku",
+                "tazz",
+                "terri",
+                "test",
+                "the_blue_meanie",
+                "the_giant",
+                "the_kat",
+                "the_rock",
+                "thrasher",
+                "tiger_ali_singh",
+                "tori",
+                "triple_h",
+                "trish_stratus",
+                "undertaker",
+                "undertaker_1999",
+                "val_venis",
+                "vince_mcmahon",
+                "viscera",
+                "william_regal",
+                "x_pac"
+               ]
+              },
+              {
+               "type": "object",
+               "description": "A Superstar by his string ID and his game number: the number when it is his, else the string ID.",
+               "minProperties": 1,
+               "additionalProperties": false,
+               "properties": {
+                "id": {
+                 "type": "string"
+                },
+                "game_number": {
+                 "type": [
+                  "string",
+                  "integer"
+                 ]
+                }
+               }
+              }
+             ]
+            },
+            {
+             "type": "object",
+             "required": [
+              "who"
+             ],
+             "properties": {
+              "who": {
+               "oneOf": [
+                {
+                 "type": "string",
+                 "description": "A role (player, partner, champion, champion2, or one of \"cast\") or a Superstar's string ID (\"the_rock\", a wrestler folder's name).",
+                 "examples": [
+                  "al_snow",
+                  "albert",
+                  "andre_the_giant",
+                  "big_boss_man",
+                  "big_show",
+                  "booker_t",
+                  "booker_t_b",
+                  "bradshaw",
+                  "bret_hart",
+                  "bret_hart_b",
+                  "british_bulldog",
+                  "buh_buh_ray_dudley",
+                  "bull_buchanan",
+                  "cactus_jack",
+                  "chris_benoit",
+                  "chris_jericho",
+                  "christian",
+                  "chyna",
+                  "crash",
+                  "d_von_dudley",
+                  "dean_malenko",
+                  "dlo_brown",
+                  "droz",
+                  "earl_hebner",
+                  "eddie_guerrero",
+                  "edge",
+                  "eric_bischoff",
+                  "essa_rios",
+                  "faarooq",
+                  "funaki",
+                  "gangrel",
+                  "godfather",
+                  "goldberg",
+                  "grand_master_sexay",
+                  "hardcore_holly",
+                  "ho",
+                  "hollywood_hogan",
+                  "ivory",
+                  "jeff_hardy",
+                  "jeff_jarrett",
+                  "jim_neidhart",
+                  "jim_ross",
+                  "joey_abs",
+                  "kane",
+                  "ken_shamrock",
+                  "kevin_nash",
+                  "kurt_angle",
+                  "lex_luger",
+                  "linda_mcmahon",
+                  "lita",
+                  "mae_young",
+                  "mankind",
+                  "mark_henry",
+                  "matt_hardy",
+                  "mick_foley",
+                  "mideon",
+                  "mosh",
+                  "mr_ass",
+                  "mr_perfect",
+                  "perry_saturn",
+                  "pete_gas",
+                  "randy_savage",
+                  "randy_savage_b",
+                  "raven",
+                  "rey_mysterio",
+                  "rey_mysterio_b",
+                  "rick_steiner",
+                  "rikishi",
+                  "road_dogg",
+                  "roddy_piper",
+                  "rodney",
+                  "scott_hall",
+                  "scott_steiner",
+                  "scott_steiner_b",
+                  "scotty_too_hotty",
+                  "shane_mcmahon",
+                  "shawn_michaels",
+                  "stephanie_mcmahon",
+                  "steve_austin",
+                  "steve_blackman",
+                  "steven_richards",
+                  "stevie_ray",
+                  "stevie_ray_b",
+                  "sting",
+                  "taka_michinoku",
+                  "tazz",
+                  "terri",
+                  "test",
+                  "the_blue_meanie",
+                  "the_giant",
+                  "the_kat",
+                  "the_rock",
+                  "thrasher",
+                  "tiger_ali_singh",
+                  "tori",
+                  "triple_h",
+                  "trish_stratus",
+                  "undertaker",
+                  "undertaker_1999",
+                  "val_venis",
+                  "vince_mcmahon",
+                  "viscera",
+                  "william_regal",
+                  "x_pac"
+                 ]
+                },
+                {
+                 "type": "object",
+                 "description": "A Superstar by his string ID and his game number: the number when it is his, else the string ID.",
+                 "minProperties": 1,
+                 "additionalProperties": false,
+                 "properties": {
+                  "id": {
+                   "type": "string"
+                  },
+                  "game_number": {
+                   "type": [
+                    "string",
+                    "integer"
+                   ]
+                  }
+                 }
+                }
+               ]
+              },
+              "at": {
+               "type": "integer",
+               "minimum": 1,
+               "maximum": 10
+              },
+              "do": {
+               "oneOf": [
+                {
+                 "enum": [
+                  "arms up",
+                  "bring it",
+                  "down",
+                  "drink",
+                  "entrance",
+                  "fall",
+                  "fist up",
+                  "get up",
+                  "hold out mic",
+                  "hurt",
+                  "interview",
+                  "laugh",
+                  "mic",
+                  "point",
+                  "punch",
+                  "rub face",
+                  "run",
+                  "shout",
+                  "shrug",
+                  "stand",
+                  "swing",
+                  "tag entrance",
+                  "talk",
+                  "taunt",
+                  "taunt 1",
+                  "taunt 2",
+                  "taunt 3",
+                  "taunt 4",
+                  "turn away",
+                  "walk",
+                  "win taunt"
+                 ]
+                },
+                {
+                 "type": "integer",
+                 "minimum": 0,
+                 "maximum": 60
+                }
+               ]
+              },
+              "mark": {
+               "type": "integer"
+              },
+              "wait": {
+               "type": [
+                "integer",
+                "boolean"
+               ]
+              }
+             },
+             "additionalProperties": false
+            }
+           ]
+          }
+         },
+         "fade": {
+          "type": "integer"
+         },
+         "camera": {
+          "oneOf": [
+           {
+            "enum": [
+             "close",
+             "two",
+             "wide",
+             "auto"
+            ]
+           },
+           {
+            "type": "integer"
+           },
+           {
+            "type": "boolean"
+           }
+          ]
+         },
+         "steps": {
+          "$ref": "#/$defs/steps"
+         }
+        },
+        "additionalProperties": false
+       }
+      ]
+     },
+     "match": {
+      "type": "object",
+      "properties": {
+       "type": {
+        "enum": [
+         "single",
+         "tag",
+         "triple",
+         "handicap",
+         "fourway",
+         "rumble",
+         "cage",
+         "ladder",
+         "ironman"
+        ]
+       },
+       "slots": {
+        "type": "array",
+        "items": {
+         "oneOf": [
+          {
+           "oneOf": [
+            {
+             "type": "string",
+             "description": "A role (player, partner, champion, champion2, or one of \"cast\") or a Superstar's string ID (\"the_rock\", a wrestler folder's name).",
+             "examples": [
+              "al_snow",
+              "albert",
+              "andre_the_giant",
+              "big_boss_man",
+              "big_show",
+              "booker_t",
+              "booker_t_b",
+              "bradshaw",
+              "bret_hart",
+              "bret_hart_b",
+              "british_bulldog",
+              "buh_buh_ray_dudley",
+              "bull_buchanan",
+              "cactus_jack",
+              "chris_benoit",
+              "chris_jericho",
+              "christian",
+              "chyna",
+              "crash",
+              "d_von_dudley",
+              "dean_malenko",
+              "dlo_brown",
+              "droz",
+              "earl_hebner",
+              "eddie_guerrero",
+              "edge",
+              "eric_bischoff",
+              "essa_rios",
+              "faarooq",
+              "funaki",
+              "gangrel",
+              "godfather",
+              "goldberg",
+              "grand_master_sexay",
+              "hardcore_holly",
+              "ho",
+              "hollywood_hogan",
+              "ivory",
+              "jeff_hardy",
+              "jeff_jarrett",
+              "jim_neidhart",
+              "jim_ross",
+              "joey_abs",
+              "kane",
+              "ken_shamrock",
+              "kevin_nash",
+              "kurt_angle",
+              "lex_luger",
+              "linda_mcmahon",
+              "lita",
+              "mae_young",
+              "mankind",
+              "mark_henry",
+              "matt_hardy",
+              "mick_foley",
+              "mideon",
+              "mosh",
+              "mr_ass",
+              "mr_perfect",
+              "perry_saturn",
+              "pete_gas",
+              "randy_savage",
+              "randy_savage_b",
+              "raven",
+              "rey_mysterio",
+              "rey_mysterio_b",
+              "rick_steiner",
+              "rikishi",
+              "road_dogg",
+              "roddy_piper",
+              "rodney",
+              "scott_hall",
+              "scott_steiner",
+              "scott_steiner_b",
+              "scotty_too_hotty",
+              "shane_mcmahon",
+              "shawn_michaels",
+              "stephanie_mcmahon",
+              "steve_austin",
+              "steve_blackman",
+              "steven_richards",
+              "stevie_ray",
+              "stevie_ray_b",
+              "sting",
+              "taka_michinoku",
+              "tazz",
+              "terri",
+              "test",
+              "the_blue_meanie",
+              "the_giant",
+              "the_kat",
+              "the_rock",
+              "thrasher",
+              "tiger_ali_singh",
+              "tori",
+              "triple_h",
+              "trish_stratus",
+              "undertaker",
+              "undertaker_1999",
+              "val_venis",
+              "vince_mcmahon",
+              "viscera",
+              "william_regal",
+              "x_pac"
+             ]
+            },
+            {
+             "type": "object",
+             "description": "A Superstar by his string ID and his game number: the number when it is his, else the string ID.",
+             "minProperties": 1,
+             "additionalProperties": false,
+             "properties": {
+              "id": {
+               "type": "string"
+              },
+              "game_number": {
+               "type": [
+                "string",
+                "integer"
+               ]
+              }
+             }
+            }
+           ]
+          },
+          {
+           "type": "array",
+           "items": {
+            "oneOf": [
+             {
+              "type": "string",
+              "description": "A role (player, partner, champion, champion2, or one of \"cast\") or a Superstar's string ID (\"the_rock\", a wrestler folder's name).",
+              "examples": [
+               "al_snow",
+               "albert",
+               "andre_the_giant",
+               "big_boss_man",
+               "big_show",
+               "booker_t",
+               "booker_t_b",
+               "bradshaw",
+               "bret_hart",
+               "bret_hart_b",
+               "british_bulldog",
+               "buh_buh_ray_dudley",
+               "bull_buchanan",
+               "cactus_jack",
+               "chris_benoit",
+               "chris_jericho",
+               "christian",
+               "chyna",
+               "crash",
+               "d_von_dudley",
+               "dean_malenko",
+               "dlo_brown",
+               "droz",
+               "earl_hebner",
+               "eddie_guerrero",
+               "edge",
+               "eric_bischoff",
+               "essa_rios",
+               "faarooq",
+               "funaki",
+               "gangrel",
+               "godfather",
+               "goldberg",
+               "grand_master_sexay",
+               "hardcore_holly",
+               "ho",
+               "hollywood_hogan",
+               "ivory",
+               "jeff_hardy",
+               "jeff_jarrett",
+               "jim_neidhart",
+               "jim_ross",
+               "joey_abs",
+               "kane",
+               "ken_shamrock",
+               "kevin_nash",
+               "kurt_angle",
+               "lex_luger",
+               "linda_mcmahon",
+               "lita",
+               "mae_young",
+               "mankind",
+               "mark_henry",
+               "matt_hardy",
+               "mick_foley",
+               "mideon",
+               "mosh",
+               "mr_ass",
+               "mr_perfect",
+               "perry_saturn",
+               "pete_gas",
+               "randy_savage",
+               "randy_savage_b",
+               "raven",
+               "rey_mysterio",
+               "rey_mysterio_b",
+               "rick_steiner",
+               "rikishi",
+               "road_dogg",
+               "roddy_piper",
+               "rodney",
+               "scott_hall",
+               "scott_steiner",
+               "scott_steiner_b",
+               "scotty_too_hotty",
+               "shane_mcmahon",
+               "shawn_michaels",
+               "stephanie_mcmahon",
+               "steve_austin",
+               "steve_blackman",
+               "steven_richards",
+               "stevie_ray",
+               "stevie_ray_b",
+               "sting",
+               "taka_michinoku",
+               "tazz",
+               "terri",
+               "test",
+               "the_blue_meanie",
+               "the_giant",
+               "the_kat",
+               "the_rock",
+               "thrasher",
+               "tiger_ali_singh",
+               "tori",
+               "triple_h",
+               "trish_stratus",
+               "undertaker",
+               "undertaker_1999",
+               "val_venis",
+               "vince_mcmahon",
+               "viscera",
+               "william_regal",
+               "x_pac"
+              ]
+             },
+             {
+              "type": "object",
+              "description": "A Superstar by his string ID and his game number: the number when it is his, else the string ID.",
+              "minProperties": 1,
+              "additionalProperties": false,
+              "properties": {
+               "id": {
+                "type": "string"
+               },
+               "game_number": {
+                "type": [
+                 "string",
+                 "integer"
+                ]
+               }
+              }
+             }
+            ]
+           },
+           "maxItems": 5
+          }
+         ]
+        }
+       },
+       "teams": {
+        "type": "array",
+        "description": "In place of slots: 1 on 1, 2 on 2, 1 on 2, 2 on 1, 1 on 1 on 1, or four of one.",
+        "items": {
+         "type": "array",
+         "items": {
+          "oneOf": [
+           {
+            "oneOf": [
+             {
+              "type": "string",
+              "description": "A role (player, partner, champion, champion2, or one of \"cast\") or a Superstar's string ID (\"the_rock\", a wrestler folder's name).",
+              "examples": [
+               "al_snow",
+               "albert",
+               "andre_the_giant",
+               "big_boss_man",
+               "big_show",
+               "booker_t",
+               "booker_t_b",
+               "bradshaw",
+               "bret_hart",
+               "bret_hart_b",
+               "british_bulldog",
+               "buh_buh_ray_dudley",
+               "bull_buchanan",
+               "cactus_jack",
+               "chris_benoit",
+               "chris_jericho",
+               "christian",
+               "chyna",
+               "crash",
+               "d_von_dudley",
+               "dean_malenko",
+               "dlo_brown",
+               "droz",
+               "earl_hebner",
+               "eddie_guerrero",
+               "edge",
+               "eric_bischoff",
+               "essa_rios",
+               "faarooq",
+               "funaki",
+               "gangrel",
+               "godfather",
+               "goldberg",
+               "grand_master_sexay",
+               "hardcore_holly",
+               "ho",
+               "hollywood_hogan",
+               "ivory",
+               "jeff_hardy",
+               "jeff_jarrett",
+               "jim_neidhart",
+               "jim_ross",
+               "joey_abs",
+               "kane",
+               "ken_shamrock",
+               "kevin_nash",
+               "kurt_angle",
+               "lex_luger",
+               "linda_mcmahon",
+               "lita",
+               "mae_young",
+               "mankind",
+               "mark_henry",
+               "matt_hardy",
+               "mick_foley",
+               "mideon",
+               "mosh",
+               "mr_ass",
+               "mr_perfect",
+               "perry_saturn",
+               "pete_gas",
+               "randy_savage",
+               "randy_savage_b",
+               "raven",
+               "rey_mysterio",
+               "rey_mysterio_b",
+               "rick_steiner",
+               "rikishi",
+               "road_dogg",
+               "roddy_piper",
+               "rodney",
+               "scott_hall",
+               "scott_steiner",
+               "scott_steiner_b",
+               "scotty_too_hotty",
+               "shane_mcmahon",
+               "shawn_michaels",
+               "stephanie_mcmahon",
+               "steve_austin",
+               "steve_blackman",
+               "steven_richards",
+               "stevie_ray",
+               "stevie_ray_b",
+               "sting",
+               "taka_michinoku",
+               "tazz",
+               "terri",
+               "test",
+               "the_blue_meanie",
+               "the_giant",
+               "the_kat",
+               "the_rock",
+               "thrasher",
+               "tiger_ali_singh",
+               "tori",
+               "triple_h",
+               "trish_stratus",
+               "undertaker",
+               "undertaker_1999",
+               "val_venis",
+               "vince_mcmahon",
+               "viscera",
+               "william_regal",
+               "x_pac"
+              ]
+             },
+             {
+              "type": "object",
+              "description": "A Superstar by his string ID and his game number: the number when it is his, else the string ID.",
+              "minProperties": 1,
+              "additionalProperties": false,
+              "properties": {
+               "id": {
+                "type": "string"
+               },
+               "game_number": {
+                "type": [
+                 "string",
+                 "integer"
+                ]
+               }
+              }
+             }
+            ]
+           },
+           {
+            "type": "array",
+            "items": {
+             "oneOf": [
+              {
+               "type": "string",
+               "description": "A role (player, partner, champion, champion2, or one of \"cast\") or a Superstar's string ID (\"the_rock\", a wrestler folder's name).",
+               "examples": [
+                "al_snow",
+                "albert",
+                "andre_the_giant",
+                "big_boss_man",
+                "big_show",
+                "booker_t",
+                "booker_t_b",
+                "bradshaw",
+                "bret_hart",
+                "bret_hart_b",
+                "british_bulldog",
+                "buh_buh_ray_dudley",
+                "bull_buchanan",
+                "cactus_jack",
+                "chris_benoit",
+                "chris_jericho",
+                "christian",
+                "chyna",
+                "crash",
+                "d_von_dudley",
+                "dean_malenko",
+                "dlo_brown",
+                "droz",
+                "earl_hebner",
+                "eddie_guerrero",
+                "edge",
+                "eric_bischoff",
+                "essa_rios",
+                "faarooq",
+                "funaki",
+                "gangrel",
+                "godfather",
+                "goldberg",
+                "grand_master_sexay",
+                "hardcore_holly",
+                "ho",
+                "hollywood_hogan",
+                "ivory",
+                "jeff_hardy",
+                "jeff_jarrett",
+                "jim_neidhart",
+                "jim_ross",
+                "joey_abs",
+                "kane",
+                "ken_shamrock",
+                "kevin_nash",
+                "kurt_angle",
+                "lex_luger",
+                "linda_mcmahon",
+                "lita",
+                "mae_young",
+                "mankind",
+                "mark_henry",
+                "matt_hardy",
+                "mick_foley",
+                "mideon",
+                "mosh",
+                "mr_ass",
+                "mr_perfect",
+                "perry_saturn",
+                "pete_gas",
+                "randy_savage",
+                "randy_savage_b",
+                "raven",
+                "rey_mysterio",
+                "rey_mysterio_b",
+                "rick_steiner",
+                "rikishi",
+                "road_dogg",
+                "roddy_piper",
+                "rodney",
+                "scott_hall",
+                "scott_steiner",
+                "scott_steiner_b",
+                "scotty_too_hotty",
+                "shane_mcmahon",
+                "shawn_michaels",
+                "stephanie_mcmahon",
+                "steve_austin",
+                "steve_blackman",
+                "steven_richards",
+                "stevie_ray",
+                "stevie_ray_b",
+                "sting",
+                "taka_michinoku",
+                "tazz",
+                "terri",
+                "test",
+                "the_blue_meanie",
+                "the_giant",
+                "the_kat",
+                "the_rock",
+                "thrasher",
+                "tiger_ali_singh",
+                "tori",
+                "triple_h",
+                "trish_stratus",
+                "undertaker",
+                "undertaker_1999",
+                "val_venis",
+                "vince_mcmahon",
+                "viscera",
+                "william_regal",
+                "x_pac"
+               ]
+              },
+              {
+               "type": "object",
+               "description": "A Superstar by his string ID and his game number: the number when it is his, else the string ID.",
+               "minProperties": 1,
+               "additionalProperties": false,
+               "properties": {
+                "id": {
+                 "type": "string"
+                },
+                "game_number": {
+                 "type": [
+                  "string",
+                  "integer"
+                 ]
+                }
+               }
+              }
+             ]
+            },
+            "maxItems": 5
+           }
+          ]
+         },
+         "minItems": 1,
+         "maxItems": 4
+        },
+        "minItems": 2,
+        "maxItems": 4
+       },
+       "script": {
+        "type": "array",
+        "maxItems": 16,
+        "description": "Triggers: each fires once, as the match plays.",
+        "items": {
+         "type": "object",
+         "required": [
+          "when",
+          "do"
+         ],
+         "properties": {
+          "when": {
+           "type": "string",
+           "description": "time M:SS | health <role> < N% | <role> outside | <role> in a hold | finisher by <role>"
+          },
+          "do": {
+           "enum": [
+            "end",
+            "runin",
+            "no dq",
+            "no countout"
+           ]
+          },
+          "winner": {
+           "oneOf": [
+            {
+             "type": "string",
+             "description": "A role (player, partner, champion, champion2, or one of \"cast\") or a Superstar's string ID (\"the_rock\", a wrestler folder's name).",
+             "examples": [
+              "al_snow",
+              "albert",
+              "andre_the_giant",
+              "big_boss_man",
+              "big_show",
+              "booker_t",
+              "booker_t_b",
+              "bradshaw",
+              "bret_hart",
+              "bret_hart_b",
+              "british_bulldog",
+              "buh_buh_ray_dudley",
+              "bull_buchanan",
+              "cactus_jack",
+              "chris_benoit",
+              "chris_jericho",
+              "christian",
+              "chyna",
+              "crash",
+              "d_von_dudley",
+              "dean_malenko",
+              "dlo_brown",
+              "droz",
+              "earl_hebner",
+              "eddie_guerrero",
+              "edge",
+              "eric_bischoff",
+              "essa_rios",
+              "faarooq",
+              "funaki",
+              "gangrel",
+              "godfather",
+              "goldberg",
+              "grand_master_sexay",
+              "hardcore_holly",
+              "ho",
+              "hollywood_hogan",
+              "ivory",
+              "jeff_hardy",
+              "jeff_jarrett",
+              "jim_neidhart",
+              "jim_ross",
+              "joey_abs",
+              "kane",
+              "ken_shamrock",
+              "kevin_nash",
+              "kurt_angle",
+              "lex_luger",
+              "linda_mcmahon",
+              "lita",
+              "mae_young",
+              "mankind",
+              "mark_henry",
+              "matt_hardy",
+              "mick_foley",
+              "mideon",
+              "mosh",
+              "mr_ass",
+              "mr_perfect",
+              "perry_saturn",
+              "pete_gas",
+              "randy_savage",
+              "randy_savage_b",
+              "raven",
+              "rey_mysterio",
+              "rey_mysterio_b",
+              "rick_steiner",
+              "rikishi",
+              "road_dogg",
+              "roddy_piper",
+              "rodney",
+              "scott_hall",
+              "scott_steiner",
+              "scott_steiner_b",
+              "scotty_too_hotty",
+              "shane_mcmahon",
+              "shawn_michaels",
+              "stephanie_mcmahon",
+              "steve_austin",
+              "steve_blackman",
+              "steven_richards",
+              "stevie_ray",
+              "stevie_ray_b",
+              "sting",
+              "taka_michinoku",
+              "tazz",
+              "terri",
+              "test",
+              "the_blue_meanie",
+              "the_giant",
+              "the_kat",
+              "the_rock",
+              "thrasher",
+              "tiger_ali_singh",
+              "tori",
+              "triple_h",
+              "trish_stratus",
+              "undertaker",
+              "undertaker_1999",
+              "val_venis",
+              "vince_mcmahon",
+              "viscera",
+              "william_regal",
+              "x_pac"
+             ]
+            },
+            {
+             "type": "object",
+             "description": "A Superstar by his string ID and his game number: the number when it is his, else the string ID.",
+             "minProperties": 1,
+             "additionalProperties": false,
+             "properties": {
+              "id": {
+               "type": "string"
+              },
+              "game_number": {
+               "type": [
+                "string",
+                "integer"
+               ]
+              }
+             }
+            }
+           ]
+          },
+          "loser": {
+           "oneOf": [
+            {
+             "type": "string",
+             "description": "A role (player, partner, champion, champion2, or one of \"cast\") or a Superstar's string ID (\"the_rock\", a wrestler folder's name).",
+             "examples": [
+              "al_snow",
+              "albert",
+              "andre_the_giant",
+              "big_boss_man",
+              "big_show",
+              "booker_t",
+              "booker_t_b",
+              "bradshaw",
+              "bret_hart",
+              "bret_hart_b",
+              "british_bulldog",
+              "buh_buh_ray_dudley",
+              "bull_buchanan",
+              "cactus_jack",
+              "chris_benoit",
+              "chris_jericho",
+              "christian",
+              "chyna",
+              "crash",
+              "d_von_dudley",
+              "dean_malenko",
+              "dlo_brown",
+              "droz",
+              "earl_hebner",
+              "eddie_guerrero",
+              "edge",
+              "eric_bischoff",
+              "essa_rios",
+              "faarooq",
+              "funaki",
+              "gangrel",
+              "godfather",
+              "goldberg",
+              "grand_master_sexay",
+              "hardcore_holly",
+              "ho",
+              "hollywood_hogan",
+              "ivory",
+              "jeff_hardy",
+              "jeff_jarrett",
+              "jim_neidhart",
+              "jim_ross",
+              "joey_abs",
+              "kane",
+              "ken_shamrock",
+              "kevin_nash",
+              "kurt_angle",
+              "lex_luger",
+              "linda_mcmahon",
+              "lita",
+              "mae_young",
+              "mankind",
+              "mark_henry",
+              "matt_hardy",
+              "mick_foley",
+              "mideon",
+              "mosh",
+              "mr_ass",
+              "mr_perfect",
+              "perry_saturn",
+              "pete_gas",
+              "randy_savage",
+              "randy_savage_b",
+              "raven",
+              "rey_mysterio",
+              "rey_mysterio_b",
+              "rick_steiner",
+              "rikishi",
+              "road_dogg",
+              "roddy_piper",
+              "rodney",
+              "scott_hall",
+              "scott_steiner",
+              "scott_steiner_b",
+              "scotty_too_hotty",
+              "shane_mcmahon",
+              "shawn_michaels",
+              "stephanie_mcmahon",
+              "steve_austin",
+              "steve_blackman",
+              "steven_richards",
+              "stevie_ray",
+              "stevie_ray_b",
+              "sting",
+              "taka_michinoku",
+              "tazz",
+              "terri",
+              "test",
+              "the_blue_meanie",
+              "the_giant",
+              "the_kat",
+              "the_rock",
+              "thrasher",
+              "tiger_ali_singh",
+              "tori",
+              "triple_h",
+              "trish_stratus",
+              "undertaker",
+              "undertaker_1999",
+              "val_venis",
+              "vince_mcmahon",
+              "viscera",
+              "william_regal",
+              "x_pac"
+             ]
+            },
+            {
+             "type": "object",
+             "description": "A Superstar by his string ID and his game number: the number when it is his, else the string ID.",
+             "minProperties": 1,
+             "additionalProperties": false,
+             "properties": {
+              "id": {
+               "type": "string"
+              },
+              "game_number": {
+               "type": [
+                "string",
+                "integer"
+               ]
+              }
+             }
+            }
+           ]
+          },
+          "how": {
+           "enum": [
+            "count out",
+            "count-out",
+            "countout",
+            "dq",
+            "escape",
+            "ladder",
+            "pin",
+            "pinfall",
+            "submission",
+            "tko"
+           ]
+          },
+          "side": {
+           "enum": [
+            "opponents",
+            "player"
+           ]
+          }
+         },
+         "additionalProperties": false
+        }
+       },
+       "arena": {
+        "type": "string",
+        "description": "An arena's name, any capitals.",
+        "examples": [
+         "RAW IS WAR",
+         "NO MERCY",
+         "SMACKDOWN",
+         "KING OF THE RING",
+         "SUMMERSLAM",
+         "SURVIVOR SERIES",
+         "ROYAL RUMBLE",
+         "WRESTLEMANIA",
+         "BACKLASH",
+         "ARMAGEDDON",
+         "MONDAY NITRO",
+         "HALLOWEEN HAVOC",
+         "BASH AT THE BEACH",
+         "RAW IS WAR WM 2000",
+         "SOULED OUT",
+         "SUPERBRAWL",
+         "STARRCADE",
+         "SUNDAY NIGHT HEAT",
+         "ROYAL RUMBLE WM 2000",
+         "KING OF THE RING WM 2000",
+         "SURVIVOR SERIES WM 2000",
+         "WRESTLEMANIA WM 2000",
+         "SUMMERSLAM WM 2000"
+        ]
+       },
+       "rules": {
+        "enum": [
+         "anywhere",
+         "first blood",
+         "hardcore",
+         "no dq",
+         "normal",
+         "pinfall only",
+         "street fight",
+         "submission",
+         "tornado"
+        ]
+       },
+       "title": {
+        "enum": [
+         "european",
+         "hardcore",
+         "ic",
+         "intercontinental",
+         "light heavyweight",
+         "lightheavy",
+         "tag",
+         "women's",
+         "womens",
+         "world"
+        ]
+       },
+       "location": {
+        "enum": [
+         "boiler room",
+         "parking lot",
+         "pool hall",
+         "ring"
+        ]
+       },
+       "runins": {
+        "type": "array",
+        "items": {
+         "type": "object",
+         "required": [
+          "who"
+         ],
+         "properties": {
+          "who": {
+           "oneOf": [
+            {
+             "type": "string",
+             "description": "A role (player, partner, champion, champion2, or one of \"cast\") or a Superstar's string ID (\"the_rock\", a wrestler folder's name).",
+             "examples": [
+              "al_snow",
+              "albert",
+              "andre_the_giant",
+              "big_boss_man",
+              "big_show",
+              "booker_t",
+              "booker_t_b",
+              "bradshaw",
+              "bret_hart",
+              "bret_hart_b",
+              "british_bulldog",
+              "buh_buh_ray_dudley",
+              "bull_buchanan",
+              "cactus_jack",
+              "chris_benoit",
+              "chris_jericho",
+              "christian",
+              "chyna",
+              "crash",
+              "d_von_dudley",
+              "dean_malenko",
+              "dlo_brown",
+              "droz",
+              "earl_hebner",
+              "eddie_guerrero",
+              "edge",
+              "eric_bischoff",
+              "essa_rios",
+              "faarooq",
+              "funaki",
+              "gangrel",
+              "godfather",
+              "goldberg",
+              "grand_master_sexay",
+              "hardcore_holly",
+              "ho",
+              "hollywood_hogan",
+              "ivory",
+              "jeff_hardy",
+              "jeff_jarrett",
+              "jim_neidhart",
+              "jim_ross",
+              "joey_abs",
+              "kane",
+              "ken_shamrock",
+              "kevin_nash",
+              "kurt_angle",
+              "lex_luger",
+              "linda_mcmahon",
+              "lita",
+              "mae_young",
+              "mankind",
+              "mark_henry",
+              "matt_hardy",
+              "mick_foley",
+              "mideon",
+              "mosh",
+              "mr_ass",
+              "mr_perfect",
+              "perry_saturn",
+              "pete_gas",
+              "randy_savage",
+              "randy_savage_b",
+              "raven",
+              "rey_mysterio",
+              "rey_mysterio_b",
+              "rick_steiner",
+              "rikishi",
+              "road_dogg",
+              "roddy_piper",
+              "rodney",
+              "scott_hall",
+              "scott_steiner",
+              "scott_steiner_b",
+              "scotty_too_hotty",
+              "shane_mcmahon",
+              "shawn_michaels",
+              "stephanie_mcmahon",
+              "steve_austin",
+              "steve_blackman",
+              "steven_richards",
+              "stevie_ray",
+              "stevie_ray_b",
+              "sting",
+              "taka_michinoku",
+              "tazz",
+              "terri",
+              "test",
+              "the_blue_meanie",
+              "the_giant",
+              "the_kat",
+              "the_rock",
+              "thrasher",
+              "tiger_ali_singh",
+              "tori",
+              "triple_h",
+              "trish_stratus",
+              "undertaker",
+              "undertaker_1999",
+              "val_venis",
+              "vince_mcmahon",
+              "viscera",
+              "william_regal",
+              "x_pac"
+             ]
+            },
+            {
+             "type": "object",
+             "description": "A Superstar by his string ID and his game number: the number when it is his, else the string ID.",
+             "minProperties": 1,
+             "additionalProperties": false,
+             "properties": {
+              "id": {
+               "type": "string"
+              },
+              "game_number": {
+               "type": [
+                "string",
+                "integer"
+               ]
+              }
+             }
+            }
+           ]
+          },
+          "helps": {
+           "enum": [
+            "opponents",
+            "player"
+           ]
+          },
+          "at": {
+           "type": [
+            "string",
+            "integer"
+           ],
+           "description": "When he comes: 0:15, 0:30, 0:35, 0:40, 0:45, 1:00, 1:10, 1:30, 2:00, 3:00."
+          }
+         },
+         "additionalProperties": false
+        }
+       }
+      },
+      "additionalProperties": false
+     },
+     "requirement": {
+      "type": "string"
+     },
+     "branches": {
+      "type": "array",
+      "items": {
+       "type": "object",
+       "properties": {
+        "if": {
+         "type": "string",
+         "description": "Terms joined by and / or / not and ( ): win, lose, notlose, win by X, lose by X, ended by X (X: count out, count-out, countout, decision, disqualification, dq, draw, escape, ladder, pin, pinfall, submission, tap out, tko), choice N, chance N%, <var> <op> <number> (== != < <= > >=), <role> is <Superstar>, <role> in <group> (groups: apa, corporation, dx, face, hart foundation, heel, ministry, nwo, the outsiders)."
+        },
+        "set": {
+         "$ref": "#/$defs/set"
+        },
+        "money": {
+         "type": "integer"
+        },
+        "pages": {
+         "type": "array",
+         "items": {
+          "oneOf": [
+           {
+            "type": "string",
+            "description": "Text. \\n starts a line. {role} / {string_id} = his name; {role.nickname}, {role.catchphrase}, {role.signoff}, {role.finisher}, {role.insult} = his voice (filled in as it plays)."
+           },
+           {
+            "type": "object",
+            "description": "One line per player: Superstars' string IDs, \"group:<name>\", and \"default\" (required).",
+            "required": [
+             "default"
+            ],
+            "properties": {
+             "default": {
+              "type": "string",
+              "description": "Text. \\n starts a line. {role} / {string_id} = his name; {role.nickname}, {role.catchphrase}, {role.signoff}, {role.finisher}, {role.insult} = his voice (filled in as it plays)."
+             }
+            },
+            "additionalProperties": {
+             "type": "string",
+             "description": "Text. \\n starts a line. {role} / {string_id} = his name; {role.nickname}, {role.catchphrase}, {role.signoff}, {role.finisher}, {role.insult} = his voice (filled in as it plays)."
+            }
+           }
+          ]
+         }
+        },
+        "scene": {
+         "oneOf": [
+          {
+           "$ref": "#/$defs/steps"
+          },
+          {
+           "type": "object",
+           "properties": {
+            "place": {
+             "enum": [
+              "bar",
+              "boiler room",
+              "dressing room",
+              "entrance",
+              "garage",
+              "hall",
+              "hallway",
+              "locker room",
+              "parking lot",
+              "pool hall",
+              "ramp",
+              "ring",
+              "sports lounge",
+              "stage"
+             ]
+            },
+            "cast": {
+             "type": "array",
+             "items": {
+              "oneOf": [
+               {
+                "oneOf": [
+                 {
+                  "type": "string",
+                  "description": "A role (player, partner, champion, champion2, or one of \"cast\") or a Superstar's string ID (\"the_rock\", a wrestler folder's name).",
+                  "examples": [
+                   "al_snow",
+                   "albert",
+                   "andre_the_giant",
+                   "big_boss_man",
+                   "big_show",
+                   "booker_t",
+                   "booker_t_b",
+                   "bradshaw",
+                   "bret_hart",
+                   "bret_hart_b",
+                   "british_bulldog",
+                   "buh_buh_ray_dudley",
+                   "bull_buchanan",
+                   "cactus_jack",
+                   "chris_benoit",
+                   "chris_jericho",
+                   "christian",
+                   "chyna",
+                   "crash",
+                   "d_von_dudley",
+                   "dean_malenko",
+                   "dlo_brown",
+                   "droz",
+                   "earl_hebner",
+                   "eddie_guerrero",
+                   "edge",
+                   "eric_bischoff",
+                   "essa_rios",
+                   "faarooq",
+                   "funaki",
+                   "gangrel",
+                   "godfather",
+                   "goldberg",
+                   "grand_master_sexay",
+                   "hardcore_holly",
+                   "ho",
+                   "hollywood_hogan",
+                   "ivory",
+                   "jeff_hardy",
+                   "jeff_jarrett",
+                   "jim_neidhart",
+                   "jim_ross",
+                   "joey_abs",
+                   "kane",
+                   "ken_shamrock",
+                   "kevin_nash",
+                   "kurt_angle",
+                   "lex_luger",
+                   "linda_mcmahon",
+                   "lita",
+                   "mae_young",
+                   "mankind",
+                   "mark_henry",
+                   "matt_hardy",
+                   "mick_foley",
+                   "mideon",
+                   "mosh",
+                   "mr_ass",
+                   "mr_perfect",
+                   "perry_saturn",
+                   "pete_gas",
+                   "randy_savage",
+                   "randy_savage_b",
+                   "raven",
+                   "rey_mysterio",
+                   "rey_mysterio_b",
+                   "rick_steiner",
+                   "rikishi",
+                   "road_dogg",
+                   "roddy_piper",
+                   "rodney",
+                   "scott_hall",
+                   "scott_steiner",
+                   "scott_steiner_b",
+                   "scotty_too_hotty",
+                   "shane_mcmahon",
+                   "shawn_michaels",
+                   "stephanie_mcmahon",
+                   "steve_austin",
+                   "steve_blackman",
+                   "steven_richards",
+                   "stevie_ray",
+                   "stevie_ray_b",
+                   "sting",
+                   "taka_michinoku",
+                   "tazz",
+                   "terri",
+                   "test",
+                   "the_blue_meanie",
+                   "the_giant",
+                   "the_kat",
+                   "the_rock",
+                   "thrasher",
+                   "tiger_ali_singh",
+                   "tori",
+                   "triple_h",
+                   "trish_stratus",
+                   "undertaker",
+                   "undertaker_1999",
+                   "val_venis",
+                   "vince_mcmahon",
+                   "viscera",
+                   "william_regal",
+                   "x_pac"
+                  ]
+                 },
+                 {
+                  "type": "object",
+                  "description": "A Superstar by his string ID and his game number: the number when it is his, else the string ID.",
+                  "minProperties": 1,
+                  "additionalProperties": false,
+                  "properties": {
+                   "id": {
+                    "type": "string"
+                   },
+                   "game_number": {
+                    "type": [
+                     "string",
+                     "integer"
+                    ]
+                   }
+                  }
+                 }
+                ]
+               },
+               {
+                "type": "object",
+                "required": [
+                 "who"
+                ],
+                "properties": {
+                 "who": {
+                  "oneOf": [
+                   {
+                    "type": "string",
+                    "description": "A role (player, partner, champion, champion2, or one of \"cast\") or a Superstar's string ID (\"the_rock\", a wrestler folder's name).",
+                    "examples": [
+                     "al_snow",
+                     "albert",
+                     "andre_the_giant",
+                     "big_boss_man",
+                     "big_show",
+                     "booker_t",
+                     "booker_t_b",
+                     "bradshaw",
+                     "bret_hart",
+                     "bret_hart_b",
+                     "british_bulldog",
+                     "buh_buh_ray_dudley",
+                     "bull_buchanan",
+                     "cactus_jack",
+                     "chris_benoit",
+                     "chris_jericho",
+                     "christian",
+                     "chyna",
+                     "crash",
+                     "d_von_dudley",
+                     "dean_malenko",
+                     "dlo_brown",
+                     "droz",
+                     "earl_hebner",
+                     "eddie_guerrero",
+                     "edge",
+                     "eric_bischoff",
+                     "essa_rios",
+                     "faarooq",
+                     "funaki",
+                     "gangrel",
+                     "godfather",
+                     "goldberg",
+                     "grand_master_sexay",
+                     "hardcore_holly",
+                     "ho",
+                     "hollywood_hogan",
+                     "ivory",
+                     "jeff_hardy",
+                     "jeff_jarrett",
+                     "jim_neidhart",
+                     "jim_ross",
+                     "joey_abs",
+                     "kane",
+                     "ken_shamrock",
+                     "kevin_nash",
+                     "kurt_angle",
+                     "lex_luger",
+                     "linda_mcmahon",
+                     "lita",
+                     "mae_young",
+                     "mankind",
+                     "mark_henry",
+                     "matt_hardy",
+                     "mick_foley",
+                     "mideon",
+                     "mosh",
+                     "mr_ass",
+                     "mr_perfect",
+                     "perry_saturn",
+                     "pete_gas",
+                     "randy_savage",
+                     "randy_savage_b",
+                     "raven",
+                     "rey_mysterio",
+                     "rey_mysterio_b",
+                     "rick_steiner",
+                     "rikishi",
+                     "road_dogg",
+                     "roddy_piper",
+                     "rodney",
+                     "scott_hall",
+                     "scott_steiner",
+                     "scott_steiner_b",
+                     "scotty_too_hotty",
+                     "shane_mcmahon",
+                     "shawn_michaels",
+                     "stephanie_mcmahon",
+                     "steve_austin",
+                     "steve_blackman",
+                     "steven_richards",
+                     "stevie_ray",
+                     "stevie_ray_b",
+                     "sting",
+                     "taka_michinoku",
+                     "tazz",
+                     "terri",
+                     "test",
+                     "the_blue_meanie",
+                     "the_giant",
+                     "the_kat",
+                     "the_rock",
+                     "thrasher",
+                     "tiger_ali_singh",
+                     "tori",
+                     "triple_h",
+                     "trish_stratus",
+                     "undertaker",
+                     "undertaker_1999",
+                     "val_venis",
+                     "vince_mcmahon",
+                     "viscera",
+                     "william_regal",
+                     "x_pac"
+                    ]
+                   },
+                   {
+                    "type": "object",
+                    "description": "A Superstar by his string ID and his game number: the number when it is his, else the string ID.",
+                    "minProperties": 1,
+                    "additionalProperties": false,
+                    "properties": {
+                     "id": {
+                      "type": "string"
+                     },
+                     "game_number": {
+                      "type": [
+                       "string",
+                       "integer"
+                      ]
+                     }
+                    }
+                   }
+                  ]
+                 },
+                 "at": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 10
+                 },
+                 "do": {
+                  "oneOf": [
+                   {
+                    "enum": [
+                     "arms up",
+                     "bring it",
+                     "down",
+                     "drink",
+                     "entrance",
+                     "fall",
+                     "fist up",
+                     "get up",
+                     "hold out mic",
+                     "hurt",
+                     "interview",
+                     "laugh",
+                     "mic",
+                     "point",
+                     "punch",
+                     "rub face",
+                     "run",
+                     "shout",
+                     "shrug",
+                     "stand",
+                     "swing",
+                     "tag entrance",
+                     "talk",
+                     "taunt",
+                     "taunt 1",
+                     "taunt 2",
+                     "taunt 3",
+                     "taunt 4",
+                     "turn away",
+                     "walk",
+                     "win taunt"
+                    ]
+                   },
+                   {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 60
+                   }
+                  ]
+                 },
+                 "mark": {
+                  "type": "integer"
+                 },
+                 "wait": {
+                  "type": [
+                   "integer",
+                   "boolean"
+                  ]
+                 }
+                },
+                "additionalProperties": false
+               }
+              ]
+             }
+            },
+            "fade": {
+             "type": "integer"
+            },
+            "camera": {
+             "oneOf": [
+              {
+               "enum": [
+                "close",
+                "two",
+                "wide",
+                "auto"
+               ]
+              },
+              {
+               "type": "integer"
+              },
+              {
+               "type": "boolean"
+              }
+             ]
+            },
+            "steps": {
+             "$ref": "#/$defs/steps"
+            }
+           },
+           "additionalProperties": false
+          }
+         ]
+        },
+        "next": {
+         "type": "string",
+         "description": "A node, \"end\" or \"gameover\"."
+        }
+       },
+       "additionalProperties": false
+      }
+     },
+     "retries": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 15
+     },
+     "raw": {
+      "type": "object"
+     }
+    },
+    "additionalProperties": false
+   }
+  }
+ },
+ "additionalProperties": false,
+ "$defs": {
+  "steps": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "description": "One scene step: exactly one of place / say / tron / commentary / ask / narrate / if / set / who (do) / camera / music / wait / effect / raw.",
+    "properties": {
+     "place": {
+      "enum": [
+       "bar",
+       "boiler room",
+       "dressing room",
+       "entrance",
+       "garage",
+       "hall",
+       "hallway",
+       "locker room",
+       "parking lot",
+       "pool hall",
+       "ramp",
+       "ring",
+       "sports lounge",
+       "stage"
+      ]
+     },
+     "cast": {
+      "type": "array",
+      "items": {
+       "oneOf": [
+        {
+         "oneOf": [
+          {
+           "type": "string",
+           "description": "A role (player, partner, champion, champion2, or one of \"cast\") or a Superstar's string ID (\"the_rock\", a wrestler folder's name).",
+           "examples": [
+            "al_snow",
+            "albert",
+            "andre_the_giant",
+            "big_boss_man",
+            "big_show",
+            "booker_t",
+            "booker_t_b",
+            "bradshaw",
+            "bret_hart",
+            "bret_hart_b",
+            "british_bulldog",
+            "buh_buh_ray_dudley",
+            "bull_buchanan",
+            "cactus_jack",
+            "chris_benoit",
+            "chris_jericho",
+            "christian",
+            "chyna",
+            "crash",
+            "d_von_dudley",
+            "dean_malenko",
+            "dlo_brown",
+            "droz",
+            "earl_hebner",
+            "eddie_guerrero",
+            "edge",
+            "eric_bischoff",
+            "essa_rios",
+            "faarooq",
+            "funaki",
+            "gangrel",
+            "godfather",
+            "goldberg",
+            "grand_master_sexay",
+            "hardcore_holly",
+            "ho",
+            "hollywood_hogan",
+            "ivory",
+            "jeff_hardy",
+            "jeff_jarrett",
+            "jim_neidhart",
+            "jim_ross",
+            "joey_abs",
+            "kane",
+            "ken_shamrock",
+            "kevin_nash",
+            "kurt_angle",
+            "lex_luger",
+            "linda_mcmahon",
+            "lita",
+            "mae_young",
+            "mankind",
+            "mark_henry",
+            "matt_hardy",
+            "mick_foley",
+            "mideon",
+            "mosh",
+            "mr_ass",
+            "mr_perfect",
+            "perry_saturn",
+            "pete_gas",
+            "randy_savage",
+            "randy_savage_b",
+            "raven",
+            "rey_mysterio",
+            "rey_mysterio_b",
+            "rick_steiner",
+            "rikishi",
+            "road_dogg",
+            "roddy_piper",
+            "rodney",
+            "scott_hall",
+            "scott_steiner",
+            "scott_steiner_b",
+            "scotty_too_hotty",
+            "shane_mcmahon",
+            "shawn_michaels",
+            "stephanie_mcmahon",
+            "steve_austin",
+            "steve_blackman",
+            "steven_richards",
+            "stevie_ray",
+            "stevie_ray_b",
+            "sting",
+            "taka_michinoku",
+            "tazz",
+            "terri",
+            "test",
+            "the_blue_meanie",
+            "the_giant",
+            "the_kat",
+            "the_rock",
+            "thrasher",
+            "tiger_ali_singh",
+            "tori",
+            "triple_h",
+            "trish_stratus",
+            "undertaker",
+            "undertaker_1999",
+            "val_venis",
+            "vince_mcmahon",
+            "viscera",
+            "william_regal",
+            "x_pac"
+           ]
+          },
+          {
+           "type": "object",
+           "description": "A Superstar by his string ID and his game number: the number when it is his, else the string ID.",
+           "minProperties": 1,
+           "additionalProperties": false,
+           "properties": {
+            "id": {
+             "type": "string"
+            },
+            "game_number": {
+             "type": [
+              "string",
+              "integer"
+             ]
+            }
+           }
+          }
+         ]
+        },
+        {
+         "type": "object",
+         "required": [
+          "who"
+         ],
+         "properties": {
+          "who": {
+           "oneOf": [
+            {
+             "type": "string",
+             "description": "A role (player, partner, champion, champion2, or one of \"cast\") or a Superstar's string ID (\"the_rock\", a wrestler folder's name).",
+             "examples": [
+              "al_snow",
+              "albert",
+              "andre_the_giant",
+              "big_boss_man",
+              "big_show",
+              "booker_t",
+              "booker_t_b",
+              "bradshaw",
+              "bret_hart",
+              "bret_hart_b",
+              "british_bulldog",
+              "buh_buh_ray_dudley",
+              "bull_buchanan",
+              "cactus_jack",
+              "chris_benoit",
+              "chris_jericho",
+              "christian",
+              "chyna",
+              "crash",
+              "d_von_dudley",
+              "dean_malenko",
+              "dlo_brown",
+              "droz",
+              "earl_hebner",
+              "eddie_guerrero",
+              "edge",
+              "eric_bischoff",
+              "essa_rios",
+              "faarooq",
+              "funaki",
+              "gangrel",
+              "godfather",
+              "goldberg",
+              "grand_master_sexay",
+              "hardcore_holly",
+              "ho",
+              "hollywood_hogan",
+              "ivory",
+              "jeff_hardy",
+              "jeff_jarrett",
+              "jim_neidhart",
+              "jim_ross",
+              "joey_abs",
+              "kane",
+              "ken_shamrock",
+              "kevin_nash",
+              "kurt_angle",
+              "lex_luger",
+              "linda_mcmahon",
+              "lita",
+              "mae_young",
+              "mankind",
+              "mark_henry",
+              "matt_hardy",
+              "mick_foley",
+              "mideon",
+              "mosh",
+              "mr_ass",
+              "mr_perfect",
+              "perry_saturn",
+              "pete_gas",
+              "randy_savage",
+              "randy_savage_b",
+              "raven",
+              "rey_mysterio",
+              "rey_mysterio_b",
+              "rick_steiner",
+              "rikishi",
+              "road_dogg",
+              "roddy_piper",
+              "rodney",
+              "scott_hall",
+              "scott_steiner",
+              "scott_steiner_b",
+              "scotty_too_hotty",
+              "shane_mcmahon",
+              "shawn_michaels",
+              "stephanie_mcmahon",
+              "steve_austin",
+              "steve_blackman",
+              "steven_richards",
+              "stevie_ray",
+              "stevie_ray_b",
+              "sting",
+              "taka_michinoku",
+              "tazz",
+              "terri",
+              "test",
+              "the_blue_meanie",
+              "the_giant",
+              "the_kat",
+              "the_rock",
+              "thrasher",
+              "tiger_ali_singh",
+              "tori",
+              "triple_h",
+              "trish_stratus",
+              "undertaker",
+              "undertaker_1999",
+              "val_venis",
+              "vince_mcmahon",
+              "viscera",
+              "william_regal",
+              "x_pac"
+             ]
+            },
+            {
+             "type": "object",
+             "description": "A Superstar by his string ID and his game number: the number when it is his, else the string ID.",
+             "minProperties": 1,
+             "additionalProperties": false,
+             "properties": {
+              "id": {
+               "type": "string"
+              },
+              "game_number": {
+               "type": [
+                "string",
+                "integer"
+               ]
+              }
+             }
+            }
+           ]
+          },
+          "at": {
+           "type": "integer",
+           "minimum": 1,
+           "maximum": 10
+          },
+          "do": {
+           "oneOf": [
+            {
+             "enum": [
+              "arms up",
+              "bring it",
+              "down",
+              "drink",
+              "entrance",
+              "fall",
+              "fist up",
+              "get up",
+              "hold out mic",
+              "hurt",
+              "interview",
+              "laugh",
+              "mic",
+              "point",
+              "punch",
+              "rub face",
+              "run",
+              "shout",
+              "shrug",
+              "stand",
+              "swing",
+              "tag entrance",
+              "talk",
+              "taunt",
+              "taunt 1",
+              "taunt 2",
+              "taunt 3",
+              "taunt 4",
+              "turn away",
+              "walk",
+              "win taunt"
+             ]
+            },
+            {
+             "type": "integer",
+             "minimum": 0,
+             "maximum": 60
+            }
+           ]
+          },
+          "mark": {
+           "type": "integer"
+          },
+          "wait": {
+           "type": [
+            "integer",
+            "boolean"
+           ]
+          }
+         },
+         "additionalProperties": false
+        }
+       ]
+      }
+     },
+     "fade": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 3
+     },
+     "say": {
+      "oneOf": [
+       {
+        "oneOf": [
+         {
+          "type": "string",
+          "description": "Text. \\n starts a line. {role} / {string_id} = his name; {role.nickname}, {role.catchphrase}, {role.signoff}, {role.finisher}, {role.insult} = his voice (filled in as it plays)."
+         },
+         {
+          "type": "object",
+          "description": "One line per player: Superstars' string IDs, \"group:<name>\", and \"default\" (required).",
+          "required": [
+           "default"
+          ],
+          "properties": {
+           "default": {
+            "type": "string",
+            "description": "Text. \\n starts a line. {role} / {string_id} = his name; {role.nickname}, {role.catchphrase}, {role.signoff}, {role.finisher}, {role.insult} = his voice (filled in as it plays)."
+           }
+          },
+          "additionalProperties": {
+           "type": "string",
+           "description": "Text. \\n starts a line. {role} / {string_id} = his name; {role.nickname}, {role.catchphrase}, {role.signoff}, {role.finisher}, {role.insult} = his voice (filled in as it plays)."
+          }
+         }
+        ]
+       },
+       {
+        "type": "array",
+        "items": {
+         "oneOf": [
+          {
+           "type": "string",
+           "description": "Text. \\n starts a line. {role} / {string_id} = his name; {role.nickname}, {role.catchphrase}, {role.signoff}, {role.finisher}, {role.insult} = his voice (filled in as it plays)."
+          },
+          {
+           "type": "object",
+           "description": "One line per player: Superstars' string IDs, \"group:<name>\", and \"default\" (required).",
+           "required": [
+            "default"
+           ],
+           "properties": {
+            "default": {
+             "type": "string",
+             "description": "Text. \\n starts a line. {role} / {string_id} = his name; {role.nickname}, {role.catchphrase}, {role.signoff}, {role.finisher}, {role.insult} = his voice (filled in as it plays)."
+            }
+           },
+           "additionalProperties": {
+            "type": "string",
+            "description": "Text. \\n starts a line. {role} / {string_id} = his name; {role.nickname}, {role.catchphrase}, {role.signoff}, {role.finisher}, {role.insult} = his voice (filled in as it plays)."
+           }
+          }
+         ]
+        }
+       }
+      ]
+     },
+     "tron": {
+      "oneOf": [
+       {
+        "type": "string",
+        "description": "A role (player, partner, champion, champion2, or one of \"cast\") or a Superstar's string ID (\"the_rock\", a wrestler folder's name).",
+        "examples": [
+         "al_snow",
+         "albert",
+         "andre_the_giant",
+         "big_boss_man",
+         "big_show",
+         "booker_t",
+         "booker_t_b",
+         "bradshaw",
+         "bret_hart",
+         "bret_hart_b",
+         "british_bulldog",
+         "buh_buh_ray_dudley",
+         "bull_buchanan",
+         "cactus_jack",
+         "chris_benoit",
+         "chris_jericho",
+         "christian",
+         "chyna",
+         "crash",
+         "d_von_dudley",
+         "dean_malenko",
+         "dlo_brown",
+         "droz",
+         "earl_hebner",
+         "eddie_guerrero",
+         "edge",
+         "eric_bischoff",
+         "essa_rios",
+         "faarooq",
+         "funaki",
+         "gangrel",
+         "godfather",
+         "goldberg",
+         "grand_master_sexay",
+         "hardcore_holly",
+         "ho",
+         "hollywood_hogan",
+         "ivory",
+         "jeff_hardy",
+         "jeff_jarrett",
+         "jim_neidhart",
+         "jim_ross",
+         "joey_abs",
+         "kane",
+         "ken_shamrock",
+         "kevin_nash",
+         "kurt_angle",
+         "lex_luger",
+         "linda_mcmahon",
+         "lita",
+         "mae_young",
+         "mankind",
+         "mark_henry",
+         "matt_hardy",
+         "mick_foley",
+         "mideon",
+         "mosh",
+         "mr_ass",
+         "mr_perfect",
+         "perry_saturn",
+         "pete_gas",
+         "randy_savage",
+         "randy_savage_b",
+         "raven",
+         "rey_mysterio",
+         "rey_mysterio_b",
+         "rick_steiner",
+         "rikishi",
+         "road_dogg",
+         "roddy_piper",
+         "rodney",
+         "scott_hall",
+         "scott_steiner",
+         "scott_steiner_b",
+         "scotty_too_hotty",
+         "shane_mcmahon",
+         "shawn_michaels",
+         "stephanie_mcmahon",
+         "steve_austin",
+         "steve_blackman",
+         "steven_richards",
+         "stevie_ray",
+         "stevie_ray_b",
+         "sting",
+         "taka_michinoku",
+         "tazz",
+         "terri",
+         "test",
+         "the_blue_meanie",
+         "the_giant",
+         "the_kat",
+         "the_rock",
+         "thrasher",
+         "tiger_ali_singh",
+         "tori",
+         "triple_h",
+         "trish_stratus",
+         "undertaker",
+         "undertaker_1999",
+         "val_venis",
+         "vince_mcmahon",
+         "viscera",
+         "william_regal",
+         "x_pac"
+        ]
+       },
+       {
+        "type": "object",
+        "description": "A Superstar by his string ID and his game number: the number when it is his, else the string ID.",
+        "minProperties": 1,
+        "additionalProperties": false,
+        "properties": {
+         "id": {
+          "type": "string"
+         },
+         "game_number": {
+          "type": [
+           "string",
+           "integer"
+          ]
+         }
+        }
+       }
+      ]
+     },
+     "commentary": {
+      "enum": [
+       "jr",
+       "king"
+      ]
+     },
+     "who": {
+      "oneOf": [
+       {
+        "type": "string",
+        "description": "A role (player, partner, champion, champion2, or one of \"cast\") or a Superstar's string ID (\"the_rock\", a wrestler folder's name).",
+        "examples": [
+         "al_snow",
+         "albert",
+         "andre_the_giant",
+         "big_boss_man",
+         "big_show",
+         "booker_t",
+         "booker_t_b",
+         "bradshaw",
+         "bret_hart",
+         "bret_hart_b",
+         "british_bulldog",
+         "buh_buh_ray_dudley",
+         "bull_buchanan",
+         "cactus_jack",
+         "chris_benoit",
+         "chris_jericho",
+         "christian",
+         "chyna",
+         "crash",
+         "d_von_dudley",
+         "dean_malenko",
+         "dlo_brown",
+         "droz",
+         "earl_hebner",
+         "eddie_guerrero",
+         "edge",
+         "eric_bischoff",
+         "essa_rios",
+         "faarooq",
+         "funaki",
+         "gangrel",
+         "godfather",
+         "goldberg",
+         "grand_master_sexay",
+         "hardcore_holly",
+         "ho",
+         "hollywood_hogan",
+         "ivory",
+         "jeff_hardy",
+         "jeff_jarrett",
+         "jim_neidhart",
+         "jim_ross",
+         "joey_abs",
+         "kane",
+         "ken_shamrock",
+         "kevin_nash",
+         "kurt_angle",
+         "lex_luger",
+         "linda_mcmahon",
+         "lita",
+         "mae_young",
+         "mankind",
+         "mark_henry",
+         "matt_hardy",
+         "mick_foley",
+         "mideon",
+         "mosh",
+         "mr_ass",
+         "mr_perfect",
+         "perry_saturn",
+         "pete_gas",
+         "randy_savage",
+         "randy_savage_b",
+         "raven",
+         "rey_mysterio",
+         "rey_mysterio_b",
+         "rick_steiner",
+         "rikishi",
+         "road_dogg",
+         "roddy_piper",
+         "rodney",
+         "scott_hall",
+         "scott_steiner",
+         "scott_steiner_b",
+         "scotty_too_hotty",
+         "shane_mcmahon",
+         "shawn_michaels",
+         "stephanie_mcmahon",
+         "steve_austin",
+         "steve_blackman",
+         "steven_richards",
+         "stevie_ray",
+         "stevie_ray_b",
+         "sting",
+         "taka_michinoku",
+         "tazz",
+         "terri",
+         "test",
+         "the_blue_meanie",
+         "the_giant",
+         "the_kat",
+         "the_rock",
+         "thrasher",
+         "tiger_ali_singh",
+         "tori",
+         "triple_h",
+         "trish_stratus",
+         "undertaker",
+         "undertaker_1999",
+         "val_venis",
+         "vince_mcmahon",
+         "viscera",
+         "william_regal",
+         "x_pac"
+        ]
+       },
+       {
+        "type": "object",
+        "description": "A Superstar by his string ID and his game number: the number when it is his, else the string ID.",
+        "minProperties": 1,
+        "additionalProperties": false,
+        "properties": {
+         "id": {
+          "type": "string"
+         },
+         "game_number": {
+          "type": [
+           "string",
+           "integer"
+          ]
+         }
+        }
+       }
+      ]
+     },
+     "do": {
+      "oneOf": [
+       {
+        "enum": [
+         "arms up",
+         "bring it",
+         "down",
+         "drink",
+         "entrance",
+         "fall",
+         "fist up",
+         "get up",
+         "hold out mic",
+         "hurt",
+         "interview",
+         "laugh",
+         "mic",
+         "point",
+         "punch",
+         "rub face",
+         "run",
+         "shout",
+         "shrug",
+         "stand",
+         "swing",
+         "tag entrance",
+         "talk",
+         "taunt",
+         "taunt 1",
+         "taunt 2",
+         "taunt 3",
+         "taunt 4",
+         "turn away",
+         "walk",
+         "win taunt"
+        ]
+       },
+       {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 60
+       }
+      ]
+     },
+     "at": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 10
+     },
+     "with": {
+      "oneOf": [
+       {
+        "type": "string",
+        "description": "A role (player, partner, champion, champion2, or one of \"cast\") or a Superstar's string ID (\"the_rock\", a wrestler folder's name).",
+        "examples": [
+         "al_snow",
+         "albert",
+         "andre_the_giant",
+         "big_boss_man",
+         "big_show",
+         "booker_t",
+         "booker_t_b",
+         "bradshaw",
+         "bret_hart",
+         "bret_hart_b",
+         "british_bulldog",
+         "buh_buh_ray_dudley",
+         "bull_buchanan",
+         "cactus_jack",
+         "chris_benoit",
+         "chris_jericho",
+         "christian",
+         "chyna",
+         "crash",
+         "d_von_dudley",
+         "dean_malenko",
+         "dlo_brown",
+         "droz",
+         "earl_hebner",
+         "eddie_guerrero",
+         "edge",
+         "eric_bischoff",
+         "essa_rios",
+         "faarooq",
+         "funaki",
+         "gangrel",
+         "godfather",
+         "goldberg",
+         "grand_master_sexay",
+         "hardcore_holly",
+         "ho",
+         "hollywood_hogan",
+         "ivory",
+         "jeff_hardy",
+         "jeff_jarrett",
+         "jim_neidhart",
+         "jim_ross",
+         "joey_abs",
+         "kane",
+         "ken_shamrock",
+         "kevin_nash",
+         "kurt_angle",
+         "lex_luger",
+         "linda_mcmahon",
+         "lita",
+         "mae_young",
+         "mankind",
+         "mark_henry",
+         "matt_hardy",
+         "mick_foley",
+         "mideon",
+         "mosh",
+         "mr_ass",
+         "mr_perfect",
+         "perry_saturn",
+         "pete_gas",
+         "randy_savage",
+         "randy_savage_b",
+         "raven",
+         "rey_mysterio",
+         "rey_mysterio_b",
+         "rick_steiner",
+         "rikishi",
+         "road_dogg",
+         "roddy_piper",
+         "rodney",
+         "scott_hall",
+         "scott_steiner",
+         "scott_steiner_b",
+         "scotty_too_hotty",
+         "shane_mcmahon",
+         "shawn_michaels",
+         "stephanie_mcmahon",
+         "steve_austin",
+         "steve_blackman",
+         "steven_richards",
+         "stevie_ray",
+         "stevie_ray_b",
+         "sting",
+         "taka_michinoku",
+         "tazz",
+         "terri",
+         "test",
+         "the_blue_meanie",
+         "the_giant",
+         "the_kat",
+         "the_rock",
+         "thrasher",
+         "tiger_ali_singh",
+         "tori",
+         "triple_h",
+         "trish_stratus",
+         "undertaker",
+         "undertaker_1999",
+         "val_venis",
+         "vince_mcmahon",
+         "viscera",
+         "william_regal",
+         "x_pac"
+        ]
+       },
+       {
+        "type": "object",
+        "description": "A Superstar by his string ID and his game number: the number when it is his, else the string ID.",
+        "minProperties": 1,
+        "additionalProperties": false,
+        "properties": {
+         "id": {
+          "type": "string"
+         },
+         "game_number": {
+          "type": [
+           "string",
+           "integer"
+          ]
+         }
+        }
+       }
+      ]
+     },
+     "door": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 3
+     },
+     "mark": {
+      "type": "integer"
+     },
+     "wait": {
+      "type": [
+       "integer",
+       "boolean"
+      ]
+     },
+     "camera": {
+      "oneOf": [
+       {
+        "enum": [
+         "close",
+         "two",
+         "wide",
+         "auto"
+        ]
+       },
+       {
+        "type": "integer"
+       },
+       {
+        "type": "boolean"
+       }
+      ]
+     },
+     "on": {
+      "oneOf": [
+       {
+        "oneOf": [
+         {
+          "type": "string",
+          "description": "A role (player, partner, champion, champion2, or one of \"cast\") or a Superstar's string ID (\"the_rock\", a wrestler folder's name).",
+          "examples": [
+           "al_snow",
+           "albert",
+           "andre_the_giant",
+           "big_boss_man",
+           "big_show",
+           "booker_t",
+           "booker_t_b",
+           "bradshaw",
+           "bret_hart",
+           "bret_hart_b",
+           "british_bulldog",
+           "buh_buh_ray_dudley",
+           "bull_buchanan",
+           "cactus_jack",
+           "chris_benoit",
+           "chris_jericho",
+           "christian",
+           "chyna",
+           "crash",
+           "d_von_dudley",
+           "dean_malenko",
+           "dlo_brown",
+           "droz",
+           "earl_hebner",
+           "eddie_guerrero",
+           "edge",
+           "eric_bischoff",
+           "essa_rios",
+           "faarooq",
+           "funaki",
+           "gangrel",
+           "godfather",
+           "goldberg",
+           "grand_master_sexay",
+           "hardcore_holly",
+           "ho",
+           "hollywood_hogan",
+           "ivory",
+           "jeff_hardy",
+           "jeff_jarrett",
+           "jim_neidhart",
+           "jim_ross",
+           "joey_abs",
+           "kane",
+           "ken_shamrock",
+           "kevin_nash",
+           "kurt_angle",
+           "lex_luger",
+           "linda_mcmahon",
+           "lita",
+           "mae_young",
+           "mankind",
+           "mark_henry",
+           "matt_hardy",
+           "mick_foley",
+           "mideon",
+           "mosh",
+           "mr_ass",
+           "mr_perfect",
+           "perry_saturn",
+           "pete_gas",
+           "randy_savage",
+           "randy_savage_b",
+           "raven",
+           "rey_mysterio",
+           "rey_mysterio_b",
+           "rick_steiner",
+           "rikishi",
+           "road_dogg",
+           "roddy_piper",
+           "rodney",
+           "scott_hall",
+           "scott_steiner",
+           "scott_steiner_b",
+           "scotty_too_hotty",
+           "shane_mcmahon",
+           "shawn_michaels",
+           "stephanie_mcmahon",
+           "steve_austin",
+           "steve_blackman",
+           "steven_richards",
+           "stevie_ray",
+           "stevie_ray_b",
+           "sting",
+           "taka_michinoku",
+           "tazz",
+           "terri",
+           "test",
+           "the_blue_meanie",
+           "the_giant",
+           "the_kat",
+           "the_rock",
+           "thrasher",
+           "tiger_ali_singh",
+           "tori",
+           "triple_h",
+           "trish_stratus",
+           "undertaker",
+           "undertaker_1999",
+           "val_venis",
+           "vince_mcmahon",
+           "viscera",
+           "william_regal",
+           "x_pac"
+          ]
+         },
+         {
+          "type": "object",
+          "description": "A Superstar by his string ID and his game number: the number when it is his, else the string ID.",
+          "minProperties": 1,
+          "additionalProperties": false,
+          "properties": {
+           "id": {
+            "type": "string"
+           },
+           "game_number": {
+            "type": [
+             "string",
+             "integer"
+            ]
+           }
+          }
+         }
+        ]
+       },
+       {
+        "type": "array",
+        "items": {
+         "oneOf": [
+          {
+           "type": "string",
+           "description": "A role (player, partner, champion, champion2, or one of \"cast\") or a Superstar's string ID (\"the_rock\", a wrestler folder's name).",
+           "examples": [
+            "al_snow",
+            "albert",
+            "andre_the_giant",
+            "big_boss_man",
+            "big_show",
+            "booker_t",
+            "booker_t_b",
+            "bradshaw",
+            "bret_hart",
+            "bret_hart_b",
+            "british_bulldog",
+            "buh_buh_ray_dudley",
+            "bull_buchanan",
+            "cactus_jack",
+            "chris_benoit",
+            "chris_jericho",
+            "christian",
+            "chyna",
+            "crash",
+            "d_von_dudley",
+            "dean_malenko",
+            "dlo_brown",
+            "droz",
+            "earl_hebner",
+            "eddie_guerrero",
+            "edge",
+            "eric_bischoff",
+            "essa_rios",
+            "faarooq",
+            "funaki",
+            "gangrel",
+            "godfather",
+            "goldberg",
+            "grand_master_sexay",
+            "hardcore_holly",
+            "ho",
+            "hollywood_hogan",
+            "ivory",
+            "jeff_hardy",
+            "jeff_jarrett",
+            "jim_neidhart",
+            "jim_ross",
+            "joey_abs",
+            "kane",
+            "ken_shamrock",
+            "kevin_nash",
+            "kurt_angle",
+            "lex_luger",
+            "linda_mcmahon",
+            "lita",
+            "mae_young",
+            "mankind",
+            "mark_henry",
+            "matt_hardy",
+            "mick_foley",
+            "mideon",
+            "mosh",
+            "mr_ass",
+            "mr_perfect",
+            "perry_saturn",
+            "pete_gas",
+            "randy_savage",
+            "randy_savage_b",
+            "raven",
+            "rey_mysterio",
+            "rey_mysterio_b",
+            "rick_steiner",
+            "rikishi",
+            "road_dogg",
+            "roddy_piper",
+            "rodney",
+            "scott_hall",
+            "scott_steiner",
+            "scott_steiner_b",
+            "scotty_too_hotty",
+            "shane_mcmahon",
+            "shawn_michaels",
+            "stephanie_mcmahon",
+            "steve_austin",
+            "steve_blackman",
+            "steven_richards",
+            "stevie_ray",
+            "stevie_ray_b",
+            "sting",
+            "taka_michinoku",
+            "tazz",
+            "terri",
+            "test",
+            "the_blue_meanie",
+            "the_giant",
+            "the_kat",
+            "the_rock",
+            "thrasher",
+            "tiger_ali_singh",
+            "tori",
+            "triple_h",
+            "trish_stratus",
+            "undertaker",
+            "undertaker_1999",
+            "val_venis",
+            "vince_mcmahon",
+            "viscera",
+            "william_regal",
+            "x_pac"
+           ]
+          },
+          {
+           "type": "object",
+           "description": "A Superstar by his string ID and his game number: the number when it is his, else the string ID.",
+           "minProperties": 1,
+           "additionalProperties": false,
+           "properties": {
+            "id": {
+             "type": "string"
+            },
+            "game_number": {
+             "type": [
+              "string",
+              "integer"
+             ]
+            }
+           }
+          }
+         ]
+        }
+       }
+      ]
+     },
+     "ask": {
+      "type": "string"
+     },
+     "options": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      },
+      "minItems": 2,
+      "maxItems": 4
+     },
+     "store": {
+      "type": "string",
+      "description": "A variable that keeps the answer (1, 2, ...)."
+     },
+     "narrate": {
+      "oneOf": [
+       {
+        "oneOf": [
+         {
+          "type": "string",
+          "description": "Text. \\n starts a line. {role} / {string_id} = his name; {role.nickname}, {role.catchphrase}, {role.signoff}, {role.finisher}, {role.insult} = his voice (filled in as it plays)."
+         },
+         {
+          "type": "object",
+          "description": "One line per player: Superstars' string IDs, \"group:<name>\", and \"default\" (required).",
+          "required": [
+           "default"
+          ],
+          "properties": {
+           "default": {
+            "type": "string",
+            "description": "Text. \\n starts a line. {role} / {string_id} = his name; {role.nickname}, {role.catchphrase}, {role.signoff}, {role.finisher}, {role.insult} = his voice (filled in as it plays)."
+           }
+          },
+          "additionalProperties": {
+           "type": "string",
+           "description": "Text. \\n starts a line. {role} / {string_id} = his name; {role.nickname}, {role.catchphrase}, {role.signoff}, {role.finisher}, {role.insult} = his voice (filled in as it plays)."
+          }
+         }
+        ]
+       },
+       {
+        "type": "array",
+        "items": {
+         "oneOf": [
+          {
+           "type": "string",
+           "description": "Text. \\n starts a line. {role} / {string_id} = his name; {role.nickname}, {role.catchphrase}, {role.signoff}, {role.finisher}, {role.insult} = his voice (filled in as it plays)."
+          },
+          {
+           "type": "object",
+           "description": "One line per player: Superstars' string IDs, \"group:<name>\", and \"default\" (required).",
+           "required": [
+            "default"
+           ],
+           "properties": {
+            "default": {
+             "type": "string",
+             "description": "Text. \\n starts a line. {role} / {string_id} = his name; {role.nickname}, {role.catchphrase}, {role.signoff}, {role.finisher}, {role.insult} = his voice (filled in as it plays)."
+            }
+           },
+           "additionalProperties": {
+            "type": "string",
+            "description": "Text. \\n starts a line. {role} / {string_id} = his name; {role.nickname}, {role.catchphrase}, {role.signoff}, {role.finisher}, {role.insult} = his voice (filled in as it plays)."
+           }
+          }
+         ]
+        }
+       }
+      ]
+     },
+     "if": {
+      "type": "string",
+      "description": "Terms joined by and / or / not and ( ): win, lose, notlose, win by X, lose by X, ended by X (X: count out, count-out, countout, decision, disqualification, dq, draw, escape, ladder, pin, pinfall, submission, tap out, tko), choice N, chance N%, <var> <op> <number> (== != < <= > >=), <role> is <Superstar>, <role> in <group> (groups: apa, corporation, dx, face, hart foundation, heel, ministry, nwo, the outsiders)."
+     },
+     "then": {
+      "$ref": "#/$defs/steps"
+     },
+     "else": {
+      "$ref": "#/$defs/steps"
+     },
+     "set": {
+      "$ref": "#/$defs/set"
+     },
+     "music": {
+      "enum": [
+       "on",
+       "off"
+      ]
+     },
+     "effect": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 10
+     },
+     "raw": {
+      "type": "string",
+      "pattern": "^[0-9A-Fa-f]{8}$"
+     }
+    },
+    "additionalProperties": false
+   }
+  },
+  "set": {
+   "type": "object",
+   "description": "Variables: a number sets it, \"+1\" / \"-1\" adds. Roles: another role (\"rival\": \"partner\") or a Superstar.",
+   "additionalProperties": {
+    "type": [
+     "integer",
+     "string"
+    ]
+   }
+  }
+ }
+}

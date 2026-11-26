@@ -1,0 +1,31 @@
+{
+  "about": "2026-11-07, the two modes phase 3 (W9): Regular with ABBREVIATED MENUS on -- a story of ours from the championship list (qa_reg 25 = 1 + 8 + 16), its chapter card skipped as Arcade's is (story_card_skip: Continue taken while the screen is black, on to the story's scene), RULES at once, the match card after 5 s. Shots on screens 23 / 21 / 25: no Chapter card (Continue / Save) -- straight into the story's scene; with them off (modes_reg_custom_story) the card is up ~4 s first. Screen 23 also hosts the story's scenes and choices, so its time there isn't the card's. state.csv (qa_modes), Regular on screen 23: rr_next = short_menus | story_active << 1 | the skip done << 2 | the menus' code loaded << 3 | NM_CHAMP_CONTEXT << 8 | the card's state (0x80097ED6) << 16 | 0xCA << 24.",
+  "match": "arcade",
+  "wrestlers": [
+    "STEVE AUSTIN",
+    null
+  ],
+  "matches": 0,
+  "seconds": 700,
+  "shots": 6.0,
+  "options": {
+    "game_mode": "Regular",
+    "qa_modes": 1,
+    "qa_reg": 25,
+    "custom_story": 1,
+    "short_menus_regular": true
+  },
+  "expect": [
+    {
+      "name": "Regular all along",
+      "when": "always",
+      "check": "(bs_tries & 1) == 0"
+    },
+    {
+      "name": "the story's match",
+      "when": "any",
+      "check": "mode == -2 and match_frames != 0xFFFF and match_frames > 120 and s0_id == 0x0002"
+    }
+  ],
+  "shot_when": "$c.mode -eq 0 -and $c.screen -in 23,21,25"
+}

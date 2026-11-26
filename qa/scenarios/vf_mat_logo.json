@@ -1,0 +1,45 @@
+{
+  "about": "visualfix 2026-11-15, the user's playtest item 8: 'wrestlers phase through the ring-mat logos; the logos look raised above the mat'. Revenge's mat logo (mesh 0x34F) lay at y 100, the mat at 90 (HALLOWEEN HAVOC, BASH AT THE BEACH, SOULED OUT, STARRCADE); now on the mat (gen/arenas_ring.py ring(): y 90) and kept over it by the renderer's layers by plane. A CPU match at STARRCADE (the user's shot 8); from 15 s the scenario's camera low at the ring's side looking across the mat's centre (the logo +-130). LOOK: feet and bodies on the logo are whole (not cut 10 units up), the logo flat on the mat. Check (qa_checks.py flicker <run> --from 17 --band 0.45 1.0): the logo doesn't flicker against the mat; vf_mat_logo_old (WCW_NATIVE_PLANES=0) is the negative control (the logo now on the mat's plane, the old layers: a tie).",
+  "wrestlers": [
+    "HOLLYWOOD HOGAN",
+    "KEVIN NASH"
+  ],
+  "control": [
+    "cpu",
+    "cpu"
+  ],
+  "arena": "STARRCADE",
+  "matches": 1,
+  "seconds": 90,
+  "shots": 0.5,
+  "camera": {
+    "eye": [
+      0,
+      175,
+      -430
+    ],
+    "at": [
+      0,
+      90,
+      0
+    ],
+    "from": 15
+  },
+  "expect": [
+    {
+      "name": "the match started",
+      "when": "any",
+      "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "the arena is STARRCADE (arena_current 16)",
+      "when": "any",
+      "check": "venue == 16 and stage == 2"
+    },
+    {
+      "name": "nobody's position went bad",
+      "when": "always",
+      "check": "finite(s0_x, s0_y, s0_z, s1_x, s1_y, s1_z)"
+    }
+  ]
+}

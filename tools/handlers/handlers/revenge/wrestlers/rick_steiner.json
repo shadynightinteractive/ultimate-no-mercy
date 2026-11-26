@@ -1,0 +1,64 @@
+{
+ "about": "WCW/nWo Revenge port: what was chosen by hand for him (moved out of mod\\gen's tables by handlers\\extract_fixes.py, 2026-11-12). Edit here; the handler reads nothing else that is his alone.",
+ "string_id": "rick_steiner",
+ "key": "ricksteiner",
+ "legacy_game_id": "0x010E",
+ "name": "RICK STEINER",
+ "short_name": "R. STEINER",
+ "height": 11,
+ "weight": 148,
+ "music_slot": 74,
+ "video": 0,
+ "revenge": {
+  "moveset_file": "0x1DC",
+  "code": "0x005"
+ },
+ "moveset": {
+  "reference_ordinal": 34,
+  "allies": [
+   "0x010F"
+  ],
+  "weight_class": [
+   1,
+   1,
+   0
+  ],
+  "stance": null,
+  "slot_overrides": {
+   "235": 15360
+  },
+  "no_struggling_slam": true
+ },
+ "costumes": [
+  {
+   "capture": "st_c0",
+   "slot": 0
+  },
+  {
+   "capture": "at_st1",
+   "slot": 0
+  },
+  {
+   "capture": "at_st2",
+   "slot": 0
+  },
+  {
+   "capture": "at_st3",
+   "slot": 0
+  }
+ ],
+ "skin": "no_mercy",
+ "body_type": 4,
+ "body_type_why": "(2026-11-13, revbody) a hand fix the rule doesn't give (it gives 6, Fat 1): Thick 1 by hand (data/revport/ports4, gen/mkparts.py REV_LATE): Revenge gives him its heavy frame (3), whose rule is Fat 1; the port judged his build Thick",
+ "photo_number": 123,
+ "photo": {
+  "photo": 123,
+  "shot": "data/revport/ports4/cap/cc_rick.png",
+  "box": [
+   193,
+   27,
+   243,
+   77
+  ]
+ }
+}

@@ -1,0 +1,74 @@
+{
+  "about": "2026-11-18 any32: a TAG match (not a Rumble) with 4 extra wrestlers present (slots 4-7): the tag match's own rules, legal men and end (they join in after 2 s: a tag match can be short); 6x",
+  "match": "tag",
+  "wrestlers": [
+    "STEVE AUSTIN",
+    "THE ROCK",
+    "TRIPLE H",
+    "UNDERTAKER"
+  ],
+  "costumes": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "arena": "RAW IS WAR",
+  "control": [
+    "cpu",
+    "cpu",
+    "cpu",
+    "cpu"
+  ],
+  "options": {
+    "qa_extras": 4,
+    "qa_extras_rule": 0,
+    "qa_extras_wait": 2
+  },
+  "matches": 1,
+  "seconds": 600,
+  "speed": 6,
+  "shots": 4,
+  "expect": [
+    {
+      "name": "the match started",
+      "when": "any",
+      "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "the extras were set up: 4 present, 4 competitors, the engine counts 8",
+      "when": "match",
+      "check": "(bs_tries & 0xFF) == 4 and ((bs_step >> 8) & 0xFF) == 4 and (bs_step & 0xFF) == 8"
+    },
+    {
+      "name": "the extras stood first, then joined in",
+      "when": "match",
+      "check": "(bs_step >> 24) & 1 == 1"
+    },
+    {
+      "name": "every extra acted (the computer pressed his buttons)",
+      "when": "match",
+      "check": "((bs_tries >> 8) & 0xFF) == 4"
+    },
+    {
+      "name": "extras took hits (stamina down): at least one",
+      "when": "match",
+      "check": "((bs_tries >> 16) & 0xFF) >= 1"
+    },
+    {
+      "name": "extras grappled (states 80 / 81)",
+      "when": "match",
+      "check": "((bs_tries >> 24) & 0xFF) >= 1"
+    },
+    {
+      "name": "no position ever went bad",
+      "when": "always",
+      "check": "finite(s0_x, s0_y, s0_z, s1_x, s1_y, s1_z, s2_x, s2_z, s5_x, s5_z)"
+    },
+    {
+      "name": "the match finished and the game quit by itself",
+      "when": "end",
+      "check": "matches >= 1 or stage != 2"
+    }
+  ]
+}

@@ -1,0 +1,99 @@
+name: Bug report
+description: Something in Ultimate No Mercy doesn't work the way it should.
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report a problem.
+
+        **Never upload ROMs, disc images, patches or any files from a game**, here or anywhere in this repository.
+        Name your ROMs instead (for example "WWF No Mercy (USA) (Rev 1).z64").
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      description: The version you are playing (from the zip's name, e.g. 0.86.0).
+      placeholder: "0.86.0"
+    validations:
+      required: true
+  - type: textarea
+    id: roms
+    attributes:
+      label: ROMs in your roms folder
+      description: The names of the files in your `roms` folder (names only -- never the files).
+      placeholder: |
+        WWF No Mercy (USA) (Rev 1).z64
+        WWF_WrestleMania_2000.zip
+    validations:
+      required: true
+  - type: dropdown
+    id: where
+    attributes:
+      label: Where did it happen?
+      options:
+        - Menus / Superstar Select
+        - A match (please say which match type below)
+        - Entrances / Titantron
+        - Royal Rumble
+        - Lumberjack match
+        - Story Mode / custom stories
+        - First start / building content
+        - Settings (F2) / controls
+        - Graphics / window / full screen
+        - Sound / music / commentary
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: What you saw, and what you expected to happen instead.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to make it happen again
+      description: Mode (Arcade or Regular), match type, wrestlers, arena, settings you changed -- whatever helps.
+      placeholder: |
+        1. Regular mode, Multi Play > Royal Rumble
+        2. ...
+        3. ...
+    validations:
+      required: false
+  - type: dropdown
+    id: often
+    attributes:
+      label: How often?
+      options:
+        - Every time
+        - Sometimes
+        - Once
+    validations:
+      required: true
+  - type: textarea
+    id: shots
+    attributes:
+      label: Screenshots or video
+      description: Drag images or a short clip here if you have them.
+    validations:
+      required: false
+  - type: textarea
+    id: log
+    attributes:
+      label: Log (optional)
+      description: |
+        Attach `NoMercyRecompiled.log` from your game folder if you can (drag the file here).
+        The game writes nothing about your PC into it, but please look it over before attaching.
+    validations:
+      required: false
+  - type: input
+    id: system
+    attributes:
+      label: Windows version and graphics card (optional)
+      placeholder: "Windows 11, GeForce / Radeon / Intel ..."
+    validations:
+      required: false

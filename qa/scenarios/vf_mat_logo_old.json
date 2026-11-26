@@ -1,0 +1,48 @@
+{
+  "about": "visualfix 2026-11-15: vf_mat_logo with WCW_NATIVE_PLANES=0 -- with the new data (the logo on the mat's y 90) and the old layers the logo and the mat tie: the flicker the plane layers are there to stop (negative control for qa_checks.py flicker).",
+  "wrestlers": [
+    "HOLLYWOOD HOGAN",
+    "KEVIN NASH"
+  ],
+  "control": [
+    "cpu",
+    "cpu"
+  ],
+  "arena": "STARRCADE",
+  "matches": 1,
+  "seconds": 90,
+  "shots": 0.5,
+  "camera": {
+    "eye": [
+      0,
+      175,
+      -430
+    ],
+    "at": [
+      0,
+      90,
+      0
+    ],
+    "from": 15
+  },
+  "expect": [
+    {
+      "name": "the match started",
+      "when": "any",
+      "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "the arena is STARRCADE (arena_current 16)",
+      "when": "any",
+      "check": "venue == 16 and stage == 2"
+    },
+    {
+      "name": "nobody's position went bad",
+      "when": "always",
+      "check": "finite(s0_x, s0_y, s0_z, s1_x, s1_y, s1_z)"
+    }
+  ],
+  "env": {
+    "WCW_NATIVE_PLANES": "0"
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "about": "2026-11-23 ljtwitch: the twitching check, as the user played it -- Steve Austin (player 1 at his controller, qa_lj_p1 3: after his opponent, out by himself now and then) against Kurt Angle, with the twelve lumberjacks of the user's 11-23 match (qa_lj_set 1: Savage, D-Lo Brown, La Parka, Brickowski, Taka Michinoku, British Bulldog, Shane McMahon, Han Zo Mon, Raven, Sting, X-Pac, Dean Malenko -- ten imported men), three matches. The user: 'There's still some twitching' / 'Its not just when they're at posts' / 'Check when they're idle outside the ring, thats where I notice most'. The jitter measure (lumberjack.c qa_jitter: every man every step -- turns reversed within 1/3 s of any size, animation files switched back within 2/3 s or restarted, states switched back, steps reversed) by what each man is doing: lj_p idle outside the ring (at the post or anywhere on the floor in no job), lj_q walking (the intro too), lj_r on a man / brawling / busy, lj_s the competitors out. The per-step trace (qa_lj_trace 4) is in the game's log for the analysis (scratch jit.py).",
+  "match": "singles",
+  "wrestlers": [
+    "STEVE AUSTIN",
+    "0x0302"
+  ],
+  "costumes": [
+    0,
+    0
+  ],
+  "control": [
+    "pad1",
+    "cpu"
+  ],
+  "arena": "RAW IS WAR",
+  "options": {
+    "qa_lumberjacks": 12,
+    "qa_lj_set": 1,
+    "qa_lj_out": 30,
+    "qa_lj_p1": 3,
+    "qa_lj_trace": 4
+  },
+  "matches": 3,
+  "seconds": 1500,
+  "speed": 6,
+  "shots": 10,
+  "shot_when": "$c.match_state -eq 1",
+  "pads": [
+    "9999 1 back 10",
+    "9999 2 back 10"
+  ],
+  "expect": [
+    {
+      "name": "the match started",
+      "when": "any",
+      "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "player 1 (slot 0) is driven by a controller -- the human path, as the user plays it",
+      "when": "match",
+      "check": "(lj_o >> 31) == 1"
+    },
+    {
+      "name": "the user's twelve lumberjacks (qa_lj_set 1): Savage, D-Lo Brown first",
+      "when": "match",
+      "check": "lj_j == (0x0108 | 0x03BC << 16)"
+    },
+    {
+      "name": "ljtwitch: the lumberjacks IDLE outside the ring stand still -- at their posts, anywhere else on the floor in no job, or walking back to their posts (the user, 11-23: 'There's still some twitching' / 'Check when they're idle outside the ring, thats where I notice most'): at most one jitter event a 5 lumberjack-seconds -- a turn reversed within 1/3 s (both turns 3 of 4096 or more), the walk / stand files switched back within 2/3 s, a step reversing the last one's way. Before the fix (937b34d): 6 to 11 a lumberjack-second, lumberjacks stuck turning back and forth by their posts for seconds",
+      "when": "always",
+      "check": "match_state != 4 or (lj_p & 0xFFFF) * 5 <= (lj_p >> 16)"
+    },
+    {
+      "name": "ljtwitch: the lumberjacks WALKING DOWN THE RAMP in the intro walk steadily: at most one jitter event a lumberjack-second (before the fix: a walker behind another stood a step and walked a step every 8 steps, 2.9 a second; walking back to the post is in the idle check)",
+      "when": "always",
+      "check": "match_state != 4 or (lj_q & 0xFFFF) <= (lj_q >> 16)"
+    },
+    {
+      "name": "ljtwitch: the lumberjacks ON A MAN (the swarm, the roll-in's roller), brawling, leaving the ring, down, in a move or whipped: at most 4 jitter events a lumberjack-second -- hits and moves knock men about, but no walking on the spot, no turning left and right each step (before the fix: 7 to 9 a second, rollers turning between two corners each step, the swarm walking into the apron for seconds)",
+      "when": "always",
+      "check": "match_state != 4 or (lj_r & 0xFFFF) <= 4 * (lj_r >> 16)"
+    },
+    {
+      "name": "ljtwitch: the jitter measure ran -- at a match's end, 300 lumberjack-seconds or more idle outside the ring and 20 walking measured",
+      "when": "match",
+      "check": "match_state == 4 and (lj_p >> 16) >= 300 and (lj_q >> 16) >= 20"
+    }
+  ],
+  "report_only": [
+    {
+      "name": "ljtwitch: jitter -- lumberjacks idle outside the ring (events, lumberjack-seconds)",
+      "value": "(lj_p & 0xFFFF, lj_p >> 16)"
+    },
+    {
+      "name": "ljtwitch: jitter -- the intro's walk down the ramp (events, lumberjack-seconds)",
+      "value": "(lj_q & 0xFFFF, lj_q >> 16)"
+    },
+    {
+      "name": "ljtwitch: jitter -- lumberjacks on a man / brawling / busy (events, lumberjack-seconds)",
+      "value": "(lj_r & 0xFFFF, lj_r >> 16)"
+    },
+    {
+      "name": "ljtwitch: jitter -- the competitors out on the floor (events, man-seconds; report-only: mostly the game's own -- blows, falls, his computer player)",
+      "value": "(lj_s & 0xFFFF, lj_s >> 16)"
+    }
+  ]
+}

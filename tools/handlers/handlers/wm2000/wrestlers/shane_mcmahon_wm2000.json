@@ -1,0 +1,15 @@
+{
+ "about": "WrestleMania 2000's SHANE McMAHON: what the handler is told for him (wm2kall, 2026-11-13). Everything else comes from the ROM.",
+ "string_id": "shane_mcmahon_wm2000",
+ "key": "shane_mcmahon_wm2000",
+ "wm2000": {
+  "roster_index": 9,
+  "game_id": "0x0104"
+ },
+ "moveset": {
+  "reference_ordinal": 62,
+  "reference_why": "No Mercy's own"
+ },
+ "class": "authority",
+ "class_why": "the handler: the owner's son, who wrestles -- as No Mercy's own Shane McMahon, in its Royal Rumble's field; WrestleMania 2000's record gives him its non-wrestler's codes"
+}

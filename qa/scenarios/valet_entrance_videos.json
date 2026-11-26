@@ -1,0 +1,34 @@
+{
+  "about": "2026-11-18 (valetfix): valet_entrance with FULL SCREEN TITANTRONS on (option titantron): each entrance opens with the full-screen video and the game moves on to the stage by itself -- the game's own step order, as the original plays it; the comparison for valet_entrance, where the mod cuts the video step",
+  "match": "arcade",
+  "wrestlers": [
+    "THE ROCK",
+    null
+  ],
+  "matches": 0,
+  "seconds": 560,
+  "shots": 4.0,
+  "options": {
+    "free_play": true,
+    "attract_demos": false,
+    "custom_story": 1,
+    "qa_story": 3,
+    "titantron": true
+  },
+  "shot_when": "$c.mode -eq 0 -and $c.screen -eq 42 -and $c.entrance_step -ge 1 -and $c.entrance_step -le 29",
+  "expect": [
+    {
+      "name": "the entrances ran",
+      "when": "any",
+      "check": "mode == 0 and screen == 42 and entrance_step >= 1 and entrance_step <= 29"
+    },
+    {
+      "name": "a match at RAW IS WAR (0)",
+      "when": "any",
+      "check": "mode == -2 and venue == 0"
+    }
+  ],
+  "stories": [
+    "009_valet.json"
+  ]
+}

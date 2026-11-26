@@ -1,0 +1,57 @@
+{
+  "title": "The Grudge",
+  "menu": "The Grudge",
+  "championship": "world",
+  "cast": { "rival": "the_rock", "boss": "triple_h" },
+  "vars": { "beat_rival": 0 },
+  "start": "grudge",
+  "nodes": {
+    "grudge": {
+      "chapter": "THE GRUDGE",
+      "pages": [
+        "{rival} has been running his mouth\nabout {player} all week long.",
+        "Tonight {player} gets the chance\nto shut him up. One on one."
+      ],
+      "match": { "type": "single", "slots": ["player", ["rival", "kane"]] },
+      "requirement": "Singles match: {player} vs {rival}.\nWin, and a title shot is yours.",
+      "branches": [
+        { "if": "win", "set": { "beat_rival": 1 }, "money": 1000,
+          "pages": ["{player} pinned {rival}!\nThe whole arena is on its feet.",
+                    "{boss} was watching from the back.\nHe's next."],
+          "next": "title" },
+        { "pages": ["{rival} stands tall over {player}.\nThis isn't over.",
+                    "The boss grants a rematch.\nOne more chance."],
+          "next": "rematch" }
+      ]
+    },
+    "rematch": {
+      "chapter": "SECOND CHANCE",
+      "pages": ["{player} wants {rival} again.\nNo excuses this time."],
+      "match": { "type": "single", "slots": ["player", ["rival", "kane"]] },
+      "requirement": "Singles match: {player} vs {rival}.\nLose, and the story is over.",
+      "branches": [
+        { "if": "win", "money": 500,
+          "pages": ["Revenge! {player} beat {rival}.\nNow for {boss}."],
+          "next": "title" },
+        { "pages": ["{rival} wins again.\n{player} walks to the back alone.",
+                    "THE END"],
+          "next": "end" }
+      ]
+    },
+    "title": {
+      "chapter": "THE MAIN EVENT",
+      "pages": ["{boss} says {player} got lucky.\nTime to prove him wrong."],
+      "match": { "type": "single", "slots": ["player", ["boss", "steve_austin"]] },
+      "requirement": "Main event: {player} vs {boss}.\nWin it all.",
+      "branches": [
+        { "if": "win", "money": 5000,
+          "pages": ["{player} has beaten {boss}!\nWhat a night.",
+                    "From grudge to glory.\nTHE END"],
+          "next": "end" },
+        { "pages": ["{boss} survives.\n{player} will be back.",
+                    "THE END"],
+          "next": "end" }
+      ]
+    }
+  }
+}

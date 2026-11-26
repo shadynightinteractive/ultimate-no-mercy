@@ -1,0 +1,13 @@
+{
+ "about": "WrestleMania 2000's STEVE AUSTIN: what the handler is told for him (wm2kall, 2026-11-13). Everything else comes from the ROM.",
+ "string_id": "steve_austin_wm2000",
+ "key": "steve_austin_wm2000",
+ "wm2000": {
+  "roster_index": 1,
+  "game_id": "0x0001"
+ },
+ "moveset": {
+  "reference_ordinal": 2,
+  "reference_why": "No Mercy's own"
+ }
+}

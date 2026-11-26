@@ -1,0 +1,72 @@
+{
+ "about": "WCW/nWo Revenge port: what was chosen by hand for him (moved out of mod\\gen's tables by handlers\\extract_fixes.py, 2026-11-12). Edit here; the handler reads nothing else that is his alone.",
+ "string_id": "jim_neidhart",
+ "key": "neidhart",
+ "legacy_game_id": "0x060E",
+ "name": "JIM NEIDHART",
+ "short_name": "NEIDHART",
+ "height": 14,
+ "weight": 173,
+ "music_slot": 64,
+ "video": 0,
+ "revenge": {
+  "moveset_file": "0x1C1",
+  "code": "0x10E"
+ },
+ "moveset": {
+  "reference_ordinal": 34,
+  "allies": [
+   "0x060D",
+   "0x0603"
+  ],
+  "weight_class": [
+   1,
+   1,
+   0
+  ],
+  "stance": null,
+  "slot_overrides": {
+   "157": [
+    11750,
+    0,
+    0,
+    1
+   ]
+  },
+  "no_struggling_slam": false
+ },
+ "costumes": [
+  {
+   "capture": "L12",
+   "slot": 1
+  },
+  {
+   "capture": "at_bn1",
+   "slot": 1
+  },
+  {
+   "capture": "at_bn2",
+   "slot": 1
+  },
+  {
+   "capture": "at_bn3",
+   "slot": 1
+  }
+ ],
+ "skin": "no_mercy",
+ "photo_number": 113,
+ "photo": {
+  "photo": 113,
+  "shot": "data/revport/cap/ccn.png",
+  "box": [
+   194,
+   20,
+   244,
+   70
+  ]
+ },
+ "video_frames": {
+  "from": "revport/cap/tron_neidhart",
+  "count": 82
+ }
+}

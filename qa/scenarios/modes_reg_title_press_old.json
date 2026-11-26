@@ -1,0 +1,26 @@
+{
+  "match": "arcade",
+  "matches": 0,
+  "seconds": 200,
+  "shots": 2.0,
+  "expect": [
+    {
+      "name": "the title up",
+      "when": "any",
+      "check": "mode == 0 and screen == 0"
+    },
+    {
+      "name": "PRESS START drawn on the title and its blink going (the counter moving in a second)",
+      "when": "any",
+      "check": "mode == 0 and screen == 0 and ((rr_next >> 16) & 255) > 10 and (rr_next >> 24) > ((rr_next >> 8) & 255)"
+    }
+  ],
+  "shot_when": "$c.mode -eq 0 -and $c.screen -eq 0",
+  "about": "2026-11-07, the two modes phase 3: as modes_reg_title_press, from an old install with the arcade off (settings_version 4, enabled off: the migration gives Regular) and its other settings as they were -- to tell whether the plain port's title differs. state.csv rr_next as modes_reg_title_press.",
+  "options": {
+    "game_mode": "Arcade",
+    "settings_version": 4,
+    "enabled": false,
+    "qa_modes": 1
+  }
+}

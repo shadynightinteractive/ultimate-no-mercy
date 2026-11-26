@@ -1,0 +1,30 @@
+{
+  "about": "2026-10-30, the user plays: a 4-man Royal Rumble (the arcade's own, from the championship list), player 1 on the user's controller; win it, then the championship list must come back with its rows (logic.c route G_STORY: the pages built afresh). The game stays 5 s on the list, then quits",
+  "match": "rumble",
+  "wrestlers": [
+    "HOLLYWOOD HOGAN"
+  ],
+  "control": [
+    "pad1"
+  ],
+  "options": {
+    "rumble_entrants": 4,
+    "rumble_interval": 10
+  },
+  "matches": 1,
+  "seconds": 1500,
+  "shots": 1.0,
+  "expect": [
+    {
+      "name": "the Rumble started",
+      "when": "any",
+      "check": "stage == 2 and mode == -2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "the Rumble over, back on the championship list",
+      "when": "end",
+      "check": "matches >= 1"
+    }
+  ]
+}
+

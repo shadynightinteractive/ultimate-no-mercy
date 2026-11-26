@@ -1,0 +1,626 @@
+{
+ "revenge:slam_sharpshooter": {
+  "num": 1,
+  "base": 1880,
+  "pair": null,
+  "cont": null,
+  "fa": null,
+  "fd": null
+ },
+ "revenge:1242_1243": {
+  "num": 2,
+  "base": 160,
+  "pair": "BRETHART_1242_1243",
+  "cont": null,
+  "fa": 4674,
+  "fd": 4675
+ },
+ "revenge:158a_158b": {
+  "num": 3,
+  "base": 2550,
+  "pair": "BRETHART_158A_158B",
+  "cont": null,
+  "fa": 5514,
+  "fd": 5515
+ },
+ "revenge:15c2_15c3": {
+  "num": 4,
+  "base": 2590,
+  "pair": "BRETHART_15C2_15C3",
+  "cont": null,
+  "fa": 5570,
+  "fd": 5571
+ },
+ "revenge:15f8_15f9": {
+  "num": 5,
+  "base": 2890,
+  "pair": "BRETHART_15F8_15F9",
+  "cont": "BRETHART_B244_15FA_15FB",
+  "fa": 5624,
+  "fd": 5625
+ },
+ "revenge:15ce_15cf": {
+  "num": 6,
+  "base": 2850,
+  "pair": "BRETHART_15CE_15CF",
+  "cont": null,
+  "fa": 5582,
+  "fd": 5583
+ },
+ "revenge:1935_1939": {
+  "num": 7,
+  "base": 3980,
+  "pair": "BRETHART_1935_1939",
+  "cont": null,
+  "fa": 6453,
+  "fd": 6457
+ },
+ "revenge:1c93_1c94": {
+  "num": 8,
+  "base": 4610,
+  "pair": "BRETHART_1C93_1C94",
+  "cont": null,
+  "fa": 7315,
+  "fd": 7316
+ },
+ "revenge:1cab_1cac": {
+  "num": 9,
+  "base": 4700,
+  "pair": "BRETHART_1CAB_1CAC",
+  "cont": null,
+  "fa": 7339,
+  "fd": 7340
+ },
+ "revenge:189b_189c": {
+  "num": 10,
+  "base": 5580,
+  "pair": "BRETHART_189B_189C",
+  "cont": null,
+  "fa": 6299,
+  "fd": 6300
+ },
+ "revenge:1c37_1c38": {
+  "num": 11,
+  "base": 12540,
+  "pair": "BRETHART_1C37_1C38",
+  "cont": null,
+  "fa": 7223,
+  "fd": 7224
+ },
+ "revenge:126c_1270": {
+  "num": 12,
+  "base": 16580,
+  "pair": "BRETHART_126C_1270",
+  "cont": null,
+  "fa": 4716,
+  "fd": 4720
+ },
+ "revenge:126d_1271": {
+  "num": 13,
+  "base": 0,
+  "pair": "BRETHART_126D_1271",
+  "cont": null,
+  "fa": 4717,
+  "fd": 4721
+ },
+ "revenge:126e_1272": {
+  "num": 14,
+  "base": 0,
+  "pair": "BRETHART_126E_1272",
+  "cont": null,
+  "fa": 4718,
+  "fd": 4722
+ },
+ "revenge:126f_1273": {
+  "num": 15,
+  "base": 0,
+  "pair": "BRETHART_126F_1273",
+  "cont": null,
+  "fa": 4719,
+  "fd": 4723
+ },
+ "revenge:1274_1275": {
+  "num": 16,
+  "base": 0,
+  "pair": "BRETHART_1274_1275",
+  "cont": null,
+  "fa": 4724,
+  "fd": 4725
+ },
+ "revenge:1246_1247": {
+  "num": 17,
+  "base": 250,
+  "pair": "BRETHART_1246_1247",
+  "cont": null,
+  "fa": 4678,
+  "fd": 4679
+ },
+ "revenge:1254_1255": {
+  "num": 18,
+  "base": 290,
+  "pair": "NEIDHART_1254_1255",
+  "cont": null,
+  "fa": 4692,
+  "fd": 4693
+ },
+ "revenge:16ae_16af": {
+  "num": 19,
+  "base": 3080,
+  "pair": "NEIDHART_16AE_16AF",
+  "cont": null,
+  "fa": 5806,
+  "fd": 5807
+ },
+ "revenge:1c62_1c63": {
+  "num": 20,
+  "base": 4320,
+  "pair": "NEIDHART_1C62_1C63",
+  "cont": null,
+  "fa": 7266,
+  "fd": 7267
+ },
+ "revenge:1238_1239": {
+  "num": 21,
+  "base": 60,
+  "pair": "NEIDHART_1238_1239",
+  "cont": null,
+  "fa": 4664,
+  "fd": 4665
+ },
+ "revenge:12a2_12a3": {
+  "num": 22,
+  "base": 1050,
+  "pair": "NEIDHART_12A2_12A3",
+  "cont": null,
+  "fa": 4770,
+  "fd": 4771
+ },
+ "revenge:157e_157f": {
+  "num": 23,
+  "base": 2520,
+  "pair": "NEIDHART_157E_157F",
+  "cont": null,
+  "fa": 5502,
+  "fd": 5503
+ },
+ "revenge:15a2_15a3": {
+  "num": 24,
+  "base": 2930,
+  "pair": "NEIDHART_15A2_15A3",
+  "cont": null,
+  "fa": 5538,
+  "fd": 5539
+ },
+ "revenge:158c_158d": {
+  "num": 25,
+  "base": 2560,
+  "pair": "NEIDHART_158C_158D",
+  "cont": null,
+  "fa": 5516,
+  "fd": 5517
+ },
+ "revenge:1881_1882": {
+  "num": 26,
+  "base": 5380,
+  "pair": "NEIDHART_1881_1882",
+  "cont": null,
+  "fa": 6273,
+  "fd": 6274
+ },
+ "revenge:14cc_14cd": {
+  "num": 27,
+  "base": 920,
+  "pair": "HOGAN_14CC_14CD",
+  "cont": null,
+  "fa": 5324,
+  "fd": 5325
+ },
+ "revenge:1652_1653": {
+  "num": 28,
+  "base": 2680,
+  "pair": "HOGAN_1652_1653",
+  "cont": "HOGAN_B249_1654_1655",
+  "fa": 5714,
+  "fd": 5715
+ },
+ "revenge:1620_1621": {
+  "num": 29,
+  "base": 2690,
+  "pair": "HOGAN_1620_1621",
+  "cont": "HOGAN_B250_1622_1623",
+  "fa": 5664,
+  "fd": 5665
+ },
+ "revenge:1544_1545": {
+  "num": 30,
+  "base": 1570,
+  "pair": "NASH_1544_1545",
+  "cont": null,
+  "fa": 5444,
+  "fd": 5445
+ },
+ "revenge:162a_162b": {
+  "num": 31,
+  "base": 2650,
+  "pair": "NASH_162A_162B",
+  "cont": "NASH_B248_162C_162D",
+  "fa": 5674,
+  "fd": 5675
+ },
+ "revenge:15cc_15cd": {
+  "num": 32,
+  "base": 7660,
+  "pair": "NASH_15CC_15CD",
+  "cont": null,
+  "fa": 5580,
+  "fd": 5581
+ },
+ "revenge:1266_1267": {
+  "num": 33,
+  "base": 150,
+  "pair": "NASH_1266_1267",
+  "cont": null,
+  "fa": 4710,
+  "fd": 4711
+ },
+ "revenge:12ae_12af": {
+  "num": 34,
+  "base": 16250,
+  "pair": "NASH_12AE_12AF",
+  "cont": null,
+  "fa": 4782,
+  "fd": 4783
+ },
+ "revenge:1648_1649": {
+  "num": 35,
+  "base": 2490,
+  "pair": "HALL_1648_1649",
+  "cont": "HALL_B243_164A_164B",
+  "fa": 5704,
+  "fd": 5705
+ },
+ "revenge:158e_158f": {
+  "num": 36,
+  "base": 2520,
+  "pair": "HALL_158E_158F",
+  "cont": null,
+  "fa": 5518,
+  "fd": 5519
+ },
+ "revenge:1572_1573": {
+  "num": 37,
+  "base": 1780,
+  "pair": "SAVAGE_1572_1573",
+  "cont": "SAVAGE_B246_1574_1575",
+  "fa": 5490,
+  "fd": 5491
+ },
+ "revenge:193f_1940": {
+  "num": 38,
+  "base": 3870,
+  "pair": "HENNIG_193F_1940",
+  "cont": null,
+  "fa": 6463,
+  "fd": 6464
+ },
+ "revenge:19b1_19b2": {
+  "num": 39,
+  "base": 11620,
+  "pair": "HENNIG_19B1_19B2",
+  "cont": "HENNIG_B260_19B3_19B4",
+  "fa": 6577,
+  "fd": 6578
+ },
+ "revenge:159e_159f": {
+  "num": 40,
+  "base": 7630,
+  "pair": "HENNIG_159E_159F",
+  "cont": null,
+  "fa": 5534,
+  "fd": 5535
+ },
+ "revenge:1244_1245": {
+  "num": 41,
+  "base": 160,
+  "pair": "GIANT_1244_1245",
+  "cont": null,
+  "fa": 4676,
+  "fd": 4677
+ },
+ "revenge:15b2_15b3": {
+  "num": 42,
+  "base": 2720,
+  "pair": "GIANT_15B2_15B3",
+  "cont": null,
+  "fa": 5554,
+  "fd": 5555
+ },
+ "revenge:123c_123d": {
+  "num": 43,
+  "base": 250,
+  "pair": "GIANT_123C_123D",
+  "cont": null,
+  "fa": 4668,
+  "fd": 4669
+ },
+ "revenge:15a4_15a5": {
+  "num": 44,
+  "base": 2590,
+  "pair": "GIANT_15A4_15A5",
+  "cont": null,
+  "fa": 5540,
+  "fd": 5541
+ },
+ "revenge:17bc_17bd": {
+  "num": 45,
+  "base": 5580,
+  "pair": "GIANT_17BC_17BD",
+  "cont": null,
+  "fa": 6076,
+  "fd": 6077
+ },
+ "revenge:15be_15bf": {
+  "num": 46,
+  "base": 7500,
+  "pair": "STING_15BE_15BF",
+  "cont": null,
+  "fa": 5566,
+  "fd": 5567
+ },
+ "revenge:122c_122d": {
+  "num": 47,
+  "base": 50,
+  "pair": "STING_122C_122D",
+  "cont": null,
+  "fa": 4652,
+  "fd": 4653
+ },
+ "revenge:1398_139a": {
+  "num": 48,
+  "base": 370,
+  "pair": "STING_1398_139A",
+  "cont": null,
+  "fa": 5016,
+  "fd": 5018
+ },
+ "revenge:159c_159d": {
+  "num": 49,
+  "base": 2550,
+  "pair": "STING_159C_159D",
+  "cont": null,
+  "fa": 5532,
+  "fd": 5533
+ },
+ "revenge:1684_1685": {
+  "num": 50,
+  "base": 7620,
+  "pair": "LUGER_1684_1685",
+  "cont": "LUGER_B250_1686_1687",
+  "fa": 5764,
+  "fd": 5765
+ },
+ "revenge:194b_194c": {
+  "num": 51,
+  "base": 3880,
+  "pair": "LUGER_194B_194C",
+  "cont": null,
+  "fa": 6475,
+  "fd": 6476
+ },
+ "revenge:119a_119e": {
+  "num": 52,
+  "base": 4920,
+  "pair": "GOLDBERG_119A_119E",
+  "cont": null,
+  "fa": 4506,
+  "fd": 4510
+ },
+ "revenge:1548_1549": {
+  "num": 53,
+  "base": 1560,
+  "pair": "GOLDBERG_1548_1549",
+  "cont": "GOLDBERG_B247_154A_154B",
+  "fa": 5448,
+  "fd": 5449
+ },
+ "revenge:1596_1597": {
+  "num": 54,
+  "base": 2790,
+  "pair": "GOLDBERG_1596_1597",
+  "cont": null,
+  "fa": 5526,
+  "fd": 5527
+ },
+ "revenge:1951_1952": {
+  "num": 55,
+  "base": 3950,
+  "pair": "GOLDBERG_1951_1952",
+  "cont": null,
+  "fa": 6481,
+  "fd": 6482
+ },
+ "revenge:1899_189a": {
+  "num": 56,
+  "base": 5480,
+  "pair": "GOLDBERG_1899_189A",
+  "cont": null,
+  "fa": 6297,
+  "fd": 6298
+ },
+ "revenge:11e8_11ec": {
+  "num": 57,
+  "base": 16250,
+  "pair": "GOLDBERG_11E8_11EC",
+  "cont": null,
+  "fa": 4584,
+  "fd": 4588
+ },
+ "revenge:115b_115f": {
+  "num": 58,
+  "base": 1010,
+  "pair": "GOLDBERG_115B_115F",
+  "cont": null,
+  "fa": 4443,
+  "fd": 4447
+ },
+ "revenge:15a8_15a9": {
+  "num": 59,
+  "base": 2610,
+  "pair": "GOLDBERG_15A8_15A9",
+  "cont": null,
+  "fa": 5544,
+  "fd": 5545
+ },
+ "revenge:15bc_15bd": {
+  "num": 60,
+  "base": 3020,
+  "pair": "GOLDBERG_15BC_15BD",
+  "cont": null,
+  "fa": 5564,
+  "fd": 5565
+ },
+ "revenge:187d_187e": {
+  "num": 61,
+  "base": 5380,
+  "pair": "GOLDBERG_187D_187E",
+  "cont": null,
+  "fa": 6269,
+  "fd": 6270
+ },
+ "revenge:1d02_1d03": {
+  "num": 62,
+  "base": 3090,
+  "pair": "RICKSTEINER_1D02_1D03",
+  "cont": null,
+  "fa": 7426,
+  "fd": 7427
+ },
+ "revenge:15c6_15c7": {
+  "num": 63,
+  "base": 2520,
+  "pair": "RICKSTEINER_15C6_15C7",
+  "cont": null,
+  "fa": 5574,
+  "fd": 5575
+ },
+ "revenge:1c99_1c9a": {
+  "num": 64,
+  "base": 4640,
+  "pair": "RICKSTEINER_1C99_1C9A",
+  "cont": null,
+  "fa": 7321,
+  "fd": 7322
+ },
+ "revenge:1590_1591": {
+  "num": 65,
+  "base": 2790,
+  "pair": "SCOTTSTEINER_1590_1591",
+  "cont": null,
+  "fa": 5520,
+  "fd": 5521
+ },
+ "revenge:1955_1956": {
+  "num": 66,
+  "base": 3990,
+  "pair": "SCOTTSTEINER_1955_1956",
+  "cont": null,
+  "fa": 6485,
+  "fd": 6486
+ },
+ "revenge:15a6_15a7": {
+  "num": 67,
+  "base": 2590,
+  "pair": "SCOTTSTEINER_15A6_15A7",
+  "cont": null,
+  "fa": 5542,
+  "fd": 5543
+ },
+ "revenge:1a87_1a88": {
+  "num": 68,
+  "base": 11710,
+  "pair": "SCOTTSTEINER_1A87_1A88",
+  "cont": null,
+  "fa": 6791,
+  "fd": 6792
+ },
+ "revenge:1820_1821": {
+  "num": 69,
+  "base": 5580,
+  "pair": "BOOKER_1820_1821",
+  "cont": null,
+  "fa": 6176,
+  "fd": 6177
+ },
+ "revenge:138e_138f": {
+  "num": 70,
+  "base": 1160,
+  "pair": "STEVIERAY_138E_138F",
+  "cont": null,
+  "fa": 5006,
+  "fd": 5007
+ },
+ "revenge:1342_1343": {
+  "num": 71,
+  "base": 1310,
+  "pair": "REY_1342_1343",
+  "cont": null,
+  "fa": 4930,
+  "fd": 4931
+ },
+ "revenge:140c_140d": {
+  "num": 72,
+  "base": 740,
+  "pair": "REY_140C_140D",
+  "cont": "REY_B242_1404_1405",
+  "fa": 5132,
+  "fd": 5133
+ },
+ "revenge:15ac_15ad": {
+  "num": 73,
+  "base": 2570,
+  "pair": "REY_15AC_15AD",
+  "cont": null,
+  "fa": 5548,
+  "fd": 5549
+ },
+ "revenge:160c_160d": {
+  "num": 74,
+  "base": 2860,
+  "pair": "REY_160C_160D",
+  "cont": "REY_B245_160E_160F",
+  "fa": 5644,
+  "fd": 5645
+ },
+ "revenge:1602_1603": {
+  "num": 75,
+  "base": 7610,
+  "pair": "REY_1602_1603",
+  "cont": "REY_B246_1604_1605",
+  "fa": 5634,
+  "fd": 5635
+ },
+ "revenge:1947_1948": {
+  "num": 76,
+  "base": 3890,
+  "pair": "REY_1947_1948",
+  "cont": null,
+  "fa": 6471,
+  "fd": 6472
+ },
+ "revenge:195d_195e": {
+  "num": 77,
+  "base": 3990,
+  "pair": "REY_195D_195E",
+  "cont": null,
+  "fa": 6493,
+  "fd": 6494
+ },
+ "revenge:125c_125d": {
+  "num": 78,
+  "base": 10,
+  "pair": "REY_125C_125D",
+  "cont": null,
+  "fa": 4700,
+  "fd": 4701
+ }
+}

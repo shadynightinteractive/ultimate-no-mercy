@@ -1,0 +1,58 @@
+{
+  "about": "2026-11-01, the user: 'Revenge wrestlers holds are glitching ... themselves and/or the opponent not aligned right with the hold' (Giant's sleeper from behind). The ported holds went on in the stand-in's No Mercy hold (its loop and endings); now Revenge's own block (gen/revanims.py rev_block, movex.c). his Sleeper (code 196 -> block 260, stand-in 11620): holds forced in turn (qa_fsub 1), the man an idle player 2; through the hold and its ending (state 72 / 73) both men play pack files (Revenge's block, >= RMA_FIRST 0x5373), never No Mercy's. Look at the shots of each hold: the man where the hold has him, from the grab through the release.",
+  "wrestlers": [
+    "MR. PERFECT",
+    "THE ROCK"
+  ],
+  "control": [
+    "cpu",
+    "pad2"
+  ],
+  "arena": "SMACKDOWN",
+  "matches": 3,
+  "seconds": 480,
+  "shots": 0.5,
+  "force": {
+    "slot": 0,
+    "entries": [
+      0,
+      291
+    ],
+    "as": 0
+  },
+  "options": {
+    "qa_fsub": 1
+  },
+  "expect": [
+    {
+      "name": "the match started",
+      "when": "any",
+      "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "nobody's position went bad",
+      "when": "always",
+      "check": "finite(s0_x, s0_y, s0_z, s1_x, s1_y, s1_z)"
+    },
+    {
+      "name": "holds forced",
+      "when": "any",
+      "check": "forced >= 1"
+    },
+    {
+      "name": "one of the made-over holds held",
+      "when": "any",
+      "check": "s0_phase == 72 and (forced >> 16) in [155, 236]"
+    },
+    {
+      "name": "the hold is his own: his side",
+      "when": "always",
+      "check": "s0_phase != 72 or (forced >> 16) not in [155, 236] or bs_tries >= 0x5373"
+    },
+    {
+      "name": "the hold is his own: the man's side",
+      "when": "always",
+      "check": "s1_phase != 73 or (forced >> 16) not in [155, 236] or bs_grabs >= 0x5373"
+    }
+  ]
+}

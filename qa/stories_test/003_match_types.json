@@ -1,0 +1,45 @@
+{
+  "title": "Match Types Test",
+  "menu": "Match Types Test",
+  "championship": "world",
+  "cast": { "a": "THE ROCK", "b": "KANE", "c": "UNDERTAKER" },
+  "start": "tag",
+  "nodes": {
+    "tag": {
+      "chapter": "TAG", "pages": ["Tag match: {player} and {a}\nvs {b} and {c}."],
+      "match": { "type": "tag", "slots": ["player", ["a", "MANKIND"], ["b", "BIG SHOW"], ["c", "TEST"]] },
+      "requirement": "Tag test.", "branches": [ { "next": "triple" } ]
+    },
+    "triple": {
+      "chapter": "TRIPLE", "pages": ["Triple threat."],
+      "match": { "type": "triple", "slots": ["player", ["a", "MANKIND"], ["b", "BIG SHOW"]], "rules": "hardcore" },
+      "requirement": "Triple threat, hardcore rules.", "branches": [ { "next": "handicap" } ]
+    },
+    "handicap": {
+      "chapter": "HANDICAP", "pages": ["HC: {b}, {c} vs {player}."],
+      "match": { "type": "handicap", "slots": [["b", "BIG SHOW"], ["c", "TEST"], "player"] },
+      "requirement": "Handicap test.", "branches": [ { "next": "fourway" } ]
+    },
+    "fourway": {
+      "chapter": "FOURWAY", "pages": ["Four way."],
+      "match": { "type": "fourway", "slots": ["player", ["a", "MANKIND"], ["b", "BIG SHOW"], ["c", "TEST"]] },
+      "requirement": "Four way test.", "branches": [ { "next": "runins" } ]
+    },
+    "runins": {
+      "chapter": "RUN-INS", "pages": ["Singles with two run-ins:\n{c}, {b}, {a}, {player}."],
+      "match": { "type": "single", "slots": ["player", ["b", "BIG SHOW"]],
+                 "runins": [ { "who": "c", "helps": "opponents" }, { "who": "a", "helps": "player" } ] },
+      "requirement": "Run-ins test.", "branches": [ { "next": "title" } ]
+    },
+    "title": {
+      "chapter": "TITLE", "pages": ["The World title on the line."],
+      "match": { "type": "single", "slots": ["player", ["a", "MANKIND"]], "title": "world" },
+      "requirement": "Title test.", "branches": [ { "next": "backstage" } ]
+    },
+    "backstage": {
+      "chapter": "BACKSTAGE", "pages": ["A match in the parking lot."],
+      "match": { "type": "single", "slots": ["player", ["b", "BIG SHOW"]], "location": "parking lot" },
+      "requirement": "Parking lot test.", "branches": [ { "next": "end" } ]
+    }
+  }
+}

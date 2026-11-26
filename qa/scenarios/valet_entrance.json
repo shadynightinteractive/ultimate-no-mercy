@@ -1,0 +1,33 @@
+{
+  "about": "2026-11-18, the user: 'When a wrestler comes out with a valet ... the valet and the wrestler come out in the exact same spot and they like clip into each other' (maybe only in the Arcade entrance camera). A story single match against THE GODFATHER whose run-in (slot 3) is HO, his set partner (his abilities 0x22 / 0x26: 0x0805, costume 0): the game makes her his valet -- 'GODFATHER with HO', entrance_partner_count (0x80106370) -1 -- and she walks out with him. First at RAW IS WAR (a stock venue), then at BASH AT THE BEACH (an arcade arena). The CPU plays (qa_story 3); screenshots through the entrances",
+  "match": "arcade",
+  "wrestlers": [
+    "THE ROCK",
+    null
+  ],
+  "matches": 0,
+  "seconds": 250,
+  "shots": 1.0,
+  "options": {
+    "free_play": true,
+    "attract_demos": false,
+    "custom_story": 1,
+    "qa_story": 3
+  },
+  "shot_when": "$c.mode -eq 0 -and $c.screen -eq 42 -and $c.entrance_step -ge 1 -and $c.entrance_step -le 29",
+  "expect": [
+    {
+      "name": "the entrances ran",
+      "when": "any",
+      "check": "mode == 0 and screen == 42 and entrance_step >= 1 and entrance_step <= 29"
+    },
+    {
+      "name": "a match at RAW IS WAR (0)",
+      "when": "any",
+      "check": "mode == -2 and venue == 0"
+    }
+  ],
+  "stories": [
+    "009_valet.json"
+  ]
+}

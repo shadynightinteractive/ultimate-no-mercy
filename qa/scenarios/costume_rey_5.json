@@ -1,0 +1,43 @@
+{
+  "about": "2026-11-01 attires (data\\revport\\attires\\ATTIRES.md): Rey Mysterio's costume 5 of 5 -- the purple bodysuit with the red mask (a look of his past Revenge's four: his second ID's). One player's Versus (qa_versus): his box on the Superstar Select, the Type arrows to costume 5 (0x0119 Type 1) and A; the CPU's pick The Rock; the match (the CPU plays him after 20 s). Look at the select's model, the VS card and him in the ring: the attire and its colours as Revenge's (attires\\sheet_rey.png), head / mask, skin tone, hands / fingers.",
+  "match": "arcade",
+  "wrestlers": [
+    "0x0119",
+    "0x0001"
+  ],
+  "costumes": [
+    0,
+    0
+  ],
+  "matches": 0,
+  "seconds": 600,
+  "shots": 1.0,
+  "options": {
+    "free_play": true,
+    "attract_demos": false,
+    "qa_versus": 20,
+    "qa_variant": 16
+  },
+  "expect": [
+    {
+      "name": "player 1 picked costume 5 (0x0119 Type 1)",
+      "when": "any",
+      "check": "bs_grabs == 0x00000119"
+    },
+    {
+      "name": "the CPU's pick: The Rock",
+      "when": "any",
+      "check": "(bs_step & 0xFFFF) == 0x0001"
+    },
+    {
+      "name": "the match: 0x0119 (player 1) vs The Rock (CPU)",
+      "when": "any",
+      "check": "mode == -2 and match_frames != 0xFFFF and match_frames > 120 and s0_id == 0x0119 and s0_pad == 1 and s1_id == 0x0001 and s1_pad == 0"
+    },
+    {
+      "name": "no model's matrices ever went bad",
+      "when": "always",
+      "check": "bad_mtx == 0"
+    }
+  ]
+}

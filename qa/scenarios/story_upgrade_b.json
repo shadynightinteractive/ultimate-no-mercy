@@ -1,0 +1,16 @@
+{
+  "about": "2026-11-02 story upgrade, phases 3 / 7 / 8: qa/stories_test/006_tron_table.json as STEVE AUSTIN. In the ring: TRON 2 / TRON 3 over Vince McMahon's entrance video full screen (the game's Titantron cut, effect 4); his taunts ('taunt', 'taunt 2', 'win taunt': his own moveset taunts); TABLE 1 / 2 with the camera on JR and King at the announce table; TRON 5 in the hall as a bubble only. The match ends at 0:45 by the script (pinfall) -> 'END OK'",
+  "match": "arcade",
+  "wrestlers": ["STEVE AUSTIN", null],
+  "matches": 0,
+  "seconds": 600,
+  "shots": 2.0,
+  "options": { "free_play": true, "attract_demos": false, "custom_story": 1, "qa_story": 3 },
+  "expect": [
+    { "name": "scene ops ran (tron, cam)", "when": "any", "check": "(bs_step & 0xFFFF) >= 5" },
+    { "name": "the match ended by the script: pinfall", "when": "any", "check": "pal_wm_skipped == 1" },
+    { "name": "branch 0 (win by pinfall)", "when": "any", "check": "clock == 0" }
+  ],
+  "shot_when": "$true",
+  "stories": ["006_tron_table.json"]
+}

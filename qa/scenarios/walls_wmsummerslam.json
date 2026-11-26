@@ -1,0 +1,68 @@
+{
+  "about": "2026-11-01, the user: RAW played after a WCW Revenge arena keeps that arena's smaller ringside. Two CPU matches in one game: MONDAY NITRO, then SUMMERSLAM WM 2000. qa_walls: state.csv bs_tries = the -z barricade's least z as the match's collision walks it (u16: -690 0xFD4E the game's, -530 0xFDEE Revenge's) | the +x side's (id 14: -615 / -455) << 16; bs_grabs = the least z of the walk | records << 16; bs_step = arena_current | arena_ring's ring_k << 8 | rec_n << 16. A camera on the -z side (the table / barricade). RAW's must be the game's own walls.",
+  "wrestlers": [
+    "STEVE AUSTIN",
+    "THE ROCK"
+  ],
+  "control": [
+    "cpu",
+    "cpu"
+  ],
+  "special": [
+    true,
+    true
+  ],
+  "arena": "MONDAY NITRO",
+  "arena2": "SUMMERSLAM WM 2000",
+  "matches": 2,
+  "seconds": 720,
+  "shots": 2.0,
+  "options": {
+    "qa_walls": 1,
+    "announcers": true
+  },
+  "camera": {
+    "eye": [
+      420,
+      330,
+      60
+    ],
+    "at": [
+      0,
+      40,
+      -560
+    ]
+  },
+  "expect": [
+    {
+      "name": "the first match in MONDAY NITRO",
+      "when": "any",
+      "check": "stage == 2 and matches == 0 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "the second match in SUMMERSLAM WM 2000",
+      "when": "any",
+      "check": "stage == 2 and matches == 1 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "nobody's position went bad",
+      "when": "always",
+      "check": "finite(s0_x, s0_y, s0_z, s1_x, s1_y, s1_z)"
+    },
+    {
+      "name": "MONDAY NITRO: its own walls (the -z barricade at -530)",
+      "when": "any",
+      "check": "venue == 10 and mode == -6 and (bs_tries & 0xFFFF) == 0xFDEE"
+    },
+    {
+      "name": "SUMMERSLAM WM 2000: the game's walls (the -z barricade at -690)",
+      "when": "any",
+      "check": "venue == 22 and mode == -6 and (bs_tries & 0xFFFF) == 0xFD4E"
+    },
+    {
+      "name": "SUMMERSLAM WM 2000: never Revenge's walls",
+      "when": "always",
+      "check": "not (venue == 22 and (bs_tries & 0xFFFF) == 0xFDEE)"
+    }
+  ]
+}

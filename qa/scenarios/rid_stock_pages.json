@@ -1,0 +1,17 @@
+{
+  "about": "rosterids 2026-11-12: menu_from_attract with the stock roster as folders (w\\stock), a test story and a select_pages.json naming stock men by their folders' IDs and by old names (staged into the mod copy by run_all.ps1). Checks in the log (check_logs.py).",
+  "match": "arcade",
+  "matches": 0,
+  "seconds": 260,
+  "shots": 2.0,
+  "options": {
+    "free_play": false,
+    "attract_demos": true
+  },
+  "pads": [
+    "185.0 1 back 200",
+    "186.0 1 start 200"
+  ],
+  "expect": [],
+  "shot_when": "$c.mode -eq -6"
+}

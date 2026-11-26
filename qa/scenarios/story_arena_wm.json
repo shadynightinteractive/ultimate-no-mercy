@@ -1,0 +1,28 @@
+{
+  "about": "2026-10-30: story_arena's second value on its own (that run timed out in the first match): qa/stories_test/001_arena_wm.json -- one node at WrestleMania (7); the CPU plays (qa_story 3)",
+  "match": "arcade",
+  "wrestlers": [
+    "STEVE AUSTIN",
+    null
+  ],
+  "matches": 0,
+  "seconds": 420,
+  "shots": 5.0,
+  "options": {
+    "free_play": true,
+    "attract_demos": false,
+    "custom_story": 1,
+    "qa_story": 3
+  },
+  "expect": [
+    {
+      "name": "a match at WrestleMania (7)",
+      "when": "any",
+      "check": "mode == -2 and venue == 7"
+    }
+  ],
+  "shot_when": "$c.screen -eq 23 -or $c.screen -eq 22 -or $c.screen -eq 25",
+  "stories": [
+    "001_arena_wm.json"
+  ]
+}

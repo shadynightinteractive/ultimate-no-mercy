@@ -1,0 +1,14 @@
+{
+  "about": "2026-11-07, the two modes phase 2 (W10): as modes_reg_rumble, but the NUMBER page changed for this match: UP five times (qa_reg_right 5, on the controller) from F2's 12 -- the page counting by one (W10b): 12 -> 17. Expect the page to show 17 (shot), the match to have 17 entrants and F2's SUPERSTARS IN IT still 12 (never written back). state.csv as modes_reg_rumble.",
+  "match": "arcade",
+  "wrestlers": [ "STEVE AUSTIN", null ],
+  "matches": 0,
+  "seconds": 500,
+  "shots": 6.0,
+  "options": { "game_mode": "Regular", "qa_modes": 1, "qa_reg": 257, "qa_reg_right": 5, "rumble_entrants": 12, "rumble_ring": 5, "rumble_interval": 10 },
+  "expect": [
+    { "name": "the match has the page's 17 entrants", "when": "any", "check": "mode == -2 and (bs_step & 255) == 17 and (bs_step >> 28) == 3" },
+    { "name": "F2's SUPERSTARS IN IT still 12", "when": "always", "check": "mode != -2 or (bs_grabs >> 16) in (12, 0)" }
+  ],
+  "shot_when": "($c.mode -eq 0 -and $c.screen -eq 9)"
+}

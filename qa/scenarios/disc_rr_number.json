@@ -1,0 +1,24 @@
+{
+  "about": "discovery (modes plan D1): the plain game (mod off): Start at 100 (intro or demo -> title, or title -> the Rumble Pak notice), B x3 (the notice -> title), Start at 115 -> the main menu (ready 15-19 s later); down at 140 -> Royal Rumble, A -> ORDER page, A -> NUMBER page, right x3; the run ends on the NUMBER page (its RAM dumped). Run with SDL_GAMECONTROLLER_IGNORE_DEVICES=0x0079/0x0011 so the virtual pads are the game's controllers 1 and 2 (this rig's physical pad otherwise holds 1; the plain title takes only controller 1).",
+  "match": "arcade",
+  "matches": 0,
+  "seconds": 170,
+  "shots": 0.7,
+  "options": {
+    "enabled": false
+  },
+  "pads": [
+    "100.0 1 start 200",
+    "104.0 1 b 150",
+    "107.0 1 b 150",
+    "110.0 1 b 150",
+    "115.0 1 start 200",
+    "140.0 1 dpdown 120",
+    "144.0 1 a 150",
+    "151.0 1 a 150",
+    "157.0 1 dpright 120",
+    "160.0 1 dpright 120",
+    "163.0 1 dpright 120"
+  ],
+  "expect": []
+}

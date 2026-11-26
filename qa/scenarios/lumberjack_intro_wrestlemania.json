@@ -1,0 +1,47 @@
+{
+  "about": "2026-11-22 lumberjack5: the intro as the user asked (b33: 'Can we show a side angle of the ramp (not the stage entrance) where we seem them walking down the ramp in one shot? One after the other.') on WRESTLEMANIA (No Mercy's WrestleMania; the user asked earlier for arenas other than RAW to be checked): twelve lumberjacks down the ramp one after another through one side shot, then at their posts and the bell. CPU against CPU, one match cut short; the shots of the intro are the reading, its numbers checked.",
+  "match": "singles",
+  "wrestlers": [
+    "STEVE AUSTIN",
+    "THE ROCK"
+  ],
+  "costumes": [
+    0,
+    0
+  ],
+  "control": [
+    "cpu",
+    "cpu"
+  ],
+  "arena": "WRESTLEMANIA",
+  "options": {
+    "qa_lumberjacks": 12
+  },
+  "matches": 1,
+  "seconds": 75,
+  "speed": 6,
+  "shots": 1.5,
+  "shot_when": "$c.match_state -eq 1",
+  "expect": [
+    {
+      "name": "the match started",
+      "when": "any",
+      "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "the intro: all 12 lumberjacks walked down the ramp through the shot and were put at their posts, then the bell",
+      "when": "match",
+      "check": "(lj_a & 0xFF) == 12 and ((lj_a >> 8) & 0xFF) == 12 and (lj_b & 3) == 3"
+    },
+    {
+      "name": "the intro: one shot from the side of the ramp all the while, and brief (12 s at most; b33's was 17.5 s)",
+      "when": "match",
+      "check": "(lj_b & 3) == 3 and ((lj_b >> 24) & 0xFF) <= 12 and ((lj_b >> 16) & 0xFF) >= ((lj_b >> 24) & 0xFF) - 1"
+    },
+    {
+      "name": "the intro: the closest two lumberjacks walking down the ramp never under 40 apart (no clipping)",
+      "when": "match",
+      "check": "(lj_b & 3) == 3 and (lj_a >> 16) >= 40"
+    }
+  ]
+}

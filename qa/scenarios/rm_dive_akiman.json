@@ -1,0 +1,65 @@
+{
+ "about": "revmoves (2026-11-20): the other Revenge library dive at a downed man, 'revenge:1be3_1be4@12380' (AKI Man and Han Zo Mon, entry 264): a handicap match, AKI Man (Revenge import 0x0379) and Kidman (0x0361) against The Rock, all CPU; Every turnbuckle dive of AKI Man's (entries 256-264, at a standing man too: in a first run, 600 s, he never dove at a downed one) done as his 264, so each plays the library dive and its later roles. Its landings and miss (animations 2-4) are Revenge's 0x1BE5..0x1BE7 now, before numbers past the pair. Matches one after another until the time is up (\"matches\": 0: a two-on-one match ends quickly).",
+ "match": "handicap",
+ "wrestlers": [
+  "0x0379",
+  "0x0361",
+  "THE ROCK"
+ ],
+ "costumes": [
+  0,
+  0,
+  0
+ ],
+ "control": [
+  "cpu",
+  "cpu",
+  "cpu"
+ ],
+ "arena": "RAW IS WAR",
+ "matches": 0,
+ "seconds": 900,
+ "speed": 6,
+ "shots": 5.0,
+ "shot_when": "($c.s0_phase -ge 121 -and $c.s0_phase -le 125) -or ($c.s0_state -ge 121 -and $c.s0_state -le 125)",
+ "force": {
+  "slot": 0,
+  "entries": [
+   256,
+   264
+  ],
+  "as": 264
+ },
+ "expect": [
+  {
+   "name": "the match started",
+   "when": "any",
+   "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+  },
+  {
+   "name": "AKI Man and Kidman (Revenge) against The Rock",
+   "when": "match",
+   "check": "s0_id == 0x0379 and s1_id == 0x0361 and s2_id == 0x0001"
+  },
+  {
+   "name": "AKI Man dove off the turnbuckle with his library dive (121-125 on No Mercy's 12380)",
+   "when": "any",
+   "check": "s0_phase >= 121 and s0_phase <= 125 and s0_move == 12380"
+  },
+  {
+   "name": "AKI Man never went straight from his dive to knocked down (79): the state after a move comes from its last animation's end pose, and before the fix the dive's landing / miss played a number that was no animation of the move (Ultimo: 122 -> 79, popping up to the apron's height off the floor)",
+   "when": "always",
+   "check": "not (s0_state >= 121 and s0_state <= 125 and s0_phase == 79)"
+  },
+  {
+   "name": "no model's matrices ever went bad",
+   "when": "always",
+   "check": "bad_mtx == 0"
+  },
+  {
+   "name": "nobody's position went bad",
+   "when": "always",
+   "check": "finite(s0_x, s0_y, s0_z, s1_x, s1_y, s1_z, s2_x, s2_y, s2_z)"
+  }
+ ]
+}

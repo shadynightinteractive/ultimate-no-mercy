@@ -1,0 +1,17 @@
+{
+  "about": "(2026-11-17, pipefix: the slot-count check was when 'match', which needs stage 2 -- a Regular-mode match driven through the menus has stage 0 throughout, so it could never pass (qa084); now any row of the match, mode -2 with its clock running.) 2026-11-15 (gameplayfix, item 10): the Royal Rumble's own rows (IN THE RING AT ONCE, ENTRY TIME, STARTS WITH) for an ORDER other than Random. Regular, Multi Play > Royal Rumble > ORDER row 2 as shown (qa_reg_order 2; Random is label 0x8522 -- LOOK at the ORDER page's shot: which row was taken) > NUMBER: the rows are up (shot), the driver (qa_reg 2305) presses UP x3 (the game's own NUMBER, by fours for this ORDER), RIGHT, UP x2, RIGHT, DOWN x2, RIGHT, UP -> ring 8, every 20 s, STARTS WITH 4; A; the select picks every entrant (A on the cursor). Expect: the match with ring 8 (slots >= 8: the mod fills the ring for the picked ORDER, gm_fill_ring), every 20 s, four at the bell. For the teams ORDER (0x10000) the ring row is hidden and the ring stays the four teams: then only the interval / four-at-the-bell checks hold",
+  "match": "arcade",
+  "wrestlers": [ "STEVE AUSTIN", null ],
+  "matches": 0,
+  "seconds": 900,
+  "shots": 6.0,
+  "options": { "game_mode": "Regular", "qa_modes": 1, "qa_reg": 2305, "qa_reg_order": 2, "rumble_entrants": 12, "rumble_ring": 6, "rumble_interval": 30, "rumble_start4": false },
+  "expect": [
+    { "name": "the NUMBER page (screen 9)", "when": "any", "check": "mode == 0 and screen == 9" },
+    { "name": "the match as the page set it: ring 8, every 20 s, live", "when": "any", "check": "mode == -2 and ((bs_step >> 8) & 255) == 8 and ((bs_step >> 16) & 255) == 20 and (bs_step >> 28) == 3" },
+    { "name": "the match has room for 8 (its slot count)", "when": "any", "check": "mode == -2 and match_frames != 0xFFFF and slots >= 8" },
+    { "name": "four in the ring at the bell (STARTS WITH 4)", "when": "any", "check": "mode == -2 and match_frames != 0xFFFF and match_frames > 30 and match_frames < 150 and in_ring == 4" },
+    { "name": "F2's SUPERSTARS IN IT still 12", "when": "always", "check": "mode != -2 or (bs_grabs >> 16) in (12, 0)" }
+  ],
+  "shot_when": "($c.mode -eq 0 -and ($c.screen -eq 7 -or $c.screen -eq 9)) -or ($c.mode -eq -2 -and $c.match_frames -lt 300)"
+}

@@ -1,0 +1,13 @@
+{
+ "about": "WrestleMania 2000's DUDE LOVE: what the handler is told for him (wm2kall, 2026-11-13). Everything else comes from the ROM.",
+ "string_id": "dude_love",
+ "key": "dude_love",
+ "wm2000": {
+  "roster_index": 4,
+  "game_id": "0x0004"
+ },
+ "moveset": {
+  "reference_ordinal": 6,
+  "reference_why": "Mankind: the same man (Mick Foley); No Mercy has no Dude Love"
+ }
+}

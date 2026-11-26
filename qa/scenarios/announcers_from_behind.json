@@ -1,0 +1,18 @@
+{
+  "about": "JR and King seen from behind, on their feet (as when their table is broken): the camera put just behind and above King, looking at the ring -- the view of the user's Royal Rumble screenshots, where King stood across it with a black block for a head. They must be drawn whole and right (solid, as the game draws its table from there).",
+  "wrestlers": ["THE ROCK", "STEVE AUSTIN"],
+  "arena": "RAW IS WAR",
+  "control": ["cpu", "cpu"],
+  "options": { "announcers": true, "commentary": true, "qa_ann_stand": 1 },
+  "camera": { "eye": [55, 165, -880], "at": [20, 60, -200] },
+  "matches": 0,
+  "seconds": 60,
+  "shots": 3,
+  "expect": [
+    { "name": "the match started", "when": "any", "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30" },
+    { "name": "the announcers were built", "when": "match", "check": "ann_draw != 0xFFFF" },
+    { "name": "the camera is behind them (the case tested)", "when": "match", "check": "eye_z < -612" },
+    { "name": "King is drawn", "when": "match", "check": "ann_draw != 0xFFFF and (ann_draw & 0x8000) == 0" },
+    { "name": "no model's matrices ever went bad", "when": "always", "check": "bad_mtx == 0" }
+  ]
+}

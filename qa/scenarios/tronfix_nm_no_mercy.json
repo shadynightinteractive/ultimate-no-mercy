@@ -1,0 +1,32 @@
+{
+  "about": "tronfix (2026-11-25): for an install with No Mercy's ROM alone (no No Mercy Plus: every stock Superstar's entrance plays the game's own video from the ROM, whatever nmplus_media says -- left at its default here, as the user has it): the NO MERCY Titantron through a Royal Rumble's first two entrances (STEVE AUSTIN, then the first entrant), CPU, the game's clock in lockstep (-Lockstep -DrawShots): a picture every 0.1 game seconds, two builds compared frame for frame (the user: 'No Mercy stock titantrons are glitching on the titantron')",
+  "match": "rumble",
+  "wrestlers": [
+    "STEVE AUSTIN"
+  ],
+  "control": [
+    "cpu"
+  ],
+  "arena": "NO MERCY",
+  "options": {
+    "rumble_entrants": 4,
+    "rumble_interval": 60,
+    "titantron_screens": true,
+    "titantron_live": true
+  },
+  "matches": 1,
+  "seconds": 55,
+  "shots": 0.1,
+  "expect": [
+    {
+      "name": "the entrances ran",
+      "when": "any",
+      "check": "mode == 0 and screen == 42 and entrance_step >= 1 and entrance_step <= 29"
+    },
+    {
+      "name": "the arena is NO MERCY",
+      "when": "any",
+      "check": "venue == 1 and stage == 2"
+    }
+  ]
+}

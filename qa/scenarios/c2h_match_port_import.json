@@ -1,0 +1,15 @@
+{
+ "about": "c2hands (2026-11-19): with No Mercy + Revenge and NO WrestleMania 2000, a built-in Revenge port (Bret Hart 0x060D) against a Revenge import (Chris Jericho 0x0371), both with No Mercy's hands in their own skin, CPU vs CPU, a whole match.",
+ "wrestlers": ["BRET HART", "0x0371"],
+ "costumes": [0, 0],
+ "control": ["cpu", "cpu"],
+ "matches": 1,
+ "seconds": 420,
+ "shots": 2.0,
+ "expect": [
+  { "name": "the match started", "when": "any", "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 120" },
+  { "name": "Bret Hart (Revenge port) and Chris Jericho (Revenge import)", "when": "match", "check": "s0_id == 0x060D and s1_id == 0x0371" },
+  { "name": "no model's matrices ever went bad", "when": "always", "check": "bad_mtx == 0" },
+  { "name": "no wrestler's position ever went bad", "when": "always", "check": "finite(s0_x, s0_y, s0_z, s1_x, s1_y, s1_z)" }
+ ]
+}

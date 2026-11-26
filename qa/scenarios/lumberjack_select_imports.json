@@ -1,0 +1,92 @@
+{
+  "about": "2026-11-21 lumberjack3: imported rivals brawl -- as lumberjack_select (Regular's menus, the Lumberjack Match row, PICKED = SELECT, LUMBERJACKS 4, the player picks them on the select), the four picked are imports: Revenge's Raven (0x035C) and Saturn (0x0365), WrestleMania 2000's Edge (0x03C4) and Gangrel (0x03C5) -- rivals by roster-tags' rivals.json (roster_rivals: Revenge's real feuds, WrestleMania 2000's own Rival 1-3). QA: a brawl every 10 s window with nobody out (qa_lj_brawl 101): the brawls are between imported rivals, their moves land, no damage stays (lumberjack3). Needs a fresh install (its first start's import writes the classes and rivals).",
+  "match": "arcade",
+  "wrestlers": [
+    "STEVE AUSTIN",
+    "THE ROCK"
+  ],
+  "matches": 0,
+  "seconds": 900,
+  "shots": 4.0,
+  "options": {
+    "game_mode": "Regular",
+    "settings_version": 5,
+    "qa_modes": 1,
+    "qa_reg": 16397,
+    "lumberjacks": 4,
+    "lumberjack_pick": 1,
+    "qa_lj_w1": 860,
+    "qa_lj_w2": 869,
+    "qa_lj_w3": 964,
+    "qa_lj_w4": 965,
+    "qa_lj_brawl": 101
+  },
+  "expect": [
+    {
+      "name": "Regular all along",
+      "when": "always",
+      "check": "(bs_tries & 1) == 0 and (bs_tries >> 28) == 0"
+    },
+    {
+      "name": "A on the Lumberjack Match row asked for the Lumberjack match",
+      "when": "any",
+      "check": "((rr_put_out >> 13) & 1) == 1"
+    },
+    {
+      "name": "F2: 4 lumberjacks, PICKED = SELECT",
+      "when": "any",
+      "check": "(lj_h & 0xFF) == 4 and ((lj_h >> 8) & 1) == 1"
+    },
+    {
+      "name": "on the Superstar Select with PICKED = SELECT (the picks: the next check)",
+      "when": "any",
+      "check": "mode == 0 and screen in (26, 27) and ((lj_h >> 8) & 1) == 1"
+    },
+    {
+      "name": "the lumberjacks are the player's picks: Raven, Saturn (Revenge), Edge, Gangrel (WrestleMania 2000)",
+      "when": "any",
+      "check": "mode == -2 and match_frames != 0xFFFF and match_frames > 60 and (lj_f & 0xFF) == 4 and ((lj_f >> 16) & 1) == 1 and lj_j == (0x035C | 0x0365 << 16) and lj_k == (0x03C4 | 0x03C5 << 16)"
+    },
+    {
+      "name": "rivals among them, by roster-tags' rivals.json (Raven - Saturn, Edge - Gangrel: 2 pairs at least)",
+      "when": "any",
+      "check": "mode == -2 and ((lj_f >> 24) & 0xFF) >= 2"
+    },
+    {
+      "name": "the walk-out of the 4, never under 40 apart (lumberjack5: walking down the ramp in the intro)",
+      "when": "any",
+      "check": "mode == -2 and (lj_a & 0xFF) == 4 and ((lj_a >> 8) & 0xFF) == 4 and (lj_b & 3) == 3 and (lj_a >> 16) >= 40"
+    },
+    {
+      "name": "imported rival lumberjacks brawled (a brawl every window with nobody out): their moves landed, the game's damage of them put back",
+      "when": "any",
+      "check": "mode == -2 and ((lj_e >> 8) & 0xFF) >= 1 and (lj_i & 0xFF) >= 1 and ((lj_i >> 8) & 0xFF) >= 1"
+    },
+    {
+      "name": "no damage between lumberjacks: no brawling lumberjack's stamina ever went down (lumberjack3)",
+      "when": "always",
+      "check": "((lj_e >> 24) & 0xFF) == 0"
+    },
+    {
+      "name": "full spirit at the bell: the lumberjacks' lowest spirit at the match's first step is 100 (lumberjack3)",
+      "when": "any",
+      "check": "mode == -2 and (lj_b & 3) == 3 and (lj_i >> 24) == 100"
+    },
+    {
+      "name": "never a brawl between lumberjacks who are not rivals",
+      "when": "always",
+      "check": "((lj_e >> 16) & 0xFF) == 0"
+    },
+    {
+      "name": "at their posts the lumberjacks stand still (lumberjack5, the user's 'twitching in place' -- b1's trace: taunts at the posts, about one move a lumberjack-second): no taunt there, under 1% of their time there in any state but standing, at most one move over 1 unit a 20 lumberjack-seconds (ROUND 9: his own moves -- the intro's end putting him at his post, and a man standing beside him pushing him, counted apart in the log)",
+      "when": "end",
+      "check": "(lj_m & 0xFFFF) >= 100 and ((lj_l >> 16) & 15) == 0 and (lj_l & 0xFFFF) * 10 <= (lj_m & 0xFFFF) * 3 and (lj_m >> 16) * 20 <= (lj_m & 0xFFFF)"
+    },
+    {
+      "name": "no model's matrices ever went bad",
+      "when": "always",
+      "check": "bad_mtx == 0"
+    }
+  ],
+  "shot_when": "($c.mode -eq 0 -and $c.screen -in 25,26,27) -or ($c.mode -eq -2 -and $c.match_frames -ne 65535)"
+}

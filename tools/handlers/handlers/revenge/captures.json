@@ -1,0 +1,237 @@
+{
+ "about": "how each Revenge capture is made (rv.py / logcalls.py in the rig, from the user's ROM): its start state and what is poked or overridden -- gen/wmport.py REV_CAPTURES / REV_CAP_START / REV_CAP_COSTUME",
+ "captures": {
+  "L12": {
+   "start": "n11",
+   "override": ""
+  },
+  "bret_c1": {
+   "start": "n11",
+   "override": "0:-1:1"
+  },
+  "hh_c0": {
+   "start": "h11",
+   "override": ""
+  },
+  "hh_c1": {
+   "start": "h11",
+   "override": "0:20:0,1:26:0"
+  },
+  "hh_c2": {
+   "start": "h11",
+   "override": "0:21:1"
+  },
+  "hh_c3": {
+   "start": "h11",
+   "override": "0:19:2"
+  },
+  "ho_c0": {
+   "start": "o11",
+   "override": ""
+  },
+  "ho_c1": {
+   "start": "o11",
+   "override": "0:28:0"
+  },
+  "sv_c0": {
+   "start": "s11",
+   "override": ""
+  },
+  "sv_c1": {
+   "start": "s11",
+   "override": "0:23:1"
+  },
+  "sv_c2": {
+   "start": "s11",
+   "override": "0:24:3"
+  },
+  "sv_c3": {
+   "start": "s11",
+   "override": "0:22:0"
+  },
+  "hn_c0": {
+   "start": "s12",
+   "override": ""
+  },
+  "gi_c0": {
+   "start": "g11",
+   "override": ""
+  },
+  "gi_c1": {
+   "start": "g11",
+   "override": "0:1:0"
+  },
+  "gi_c2": {
+   "start": "g11",
+   "override": "0:2:0"
+  },
+  "sl_c0": {
+   "start": "p_sl",
+   "override": ""
+  },
+  "sl_c1": {
+   "start": "p_sl",
+   "override": "0:2:0,1:3:0"
+  },
+  "sl_c2": {
+   "start": "p_sl",
+   "override": "0:1:2,1:4:0"
+  },
+  "sl_c3": {
+   "start": "p_sl",
+   "override": "0:2:3"
+  },
+  "gp_c0": {
+   "start": "p_gp",
+   "override": ""
+  },
+  "st_c0": {
+   "start": "p_st",
+   "override": ""
+  },
+  "st_c1": {
+   "start": "p_st",
+   "override": "0:1:0,1:5:0"
+  },
+  "st_c2": {
+   "start": "p_st",
+   "override": "0:2:0,1:7:0"
+  },
+  "hz_c0": {
+   "start": "p_hh",
+   "override": ""
+  },
+  "hz_c1": {
+   "start": "p_hh",
+   "override": "0:13:0,1:3:0"
+  },
+  "rb_c0": {
+   "start": "p_rb",
+   "override": ""
+  },
+  "rb_c1": {
+   "start": "p_rb",
+   "override": "0:4:0"
+  },
+  "at_bn1": {
+   "start": "n11",
+   "poke_costume": 1
+  },
+  "at_bn2": {
+   "start": "n11",
+   "poke_costume": 2
+  },
+  "at_bn3": {
+   "start": "n11",
+   "poke_costume": 3
+  },
+  "at_gi1": {
+   "start": "g11",
+   "poke_costume": 1
+  },
+  "at_gi2": {
+   "start": "g11",
+   "poke_costume": 2
+  },
+  "at_gi3": {
+   "start": "g11",
+   "poke_costume": 3
+  },
+  "at_gp1": {
+   "start": "p_gp",
+   "poke_costume": 1
+  },
+  "at_gp2": {
+   "start": "p_gp",
+   "poke_costume": 2
+  },
+  "at_gp3": {
+   "start": "p_gp",
+   "poke_costume": 3
+  },
+  "at_hh1": {
+   "start": "h11",
+   "poke_costume": 1
+  },
+  "at_hh2": {
+   "start": "h11",
+   "poke_costume": 2
+  },
+  "at_hh3": {
+   "start": "h11",
+   "poke_costume": 3
+  },
+  "at_ho1": {
+   "start": "o11",
+   "poke_costume": 1
+  },
+  "at_ho2": {
+   "start": "o11",
+   "poke_costume": 2
+  },
+  "at_ho3": {
+   "start": "o11",
+   "poke_costume": 3
+  },
+  "at_hz1": {
+   "start": "p_hh",
+   "poke_costume": 1
+  },
+  "at_hz2": {
+   "start": "p_hh",
+   "poke_costume": 2
+  },
+  "at_hz3": {
+   "start": "p_hh",
+   "poke_costume": 3
+  },
+  "at_rb1": {
+   "start": "p_rb",
+   "poke_costume": 1
+  },
+  "at_rb2": {
+   "start": "p_rb",
+   "poke_costume": 2
+  },
+  "at_rb3": {
+   "start": "p_rb",
+   "poke_costume": 3
+  },
+  "at_sl1": {
+   "start": "p_sl",
+   "poke_costume": 1
+  },
+  "at_sl2": {
+   "start": "p_sl",
+   "poke_costume": 2
+  },
+  "at_sl3": {
+   "start": "p_sl",
+   "poke_costume": 3
+  },
+  "at_st1": {
+   "start": "p_st",
+   "poke_costume": 1
+  },
+  "at_st2": {
+   "start": "p_st",
+   "poke_costume": 2
+  },
+  "at_st3": {
+   "start": "p_st",
+   "poke_costume": 3
+  },
+  "at_sv1": {
+   "start": "s11",
+   "poke_costume": 1
+  },
+  "at_sv2": {
+   "start": "s11",
+   "poke_costume": 2
+  },
+  "at_sv3": {
+   "start": "s11",
+   "poke_costume": 3
+  }
+ }
+}

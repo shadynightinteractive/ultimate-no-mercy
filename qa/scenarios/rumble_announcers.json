@@ -1,0 +1,18 @@
+{
+  "about": "JR and King when the Royal Rumble's camera is behind them (it pulls back for six; their table often broken, so they stand): drawn solid, in front, as the game draws its own table then -- and drawn right (in the user's screenshots King's head was a black block). Pictures are taken whenever the camera is behind them and King is drawn (shots *_WHEN).",
+  "match": "rumble",
+  "wrestlers": ["BRET HART"],
+  "control": ["cpu"],
+  "options": { "rumble_entrants": 15, "rumble_interval": 20, "announcers": true, "commentary": true, "qa_ann_stand": 1 },
+  "matches": 1,
+  "seconds": 300,
+  "shots": 5,
+  "shot_when": "$c.mode -eq -2 -and $c.match_state -eq 2 -and $c.match_frames -ne 0xFFFF -and $c.ann_draw -ne 0xFFFF -and $c.eye_z -lt -612 -and ($c.ann_draw -band 0x8000) -eq 0",
+  "expect": [
+    { "name": "the Rumble ran", "when": "any", "check": "stage == 2 and mode == -2 and match_frames != 0xFFFF and match_frames > 300" },
+    { "name": "the announcers were built", "when": "match", "check": "ann_draw != 0xFFFF" },
+    { "name": "the camera went behind them (the case tested)", "when": "match", "check": "ann_draw != 0xFFFF and eye_z < -612" },
+    { "name": "JR and King are always drawn (only the camera inside a head hides one)", "when": "always", "check": "not (mode == -2 and ann_draw != 0xFFFF) or (ann_draw & 0x8080) == 0 or eye_z < -612" },
+    { "name": "no model's matrices ever went bad", "when": "always", "check": "bad_mtx == 0" }
+  ]
+}

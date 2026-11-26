@@ -1,0 +1,60 @@
+{
+ "about": "(stages agent, 2026-11-20) The door at the back of SMACKDOWN's stage and the way back: qa_ringstage 519 (arena_ringstage.c ringstage_qa mode 512; logic.c qa_ringstage_pad) puts the two on the stage every 15 s of match before the back of the stage across its middle (the far edge of the walkable map at x 0, where the doorway stands, whatever the walls' data says); pad 1 grabs (A) and whips (C-down) pad 2's idle man into it. Through the door both go backstage (the hallway, area 20). There the two are put before the hallway's far wall (the game's record 108) and the same whip takes them back: to the ring's world it left (the arena it was in), by the door, up on the stage, never a stage area (the old stage view). rr_put_out: the hallway reached | back << 8; rr_kept_out: back up on the stage, on the walkable map | backstage to a stage area << 8. LOOK: the whip at the doorway, the hallway, back on the stage with the arena round them.",
+ "wrestlers": [
+  "THE ROCK",
+  "STEVE AUSTIN"
+ ],
+ "costumes": [
+  0,
+  0
+ ],
+ "arena": "SMACKDOWN",
+ "control": [
+  "pad1",
+  "pad2"
+ ],
+ "matches": 1,
+ "seconds": 200,
+ "shots": 20.0,
+ "options": {
+  "qa_ringstage": 519
+ },
+ "expect": [
+  {
+   "name": "the match started",
+   "when": "any",
+   "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+  },
+  {
+   "name": "nobody's position went bad",
+   "when": "always",
+   "check": "finite(s0_x, s0_y, s0_z, s1_x, s1_y, s1_z)"
+  },
+  {
+   "name": "never a stage area: the old stage view (bs_tries: the area in play)",
+   "when": "always",
+   "check": "bs_tries < 10 or bs_tries >= 20"
+  },
+  {
+   "name": "the whip into the doorway goes backstage (the hallway)",
+   "when": "any",
+   "check": "(rr_put_out & 0xFF) >= 1"
+  },
+  {
+   "name": "the whip back from the hallway: the ring's world again",
+   "when": "any",
+   "check": "rr_put_out >= 256"
+  },
+  {
+   "name": "back up on the stage, on the walkable map, in the arena it left (90 frames after)",
+   "when": "any",
+   "check": "(rr_kept_out & 0xFF) >= 1"
+  },
+  {
+   "name": "backstage never leads to a stage area",
+   "when": "always",
+   "check": "rr_kept_out < 256"
+  }
+ ],
+ "shot_when": "($c.bs_tries -ge 20) -or (($c.rr_put_out -ge 256) -and ($c.bs_tries -lt 10))"
+}

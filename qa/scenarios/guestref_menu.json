@@ -1,0 +1,45 @@
+{
+  "about": "2026-11-22 guestref (research, the coordinator's follow-up): a Guest Referee match started through the game's own MENUS, Regular (qa_reg 4 + 32768: Multi Play > Guest Referee > Single Match > PLAYER 1P vs CPU > ARENA > RULES > the select: Austin for the player, The Rock for the CPU, the third pick the box along -- the guest referee, the computer's), not the QA demo set-up. 20 s into the match the CPU plays the player's man too, so all three are the computer's. The question: does the computer referee count a pin (state 166, the count on the HUD) and does the match end? The match's own flags and roles as the menus make them (flags & 0x81400 == 0x81400).",
+  "match": "arcade",
+  "wrestlers": [
+    "STEVE AUSTIN",
+    "THE ROCK"
+  ],
+  "matches": 0,
+  "seconds": 1500,
+  "speed": 6,
+  "shots": 10,
+  "options": {
+    "game_mode": "Regular",
+    "settings_version": 5,
+    "qa_modes": 1,
+    "qa_reg": 32773
+  },
+  "expect": [
+    {
+      "name": "a Guest Referee match through the menus: match flags 0x80000 with the singles bits 0x1400, three men",
+      "when": "any",
+      "check": "mode == -2 and match_frames != 0xFFFF and match_frames > 120 and (flags & 0x81400) == 0x81400 and s2_id != 0xFFFF"
+    },
+    {
+      "name": "the guest referee (slot 2) is no side of the match (+0xE9 0x10 clear) and the computer's",
+      "when": "any",
+      "check": "mode == -2 and match_frames != 0xFFFF and match_frames > 120 and (s2_e1 & 0x10) == 0 and s2_pad == 0"
+    },
+    {
+      "name": "a pin happened (a man in 69 / 75)",
+      "when": "any",
+      "check": "mode == -2 and (s0_phase == 69 or s0_phase == 75 or s1_phase == 69 or s1_phase == 75)"
+    },
+    {
+      "name": "the computer referee counted a pin (state 166)",
+      "when": "any",
+      "check": "mode == -2 and s2_phase == 166"
+    },
+    {
+      "name": "a decision: the match ended",
+      "when": "end",
+      "check": "matches >= 1"
+    }
+  ]
+}

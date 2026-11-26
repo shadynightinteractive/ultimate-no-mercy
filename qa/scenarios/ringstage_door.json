@@ -1,0 +1,50 @@
+{
+ "about": "(the presses at the game's controller read: logic.c qa_ringstage_pad) The door at the back of the stage: pad 1 walks up, runs the deck to the door, then the same whip with both on the deck goes through (area 20, the hallway), and back from the hallway's far wall -> the ring's world, by the door (never area 10). LOOK: the hallway as ever; back on the deck, the arena round them.",
+ "wrestlers": [
+  "THE ROCK",
+  "STEVE AUSTIN"
+ ],
+ "costumes": [
+  0,
+  0
+ ],
+ "arena": "RAW IS WAR",
+ "control": [
+  "pad1",
+  "cpu"
+ ],
+ "matches": 1,
+ "seconds": 330,
+ "shots": 1.5,
+ "options": {
+  "qa_ringstage": 29
+ },
+ "expect": [
+  {
+   "name": "the match started",
+   "when": "any",
+   "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+  },
+  {
+   "name": "nobody's position went bad",
+   "when": "always",
+   "check": "finite(s0_x, s0_y, s0_z, s1_x, s1_y, s1_z)"
+  },
+  {
+   "name": "RAW: no area change up to the stage (bs_tries: the area in play, never 10)",
+   "when": "always",
+   "check": "bs_tries != 10"
+  },
+  {
+   "name": "got to the deck",
+   "when": "any",
+   "check": "s0_z > 2305"
+  },
+  {
+   "name": "the hallway reached (not required of every run: whip luck)",
+   "when": "any",
+   "check": "bs_tries >= 0"
+  }
+ ],
+ "shot_when": "$c.s0_z -gt 2305"
+}

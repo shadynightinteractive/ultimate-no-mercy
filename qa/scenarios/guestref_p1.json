@@ -1,0 +1,61 @@
+{
+  "about": "2026-11-22 guestref: a Guest Referee match PLAYED -- player 1 (slot 0, Steve Austin) at his controller (qa_gr_p1 1: after his opponent in and out of the ring, striking, grappling, struggling when down), The Rock the computer's, Mankind the computer's guest referee, on RAW IS WAR. The playability check (the user's rule: no test build without a player-1 check): he hits his opponent in the ring and outside, the camera follows (qa_camprobe: lj_a .. lj_c, measured by guestref_cam.py), and the match ends with a decision.",
+  "match": "triple",
+  "setup_flags": 129,
+  "wrestlers": [
+    "STEVE AUSTIN",
+    "THE ROCK",
+    "MANKIND"
+  ],
+  "costumes": [
+    0,
+    0,
+    0
+  ],
+  "control": [
+    "pad1",
+    "cpu",
+    "cpu"
+  ],
+  "arena": "RAW IS WAR",
+  "options": {
+    "qa_camprobe": 1,
+    "qa_gr_p1": 1
+  },
+  "matches": 2,
+  "seconds": 900,
+  "speed": 6,
+  "shots": 10,
+  "expect": [
+    {
+      "name": "the match started",
+      "when": "any",
+      "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "a referee match: the match flags hold 0x80000 (the guest referee) with the singles bits 0x1400",
+      "when": "match",
+      "check": "(flags & 0x81400) == 0x81400"
+    },
+    {
+      "name": "player 1 (slot 0) is driven by controller 1, the others by the computer",
+      "when": "match",
+      "check": "s0_pad == 1 and s1_pad == 0 and s2_pad == 0"
+    },
+    {
+      "name": "player 1 hits his opponent in the ring (at least 3 times)",
+      "when": "match",
+      "check": "(lj_f & 0xFF) >= 3"
+    },
+    {
+      "name": "player 1 hits his opponent outside the ring",
+      "when": "match",
+      "check": "((lj_f >> 8) & 0xFF) >= 1"
+    },
+    {
+      "name": "a decision: a match ended",
+      "when": "end",
+      "check": "matches >= 1"
+    }
+  ]
+}

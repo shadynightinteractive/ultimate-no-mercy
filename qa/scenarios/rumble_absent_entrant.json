@@ -1,0 +1,42 @@
+{
+  "about": "2026-11-22 rumblecrash: the Royal Rumble's empty-record guard (slots.c ms_fix_rumble_entrants). The first CPU entrant named outright, unchecked (qa_rr_first 0x030A: No Mercy Plus's THRASHER) -- run on an install made WITHOUT No Mercy Plus, where he is on no roster: before the guard his match record stayed empty and slot 1 crashed in walk_step_length about a second after the bell (music_rumble_late, 2026-11-22). Now a stand-in takes his place on the list and in his slot (the log: 'slots: WARNING Royal Rumble entrant 1, ... stand-in ...'). On an install WITH No Mercy Plus he is simply in it (nothing written). Six entrants, one every 10 s, the CPU for the player, a CPU man out every 4 s: checks the Rumble ran on well past the old crash and was decided.",
+  "match": "rumble",
+  "wrestlers": [
+    "BRET HART"
+  ],
+  "control": [
+    "cpu"
+  ],
+  "options": {
+    "rumble_entrants": 6,
+    "rumble_interval": 10,
+    "qa_rr_first": 778,
+    "qa_rr_out": 4
+  },
+  "matches": 1,
+  "seconds": 700,
+  "shots": 5,
+  "shot_when": "$c.mode -eq -2 -and $c.match_frames -gt 600",
+  "expect": [
+    {
+      "name": "the Rumble started",
+      "when": "any",
+      "check": "stage == 2 and mode == -2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "the Rumble went on past the old crash (match frames over 600)",
+      "when": "any",
+      "check": "stage == 2 and mode == -2 and match_frames != 0xFFFF and match_frames > 600"
+    },
+    {
+      "name": "nobody's position went bad",
+      "when": "always",
+      "check": "finite(s0_x, s0_y, s0_z, s1_x, s1_y, s1_z, s2_x, s2_y, s2_z)"
+    },
+    {
+      "name": "the Rumble was decided",
+      "when": "any",
+      "check": "match_state == 4"
+    }
+  ]
+}

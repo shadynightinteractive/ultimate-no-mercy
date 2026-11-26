@@ -1,0 +1,386 @@
+[
+{
+"ord": 1,
+"id": 1,
+"name": "THE ROCK",
+"short": "ROCK"
+},
+{
+"ord": 2,
+"id": 2,
+"name": "STEVE AUSTIN",
+"short": "AUSTIN"
+},
+{
+"ord": 3,
+"id": 3,
+"name": "UNDERTAKER",
+"short": "UNDERTAKER"
+},
+{
+"ord": 4,
+"id": 4,
+"name": "KANE",
+"short": "KANE"
+},
+{
+"ord": 5,
+"id": 5,
+"name": "STEVEN RICHARDS",
+"short": "RICHARDS"
+},
+{
+"ord": 6,
+"id": 6,
+"name": "MANKIND",
+"short": "MANKIND"
+},
+{
+"ord": 7,
+"id": 7,
+"name": "CACTUS JACK",
+"short": "CACTUS"
+},
+{
+"ord": 8,
+"id": 8,
+"name": "MICK FOLEY",
+"short": "MICK"
+},
+{
+"ord": 9,
+"id": 9,
+"name": "SHAWN MICHAELS",
+"short": "HBK"
+},
+{
+"ord": 10,
+"id": 257,
+"name": "TRIPLE H",
+"short": "HHH"
+},
+{
+"ord": 11,
+"id": 258,
+"name": "X-PAC",
+"short": "X-PAC"
+},
+{
+"ord": 12,
+"id": 259,
+"name": "MR. ASS",
+"short": "MR. ASS"
+},
+{
+"ord": 13,
+"id": 260,
+"name": "ROAD DOGG",
+"short": "ROAD DOGG"
+},
+{
+"ord": 14,
+"id": 513,
+"name": "BIG SHOW",
+"short": "BIG SHOW"
+},
+{
+"ord": 15,
+"id": 514,
+"name": "DEAN MALENKO",
+"short": "MALENKO"
+},
+{
+"ord": 16,
+"id": 515,
+"name": "PERRY SATURN",
+"short": "SATURN"
+},
+{
+"ord": 17,
+"id": 516,
+"name": "EDDIE GUERRERO",
+"short": "GUERRERO"
+},
+{
+"ord": 18,
+"id": 769,
+"name": "CHRIS JERICHO",
+"short": "JERICHO"
+},
+{
+"ord": 19,
+"id": 770,
+"name": "KURT ANGLE",
+"short": "ANGLE"
+},
+{
+"ord": 20,
+"id": 771,
+"name": "TAZZ",
+"short": "TAZZ"
+},
+{
+"ord": 21,
+"id": 772,
+"name": "TEST",
+"short": "TEST"
+},
+{
+"ord": 22,
+"id": 773,
+"name": "GODFATHER",
+"short": "GODFATHER"
+},
+{
+"ord": 23,
+"id": 774,
+"name": "D'LO BROWN",
+"short": "D'LO"
+},
+{
+"ord": 24,
+"id": 775,
+"name": "VAL VENIS",
+"short": "VENIS"
+},
+{
+"ord": 25,
+"id": 776,
+"name": "KEN SHAMROCK",
+"short": "SHAMROCK"
+},
+{
+"ord": 26,
+"id": 1025,
+"name": "RIKISHI",
+"short": "RIKISHI"
+},
+{
+"ord": 27,
+"id": 1026,
+"name": "GRAND MASTER SEXAY",
+"short": "SEXAY"
+},
+{
+"ord": 28,
+"id": 1027,
+"name": "SCOTTY TOO HOTTY",
+"short": "SCOTTY"
+},
+{
+"ord": 29,
+"id": 1028,
+"name": "EDGE",
+"short": "EDGE"
+},
+{
+"ord": 30,
+"id": 1029,
+"name": "CHRISTIAN",
+"short": "CHRISTIAN"
+},
+{
+"ord": 31,
+"id": 1030,
+"name": "MATT HARDY",
+"short": "MATT"
+},
+{
+"ord": 32,
+"id": 1031,
+"name": "JEFF HARDY",
+"short": "JEFF"
+},
+{
+"ord": 33,
+"id": 1281,
+"name": "FAAROOQ",
+"short": "FAAROOQ"
+},
+{
+"ord": 34,
+"id": 1282,
+"name": "BRADSHAW",
+"short": "BRADSHAW"
+},
+{
+"ord": 35,
+"id": 1283,
+"name": "D-VON DUDLEY",
+"short": "D-VON"
+},
+{
+"ord": 36,
+"id": 1284,
+"name": "BUH BUH RAY DUDLEY",
+"short": "BUH BUH"
+},
+{
+"ord": 37,
+"id": 1285,
+"name": "HARDCORE HOLLY",
+"short": "HARDCORE"
+},
+{
+"ord": 38,
+"id": 1286,
+"name": "CRASH",
+"short": "CRASH"
+},
+{
+"ord": 39,
+"id": 1287,
+"name": "BIG BOSS MAN",
+"short": "BOSS MAN"
+},
+{
+"ord": 40,
+"id": 1288,
+"name": "ALBERT",
+"short": "ALBERT"
+},
+{
+"ord": 41,
+"id": 1537,
+"name": "AL SNOW",
+"short": "AL"
+},
+{
+"ord": 42,
+"id": 1538,
+"name": "STEVE BLACKMAN",
+"short": "BLACKMAN"
+},
+{
+"ord": 43,
+"id": 1539,
+"name": "BRITISH BULLDOG",
+"short": "BULLDOG"
+},
+{
+"ord": 44,
+"id": 1540,
+"name": "MARK HENRY",
+"short": "HENRY"
+},
+{
+"ord": 45,
+"id": 1541,
+"name": "VISCERA",
+"short": "VISCERA"
+},
+{
+"ord": 46,
+"id": 1542,
+"name": "ANDRE THE GIANT",
+"short": "ANDRE"
+},
+{
+"ord": 47,
+"id": 1543,
+"name": "BULL BUCHANAN",
+"short": "BUCHANAN"
+},
+{
+"ord": 48,
+"id": 1544,
+"name": "ESSA RIOS",
+"short": "RIOS"
+},
+{
+"ord": 49,
+"id": 1545,
+"name": "TAKA MICHINOKU",
+"short": "TAKA"
+},
+{
+"ord": 50,
+"id": 1793,
+"name": "CHYNA",
+"short": "CHYNA"
+},
+{
+"ord": 51,
+"id": 1794,
+"name": "STEPHANIE McMAHON",
+"short": "STEPHANIE"
+},
+{
+"ord": 52,
+"id": 1795,
+"name": "TORI",
+"short": "TORI"
+},
+{
+"ord": 53,
+"id": 1796,
+"name": "TERRI",
+"short": "TERRI"
+},
+{
+"ord": 54,
+"id": 1797,
+"name": "TRISH STRATUS",
+"short": "TRISH"
+},
+{
+"ord": 55,
+"id": 1798,
+"name": "LITA",
+"short": "LITA"
+},
+{
+"ord": 56,
+"id": 2049,
+"name": "IVORY",
+"short": "IVORY"
+},
+{
+"ord": 57,
+"id": 2050,
+"name": "LINDA McMAHON",
+"short": "LINDA"
+},
+{
+"ord": 58,
+"id": 2051,
+"name": "THE KAT",
+"short": "KAT"
+},
+{
+"ord": 59,
+"id": 2052,
+"name": "MAE YOUNG",
+"short": "MAE"
+},
+{
+"ord": 60,
+"id": 2053,
+"name": "HO",
+"short": "HO"
+},
+{
+"ord": 61,
+"id": 2305,
+"name": "VINCE McMAHON",
+"short": "VINCE"
+},
+{
+"ord": 62,
+"id": 2306,
+"name": "SHANE McMAHON",
+"short": "SHANE"
+},
+{
+"ord": 63,
+"id": 2307,
+"name": "EARL HEBNER",
+"short": "HEBNER"
+},
+{
+"ord": 64,
+"id": 2308,
+"name": "JIM ROSS",
+"short": "JIM ROSS"
+}
+]

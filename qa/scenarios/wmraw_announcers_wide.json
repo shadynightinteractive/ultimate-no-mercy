@@ -1,0 +1,52 @@
+{
+  "about": "the table side from a ring corner, high: the corner diagonals of WM2000's barricade on No Mercy's lines ((+-530, -620) .. (+-470, -690)), the table and steps, JR / King, the crowd",
+  "wrestlers": [
+    "THE ROCK",
+    "STEVE AUSTIN"
+  ],
+  "arena": "RAW IS WAR WM 2000",
+  "control": [
+    "cpu",
+    "cpu"
+  ],
+  "options": {
+    "announcers": true
+  },
+  "camera": {
+    "eye": [
+      700,
+      420,
+      -100
+    ],
+    "at": [
+      0,
+      60,
+      -640
+    ]
+  },
+  "matches": 0,
+  "seconds": 45,
+  "shots": 3,
+  "expect": [
+    {
+      "name": "the match started",
+      "when": "any",
+      "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "the arena is ours (arena_current 13)",
+      "when": "any",
+      "check": "venue == 13 and stage == 2"
+    },
+    {
+      "name": "JR and King were built (at the table: xring_table 1, no rules bit / ann_on 0)",
+      "when": "match",
+      "check": "ann_draw != 0xFFFF"
+    },
+    {
+      "name": "no model's matrices ever went bad",
+      "when": "always",
+      "check": "bad_mtx == 0"
+    }
+  ]
+}

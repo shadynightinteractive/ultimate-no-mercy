@@ -1,0 +1,15 @@
+{
+ "about": "nmplus (2026-11-19): a WrestleMania 2000 wrestler imported on the first start (Al Snow 0x03C7, the WrestleMania 2000 folders) against Kane, CPU vs CPU -- on a scratch install with the No Mercy and WrestleMania 2000 ROMs only (no built-in extras: the WM2000 hands' tables are empty; his model keeps the hands it was modelled with, hands.c wm_hands_there).",
+ "wrestlers": ["0x03C7", "0x0004"],
+ "costumes": [0, 0],
+ "control": ["cpu", "cpu"],
+ "matches": 1,
+ "seconds": 420,
+ "shots": 0.5,
+ "expect": [
+  { "name": "the match started", "when": "any", "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 120" },
+  { "name": "Al Snow (WrestleMania 2000's import) and Kane", "when": "match", "check": "s0_id == 0x03C7 and s1_id == 0x0004" },
+  { "name": "no model's matrices ever went bad", "when": "always", "check": "bad_mtx == 0" },
+  { "name": "no wrestler's position ever went bad", "when": "always", "check": "finite(s0_x, s0_y, s0_z, s1_x, s1_y, s1_z)" }
+ ]
+}

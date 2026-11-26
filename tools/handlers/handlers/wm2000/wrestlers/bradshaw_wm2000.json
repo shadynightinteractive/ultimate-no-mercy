@@ -1,0 +1,13 @@
+{
+ "about": "WrestleMania 2000's BRADSHAW: what the handler is told for him (wm2kall, 2026-11-13). Everything else comes from the ROM.",
+ "string_id": "bradshaw_wm2000",
+ "key": "bradshaw_wm2000",
+ "wm2000": {
+  "roster_index": 11,
+  "game_id": "0x0106"
+ },
+ "moveset": {
+  "reference_ordinal": 34,
+  "reference_why": "No Mercy's own"
+ }
+}

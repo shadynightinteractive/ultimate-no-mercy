@@ -1,0 +1,152 @@
+# The private folder's material linked into the source tree (tools\layout\link_private.ps1). One line each:
+#   kind | path in the source tree | path in the private folder
+# dir = a directory junction, file = a hard link. Every path here is git-ignored (.gitignore, "private material linked in").
+# Categories in the private folder: toolchain\ (third-party programs), roms\ (the player's ROMs), data\ (files extracted from
+# the games and the emulator rig's captures), data_rig\ (the rig's saved states), generated\ (made from the ROMs by our tools),
+# supplied\ (other material the player supplies: theme recordings, HD texture/model packs), build\ (build outputs), cache\
+# (result caches), preservation\, backups\, scratch\, qa\ (test runs and the game copies the tests run in).
+
+# --- the toolchain (third-party programs: Python, llvm-mingw, zig, CMake, Ninja, FFmpeg, RecompModTool, MinGW extras)
+dir  | toolchain/bin                                   | toolchain/bin
+dir  | toolchain/cmake                                 | toolchain/cmake
+dir  | toolchain/ffmpeg                                | toolchain/ffmpeg
+dir  | toolchain/llvm-mingw                            | toolchain/llvm-mingw
+dir  | toolchain/mingw                                 | toolchain/mingw
+dir  | toolchain/ninja                                 | toolchain/ninja
+dir  | toolchain/python                                | toolchain/python
+dir  | toolchain/zig                                   | toolchain/zig
+dir  | rig/core                                        | toolchain/rig/core
+dir  | exe/WWFNoMercyRecomp/third_party/sdl2-src       | toolchain/deps/sdl2-src
+
+# --- the player's ROMs and what is extracted / captured from them
+dir  | roms                                            | roms
+file | exe/WWFNoMercyRecomp/nomercy.z64                | roms/WWF No Mercy (USA) (Rev 1).z64
+dir  | data                                            | data
+dir  | rig/states                                      | data_rig/states
+
+# --- made from the ROMs by our tools
+dir  | exe/WWFNoMercyRecomp/RecompiledFuncs            | generated/exe/WWFNoMercyRecomp/RecompiledFuncs
+dir  | exe/WWFNoMercyRecomp/RecompiledFuncs.stock      | generated/reference/RecompiledFuncs.stock
+dir  | exe/WWFNoMercyRecomp/src/game/mod_aot           | generated/exe/WWFNoMercyRecomp/src/game/mod_aot
+dir  | tools/lift/modrep/out                           | generated/tools/lift/modrep/out
+dir  | six-engine/NoMercySix                           | generated/six-engine/NoMercySix
+dir  | commentary/clips                                | generated/commentary/clips
+dir  | qa/wrestlers_test                               | generated/qa/wrestlers_test
+
+# --- supplied by the player (not from a ROM, not ours to give)
+dir  | mod/music                                       | supplied/mod/music
+dir  | mod/texturepack                                 | supplied/mod/texturepack
+dir  | native_test/data                                | supplied/native_test/data
+
+# --- build outputs and caches
+dir  | exe/build                                       | build/exe/build
+dir  | exe/WWFNoMercyRecomp/third_party/ffmpeg         | build/exe/WWFNoMercyRecomp/third_party/ffmpeg
+dir  | mod/build                                       | build/mod/build
+dir  | native_test/build                               | build/native_test/build
+dir  | tools/aot/build                                 | build/tools/aot/build
+dir  | tools/lift/fuzz/build                           | build/tools/lift/fuzz/build
+dir  | tools/lift/fuzz/build_dovn                      | build/tools/lift/fuzz/build_dovn
+dir  | tools/lift/fuzz/build_dovna                     | build/tools/lift/fuzz/build_dovna
+dir  | tools/lift/modrep/build                         | build/tools/lift/modrep/build
+dir  | tools/lift/fuzz/cache                           | cache/tools/lift/fuzz/cache
+dir  | tools/lift/m2c_cache                            | cache/tools/lift/m2c_cache
+
+# --- the pipeline's working folders, test runs and the game copies the tests run in
+dir  | preservation                                    | preservation
+dir  | backups                                         | backups
+dir  | scratch                                         | scratch
+dir  | qa/runs                                         | qa/runs
+dir  | qa/game                                         | qa/game
+dir  | qa/game2                                        | qa/game2
+dir  | qa/game3                                        | qa/game3
+dir  | qa/game4                                        | qa/game4
+
+# --- single files and folders made from the game data inside code folders (newhome, 2026-11-17)
+file | mod/src/arena_entrance_files.h                          | generated/mod/src/arena_entrance_files.h
+file | mod/src/arena_files.h                                   | generated/mod/src/arena_files.h
+file | mod/src/arena_raw_files.h                               | generated/mod/src/arena_raw_files.h
+file | mod/src/arena_ring_files.h                              | generated/mod/src/arena_ring_files.h
+file | mod/src/arena_ringstage_files.h                         | generated/mod/src/arena_ringstage_files.h
+file | mod/src/arena_screen_files.h                            | generated/mod/src/arena_screen_files.h
+file | mod/src/arena_stage_files.h                             | generated/mod/src/arena_stage_files.h
+file | mod/src/arena_table_files.h                             | generated/mod/src/arena_table_files.h
+file | mod/src/arena_walls_files.h                             | generated/mod/src/arena_walls_files.h
+file | mod/src/bigshow_photo.h                                 | generated/mod/src/bigshow_photo.h
+file | mod/src/droz_photo.h                                    | generated/mod/src/droz_photo.h
+file | mod/src/jarrett_photo.h                                 | generated/mod/src/jarrett_photo.h
+file | mod/src/meanie_photo.h                                  | generated/mod/src/meanie_photo.h
+file | mod/src/mideon_photo.h                                  | generated/mod/src/mideon_photo.h
+file | mod/src/photos_nm.h                                     | generated/mod/src/photos_nm.h
+file | mod/src/rev_photos.h                                    | generated/mod/src/rev_photos.h
+file | mod/src/roster_thumbs.h                                 | generated/mod/src/roster_thumbs.h
+file | mod/src/content_index.h                                 | generated/mod/src/content_index.h
+file | mod/src/move_lib.h                                      | generated/mod/src/move_lib.h
+file | mod/src/rev_move_anims.h                                | generated/mod/src/rev_move_anims.h
+file | mod/src/wmport_files.h                                  | generated/mod/src/wmport_files.h
+file | mod/src/label_tex.h                                     | generated/mod/src/label_tex.h
+file | mod/src/versus_tex.h                                    | generated/mod/src/versus_tex.h
+file | mod/src/parts_ext.h                                     | generated/mod/src/parts_ext.h
+file | mod/src/parts_ovr.h                                     | generated/mod/src/parts_ovr.h
+file | mod/src/roster_ext.h                                    | generated/mod/src/roster_ext.h
+file | mod/src/tv_carriers.h                                   | generated/mod/src/tv_carriers.h
+file | tools/lift/analysis.json                                | generated/tools/lift/analysis.json
+file | tools/lift/analysis_mod.json                            | generated/tools/lift/analysis_mod.json
+file | tools/lift/candidates.json                              | generated/tools/lift/candidates.json
+file | tools/lift/independent.json                             | generated/tools/lift/independent.json
+file | tools/lift/private_data.json                            | generated/tools/lift/private_data.json
+file | tools/lift/fuzz/report.txt                              | generated/tools/lift/fuzz/report.txt
+file | tools/lift/fuzz/report_dovn.txt                         | generated/tools/lift/fuzz/report_dovn.txt
+file | tools/lift/fuzz/report_dovna.txt                        | generated/tools/lift/fuzz/report_dovna.txt
+file | tools/lift/fuzz/steps_set_aside.txt                     | generated/tools/lift/fuzz/steps_set_aside.txt
+file | tools/lift/fuzz/too_few.txt                             | generated/tools/lift/fuzz/too_few.txt
+dir  | tools/modnative/check                                   | generated/tools/modnative/check
+file | tools/modnative/dev/page_sites.json                     | generated/tools/modnative/dev/page_sites.json
+dir  | tools/modnative/dwarf                                   | generated/tools/modnative/dwarf
+dir  | tools/modnative/ir                                      | generated/tools/modnative/ir
+dir  | tools/modnative/pp                                      | generated/tools/modnative/pp
+dir  | tools/modnative/w                                       | generated/tools/modnative/w
+file | tools/modnative/batch_checked.txt                       | generated/tools/modnative/batch_checked.txt
+file | tools/modnative/census.json                             | generated/tools/modnative/census.json
+file | tools/modnative/check_failed.json                       | generated/tools/modnative/check_failed.json
+file | tools/modnative/compound_pads.json                      | generated/tools/modnative/compound_pads.json
+file | tools/modnative/frame_arrays.json                       | generated/tools/modnative/frame_arrays.json
+file | tools/modnative/frame_locals.json                       | generated/tools/modnative/frame_locals.json
+file | tools/modnative/inventory.json                          | generated/tools/modnative/inventory.json
+file | tools/modnative/pipe_analyse.log                        | generated/tools/modnative/pipe_analyse.log
+file | tools/modnative/pipe_aot.log                            | generated/tools/modnative/pipe_aot.log
+file | tools/modnative/pipe_census.log                         | generated/tools/modnative/pipe_census.log
+file | tools/modnative/pipe_check.log                          | generated/tools/modnative/pipe_check.log
+file | tools/modnative/pipe_dwarf.log                          | generated/tools/modnative/pipe_dwarf.log
+file | tools/modnative/pipe_inventory.log                      | generated/tools/modnative/pipe_inventory.log
+file | tools/modnative/pipe_list.log                           | generated/tools/modnative/pipe_list.log
+file | tools/modnative/pipe_modrep.log                         | generated/tools/modnative/pipe_modrep.log
+file | tools/modnative/pipe_neg.log                            | generated/tools/modnative/pipe_neg.log
+file | tools/modnative/pipe_page_pads.log                      | generated/tools/modnative/pipe_page_pads.log
+file | tools/modnative/pipe_page_sites.log                     | generated/tools/modnative/pipe_page_sites.log
+file | tools/modnative/pipe_private.log                        | generated/tools/modnative/pipe_private.log
+file | tools/modnative/pipe_put.log                            | generated/tools/modnative/pipe_put.log
+file | tools/modnative/pipe_shrunk.log                         | generated/tools/modnative/pipe_shrunk.log
+file | tools/modnative/provable_now.json                       | generated/tools/modnative/provable_now.json
+file | tools/modnative/shrunk.json                             | generated/tools/modnative/shrunk.json
+file | tools/handlers/type_digits.npy                          | generated/tools/handlers/type_digits.npy
+file | tools/handlers/handlers/wm2000/wrestlers/jeff_jarrett.photo.bin | generated/tools/handlers/handlers/wm2000/wrestlers/jeff_jarrett.photo.bin
+file | six-engine/work/closure.pkl                             | generated/six-engine/work/closure.pkl
+file | six-engine/work/db.pkl                                  | generated/six-engine/work/db.pkl
+file | six-engine/work/loopreport.pkl                          | generated/six-engine/work/loopreport.pkl
+file | six-engine/work/loops.pkl                               | generated/six-engine/work/loops.pkl
+file | six-engine/work/nomercy6.z64                            | generated/six-engine/work/nomercy6.z64
+file | six-engine/work/nomercy6_oracle.z64                     | generated/six-engine/work/nomercy6_oracle.z64
+file | six-engine/work/refs.pkl                                | generated/six-engine/work/refs.pkl
+file | six-engine/work/slotcorr.pkl                            | generated/six-engine/work/slotcorr.pkl
+file | six-engine/work/slotflow.pkl                            | generated/six-engine/work/slotflow.pkl
+file | six-engine/work/kb/arrays.pkl                           | generated/six-engine/work/kb/arrays.pkl
+file | six-engine/work/orc/tramp.bin                           | generated/six-engine/work/orc/tramp.bin
+file | six-engine/work/orc/tramp.elf                           | generated/six-engine/work/orc/tramp.elf
+file | six-engine/work/orc/tramp.o                             | generated/six-engine/work/orc/tramp.o
+dir  | six-engine/work/rw/out                                  | generated/six-engine/work/rw/out
+dir  | exe/WWFNoMercyRecomp/tools/ffmpeg_build/nasm            | toolchain/ffmpeg_build/nasm
+dir  | exe/WWFNoMercyRecomp/tools/ffmpeg_build/meson           | toolchain/ffmpeg_build/meson
+file | exe/WWFNoMercyRecomp/rsp/nomercy_audio.cpp              | generated/exe/WWFNoMercyRecomp/rsp/nomercy_audio.cpp
+dir  | qa/texturepacks_test                                    | generated/qa/texturepacks_test
+file | tools/handlers/handlers/wm2000/wrestlers/the_blue_meanie.photo.bin | generated/tools/handlers/handlers/wm2000/wrestlers/the_blue_meanie.photo.bin
+dir  | tools/handlers/work                                     | generated/tools/handlers/work

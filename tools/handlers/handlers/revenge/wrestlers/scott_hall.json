@@ -1,0 +1,64 @@
+{
+ "about": "WCW/nWo Revenge port: what was chosen by hand for him (moved out of mod\\gen's tables by handlers\\extract_fixes.py, 2026-11-12). Edit here; the handler reads nothing else that is his alone.",
+ "string_id": "scott_hall",
+ "key": "hall",
+ "legacy_game_id": "0x0107",
+ "name": "SCOTT HALL",
+ "short_name": "HALL",
+ "height": 19,
+ "weight": 187,
+ "music_slot": 67,
+ "video": 0,
+ "revenge": {
+  "moveset_file": "0x173",
+  "code": "0x204"
+ },
+ "moveset": {
+  "reference_ordinal": 10,
+  "allies": [
+   "0x0106",
+   "0x0105",
+   "0x0102"
+  ],
+  "weight_class": [
+   1,
+   1,
+   0
+  ],
+  "stance": null,
+  "slot_overrides": {},
+  "no_struggling_slam": true
+ },
+ "costumes": [
+  {
+   "capture": "ho_c0",
+   "slot": 0
+  },
+  {
+   "capture": "at_ho1",
+   "slot": 0
+  },
+  {
+   "capture": "at_ho2",
+   "slot": 0
+  },
+  {
+   "capture": "at_ho3",
+   "slot": 0
+  }
+ ],
+ "skin": "no_mercy",
+ "body_type": 2,
+ "body_type_why": "(2026-11-13, revbody) a hand fix the rule doesn't give (it gives 5, Thick 2): Medium 1 by hand (data/revport/ports/PORTS.md: 'Hall Medium 1 (2: Triple H's)'): the rule's Thick 2 is for his 287 lbs; the port judged his lean 6'7\" build Medium",
+ "photo_number": 116,
+ "photo": {
+  "photo": 116,
+  "shot": "data/revport/ports/cap/cc_hall.png",
+  "box": [
+   192,
+   22,
+   242,
+   72
+  ]
+ }
+}

@@ -1,0 +1,32 @@
+{
+  "about": "rosterids 2026-11-12: two folders pinning the same string \"id\": \"austin_clone\" (Japan\\80s\\clone_one, based_on \"steve_austin\" by string ID; clone_two, based_on \"STEVE AUSTIN\" by name). WCW_WRESTLERS_DIR=scratch\u0007gents\rosterids\\w\\dups. The log says ID CLASH; both are picked and play: austin_clone 0x0061 vs austin_clone~2 0x006D (predict_ids.py).",
+  "match": "arcade",
+  "wrestlers": [
+    "0x0061",
+    "0x006D"
+  ],
+  "costumes": [
+    0,
+    0
+  ],
+  "matches": 0,
+  "seconds": 600,
+  "shots": 1.0,
+  "options": {
+    "free_play": true,
+    "attract_demos": false,
+    "qa_versus": 20
+  },
+  "expect": [
+    {
+      "name": "the match: austin_clone (0x0061, player 1) vs austin_clone~2 (0x006D, CPU)",
+      "when": "any",
+      "check": "mode == -2 and match_frames != 0xFFFF and match_frames > 120 and s0_id == 0x0061 and s0_pad == 1 and s1_id == 0x006D and s1_pad == 0"
+    },
+    {
+      "name": "no model's matrices ever went bad",
+      "when": "always",
+      "check": "bad_mtx == 0"
+    }
+  ]
+}

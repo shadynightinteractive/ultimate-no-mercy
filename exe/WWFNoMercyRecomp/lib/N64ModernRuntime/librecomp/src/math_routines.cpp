@@ -1,0 +1,146 @@
+#include <ultramodern/ultramodern.hpp>
+#include "recomp.h"
+
+// TODO remove these by implementing the necessary instructions and control flow handling in the recompiler.
+// This has already been partially completed.
+
+extern "C" void __udivdi3_recomp(uint8_t * rdram, recomp_context * ctx) {
+    uint64_t a = (ctx->r4 << 32) | ((ctx->r5 << 0) & 0xFFFFFFFFu);
+    uint64_t b = (ctx->r6 << 32) | ((ctx->r7 << 0) & 0xFFFFFFFFu);
+    uint64_t ret = a / b;
+
+    ctx->r2 = (int32_t)(ret >> 32);
+    ctx->r3 = (int32_t)(ret >> 0);
+}
+
+extern "C" void __divdi3_recomp(uint8_t * rdram, recomp_context * ctx) {
+    int64_t a = (ctx->r4 << 32) | ((ctx->r5 << 0) & 0xFFFFFFFFu);
+    int64_t b = (ctx->r6 << 32) | ((ctx->r7 << 0) & 0xFFFFFFFFu);
+    int64_t ret = a / b;
+
+    ctx->r2 = (int32_t)(ret >> 32);
+    ctx->r3 = (int32_t)(ret >> 0);
+}
+
+extern "C" void __umoddi3_recomp(uint8_t * rdram, recomp_context * ctx) {
+    uint64_t a = (ctx->r4 << 32) | ((ctx->r5 << 0) & 0xFFFFFFFFu);
+    uint64_t b = (ctx->r6 << 32) | ((ctx->r7 << 0) & 0xFFFFFFFFu);
+    uint64_t ret = a % b;
+
+    ctx->r2 = (int32_t)(ret >> 32);
+    ctx->r3 = (int32_t)(ret >> 0);
+}
+
+extern "C" void __ull_div_recomp(uint8_t * rdram, recomp_context * ctx) {
+    uint64_t a = (ctx->r4 << 32) | ((ctx->r5 << 0) & 0xFFFFFFFFu);
+    uint64_t b = (ctx->r6 << 32) | ((ctx->r7 << 0) & 0xFFFFFFFFu);
+    uint64_t ret = a / b;
+
+    ctx->r2 = (int32_t)(ret >> 32);
+    ctx->r3 = (int32_t)(ret >> 0);
+}
+
+extern "C" void __ll_div_recomp(uint8_t * rdram, recomp_context * ctx) {
+    int64_t a = (ctx->r4 << 32) | ((ctx->r5 << 0) & 0xFFFFFFFFu);
+    int64_t b = (ctx->r6 << 32) | ((ctx->r7 << 0) & 0xFFFFFFFFu);
+    int64_t ret = a / b;
+
+    ctx->r2 = (int32_t)(ret >> 32);
+    ctx->r3 = (int32_t)(ret >> 0);
+}
+
+extern "C" void __ll_mul_recomp(uint8_t * rdram, recomp_context * ctx) {
+    uint64_t a = (ctx->r4 << 32) | ((ctx->r5 << 0) & 0xFFFFFFFFu);
+    uint64_t b = (ctx->r6 << 32) | ((ctx->r7 << 0) & 0xFFFFFFFFu);
+    uint64_t ret = a * b;
+
+    ctx->r2 = (int32_t)(ret >> 32);
+    ctx->r3 = (int32_t)(ret >> 0);
+}
+
+extern "C" void __ull_rem_recomp(uint8_t * rdram, recomp_context * ctx) {
+    uint64_t a = (ctx->r4 << 32) | ((ctx->r5 << 0) & 0xFFFFFFFFu);
+    uint64_t b = (ctx->r6 << 32) | ((ctx->r7 << 0) & 0xFFFFFFFFu);
+    uint64_t ret = a % b;
+
+    ctx->r2 = (int32_t)(ret >> 32);
+    ctx->r3 = (int32_t)(ret >> 0);
+}
+
+extern "C" void __ull_to_d_recomp(uint8_t * rdram, recomp_context * ctx) {
+    uint64_t a = (ctx->r4 << 32) | ((ctx->r5 << 0) & 0xFFFFFFFFu);
+    double ret = (double)a;
+
+    ctx->f0.d = ret;
+}
+
+extern "C" void __ull_to_f_recomp(uint8_t * rdram, recomp_context * ctx) {
+    uint64_t a = (ctx->r4 << 32) | ((ctx->r5 << 0) & 0xFFFFFFFFu);
+    float ret = (float)a;
+
+    ctx->f0.fl = ret;
+}
+
+extern "C" void __ull_rshift_recomp(uint8_t * rdram, recomp_context * ctx) {
+    uint64_t a = (ctx->r4 << 32) | ((ctx->r5 << 0) & 0xFFFFFFFFu);
+    uint64_t b = (ctx->r6 << 32) | ((ctx->r7 << 0) & 0xFFFFFFFFu);
+    uint64_t ret = a >> b;
+
+    ctx->r2 = (int32_t)(ret >> 32);
+    ctx->r3 = (int32_t)(ret >> 0);
+}
+
+extern "C" void __ll_to_f_recomp(uint8_t * rdram, recomp_context * ctx) {
+    int64_t a = (ctx->r4 << 32) | ((ctx->r5 << 0) & 0xFFFFFFFFu);
+    float ret = (float)a;
+
+    ctx->f0.fl = ret;
+}
+
+extern "C" void __f_to_ll_recomp(uint8_t * rdram, recomp_context * ctx) {
+    int64_t ret = (int64_t)ctx->f12.fl;
+
+    ctx->r2 = (int32_t)(ret >> 32);
+    ctx->r3 = (int32_t)(ret >> 0);
+}
+
+extern "C" void __ll_lshift_recomp(uint8_t * rdram, recomp_context * ctx) {
+    uint64_t a = (ctx->r4 << 32) | ((ctx->r5 << 0) & 0xFFFFFFFFu);
+    uint64_t b = (ctx->r6 << 32) | ((ctx->r7 << 0) & 0xFFFFFFFFu);
+    uint64_t ret = a << b;
+
+    ctx->r2 = (int32_t)(ret >> 32);
+    ctx->r3 = (int32_t)(ret >> 0);
+}
+
+// [wcw] The remaining IDO softfloat conversions used by WCW (math_routines didn't ship these
+// four). N64Recomp can't emit trunc.l.*/cvt.*.l, so the game's func_XXXX are named to these in
+// tools/gen_symbols.py and routed here. FP arg in f12, int64 result in r2(hi)/r3(lo) and vice
+// versa, matching the existing helpers above.
+extern "C" void __d_to_ll_recomp(uint8_t * rdram, recomp_context * ctx) {
+    int64_t ret = (int64_t)ctx->f12.d;
+
+    ctx->r2 = (int32_t)(ret >> 32);
+    ctx->r3 = (int32_t)(ret >> 0);
+}
+
+extern "C" void __d_to_ull_recomp(uint8_t * rdram, recomp_context * ctx) {
+    uint64_t ret = (uint64_t)ctx->f12.d;
+
+    ctx->r2 = (int32_t)(ret >> 32);
+    ctx->r3 = (int32_t)(ret >> 0);
+}
+
+extern "C" void __f_to_ull_recomp(uint8_t * rdram, recomp_context * ctx) {
+    uint64_t ret = (uint64_t)ctx->f12.fl;
+
+    ctx->r2 = (int32_t)(ret >> 32);
+    ctx->r3 = (int32_t)(ret >> 0);
+}
+
+extern "C" void __ll_to_d_recomp(uint8_t * rdram, recomp_context * ctx) {
+    int64_t a = (ctx->r4 << 32) | ((ctx->r5 << 0) & 0xFFFFFFFFu);
+    double ret = (double)a;
+
+    ctx->f0.d = ret;
+}

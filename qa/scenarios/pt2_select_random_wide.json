@@ -1,0 +1,32 @@
+{
+  "about": "(2026-11-17, pipefix: 260 s -- the select comes at ~155 s of the game, the 150 s run ended on the menus, qa084.) playtest2 2026-11-16: pt2_select_random at the user's picture shape, 16:9 (WCW_NATIVE_SHAPE=1, as mod_config's picture_shape '16:9'): the picture's sides show what's drawn past x 0..320. LOOK: no white box right of the picture at the label's height; the label whole inside the picture. (Before the fix: 'Ra' then a white box past the edge.) (no2k15, 2026-11-23: the two WWE 2K15 test slots, 0x011A / 0x011B, are removed from the game -- stock Steve Austin 0x0002 and The Rock 0x0001 in their places here)",
+  "match": "arcade",
+  "wrestlers": [
+    "0x0002",
+    "0x0001"
+  ],
+  "costumes": [
+    0,
+    0
+  ],
+  "matches": 0,
+  "seconds": 260,
+  "shots": 1.0,
+  "options": {
+    "free_play": true,
+    "attract_demos": false,
+    "qa_versus": 20,
+    "qa_variant": 1
+  },
+  "expect": [
+    {
+      "name": "the CPU's pick: The Rock",
+      "when": "any",
+      "check": "(bs_step & 0xFFFF) == 0x0001"
+    }
+  ],
+  "shot_when": "$c.mode -eq 0 -and ($c.screen -eq 26 -or $c.screen -eq 27)",
+  "env": {
+    "WCW_NATIVE_SHAPE": "1"
+  }
+}

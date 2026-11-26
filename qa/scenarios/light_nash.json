@@ -1,0 +1,40 @@
+{
+  "about": "2026-10-30, the user: \"Looks like Nash's light standing punches aren't hitting Rock\" -- his light strikes (entries 172 / 173; every standing strike 172..206 taken as 172, the CPU throwing few light ones) all played as 172 (revanims.py no longer gives a strike his Revenge swing on another move's reaction: it's the reference's Elbow Strike again); idle player 2. Each strike lands, the man reacting: the shots looked at",
+  "wrestlers": [
+    "KEVIN NASH",
+    "THE ROCK"
+  ],
+  "control": [
+    "cpu",
+    "pad2"
+  ],
+  "arena": "SMACKDOWN",
+  "matches": 1,
+  "seconds": 240,
+  "shots": 0.5,
+  "force": {
+    "slot": 0,
+    "entries": [
+      172,
+      206
+    ],
+    "as": 172
+  },
+  "expect": [
+    {
+      "name": "the match started",
+      "when": "any",
+      "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "strikes forced",
+      "when": "any",
+      "check": "forced >= 3"
+    },
+    {
+      "name": "nobody's position went bad",
+      "when": "always",
+      "check": "finite(s0_x, s0_y, s0_z, s1_x, s1_y, s1_z)"
+    }
+  ]
+}

@@ -1,0 +1,270 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index fed4a2c..f58cefa 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -25,7 +25,11 @@ if (WIN32)
+         # (-fno-builtin-<name> does NOT apply to target builtins — verified on CI's
+         # clang-cl 22). Force-including intrin.h first lets clang's own prfchwintrin.h
+         # set the guard, so SDL's hack is skipped in every TU that includes SDL.
+-        add_compile_options(/FIintrin.h)
++        if (CMAKE_CXX_SIMULATE_ID STREQUAL "MSVC")
++            add_compile_options(/FIintrin.h)
++        else()
++            add_compile_options("$<$<COMPILE_LANGUAGE:C,CXX>:SHELL:-include intrin.h>")
++        endif()
+     endif()
+ endif()
+ if (CMAKE_VERSION VERSION_GREATER_EQUAL "3.24.0")
+@@ -111,8 +115,16 @@ set(DXC_VS_OPTS "${DXC_COMMON_OPTS}" "-E" "VSMain" "-T vs_6_0" "-D DYNAMIC_RENDE
+ set(DXC_CS_OPTS "${DXC_COMMON_OPTS}" "-E" "CSMain" "-T cs_6_0")
+ set(DXC_GS_OPTS "${DXC_COMMON_OPTS}" "-E" "GSMain" "-T gs_6_0")
+ set(DXC_RT_OPTS "${DXC_COMMON_OPTS}" "-D" "RT_SHADER" "-T" "lib_6_3" "-fspv-target-env=vulkan1.1spirv1.4" "-fspv-extension=SPV_KHR_ray_tracing" "-fspv-extension=SPV_EXT_descriptor_indexing")
+-if (WIN32)
++if (WIN32 AND CMAKE_HOST_WIN32)
+     set(DXC "${RT64DIR}/src/contrib/dxc/bin/x64/dxc.exe")
++elseif (WIN32)
++    # Cross-building for Windows on Linux (llvm-mingw): a Linux dxc compiles the shaders, the same one as rt64's
++    # (RT64_HOST_DXC_DIR, see lib/rt64/CMakeLists.txt).
++    if (RT64_HOST_DXC_DIR)
++        set(DXC "LD_LIBRARY_PATH=${RT64_HOST_DXC_DIR}/lib" "${RT64_HOST_DXC_DIR}/bin/dxc")
++    else()
++        set(DXC "LD_LIBRARY_PATH=${RT64DIR}/src/contrib/dxc/lib/x64" "${RT64DIR}/src/contrib/dxc/bin/x64/dxc-linux")
++    endif()
+ endif()
+ 
+ # --- SDL2 (recompui/recompinput expect sdl2_SOURCE_DIR on Windows) ---
+@@ -135,14 +147,14 @@ add_executable(NoMercyRecompiled)
+ # App icon: exe resource (Windows title bar/taskbar/Explorer) + embedded PNG bytes for
+ # the launcher thumbnail (GameEntry.thumbnail_bytes).
+ add_custom_command(OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/icon_bytes.c ${CMAKE_CURRENT_BINARY_DIR}/icon_bytes.h
+-    COMMAND file_to_c ${CMAKE_SOURCE_DIR}/icons/app.png icon_bytes ${CMAKE_CURRENT_BINARY_DIR}/icon_bytes.c ${CMAKE_CURRENT_BINARY_DIR}/icon_bytes.h
++    COMMAND ${FILE_TO_C} ${CMAKE_SOURCE_DIR}/icons/app.png icon_bytes ${CMAKE_CURRENT_BINARY_DIR}/icon_bytes.c ${CMAKE_CURRENT_BINARY_DIR}/icon_bytes.h
+     DEPENDS ${CMAKE_SOURCE_DIR}/icons/app.png file_to_c
+ )
+ target_sources(NoMercyRecompiled PRIVATE ${CMAKE_CURRENT_BINARY_DIR}/icon_bytes.c)
+ # Game logo for the recompui launcher menu (replaces the default text title; see
+ # register_launcher_init_callback in src/main/main.cpp — mirrors World Tour).
+ add_custom_command(OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/logo_bytes.c ${CMAKE_CURRENT_BINARY_DIR}/logo_bytes.h
+-    COMMAND file_to_c ${CMAKE_SOURCE_DIR}/icons/logo.png logo_bytes ${CMAKE_CURRENT_BINARY_DIR}/logo_bytes.c ${CMAKE_CURRENT_BINARY_DIR}/logo_bytes.h
++    COMMAND ${FILE_TO_C} ${CMAKE_SOURCE_DIR}/icons/logo.png logo_bytes ${CMAKE_CURRENT_BINARY_DIR}/logo_bytes.c ${CMAKE_CURRENT_BINARY_DIR}/logo_bytes.h
+     DEPENDS ${CMAKE_SOURCE_DIR}/icons/logo.png file_to_c
+ )
+ target_sources(NoMercyRecompiled PRIVATE ${CMAKE_CURRENT_BINARY_DIR}/logo_bytes.c)
+@@ -198,23 +210,35 @@ if (WIN32)
+     target_include_directories(NoMercyRecompiled PRIVATE ${sdl2_SOURCE_DIR}/include)
+     target_link_directories(NoMercyRecompiled PRIVATE ${sdl2_SOURCE_DIR}/lib/x64)
+     target_link_libraries(NoMercyRecompiled PRIVATE SDL2 Winmm.lib)
++    if (MINGW)
++        # (MSVC links these from main.cpp's #pragma comment(lib))
++        target_link_libraries(NoMercyRecompiled PRIVATE dbghelp)
++    endif()
+     # Release is a windowed app (no console flash on double-click); stdio goes to a log
+     # file in the app folder unless launched with --show-console or redirected handles
+     # (see wcw_setup_logging in src/main/main.cpp). Debug keeps the console.
+-    set_target_properties(NoMercyRecompiled PROPERTIES
+-        LINK_FLAGS_DEBUG "/SUBSYSTEM:CONSOLE"
+-        LINK_FLAGS_RELEASE "/SUBSYSTEM:WINDOWS /ENTRY:mainCRTStartup")
+-    if (MSVC)
+-        target_link_options(NoMercyRecompiled PRIVATE /OPT:NOICF)
+-    endif()
+     # Always emit a linker map: release crash backtraces print RVAs that are resolved
+     # against this file (see cycle.ps1 / BUILDING.md). Previously this came from an
+     # uncached local configure flag, which fresh clones and CI would silently lose.
+-    target_link_options(NoMercyRecompiled PRIVATE /MAP:NoMercyRecompiled.map)
+     # Bump the default thread stack reserve: ultramodern's gfx_thread (a std::thread, which
+     # uses this PE default) reaches D3D12CreateDevice deep in its call stack, and that call
+     # is very stack-hungry — on the default 1 MB it overflows (0xC0000409). 16 MB is safe.
+-    target_link_options(NoMercyRecompiled PRIVATE /STACK:16777216)
++    if (MINGW)
++        # [wcw mingw] The same with the GNU-style driver (llvm-mingw).
++        set_target_properties(NoMercyRecompiled PROPERTIES
++            LINK_FLAGS_DEBUG "-mconsole"
++            LINK_FLAGS_RELEASE "-mwindows")
++        target_link_options(NoMercyRecompiled PRIVATE -Wl,-Map=NoMercyRecompiled.map -Wl,--stack,16777216)
++    else()
++        set_target_properties(NoMercyRecompiled PROPERTIES
++            LINK_FLAGS_DEBUG "/SUBSYSTEM:CONSOLE"
++            LINK_FLAGS_RELEASE "/SUBSYSTEM:WINDOWS /ENTRY:mainCRTStartup")
++        if (MSVC)
++            target_link_options(NoMercyRecompiled PRIVATE /OPT:NOICF)
++        endif()
++        target_link_options(NoMercyRecompiled PRIVATE /MAP:NoMercyRecompiled.map)
++        target_link_options(NoMercyRecompiled PRIVATE /STACK:16777216)
++    endif()
+     # Copy SDL2 + dxc DLLs next to the exe.
+     add_custom_command(TARGET NoMercyRecompiled POST_BUILD
+         COMMAND ${CMAKE_COMMAND} -E copy_if_different
+@@ -249,6 +273,14 @@ target_link_libraries(NoMercyRecompiled PRIVATE
+     nfd
+ )
+ target_sources(NoMercyRecompiled PRIVATE ${SOURCES})
++
++# [standalone] The game alone: no launcher (the ROM is found in the game's folder), no config menu, no quit prompt.
++# The program is "Ultimate No Mercy.exe" (Linux: "Ultimate No Mercy").
++option(NOMERCY_STANDALONE "Build the standalone arcade program (no launcher, menus or prompts)" ON)
++if (NOMERCY_STANDALONE)
++    target_compile_definitions(NoMercyRecompiled PRIVATE NOMERCY_STANDALONE=1)
++    set_target_properties(NoMercyRecompiled PROPERTIES OUTPUT_NAME "Ultimate No Mercy")
++endif()
+ set_property(TARGET NoMercyRecompiled PROPERTY VS_DEBUGGER_WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}")
+ 
+ # librecomp's RSP vector-unit header (rsp_vu_impl.hpp, pulled in by rsp/nomercy_audio.cpp)
+diff --git a/lib/N64ModernRuntime b/lib/N64ModernRuntime
+--- a/lib/N64ModernRuntime
++++ b/lib/N64ModernRuntime
+@@ -1 +1 @@
+-Subproject commit 7f06964ca32e729c14db8640a92bb056eec970bb
++Subproject commit 7f06964ca32e729c14db8640a92bb056eec970bb-dirty
+diff --git a/lib/RecompFrontend b/lib/RecompFrontend
+--- a/lib/RecompFrontend
++++ b/lib/RecompFrontend
+@@ -1 +1 @@
+-Subproject commit bfabc6c69808e3145a1ff60c351b3d82e60765e7
++Subproject commit bfabc6c69808e3145a1ff60c351b3d82e60765e7-dirty
+diff --git a/lib/rt64 b/lib/rt64
+--- a/lib/rt64
++++ b/lib/rt64
+@@ -1 +1 @@
+-Subproject commit c64e4a51d25b149a5e5c659e8736647f848311c7
++Subproject commit c64e4a51d25b149a5e5c659e8736647f848311c7-dirty
+diff --git a/src/main/main.cpp b/src/main/main.cpp
+index cc9be8d..5c9ee56 100644
+--- a/src/main/main.cpp
++++ b/src/main/main.cpp
+@@ -15,6 +15,7 @@
+ #include <thread>
+ #include <set>
+ #include <chrono>
++#include <cctype>
+ 
+ #define SDL_MAIN_HANDLED
+ #include "SDL.h"
+@@ -54,6 +55,10 @@
+ #include <fcntl.h>
+ #include <dxgi1_4.h>
+ #include <d3d12.h>
++#ifndef _MSC_VER
++#include <guiddef.h>
++#include <dxguids.h> // (MinGW: the D3D12 interfaces' IDs for __uuidof)
++#endif
+ #include <dbghelp.h>
+ #include <exception>
+ #include <cstdlib>
+@@ -188,6 +193,52 @@ template <typename... Ts>
+     ultramodern::error_handling::quick_exit(__FILE__, __LINE__, __FUNCTION__);
+ }
+ 
++#if NOMERCY_STANDALONE
++// [standalone] The ROM, without the launcher's "Load ROM": the copy stored on an earlier run (wwf.nomercy.us.z64 in the
++// app folder) or a ROM file put in the game's folder (any .z64 / .n64 / .v64; it's validated and stored the first time,
++// as the launcher's Load ROM does). Without one: a message saying where to put it, and the program ends.
++static void standalone_select_rom(std::u8string& game_id) {
++    std::vector<std::filesystem::path> candidates;
++    const std::filesystem::path app_folder = recompui::file::get_app_folder_path();
++    const std::filesystem::path stored = app_folder / (game_id + u8".z64");
++    std::error_code ec;
++    if (std::filesystem::is_regular_file(stored, ec)) {
++        candidates.push_back(stored);
++    }
++    for (const std::filesystem::path& folder : { recompui::file::get_program_path(), app_folder }) {
++        for (const auto& entry : std::filesystem::directory_iterator(folder, ec)) {
++            std::u8string ext = entry.path().extension().u8string();
++            std::transform(ext.begin(), ext.end(), ext.begin(), [](char8_t c) { return (char8_t)std::tolower((unsigned char)c); });
++            if (!entry.is_regular_file(ec) || (ext != u8".z64" && ext != u8".n64" && ext != u8".v64")) {
++                continue;
++            }
++            if (std::find(candidates.begin(), candidates.end(), entry.path()) == candidates.end()) {
++                candidates.push_back(entry.path());
++            }
++        }
++    }
++    bool wrong_version = false;
++    for (const std::filesystem::path& rom : candidates) {
++        const recomp::RomValidationError err = recomp::select_rom(rom, game_id);
++        fprintf(stderr, "[standalone] ROM %ls: %d\n", rom.c_str(), (int)err);
++        if (err == recomp::RomValidationError::Good) {
++            return;
++        }
++        wrong_version |= (err == recomp::RomValidationError::IncorrectVersion);
++    }
++    const std::wstring folder = recompui::file::get_program_path().wstring();
++    const std::wstring text = (wrong_version
++        ? std::wstring(L"The WWF No Mercy ROM in this folder isn't the version this needs: WWF No Mercy (USA) (Rev 1).\n\n")
++        : std::wstring(L"This needs the WWF No Mercy (USA) (Rev 1) ROM.\n\n")) +
++        L"Put the ROM file (.z64) in the game's folder and start it again:\n" + folder;
++#ifdef _WIN32
++    MessageBoxW(nullptr, text.c_str(), L"Ultimate No Mercy", MB_OK | MB_ICONINFORMATION);
++#endif
++    fprintf(stderr, "[standalone] no ROM\n");
++    exit(1);
++}
++#endif
++
+ // ---------------- gfx / window ----------------
+ // These globals are referenced by recompui/recompinput, so they must be non-static.
+ SDL_Window* window = nullptr;
+@@ -210,7 +261,11 @@ ultramodern::renderer::WindowHandle create_window(ultramodern::gfx_callbacks_t::
+ #if defined(RT64_SDL_WINDOW_VULKAN)
+     flags |= SDL_WINDOW_VULKAN;
+ #endif
++#if NOMERCY_STANDALONE
++    window = SDL_CreateWindow("Ultimate No Mercy",
++#else
+     window = SDL_CreateWindow("WWF No Mercy: Recompiled",
++#endif
+         SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1280, 960, flags);
+     if (window == nullptr) {
+         exit_error("Failed to create window: %s\n", SDL_GetError());
+@@ -829,6 +884,10 @@ int main(int argc, char** argv) {
+         }
+     }
+     (void)show_console;
++#if NOMERCY_STANDALONE
++    // [standalone] The game alone: no launcher, menus or prompts (recompui's standalone mode).
++    recompui::set_standalone(true);
++#endif
+ 
+     // Program identity. The program id names the config/save folder
+     // (%LOCALAPPDATA%\NoMercyRecompiled on Windows) — keep it matched to the exe name.
+@@ -1068,6 +1127,7 @@ int main(int argc, char** argv) {
+     // ROM path ("1" = wcw.z64 in the working dir) and boots immediately.
+     std::u8string game_id = u8"wwf.nomercy.us";
+     const char* autoboot = getenv("WCW_AUTOBOOT");
++    bool boot_now = autoboot != nullptr;
+     if (autoboot != nullptr) {
+         std::filesystem::path autoboot_rom = (autoboot[0] != '\0' && strcmp(autoboot, "1") != 0)
+             ? std::filesystem::path(autoboot) : std::filesystem::path("nomercy.z64");
+@@ -1076,6 +1136,13 @@ int main(int argc, char** argv) {
+             exit_error("WCW_AUTOBOOT ROM validation failed (err=%d) for %ls.\n", (int)rom_err, autoboot_rom.c_str());
+         }
+     }
++#if NOMERCY_STANDALONE
++    else {
++        // [standalone] Straight into the game, with the ROM found (see standalone_select_rom).
++        standalone_select_rom(game_id);
++        boot_now = true;
++    }
++#else
+     else {
+         // Launcher menu options. The Mods entry is live: librecomp already calls
+         // initialize_mods() + scan_mods() unconditionally from recomp::start
+@@ -1112,6 +1179,7 @@ int main(int argc, char** argv) {
+             game_options_menu->add_exit_option();
+         });
+     }
++#endif
+ 
+     // Callbacks.
+     recomp::rsp::callbacks_t rsp_callbacks{ .get_rsp_microcode = get_rsp_microcode };
+@@ -1156,9 +1224,9 @@ int main(int argc, char** argv) {
+     ultramodern::error_handling::callbacks_t error_callbacks{ .message_box = recompui::message_box };
+     ultramodern::threads::callbacks_t threads_callbacks{ .get_game_thread_name = [](const OSThread*) -> std::string { return "game"; } };
+ 
+-    // Dev auto-boot only: kick off the game once the runtime is up. In the normal flow the
++    // Dev auto-boot (and standalone): kick off the game once the runtime is up. In the normal flow the
+     // launcher's Start Game option calls recomp::start_game from its click handler.
+-    if (autoboot != nullptr) {
++    if (boot_now) {
+         std::thread starter([game_id]() {
+             std::this_thread::sleep_for(std::chrono::milliseconds(250));
+             std::u8string gid = game_id;

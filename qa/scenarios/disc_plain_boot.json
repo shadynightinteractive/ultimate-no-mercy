@@ -1,0 +1,9 @@
+{
+  "about": "discovery (modes plan D4): the plain game (mod off) from power-on, nobody touching anything -- the boot intro, the title, what the title does when left idle",
+  "match": "arcade",
+  "matches": 0,
+  "seconds": 130,
+  "shots": 2.0,
+  "options": { "enabled": false },
+  "expect": []
+}

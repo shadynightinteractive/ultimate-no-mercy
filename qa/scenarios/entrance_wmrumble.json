@@ -1,0 +1,33 @@
+{
+  "about": "the entrances' close shots in ROYAL RUMBLE WM 2000 (arena 18): WM2000's 3D entrance scene 2 behind the Superstar, placed as WM2000's own close shots have it (its pose spot at No Mercy's origin, as RAW IS WAR WM 2000's) -- the ROYAL RUMBLE aprons, the 3D portal: a ring of truss and spotlights, its tunnel to the far ring with the Royal Rumble sign, the lit floor in front, the dark side panels",
+  "match": "rumble",
+  "wrestlers": [
+    "HOLLYWOOD HOGAN"
+  ],
+  "control": [
+    "cpu"
+  ],
+  "arena": "ROYAL RUMBLE WM 2000",
+  "options": {
+    "rumble_entrants": 4,
+    "rumble_interval": 60,
+    "titantron_screens": true,
+    "titantron_live": true
+  },
+  "matches": 1,
+  "seconds": 120,
+  "shots": 0.5,
+  "shot_when": "$c.mode -eq 0 -and $c.screen -eq 42 -and $c.entrance_step -ge 1 -and $c.entrance_step -le 29",
+  "expect": [
+    {
+      "name": "the entrances ran",
+      "when": "any",
+      "check": "mode == 0 and screen == 42 and entrance_step >= 1 and entrance_step <= 29"
+    },
+    {
+      "name": "the arena is ours (arena_current 18)",
+      "when": "any",
+      "check": "venue == 18 and stage == 2"
+    }
+  ]
+}

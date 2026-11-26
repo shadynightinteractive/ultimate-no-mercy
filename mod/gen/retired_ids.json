@@ -1,0 +1,9 @@
+{
+  "about": "Built-in Superstars taken out of the game for good (no2k15, 2026-11-23). Nothing of them is left in the mod; what can still name one is handled by the game's rules for a removed wrestler (mod src/roster.c, 2026-11-13): a title he holds in a save's sidecar (<save>.ours.json) is VACATED (mod src/save.c, the exe's arcade_wrestlers.cpp sidecar_get); a story that names him -- by string ID, name or game number -- plays his stand-in (both story compilers: gen/storyc.py, the exe's arcade_stories.cpp); select_pages.json, families.json and Random leave him out. A save's presets and Story Mode story in progress never hold an added Superstar (save.c), so they can't name one. The stand-in is the man the slot was in all but the model (gen/mkroster.py's same=2 / same=1). gen/storyc.py --roster writes these into stories\\_roster.json as \"@RETIRED:<string ID>\", \"@RETIRED:<NAME>\" and \"@RETIRED:<0x number>\" -> the stand-in's game number. A wrestler folder with one of these string IDs (or numbers) is simply that folder's wrestler: a folder always comes first.",
+  "retired": [
+    {"id": "stone_cold_2k15", "game_number": "0x011A", "name": "STONE COLD 2K15", "stand_in": "steve_austin",
+     "why": "the WWE 2K15 full-detail test slot of 2026-11-03 (third-party model); the user, 2026-11-14: \"the HD / 2K15 models can be REMOVED from what ships (they were only for testing)\""},
+    {"id": "the_rock_2k15", "game_number": "0x011B", "name": "THE ROCK 2K15", "stand_in": "the_rock",
+     "why": "the WWE 2K15 full-detail test slot of 2026-11-03 (third-party model); the user, 2026-11-14, as above"}
+  ]
+}

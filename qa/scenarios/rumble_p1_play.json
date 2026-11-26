@@ -1,0 +1,57 @@
+{
+  "about": "2026-11-22 rumblecrash: a short Royal Rumble PLAYED by player 1 -- BRET HART at controller 1 (the human path: walk_by_stick from the pad, the stick the crash's call came through), five more entrants drawn as a player's Rumble draws them (no QA draw list), one every 10 s, a CPU man put outside every 4 s (qa_rr_out) so it reaches a decision. Pad 1's script: every 8 s from 40 s, the left stick (the d-pad's walk by default) left 1.2 s, B (strike) x2, the left stick up 1.2 s, A (grapple) then A, the right stick (the N64 stick) right 1.2 s, B. Checks: the Rumble started, player 1 on a controller all match, he moved, nobody's position went bad, the Rumble decided.",
+  "match": "rumble",
+  "wrestlers": [
+    "BRET HART"
+  ],
+  "control": [
+    "pad1"
+  ],
+  "options": {
+    "rumble_entrants": 6,
+    "rumble_interval": 10,
+    "qa_rr_out": 4
+  },
+  "matches": 1,
+  "seconds": 700,
+  "shots": 8,
+  "shot_when": "$c.mode -eq -2 -and $c.match_frames -gt 300",
+  "pads": [
+    "40.0 1 -leftx 1200",
+    "41.5 1 b 150",
+    "42.0 1 b 150",
+    "42.6 1 -lefty 1200",
+    "44.0 1 a 150",
+    "44.5 1 a 150",
+    "45.2 1 +rightx 1200",
+    "46.6 1 b 150",
+    "40.0 repeat 8"
+  ],
+  "expect": [
+    {
+      "name": "the Rumble started",
+      "when": "any",
+      "check": "stage == 2 and mode == -2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "player 1 (slot 0) still on controller 1 after the bell (a CPU-played test's slot goes to the CPU at match frame 60) -- the human path",
+      "when": "match",
+      "check": "s0_pad == 1 and match_frames > 120"
+    },
+    {
+      "name": "player 1 moved (more than 40 from the Rumble's first place, x -180 z 180)",
+      "when": "match",
+      "check": "abs(s0_x + 180.0) + abs(s0_z - 180.0) > 40"
+    },
+    {
+      "name": "nobody's position went bad",
+      "when": "always",
+      "check": "finite(s0_x, s0_y, s0_z, s1_x, s1_y, s1_z, s2_x, s2_y, s2_z)"
+    },
+    {
+      "name": "the Rumble was decided",
+      "when": "any",
+      "check": "match_state == 4"
+    }
+  ]
+}

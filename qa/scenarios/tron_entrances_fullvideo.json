@@ -1,0 +1,34 @@
+{
+  "about": "2026-11-18 (valetfix): tron_entrances with FULL SCREEN TITANTRONS on (option titantron): each entrance opens with its full-screen video, then the stage -- the regression for the other setting of the option. The original: the RAW IS WAR Titantron during the entrances (2026-10-28: the user saw the stage wall vanish in the entrances and with the entrance videos, after the screen's picture became an inset over the arena's own): a Royal Rumble's first two entrances, at RAW IS WAR (qa_arena in a QA Rumble), the game's own cameras -- screenshots through them",
+  "match": "rumble",
+  "wrestlers": [
+    "STEVE AUSTIN"
+  ],
+  "control": [
+    "cpu"
+  ],
+  "arena": "RAW IS WAR",
+  "options": {
+    "rumble_entrants": 4,
+    "rumble_interval": 60,
+    "titantron_screens": true,
+    "titantron_live": true,
+    "titantron": true
+  },
+  "matches": 1,
+  "seconds": 120,
+  "shots": 0.5,
+  "shot_when": "$c.mode -eq 0 -and $c.screen -eq 42 -and $c.entrance_step -ge 1 -and $c.entrance_step -le 29",
+  "expect": [
+    {
+      "name": "the entrances ran",
+      "when": "any",
+      "check": "mode == 0 and screen == 42 and entrance_step >= 1 and entrance_step <= 29"
+    },
+    {
+      "name": "the arena is RAW IS WAR",
+      "when": "any",
+      "check": "venue == 0 and stage == 2"
+    }
+  ]
+}

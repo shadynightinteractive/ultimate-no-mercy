@@ -1,0 +1,58 @@
+{
+ "about": "2026-11-02 story upgrade phase 6: every match type as a story match (qa/stories_test/007_types.json, as STEVE AUSTIN; each ended at 0:40 by its script -- tag / triple / handicap / fourway by the player over b, cage by escape, ladder by the belt, ironman by a pinfall: is a fall the end of an ironman?). Look at each match card and the match: the men, the cage, the ladder",
+ "match": "arcade",
+ "wrestlers": [
+  "STEVE AUSTIN",
+  null
+ ],
+ "matches": 0,
+ "seconds": 2700,
+ "shots": 4.0,
+ "options": {
+  "free_play": true,
+  "attract_demos": false,
+  "custom_story": 1,
+  "qa_story": 3
+ },
+ "expect": [
+  {
+   "name": "tag: AUSTIN + ROCK vs KANE + UNDERTAKER",
+   "when": "any",
+   "check": "matches >= 10100 and matches < 10200 and mode == -2 and match_frames != 0xFFFF and match_frames > 200 and s0_id == 0x0002 and s1_id == 0x0001 and s2_id == 0x0004 and s3_id == 0x0003"
+  },
+  {
+   "name": "triple",
+   "when": "any",
+   "check": "matches >= 10200 and matches < 10300 and mode == -2 and match_frames != 0xFFFF and match_frames > 200 and s0_id == 0x0002 and s1_id == 0x0004 and s2_id == 0x0003"
+  },
+  {
+   "name": "handicap: KANE + UNDERTAKER vs AUSTIN",
+   "when": "any",
+   "check": "matches >= 10300 and matches < 10400 and mode == -2 and match_frames != 0xFFFF and match_frames > 200 and s0_id == 0x0004 and s1_id == 0x0003 and s2_id == 0x0002"
+  },
+  {
+   "name": "fourway",
+   "when": "any",
+   "check": "matches >= 10400 and matches < 10500 and mode == -2 and match_frames != 0xFFFF and match_frames > 200 and s0_id == 0x0002 and s1_id == 0x0001 and s2_id == 0x0004 and s3_id == 0x0003"
+  },
+  {
+   "name": "cage",
+   "when": "any",
+   "check": "matches >= 10500 and matches < 10600 and mode == -2 and match_frames != 0xFFFF and match_frames > 200 and s0_id == 0x0002 and s1_id == 0x0004"
+  },
+  {
+   "name": "ladder",
+   "when": "any",
+   "check": "matches >= 10600 and matches < 10700 and mode == -2 and match_frames != 0xFFFF and match_frames > 200 and s0_id == 0x0002 and s1_id == 0x0003"
+  },
+  {
+   "name": "ironman",
+   "when": "any",
+   "check": "matches >= 10700 and matches < 10800 and mode == -2 and match_frames != 0xFFFF and match_frames > 200 and s0_id == 0x0002 and s1_id == 0x0001"
+  }
+ ],
+ "shot_when": "$c.mode -eq -2 -or $c.screen -eq 23",
+ "stories": [
+  "007_types.json"
+ ]
+}

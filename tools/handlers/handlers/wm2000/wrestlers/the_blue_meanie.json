@@ -1,0 +1,21 @@
+{
+ "about": "WrestleMania 2000 port: what was chosen by hand for him (moved out of mod\\gen's tables, 2026-11-12, handlers). His photo was made by hand (mod/src/meanie_photo.h's comment says how): it is his fix, kept as the_blue_meanie.photo.bin beside this.",
+ "string_id": "the_blue_meanie",
+ "key": "meanie",
+ "legacy_game_id": "0x060B",
+ "name": "THE BLUE MEANIE",
+ "short_name": "MEANIE",
+ "height": 13,
+ "weight": 192,
+ "music_slot": 29,
+ "video": 59,
+ "wm2000": {
+  "roster_index": 41,
+  "looks_index": 41,
+  "moves_file": "0x40C",
+  "abilities_file": "0x40B"
+ },
+ "moveset": {
+  "reference_ordinal": 26
+ }
+}

@@ -1,0 +1,32 @@
+{
+  "match": "rumble",
+  "wrestlers": [
+    "STEVE AUSTIN"
+  ],
+  "control": [
+    "cpu"
+  ],
+  "options": {
+    "rumble_entrants": 4,
+    "rumble_interval": 30,
+    "qa_op": 9,
+    "qa_op_at": 25
+  },
+  "seconds": 110,
+  "shots": 2.0,
+  "about": "F2 operator menu > RESET TO TITLE (2026-10-28 evening, the user: an option to reset the game): the arcade's single-player Royal Rumble, RESET 25 s into it (qa_op 9) -- the title and attract, no GAME OVER words",
+  "matches": 0,
+  "expect": [
+    {
+      "name": "the Rumble started",
+      "when": "any",
+      "check": "stage == 2 and mode == -2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "left before its 40th second",
+      "when": "always",
+      "check": "match_frames == 0xFFFF or match_frames < 2400"
+    }
+  ],
+  "shot_when": "$c.screen -eq 0"
+}

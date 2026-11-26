@@ -1,0 +1,51 @@
+{
+ "about": "WCW/nWo Revenge port: what was chosen by hand for him (moved out of mod\\gen's tables by handlers\\extract_fixes.py, 2026-11-12). Edit here; the handler reads nothing else that is his alone.",
+ "string_id": "rey_mysterio_b",
+ "key": "rey_b",
+ "legacy_game_id": "0x0119",
+ "name": "REY MYSTERIO",
+ "short_name": "REY",
+ "height": 6,
+ "weight": 55,
+ "music_slot": 78,
+ "video": 0,
+ "revenge": {
+  "moveset_file": "0x1B8",
+  "code": "0x304"
+ },
+ "moveset": {
+  "reference_ordinal": 48,
+  "allies": [
+   "0x0106",
+   "0x010C",
+   "0x010B"
+  ],
+  "weight_class": null,
+  "stance": null,
+  "slot_overrides": {
+   "235": 15410
+  },
+  "no_struggling_slam": true
+ },
+ "costumes": [
+  {
+   "capture": "rb_c1",
+   "slot": 0
+  }
+ ],
+ "skin": "no_mercy",
+ "photo_number": 127,
+ "second_look_of": "rey_mysterio",
+ "about_look": "the purple bodysuit with the red mask",
+ "photo": {
+  "photo": 127,
+  "shot": "data/revport/ports4/cap/cc_rey.png",
+  "box": [
+   193,
+   27,
+   243,
+   77
+  ],
+  "same_as": "rey"
+ }
+}

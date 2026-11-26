@@ -1,0 +1,33 @@
+{
+  "about": "2026-11-18 (valetfix): valet_entrance at an arcade arena -- the story's match at BASH AT THE BEACH (arena 12, its own close scene: arena_entrance.c): GODFATHER with HO, FULL SCREEN TITANTRONS off (the default); she walks out beside and behind him, not inside him",
+  "match": "arcade",
+  "wrestlers": [
+    "THE ROCK",
+    null
+  ],
+  "matches": 0,
+  "seconds": 250,
+  "shots": 1.0,
+  "options": {
+    "free_play": true,
+    "attract_demos": false,
+    "custom_story": 1,
+    "qa_story": 3
+  },
+  "shot_when": "$c.mode -eq 0 -and $c.screen -eq 42 -and $c.entrance_step -ge 1 -and $c.entrance_step -le 29",
+  "expect": [
+    {
+      "name": "the entrances ran",
+      "when": "any",
+      "check": "mode == 0 and screen == 42 and entrance_step >= 1 and entrance_step <= 29"
+    },
+    {
+      "name": "a match at BASH AT THE BEACH (arena 12)",
+      "when": "any",
+      "check": "mode == -2 and venue == 12"
+    }
+  ],
+  "stories": [
+    "009_valet_bash.json"
+  ]
+}

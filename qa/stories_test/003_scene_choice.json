@@ -1,0 +1,41 @@
+{
+  "title": "Scene Test: Choice",
+  "menu": "Choice Test",
+  "championship": "world",
+  "cast": { "rival": "THE ROCK", "ally": "MANKIND" },
+  "vars": { "trust": 0 },
+  "start": "ask",
+  "nodes": {
+    "ask": {
+      "chapter": "CHOICE TEST",
+      "scene": [
+        { "place": "boiler room", "cast": ["player", "ally"] },
+        { "say": "Want me in your corner tonight?", "who": "ally" },
+        { "ask": "Take {ally} along?", "options": ["Yes", "No"], "who": "player" },
+        { "if": "choice 1", "then": [ { "say": "CHOICE 1: Good call.", "who": "ally" } ],
+                            "else": [ { "say": "CHOICE 2: Your loss.", "who": "ally" } ] }
+      ],
+      "match": { "type": "single", "slots": ["player", ["rival", "KANE"]] },
+      "requirement": "Choice test: {player} vs {rival}.",
+      "branches": [
+        { "if": "choice 1", "set": { "trust": 1 }, "next": "two", "pages": ["Branch: choice 1."] },
+        { "if": "choice 2", "next": "two", "pages": ["Branch: choice 2."] },
+        { "next": "end", "pages": ["Branch: neither (a bug)."] }
+      ]
+    },
+    "two": {
+      "chapter": "CHOICE TEST 2",
+      "scene": [
+        { "place": "hall", "cast": ["player", "ally"] },
+        { "if": "choice 1", "then": [ { "say": "I've got your back. (choice 1 kept)", "who": "ally" } ],
+                            "else": [ { "say": "You're on your own. (choice 2 kept)", "who": "ally" } ] }
+      ],
+      "match": { "type": "single", "slots": ["player", ["rival", "KANE"]] },
+      "requirement": "Choice test, part two.",
+      "branches": [
+        { "if": "trust == 1", "next": "end", "pages": ["The end: trust 1."] },
+        { "next": "end", "pages": ["The end: trust 0."] }
+      ]
+    }
+  }
+}

@@ -1,0 +1,50 @@
+{
+ "about": "Player 1 at his controller (qa_ringstage 4 + 8 + 16: he walks out of the ring, up the aisle and the ramp to the stage, and fights there -- grapples, strikes, whips) against the CPU, who follows him up. (the stagestuck agent, 2026-11-24; the user: 'CPU wrestlers are still getting stuck on stages/ramps, walking in place') qa_ringstage 1024 (arena_ringstage.c qs_measure): for the first four men, on the match clock (30 ticks a second), the ticks each spends on the ramp or the stage (past the aisle's mouth, z 530) and the ticks he WALKS IN PLACE there -- on his feet and free to walk (state 1) with a direction held for more than 10 ticks running and under 12 units from where he was 10 ticks before. state.csv lj_a the CPUs' ticks on the ramp / stage, lj_b of them in place; the game's log has a 'stagestuck:' line for each stretch (his place, buttons, the CPU's last think, the walls he was pushed off). The check: at least a CPU man-minute up there, and in place at most half a second a man-minute (lj_b x 120 <= lj_a).",
+ "wrestlers": [
+  "THE ROCK",
+  "STEVE AUSTIN"
+ ],
+ "costumes": [
+  0,
+  0
+ ],
+ "arena": "MONDAY NITRO",
+ "control": [
+  "pad1",
+  "cpu"
+ ],
+ "matches": 1,
+ "seconds": 300,
+ "shots": 60.0,
+ "options": {
+  "qa_ringstage": 1053
+ },
+ "pads": [],
+ "expect": [
+  {
+   "name": "the match started",
+   "when": "any",
+   "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+  },
+  {
+   "name": "nobody's position went bad",
+   "when": "always",
+   "check": "finite(s0_x, s0_y, s0_z, s1_x, s1_y, s1_z)"
+  },
+  {
+   "name": "never a stage area: the old stage view (bs_tries: the area in play)",
+   "when": "always",
+   "check": "bs_tries < 10 or bs_tries >= 20"
+  },
+  {
+   "name": "the CPUs spent at least a man-minute on the ramp and the stage (lj_a: ticks, 30 a second)",
+   "when": "end",
+   "check": "lj_a >= 1800"
+  },
+  {
+   "name": "no CPU walks in place on the ramp or the stage: at most half a second a man-minute (lj_b x 120 <= lj_a)",
+   "when": "end",
+   "check": "lj_a > 0 and lj_b * 120 <= lj_a"
+  }
+ ]
+}

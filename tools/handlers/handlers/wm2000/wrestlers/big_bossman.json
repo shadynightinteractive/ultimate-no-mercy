@@ -1,0 +1,13 @@
+{
+ "about": "WrestleMania 2000's BIG BOSSMAN: what the handler is told for him (wm2kall, 2026-11-13). Everything else comes from the ROM.",
+ "string_id": "big_bossman",
+ "key": "big_bossman",
+ "wm2000": {
+  "roster_index": 12,
+  "game_id": "0x0107"
+ },
+ "moveset": {
+  "reference_ordinal": 39,
+  "reference_why": "No Mercy's own"
+ }
+}

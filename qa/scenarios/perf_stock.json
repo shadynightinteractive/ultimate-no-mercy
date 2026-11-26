@@ -1,0 +1,33 @@
+{
+  "about": "2026-11-03: the same match with No Mercy's own Rock and Austin: the baseline for the pace",
+  "wrestlers": [
+    "0x0001",
+    "0x0002"
+  ],
+  "control": [
+    "cpu",
+    "cpu"
+  ],
+  "arena": "RAW IS WAR",
+  "matches": 1,
+  "seconds": 180,
+  "shots": 20.0,
+  "expect": [
+    {
+      "name": "the match started",
+      "when": "any",
+      "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "no model's matrices ever went bad",
+      "when": "always",
+      "check": "bad_mtx == 0"
+    },
+    {
+      "name": "nobody's position went bad",
+      "when": "always",
+      "check": "finite(s0_x, s0_y, s0_z, s1_x, s1_y, s1_z)"
+    }
+  ],
+  "options": {}
+}

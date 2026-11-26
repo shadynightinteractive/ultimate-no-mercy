@@ -1,0 +1,32 @@
+{
+  "about": "2026-11-19, the user: 'In the arcade entrances, the walking wrestlers jitter. The game doesn't slow down, but something about the frame timing makes them jitter.' The arcade's Royal Rumble at RAW IS WAR (STEVE AUSTIN, the CPU playing him): the first entrances, each man walking out on the stage and down the aisle under the game's own entrance cameras. Run at the real pace (no -Speed, -Lockstep or -DrawShots: those change how pictures are timed), with WCW_VIEW_TRACE / WCW_VIEW_TRACE_XF set by the runner to measure, picture by picture, what moment of the game each picture shows and where the parts are on the screen",
+  "match": "rumble",
+  "wrestlers": [
+    "STEVE AUSTIN"
+  ],
+  "control": [
+    "cpu"
+  ],
+  "arena": "RAW IS WAR",
+  "options": {
+    "rumble_entrants": 4,
+    "rumble_interval": 60,
+    "titantron_screens": true,
+    "titantron_live": true
+  },
+  "matches": 1,
+  "seconds": 100,
+  "shots": 25,
+  "expect": [
+    {
+      "name": "the entrances ran",
+      "when": "any",
+      "check": "mode == 0 and screen == 42 and entrance_step >= 1 and entrance_step <= 29"
+    },
+    {
+      "name": "the arena is RAW IS WAR",
+      "when": "any",
+      "check": "venue == 0 and stage == 2"
+    }
+  ]
+}

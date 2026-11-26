@@ -1,0 +1,40 @@
+{
+  "about": "the stage up close from the ramp's foot (as raw_stage): the 3D set (big RAW IS WAR screen in its truss, WWF.com, the WWF doorway, curtains, the Attitude towers) at WM2000's stage place, WM2000's ramp meeting the deck's walkway (y 190 at z 1830), the deck's black front skirt down to the floor; the painter's order (no curtain over the screen, the walkway over the deck)",
+  "wrestlers": [
+    "STEVE AUSTIN",
+    "THE ROCK"
+  ],
+  "control": [
+    "cpu",
+    "cpu"
+  ],
+  "arena": "RAW IS WAR WM 2000",
+  "matches": 1,
+  "seconds": 50,
+  "shots": 6,
+  "options": {},
+  "camera": {
+    "eye": [
+      420,
+      420,
+      900
+    ],
+    "at": [
+      0,
+      500,
+      2200
+    ]
+  },
+  "expect": [
+    {
+      "name": "the match started",
+      "when": "any",
+      "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "the arena is ours (arena_current 13)",
+      "when": "any",
+      "check": "venue == 13 and stage == 2"
+    }
+  ]
+}

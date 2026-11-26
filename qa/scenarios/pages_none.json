@@ -1,0 +1,38 @@
+{
+  "about": "2026-10-30, the user: 'the game will dynamically allow any number of pages ... a JSON system ... the game should not break': no select_pages.json -- the game's own thirteen pages through the new code (roster_pages_n); Z on the select (the page list?), down, Z; then R round all. Pages dumped from the RAM after (qa\\pages_dump.py)",
+  "match": "arcade",
+  "matches": 0,
+  "seconds": 170,
+  "shots": 0.5,
+  "options": {
+    "free_play": true,
+    "attract_demos": false
+  },
+  "pads": [
+    "60.0 1 start 200",
+    "64.0 1 start 200",
+    "68.0 1 a 200",
+    "80.0 1 leftstick 250",
+    "84.0 1 dpdown 250",
+    "87.0 1 dpdown 250",
+    "90.0 1 leftstick 250",
+    "94.0 1 b 250",
+    "100.0 1 righttrigger 250",
+    "103.0 1 righttrigger 250",
+    "106.0 1 righttrigger 250",
+    "109.0 1 righttrigger 250",
+    "112.0 1 righttrigger 250",
+    "115.0 1 righttrigger 250",
+    "118.0 1 righttrigger 250",
+    "121.0 1 righttrigger 250",
+    "124.0 1 righttrigger 250",
+    "127.0 1 righttrigger 250",
+    "130.0 1 righttrigger 250",
+    "133.0 1 righttrigger 250",
+    "136.0 1 righttrigger 250",
+    "139.0 1 righttrigger 250",
+    "142.0 1 righttrigger 250"
+  ],
+  "expect": [],
+  "pages": "none"
+}

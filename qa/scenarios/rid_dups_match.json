@@ -1,0 +1,32 @@
+{
+  "about": "rosterids 2026-11-12: two exact copies of one folder wrestler (rock_on_austin, both pinning \"id\": \"0x0322\"; one nested two deep in WCW\\Attitude Era\\). WCW_WRESTLERS_DIR=scratch\u0007gents\rosterids\\w\\dups. Both are picked on the select and play one match against each other: the first by path keeps 0x0322 and the ID rock_on_austin, the second is rock_on_austin~2 with the number 0x015B (predict_ids.py).",
+  "match": "arcade",
+  "wrestlers": [
+    "0x0322",
+    "0x015B"
+  ],
+  "costumes": [
+    0,
+    0
+  ],
+  "matches": 0,
+  "seconds": 600,
+  "shots": 1.0,
+  "options": {
+    "free_play": true,
+    "attract_demos": false,
+    "qa_versus": 20
+  },
+  "expect": [
+    {
+      "name": "the match: rock_on_austin (0x0322, player 1) vs his exact copy rock_on_austin~2 (0x015B, CPU)",
+      "when": "any",
+      "check": "mode == -2 and match_frames != 0xFFFF and match_frames > 120 and s0_id == 0x0322 and s0_pad == 1 and s1_id == 0x015B and s1_pad == 0"
+    },
+    {
+      "name": "no model's matrices ever went bad",
+      "when": "always",
+      "check": "bad_mtx == 0"
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "title": "The Screwjob",
+  "menu": "The Screwjob",
+  "championship": "world",
+  "cast": {
+    "boss": ["vince_mcmahon", "shane_mcmahon"],
+    "rival": ["the_rock", "steve_austin", "kane"],
+    "pal": ["mankind", "kane", "big_show"]
+  },
+  "vars": { "deal": 0, "heat": 0 },
+  "start": "offer",
+  "nodes": {
+    "offer": {
+      "chapter": "THE OFFER",
+      "pages": ["Monday night. {player} is told to see\n{boss} before the show."],
+      "scene": {
+        "place": "locker room",
+        "cast": ["player", "boss"],
+        "steps": [
+          { "say": "So you're {player.nickname}.\nThe people love you. I don't.", "who": "boss" },
+          { "say": { "group:nwo": "Too sweet, old man.\nSay your piece and get out.",
+                     "the_rock": "{player.insult}, you're wasting\nThe Great One's time.",
+                     "default": "{player.catchphrase}" }, "who": "player" },
+          { "say": "You face {rival} tonight.\nLose, and there's money in it.", "who": "boss" },
+          { "ask": "Take the deal from {boss}?", "options": ["Take it", "Tell him off"], "who": "player", "store": "deal" },
+          { "if": "deal == 2", "then": [
+              { "set": { "heat": "+1" } },
+              { "say": "{player.signoff}", "who": "player" },
+              { "who": "player", "do": "taunt" },
+              { "who": "player", "do": "stand" },
+              { "say": "You'll regret that. Ask {rival}.", "who": "boss", "do": "point" }
+            ], "else": [
+              { "say": "Smart. Stay down when it counts.", "who": "boss" }
+            ] }
+        ]
+      },
+      "match": {
+        "type": "single",
+        "slots": ["player", "rival"],
+        "script": [
+          { "when": "rival in a hold", "do": "end", "winner": "rival", "how": "submission" },
+          { "when": "health rival < 20%", "do": "no dq" },
+          { "when": "time 5:00", "do": "end", "winner": "player", "how": "pinfall" }
+        ]
+      },
+      "requirement": "{player} vs {rival}.\nWatch the referee.",
+      "retries": 1,
+      "branches": [
+        { "if": "lose by submission and deal == 2", "set": { "heat": "+2" }, "next": "fallout",
+          "pages": ["The bell rang on a hold that was never\napplied. {boss} is laughing."] },
+        { "if": "win by submission or win by pinfall", "money": 2000, "next": "fallout",
+          "pages": ["{player} beat {rival}, clean.\n{boss} isn't laughing."] },
+        { "next": "fallout", "pages": ["{rival} takes it. Nobody says why."] }
+      ]
+    },
+    "fallout": {
+      "chapter": "THE FALLOUT",
+      "scene": [
+        { "place": "ring", "cast": [{ "who": "player", "at": 1 }] },
+        { "say": "{boss}! Get out here and\nsay it to my face!", "who": "player" },
+        { "tron": "boss", "say": ["You'll see me when I'm ready, {player}.", "Tonight it's {pal} and you\nagainst {rival} and his friend."] },
+        { "commentary": "jr", "say": "Business is about to pick up, King!" },
+        { "commentary": "king", "say": "{player} looks mad, JR!" },
+        { "if": "heat >= 2 and not player in corporation", "then": [
+            { "say": "No more deals, {boss}.", "who": "player" }
+          ], "else": [
+            { "say": "We'll settle this in the ring.", "who": "player" }
+          ] }
+      ],
+      "match": {
+        "teams": [["player", "pal"], ["rival", ["undertaker", "kurt_angle"]]],
+        "rules": "no dq",
+        "arena": "WrestleMania"
+      },
+      "requirement": "Tag match: {player} and {pal}\nvs {rival}.",
+      "branches": [
+        { "if": "win", "money": 5000, "next": "end", "pages": ["{player} has the last word.\n{boss} leaves the building.", "THE END"] },
+        { "next": "end", "pages": ["{boss} still runs the show.\nFor now.", "THE END"] }
+      ]
+    }
+  }
+}

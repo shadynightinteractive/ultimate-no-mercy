@@ -1,0 +1,28 @@
+{
+  "about": "visualfix 2026-11-15, the user's playtest item 2: 'grid-like lines on the select-screen backgrounds'. The Superstar Select's backdrop is 64 x 30 tiles; drawn filtered above 320 x 240, each seam sampled the tile's far edge (the repeat on): a line every 256 / 120 px at 1280 x 960 (QA 2026-11-15_095451 shot 011.7s). Now flat draws within their tile hold their edges (arcade_view.cpp hold_edges). hd_select's route to the select (qa_versus 20); shots on it. Check (qa_checks.py seams <run>): on the select's shots the seam columns (x = 256 k) and rows (y = 120 k) are no rougher than 1.5 x their neighbours (before: several times). (no2k15, 2026-11-23: the two WWE 2K15 test slots, 0x011A / 0x011B, are removed from the game -- stock Steve Austin 0x0002 and The Rock 0x0001 in their places here)",
+  "match": "arcade",
+  "wrestlers": [
+    "0x0002",
+    "0x0001"
+  ],
+  "costumes": [
+    0,
+    0
+  ],
+  "matches": 0,
+  "seconds": 240,
+  "shots": 1.0,
+  "options": {
+    "free_play": true,
+    "attract_demos": false,
+    "qa_versus": 20,
+    "qa_variant": 1
+  },
+  "expect": [
+    {
+      "name": "the CPU's pick: The Rock",
+      "when": "any",
+      "check": "(bs_step & 0xFFFF) == 0x0001"
+    }
+  ]
+}

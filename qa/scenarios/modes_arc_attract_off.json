@@ -1,0 +1,14 @@
+{
+  "about": "2026-11-07, the two modes phase 2 (W9): Arcade with ATTRACT off -- the boot as today, then the title waits with INSERT COIN: no intro movie, no demo match. Nothing pressed. state.csv (qa_modes) bs_tries bit 0 = 1 (Arcade).",
+  "match": "arcade",
+  "matches": 0,
+  "seconds": 200,
+  "shots": 2.0,
+  "options": { "qa_modes": 1, "attract_arcade": false, "free_play": false },
+  "expect": [
+    { "name": "Arcade all along", "when": "always", "check": "(bs_tries & 1) == 1" },
+    { "name": "the title came up", "when": "any", "check": "mode == 0 and screen == 0 and (bs_step & 0x8000) != 0" },
+    { "name": "never an attract demo", "when": "always", "check": "mode != -6" },
+    { "name": "on the title at the end", "when": "end", "check": "mode == 0 and screen == 0 and (bs_step & 0x8000) != 0" }
+  ]
+}

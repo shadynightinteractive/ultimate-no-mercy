@@ -1,0 +1,26 @@
+{
+  "about": "ctrlsave 2026-11-25: the second start after ctl_mode_save_6btn (UNM_GAME = its copy): CONTROL MODE left as the game saved it (keep_options); it must come up 6-BUTTON and stay so.",
+  "match": "arcade",
+  "matches": 0,
+  "seconds": 35,
+  "shots": 5.0,
+  "keep_options": [
+    "controls"
+  ],
+  "options": {
+    "game_mode": "Regular",
+    "qa_ctlmode": true
+  },
+  "expect": [
+    {
+      "name": "the settings were read: CONTROL MODE 6-BUTTON, as the last start saved it",
+      "when": "any",
+      "check": "(bs_tries & 4) == 4 and (bs_grabs & 0xFF) == 2"
+    },
+    {
+      "name": "CONTROL MODE 6-BUTTON all along once read",
+      "when": "always",
+      "check": "(bs_tries & 4) == 0 or (bs_tries & 1) == 1"
+    }
+  ]
+}

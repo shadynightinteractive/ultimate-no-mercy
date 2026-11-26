@@ -1,0 +1,32 @@
+{
+  "about": "playtest2 2026-11-16, the user's playtest item 9: 'the Royal Rumble's time / entrants display at the top is garbled, original game mode only'. Cause (playtest2): the lift dropped a parameter -- tools/lift/mips.py counts every `sw $sN, off($sp)` as a register kept for the caller, so a value passed on as a stack parameter looked unread and converted callers left the register out. show_player_hud_counts (0x800E0A0C, converted in 0.80) puts the two digits of the 'men left to enter' count through build_picture_display_list with three parameters; the original passes the digit's y as a fourth, a3 = (float) t0 (0x800E0C04). The digits went to a stale y: over the clock, not in their place. The Arcade Rumble draws its own strip (the mod's), so only Regular showed it. vf_rumble_hud_regular's route and shots. LOOK at the top strip in every shot: the count's two digits in their own place (x ~175..219 of 320 per visualfix), never over the clock (00:mm, x ~233..305); as entrants come in the count steps down and stays put. visualfix 2026-11-15, the user's playtest item 9: 'the Rumble time / entrants display at the top is garbled, original game mode only' (shot 8: STARRCADE, Regular: the clock 00:19 in its place with two glyphs over it at about HUD x 244 and 265; the entrant count not at its own place, x 175..219). Not reproduced from the code or from the 12:00 crash's RAM (there the count and the clock sat right: 175..219 and 233..305, y 0). A Regular Rumble from the game's own menus (modes_reg_rumble's route), TIME COUNT on as Regular's preset has it (the :10 countdown at each entrance); shots of the match every 0.5 s. LOOK at the top strip over time: when the count's digits leave 175..219, what came just before (an entrant's countdown, a new minute, an elimination); an Arcade Rumble's strip (rumble_ring10) is right.",
+  "match": "arcade",
+  "wrestlers": [
+    "STEVE AUSTIN",
+    null
+  ],
+  "matches": 0,
+  "seconds": 600,
+  "shots": 0.5,
+  "options": {
+    "game_mode": "Regular",
+    "qa_modes": 1,
+    "qa_reg": 257,
+    "rumble_entrants": 12,
+    "rumble_ring": 5,
+    "rumble_interval": 10
+  },
+  "expect": [
+    {
+      "name": "Regular all along",
+      "when": "always",
+      "check": "(bs_tries & 1) == 0"
+    },
+    {
+      "name": "the game-menu Rumble running",
+      "when": "any",
+      "check": "mode == -2 and match_frames != 0xFFFF and match_frames > 300"
+    }
+  ],
+  "shot_when": "$c.mode -eq -2"
+}

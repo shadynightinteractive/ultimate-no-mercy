@@ -1,0 +1,43 @@
+{
+  "about": "visualfix 2026-11-15, the user's playtest item 3 (second part): the Rumble options (NUMBER) page's labels over the title and the tab bar. modes_reg_rumble_rows as it is (the same route, presses and checks) for its shots of screen 9. Check (qa_checks.py rows <run>): on the page's shots no big green number pixels in the tab bar's band (y 165..222 of 960) and no white caption pixels on the title's band (y 40..125, x 100..760) -- before (QA 2026-11-15_094928 shot 125.0s) both were full of them. LOOK: four captions each just above its number, all below the tabs. 2026-11-07, the two modes phase 3 (W10b): the Royal Rumble's NUMBER page with its own rows -- NUMBER (by one), IN THE RING AT ONCE, ENTRY TIME (sec), STARTS WITH -- each a widget like the game's under its caption. Regular, Multi Play > Royal Rumble > ORDER Random > NUMBER: from F2's 12 / 6 / 30 / 2 the driver (qa_reg 2305 = 1 + 256 + 2048) presses UP x3, RIGHT, UP x2, RIGHT, DOWN x2, RIGHT, UP (on the controller) -> 15 / 8 / 20 / 4; A. Expect the match: 15 entrants, ring 8, every 20 s, four in the ring at the bell; F2's values unchanged (SUPERSTARS IN IT still 12). Shots of the page. state.csv (qa_modes): on screen 9 bs_step = row 0's widget, presses << 24; in the match bs_step = entrants | ring << 8 | interval << 16 | gm_live << 24 | rr_mode << 28.",
+  "match": "arcade",
+  "wrestlers": [
+    "STEVE AUSTIN",
+    null
+  ],
+  "matches": 0,
+  "seconds": 600,
+  "shots": 6.0,
+  "options": {
+    "game_mode": "Regular",
+    "qa_modes": 1,
+    "qa_reg": 2305,
+    "rumble_entrants": 12,
+    "rumble_ring": 6,
+    "rumble_interval": 30,
+    "rumble_start4": false
+  },
+  "expect": [
+    {
+      "name": "the NUMBER page (screen 9)",
+      "when": "any",
+      "check": "mode == 0 and screen == 9"
+    },
+    {
+      "name": "the match as the page set it: 15 entrants, ring 8, every 20 s, live",
+      "when": "any",
+      "check": "mode == -2 and (bs_step & 255) == 15 and ((bs_step >> 8) & 255) == 8 and ((bs_step >> 16) & 255) == 20 and (bs_step >> 28) == 3"
+    },
+    {
+      "name": "four in the ring at the bell (STARTS WITH 4)",
+      "when": "any",
+      "check": "mode == -2 and match_frames != 0xFFFF and match_frames > 30 and match_frames < 150 and in_ring == 4"
+    },
+    {
+      "name": "F2's SUPERSTARS IN IT still 12",
+      "when": "always",
+      "check": "mode != -2 or (bs_grabs >> 16) in (12, 0)"
+    }
+  ],
+  "shot_when": "($c.mode -eq 0 -and $c.screen -eq 9) -or ($c.mode -eq -2 -and $c.match_frames -lt 300)"
+}

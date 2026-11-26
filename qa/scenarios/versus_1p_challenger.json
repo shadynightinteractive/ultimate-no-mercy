@@ -1,0 +1,44 @@
+{
+  "about": "2026-10-31: a challenger in one player's Versus (the championship list's Versus row). qa_versus as versus_1p (Austin for the player, the Rock for the CPU), qa_versus_p2 1: player 2's Start 10 s into that match -- HERE COMES A NEW CHALLENGER, the match left, Versus's MATCH page for two (1P vs 2P); both pick (A), the challenge match (the CPU plays both after 20 s so it ends); the loser out, the winner back on Versus's MATCH page as one player's Versus (not the championship list); B there: the list. state.csv: bs_grabs = sp_versus | game_mode << 4 | goal << 8 | challenge_on << 12; bs_step = the driver's step | DOWN's row << 8 | the round << 16 (1: the challenge) | the players in (bit 0 player 1, bit 1 player 2) << 20",
+  "match": "arcade",
+  "wrestlers": [
+    "STEVE AUSTIN",
+    "THE ROCK"
+  ],
+  "matches": 0,
+  "seconds": 1100,
+  "shots": 1.0,
+  "options": {
+    "free_play": true,
+    "attract_demos": false,
+    "qa_versus": 20,
+    "qa_versus_p2": 1
+  },
+  "expect": [
+    {
+      "name": "one player's Versus match: player 1 against the CPU",
+      "when": "any",
+      "check": "mode == -2 and match_frames != 0xFFFF and match_frames > 120 and s0_pad == 1 and s1_pad == 0"
+    },
+    {
+      "name": "the challenger: Versus's MATCH page for two, a challenge on",
+      "when": "any",
+      "check": "mode == 0 and screen == 7 and ((bs_grabs >> 12) & 15) == 1 and ((bs_grabs >> 4) & 15) == 2"
+    },
+    {
+      "name": "the challenge match: controller 1 against controller 2",
+      "when": "any",
+      "check": "mode == -2 and match_frames != 0xFFFF and match_frames > 120 and s0_pad == 1 and s1_pad == 2"
+    },
+    {
+      "name": "the challenge decided: one player, back on Versus's MATCH page as his own Versus",
+      "when": "any",
+      "check": "mode == 0 and screen == 7 and (bs_grabs & 15) == 1 and ((bs_grabs >> 4) & 15) == 1 and ((bs_grabs >> 12) & 15) == 0 and ((bs_step >> 16) & 15) == 1 and ((bs_step >> 20) & 3) in (1, 2)"
+    },
+    {
+      "name": "B there: the championship list, the cursor on Versus",
+      "when": "any",
+      "check": "mode == 0 and screen == 22 and (bs_step & 255) >= 12 and bs_tries == 1110 and (bs_grabs & 15) == 0"
+    }
+  ]
+}

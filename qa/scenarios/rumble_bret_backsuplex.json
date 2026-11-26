@@ -1,0 +1,52 @@
+{
+  "about": "the Royal Rumble breakage (2026-10-27: the arcade's memory zeroed, announcers in the ring, wrestlers clipping, slowdown) the way the user hit it: Bret Hart (the player, slot 0) does his back suplex from a real back grapple over and over -- the CPU fights for him, and every few seconds the mod (qa_bsuplex) puts him behind a man standing in the ring, grabs him and does entry 73 (Falling Back Drop, his Revenge animation). The exe's guard (WCW_GUARD_MOD) makes the arcade's packs read-only: a write there is a crash report naming the writer",
+  "match": "rumble",
+  "wrestlers": [
+    "BRET HART"
+  ],
+  "control": [
+    "cpu"
+  ],
+  "options": {
+    "rumble_entrants": 20,
+    "rumble_interval": 10,
+    "announcers": true,
+    "commentary": true,
+    "qa_bsuplex": 1
+  },
+  "matches": 1,
+  "seconds": 600,
+  "shots": 10,
+  "expect": [
+    {
+      "name": "the Rumble started",
+      "when": "any",
+      "check": "stage == 2 and mode == -2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "Bret Hart is in it",
+      "when": "match",
+      "check": "s0_id == 0x060D or s1_id == 0x060D or s2_id == 0x060D or s3_id == 0x060D"
+    },
+    {
+      "name": "the script got him into back grapples",
+      "when": "end",
+      "check": "bs_grabs >= 5"
+    },
+    {
+      "name": "the back suplex was done from them",
+      "when": "end",
+      "check": "forced >= 5"
+    },
+    {
+      "name": "no model's matrices ever went bad",
+      "when": "always",
+      "check": "bad_mtx == 0"
+    },
+    {
+      "name": "the announcers' poses stayed numbers",
+      "when": "always",
+      "check": "ann_fallbacks == 0"
+    }
+  ]
+}

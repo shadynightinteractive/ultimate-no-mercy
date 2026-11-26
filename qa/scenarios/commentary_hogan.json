@@ -1,0 +1,39 @@
+{
+  "about": "2026-10-30, the user: Hogan's Legends of WrestleMania lines (the ones the user kept, scratch\u0007udio\\Hogan clips\\Keep) on their events -- commentary.pak rows 6572-6595 (clips 5401-5410; each twice: Legends' and WWE '13's sets, so they play on every Commentary lines setting); the exe logs each line said ([commentary] line N = lines.tsv row N)",
+  "wrestlers": [
+    "HOLLYWOOD HOGAN",
+    "THE ROCK"
+  ],
+  "costumes": [
+    0,
+    0
+  ],
+  "arena": "RAW IS WAR",
+  "control": [
+    "cpu",
+    "cpu"
+  ],
+  "special": [
+    true,
+    false
+  ],
+  "matches": 1,
+  "seconds": 420,
+  "shots": 4,
+  "options": {
+    "commentary": true,
+    "commentary_talk": "Nonstop"
+  },
+  "expect": [
+    {
+      "name": "the match started",
+      "when": "any",
+      "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "Hogan is in slot 0",
+      "when": "match",
+      "check": "s0_id == 0x0105"
+    }
+  ]
+}

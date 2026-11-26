@@ -1,0 +1,38 @@
+{
+  "wrestlers": [
+    "0x010C",
+    "STEVE AUSTIN"
+  ],
+  "costumes": [
+    0,
+    0
+  ],
+  "control": [
+    "cpu",
+    "cpu"
+  ],
+  "arena": "RAW IS WAR",
+  "matches": 2,
+  "seconds": 1500,
+  "speed": 6,
+  "shots": 2,
+  "options": {
+    "qa_area_trace": 3,
+    "qa_outfight": 600,
+    "qa_lumberjacks": 12,
+    "qa_place_keep_off": 1
+  },
+  "expect": [
+    {
+      "name": "the match started",
+      "when": "any",
+      "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "no wrestler's position ever went bad",
+      "when": "always",
+      "check": "finite(s0_x, s0_y, s0_z, s1_x, s1_y, s1_z)"
+    }
+  ],
+  "about": "ljround9 (QA trace, not a check): Lex Luger (his Revenge library moves) and Steve Austin, CPU vs CPU, a Lumberjack match (12 lumberjacks) -- every 10 s the two put on the floor at the next of six spots (logic.c qa_outfight_step: by the barricade, by the apron's edge, the aisle's foot, a corner) and every man's place bits and grapple-move files traced in the game's log (qa_area_trace_step, 'areatr') (natural: no move forced); _off: movex.c keep_place off (the before)"
+}

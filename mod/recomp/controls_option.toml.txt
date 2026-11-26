@@ -1,0 +1,8 @@
+[[manifest.config_options]]
+id = "controls"
+name = "Control mode (Regular = N64, Arcade = 6-BUTTON)"
+description = "N64 (stored as Regular): No Mercy's own controls. 6-BUTTON (stored as Arcade): six buttons (STRIKE, GRAPPLE, RUN, DEFEND, ACTION, SPECIAL) and the joystick; SPECIAL taunts or, in a tie-up with SPECIAL lit, does the finisher; DEFEND + ACTION together picks whom you're after."
+type = "Enum"
+options = [ "Regular", "Arcade" ]
+default = "Regular"
+

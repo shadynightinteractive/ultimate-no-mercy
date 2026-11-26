@@ -1,0 +1,36 @@
+{
+  "match": "rumble",
+  "wrestlers": [
+    "STEVE AUSTIN"
+  ],
+  "control": [
+    "cpu"
+  ],
+  "options": {
+    "rumble_entrants": 4,
+    "rumble_interval": 30,
+    "qa_p2": 1800
+  },
+  "seconds": 75,
+  "shots": 1.0,
+  "about": "2026-10-29, the user: a challenger in the arcade's Rumble -- HERE COMES A NEW CHALLENGER stayed up and the Rumble went on. Player 2's Start 30 s into the game (qa_p2 1800), the run ending with the banner up (the route's state in the dump: QA_STATE + 0x380..)",
+  "matches": 0,
+  "expect": [
+    {
+      "name": "the Rumble started",
+      "when": "any",
+      "check": "stage == 2 and mode == -2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "the challenger's match: the Rumble left",
+      "when": "any",
+      "check": "screen == 7"
+    },
+    {
+      "name": "Versus's MATCH page kept (player 2 not dropped, the Rumble not back)",
+      "when": "end",
+      "check": "screen == 7"
+    }
+  ],
+  "shot_when": "$c.screen -eq 7"
+}

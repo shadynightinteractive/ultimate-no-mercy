@@ -1,0 +1,53 @@
+{
+ "about": "(2026-11-17, pipefix: why \"forced\" stays 0 -- on 0.83 too. qa_fsub 4 changes a move only where the game itself picks one in entry 123's place, his strong front grapples (entries 113..140); in this CPU-vs-CPU match -- the same match every run: variant124 and variant125 made the same 29 moves at the same frames, qa084 2026-11-17_020941 / 021255 -- WrestleMania 2000 Jericho never picks one in 7,140 match frames (his moves come from entries 2..10, 73..80, 172..190, 217, 231..266), so there is nothing to change. No Mercy's Jericho in the control picks that place at match frame 1846 and is forced (move 4002, entry 124). To test these steps: a match where he does pick one (another opponent, arena or seconds give another match), or the plain force as rev_jericho_slot123 has it.) 2026-11-15 (gameplayfix, item 5): Chris Jericho (WrestleMania 2000, folder 0x03BA) against Lex Luger in MONDAY NITRO, his entry 127 forced where the game picks a move of slot 123's place (qa_fsub 4, movex.c movex_qa_same_place, as movesteps' ms_rock_step). Slot 123 is No Mercy's own Tornado DDT 4000 (it plays WrestleMania 2000's 3620's animations); entry 127 is its step 8, which the folder (movesteps, 2026-11-13) plays as WrestleMania 2000's step 8 of 3620 -- library 'wm2000:3528@4008', animations WrestleMania 2000 shares with the same step of its 3450 and 3520 -- on No Mercy's step 4008's record (its bytes from 0x12 on, the placing, are No Mercy's). One of the three Jerichos the playtest's void can come from (shot 6). Expect: nobody at the mat's height beyond the apron. Compare with nm_jericho_variant124_control -- DIAGNOSIS: ring_void_guard off (qa_void_off 1), so the void shows if the move makes it",
+ "wrestlers": [
+  "0x03BA",
+  "LEX LUGER"
+ ],
+ "costumes": [
+  0,
+  0
+ ],
+ "arena": "MONDAY NITRO",
+ "control": [
+  "cpu",
+  "cpu"
+ ],
+ "matches": 1,
+ "seconds": 240,
+ "shots": 2.0,
+ "force": {
+  "slot": 0,
+  "entries": [
+   0,
+   291
+  ],
+  "as": 127
+ },
+ "expect": [
+  {
+   "name": "the match started",
+   "when": "any",
+   "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+  },
+  {
+   "name": "Jericho's forced move ran",
+   "when": "end",
+   "check": "forced > 0"
+  },
+  {
+   "name": "nobody's position went bad",
+   "when": "always",
+   "check": "finite(s0_x, s0_y, s0_z, s1_x, s1_y, s1_z)"
+  },
+  {
+   "name": "nobody at the mat's height beyond the apron (the void)",
+   "when": "always",
+   "check": "not (s0_y > 60 and (abs(s0_x) > 360 or abs(s0_z) > 360)) and not (s1_y > 60 and (abs(s1_x) > 360 or abs(s1_z) > 360))"
+  }
+ ],
+ "options": {
+  "qa_fsub": 4,
+  "qa_void_off": 1
+ }
+}

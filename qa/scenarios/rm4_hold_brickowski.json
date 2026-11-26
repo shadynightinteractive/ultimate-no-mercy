@@ -1,0 +1,59 @@
+{
+ "about": "revmoves3 round 4 (2026-11-21): Brickowski (0x0382, Revenge import, slot 0, CPU) against The Rock (CPU), singles; his entry 187 -- 'revenge:180c_180d@5902', No Mercy's 6852 byte for byte (a move that goes on to its hold, 6853) -- forced wherever the game picks a move of the same place (qa_fsub 4). Entry 187 is a strike's next step (the game makes 187 .. 203 from the strikes at 186 .. 202): the game plays whatever is there as a strike. Run on 6852 (2026-11-21_012205) and on 5902 (011701) alike: in the strike states, never going on. So the slot keeps 5902; qa\\move_audit.py static counts such steps as checked.",
+ "match": "singles",
+ "wrestlers": [
+  "0x0382",
+  "THE ROCK"
+ ],
+ "costumes": [
+  0,
+  0
+ ],
+ "control": [
+  "cpu",
+  "cpu"
+ ],
+ "arena": "RAW IS WAR",
+ "matches": 0,
+ "seconds": 360,
+ "speed": 8,
+ "shots": 0,
+ "force": {
+  "slot": 0,
+  "entries": [
+   0,
+   291
+  ],
+  "as": 187
+ },
+ "options": {
+  "qa_fsub": 4
+ },
+ "expect": [
+  {
+   "name": "the match started",
+   "when": "any",
+   "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+  },
+  {
+   "name": "Brickowski played his entry 187's move (5902 before, 6852 after)",
+   "when": "any",
+   "check": "s0_move == 5902 or s0_move == 6852"
+  },
+  {
+   "name": "his entry 187's move is played as a strike (34-36), whatever its record",
+   "when": "any",
+   "check": "(s0_move == 5902 or s0_move == 6852) and (s0_phase == 34 or s0_phase == 35 or s0_phase == 36)"
+  },
+  {
+   "name": "no model's matrices ever went bad",
+   "when": "always",
+   "check": "bad_mtx == 0"
+  },
+  {
+   "name": "nobody's position went bad",
+   "when": "always",
+   "check": "finite(s0_x, s0_y, s0_z, s1_x, s1_y, s1_z)"
+  }
+ ]
+}

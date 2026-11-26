@@ -1,0 +1,48 @@
+{
+  "about": "2026-11-01, the user (0.38.12): 'Giant has a piece of his upper leg missing, like a polygon or texture didn't come over'. The Giant (costume 1, the red tights) and The Rock both idle (pad1 / pad2: nobody presses), a fixed camera close on the Giant standing in his corner (world (180, -180)), at thigh height, from the front. The thighs whole: the shots looked at",
+  "wrestlers": [
+    "THE GIANT",
+    "THE ROCK"
+  ],
+  "costumes": [
+    1,
+    0
+  ],
+  "arena": "RAW IS WAR",
+  "control": [
+    "pad1",
+    "pad2"
+  ],
+  "camera": {
+    "eye": [
+      110,
+      170,
+      -110
+    ],
+    "at": [
+      180,
+      160,
+      -180
+    ]
+  },
+  "matches": 0,
+  "seconds": 90,
+  "shots": 4,
+  "expect": [
+    {
+      "name": "the match started",
+      "when": "any",
+      "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "The Giant is in slot 0, his costume",
+      "when": "match",
+      "check": "s0_id == 0x010A and s0_costume == 1"
+    },
+    {
+      "name": "no model's matrices ever went bad",
+      "when": "always",
+      "check": "bad_mtx == 0"
+    }
+  ]
+}

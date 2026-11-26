@@ -1,0 +1,44 @@
+{
+  "about": "2026-11-22 lumberjack5: the user's b33 issues traced in the game's log (qa_lj_trace 3): what moves at the posts each step (the twitching), where player 1's strikes go when he goes for a lumberjack (qa_lj_p1 7: out by himself he walks to the nearest lumberjack and strikes him), each hurt on a lumberjack near him and whether it was put back, each roll-in hold's grab from the front or behind. One match; the reading is the log, the checks only that it ran.",
+  "match": "singles",
+  "wrestlers": [
+    "STEVE AUSTIN",
+    "THE ROCK"
+  ],
+  "costumes": [
+    0,
+    0
+  ],
+  "control": [
+    "pad1",
+    "cpu"
+  ],
+  "arena": "RAW IS WAR",
+  "options": {
+    "qa_lumberjacks": 12,
+    "qa_lj_out": 30,
+    "qa_lj_p1": 7,
+    "qa_lj_trace": 3
+  },
+  "matches": 1,
+  "seconds": 330,
+  "speed": 6,
+  "shots": 10,
+  "shot_when": "$c.match_state -eq 1",
+  "pads": [
+    "9999 1 back 10",
+    "9999 2 back 10"
+  ],
+  "expect": [
+    {
+      "name": "the match started",
+      "when": "any",
+      "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "player 1 (slot 0) is driven by a controller -- the human path, as the user plays it",
+      "when": "match",
+      "check": "(lj_o >> 31) == 1"
+    }
+  ]
+}

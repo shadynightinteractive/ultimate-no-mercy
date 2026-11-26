@@ -1,0 +1,15 @@
+{
+  "about": "the struggling slam fix (scratch/struggle2/STRUGGLE.md): CPU Austin vs CPU Rock (both heavyweights), every front grapple of Austin's (entries 1-60) done as his entry 4, the Scoop Slam (a lift: record flags without 0x2000). With match record 1 overflowed by the announcers Rock is a 'super heavyweight' and the slam becomes entry 159 (move 4550, the struggling body slam). Needs fix_announcer_overflow.patch + qa_move_log_offsets.patch (s0_move = the real move). After: check_run.py on the run folder (record 1 not F5251300, Rock heavyweight).",
+  "wrestlers": ["STEVE AUSTIN", "THE ROCK"],
+  "control": ["cpu", "cpu"],
+  "arena": "RAW IS WAR",
+  "matches": 0,
+  "seconds": 180,
+  "shots": 2.0,
+  "force": { "slot": 0, "entries": [1, 60], "as": 4 },
+  "expect": [
+    { "name": "the match started", "when": "any", "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30" },
+    { "name": "Austin's Scoop Slam went through on Rock", "when": "match", "check": "s0_move == 270" },
+    { "name": "never the struggling body slam / suplex on Rock", "when": "always", "check": "s0_move != 4550 and s0_move != 4560" }
+  ]
+}

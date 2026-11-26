@@ -1,0 +1,316 @@
+{
+  "title": "WWF vs WCW: The Invasion",
+  "menu": "WWF vs WCW: Invasion",
+  "championship": "world",
+  "cast": { "hogan": "HOLLYWOOD HOGAN", "boss": "VINCE MCMAHON", "buddy": "STEVE AUSTIN" },
+  "vars": { "war": 0, "nwo": 0 },
+  "start": "monday_night",
+  "nodes": {
+    "monday_night": {
+      "chapter": "MONDAY NIGHT WAR",
+      "pages": [
+        "The Monday Night War is raging.\nWCW is losing, and losing ugly.",
+        "Tonight, two black trucks roll\ninto the RAW IS WAR parking lot.",
+        "Spray painted on the side:\nnWo. The invasion has begun."
+      ],
+      "scene": {
+        "place": "ring",
+        "cast": [{ "who": "boss", "at": 1 }],
+        "steps": [
+          { "who": "boss", "do": "mic", "say": "Let me make something\nperfectly clear to WCW!" },
+          { "who": "boss", "do": "shout", "say": "This is MY company!\nMY ring! MY World Wrestling\nFederation!" },
+          { "who": "boss", "do": "point", "say": "Anybody wearing those three\nletters has no chance...\nin HELL!" },
+          { "place": "parking lot", "cast": [{ "who": "player", "at": 2 }] },
+          { "who": "SCOTT HALL", "do": "walk", "door": 1 },
+          { "who": "SCOTT HALL", "say": "Hey yo.\nSay hello to the bad guy." },
+          { "who": "SCOTT HALL", "say": "You know who we are.\nYou know why we're here, chico." },
+          { "who": "KEVIN NASH", "do": "stand", "at": 3 },
+          { "who": "KEVIN NASH", "say": "Vince wants a war? Fine.\nBig Sexy brought the army." },
+          { "who": "KEVIN NASH", "say": "And you're the message\nwe're sending the old man." },
+          { "who": "player", "do": "bring it", "say": "Then come get some.\nThis is WWF country." }
+        ]
+      },
+      "match": { "type": "single", "slots": ["player", ["SCOTT HALL", "RANDY SAVAGE", "KEVIN NASH"]],
+                 "rules": "no dq", "arena": "RAW IS WAR",
+                 "runins": [{ "who": "KEVIN NASH", "helps": "opponents" }] },
+      "requirement": "No DQ: {player} vs {SCOTT HALL}.\nWatch out for {KEVIN NASH}!",
+      "branches": [
+        { "if": "win", "set": { "war": "+1" }, "money": 1000,
+          "pages": ["{player} pins {SCOTT HALL}!\nThe Outsiders run for the trucks.",
+                    "In the back, Vince McMahon\nis smiling. For now."],
+          "next": "the_offer" },
+        { "pages": ["Jackknife! {KEVIN NASH} leaves\n{player} laying in the ring.",
+                    "Three letters spray painted\non the mat: nWo."],
+          "next": "the_offer" }
+      ]
+    },
+
+    "the_offer": {
+      "chapter": "THE OFFER",
+      "pages": ["Vince sends {player} to invade\nNitro. But someone is waiting\nbackstage..."],
+      "scene": {
+        "place": "hall",
+        "cast": [{ "who": "player", "at": 2 }],
+        "steps": [
+          { "who": "hogan", "do": "walk", "door": 1 },
+          { "who": "hogan", "do": "point", "say": "Well let me tell you\nsomethin', brother!" },
+          { "who": "hogan", "say": "Vince has been workin' you to\nthe bone for peanuts, dude." },
+          { "who": "hogan", "say": "Hollywood can make you a\nmillionaire, brother.\nGuaranteed contract!" },
+          { "who": "hogan", "say": "Put on the black and white.\nJoin the New World Order!" },
+          { "ask": "Join the nWo?", "options": ["No. WWF for life.", "Too sweet, brother."], "who": "player" },
+          { "if": "choice 1", "then": [
+              { "who": "hogan", "do": "shout", "say": "Then whatcha gonna do\nwhen the nWo runs wild\non YOU, brother?!" }
+            ], "else": [
+              { "who": "hogan", "do": "laugh", "say": "Smart move, dude.\nNow prove you belong." }
+            ] },
+          { "who": "hogan", "say": "Either way, tonight you\nface the Macho Man, brother!" },
+          { "place": "locker room", "cast": [{ "who": "RANDY SAVAGE", "at": 1 }] },
+          { "who": "RANDY SAVAGE", "do": "shout", "say": "Ohhh yeahhh! The cream\nrises to the top, dig it!" },
+          { "who": "RANDY SAVAGE", "do": "fist up", "say": "{player}, the Macho Man is\ngonna snap into ya! Yeahhh!" }
+        ]
+      },
+      "match": { "type": "single", "slots": ["player", ["RANDY SAVAGE", "SCOTT HALL", "KEVIN NASH"]],
+                 "arena": "Monday Nitro" },
+      "requirement": "Live on Nitro: {player} vs\n{RANDY SAVAGE}.",
+      "branches": [
+        { "if": "choice 2 and win", "set": { "nwo": "+1" }, "money": 2000,
+          "pages": ["{player} pins the Macho Man...\nthen hugs {hogan}!",
+                    "The WWF locker room is stunned.\n{player} has jumped ship!"],
+          "next": "nwo_debut" },
+        { "if": "choice 2", "money": 1000,
+          "pages": ["{player} lost. {hogan}\nraises his hand anyway.",
+                    "\"Too sweet, brother.\"\n{player} is nWo now."],
+          "next": "nwo_debut" },
+        { "if": "choice 1 and win", "set": { "war": "+1" }, "money": 1000,
+          "pages": ["{player} beats {RANDY SAVAGE}\nin WCW's own building!",
+                    "{hogan} watches from the stage.\nHe is NOT smiling, brother."],
+          "next": "no_chance" },
+        { "pages": ["The Macho elbow off the top!\n{player} is pinned on Nitro.",
+                    "But {player} said no to Hogan.\nVince McMahon took notice."],
+          "next": "no_chance" }
+      ]
+    },
+
+    "no_chance": {
+      "chapter": "NO CHANCE IN HELL",
+      "scene": {
+        "place": "locker room",
+        "cast": [{ "who": "boss", "at": 1 }, { "who": "player", "at": 2 }],
+        "steps": [
+          { "who": "boss", "say": "You turned down Hogan's money.\nDamn it, I respect that!" },
+          { "who": "boss", "do": "point", "say": "But this is a WAR, pal.\nAnd wars have casualties." },
+          { "who": "buddy", "do": "stand", "at": 3 },
+          { "who": "buddy", "say": "Vince. Nobody asked you.\nShut your mouth." },
+          { "who": "buddy", "say": "I don't like you. Never have.\nBut those WCW punks came\ninto MY house." },
+          { "who": "buddy", "say": "{KEVIN NASH} is out in the\nparking lot. Go stomp\na mudhole in him." },
+          { "who": "buddy", "do": "fist up", "say": "And that's the bottom line,\n'cause Stone Cold said so!" },
+          { "who": "boss", "do": "shout", "say": "No rules! No referee!\nI want them OUT of my building!" }
+        ]
+      },
+      "match": { "type": "single", "slots": ["player", ["KEVIN NASH", "SCOTT HALL", "RANDY SAVAGE"]],
+                 "location": "parking lot",
+                 "runins": [{ "who": "SCOTT HALL", "helps": "opponents" }, { "who": "buddy", "helps": "player" }] },
+      "requirement": "Parking lot brawl: {player} vs\n{KEVIN NASH}. {buddy} has your back.",
+      "branches": [
+        { "if": "win", "set": { "war": "+1" }, "money": 2000,
+          "pages": ["{player} puts {KEVIN NASH}\nthrough a windshield!",
+                    "{buddy} pours a beer over\nBig Sexy. Hell yeah!"],
+          "next": "montreal" },
+        { "pages": ["The Outsiders leave {player}\nbloodied on the concrete.",
+                    "{SCOTT HALL} tosses a toothpick\nat Vince's limo. Too sweet."],
+          "next": "montreal" }
+      ]
+    },
+
+    "montreal": {
+      "chapter": "SCREWED",
+      "pages": ["Halloween Havoc. WCW's turf.\nVince's worst nightmare is\nabout to walk through the curtain."],
+      "scene": {
+        "place": "stage",
+        "cast": ["BRET HART"],
+        "steps": [
+          { "who": "BRET HART", "do": "entrance" },
+          { "place": "ring", "cast": [{ "who": "BRET HART", "at": 1 }, { "who": "player", "at": 2 }] },
+          { "who": "BRET HART", "do": "mic", "say": "I'm the best there is.\nThe best there was." },
+          { "who": "BRET HART", "say": "And the best there\never will be." },
+          { "who": "BRET HART", "do": "point", "say": "Vince screwed me in Montreal.\nTonight, I screw him back." },
+          { "who": "BRET HART", "say": "And you, {player}...\nyou're just the man\nstanding in my way." },
+          { "who": "player", "say": "Then lock it in, Hitman.\nI'm not tapping out." },
+          { "place": "hall", "cast": [{ "who": "boss", "at": 1 }] },
+          { "who": "boss", "do": "shout", "say": "Bret screwed Bret!\nAnd he'll do it again!" }
+        ]
+      },
+      "match": { "type": "single", "slots": ["player", ["BRET HART", "RANDY SAVAGE", "SCOTT HALL"]],
+                 "rules": "submission", "arena": "Halloween Havoc" },
+      "requirement": "Submission match: {player}\nvs {BRET HART}. Do NOT tap.",
+      "branches": [
+        { "if": "win", "set": { "war": "+1" }, "money": 3000,
+          "pages": ["{BRET HART} taps out!\nThe Hitman can't believe it.",
+                    "Vince McMahon is laughing.\nNo chance in hell, Bret."],
+          "next": "winner_takes_all" },
+        { "pages": ["{player} taps to the\nSharpshooter.",
+                    "{BRET HART} spits at Vince\non the ramp. Payback."],
+          "next": "winner_takes_all" }
+      ]
+    },
+
+    "winner_takes_all": {
+      "chapter": "WINNER TAKES ALL",
+      "pages": ["WrestleMania. One match decides\nwhich company survives."],
+      "scene": {
+        "place": "ring",
+        "cast": [{ "who": "boss", "at": 1 }, { "who": "SHANE MCMAHON", "at": 2 }],
+        "steps": [
+          { "who": "SHANE MCMAHON", "do": "arms up", "say": "Here comes the money, Dad!\nGuess who bought WCW?" },
+          { "who": "boss", "do": "rub face", "say": "Shane?! You son of a...\nYOU are behind this?!" },
+          { "who": "SHANE MCMAHON", "say": "Every Nitro. Every nWo shirt.\nMine. And tonight, your\ncompany is mine too." },
+          { "who": "boss", "do": "shout", "say": "Over my dead body!" },
+          { "place": "stage", "cast": ["hogan"] },
+          { "who": "hogan", "do": "entrance" },
+          { "place": "ring", "cast": [{ "who": "hogan", "at": 1 }, { "who": "player", "at": 2 }] },
+          { "who": "hogan", "do": "point", "say": "Winner takes all, brother!\nThe title AND the company!" },
+          { "who": "hogan", "do": "shout", "say": "Whatcha gonna do when the\nnWo and the largest arms in\nthe world run wild on you?!" },
+          { "who": "player", "do": "bring it", "say": "Hogan, I'm gonna end\nthe New World Order.\nRight here. Right now." }
+        ]
+      },
+      "match": { "type": "single", "slots": ["player", ["hogan", "KEVIN NASH", "SCOTT HALL"]],
+                 "arena": "WrestleMania", "title": "world",
+                 "runins": [{ "who": "KEVIN NASH", "helps": "opponents" }, { "who": "buddy", "helps": "player" }] },
+      "requirement": "Winner takes all: {player} vs\n{hogan} for the World Title!",
+      "branches": [
+        { "if": "win and war >= 3", "money": 10000,
+          "scene": [
+            { "place": "ring", "cast": [{ "who": "boss", "at": 1 }, { "who": "player", "at": 2 }] },
+            { "who": "boss", "do": "arms up", "say": "WCW is DEAD!\nAnd I OWN the corpse!" },
+            { "who": "boss", "say": "Shane, you're grounded.\nAnd Hogan... you're FIRED!" },
+            { "who": "player", "do": "fist up", "say": "The war is over.\nThe WWF wins." }
+          ],
+          "pages": ["A clean sweep. {player} is\nWorld Champion, and the\nnWo is history.", "THE END"],
+          "next": "end" },
+        { "if": "win", "money": 5000,
+          "pages": ["{player} pins {hogan}!\nThe WWF survives!",
+                    "Vince buys WCW from Shane\nfor one dollar. Business\nis about to pick up.", "THE END"],
+          "next": "end" },
+        { "pages": ["Big boot. Leg drop. 1, 2, 3.\n{hogan} holds the belt high.",
+                    "Shane McMahon owns it all.\nVince walks out in silence.", "THE END"],
+          "next": "end" }
+      ]
+    },
+
+    "nwo_debut": {
+      "chapter": "TOO SWEET",
+      "scene": {
+        "place": "hall",
+        "cast": [{ "who": "KEVIN NASH", "at": 1 }, { "who": "player", "at": 2 },
+                 { "who": "SCOTT HALL", "at": 3 }],
+        "steps": [
+          { "who": "KEVIN NASH", "say": "Welcome to the winning team.\nNo more working for the man." },
+          { "who": "SCOTT HALL", "do": "laugh", "say": "Too sweet, chico.\nNow go hurt somebody." },
+          { "who": "KEVIN NASH", "do": "point", "say": "{hogan} says tonight on RAW,\nyou take out the People's Champ." },
+          { "place": "locker room", "cast": [{ "who": "THE ROCK", "at": 1 }] },
+          { "who": "THE ROCK", "do": "mic", "say": "FINALLY... The Rock has\nheard {player} sold out\nto Hulk Hogan!" },
+          { "who": "THE ROCK", "say": "It doesn't matter WHY\nyou sold out!" },
+          { "who": "THE ROCK", "do": "point", "say": "{player}, know your role\nand SHUT your mouth!" },
+          { "who": "THE ROCK", "say": "The Rock will lay the smackdown\non your candy ass! If ya smell\nwhat The Rock is cookin'!" }
+        ]
+      },
+      "match": { "type": "single", "slots": ["player", ["THE ROCK", "UNDERTAKER", "KANE"]],
+                 "arena": "RAW IS WAR",
+                 "runins": [{ "who": "KEVIN NASH", "helps": "player" }] },
+      "requirement": "Invade RAW: {player} vs\n{THE ROCK}. The nWo has your back.",
+      "branches": [
+        { "if": "win", "set": { "nwo": "+1" }, "money": 3000,
+          "pages": ["{player} pins {THE ROCK}!\nThe nWo spray paints the\nPeople's Champ.",
+                    "Vince McMahon is screaming\nin the back."],
+          "next": "fired" },
+        { "pages": ["People's Elbow!\n{THE ROCK} pins {player}.",
+                    "{hogan} is furious, brother.\nAnd Vince is waiting."],
+          "next": "fired" }
+      ]
+    },
+
+    "fired": {
+      "chapter": "YOU'RE FIRED",
+      "scene": {
+        "place": "parking lot",
+        "cast": [{ "who": "boss", "at": 3 }, { "who": "player", "at": 2 }],
+        "steps": [
+          { "who": "boss", "do": "shout", "say": "You! You ungrateful,\ntwo-bit son of a...!" },
+          { "who": "boss", "say": "I MADE you! And you sell out\nto Hulk Hogan?!" },
+          { "who": "boss", "do": "point", "say": "You're... FIRED!" },
+          { "who": "player", "do": "laugh", "say": "Can't fire me, Vince.\nI work for the nWo now." },
+          { "who": "boss", "say": "Then meet my\ninsurance policy." },
+          { "who": "buddy", "do": "walk", "door": 1 },
+          { "who": "buddy", "say": "You turned your back\non this house. That's\na big mistake." },
+          { "who": "buddy", "do": "bring it", "say": "Now I'm gonna open up a can\nof whoop-ass on ya. WHAT?!" },
+          { "who": "buddy", "say": "And that's the bottom line,\n'cause Stone Cold said so!" }
+        ]
+      },
+      "match": { "type": "single", "slots": ["player", ["buddy", "UNDERTAKER", "KANE"]],
+                 "rules": "street fight", "arena": "SmackDown",
+                 "runins": [{ "who": "SCOTT HALL", "helps": "player" }] },
+      "requirement": "Street fight: {player} vs\n{buddy}. Vince wants you dead.",
+      "branches": [
+        { "if": "win", "set": { "nwo": "+1" }, "money": 3000,
+          "pages": ["{player} beats {buddy}!\nThe WWF is on its knees.",
+                    "One night left: WrestleMania."],
+          "scene": [
+            { "place": "hall", "cast": [{ "who": "hogan", "at": 1 }, { "who": "KEVIN NASH", "at": 2 }] },
+            { "who": "hogan", "say": "Brother, if anybody wears\nthat belt, it's Hollywood." },
+            { "who": "KEVIN NASH", "say": "So the kid loses at Mania.\nOne way or another." }
+          ],
+          "next": "takeover" },
+        { "pages": ["Stunner! {buddy} drinks\ntwo beers over {player}.",
+                    "But the nWo still has one\nlast play: WrestleMania."],
+          "scene": [
+            { "place": "hall", "cast": [{ "who": "hogan", "at": 1 }, { "who": "KEVIN NASH", "at": 2 }] },
+            { "who": "hogan", "say": "Brother, if anybody wears\nthat belt, it's Hollywood." },
+            { "who": "KEVIN NASH", "say": "So the kid loses at Mania.\nOne way or another." }
+          ],
+          "next": "takeover" }
+      ]
+    },
+
+    "takeover": {
+      "chapter": "HOSTILE TAKEOVER",
+      "pages": ["WrestleMania. The nWo has the\nWWF by the throat.",
+                "{player} has no idea\nwhat {hogan} has planned..."],
+      "scene": {
+        "place": "ring",
+        "cast": [{ "who": "boss", "at": 1 }, { "who": "SHANE MCMAHON", "at": 2 }],
+        "steps": [
+          { "who": "SHANE MCMAHON", "do": "arms up", "say": "Here comes the money, Dad!\nI bought WCW. All of it." },
+          { "who": "boss", "do": "rub face", "say": "Shane?! My own son\nis behind the nWo?!" },
+          { "who": "SHANE MCMAHON", "say": "And {player} is my champion.\nTonight you lose EVERYTHING." },
+          { "place": "stage", "cast": ["UNDERTAKER"] },
+          { "who": "UNDERTAKER", "do": "entrance" },
+          { "place": "ring", "cast": [{ "who": "UNDERTAKER", "at": 1 }, { "who": "player", "at": 2 }] },
+          { "who": "UNDERTAKER", "say": "You have betrayed the house\nthe Deadman built." },
+          { "who": "UNDERTAKER", "do": "point", "say": "Tonight, you will...\nREST... IN... PEACE." }
+        ]
+      },
+      "match": { "type": "single", "slots": ["player", ["UNDERTAKER", "KANE", "BIG SHOW"]],
+                 "arena": "WrestleMania", "title": "world",
+                 "runins": [{ "who": "hogan", "helps": "opponents" }] },
+      "requirement": "World Title: {player} vs\n{UNDERTAKER}. Watch {hogan}!",
+      "branches": [
+        { "if": "win and nwo >= 2", "money": 10000,
+          "scene": [
+            { "place": "ring", "cast": [{ "who": "SHANE MCMAHON", "at": 1 }, { "who": "player", "at": 2 }] },
+            { "who": "SHANE MCMAHON", "do": "arms up", "say": "The WWF is MINE!\nAnd {player} is the face\nof the New World Order!" },
+            { "who": "player", "do": "fist up", "say": "Hogan's done. Vince is done.\nThis is MY era now." }
+          ],
+          "pages": ["{player} beat the Deadman AND\nsurvived the double cross.",
+                    "Vince McMahon is out.\nThe nWo is forever.", "THE END"],
+          "next": "end" },
+        { "if": "win", "money": 5000,
+          "pages": ["{player} wins the World Title\nin spite of {hogan}!",
+                    "The nWo splits in two.\nThe war is far from over.", "THE END"],
+          "next": "end" },
+        { "pages": ["{hogan} cracks {player}\nwith the belt. Tombstone.\n1, 2, 3.",
+                    "Vince laughs from the ramp.\nTrust no one, brother.", "THE END"],
+          "next": "end" }
+      ]
+    }
+  }
+}

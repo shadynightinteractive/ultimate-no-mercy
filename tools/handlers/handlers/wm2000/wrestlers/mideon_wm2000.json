@@ -1,0 +1,13 @@
+{
+ "about": "WrestleMania 2000's MIDEON: what the handler is told for him (wm2kall, 2026-11-13). Everything else comes from the ROM.",
+ "string_id": "mideon_wm2000",
+ "key": "mideon_wm2000",
+ "wm2000": {
+  "roster_index": 14,
+  "game_id": "0x0109"
+ },
+ "moveset": {
+  "reference_ordinal": 4,
+  "reference_why": "none in No Mercy: Kane, the Revenge handler's choice for a man of 200 lbs and over"
+ }
+}

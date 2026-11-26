@@ -1,0 +1,475 @@
+{
+ "title": "Phase 6 C: rules, locations",
+ "menu": "Rules Test",
+ "championship": "world",
+ "cast": {
+  "a": "THE ROCK",
+  "b": "KANE",
+  "c": "UNDERTAKER"
+ },
+ "nodes": {
+  "n01": {
+   "chapter": "RULES",
+   "pages": [
+    "SINGLE NO DQ: {player}."
+   ],
+   "match": {
+    "slots": [
+     "player",
+     "b"
+    ],
+    "rules": "no dq",
+    "script": [
+     {
+      "winner": "player",
+      "when": "time 0:40",
+      "do": "end"
+     }
+    ]
+   },
+   "requirement": "SINGLE NO DQ match.",
+   "branches": [
+    {
+     "next": "n02"
+    }
+   ]
+  },
+  "n02": {
+   "chapter": "RULES",
+   "pages": [
+    "SINGLE HARDCORE: {player}."
+   ],
+   "match": {
+    "slots": [
+     "player",
+     "b"
+    ],
+    "rules": "hardcore",
+    "script": [
+     {
+      "winner": "player",
+      "when": "time 0:40",
+      "do": "end"
+     }
+    ]
+   },
+   "requirement": "SINGLE HARDCORE match.",
+   "branches": [
+    {
+     "next": "n03"
+    }
+   ]
+  },
+  "n03": {
+   "chapter": "RULES",
+   "pages": [
+    "SINGLE SUBMISSION: {player}."
+   ],
+   "match": {
+    "slots": [
+     "player",
+     "b"
+    ],
+    "rules": "submission",
+    "script": [
+     {
+      "winner": "player",
+      "how": "submission",
+      "when": "time 0:40",
+      "do": "end"
+     }
+    ]
+   },
+   "requirement": "SINGLE SUBMISSION match.",
+   "branches": [
+    {
+     "next": "n04"
+    }
+   ]
+  },
+  "n04": {
+   "chapter": "RULES",
+   "pages": [
+    "SINGLE ANYWHERE: {player}."
+   ],
+   "match": {
+    "slots": [
+     "player",
+     "b"
+    ],
+    "rules": "anywhere",
+    "script": [
+     {
+      "winner": "player",
+      "when": "time 0:40",
+      "do": "end"
+     }
+    ]
+   },
+   "requirement": "SINGLE ANYWHERE match.",
+   "branches": [
+    {
+     "next": "n05"
+    }
+   ]
+  },
+  "n05": {
+   "chapter": "RULES",
+   "pages": [
+    "SINGLE STREET FIGHT: {player}."
+   ],
+   "match": {
+    "slots": [
+     "player",
+     "b"
+    ],
+    "rules": "street fight",
+    "script": [
+     {
+      "winner": "player",
+      "when": "time 0:40",
+      "do": "end"
+     }
+    ]
+   },
+   "requirement": "SINGLE STREET FIGHT match.",
+   "branches": [
+    {
+     "next": "n06"
+    }
+   ]
+  },
+  "n06": {
+   "chapter": "RULES",
+   "pages": [
+    "SINGLE PINFALL ONLY: {player}."
+   ],
+   "match": {
+    "slots": [
+     "player",
+     "b"
+    ],
+    "rules": "pinfall only",
+    "script": [
+     {
+      "winner": "player",
+      "when": "time 0:40",
+      "do": "end"
+     }
+    ]
+   },
+   "requirement": "SINGLE PINFALL ONLY match.",
+   "branches": [
+    {
+     "next": "n07"
+    }
+   ]
+  },
+  "n07": {
+   "chapter": "RULES",
+   "pages": [
+    "SINGLE FIRST BLOOD: {player}."
+   ],
+   "match": {
+    "slots": [
+     "player",
+     "b"
+    ],
+    "rules": "first blood",
+    "script": [
+     {
+      "winner": "player",
+      "when": "time 0:40",
+      "do": "end"
+     }
+    ]
+   },
+   "requirement": "SINGLE FIRST BLOOD match.",
+   "branches": [
+    {
+     "next": "n08"
+    }
+   ]
+  },
+  "n08": {
+   "chapter": "RULES",
+   "pages": [
+    "TAG TORNADO: {player}."
+   ],
+   "match": {
+    "teams": [
+     [
+      "player",
+      "a"
+     ],
+     [
+      "b",
+      "c"
+     ]
+    ],
+    "rules": "tornado",
+    "script": [
+     {
+      "winner": "player",
+      "loser": "b",
+      "when": "time 0:40",
+      "do": "end"
+     }
+    ]
+   },
+   "requirement": "TAG TORNADO match.",
+   "branches": [
+    {
+     "next": "n09"
+    }
+   ]
+  },
+  "n09": {
+   "chapter": "RULES",
+   "pages": [
+    "TAG NO DQ: {player}."
+   ],
+   "match": {
+    "teams": [
+     [
+      "player",
+      "a"
+     ],
+     [
+      "b",
+      "c"
+     ]
+    ],
+    "rules": "no dq",
+    "script": [
+     {
+      "winner": "player",
+      "loser": "b",
+      "when": "time 0:40",
+      "do": "end"
+     }
+    ]
+   },
+   "requirement": "TAG NO DQ match.",
+   "branches": [
+    {
+     "next": "n10"
+    }
+   ]
+  },
+  "n10": {
+   "chapter": "RULES",
+   "pages": [
+    "TAG HARDCORE: {player}."
+   ],
+   "match": {
+    "teams": [
+     [
+      "player",
+      "a"
+     ],
+     [
+      "b",
+      "c"
+     ]
+    ],
+    "rules": "hardcore",
+    "script": [
+     {
+      "winner": "player",
+      "loser": "b",
+      "when": "time 0:40",
+      "do": "end"
+     }
+    ]
+   },
+   "requirement": "TAG HARDCORE match.",
+   "branches": [
+    {
+     "next": "n11"
+    }
+   ]
+  },
+  "n11": {
+   "chapter": "RULES",
+   "pages": [
+    "TRIPLE HARDCORE: {player}."
+   ],
+   "match": {
+    "teams": [
+     [
+      "player"
+     ],
+     [
+      "b"
+     ],
+     [
+      "c"
+     ]
+    ],
+    "rules": "hardcore",
+    "script": [
+     {
+      "winner": "player",
+      "loser": "b",
+      "when": "time 0:40",
+      "do": "end"
+     }
+    ]
+   },
+   "requirement": "TRIPLE HARDCORE match.",
+   "branches": [
+    {
+     "next": "n12"
+    }
+   ]
+  },
+  "n12": {
+   "chapter": "RULES",
+   "pages": [
+    "HANDICAP HARDCORE: {player}."
+   ],
+   "match": {
+    "teams": [
+     [
+      "player"
+     ],
+     [
+      "b",
+      "c"
+     ]
+    ],
+    "rules": "hardcore",
+    "script": [
+     {
+      "winner": "player",
+      "loser": "b",
+      "when": "time 0:40",
+      "do": "end"
+     }
+    ]
+   },
+   "requirement": "HANDICAP HARDCORE match.",
+   "branches": [
+    {
+     "next": "n13"
+    }
+   ]
+  },
+  "n13": {
+   "chapter": "RULES",
+   "pages": [
+    "FOURWAY NO DQ: {player}."
+   ],
+   "match": {
+    "teams": [
+     [
+      "player"
+     ],
+     [
+      "a"
+     ],
+     [
+      "b"
+     ],
+     [
+      "c"
+     ]
+    ],
+    "rules": "no dq",
+    "script": [
+     {
+      "winner": "player",
+      "loser": "b",
+      "when": "time 0:40",
+      "do": "end"
+     }
+    ]
+   },
+   "requirement": "FOURWAY NO DQ match.",
+   "branches": [
+    {
+     "next": "n14"
+    }
+   ]
+  },
+  "n14": {
+   "chapter": "PLACES",
+   "pages": [
+    "POOL HALL: {player}."
+   ],
+   "match": {
+    "slots": [
+     "player",
+     "b"
+    ],
+    "location": "pool hall",
+    "script": [
+     {
+      "winner": "player",
+      "when": "time 0:40",
+      "do": "end"
+     }
+    ]
+   },
+   "requirement": "POOL HALL match.",
+   "branches": [
+    {
+     "next": "n15"
+    }
+   ]
+  },
+  "n15": {
+   "chapter": "PLACES",
+   "pages": [
+    "PARKING LOT: {player}."
+   ],
+   "match": {
+    "slots": [
+     "player",
+     "b"
+    ],
+    "location": "parking lot",
+    "script": [
+     {
+      "winner": "player",
+      "when": "time 0:40",
+      "do": "end"
+     }
+    ]
+   },
+   "requirement": "PARKING LOT match.",
+   "branches": [
+    {
+     "next": "n16"
+    }
+   ]
+  },
+  "n16": {
+   "chapter": "PLACES",
+   "pages": [
+    "BOILER ROOM: {player}."
+   ],
+   "match": {
+    "slots": [
+     "player",
+     "b"
+    ],
+    "location": "boiler room",
+    "script": [
+     {
+      "winner": "player",
+      "when": "time 0:40",
+      "do": "end"
+     }
+    ]
+   },
+   "requirement": "BOILER ROOM match.",
+   "branches": [
+    {
+     "next": "end"
+    }
+   ]
+  }
+ }
+}

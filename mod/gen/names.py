@@ -1,0 +1,48 @@
+# No Mercy's Superstars as JR says them: id -> name variants (the full one first, then shorter ones). The name bank
+# (gen/mknames.py) cuts them out of JR's own lines where he says them; the rest are made with his trained voice.
+NAMES = {
+    0x0001: ["The Rock", "Rock"], 0x0002: ["Stone Cold Steve Austin", "Stone Cold", "Austin"],
+    0x0003: ["The Undertaker", "Undertaker", "the Deadman"], 0x000A: ["The Undertaker", "Undertaker", "the Deadman"],
+    0x0004: ["Kane", "the Big Red Machine"], 0x0005: ["Stevie Richards", "Richards"],
+    0x0006: ["Mankind"], 0x0007: ["Cactus Jack", "Cactus"], 0x0008: ["Mick Foley", "Foley"],
+    0x0009: ["Shawn Michaels", "Michaels", "HBK"], 0x0101: ["Triple H", "Hunter Hearst Helmsley", "Helmsley"],
+    0x0102: ["X-Pac"], 0x0103: ["Billy Gunn", "Gunn"], 0x0104: ["The Road Dogg", "Road Dogg"],
+    0x0201: ["The Big Show", "Big Show"], 0x0202: ["Dean Malenko", "Malenko"], 0x0203: ["Perry Saturn", "Saturn"],
+    0x0204: ["Eddie Guerrero", "Guerrero", "Eddie"], 0x0301: ["Chris Jericho", "Jericho", "Y2J"],
+    0x0302: ["Kurt Angle", "Angle", "the Olympian"], 0x0303: ["Tazz"], 0x0305: ["The Godfather", "Godfather"],
+    0x0306: ["D'Lo Brown", "D'Lo"], 0x0307: ["Val Venis", "Venis"], 0x0308: ["Ken Shamrock", "Shamrock"],
+    0x0401: ["Rikishi"], 0x0402: ["Grand Master Sexay", "Sexay"], 0x0403: ["Scotty 2 Hotty", "Scotty"],
+    0x0404: ["Edge"], 0x0405: ["Christian"], 0x0406: ["Matt Hardy", "Matt"], 0x0407: ["Jeff Hardy", "Jeff"],
+    0x0501: ["Faarooq"], 0x0502: ["Bradshaw"], 0x0503: ["D-Von Dudley", "D-Von"], 0x0504: ["Bubba Ray Dudley", "Bubba Ray"],
+    0x0505: ["Hardcore Holly", "Holly"], 0x0506: ["Crash Holly", "Crash"], 0x0507: ["The Big Boss Man", "Boss Man"],
+    0x0508: ["Albert"], 0x0601: ["Al Snow"], 0x0602: ["Steve Blackman", "Blackman"], 0x0603: ["The British Bulldog", "Bulldog"],
+    0x0604: ["Mark Henry", "Henry"], 0x0605: ["Viscera"], 0x0606: ["Andre the Giant", "Andre"], 0x0607: ["Bull Buchanan", "Buchanan"],
+    0x0608: ["Essa Rios", "Rios"], 0x0609: ["Taka Michinoku", "Taka"], 0x0701: ["Chyna"], 0x0702: ["Stephanie McMahon", "Stephanie"],
+    0x0703: ["Tori"], 0x0704: ["Terri"], 0x0705: ["Trish Stratus", "Trish"], 0x0706: ["Lita"], 0x0801: ["Ivory"],
+    0x0802: ["Linda McMahon", "Linda"], 0x0803: ["The Kat", "Kat"], 0x0804: ["Mae Young"], 0x0805: ["The Fabulous Moolah", "Moolah"],
+    0x0901: ["Vince McMahon", "Mr. McMahon", "McMahon"], 0x0902: ["Shane McMahon", "Shane"], 0x0903: ["Earl Hebner", "Hebner"],
+    0x060A: ["Funaki"], 0x0408: ["Gangrel"], 0x030B: ["Jeff Jarrett", "Jarrett"], 0x0509: ["Droz"], 0x050A: ["Mideon"],
+    0x060B: ["The Big Meanie", "Meanie"], 0x030C: ["Pete Gas"], 0x030D: ["Rodney"], 0x030E: ["Joey Abs"], 0x060C: ["Raven"],
+    0x030F: ["William Regal", "Regal"], 0x0409: ["Tiger Ali Singh"], 0x0205: ["Chris Benoit", "Benoit"],
+    0x060D: ["Bret Hart", "Bret Hart", "the Hitman"], 0x060E: ["Jim Neidhart", "Neidhart", "the Anvil"],
+    0x0105: ["Hollywood Hulk Hogan", "Hulk Hogan", "Hogan"], 0x0106: ["Kevin Nash", "Nash", "Big Sexy"],
+    0x0107: ["Scott Hall", "Hall", "the Bad Guy"],
+    0x0108: ["Randy Savage", "Macho Man", "Savage"],
+    0x0109: ["Curt Hennig", "Mr. Perfect", "Hennig"],
+    0x010A: ["The Giant", "Giant"],
+    0x010A: ["The Giant", "Giant"],
+    0x010B: ["Sting", "the Stinger"],
+    0x010C: ["Lex Luger", "Luger", "the Total Package"],
+    0x010D: ["Goldberg"],
+    0x010E: ["Rick Steiner", "Steiner", "the Dog-Faced Gremlin"],
+    0x010F: ["Scott Steiner", "Big Poppa Pump", "Steiner"],
+    0x0110: ["Booker T", "Booker"],
+    0x0111: ["Stevie Ray"],
+    0x0112: ["Rey Mysterio", "Rey"],
+    0x0113: ["Roddy Piper", "Rowdy Roddy Piper", "Piper"],
+    0x0114: ["Eric Bischoff", "Bischoff"],
+    # (no2k15, 2026-11-23: 0x011A / 0x011B, the two 2K15 test slots, removed -- gen/mkroster.py)
+}
+# the Revenge ports' second IDs (gen/revbanks.py): the base's names
+import revbanks
+for _b in revbanks.BANKS: NAMES[_b["id"]] = NAMES[_b["base_id"]]

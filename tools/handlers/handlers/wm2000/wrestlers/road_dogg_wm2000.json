@@ -1,0 +1,13 @@
+{
+ "about": "WrestleMania 2000's ROAD DOGG: what the handler is told for him (wm2kall, 2026-11-13). Everything else comes from the ROM.",
+ "string_id": "road_dogg_wm2000",
+ "key": "road_dogg_wm2000",
+ "wm2000": {
+  "roster_index": 20,
+  "game_id": "0x0301"
+ },
+ "moveset": {
+  "reference_ordinal": 13,
+  "reference_why": "No Mercy's own"
+ }
+}

@@ -1,0 +1,56 @@
+{
+ "title": "Retry test",
+ "menu": "Retry Test",
+ "cast": {
+  "rival": "THE ROCK"
+ },
+ "nodes": {
+  "one": {
+   "chapter": "RETRY",
+   "pages": [
+    "RETRY PAGE: {player} vs {rival}."
+   ],
+   "scene": {
+    "place": "hall",
+    "cast": [
+     "player",
+     "rival"
+    ],
+    "steps": [
+     {
+      "say": "RETRY SCENE: again?",
+      "who": "rival"
+     }
+    ]
+   },
+   "match": {
+    "slots": [
+     "player",
+     "rival"
+    ],
+    "script": [
+     {
+      "when": "time 0:15",
+      "do": "end",
+      "winner": "rival",
+      "how": "pinfall"
+     }
+    ]
+   },
+   "requirement": "RETRY CARD: {player} vs {rival}.",
+   "retries": 2,
+   "branches": [
+    {
+     "if": "win",
+     "next": "end",
+     "pages": [
+      "RETRY WIN."
+     ]
+    },
+    {
+     "next": "gameover"
+    }
+   ]
+  }
+ }
+}

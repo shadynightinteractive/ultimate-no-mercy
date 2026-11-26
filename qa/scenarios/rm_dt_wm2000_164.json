@@ -1,0 +1,65 @@
+{
+ "about": "revmoves (2026-11-20): the other WrestleMania 2000 double team a library holds, 'wm2000:4210@4630' (Double Face Crusher's place, entry 164: 16 WM2000 men): a handicap match, Dude Love and Mankind (WM2000 imports 0x03A4 / 0x03B1) against Ultimo Dragon, all CPU; slot 0's (Dude Love's) double teams done as 164. The man plays the lead's move's third animation (file + 2): WrestleMania 2000's 0x2683 now. Matches one after another until the time is up (\"matches\": 0: a two-on-one match ends quickly).",
+ "match": "handicap",
+ "wrestlers": [
+  "0x03A4",
+  "0x03B1",
+  "0x0376"
+ ],
+ "costumes": [
+  0,
+  0,
+  0
+ ],
+ "control": [
+  "cpu",
+  "cpu",
+  "cpu"
+ ],
+ "arena": "RAW IS WAR",
+ "matches": 0,
+ "seconds": 900,
+ "speed": 6,
+ "shots": 5.0,
+ "shot_when": "$c.s0_phase -eq 131 -or $c.s2_phase -eq 133 -or $c.s2_state -eq 133",
+ "force": {
+  "slot": 0,
+  "entries": [
+   163,
+   165
+  ],
+  "as": 164
+ },
+ "expect": [
+  {
+   "name": "the match started",
+   "when": "any",
+   "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+  },
+  {
+   "name": "Dude Love, Mankind (WM2000) against Ultimo Dragon (Revenge)",
+   "when": "match",
+   "check": "s0_id == 0x03A4 and s1_id == 0x03B1 and s2_id == 0x0376"
+  },
+  {
+   "name": "slot 0 led a double team with his library move (131, the move played on No Mercy's 4630)",
+   "when": "any",
+   "check": "s0_phase == 131 and s0_move == 4630"
+  },
+  {
+   "name": "the man never left a double team, but to lie down (49 / 57 / 71, as No Mercy's own end), while its lead still played it (the user's: he ended up standing while they went on)",
+   "when": "always",
+   "check": "not ((s0_state == 133 and s0_phase != 133 and s0_phase != 49 and s0_phase != 57 and s0_phase != 71 and (s1_phase == 131 or s2_phase == 131)) or (s1_state == 133 and s1_phase != 133 and s1_phase != 49 and s1_phase != 57 and s1_phase != 71 and (s0_phase == 131 or s2_phase == 131)) or (s2_state == 133 and s2_phase != 133 and s2_phase != 49 and s2_phase != 57 and s2_phase != 71 and (s0_phase == 131 or s1_phase == 131)))"
+  },
+  {
+   "name": "no model's matrices ever went bad",
+   "when": "always",
+   "check": "bad_mtx == 0"
+  },
+  {
+   "name": "nobody's position went bad",
+   "when": "always",
+   "check": "finite(s0_x, s0_y, s0_z, s1_x, s1_y, s1_z, s2_x, s2_y, s2_z)"
+  }
+ ]
+}

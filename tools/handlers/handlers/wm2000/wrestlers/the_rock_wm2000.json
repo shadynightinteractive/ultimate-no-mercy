@@ -1,0 +1,13 @@
+{
+ "about": "WrestleMania 2000's THE ROCK: what the handler is told for him (wm2kall, 2026-11-13). Everything else comes from the ROM.",
+ "string_id": "the_rock_wm2000",
+ "key": "the_rock_wm2000",
+ "wm2000": {
+  "roster_index": 2,
+  "game_id": "0x0002"
+ },
+ "moveset": {
+  "reference_ordinal": 1,
+  "reference_why": "No Mercy's own"
+ }
+}

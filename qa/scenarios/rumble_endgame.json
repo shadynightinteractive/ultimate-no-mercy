@@ -1,0 +1,47 @@
+{
+  "about": "the Royal Rumble once its entrants have run out (2026-10-27: an eliminated CPU Superstar, no entrant for his slot, was put back in the match by the game and brawled on with everyone for good). A field of 4, so it runs out at once: every elimination after that is one with no entrant -- the fix keeps him out; the Rumble must end with a winner",
+  "match": "rumble",
+  "wrestlers": [
+    "BRET HART"
+  ],
+  "control": [
+    "cpu"
+  ],
+  "options": {
+    "rumble_entrants": 4,
+    "rumble_interval": 5,
+    "announcers": true,
+    "commentary": true,
+    "qa_rr_out": 0
+  },
+  "matches": 1,
+  "seconds": 600,
+  "shots": 10,
+  "expect": [
+    {
+      "name": "the Rumble started",
+      "when": "any",
+      "check": "stage == 2 and mode == -2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "no eliminated Superstar back in the Rumble (eliminated, yet the slot's in-the-Rumble flag on and not out)",
+      "when": "always",
+      "check": "not ((s1_elim >= 0 and (s1_e1 & 0x10) and not (s1_flags & 1) and s1_id not in (0, 0xFFFF, 1)) or (s2_elim >= 0 and (s2_e1 & 0x10) and not (s2_flags & 1) and s2_id not in (0, 0xFFFF, 1)) or (s3_elim >= 0 and (s3_e1 & 0x10) and not (s3_flags & 1) and s3_id not in (0, 0xFFFF, 1)) or (s4_elim >= 0 and (s4_e1 & 0x10) and not (s4_flags & 1) and s4_id not in (0, 0xFFFF, 1)) or (s5_elim >= 0 and (s5_e1 & 0x10) and not (s5_flags & 1) and s5_id not in (0, 0xFFFF, 1)))"
+    },
+    {
+      "name": "no model's matrices ever went bad",
+      "when": "always",
+      "check": "bad_mtx == 0"
+    },
+    {
+      "name": "the Rumble ended (a winner: back on the championship list)",
+      "when": "end",
+      "check": "matches >= 1"
+    },
+    {
+      "name": "eliminated men were kept out when no entrant was due (the fix ran)",
+      "when": "end",
+      "check": "rr_kept_out > 0"
+    }
+  ]
+}

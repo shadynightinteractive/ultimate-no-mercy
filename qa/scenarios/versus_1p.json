@@ -1,0 +1,53 @@
+{
+  "about": "2026-10-31, the user: one player's Versus from the Single Play page -- the championship list's Versus row (under Survival), Versus's own menus, himself and a CPU opponent. qa_versus: one player started on the title; on the list the cursor on Survival, DOWN (the row's own link), A; MATCH: A (Single Match; PLAYER passes by itself, 1P vs CPU), ARENA A, RULES Start; the select: Austin for the player, the Rock for the CPU; the match (the CPU plays Austin too after 20 s so it ends); A through the replay, Next; back on the MATCH page 10 s, B; the list 10 s (the cursor on Versus), quit. state.csv: bs_tries = the list's cursor + 100 x its rows; bs_grabs = sp_versus | game_mode << 4 | goal << 8 | challenge_on << 12; bs_step = the driver's step | where DOWN from Survival went << 8",
+  "match": "arcade",
+  "wrestlers": [
+    "STEVE AUSTIN",
+    "THE ROCK"
+  ],
+  "matches": 0,
+  "seconds": 1800,
+  "shots": 1.0,
+  "options": {
+    "free_play": true,
+    "attract_demos": false,
+    "qa_versus": 20
+  },
+  "expect": [
+    {
+      "name": "the championship list has eleven rows",
+      "when": "any",
+      "check": "screen == 22 and bs_tries >= 1100"
+    },
+    {
+      "name": "DOWN from Survival lands on the Versus row",
+      "when": "any",
+      "check": "((bs_step >> 8) & 255) == 10"
+    },
+    {
+      "name": "one player's Versus: the MATCH page, single player (sp_versus, game_mode Story)",
+      "when": "any",
+      "check": "mode == 0 and screen == 7 and (bs_grabs & 15) == 1 and ((bs_grabs >> 4) & 15) == 1"
+    },
+    {
+      "name": "the match: player 1 on controller 1, slot 2 the CPU",
+      "when": "any",
+      "check": "mode == -2 and match_frames != 0xFFFF and match_frames > 120 and s0_pad == 1 and s1_pad == 0 and s0_id == 0x0002 and s1_id == 0x0001"
+    },
+    {
+      "name": "after the match: Versus's MATCH page again",
+      "when": "any",
+      "check": "mode == 0 and screen == 7 and (bs_step & 255) == 10"
+    },
+    {
+      "name": "B there: the championship list, the cursor on Versus, single player's Versus over",
+      "when": "any",
+      "check": "mode == 0 and screen == 22 and (bs_step & 255) >= 12 and bs_tries == 1110 and (bs_grabs & 15) == 0"
+    },
+    {
+      "name": "never a challenge (one player all along)",
+      "when": "always",
+      "check": "((bs_grabs >> 12) & 15) == 0"
+    }
+  ]
+}

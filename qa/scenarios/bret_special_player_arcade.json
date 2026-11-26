@@ -1,0 +1,56 @@
+{
+  "wrestlers": [
+    "BRET HART",
+    "THE ROCK"
+  ],
+  "arena": "SMACKDOWN",
+  "matches": 3,
+  "seconds": 1200,
+  "shots": 0.5,
+  "pads": [
+    "9999 1 back 10",
+    "9999 2 back 10"
+  ],
+  "expect": [
+    {
+      "name": "the match started",
+      "when": "any",
+      "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "nobody's position went bad",
+      "when": "always",
+      "check": "finite(s0_x, s0_y, s0_z, s1_x, s1_y, s1_z)"
+    },
+    {
+      "name": "his front special's slam (entry 70: 1880's own files, 0x37D8 / 0x37D9)",
+      "when": "any",
+      "check": "(bs_step & 0xFFFF) == 70 and bs_tries == 0x37D937D8"
+    },
+    {
+      "name": "the game's own ground grapple on him after the slam (Bret kneeling at the man, 0x2F88)",
+      "when": "any",
+      "check": "(bs_tries & 0xFFFF) == 0x2F88"
+    },
+    {
+      "name": "the slam went on to his ground Sharpshooter as a move of its own (entry 157: the turnover 0x3FDE / 0x3FDF)",
+      "when": "any",
+      "check": "(bs_step & 0xFFFF) == 157 and bs_tries == 0x3FDF3FDE"
+    },
+    {
+      "name": "the Sharpshooter's hold played (16352 / 16353)",
+      "when": "any",
+      "check": "bs_tries == 0x3FE13FE0"
+    }
+  ],
+  "about": "2026-11-01, the user plays Bret Hart (0.38.12): \"He drops the opponent and does the sharpshooter and is still misaligned\". Bret on controller 1 with the ARCADE controls (the user's setting): SPECIAL kept up, a tap of A, then C-right, the arcade's SPECIAL (qa_pspecial 2). No force hook: the game's own pick for the special. qa_pspecial (logic.c): bs_tries = the animation files (slot 0 | slot 1 << 16), bs_grabs = Bret's nearest hand piece to the man's nearest bone x10 | bone << 16 | the driver's step << 24, bs_step = Bret's moveset entry | grabs << 16, rr_put_out = the roots' distance x10, rr_kept_out = the facing between them (0 face to face, as u16). A camera on the two (qa_pspecial + 16), from three sides in turn. 2026-11-01 afternoon rebuild (built, not tested yet): the special is two moves, as in Revenge -- the slam (entry 70, 1880's own files 0x37D8 / 0x37D9, a move that ends), then the game's own ground grapple on the man (movex.c movex_chain_step: func_8013E870, as a press of A at a lying man -- state 70 places Bret at the legs and kneels him, 0x2F88), its pick his ground Sharpshooter (157: the turnover 0x3FDE / 0x3FDF, then the hold 0x3FE0 / 0x3FE1). Look at: the slam's end, then the turnover's first second (the man's legs in Bret's hands, no jump of the man), the hold, the turnover's sounds (26 / 46 / 94 / 104).",
+  "control": [
+    "pad1",
+    "cpu"
+  ],
+  "options": {
+    "qa_special": 5,
+    "qa_pspecial": 18,
+    "controls": "Arcade"
+  }
+}

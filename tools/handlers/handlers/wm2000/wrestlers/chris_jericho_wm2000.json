@@ -1,0 +1,13 @@
+{
+ "about": "WrestleMania 2000's CHRIS JERICHO: what the handler is told for him (wm2kall, 2026-11-13). Everything else comes from the ROM.",
+ "string_id": "chris_jericho_wm2000",
+ "key": "chris_jericho_wm2000",
+ "wm2000": {
+  "roster_index": 26,
+  "game_id": "0x0403"
+ },
+ "moveset": {
+  "reference_ordinal": 18,
+  "reference_why": "No Mercy's own"
+ }
+}

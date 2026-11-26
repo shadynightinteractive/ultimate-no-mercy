@@ -1,0 +1,30 @@
+{
+  "about": "2026-10-30, the user plays HOLLYWOOD HOGAN (controller 1) vs an idle Rock, the meter kept full (qa_special 5), nothing forced: SPECIAL lit, grapple at the downed man's head -> the game's own pick, his ground special (155: his leg drop) -- the man must stay down",
+  "wrestlers": [
+    "HOLLYWOOD HOGAN",
+    "THE ROCK"
+  ],
+  "control": [
+    "pad1",
+    "pad2"
+  ],
+  "arena": "SMACKDOWN",
+  "matches": 1,
+  "seconds": 900,
+  "shots": 0.5,
+  "expect": [
+    {
+      "name": "the match started",
+      "when": "any",
+      "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "nobody's position went bad",
+      "when": "always",
+      "check": "finite(s0_x, s0_y, s0_z, s1_x, s1_y, s1_z)"
+    }
+  ],
+  "options": {
+    "qa_special": 5
+  }
+}

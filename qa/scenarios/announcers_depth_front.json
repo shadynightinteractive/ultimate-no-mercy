@@ -1,0 +1,39 @@
+{
+  "about": "JR and King close up from the front-side, as the user's F6 camera (2026-10-28 evening: JR's arm through King's chest): announce.c's own depth buffer for the two of them (ann_zwrap, tron.c ann_zclear) -- King in front must hide JR where he's in front of him",
+  "wrestlers": [
+    "STEVE AUSTIN",
+    "THE ROCK"
+  ],
+  "control": [
+    "cpu",
+    "cpu"
+  ],
+  "arena": "RAW IS WAR",
+  "matches": 0,
+  "seconds": 70,
+  "shots": 4.0,
+  "camera": {
+    "eye": [
+      160,
+      120,
+      -470
+    ],
+    "at": [
+      -40,
+      95,
+      -640
+    ]
+  },
+  "expect": [
+    {
+      "name": "the match started",
+      "when": "any",
+      "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "no model's matrices went bad",
+      "when": "always",
+      "check": "bad_mtx == 0"
+    }
+  ]
+}

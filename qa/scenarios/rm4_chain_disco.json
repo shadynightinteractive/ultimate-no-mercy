@@ -1,0 +1,59 @@
+{
+ "about": "revmoves3 round 4 (2026-11-21, the user: 'whatever Revenge does'): Disco Inferno (0x0366, Revenge import, slot 0, CPU) against The Rock (CPU), singles; his entry 288 -- 'revenge:12ab_12ad@16512 -> @16312' -- forced wherever the game picks a move of the same place (qa_fsub 4). Revenge: goes on (byte 15 = 63, No Mercy's entry 77: the back grapple); 16512 ends; No Mercy's 16312 (its animations byte for byte) goes on to 77. qa\\move_audit.py analyze reads the run.",
+ "match": "singles",
+ "wrestlers": [
+  "0x0366",
+  "THE ROCK"
+ ],
+ "costumes": [
+  0,
+  0
+ ],
+ "control": [
+  "cpu",
+  "cpu"
+ ],
+ "arena": "RAW IS WAR",
+ "matches": 0,
+ "seconds": 360,
+ "speed": 8,
+ "shots": 0,
+ "force": {
+  "slot": 0,
+  "entries": [
+   0,
+   291
+  ],
+  "as": 288
+ },
+ "options": {
+  "qa_fsub": 4
+ },
+ "expect": [
+  {
+   "name": "the match started",
+   "when": "any",
+   "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+  },
+  {
+   "name": "Disco Inferno played his entry 288's move (16512 before, 16312 after)",
+   "when": "any",
+   "check": "s0_move == 16512 or s0_move == 16312"
+  },
+  {
+   "name": "it went on into the next move (95 / 96), as in Revenge",
+   "when": "any",
+   "check": "s0_phase == 95 and s1_phase == 96 and s0_state == 85"
+  },
+  {
+   "name": "no model's matrices ever went bad",
+   "when": "always",
+   "check": "bad_mtx == 0"
+  },
+  {
+   "name": "nobody's position went bad",
+   "when": "always",
+   "check": "finite(s0_x, s0_y, s0_z, s1_x, s1_y, s1_z)"
+  }
+ ]
+}

@@ -1,0 +1,51 @@
+{
+  "about": "ctrlsave 2026-11-25, the user: 'The controller setting (6 button vs N64) setting doesn't persist after closing the game. It defaults back to 6 button.' The first start of two: the game in Regular from a settings file holding CONTROL MODE 6-BUTTON; F2 opened (the key), player 1's controller goes down the main page to CONTROLS (6 rows down), A, LEFT on CONTROL MODE (6-BUTTON to N64), F2 again (SAVE AND EXIT); then the game quits on its own. ctl_mode_restart_n64 starts that game folder again. bs_* = qa_ctlmode's (logic.c qa_state). Before the fix the load read the continue timer for it (always 6-BUTTON) and the save stored 6-BUTTON whatever was picked.",
+  "match": "arcade",
+  "matches": 0,
+  "seconds": 50,
+  "shots": 5.0,
+  "options": {
+    "game_mode": "Regular",
+    "controls": "Arcade",
+    "qa_ctlmode": true
+  },
+  "pads": [
+    "25.0 key F2 200",
+    "27.0 1 dpdown 120",
+    "27.6 1 dpdown 120",
+    "28.2 1 dpdown 120",
+    "28.8 1 dpdown 120",
+    "29.4 1 dpdown 120",
+    "30.0 1 dpdown 120",
+    "31.0 1 a 120",
+    "33.0 1 dpleft 120",
+    "35.0 key F2 200"
+  ],
+  "expect": [
+    {
+      "name": "the settings were read: CONTROL MODE 6-BUTTON, as the settings file holds it",
+      "when": "any",
+      "check": "(bs_tries & 4) == 4 and (bs_grabs & 0xFF) == 2 and (bs_tries & 1) == 1"
+    },
+    {
+      "name": "F2 opened, on the CONTROLS page (player 1 went down the main page and pressed A)",
+      "when": "any",
+      "check": "(bs_tries & 2) == 2 and ((bs_tries >> 8) & 0xFF) == 5"
+    },
+    {
+      "name": "CONTROL MODE set to N64 on that page, F2 not closed yet",
+      "when": "any",
+      "check": "(bs_tries & 3) == 2 and ((bs_tries >> 8) & 0xFF) == 5"
+    },
+    {
+      "name": "SAVE AND EXIT: F2 closed, CONTROL MODE N64, and the settings hold N64 after the save",
+      "when": "any",
+      "check": "(bs_tries & 7) == 4 and (bs_grabs >> 16) >= 1 and ((bs_grabs >> 8) & 0xFF) == 1"
+    },
+    {
+      "name": "N64 at the end, F2 closed",
+      "when": "end",
+      "check": "(bs_tries & 7) == 4 and ((bs_grabs >> 8) & 0xFF) == 1"
+    }
+  ]
+}

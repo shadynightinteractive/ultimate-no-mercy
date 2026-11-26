@@ -1,0 +1,19 @@
+{
+  "about": "2026-11-07, the two modes phase 2 (W10): a Royal Rumble from Regular's own menus (qa_reg 257 = 1 + 256: Multi Play > Royal Rumble > ORDER Random > NUMBER as it comes > Start > the select, Steve Austin) with F2's SUPERSTARS IN IT 12, IN THE RING AT ONCE 5, TIME BETWEEN ENTRANTS 10 s, STARTS WITH 2 (the default). Expect: the NUMBER page opens from F2's 12 (shot), the match has 12 entrants (not the page's steps of four: F2's own count), two in the ring at the bell, entrants called every 10 s on the arcade's clock, never more than 5 in the ring, ring size 5 set for this match. The CPU plays the player from 10 s. state.csv (qa_modes), in the match: bs_step = entrants | ring << 8 | interval << 16 | gm_live << 24 | rr_mode << 28 (3 live); bs_grabs >> 16 = F2's SUPERSTARS IN IT as saved; present / in_ring the Superstars in play / in the ring.",
+  "match": "arcade",
+  "wrestlers": [ "STEVE AUSTIN", null ],
+  "matches": 0,
+  "seconds": 900,
+  "shots": 6.0,
+  "options": { "game_mode": "Regular", "qa_modes": 1, "qa_reg": 257, "rumble_entrants": 12, "rumble_ring": 5, "rumble_interval": 10 },
+  "expect": [
+    { "name": "Regular all along", "when": "always", "check": "(bs_tries & 1) == 0" },
+    { "name": "the NUMBER page (screen 9)", "when": "any", "check": "mode == 0 and screen == 9" },
+    { "name": "the game-menu Rumble on the clock: 12 entrants, ring 5, every 10 s, live", "when": "any", "check": "mode == -2 and (bs_step & 255) == 12 and ((bs_step >> 8) & 255) == 5 and ((bs_step >> 16) & 255) == 10 and ((bs_step >> 24) & 15) == 1 and (bs_step >> 28) == 3" },
+    { "name": "two in the ring at the bell (the first seconds; the first entrant is already on his way: present 3)", "when": "any", "check": "mode == -2 and match_frames != 0xFFFF and match_frames > 30 and match_frames < 150 and in_ring == 2" },
+    { "name": "more came in on the clock", "when": "any", "check": "mode == -2 and present >= 4" },
+    { "name": "never more than 5 in the ring", "when": "always", "check": "mode != -2 or in_ring <= 5" },
+    { "name": "F2's SUPERSTARS IN IT still 12", "when": "always", "check": "mode != -2 or (bs_grabs >> 16) in (12, 0)" }
+  ],
+  "shot_when": "($c.mode -eq 0 -and $c.screen -in 7,9,6) -or ($c.mode -eq -2 -and $c.match_frames -lt 400)"
+}

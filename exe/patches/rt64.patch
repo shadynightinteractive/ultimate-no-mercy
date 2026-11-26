@@ -1,0 +1,180 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 717180a..0ba4250 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -36,7 +36,21 @@ function(preprocess INFILE OUTFILE OPTIONS)
+ endfunction()
+ 
+ if (WIN32)
+-    set (DXC "${PROJECT_SOURCE_DIR}/src/contrib/dxc/bin/x64/dxc.exe")
++    if (CMAKE_HOST_WIN32)
++        set (DXC "${PROJECT_SOURCE_DIR}/src/contrib/dxc/bin/x64/dxc.exe")
++    else()
++        # [wcw mingw] Cross-building for Windows on Linux: the shaders are compiled by a Linux dxc. It must be the
++        # dxc.exe's version (1.7): the shader libraries are linked when the game runs, by dxcompiler.dll (1.7), which
++        # can't link libraries a newer dxc (the 1.8 dxc-linux here) made. RT64_HOST_DXC_DIR: a Linux dxc 1.7 release
++        # (bin/dxc, lib/libdxcompiler.so, lib/libdxil.so).
++        set(RT64_HOST_DXC_DIR "" CACHE PATH "Linux dxc (1.7) for cross-building for Windows")
++        if (RT64_HOST_DXC_DIR)
++            set (DXC "LD_LIBRARY_PATH=${RT64_HOST_DXC_DIR}/lib" "${RT64_HOST_DXC_DIR}/bin/dxc")
++        else()
++            message(WARNING "RT64_HOST_DXC_DIR not set: the 1.8 dxc-linux compiles the shaders, and dxcompiler.dll (1.7) won't link its shader libraries")
++            set (DXC "LD_LIBRARY_PATH=${PROJECT_SOURCE_DIR}/src/contrib/dxc/lib/x64" "${PROJECT_SOURCE_DIR}/src/contrib/dxc/bin/x64/dxc-linux")
++        endif()
++    endif()
+     add_compile_definitions(NOMINMAX)
+ 
+     # Dependencies that must be next to the DLL.
+@@ -115,7 +129,7 @@ function(build_shader_spirv_impl TARGETOBJ FILENAME TARGET_NAME OUTNAME)
+         COMMAND ${DXC} ${DXC_SPV_OPTS} ${ARGN} ${FILENAME} /Fo ${OUTNAME}.spv
+         DEPENDS ${FILENAME})
+     add_custom_command(OUTPUT ${OUTNAME}.spirv.c
+-        COMMAND file_to_c ${OUTNAME}.spv ${TARGET_NAME}BlobSPIRV ${OUTNAME}.spirv.c ${OUTNAME}.spirv.h
++        COMMAND ${FILE_TO_C} ${OUTNAME}.spv ${TARGET_NAME}BlobSPIRV ${OUTNAME}.spirv.c ${OUTNAME}.spirv.h
+         DEPENDS ${OUTNAME}.spv file_to_c
+         BYPRODUCTS ${OUTNAME}.spirv.h)
+     target_sources(${TARGETOBJ} PRIVATE ${OUTNAME}.spirv.c)
+@@ -126,7 +140,7 @@ function(build_shader_dxil_impl TARGETOBJ FILENAME TARGET_NAME OUTNAME)
+         COMMAND ${DXC} ${DXC_DXIL_OPTS} ${ARGN} ${FILENAME} /Fo ${OUTNAME}.dxil
+         DEPENDS ${FILENAME})
+     add_custom_command(OUTPUT ${OUTNAME}.dxil.c
+-        COMMAND file_to_c ${OUTNAME}.dxil ${TARGET_NAME}BlobDXIL ${OUTNAME}.dxil.c ${OUTNAME}.dxil.h
++        COMMAND ${FILE_TO_C} ${OUTNAME}.dxil ${TARGET_NAME}BlobDXIL ${OUTNAME}.dxil.c ${OUTNAME}.dxil.h
+         DEPENDS ${OUTNAME}.dxil file_to_c
+         BYPRODUCTS ${OUTNAME}.dxil.h)
+     target_sources(${TARGETOBJ} PRIVATE ${OUTNAME}.dxil.c)
+@@ -146,7 +160,7 @@ function(build_shader_msl_impl TARGETOBJ FILENAME TARGET_NAME OUTNAME)
+             COMMAND xcrun -sdk macosx metallib ${OUTNAME}.ir -o ${OUTNAME}.metallib
+             DEPENDS ${OUTNAME}.ir)
+     add_custom_command(OUTPUT ${OUTNAME}.metal.c
+-            COMMAND file_to_c ${OUTNAME}.metallib ${TARGET_NAME}BlobMSL ${OUTNAME}.metal.c ${OUTNAME}.metal.h
++            COMMAND ${FILE_TO_C} ${OUTNAME}.metallib ${TARGET_NAME}BlobMSL ${OUTNAME}.metal.c ${OUTNAME}.metal.h
+             DEPENDS ${OUTNAME}.metallib file_to_c
+             BYPRODUCTS ${OUTNAME}.metal.h)
+     target_sources(${TARGETOBJ} PRIVATE ${OUTNAME}.metal.c)
+@@ -240,7 +254,7 @@ function(preprocess_shader TARGETOBJ SHADERNAME)
+     cmake_path(GET OUTNAME PARENT_PATH OUTPUT_DIR)
+     preprocess(${FILENAME} ${OUTNAME}.rw ${DXC_COMMON_OPTS})
+     add_custom_command(OUTPUT ${OUTNAME}.rw.c
+-        COMMAND file_to_c ${OUTNAME}.rw ${TARGET_NAME}Text ${OUTNAME}.rw.c ${OUTNAME}.rw.h
++        COMMAND ${FILE_TO_C} ${OUTNAME}.rw ${TARGET_NAME}Text ${OUTNAME}.rw.c ${OUTNAME}.rw.h
+         DEPENDS ${OUTNAME}.rw file_to_c
+         BYPRODUCTS ${OUTNAME}.rw.h)
+     file(MAKE_DIRECTORY ${OUTPUT_DIR})
+@@ -511,6 +525,14 @@ if (WIN32)
+         ${PROJECT_SOURCE_DIR}/src/contrib/dxc/lib/x64/dxcompiler.lib)
+ 
+     target_include_directories(rt64 PRIVATE ${zstd_SOURCE_DIR}/lib)
++
++    if (MINGW)
++        # [wcw mingw] What MSVC gets from the imgui backends' #pragma comment(lib): MinGW links them by name.
++        target_link_libraries(rt64 d3dcompiler dwmapi gdi32)
++        # ... and the D3D12 interfaces' IDs (__uuidof) for the dx12 backend, after <d3d12.h>.
++        set_source_files_properties("${PROJECT_SOURCE_DIR}/src/contrib/imgui/backends/imgui_impl_dx12.cpp" PROPERTIES
++            COMPILE_OPTIONS "-included3d12.h;-includeguiddef.h;-includedxguids.h")
++    endif()
+ endif()
+ 
+ target_link_directories(rt64 PRIVATE ${PROJECT_SOURCE_DIR}/src/contrib/dxc)
+diff --git a/src/common/rt64_tmem_hasher.h b/src/common/rt64_tmem_hasher.h
+index 9a332ab..090fbf0 100644
+--- a/src/common/rt64_tmem_hasher.h
++++ b/src/common/rt64_tmem_hasher.h
+@@ -23,7 +23,7 @@ static unsigned bitScanForward64(uint64_t val) {
+         __assume(0);
+     }
+ #endif
+-#elif defined(__GNUC__) && (__GNUC__ >= 4) && defined(__LP64__)
++#elif defined(__GNUC__) && (__GNUC__ >= 4) && (defined(__LP64__) || defined(_WIN64))
+     return (unsigned)__builtin_ctzll(val);
+ #elif defined(__ICCARM__)
+     return (unsigned)__builtin_ctzll(val);
+diff --git a/src/contrib/dxc b/src/contrib/dxc
+--- a/src/contrib/dxc
++++ b/src/contrib/dxc
+@@ -1 +1 @@
+-Subproject commit cc15e715ee378a4f675b335bd1071ff105873fc8
++Subproject commit cc15e715ee378a4f675b335bd1071ff105873fc8-dirty
+diff --git a/src/contrib/plume b/src/contrib/plume
+--- a/src/contrib/plume
++++ b/src/contrib/plume
+@@ -1 +1 @@
+-Subproject commit 6df8edb6685b883c1cb2d64315a6049270ac8c70
++Subproject commit 6df8edb6685b883c1cb2d64315a6049270ac8c70-dirty
+diff --git a/src/hle/rt64_rigid_body.cpp b/src/hle/rt64_rigid_body.cpp
+index fd8b3eb..d013e0f 100644
+--- a/src/hle/rt64_rigid_body.cpp
++++ b/src/hle/rt64_rigid_body.cpp
+@@ -3,6 +3,7 @@
+ //
+ 
+ #include "rt64_rigid_body.h"
++#include <cmath>
+ 
+ #include "../include/rt64_extended_gbi.h"
+ #include "common/rt64_math.h"
+diff --git a/src/render/rt64_optimus.cpp b/src/render/rt64_optimus.cpp
+index 348aa52..db52706 100644
+--- a/src/render/rt64_optimus.cpp
++++ b/src/render/rt64_optimus.cpp
+@@ -8,7 +8,7 @@
+ 
+ extern "C" {
+     // Exporting this flag indicates to the NVIDIA driver that it should prefer using the high performance device.
+-    _declspec(dllexport) DWORD NvOptimusEnablement = 0x00000001;
++    __declspec(dllexport) DWORD NvOptimusEnablement = 0x00000001;
+ }
+ 
+ #endif
+\ No newline at end of file
+diff --git a/src/render/rt64_shader_compiler.cpp b/src/render/rt64_shader_compiler.cpp
+index 82984ed..caac97e 100644
+--- a/src/render/rt64_shader_compiler.cpp
++++ b/src/render/rt64_shader_compiler.cpp
+@@ -52,6 +52,7 @@ namespace RT64 {
+             infoLog[error->GetBufferSize()] = 0;
+ 
+             RT64_LOG_PRINTF("Shader compilation error: %s\n", infoLog.data());
++            fprintf(stderr, "[rt64] shader compilation error: %s\n", infoLog.data());
+             throw std::runtime_error("Shader compilation error: " + std::string(infoLog.data()));
+         }
+     }
+diff --git a/src/render/rt64_texture_cache.cpp b/src/render/rt64_texture_cache.cpp
+index 2c5c930..21f0468 100644
+--- a/src/render/rt64_texture_cache.cpp
++++ b/src/render/rt64_texture_cache.cpp
+@@ -1528,7 +1528,9 @@ namespace RT64 {
+                 if (fileSystems[i]->load(ReplacementDatabaseFilename, databaseBytes)) {
+                     try {
+                         ReplacementDatabase db;
+-                        db = json::parse(databaseBytes.begin(), databaseBytes.end(), nullptr, true);
++                        // (as chars: parsing uint8_t needs std::char_traits<uint8_t>, which only MSVC's library has)
++                        const char *databaseChars = reinterpret_cast<const char *>(databaseBytes.data());
++                        db = json::parse(databaseChars, databaseChars + databaseBytes.size(), nullptr, true);
+ 
+                         if (db.config.hashVersion <= TMEMHasher::CurrentHashVersion) {
+                             db.resolvePaths(fileSystems[i].get(), uint32_t(i), fileSystemResolvedPaths[i], false, nullptr, &fileSystemStreamSets[i]);
+diff --git a/src/tools/file_to_c/CMakeLists.txt b/src/tools/file_to_c/CMakeLists.txt
+index 22ee3eb..f7b9ace 100644
+--- a/src/tools/file_to_c/CMakeLists.txt
++++ b/src/tools/file_to_c/CMakeLists.txt
+@@ -2,7 +2,19 @@ cmake_minimum_required(VERSION 3.20)
+ project(file_to_c)
+ set(CMAKE_CXX_STANDARD 17)
+ 
++if (CMAKE_CROSSCOMPILING)
++    # [wcw mingw] Cross-building (e.g. for Windows on Linux): the build runs file_to_c, so it's built for the host.
++    set(FILE_TO_C_HOST "${CMAKE_CURRENT_BINARY_DIR}/host/file_to_c")
++    add_custom_command(OUTPUT ${FILE_TO_C_HOST}
++        COMMAND ${CMAKE_COMMAND} -E make_directory "${CMAKE_CURRENT_BINARY_DIR}/host"
++        COMMAND c++ -std=c++17 -O2 "${CMAKE_CURRENT_SOURCE_DIR}/file_to_c.cpp" -o ${FILE_TO_C_HOST}
++        DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/file_to_c.cpp")
++    add_custom_target(file_to_c DEPENDS ${FILE_TO_C_HOST})
++    set(FILE_TO_C ${FILE_TO_C_HOST} CACHE INTERNAL "file_to_c as the build runs it")
++    return()
++endif()
+ add_executable(file_to_c "file_to_c.cpp")
++set(FILE_TO_C file_to_c CACHE INTERNAL "file_to_c as the build runs it")
+ 
+ if (APPLE)
+     set_target_properties(file_to_c PROPERTIES

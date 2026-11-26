@@ -1,0 +1,55 @@
+{
+ "about": "2026-11-15 (gameplayfix, item 11): the CPU going from the ring up the ramp in MONDAY NITRO (the playtest: CPU men stuck walking in place at an invisible wall by the barricade beside the ramp). As stage_monday_nitro (the player walks up the aisle to the stage, qa_ringstage 77; the CPU follows), with shots whenever the CPU is by the aisle's mouth. After the run: python scratch\u0007gents\\gameplayfix\tools\\stuck_scan2.py <the run's parent folder> <the run's name> -- any line is a CPU standing 3 s or more by the mouth (z >= 440, |x| < 400) while standing / walking. LOOK at the mouth shots: where he stops, what he faces",
+ "wrestlers": [
+  "THE ROCK",
+  "STEVE AUSTIN"
+ ],
+ "costumes": [
+  0,
+  0
+ ],
+ "arena": "MONDAY NITRO",
+ "control": [
+  "pad1",
+  "cpu"
+ ],
+ "matches": 1,
+ "seconds": 300,
+ "shots": 2.0,
+ "options": {
+  "qa_ringstage": 77
+ },
+ "expect": [
+  {
+   "name": "the match started",
+   "when": "any",
+   "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+  },
+  {
+   "name": "nobody's position went bad",
+   "when": "always",
+   "check": "finite(s0_x, s0_y, s0_z, s1_x, s1_y, s1_z)"
+  },
+  {
+   "name": "no area change up the aisle (bs_tries: the area in play)",
+   "when": "always",
+   "check": "bs_tries < 10"
+  },
+  {
+   "name": "the walker got to the stage",
+   "when": "any",
+   "check": "s0_z > 1250"
+  },
+  {
+   "name": "the CPU came up too",
+   "when": "any",
+   "check": "s1_z > 1230"
+  },
+  {
+   "name": "the CPU got past the mouth (z 700)",
+   "when": "any",
+   "check": "s1_z > 700"
+  }
+ ],
+ "shot_when": "($c.s1_z -gt 440) -and ($c.s1_z -lt 620) -and ([math]::Abs($c.s1_x) -lt 400)"
+}

@@ -1,0 +1,30 @@
+{
+  "wrestlers": [
+    "STEVE AUSTIN",
+    "THE ROCK"
+  ],
+  "control": [
+    "pad1",
+    "cpu"
+  ],
+  "arena": "SMACKDOWN",
+  "matches": 0,
+  "seconds": 150,
+  "shots": 5.0,
+  "expect": [
+    {
+      "name": "the match started",
+      "when": "any",
+      "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+    }
+  ],
+  "about": "the struggling slam (2026-10-28 evening, the user: almost every wrestler struggles lifting in the default grapple; arcade controls?): player 1 (scripted) Austin vs CPU Rock, grapple hold then A, over and over -- the moves in state.csv's s0_move (+0x30A); controls arcade",
+  "pads": [
+    "40.0 repeat 2.4",
+    "40.0 1 dpright 400",
+    "40.5 1 a 500",
+    "41.3 1 a 90",
+    "41.6 1 dpleft 300"
+  ],
+  "options": {}
+}

@@ -1,0 +1,12 @@
+diff --git a/Source/Core/Math.cpp b/Source/Core/Math.cpp
+index 6f20650d..0361f04a 100644
+--- a/Source/Core/Math.cpp
++++ b/Source/Core/Math.cpp
+@@ -29,6 +29,7 @@
+ #include "../../Include/RmlUi/Core/Math.h"
+ #include "../../Include/RmlUi/Core/Types.h"
+ #include <math.h>
++#include <cmath>
+ #include <stdlib.h>
+ #include <time.h>
+ 

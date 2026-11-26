@@ -1,0 +1,27 @@
+{
+  "about": "rumblemenu (2026-11-25): a fresh save's Royal Rumble RULES defaults and the NUMBER page's current-setting highlight. The copy's saves set aside, so the game makes a new save (fill_save_with_defaults; the mod's Rumble rules go into its slot 13 through load_rules_preset's hook). Regular, Multi Play > Royal Rumble > ORDER Random > NUMBER (qa_reg 65793 = 1 + 256 + 65536): 2 s as it opens (NUMBER's caption lit), then UP (15 -> 16), RIGHT (IN THE RING lit), UP x2 (6 -> 7 -> 8), RIGHT (ENTRY TIME), RIGHT (STARTS WITH), RIGHT (round to NUMBER), LEFT (STARTS WITH), RIGHT (NUMBER), 2 s on each for its shot; A; PLAYER and ARENA with A; the RULES page as it opens, shots, to the end. state.csv on screen 9 (qa_modes): bs_tries = the captions' lit bytes (+0x57, 0 lit): NUMBER's | IN THE RING's << 8 | ENTRY TIME's << 16 | STARTS WITH's << 24; rr_next = the cursor | rows 2, 4, 6's values << 8, 16, 24. On screen 21: bs_step = the page's rules rows 2..9, 4 bits each (COUNT OUT, PIN, SUBMISSION, TKO, ROPE BREAK, DQ, BLOODSHED, row 9); rr_next = row 10 | row 11 << 4 | the new save's Rumble slot given the defaults << 8 (bs_tries there, meant as the page's rows 0..7 as shown from *0x80159D0C, read 0 in run 2026-11-25_222538: not the page's rows -- the RULES shot is what shows TIME COUNT).",
+  "match": "arcade",
+  "wrestlers": [ "STEVE AUSTIN", null ],
+  "matches": 0,
+  "seconds": 330,
+  "shots": 10.0,
+  "options": { "game_mode": "Regular", "qa_modes": 1, "qa_reg": 65793, "rumble_entrants": 15, "rumble_ring": 6, "rumble_interval": 30, "rumble_start4": false },
+  "set_aside": [
+    "saves\\wwf.nomercy.us.bin",
+    "saves\\wwf.nomercy.us.bin.bak",
+    "saves\\wwf.nomercy.us.pak.bin",
+    "saves\\wwf.nomercy.us.pak.bin.bak"
+  ],
+  "expect": [
+    { "name": "the NUMBER page (screen 9)", "when": "any", "check": "mode == 0 and screen == 9" },
+    { "name": "NUMBER's caption lit, the other three not, as the page opens on NUMBER", "when": "any", "check": "mode == 0 and screen == 9 and (rr_next & 255) == 0 and bs_tries == 0x80808000" },
+    { "name": "IN THE RING's caption lit alone with the cursor on it", "when": "any", "check": "mode == 0 and screen == 9 and (rr_next & 255) == 2 and bs_tries == 0x80800080" },
+    { "name": "ENTRY TIME's caption lit alone with the cursor on it", "when": "any", "check": "mode == 0 and screen == 9 and (rr_next & 255) == 4 and bs_tries == 0x80008080" },
+    { "name": "STARTS WITH's caption lit alone with the cursor on it", "when": "any", "check": "mode == 0 and screen == 9 and (rr_next & 255) == 6 and bs_tries == 0x00808080" },
+    { "name": "IN THE RING at 8 after UP x2 (an even value)", "when": "any", "check": "mode == 0 and screen == 9 and ((rr_next >> 8) & 255) == 8" },
+    { "name": "the RULES page (screen 21)", "when": "any", "check": "mode == 0 and screen == 21" },
+    { "name": "the new save's Rumble slot given the mod's defaults (load_rules_preset's hook ran in this run)", "when": "any", "check": "mode == 0 and screen == 21 and (rr_next >> 8) >= 1" },
+    { "name": "RULES as the page opens: COUNT OUT Lose, PIN / SUBMISSION / TKO / ROPE BREAK / DQ No, BLOODSHED Yes (rows 2..8; TIME COUNT: look at the shot)", "when": "any", "check": "mode == 0 and screen == 21 and (bs_step & 0x0FFFFFFF) == 0x00111110" }
+  ],
+  "shot_when": "$c.mode -eq 0 -and ($c.screen -eq 9 -or $c.screen -eq 21)"
+}

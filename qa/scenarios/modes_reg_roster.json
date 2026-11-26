@@ -1,0 +1,15 @@
+{
+  "about": "2026-11-07, the two modes phase 3 (W7): Regular -- an Exhibition through the game's own pages (qa_reg 4109 = 1 + 4 + 8 + 4096); on the Superstar Select, F2 opened, BIG SHOW turned off, SAVE AND EXIT. The game's live roster must keep Big Show while in the select and the match (a game in progress keeps its roster) and take the change only back on a main menu page. state.csv (qa_modes), Regular off the title: rr_next = F2's BIG SHOW | the live roster's << 8 | 0xB5 << 24.",
+  "match": "arcade",
+  "wrestlers": [ "STEVE AUSTIN", "THE ROCK" ],
+  "matches": 0,
+  "seconds": 1500,
+  "shots": 6.0,
+  "options": { "game_mode": "Regular", "qa_modes": 1, "qa_reg": 4109, "big_show": true },
+  "expect": [
+    { "name": "on the select after F2: F2 says off, the live roster still has him", "when": "any", "check": "mode == 0 and screen in (26, 27) and (rr_next >> 24) == 0xB5 and (rr_next & 255) == 0 and ((rr_next >> 8) & 255) == 1" },
+    { "name": "never taken in the select or the match", "when": "always", "check": "(rr_next >> 24) != 0xB5 or not (screen in (25, 26, 27, 42) or mode == -2) or (rr_next & 255) == 1 or ((rr_next >> 8) & 255) == 1" },
+    { "name": "back on a main page after the match: taken (live off)", "when": "any", "check": "mode == 0 and screen in (2, 3, 4) and (rr_next >> 24) == 0xB5 and ((rr_next >> 8) & 255) == 0" }
+  ],
+  "shot_when": "$c.mode -eq 0 -and $c.screen -in 26,27,2"
+}

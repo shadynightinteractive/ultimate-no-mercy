@@ -1,0 +1,22 @@
+{
+  "about": "native window: Nitro, a ported arena, Bret",
+  "wrestlers": [
+    "0x060D",
+    "0x0001"
+  ],
+  "control": [
+    "cpu",
+    "cpu"
+  ],
+  "matches": 1,
+  "seconds": 120,
+  "shots": 20,
+  "expect": [
+    {
+      "name": "the match started",
+      "when": "any",
+      "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+    }
+  ],
+  "arena": "MONDAY NITRO"
+}

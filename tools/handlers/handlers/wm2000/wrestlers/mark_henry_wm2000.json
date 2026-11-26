@@ -1,0 +1,13 @@
+{
+ "about": "WrestleMania 2000's MARK HENRY: what the handler is told for him (wm2kall, 2026-11-13). Everything else comes from the ROM.",
+ "string_id": "mark_henry_wm2000",
+ "key": "mark_henry_wm2000",
+ "wm2000": {
+  "roster_index": 27,
+  "game_id": "0x0404"
+ },
+ "moveset": {
+  "reference_ordinal": 44,
+  "reference_why": "No Mercy's own"
+ }
+}

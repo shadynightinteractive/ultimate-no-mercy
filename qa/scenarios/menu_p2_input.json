@@ -1,0 +1,24 @@
+{
+  "about": "two players into Versus from the intro, then back and back and pick again (2026-10-28: the menu vanished, the user)",
+  "match": "arcade",
+  "matches": 0,
+  "seconds": 105,
+  "shots": 1.0,
+  "options": {
+    "free_play": false,
+    "attract_demos": true
+  },
+  "pads": [
+    "70.0 1 back 200",
+    "70.5 1 start 200",
+    "78.0 2 back 200",
+    "79.0 2 start 200",
+    "92.0 1 a 150",
+    "96.0 1 b 150",
+    "99.0 1 b 150",
+    "102.0 1 a 150",
+    "106.0 1 a 150",
+    "110.0 1 a 150"
+  ],
+  "expect": []
+}

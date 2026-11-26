@@ -1,0 +1,55 @@
+{
+  "about": "automerge (2026-11-23): F2's MERGE SAME WRESTLERS off (auto_merge 0, the factory setting): the select as it always was. One player's Versus (qa_versus) with qa_variant 1: on Albert's box (0x0508) a tour of the Type arrows -- C-right x5, C-left, C-right -- which steps through Albert's own four only (WrestleMania 2000's Prince Albert, 0x03C0, keeps his own box on the WM 2000 page), then A on Albert's Type 1 (Prince Albert's own box is passed by the CPU's cursor on its way to the Undertaker); the CPU's pick: the Undertaker. The same scenario on the installed build (main) gives the same [families] and [pages] lines. state.csv bs_tries = the select's Superstar under the cursor | costume << 16 | 1 << 24",
+  "match": "arcade",
+  "wrestlers": [
+    "0x0508",
+    "0x0003"
+  ],
+  "costumes": [
+    0,
+    0
+  ],
+  "matches": 0,
+  "seconds": 420,
+  "shots": 1.0,
+  "options": {
+    "free_play": true,
+    "attract_demos": false,
+    "qa_versus": 30,
+    "qa_variant": 1,
+    "qa_variant_tour": 5,
+    "auto_merge": 0
+  },
+  "expect": [
+    {
+      "name": "the select: Albert, Type 1",
+      "when": "any",
+      "check": "bs_tries == 0x01000508"
+    },
+    {
+      "name": "Albert, Type 4",
+      "when": "any",
+      "check": "bs_tries == 0x01030508"
+    },
+    {
+      "name": "never Prince Albert in Albert's box: while player 1 picks, the Type arrows step through Albert's own four",
+      "when": "always",
+      "check": "bs_grabs != 0 or (bs_tries & 0xFFFF) != 0x03C0"
+    },
+    {
+      "name": "player 1 picked Albert, his Type 1",
+      "when": "any",
+      "check": "bs_grabs == 0x00000508"
+    },
+    {
+      "name": "Prince Albert keeps a box of his own (the CPU's cursor passes it on its way to the Undertaker)",
+      "when": "any",
+      "check": "bs_grabs != 0 and bs_tries == 0x010003C0"
+    },
+    {
+      "name": "the match: Albert (player 1) vs the Undertaker (CPU)",
+      "when": "any",
+      "check": "mode == -2 and match_frames != 0xFFFF and match_frames > 120 and s0_id == 0x0508 and s0_pad == 1 and s1_id == 0x0003"
+    }
+  ]
+}

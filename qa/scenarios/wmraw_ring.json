@@ -1,0 +1,45 @@
+{
+  "about": "from the floor outside the ring, low, looking up across it (as arena_nitro_ring): the near apron, the mat, the corners (post, pad, dark hook), the far barricade and the crowd's rows in the right order (walls, tiers, sign holders, hands)",
+  "wrestlers": [
+    "STEVE AUSTIN",
+    "THE ROCK"
+  ],
+  "control": [
+    "cpu",
+    "cpu"
+  ],
+  "arena": "RAW IS WAR WM 2000",
+  "matches": 1,
+  "seconds": 45,
+  "shots": 0.5,
+  "options": {},
+  "camera": {
+    "eye": [
+      0,
+      160,
+      -900
+    ],
+    "at": [
+      150,
+      520,
+      0
+    ]
+  },
+  "expect": [
+    {
+      "name": "the match started",
+      "when": "any",
+      "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "the arena is ours (arena_current 13)",
+      "when": "any",
+      "check": "venue == 13 and stage == 2"
+    },
+    {
+      "name": "nobody's position went bad",
+      "when": "always",
+      "check": "finite(s0_x, s0_y, s0_z, s1_x, s1_y, s1_z)"
+    }
+  ]
+}

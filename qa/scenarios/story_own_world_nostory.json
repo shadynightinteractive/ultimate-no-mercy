@@ -1,0 +1,18 @@
+{
+  "about": "BASELINE: the mod built with -NoStory (the four Story Mode patches out), otherwise as story_own_world: free play, one player, the World Heavyweight row (qa_story 6), Steve Austin picked -- its pages and match card must be the game's own text; the CPU plays the match (qa_story 1 with 4), to see what follows it",
+  "match": "arcade",
+  "wrestlers": ["STEVE AUSTIN", null],
+  "matches": 0,
+  "seconds": 720,
+  "shots": 3.0,
+  "options": {
+    "free_play": true,
+    "attract_demos": false,
+    "custom_story": 1,
+    "qa_story": 7
+  },
+  "expect": [
+    { "name": "no custom story ran", "when": "always", "check": "matches == 0" }
+  ],
+  "shot_when": "$c.screen -eq 23 -or $c.screen -eq 22 -or $c.screen -eq 25"
+}

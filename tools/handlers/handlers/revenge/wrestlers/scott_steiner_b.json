@@ -1,0 +1,58 @@
+{
+ "about": "WCW/nWo Revenge port: what was chosen by hand for him (moved out of mod\\gen's tables by handlers\\extract_fixes.py, 2026-11-12). Edit here; the handler reads nothing else that is his alone.",
+ "string_id": "scott_steiner_b",
+ "key": "scottsteiner_b",
+ "legacy_game_id": "0x0116",
+ "name": "SCOTT STEINER",
+ "short_name": "S. STEINER",
+ "height": 13,
+ "weight": 135,
+ "music_slot": 75,
+ "video": 0,
+ "revenge": {
+  "moveset_file": "0x1EE",
+  "code": "0x206"
+ },
+ "moveset": {
+  "reference_ordinal": 19,
+  "allies": [
+   "0x010E",
+   "0x0105",
+   "0x0107"
+  ],
+  "weight_class": [
+   1,
+   1,
+   0
+  ],
+  "stance": null,
+  "slot_overrides": {
+   "30": 16250,
+   "235": 15470
+  },
+  "no_struggling_slam": true
+ },
+ "costumes": [
+  {
+   "capture": "st_c2",
+   "slot": 1
+  }
+ ],
+ "skin": "no_mercy",
+ "body_type": 4,
+ "body_type_why": "(2026-11-13, revbody) a hand fix the rule doesn't give (it gives 3, Medium 2): his base Scott Steiner's, chosen by hand (Thick 1: see scott_steiner.json)",
+ "photo_number": 124,
+ "second_look_of": "scott_steiner",
+ "about_look": "the black singlet with his shades",
+ "photo": {
+  "photo": 124,
+  "shot": "data/revport/ports4/cap/cc_scott.png",
+  "box": [
+   193,
+   26,
+   243,
+   76
+  ],
+  "same_as": "scottsteiner"
+ }
+}

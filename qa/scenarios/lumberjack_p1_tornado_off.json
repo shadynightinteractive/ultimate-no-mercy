@@ -1,0 +1,43 @@
+{
+  "about": "ljround10 (QA proof, not a check): the same tornado tag as lumberjack_p1_tornado -- same men, controls, arena, pads, length and speed -- with Lumberjack OFF (no lumberjacks; the RULES page's tornado), to see whether a man running at ring height past the ropes (r20 / r21 lumberjack_p1_tornado: the CPU partner, state 3, move 3610) happens in a stock tornado tag. Read with scratch floatscan.py.",
+  "match": "tag",
+  "rules": "tornado",
+  "wrestlers": [
+    "STEVE AUSTIN",
+    "THE ROCK",
+    "TRIPLE H",
+    "0x0003"
+  ],
+  "costumes": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "control": [
+    "pad1",
+    "cpu",
+    "cpu",
+    "cpu"
+  ],
+  "arena": "RAW IS WAR",
+  "matches": 3,
+  "seconds": 1500,
+  "speed": 6,
+  "shots": 10,
+  "shot_when": "$c.match_state -eq 1",
+  "pads": [
+    "9999 1 back 10",
+    "9999 2 back 10"
+  ],
+  "options": {
+    "qa_area_trace": 3
+  },
+  "expect": [
+    {
+      "name": "the match ran",
+      "when": "any",
+      "check": "match_state == 1"
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "about": "ctrlsave 2026-11-25: the second start, run on the game folder ctl_mode_save_n64 left (UNM_GAME = its copy): CONTROL MODE is NOT set by the scenario (keep_options: the game's own saved value). It must come up N64 and stay N64. Then player 1 plays a singles match at his controller (pad 1 Steve Austin, The Rock the CPU): the stick left and right, B and A, every 6 s -- he walks and the game reads his presses.",
+  "wrestlers": [
+    "STEVE AUSTIN",
+    "THE ROCK"
+  ],
+  "arena": "RAW IS WAR",
+  "control": [
+    "pad1",
+    "cpu"
+  ],
+  "matches": 0,
+  "seconds": 90,
+  "shots": 5.0,
+  "keep_options": [
+    "controls"
+  ],
+  "options": {
+    "qa_ctlmode": true
+  },
+  "pads": [
+    "10.0 1 -leftx 1500",
+    "12.0 1 +leftx 1500",
+    "14.0 1 b 150",
+    "15.0 1 a 150",
+    "10.0 repeat 6"
+  ],
+  "expect": [
+    {
+      "name": "the settings were read: CONTROL MODE N64, as the last start saved it",
+      "when": "any",
+      "check": "(bs_tries & 4) == 4 and (bs_grabs & 0xFF) == 1"
+    },
+    {
+      "name": "CONTROL MODE N64 all along once read",
+      "when": "always",
+      "check": "(bs_tries & 4) == 0 or (bs_tries & 1) == 0"
+    },
+    {
+      "name": "the match started, slot 0 on a controller",
+      "when": "any",
+      "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30 and s0_pad != 0"
+    },
+    {
+      "name": "player 1's controller drove him: 60 match frames or more of his presses, and he walked 40 units or more",
+      "when": "any",
+      "check": "(bs_step >> 16) >= 60 and (bs_step & 0xFFFF) >= 40"
+    },
+    {
+      "name": "nobody's position went bad",
+      "when": "always",
+      "check": "finite(s0_x, s0_y, s0_z, s1_x, s1_y, s1_z)"
+    }
+  ]
+}

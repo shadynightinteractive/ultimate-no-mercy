@@ -1,0 +1,15 @@
+{
+ "about": "WrestleMania 2000's CHYNA: what the handler is told for him (wm2kall, 2026-11-13). Everything else comes from the ROM.",
+ "string_id": "chyna_wm2000",
+ "key": "chyna_wm2000",
+ "wm2000": {
+  "roster_index": 73,
+  "game_id": "0x0A07"
+ },
+ "moveset": {
+  "reference_ordinal": 50,
+  "reference_why": "No Mercy's own"
+ },
+ "class": "wrestler",
+ "class_why": "the handler: No Mercy's own Chyna is one of its Superstars, not on its women's pages (she wrestled the men: the 1999 Royal Rumble, the Intercontinental title); WrestleMania 2000 keeps her with its women"
+}

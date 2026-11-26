@@ -1,0 +1,25 @@
+{
+  "match": "rumble",
+  "wrestlers": [
+    "STEVE AUSTIN"
+  ],
+  "control": [
+    "cpu"
+  ],
+  "matches": 1,
+  "seconds": 50,
+  "shots": 0.1,
+  "shot_when": "$c.mode -eq 0 -and $c.screen -eq 42 -and $c.entrance_step -ge 1 -and $c.entrance_step -le 29",
+  "expect": [
+    {
+      "name": "the entrances ran",
+      "when": "any",
+      "check": "mode == 0 and screen == 42 and entrance_step >= 1 and entrance_step <= 29"
+    }
+  ],
+  "options": {
+    "rumble_entrants": 4,
+    "rumble_interval": 60
+  },
+  "about": "2026-10-29, the user: light flashes in Austin's close-up entrance in the Rumble arena -- his entrance at 10 shots a second, as built"
+}

@@ -1,0 +1,29 @@
+{
+ "title": "no2k15_retired.json",
+ "menu": "Retired Test",
+ "championship": "world",
+ "cast": {
+  "rival": "stone_cold_2k15",
+  "partner2": {"id": "the_rock_2k15", "game_number": "0x011B"}
+ },
+ "start": "one",
+ "nodes": {
+  "one": {
+   "chapter": "RETIRED TEST",
+   "pages": [
+    "QA no2k15: two men taken out.\nStand-ins: {rival}, {partner2}."
+   ],
+   "scene": [
+    {"place": "locker room", "cast": ["player", {"who": "0x011A"}, "STONE COLD 2K15"]},
+    {"say": "You're done, {player}!", "who": "rival"}
+   ],
+   "match": {
+    "type": "single",
+    "slots": ["player", "rival"],
+    "runins": [{"who": "THE ROCK 2K15", "helps": "opponents", "at": "0:45"}]
+   },
+   "requirement": "Retired test: {player} vs {rival}.",
+   "branches": [{"next": "end"}]
+  }
+ }
+}

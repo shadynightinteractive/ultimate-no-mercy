@@ -1,0 +1,15 @@
+{
+  "about": "2026-11-01 overnight QA: the user's own story stories/wwf_vs_wcw_invasion.json ('WWF vs WCW: The Invasion'), a byte-for-byte copy as qa/stories_test/000_wwf_vs_wcw_invasion.json so it is the first on the list (qa_story 3 takes the first; the list is sorted by file name). Its first node MONDAY NIGHT WAR: the narration pages, the ring scene (Vince's mic lines), the parking lot (Hall walks in, Nash), the No DQ match in RAW IS WAR vs Scott Hall with Nash's run-in. The player THE ROCK (Austin is the story's 'buddy'); the CPU plays (qa_story 3), QA's A presses move the bubbles on. The game's log checked for [stories] errors",
+  "match": "arcade",
+  "wrestlers": ["THE ROCK", null],
+  "matches": 0,
+  "seconds": 900,
+  "shots": 3.0,
+  "options": { "free_play": true, "attract_demos": false, "custom_story": 1, "qa_story": 3 },
+  "expect": [
+    { "name": "the story's first node under way", "when": "any", "check": "matches >= 10100" },
+    { "name": "its match played", "when": "any", "check": "mode == -2" }
+  ],
+  "shot_when": "$true",
+  "stories": ["000_wwf_vs_wcw_invasion.json"]
+}

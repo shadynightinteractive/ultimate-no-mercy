@@ -1,0 +1,60 @@
+{
+ "about": "(the presses at the game's controller read: logic.c qa_ringstage_pad) The player's path, nothing placed: pad 1 climbs out of the ring on the aisle's side, walks and runs up the aisle and ramp to the deck; his man idle (pad 2). LOOK: he climbs the ramp (feet on it), stands on the deck, the camera pulls out with both in frame, the stage set whole behind him, no fade anywhere.",
+ "wrestlers": [
+  "THE ROCK",
+  "STEVE AUSTIN"
+ ],
+ "costumes": [
+  0,
+  0
+ ],
+ "arena": "RAW IS WAR",
+ "control": [
+  "pad1",
+  "pad2"
+ ],
+ "matches": 1,
+ "seconds": 180,
+ "shots": 1.5,
+ "options": {
+  "qa_ringstage": 5
+ },
+ "expect": [
+  {
+   "name": "the match started",
+   "when": "any",
+   "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+  },
+  {
+   "name": "nobody's position went bad",
+   "when": "always",
+   "check": "finite(s0_x, s0_y, s0_z, s1_x, s1_y, s1_z)"
+  },
+  {
+   "name": "RAW: no area change up to the stage (bs_tries: the area in play, never 10)",
+   "when": "always",
+   "check": "bs_tries != 10"
+  },
+  {
+   "name": "the walker (slot 1, pad 2) got out of the ring and up the aisle past the old door line",
+   "when": "any",
+   "check": "s0_z > 800"
+  },
+  {
+   "name": "the walker (slot 1, pad 2) got to the deck",
+   "when": "any",
+   "check": "s0_z > 2305"
+  },
+  {
+   "name": "lifted on the deck: 160 (bs_grabs' low half)",
+   "when": "any",
+   "check": "s0_z > 2320 and (bs_grabs & 0xFFFF) == 160"
+  },
+  {
+   "name": "the ground's y stays the game's",
+   "when": "always",
+   "check": "s0_y >= -1 and s0_y < 400"
+  }
+ ],
+ "shot_when": "$c.s0_z -gt 1000"
+}

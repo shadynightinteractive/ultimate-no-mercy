@@ -1,0 +1,63 @@
+{
+  "about": "2026-11-01, the user: Bret Hart's standing special (the slam into a Sharpshooter, entry 70: 1880's slam + the turnover, then the hold 16771) -- 'Bret ends up away from the opponent, giving an imaginary sharpshooter'. Entry 70 only (qa_fsub 4), forced wherever the game picks a standing front grapple; the opponent an idle player 2. Looked at: Bret's legs-locked Sharpshooter on the man during the hold (s0 state 72 / s1 73, state.csv 'phase' columns: the current state). state.csv bs_tries / bs_grabs (qa_fsub): the animation file each man plays -- during and after the hold No Mercy's own Sharpshooter files only (16352 / 16353 the hold, +2 / +4 / +6 its endings: 0x3FE0..0x3FE7), never the pack's SS_TURN (0x542F) or past it 2026-11-01 afternoon rebuild (built, not tested yet): the special is two moves, as in Revenge -- the slam (entry 70, 1880's own files 0x37D8 / 0x37D9, a move that ends), then the game's own ground grapple on the man (movex.c movex_chain_step: func_8013E870, as a press of A at a lying man -- state 70 places Bret at the legs and kneels him, 0x2F88), its pick his ground Sharpshooter (157: the turnover 0x3FDE / 0x3FDF, then the hold 0x3FE0 / 0x3FE1). Look at: the slam's end, then the turnover's first second (the man's legs in Bret's hands, no jump of the man), the hold, the turnover's sounds (26 / 46 / 94 / 104).",
+  "wrestlers": [
+    "BRET HART",
+    "THE ROCK"
+  ],
+  "control": [
+    "cpu",
+    "pad2"
+  ],
+  "arena": "SMACKDOWN",
+  "matches": 4,
+  "seconds": 450,
+  "shots": 0.5,
+  "force": {
+    "slot": 0,
+    "entries": [
+      0,
+      291
+    ],
+    "as": 70
+  },
+  "options": {
+    "qa_fsub": 4
+  },
+  "expect": [
+    {
+      "name": "the match started",
+      "when": "any",
+      "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "the special forced",
+      "when": "any",
+      "check": "forced >= 1"
+    },
+    {
+      "name": "nobody's position went bad",
+      "when": "always",
+      "check": "finite(s0_x, s0_y, s0_z, s1_x, s1_y, s1_z)"
+    },
+    {
+      "name": "his front special's slam (entry 70: 1880's own files, 0x37D8 / 0x37D9)",
+      "when": "any",
+      "check": "bs_tries == 0x37D8 and bs_grabs == 0x37D9"
+    },
+    {
+      "name": "the game's own ground grapple on him after the slam (Bret kneeling at the man, 0x2F88)",
+      "when": "any",
+      "check": "bs_tries == 0x2F88"
+    },
+    {
+      "name": "the slam went on to his ground Sharpshooter as a move of its own (entry 157: the turnover 0x3FDE / 0x3FDF)",
+      "when": "any",
+      "check": "bs_tries == 0x3FDE and bs_grabs == 0x3FDF"
+    },
+    {
+      "name": "the Sharpshooter's hold played (16352 / 16353)",
+      "when": "any",
+      "check": "bs_tries == 0x3FE0 and bs_grabs == 0x3FE1"
+    }
+  ]
+}

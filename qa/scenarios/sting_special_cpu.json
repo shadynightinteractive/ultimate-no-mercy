@@ -1,0 +1,55 @@
+{
+  "wrestlers": [
+    "STING",
+    "THE ROCK"
+  ],
+  "arena": "SMACKDOWN",
+  "matches": 3,
+  "seconds": 1200,
+  "shots": 0.5,
+  "pads": [
+    "9999 1 back 10",
+    "9999 2 back 10"
+  ],
+  "expect": [
+    {
+      "name": "the match started",
+      "when": "any",
+      "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "nobody's position went bad",
+      "when": "always",
+      "check": "finite(s0_x, s0_y, s0_z, s1_x, s1_y, s1_z)"
+    },
+    {
+      "name": "his front special's slam (entry 70: 1880's own files, 0x37D8 / 0x37D9)",
+      "when": "any",
+      "check": "(bs_step & 0xFFFF) == 70 and bs_tries == 0x37D937D8"
+    },
+    {
+      "name": "the game's own ground grapple on him after the slam (Sting kneeling at the man, 0x2F88)",
+      "when": "any",
+      "check": "(bs_tries & 0xFFFF) == 0x2F88"
+    },
+    {
+      "name": "the slam went on to his ground Sharpshooter as a move of its own (entry 157: the turnover 0x3FDE / 0x3FDF)",
+      "when": "any",
+      "check": "(bs_step & 0xFFFF) == 157 and bs_tries == 0x3FDF3FDE"
+    },
+    {
+      "name": "the Sharpshooter's hold played (16352 / 16353)",
+      "when": "any",
+      "check": "bs_tries == 0x3FE13FE0"
+    }
+  ],
+  "about": "2026-11-01, Sting (WCW/nWo Revenge's, 0x010B; data\revport\\ports4\\PORTS4.md): his front special as Bret's (Revenge's code 58 is Bret's byte for byte): the slam (entry 70, 1880's own files 0x37D8 / 0x37D9), the game's own ground grapple on the man (0x2F88), his ground Sharpshooter -- the Scorpion Deathlock -- as a move of its own (157: 0x3FDE / 0x3FDF, the hold 0x3FE0 / 0x3FE1). bret_special_cpu's checks; qa_pspecial as there. Look at the slam's end, the turnover (the man's legs in Sting's hands, no jump), the hold.",
+  "control": [
+    "cpu",
+    "cpu"
+  ],
+  "options": {
+    "qa_special": 5,
+    "qa_pspecial": 19
+  }
+}

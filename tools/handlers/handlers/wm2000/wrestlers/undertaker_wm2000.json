@@ -1,0 +1,13 @@
+{
+ "about": "WrestleMania 2000's UNDERTAKER: what the handler is told for him (wm2kall, 2026-11-13). Everything else comes from the ROM.",
+ "string_id": "undertaker_wm2000",
+ "key": "undertaker_wm2000",
+ "wm2000": {
+  "roster_index": 6,
+  "game_id": "0x0101"
+ },
+ "moveset": {
+  "reference_ordinal": 3,
+  "reference_why": "No Mercy's own"
+ }
+}

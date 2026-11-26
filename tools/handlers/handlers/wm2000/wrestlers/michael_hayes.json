@@ -1,0 +1,15 @@
+{
+ "about": "WrestleMania 2000's MICHAEL HAYES: what the handler is told for him (wm2kall, 2026-11-13). Everything else comes from the ROM.",
+ "string_id": "michael_hayes",
+ "key": "michael_hayes",
+ "wm2000": {
+  "roster_index": 48,
+  "game_id": "0x0903"
+ },
+ "moveset": {
+  "reference_ordinal": 61,
+  "reference_why": "a non-wrestler: Mr. McMahon, No Mercy's"
+ },
+ "class": "announcer",
+ "class_why": "the handler: a WWF announcer in 1998-99 (Sunday Night Heat); WrestleMania 2000 has him in its group 9 with Jim Ross and Jerry Lawler"
+}

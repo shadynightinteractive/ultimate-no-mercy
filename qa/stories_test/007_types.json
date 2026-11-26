@@ -1,0 +1,225 @@
+{
+ "title": "Phase 6 A: match types",
+ "menu": "Types Test",
+ "championship": "world",
+ "cast": {
+  "a": "THE ROCK",
+  "b": "KANE",
+  "c": "UNDERTAKER"
+ },
+ "nodes": {
+  "tag": {
+   "chapter": "TAG",
+   "pages": [
+    "TAG: {player} in a tag."
+   ],
+   "match": {
+    "teams": [
+     [
+      "player",
+      "a"
+     ],
+     [
+      "b",
+      "c"
+     ]
+    ],
+    "script": [
+     {
+      "winner": "player",
+      "loser": "b",
+      "when": "time 0:40",
+      "do": "end"
+     }
+    ]
+   },
+   "requirement": "TAG match.",
+   "branches": [
+    {
+     "next": "triple"
+    }
+   ]
+  },
+  "triple": {
+   "chapter": "TRIPLE",
+   "pages": [
+    "TRIPLE: {player} in a triple."
+   ],
+   "match": {
+    "teams": [
+     [
+      "player"
+     ],
+     [
+      "b"
+     ],
+     [
+      "c"
+     ]
+    ],
+    "script": [
+     {
+      "winner": "player",
+      "loser": "b",
+      "when": "time 0:40",
+      "do": "end"
+     }
+    ]
+   },
+   "requirement": "TRIPLE match.",
+   "branches": [
+    {
+     "next": "handicap"
+    }
+   ]
+  },
+  "handicap": {
+   "chapter": "HANDICAP",
+   "pages": [
+    "HANDICAP: {player} in a handicap."
+   ],
+   "match": {
+    "teams": [
+     [
+      "player"
+     ],
+     [
+      "b",
+      "c"
+     ]
+    ],
+    "script": [
+     {
+      "winner": "player",
+      "loser": "b",
+      "when": "time 0:40",
+      "do": "end"
+     }
+    ]
+   },
+   "requirement": "HANDICAP match.",
+   "branches": [
+    {
+     "next": "fourway"
+    }
+   ]
+  },
+  "fourway": {
+   "chapter": "FOURWAY",
+   "pages": [
+    "FOURWAY: {player} in a fourway."
+   ],
+   "match": {
+    "teams": [
+     [
+      "player"
+     ],
+     [
+      "a"
+     ],
+     [
+      "b"
+     ],
+     [
+      "c"
+     ]
+    ],
+    "script": [
+     {
+      "winner": "player",
+      "loser": "a",
+      "when": "time 0:40",
+      "do": "end"
+     }
+    ]
+   },
+   "requirement": "FOURWAY match.",
+   "branches": [
+    {
+     "next": "cage"
+    }
+   ]
+  },
+  "cage": {
+   "chapter": "CAGE",
+   "pages": [
+    "CAGE: {player} in a cage."
+   ],
+   "match": {
+    "type": "cage",
+    "slots": [
+     "player",
+     "b"
+    ],
+    "script": [
+     {
+      "winner": "player",
+      "how": "escape",
+      "when": "time 0:40",
+      "do": "end"
+     }
+    ]
+   },
+   "requirement": "CAGE match.",
+   "branches": [
+    {
+     "next": "ladder"
+    }
+   ]
+  },
+  "ladder": {
+   "chapter": "LADDER",
+   "pages": [
+    "LADDER: {player} in a ladder."
+   ],
+   "match": {
+    "type": "ladder",
+    "slots": [
+     "player",
+     "c"
+    ],
+    "script": [
+     {
+      "winner": "player",
+      "how": "ladder",
+      "when": "time 0:40",
+      "do": "end"
+     }
+    ]
+   },
+   "requirement": "LADDER match.",
+   "branches": [
+    {
+     "next": "ironman"
+    }
+   ]
+  },
+  "ironman": {
+   "chapter": "IRONMAN",
+   "pages": [
+    "IRONMAN: {player} in a ironman."
+   ],
+   "match": {
+    "type": "ironman",
+    "slots": [
+     "player",
+     "a"
+    ],
+    "script": [
+     {
+      "winner": "player",
+      "how": "pinfall",
+      "when": "time 0:40",
+      "do": "end"
+     }
+    ]
+   },
+   "requirement": "IRONMAN match.",
+   "branches": [
+    {
+     "next": "end"
+    }
+   ]
+  }
+ }
+}

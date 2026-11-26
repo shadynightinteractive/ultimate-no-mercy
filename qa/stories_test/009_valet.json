@@ -1,0 +1,24 @@
+{
+  "title": "Valet Test",
+  "menu": "Valet Test",
+  "championship": "world",
+  "cast": { "rival": "GODFATHER" },
+  "vars": {},
+  "start": "one",
+  "nodes": {
+    "one": {
+      "chapter": "VALET ONE",
+      "pages": ["With his valet, at RAW IS WAR."],
+      "match": { "type": "single", "slots": ["player", "rival"], "runins": [{ "who": "HO", "helps": "opponents", "at": "3:00" }], "arena": "RAW IS WAR" },
+      "requirement": "Valet test: RAW IS WAR.",
+      "branches": [ { "next": "two" } ]
+    },
+    "two": {
+      "chapter": "VALET TWO",
+      "pages": ["With his valet, at Bash at the Beach."],
+      "match": { "type": "single", "slots": ["player", "rival"], "runins": [{ "who": "HO", "helps": "opponents", "at": "3:00" }], "arena": "Bash at the Beach" },
+      "requirement": "Valet test: Bash at the Beach.",
+      "branches": [ { "next": "end" } ]
+    }
+  }
+}

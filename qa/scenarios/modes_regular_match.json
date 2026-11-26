@@ -1,0 +1,29 @@
+{
+  "about": "2026-11-07, the two modes phase 1: a Regular match through the game's own menus (qa_reg 13): the boot as the game's, Start on the title, Multi Play > Exhibition > MATCH Single Match > PLAYER 1P vs CPU > ARENA > RULES Start (past the BELT tab) > the Superstar Select (Steve Austin, the HD model, for the player; The Rock for the CPU) > the match card > the match (entrances with the Titantron, JR and King at the table, commentary on): the CPU plays the player's Superstar after 20 s so it ends; A through the replay; Next; 10 s on the menus, quit. Proves the enhancements the hooks used to gate (HD men, Titantron, announcers, commentary) run in Regular, and that the game's own BELT tab / PLAYER line-ups are there (shots). (no2k15, 2026-11-23: the two WWE 2K15 test slots, 0x011A / 0x011B, are removed from the game -- stock Steve Austin 0x0002 and The Rock 0x0001 in their places here)",
+  "match": "arcade",
+  "wrestlers": [ "0x0002", "THE ROCK" ],
+  "matches": 0,
+  "seconds": 1500,
+  "shots": 2.0,
+  "options": {
+    "game_mode": "Regular",
+    "settings_version": 5,
+    "qa_modes": 1,
+    "qa_reg": 13,
+    "titantron_screens": true,
+    "titantron_live": true,
+    "commentary": true,
+    "announcers": true
+  },
+  "expect": [
+    { "name": "Regular all along", "when": "always", "check": "(bs_tries & 1) == 0 and (bs_tries >> 28) == 0" },
+    { "name": "the game's own PLAYER page reached (screen 6)", "when": "any", "check": "mode == 0 and screen == 6" },
+    { "name": "the entrances ran", "when": "any", "check": "mode == 0 and screen == 42 and entrance_step >= 1 and entrance_step <= 29" },
+    { "name": "the match: Steve Austin (controller 1) vs The Rock (CPU)", "when": "any", "check": "mode == -2 and match_frames != 0xFFFF and match_frames > 120 and s0_id == 0x0002 and s0_pad == 1 and s1_id == 0x0001 and s1_pad == 0" },
+    { "name": "JR and King at the table (their bones in the draw list)", "when": "any", "check": "mode == -2 and ann_listed > 0" },
+    { "name": "the match ended (its replay / results)", "when": "any", "check": "mode == -2 and match_state == 4" },
+    { "name": "back on the game's menus after it, the driver done", "when": "any", "check": "(bs_grabs & 255) == 13" },
+    { "name": "no model's matrices ever went bad", "when": "always", "check": "bad_mtx == 0" }
+  ],
+  "shot_when": "($c.mode -eq 0 -and $c.screen -in 5,6,7,12,21,25,26,27) -or ($c.mode -eq 0 -and $c.screen -eq 42 -and $c.entrance_step -ge 1)"
+}

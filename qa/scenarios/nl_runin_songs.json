@@ -1,0 +1,17 @@
+{
+  "about": "nolimits 2026-11-12: Rumble run-ins with 300 folder wrestlers about (w300, each with theme.bin): an entrant after the first two gets his song in the ring (media_entrant_song); with the change his own theme.bin plays natively there ('[media] song of 0x02xx / 0x03xx: native theme' in the log; the test numbers are all clear of the built-ins' since 15:21, check_log.ps1), as on the entrance screen, and the game's song is the silent one. Entrants are drawn at random: a folder wrestler is likely (112 of about 200 on the roster) but not certain.",
+  "match": "rumble",
+  "wrestlers": ["0x026A"],
+  "control": ["cpu"],
+  "arena": "RAW IS WAR",
+  "options": { "rumble_entrants": 8, "rumble_interval": 10 },
+  "matches": 1,
+  "seconds": 300,
+  "shots": 3,
+  "expect": [
+    { "name": "the entrances ran", "when": "any", "check": "mode == 0 and screen == 42 and entrance_step >= 1 and entrance_step <= 29" },
+    { "name": "the Rumble started", "when": "any", "check": "stage == 2 and mode == -2 and match_frames != 0xFFFF and match_frames > 30" },
+    { "name": "the Rumble went on a minute", "when": "any", "check": "stage == 2 and mode == -2 and match_frames != 0xFFFF and match_frames > 3600" },
+    { "name": "no model's matrices ever went bad", "when": "always", "check": "bad_mtx == 0" }
+  ]
+}

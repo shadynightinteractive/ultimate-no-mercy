@@ -1,0 +1,21 @@
+{
+  "about": "the QA bench itself: a CPU vs CPU singles match, set up as asked, plays to its end",
+  "wrestlers": ["THE ROCK", "STEVE AUSTIN"],
+  "costumes": [0, 0],
+  "arena": "RAW IS WAR",
+  "control": ["cpu", "cpu"],
+  "special": [true, false],
+  "matches": 1,
+  "seconds": 420,
+  "shots": 4,
+  "expect": [
+    { "name": "the match started", "when": "any", "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30" },
+    { "name": "The Rock is in slot 0", "when": "match", "check": "s0_id == 0x0001" },
+    { "name": "Austin is in slot 1", "when": "match", "check": "s1_id == 0x0002" },
+    { "name": "the arena is RAW IS WAR", "when": "match", "check": "venue == 0" },
+    { "name": "both slots are the CPU", "when": "match", "check": "s0_pad == 0 and s1_pad == 0" },
+    { "name": "slot 0 had SPECIAL", "when": "match", "check": "s0_spirit >= 100" },
+    { "name": "no position ever went bad", "when": "always", "check": "finite(s0_x, s0_y, s0_z, s1_x, s1_y, s1_z)" },
+    { "name": "the match finished and the game quit by itself", "when": "end", "check": "matches >= 1 or stage != 2" }
+  ]
+}

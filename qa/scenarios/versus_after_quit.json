@@ -1,0 +1,33 @@
+{
+  "match": "rumble",
+  "wrestlers": [
+    "STEVE AUSTIN"
+  ],
+  "control": [
+    "cpu"
+  ],
+  "options": {
+    "rumble_entrants": 4,
+    "rumble_interval": 30,
+    "qa_op": 8,
+    "qa_op_at": 25,
+    "qa_p2": 3600
+  },
+  "seconds": 150,
+  "shots": 1.0,
+  "about": "2026-10-29, the user: Versus's MATCH page came up with no rows -- after a single-player game, back on the championship list, player 2 joining there. A Rumble, F2 QUIT MATCH 25 s in (back to the championship list), player 2's Start 60 s into the game (qa_p2 3600)",
+  "matches": 0,
+  "expect": [
+    {
+      "name": "the Rumble started",
+      "when": "any",
+      "check": "stage == 2 and mode == -2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "the MATCH page reached",
+      "when": "any",
+      "check": "screen == 7"
+    }
+  ],
+  "shot_when": "$c.screen -eq 7"
+}

@@ -1,0 +1,14 @@
+{
+  "about": "2026-11-07, the two modes phase 2 (W9): Regular with SPLASH SCREENS off and ATTRACT off -- at power-on straight to the title (no legal page, logos or intro movie), and the title then waits: no movie, no demo match (the game's idle count held). Nothing pressed. state.csv (qa_modes): bs_step bit 15 = the menus' data loaded.",
+  "match": "arcade",
+  "matches": 0,
+  "seconds": 160,
+  "shots": 2.0,
+  "options": { "game_mode": "Regular", "qa_modes": 1, "splash_regular": false, "attract_regular": false },
+  "expect": [
+    { "name": "Regular all along", "when": "always", "check": "(bs_tries & 1) == 0" },
+    { "name": "the title within 40 s of the first frame (no intro played)", "when": "any", "check": "mode == 0 and screen == 0 and (bs_step & 0x8000) != 0 and ms < 40000" },
+    { "name": "never an attract demo", "when": "always", "check": "mode != -6" },
+    { "name": "still on the title at the end", "when": "end", "check": "mode == 0 and screen == 0 and (bs_step & 0x8000) != 0" }
+  ]
+}

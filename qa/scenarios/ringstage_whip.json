@@ -1,0 +1,50 @@
+{
+ "about": "(the presses at the game's controller read: logic.c qa_ringstage_pad) The whip up the aisle: qa_ringstage 2 puts the two men in the aisle by the barricade (where a walk gets to) every 15 s; pad 1's real A + C-down whips pad 2's idle man. LOOK: he runs on past the old door line (z 800) with no fade or stage-area change, up the ramp, in the ring's camera; pad 1 runs after him.",
+ "wrestlers": [
+  "THE ROCK",
+  "STEVE AUSTIN"
+ ],
+ "costumes": [
+  0,
+  0
+ ],
+ "arena": "RAW IS WAR",
+ "control": [
+  "pad1",
+  "pad2"
+ ],
+ "matches": 1,
+ "seconds": 150,
+ "shots": 1.5,
+ "options": {
+  "qa_ringstage": 7
+ },
+ "expect": [
+  {
+   "name": "the match started",
+   "when": "any",
+   "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+  },
+  {
+   "name": "nobody's position went bad",
+   "when": "always",
+   "check": "finite(s0_x, s0_y, s0_z, s1_x, s1_y, s1_z)"
+  },
+  {
+   "name": "RAW: no area change up to the stage (bs_tries: the area in play, never 10)",
+   "when": "always",
+   "check": "bs_tries != 10"
+  },
+  {
+   "name": "whipped past the old wall at z 800: the wrong side of record 10",
+   "when": "any",
+   "check": "s1_z > 900"
+  },
+  {
+   "name": "no area change from the whip (still the ring's area)",
+   "when": "any",
+   "check": "s1_z > 900 and bs_tries == 0"
+  }
+ ],
+ "shot_when": "$c.s1_z -gt 800"
+}

@@ -1,0 +1,48 @@
+{
+  "about": "2026-11-03, the user: REY MYSTERIO's head against Revenge's (reference pictures). Both idle, a fixed camera close on his head in his corner, from the right: the whole head, no piece of another man's.",
+  "wrestlers": [
+    "0x0112",
+    "THE ROCK"
+  ],
+  "costumes": [
+    2,
+    0
+  ],
+  "arena": "RAW IS WAR",
+  "control": [
+    "pad1",
+    "pad2"
+  ],
+  "camera": {
+    "eye": [
+      100,
+      232,
+      -260
+    ],
+    "at": [
+      180,
+      224,
+      -180
+    ]
+  },
+  "matches": 0,
+  "seconds": 70,
+  "shots": 3,
+  "expect": [
+    {
+      "name": "the match started",
+      "when": "any",
+      "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "REY MYSTERIO is in slot 0, his costume",
+      "when": "match",
+      "check": "s0_id == 0x0112 and s0_costume == 2"
+    },
+    {
+      "name": "no model's matrices ever went bad",
+      "when": "always",
+      "check": "bad_mtx == 0"
+    }
+  ]
+}

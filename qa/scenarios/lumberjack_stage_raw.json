@@ -1,0 +1,85 @@
+{
+  "about": "ljround10 (the user 2026-11-24: on the ramp or the stage the lumberjacks should 'irish whip them back to the ring area'; and 'Lumberjacks shouldn't be idle when a wrestler is out of the ring in striking distance ever'): a Lumberjack match on RAW IS WAR (a ramp and a stage) -- player 1 (Steve Austin) at his controller (qa_lj_p1 3), The Rock the CPU; every 15 s The Rock is put on the ramp's middle or the stage's front by turns (logic.c qa_outfight_step, qa_of_stage). The roll-in there is the game's whip toward the ring; no lumberjack stands idle within striking distance of a man out there.",
+  "match": "singles",
+  "wrestlers": [
+    "STEVE AUSTIN",
+    "THE ROCK"
+  ],
+  "costumes": [
+    0,
+    0
+  ],
+  "control": [
+    "pad1",
+    "cpu"
+  ],
+  "arena": "RAW IS WAR",
+  "options": {
+    "qa_lumberjacks": 12,
+    "qa_lj_p1": 3,
+    "qa_outfight": 900,
+    "qa_of_a": 0,
+    "qa_of_b": 1,
+    "qa_of_stage": 1
+  },
+  "matches": 2,
+  "seconds": 1200,
+  "speed": 6,
+  "shots": 20,
+  "pads": [
+    "9999 1 back 10",
+    "9999 2 back 10"
+  ],
+  "expect": [
+    {
+      "name": "the match started",
+      "when": "any",
+      "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "player 1 (slot 0) is driven by a controller",
+      "when": "match",
+      "check": "(lj_o >> 31) == 1"
+    },
+    {
+      "name": "ljround10: the roll-in on the ramp / stage is the game's whip toward the ring (at least once)",
+      "when": "any",
+      "check": "((lj_z >> 16) & 0xFF) >= 1"
+    },
+    {
+      "name": "ljround10 (at every match's end): no lumberjack idle within striking distance of a competitor out there -- no spell of 2 s on his feet within 85 of him, not on him (the user 2026-11-24: 'never'; then: 'Half a second is ok.. I just meant extended idle')",
+      "when": "always",
+      "check": "match_state != 4 or (lj_z & 0xFF) == 0"
+    },
+    {
+      "name": "no competitor ever with both his recorded place and his drawn body off the ring at ring height (the user 2026-11-25: \"Both must be out\")",
+      "when": "always",
+      "check": "(lj_o & 0xFF) == 0"
+    },
+    {
+      "name": "no competitor ever out of the arena",
+      "when": "always",
+      "check": "((lj_o >> 8) & 0xFF) == 0"
+    },
+    {
+      "name": "no position ever went bad",
+      "when": "always",
+      "check": "finite(s0_x, s0_y, s0_z, s1_x, s1_y, s1_z)"
+    },
+    {
+      "name": "ROUND 9 / ljround10: the lumberjacks do the game's own grapple moves by the barricade or in the aisle (the man 430 out or more) -- no place ruled out",
+      "when": "any",
+      "check": "((lj_x >> 16) & 0xFF) >= 1"
+    }
+  ],
+  "report_only": [
+    {
+      "name": "ljround10: idle spells / idle seconds / ramp-stage whips / put on a man in reach",
+      "value": "(lj_z & 0xFF, (lj_z >> 8) & 0xFF, (lj_z >> 16) & 0xFF, lj_z >> 24)"
+    },
+    {
+      "name": "the match's end (report only here: qa_of_stage puts a man on the ramp or stage every 15 s, so a double count-out -- the game's own rule, flags 0 / 0 -- is a fair end; r14 SmackDown: both matches so)",
+      "value": "(s1_flags & 7) * 16 + (s0_flags & 7)"
+    }
+  ]
+}

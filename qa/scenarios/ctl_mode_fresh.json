@@ -1,0 +1,29 @@
+{
+  "about": "ctrlsave 2026-11-25: a new install's first start -- no settings file at all (set aside), CONTROL MODE not written by the scenario (keep_options: none there, so none): it must come up N64, mod.toml's default (the user: 'N64 should be default'). Before the fix it came up 6-BUTTON (the continue timer read for it).",
+  "match": "arcade",
+  "matches": 0,
+  "seconds": 35,
+  "shots": 5.0,
+  "set_aside": [
+    "mod_config\\nomercy_arcade.json"
+  ],
+  "keep_options": [
+    "controls"
+  ],
+  "options": {
+    "game_mode": "Regular",
+    "qa_ctlmode": true
+  },
+  "expect": [
+    {
+      "name": "the settings were read: CONTROL MODE N64",
+      "when": "any",
+      "check": "(bs_tries & 4) == 4 and (bs_grabs & 0xFF) == 1"
+    },
+    {
+      "name": "CONTROL MODE N64 all along once read",
+      "when": "always",
+      "check": "(bs_tries & 4) == 0 or (bs_tries & 1) == 0"
+    }
+  ]
+}

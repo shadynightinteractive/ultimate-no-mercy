@@ -1,0 +1,45 @@
+# Manifest template, rendered per game by ..\..\build.ps1 into build\quickmatch\<game>\mod.toml.
+
+[manifest]
+id = "{{MOD_ID}}"
+version = "0.1.0"
+display_name = "Quick Match (testing)"
+short_description = "{{SHORT_DESCRIPTION}}"
+description = """
+{{DESCRIPTION}}"""
+authors = [ "jessetbh" ]
+game_id = "{{GAME_ID}}"
+minimum_recomp_version = "0.1.0"
+dependencies = []
+optional_dependencies = []
+native_libraries = []
+
+[[manifest.config_options]]
+id = "enabled"
+name = "Enabled"
+description = "{{ENABLED_DESCRIPTION}}"
+type = "Bool"
+default = false
+
+[[manifest.config_options]]
+id = "venue"
+name = "Venue"
+description = "{{VENUE_DESCRIPTION}}"
+type = "Enum"
+options = {{VENUE_OPTIONS}}
+default = "Game's pick"
+
+[[manifest.config_options]]
+id = "match"
+name = "Match"
+description = "{{MATCH_DESCRIPTION}}"
+type = "Enum"
+options = {{MATCH_OPTIONS}}
+default = "Game's rotation"
+
+{{LENGTH_OPTION}}{{ENTRANCE_OPTION}}[inputs]
+elf_path = "mod.elf"
+mod_filename = "{{MOD_ID}}"
+func_reference_syms_file = "{{SYMS}}"
+data_reference_syms_files = []
+additional_files = []

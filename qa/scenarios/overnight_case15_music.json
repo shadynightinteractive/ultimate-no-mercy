@@ -1,0 +1,40 @@
+{
+  "about": "overnight QA 2026-11-11, media case 15: other music after a native entrance. Two folder wrestlers only (pages), a 2-man Rumble with a man put out every 4 s (qa_rr_out 4) so it ends: the entrance (native theme/video), the match, the winner's song after the bell, then back to the title. Compare the audio with the same run under WCW_MEDIA=0.",
+  "match": "rumble",
+  "wrestlers": [
+    "0x0322"
+  ],
+  "control": [
+    "cpu"
+  ],
+  "arena": "RAW IS WAR",
+  "options": {
+    "rumble_entrants": 2,
+    "rumble_interval": 60,
+    "titantron_screens": true,
+    "titantron_live": true,
+    "qa_rr_out": 4
+  },
+  "matches": 1,
+  "seconds": 240,
+  "shots": 0.5,
+  "shot_when": "$c.mode -eq 0 -and $c.screen -eq 42 -and $c.entrance_step -ge 1 -and $c.entrance_step -le 29",
+  "expect": [
+    {
+      "name": "the entrances ran",
+      "when": "any",
+      "check": "mode == 0 and screen == 42 and entrance_step >= 1 and entrance_step <= 29"
+    },
+    {
+      "name": "the arena is RAW IS WAR",
+      "when": "any",
+      "check": "venue == 0 and stage == 2"
+    },
+    {
+      "name": "the match ended",
+      "when": "any",
+      "check": "match_state == 4"
+    }
+  ],
+  "pages": "..\\..\\scratch\\qa_overnight\\pages_two_folders.json"
+}

@@ -1,0 +1,33 @@
+{
+  "about": "2026-10-30: Hogan's entrance lines (commentary.pak rows 6572-6595, events entrance): his Rumble entrance with commentary on; the exe logs each line said",
+  "match": "rumble",
+  "wrestlers": [
+    "HOLLYWOOD HOGAN"
+  ],
+  "control": [
+    "cpu"
+  ],
+  "options": {
+    "rumble_entrants": 6,
+    "rumble_interval": 10,
+    "qa_rr_ports": 1,
+    "commentary": true,
+    "commentary_talk": "Nonstop"
+  },
+  "matches": 1,
+  "seconds": 70,
+  "shots": 1,
+  "shot_when": "$c.mode -eq 0 -and $c.screen -eq 42 -and $c.entrance_step -ge 1 -and $c.entrance_step -le 29",
+  "expect": [
+    {
+      "name": "the entrances ran",
+      "when": "any",
+      "check": "mode == 0 and screen == 42 and entrance_step >= 1 and entrance_step <= 29"
+    },
+    {
+      "name": "the Rumble started",
+      "when": "any",
+      "check": "stage == 2 and mode == -2 and match_frames != 0xFFFF and match_frames > 30"
+    }
+  ]
+}

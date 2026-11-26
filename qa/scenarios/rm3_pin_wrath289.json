@@ -1,0 +1,59 @@
+{
+ "about": "revmoves3 (2026-11-21, the move audit's follow-up): Wrath (0x036F, Revenge import, slot 0, CPU) against The Rock (CPU), singles; his entry 289 -- 'revenge:1399_139b@16574' -- forced wherever the game picks a move of the same place (qa_fsub 4: the one entry). Its animations are No Mercy's 424 byte for byte -- a pin's first step (its pin 425 is Revenge's own block for it, byte for byte; his entries 27 / 52 play the same move with that block on 964); 16574 ends: before, the men dropped into the pin and the move ended. After (@424): the pin.",
+ "match": "singles",
+ "wrestlers": [
+  "0x036F",
+  "THE ROCK"
+ ],
+ "costumes": [
+  0,
+  0
+ ],
+ "control": [
+  "cpu",
+  "cpu"
+ ],
+ "arena": "RAW IS WAR",
+ "matches": 0,
+ "seconds": 360,
+ "speed": 8,
+ "shots": 0,
+ "force": {
+  "slot": 0,
+  "entries": [
+   0,
+   291
+  ],
+  "as": 289
+ },
+ "options": {
+  "qa_fsub": 4
+ },
+ "expect": [
+  {
+   "name": "the match started",
+   "when": "any",
+   "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+  },
+  {
+   "name": "Wrath played his entry 289's move",
+   "when": "any",
+   "check": "(s0_move == 16574 or s0_move == 424) and s0_phase == 85"
+  },
+  {
+   "name": "it went on into its pin (74 / 75)",
+   "when": "any",
+   "check": "(s0_move == 424 or s0_move == 425) and s0_phase == 74 and s1_phase == 75"
+  },
+  {
+   "name": "no model's matrices ever went bad",
+   "when": "always",
+   "check": "bad_mtx == 0"
+  },
+  {
+   "name": "nobody's position went bad",
+   "when": "always",
+   "check": "finite(s0_x, s0_y, s0_z, s1_x, s1_y, s1_z)"
+  }
+ ]
+}

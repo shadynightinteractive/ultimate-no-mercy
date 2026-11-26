@@ -1,0 +1,45 @@
+{
+  "about": "2026-11-01, Scott Steiner (WCW/nWo Revenge's, 0x010F; data\revport\\ports4\\PORTS4.md): the Steiner Screwdriver (1860) -- every front grapple of his (entries 1..60) done as his standing special, entry 70; idle player 2; the move whole, the Rock down; the shots looked at",
+  "wrestlers": [
+    "SCOTT STEINER",
+    "THE ROCK"
+  ],
+  "control": [
+    "cpu",
+    "pad2"
+  ],
+  "arena": "SMACKDOWN",
+  "matches": 1,
+  "seconds": 200,
+  "shots": 0.5,
+  "force": {
+    "slot": 0,
+    "entries": [
+      1,
+      60
+    ],
+    "as": 70
+  },
+  "expect": [
+    {
+      "name": "the match started",
+      "when": "any",
+      "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "grapples forced",
+      "when": "any",
+      "check": "forced >= 1"
+    },
+    {
+      "name": "his special played",
+      "when": "match",
+      "check": "s0_move >= 1860 and s0_move <= 1869"
+    },
+    {
+      "name": "nobody's position went bad",
+      "when": "always",
+      "check": "finite(s0_x, s0_y, s0_z, s1_x, s1_y, s1_z)"
+    }
+  ]
+}

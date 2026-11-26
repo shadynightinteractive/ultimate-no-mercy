@@ -1,0 +1,51 @@
+{
+  "about": "no2k15 (2026-11-23): the two WWE 2K15 test slots (STONE COLD 2K15 0x011A, THE ROCK 2K15 0x011B) taken out of the game; F2's MERGE SAME WRESTLERS off (auto_merge 0). The game's own select_pages.json: qa_removal 2 dumps every page as laid out ([removal] qa pages N: its boxes' numbers) -- the log is checked for neither number and no empty box (scratch no2k15 pages_check.py). One player's Versus (qa_versus) with qa_variant 1: on The Rock's box (0x0001) a tour of the Type arrows -- C-right x5, C-left, C-right -- which steps through his own four only (WrestleMania 2000's Rock, 0x03A2, keeps his own box), then A on his Type 1; the CPU's pick: the Undertaker. state.csv bs_tries = the select's Superstar under the cursor | costume << 16 | 1 << 24",
+  "match": "arcade",
+  "wrestlers": [
+    "0x0001",
+    "0x0003"
+  ],
+  "costumes": [
+    0,
+    0
+  ],
+  "matches": 0,
+  "seconds": 420,
+  "shots": 1.0,
+  "options": {
+    "free_play": true,
+    "attract_demos": false,
+    "qa_versus": 30,
+    "qa_variant": 1,
+    "qa_variant_tour": 5,
+    "auto_merge": 0,
+    "qa_removal": 2
+  },
+  "expect": [
+    {
+      "name": "the select: The Rock, Type 1",
+      "when": "any",
+      "check": "bs_tries == 0x01000001"
+    },
+    {
+      "name": "The Rock, Type 4",
+      "when": "any",
+      "check": "bs_tries == 0x01030001"
+    },
+    {
+      "name": "never a 2K15 slot under any cursor",
+      "when": "always",
+      "check": "(bs_tries & 0xFFFF) != 0x011A and (bs_tries & 0xFFFF) != 0x011B"
+    },
+    {
+      "name": "player 1 picked The Rock, his Type 1",
+      "when": "any",
+      "check": "bs_grabs == 0x00000001"
+    },
+    {
+      "name": "the match: The Rock (player 1) vs the Undertaker (CPU)",
+      "when": "any",
+      "check": "mode == -2 and match_frames != 0xFFFF and match_frames > 120 and s0_id == 0x0001 and s0_pad == 1 and s1_id == 0x0003"
+    }
+  ]
+}

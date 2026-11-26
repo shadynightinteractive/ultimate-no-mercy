@@ -1,0 +1,35 @@
+{
+  "about": "the bound analog stick moves the wrestler (2026-11-20, controls): a singles match, both men on controllers (pad 1 Austin, pad 2 The Rock, who is never touched), CONTROL MODE 6-BUTTON (the stick moves him there: arcctl.c stick_dirs). Run with ctl_stick_pad's and ctl_stick_keys' controls_n64.json in the game folder: the N64 stick on the pads' LEFT stick (the left stick off the d-pad) and on the keys T G F H. Every 6 s: pad 1's left stick pushed left 1.5 s, then the key H (the stick right) 1.5 s -- Austin walks left, then right. The log's '[pads] ... in use' lines show the stick's rows; state.csv's s0_x / s0_z show the walks.",
+  "wrestlers": [
+    "STEVE AUSTIN",
+    "THE ROCK"
+  ],
+  "arena": "RAW IS WAR",
+  "control": [
+    "pad1",
+    "pad2"
+  ],
+  "matches": 0,
+  "seconds": 80,
+  "shots": 3,
+  "options": {
+    "controls": "Arcade"
+  },
+  "pads": [
+    "10.0 1 -leftx 1500",
+    "13.0 key H 1500",
+    "10.0 repeat 6"
+  ],
+  "expect": [
+    {
+      "name": "the match started",
+      "when": "any",
+      "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "nobody's position went bad",
+      "when": "always",
+      "check": "finite(s0_x, s0_y, s0_z, s1_x, s1_y, s1_z)"
+    }
+  ]
+}

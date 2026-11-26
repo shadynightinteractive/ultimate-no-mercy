@@ -1,0 +1,182 @@
+{
+ "about": "Goldust's looks' questions to No Mercy Plus V3's remap, frozen (FREEZE RULE): made by tools\\romimport\\native\\goldust_remap_freeze.py write from tools\\handlers\\modcheck.py tables' remap (handlers\\aki\\modtables.py Remap.stock / Remap.to_stock, as handlers\\customs\\nmplus.py goldust_apps and tame ask them); checked by goldust_remap_freeze.py check. Part numbers only.",
+ "mod_sha1": "9f67445f44db5eb464f629f6a49719753bf52abe",
+ "stock_meaning_ok": {
+  "parts.ring_c1": [
+   0
+  ],
+  "parts.ring_c2": [
+   0
+  ],
+  "parts.upper": [
+   0
+  ],
+  "parts.upper_c1": [
+   0
+  ],
+  "parts.upper_c2": [
+   0
+  ],
+  "parts.entr": [
+   0
+  ],
+  "parts.entr_c1": [
+   0
+  ],
+  "parts.entr_c2": [
+   0
+  ],
+  "parts.weapon": [
+   0
+  ],
+  "parts.gloves": [
+   0
+  ],
+  "parts.gloves_c": [
+   0
+  ],
+  "parts.tattoo": [
+   0
+  ],
+  "parts.wrist": [
+   0
+  ],
+  "parts.wrist_c": [
+   0
+  ],
+  "parts.lelbow": [
+   0
+  ],
+  "parts.lelbow_c": [
+   0
+  ],
+  "parts.relbow": [
+   0
+  ],
+  "parts.relbow_c": [
+   0
+  ],
+  "parts.lknee": [
+   0
+  ],
+  "parts.lknee_c": [
+   0
+  ],
+  "parts.rknee": [
+   0
+  ],
+  "parts.rknee_c": [
+   0
+  ],
+  "parts.boots_c1": [
+   0
+  ],
+  "parts.boots_c2": [
+   0
+  ],
+  "parts.facial_hair": [
+   0
+  ],
+  "parts.hat": [
+   0
+  ],
+  "parts.hat_c": [
+   0
+  ]
+ },
+ "to_stock": {
+  "parts.body": {
+   "2": 2
+  },
+  "parts.skin": {
+   "3": 3
+  },
+  "parts.ring_c1": {
+   "0": 0
+  },
+  "parts.ring_c2": {
+   "0": 0
+  },
+  "parts.upper": {
+   "0": 0
+  },
+  "parts.upper_c1": {
+   "0": 0
+  },
+  "parts.upper_c2": {
+   "0": 0
+  },
+  "parts.entr": {
+   "0": 0
+  },
+  "parts.entr_c1": {
+   "0": 0
+  },
+  "parts.entr_c2": {
+   "0": 0
+  },
+  "parts.weapon": {
+   "0": 0
+  },
+  "parts.gloves": {
+   "0": 0
+  },
+  "parts.gloves_c": {
+   "0": 0
+  },
+  "parts.tattoo": {
+   "0": 0
+  },
+  "parts.wrist": {
+   "0": 0
+  },
+  "parts.wrist_c": {
+   "0": 0
+  },
+  "parts.lelbow": {
+   "0": 0
+  },
+  "parts.lelbow_c": {
+   "0": 0
+  },
+  "parts.relbow": {
+   "0": 0
+  },
+  "parts.relbow_c": {
+   "0": 0
+  },
+  "parts.lknee": {
+   "0": 0
+  },
+  "parts.lknee_c": {
+   "0": 0
+  },
+  "parts.rknee": {
+   "0": 0
+  },
+  "parts.rknee_c": {
+   "0": 0
+  },
+  "parts.boots_c1": {
+   "0": 0
+  },
+  "parts.boots_c2": {
+   "0": 0
+  },
+  "parts.head": {
+   "0": 0
+  },
+  "parts.face": {
+   "18": 18
+  },
+  "parts.hair_c": {
+   "2": 2
+  },
+  "parts.hat": {
+   "0": 0
+  },
+  "parts.hat_c": {
+   "0": 0
+  }
+ }
+}

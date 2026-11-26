@@ -1,0 +1,36 @@
+{
+  "about": "one Undertaker per Royal Rumble (rumble_one_each, 2026-10-27): the player is the game's Undertaker (0x003); the field drawn from the Superstars brought over only (qa_rr_ports: Undertaker 1999, 0x00A, among them), 20 of them -- without the rule he'd come; with it, never",
+  "match": "rumble",
+  "wrestlers": [
+    "0x0003"
+  ],
+  "control": [
+    "cpu"
+  ],
+  "options": {
+    "rumble_entrants": 20,
+    "rumble_interval": 5,
+    "qa_rr_ports": 1,
+    "rumble_one_each": 1
+  },
+  "matches": 1,
+  "seconds": 300,
+  "shots": 15,
+  "expect": [
+    {
+      "name": "the Rumble started",
+      "when": "any",
+      "check": "stage == 2 and mode == -2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "the game's Undertaker is in it",
+      "when": "match",
+      "check": "0x0003 in (s0_id, s1_id, s2_id, s3_id, s4_id, s5_id)"
+    },
+    {
+      "name": "Undertaker 1999 never comes",
+      "when": "always",
+      "check": "0x000A not in (s0_id, s1_id, s2_id, s3_id, s4_id, s5_id)"
+    }
+  ]
+}

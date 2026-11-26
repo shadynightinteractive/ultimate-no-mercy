@@ -1,0 +1,14 @@
+{
+  "about": "nolimits 2026-11-12, a MEASUREMENT (expected to FAIL today): TEST WRESTLER 200 (0x02CD) is folder 200 of 300 (w300), past the 112 folder wrestlers the mod's one-byte ordinals leave room for (roster.c FOLDER_MAX = 256 - 102 - 42). The mod never reads him, so he isn't on the roster: what the match does with his ID is what this records. MEASURED 2026-11-12 16:02: the game crashes (exit 0xC0000005, no crash report) about 70 match frames in, on the live build and on nolimits' alike; his bar has no name.",
+  "match": "singles",
+  "wrestlers": ["0x02CD", "0x0001"],
+  "control": ["cpu", "cpu"],
+  "arena": "RAW IS WAR",
+  "matches": 1,
+  "seconds": 90,
+  "shots": 3,
+  "expect": [
+    { "name": "TEST WRESTLER 200 is in slot 0 in the match", "when": "match", "check": "s0_id == 0x02CD" },
+    { "name": "no model's matrices ever went bad", "when": "always", "check": "bad_mtx == 0" }
+  ]
+}

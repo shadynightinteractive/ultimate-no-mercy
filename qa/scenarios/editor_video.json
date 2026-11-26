@@ -1,0 +1,52 @@
+{
+  "about": "2026-11-12 (qa agent): the Create-a-Wrestler editor's Titantron page, its video preview, then the Superstar saved. Regular: Start on the title (qa_reg 1), then by the pads (pad 1 as player 1: qa.ps1 leaves every physical controller out, SDL_GAMECONTROLLER_IGNORE_DEVICES_EXCEPT -- plugged in, one would be player 1 and pad 1 player 2, whose presses the menus don't take): the main menu's third page (RIGHT twice), SmackDown Mall (A), Superstar Options (A), Edit a Superstar (A), the Superstar under the cursor (A: THE ROCK), on PROFILE/MUSIC DOWN x7 to Titantron, A (ovl_d page 14, the music / video list), C-left (the preview: func_8011E488, ovl_d, shows the video each frame -- the hook place media.c media_video_picked no scenario reached), A (preview over), A (chosen), Start (the page's Decision: 'Would you like to save this superstar?', the cursor on No), LEFT to Yes, A (the Superstar saved: func_800E31C4 -> roster.c save_one -> func_800E299C, once for each of his four costumes -- the Big Show hooks no scenario reached; func_800E2AC0, the moveset, only for a created Superstar, roster.c ord >= 0x41: first_boot_nosave reaches it). Pads in the game's seconds, timed from the runs 2026-11-12_131643 and _133739 (the editor's main page by ~190 s; the preview at 214-224 s showed THE ROCK's video full screen, func_8011E488 called 301 times). The hooks' calls: NM_HOOK_COUNTS with the Stage 1 exe. Run 2026-11-12_134216 (Stage 1 exe, NM_HOOK_COUNTS): func_8011E488 301 calls, func_800E299C entry / return 4 / 4. Its checks are only the way there (state.csv has no witness of the hooks); this copy's save is written, the next run's copy mirrors the game's back.",
+  "match": "arcade",
+  "matches": 0,
+  "seconds": 300,
+  "shots": 0.5,
+  "options": {
+    "game_mode": "Regular",
+    "settings_version": 5,
+    "qa_modes": 1,
+    "qa_reg": 1
+  },
+  "pads": [
+    "152.0 1 dpright 150",
+    "156.0 1 dpright 150",
+    "160.0 1 a 150",
+    "172.0 1 a 150",
+    "178.0 1 a 150",
+    "186.0 1 a 150",
+    "196.0 1 dpdown 120",
+    "197.0 1 dpdown 120",
+    "198.0 1 dpdown 120",
+    "199.0 1 dpdown 120",
+    "200.0 1 dpdown 120",
+    "201.0 1 dpdown 120",
+    "202.0 1 dpdown 120",
+    "206.0 1 a 150",
+    "214.0 1 leftshoulder 150",
+    "224.0 1 a 150",
+    "230.0 1 a 150",
+    "238.0 1 start 150",
+    "241.0 1 dpleft 150",
+    "244.0 1 a 150"
+  ],
+  "expect": [
+    {
+      "name": "Regular all along (the running mode 0)",
+      "when": "always",
+      "check": "(bs_tries & 1) == 0"
+    },
+    {
+      "name": "the main menu's third page (SmackDown Mall / Options)",
+      "when": "any",
+      "check": "mode == 0 and screen == 4"
+    },
+    {
+      "name": "the editor (SmackDown Mall: mode -7)",
+      "when": "any",
+      "check": "mode == -7"
+    }
+  ]
+}

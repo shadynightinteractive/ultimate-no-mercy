@@ -1,0 +1,13 @@
+{
+ "about": "WrestleMania 2000's GERALD BRISCO: what the handler is told for him (wm2kall, 2026-11-13). Everything else comes from the ROM.",
+ "string_id": "gerald_brisco",
+ "key": "gerald_brisco",
+ "wm2000": {
+  "roster_index": 47,
+  "game_id": "0x0902"
+ },
+ "moveset": {
+  "reference_ordinal": 61,
+  "reference_why": "a non-wrestler: Mr. McMahon, No Mercy's"
+ }
+}

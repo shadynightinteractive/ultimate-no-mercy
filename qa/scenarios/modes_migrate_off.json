@@ -1,0 +1,12 @@
+{
+  "about": "2026-11-07, the two modes: an existing install with the arcade off (settings_version 4, enabled off; game_mode left at Arcade here, to show the migration sets it) starts Regular -- the migration sets game_mode Regular and settings_version 5. state.csv (qa_modes) bs_tries as modes_migrate_new. Shots: the title with the game's own PRESS START.",
+  "match": "arcade",
+  "matches": 0,
+  "seconds": 120,
+  "shots": 2.0,
+  "options": { "game_mode": "Arcade", "settings_version": 4, "enabled": false, "qa_modes": 1 },
+  "expect": [
+    { "name": "Regular, the option set Regular by the migration (1), found version 4, now 5", "when": "any", "check": "(bs_tries & 1) == 0 and ((bs_tries >> 2) & 1) == 0 and ((bs_tries >> 4) & 15) == 1 and ((bs_tries >> 8) & 255) == 4 and ((bs_tries >> 16) & 255) == 5" },
+    { "name": "Regular all along", "when": "always", "check": "(bs_tries & 1) == 0" }
+  ]
+}

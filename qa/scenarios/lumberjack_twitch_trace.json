@@ -1,0 +1,68 @@
+{
+  "about": "2026-11-23 ljtwitch: the user's 11-23 match again -- Steve Austin (player 1 at his controller, qa_lj_p1 3: after his opponent, out by himself now and then) against Kurt Angle, with the same twelve lumberjacks (qa_lj_set 1: Savage, D-Lo Brown, La Parka, Brickowski, Taka Michinoku, British Bulldog, Shane McMahon, Han Zo Mon, Raven, Sting, X-Pac, Dean Malenko -- ten imported men). The user: 'There's still some twitching' / 'Its not just when they're at posts' / 'Check when they're idle outside the ring, thats where I notice most'. qa_lj_trace 4: every man every step in the game's log (ljf lines) -- what he is doing, state, animation, facing, place, target, buttons, this code's writes. The jitter measure (lj_p .. lj_s) for every phase.",
+  "match": "singles",
+  "wrestlers": [
+    "STEVE AUSTIN",
+    "0x0302"
+  ],
+  "costumes": [
+    0,
+    0
+  ],
+  "control": [
+    "pad1",
+    "cpu"
+  ],
+  "arena": "RAW IS WAR",
+  "options": {
+    "qa_lumberjacks": 12,
+    "qa_lj_set": 1,
+    "qa_lj_out": 30,
+    "qa_lj_p1": 3,
+    "qa_lj_trace": 4
+  },
+  "matches": 1,
+  "seconds": 900,
+  "speed": 6,
+  "shots": 10,
+  "shot_when": "$c.match_state -eq 1",
+  "pads": [
+    "9999 1 back 10",
+    "9999 2 back 10"
+  ],
+  "expect": [
+    {
+      "name": "the match started",
+      "when": "any",
+      "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "player 1 (slot 0) is driven by a controller -- the human path, as the user plays it",
+      "when": "match",
+      "check": "(lj_o >> 31) == 1"
+    },
+    {
+      "name": "the user's twelve lumberjacks (qa_lj_set 1): Savage, D-Lo Brown first",
+      "when": "match",
+      "check": "lj_j == (0x0108 | 0x03BC << 16)"
+    }
+  ],
+  "report_only": [
+    {
+      "name": "jitter: lumberjacks idle outside the ring -- events, man-seconds",
+      "value": "(lj_p & 0xFFFF, lj_p >> 16)"
+    },
+    {
+      "name": "jitter: lumberjacks walking to their posts / the intro -- events, man-seconds",
+      "value": "(lj_q & 0xFFFF, lj_q >> 16)"
+    },
+    {
+      "name": "jitter: lumberjacks on a man / brawling / leaving / busy -- events, man-seconds",
+      "value": "(lj_r & 0xFFFF, lj_r >> 16)"
+    },
+    {
+      "name": "jitter: competitors out on the floor -- events, man-seconds",
+      "value": "(lj_s & 0xFFFF, lj_s >> 16)"
+    }
+  ]
+}

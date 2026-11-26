@@ -1,0 +1,64 @@
+{
+ "about": "revmoves3 (2026-11-21, the move audit's follow-up): Dean Malenko (0x0374, Revenge import, slot 0, CPU) against The Rock (CPU), singles; his entry 22 -- 'revenge:1298_1299~142c@16544' -- forced wherever the game picks a move of the same place (qa_fsub 4: the one entry). Its animations and hold block are No Mercy's move 1184 and its hold 1185 byte for byte (Revenge's own: the same move), a hold (flags 0x2580); 16544 goes on to a pin (16545, 0x300). Before: the hold's animations played as a pin; after (@1184): the hold.",
+ "match": "singles",
+ "wrestlers": [
+  "0x0374",
+  "THE ROCK"
+ ],
+ "costumes": [
+  0,
+  0
+ ],
+ "control": [
+  "cpu",
+  "cpu"
+ ],
+ "arena": "RAW IS WAR",
+ "matches": 0,
+ "seconds": 360,
+ "speed": 8,
+ "shots": 0,
+ "force": {
+  "slot": 0,
+  "entries": [
+   0,
+   291
+  ],
+  "as": 22
+ },
+ "options": {
+  "qa_fsub": 4
+ },
+ "expect": [
+  {
+   "name": "the match started",
+   "when": "any",
+   "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+  },
+  {
+   "name": "Dean Malenko played his entry 22's move",
+   "when": "any",
+   "check": "(s0_move == 16544 or s0_move == 1184) and s0_phase == 85"
+  },
+  {
+   "name": "it went on into its hold (72 / 73), as No Mercy's 1184 and Revenge's move do",
+   "when": "any",
+   "check": "(s0_move == 1184 or s0_move == 1185) and s0_phase == 72 and s1_phase == 73"
+  },
+  {
+   "name": "it never went on into a pin (74) straight from his entry 22's move",
+   "when": "always",
+   "check": "not ((s0_move == 16544 or s0_move == 16545) and s0_phase == 74)"
+  },
+  {
+   "name": "no model's matrices ever went bad",
+   "when": "always",
+   "check": "bad_mtx == 0"
+  },
+  {
+   "name": "nobody's position went bad",
+   "when": "always",
+   "check": "finite(s0_x, s0_y, s0_z, s1_x, s1_y, s1_z)"
+  }
+ ]
+}

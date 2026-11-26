@@ -1,0 +1,58 @@
+diff --git a/plume_d3d12.cpp b/plume_d3d12.cpp
+index 7a7cd5c..828cab2 100644
+--- a/plume_d3d12.cpp
++++ b/plume_d3d12.cpp
+@@ -46,6 +46,14 @@ extern "C" {
+ }
+ #endif
+ 
++// [wcw mingw] D3D12 methods that return a struct: MSVC's ABI returns it from the call; the headers' other
++// Windows compilers (MinGW) declare them with the result as a first out-parameter instead.
++#if defined(_MSC_VER) || !defined(_WIN32)
++#   define D3D12_RETVAL(obj, method, type, ...) ((obj)->method(__VA_ARGS__))
++#else
++#   define D3D12_RETVAL(obj, method, type, ...) ([&]() { type d3d12RetVal_; (obj)->method(&d3d12RetVal_ __VA_OPT__(,) __VA_ARGS__); return d3d12RetVal_; }())
++#endif
++
+ namespace plume {
+     static const uint32_t ShaderDescriptorHeapSize = 65536;
+     static const uint32_t SamplerDescriptorHeapSize = 1024;
+@@ -878,10 +886,10 @@ namespace plume {
+             return;
+         }
+         
+-        cpuDescriptorHandle = heap->GetCPUDescriptorHandleForHeapStart();
++        cpuDescriptorHandle = D3D12_RETVAL(heap, GetCPUDescriptorHandleForHeapStart, D3D12_CPU_DESCRIPTOR_HANDLE);
+ 
+         if (shaderVisible) {
+-            gpuDescriptorHandle = heap->GetGPUDescriptorHandleForHeapStart();
++            gpuDescriptorHandle = D3D12_RETVAL(heap, GetGPUDescriptorHandleForHeapStart, D3D12_GPU_DESCRIPTOR_HANDLE);
+         }
+ 
+         addFreeBlock(0, heapSize);
+@@ -3097,7 +3105,7 @@ namespace plume {
+         // When using an UMA architecture without explicit support for GPU Upload heaps,
+         // we instead just make a custom heap with the same properties as Upload heaps.
+         if ((desc.heapType == RenderHeapType::GPU_UPLOAD) && gpuUploadHeapFallback) {
+-            poolDesc.HeapProperties = device->d3d->GetCustomHeapProperties(0, D3D12_HEAP_TYPE_UPLOAD);
++            poolDesc.HeapProperties = D3D12_RETVAL(device->d3d, GetCustomHeapProperties, D3D12_HEAP_PROPERTIES, 0, D3D12_HEAP_TYPE_UPLOAD);
+         }
+         else {
+             poolDesc.HeapProperties.Type = toD3D12(desc.heapType);
+diff --git a/plume_d3d12.h b/plume_d3d12.h
+index 9bfce62..3cfbe39 100644
+--- a/plume_d3d12.h
++++ b/plume_d3d12.h
+@@ -23,6 +23,12 @@
+ 
+ #include "D3D12MemAlloc.h"
+ 
++#ifndef _MSC_VER
++// [wcw mingw] The D3D12 interfaces' IDs for __uuidof (MSVC has them from __declspec(uuid)).
++#   include <guiddef.h>
++#   include <dxguids.h>
++#endif
++
+ namespace plume {
+     struct D3D12Buffer;
+     struct D3D12CommandQueue;

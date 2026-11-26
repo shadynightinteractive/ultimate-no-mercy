@@ -1,0 +1,47 @@
+{
+  "about": "2026-10-31, The Giant (WCW/nWo Revenge's, 0x010A): a Royal Rumble with him in it (the player), every entrant a ported one (qa_rr_ports), entrants every 10 s -- the ported models' palettes packed as the match goes on (skel.c pal_group_guard): no freeze, no crash, his model whole",
+  "match": "rumble",
+  "wrestlers": [
+    "THE GIANT"
+  ],
+  "control": [
+    "cpu"
+  ],
+  "options": {
+    "rumble_entrants": 20,
+    "rumble_interval": 10,
+    "announcers": true,
+    "commentary": true,
+    "qa_rr_ports": 1
+  },
+  "matches": 1,
+  "seconds": 600,
+  "shots": 10,
+  "expect": [
+    {
+      "name": "the Rumble started",
+      "when": "any",
+      "check": "stage == 2 and mode == -2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "The Giant is in it",
+      "when": "match",
+      "check": "s0_id == 0x010A or s1_id == 0x010A or s2_id == 0x010A or s3_id == 0x010A"
+    },
+    {
+      "name": "no model's matrices ever went bad",
+      "when": "always",
+      "check": "bad_mtx == 0"
+    },
+    {
+      "name": "the announcers' poses stayed numbers",
+      "when": "always",
+      "check": "ann_fallbacks == 0"
+    },
+    {
+      "name": "every palette had No Mercy's room (the guard never needed: gen/nmpal.py)",
+      "when": "end",
+      "check": "pal_room_skipped == 0"
+    }
+  ]
+}

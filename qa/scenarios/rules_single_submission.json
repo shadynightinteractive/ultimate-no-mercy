@@ -1,0 +1,25 @@
+{
+  "about": "2026-11-06: does a QA match take its rules (logic.c qa_rules: the game's preset 'submission' into the RULES rows before the demo is made)? -- the match flags are compared across these runs; 6x",
+  "match": "singles",
+  "rules": "submission",
+  "wrestlers": [
+    "STEVE AUSTIN",
+    "THE ROCK"
+  ],
+  "control": [
+    "cpu",
+    "cpu"
+  ],
+  "arena": "RAW IS WAR",
+  "matches": 1,
+  "seconds": 90,
+  "speed": 6,
+  "shots": 6,
+  "expect": [
+    {
+      "name": "the match started",
+      "when": "any",
+      "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+    }
+  ]
+}

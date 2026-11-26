@@ -1,0 +1,62 @@
+{
+ "about": "revmoves2 (2026-11-20, the user, round 2: 'I noticed he did this during a pin too'): Ultimo Dragon (Revenge import 0x0376, slot 0, CPU) against Farooq (WrestleMania 2000 import 0x03AA), singles; his back-grapple moves (entries 73-83) done as his entry 75, 'revenge:15e2_15e3@<move>' -- Revenge's Tiger Suplex Pin, No Mercy's 3030 frame for frame (57 frames each side, ending in the bridge the pin's hold goes on from). His slot 75 / 76 played it on 2610 Shin Breaker, a move that doesn't go on to a pin: out of the bridge both men stood up. With the fix it is played on 3030: the bridge goes on to the pin (Ultimo 74, Farooq 75). Shots in the move and the pin. Matches one after another until the time is up.",
+ "match": "singles",
+ "wrestlers": [
+  "0x0376",
+  "0x03AA"
+ ],
+ "costumes": [
+  0,
+  0
+ ],
+ "control": [
+  "cpu",
+  "cpu"
+ ],
+ "arena": "RAW IS WAR",
+ "matches": 0,
+ "seconds": 420,
+ "speed": 4,
+ "shots": 60.0,
+ "shot_when": "($c.s0_move -eq 2610 -or $c.s0_move -eq 3030 -or $c.s0_move -eq 3031) -and ($c.s0_phase -eq 95 -or $c.s0_phase -eq 85 -or $c.s0_phase -eq 74 -or $c.s0_phase -eq 34 -or $c.s0_phase -eq 1)",
+ "force": {
+  "slot": 0,
+  "entries": [
+   73,
+   83
+  ],
+  "as": 75
+ },
+ "expect": [
+  {
+   "name": "the match started",
+   "when": "any",
+   "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+  },
+  {
+   "name": "Ultimo Dragon (Revenge) against Farooq (WrestleMania 2000)",
+   "when": "match",
+   "check": "s0_id == 0x0376 and s1_id == 0x03AA"
+  },
+  {
+   "name": "Ultimo did his slot 75 move (2610 before the fix, 3030 after)",
+   "when": "any",
+   "check": "s0_move == 2610 or s0_move == 3030"
+  },
+  {
+   "name": "his Tiger Suplex Pin went on to its pin (Ultimo 74, Farooq 75)",
+   "when": "any",
+   "check": "s0_phase == 74 and s1_phase == 75 and (s0_move == 3030 or s0_move == 3031)"
+  },
+  {
+   "name": "no model's matrices ever went bad",
+   "when": "always",
+   "check": "bad_mtx == 0"
+  },
+  {
+   "name": "nobody's position went bad",
+   "when": "always",
+   "check": "finite(s0_x, s0_y, s0_z, s1_x, s1_y, s1_z)"
+  }
+ ]
+}

@@ -1,0 +1,29 @@
+{
+ "about": "romsets (2026-11-24): the random pools on an install with some of the source games -- rostertags_rumble's Royal Rumble of 40 drawn from every page (qa_tags 1: each entrant in the log, 'tags: field N @XXXX=class'; 20 more Rumble draws and 20 Lumberjack draws of 30 checked by the mod), qa_removal 2. qa\romsets_check.py --rumble <run>: every entrant a Superstar the install has, no stand-in.",
+ "match": "rumble",
+ "wrestlers": [
+  "THE ROCK"
+ ],
+ "control": [
+  "cpu"
+ ],
+ "options": {
+  "rumble_entrants": 40,
+  "rumble_interval": 8,
+  "rumble_no_women": 1,
+  "announcers": false,
+  "commentary": false,
+  "qa_tags": 1,
+  "qa_removal": 2
+ },
+ "matches": 1,
+ "seconds": 100,
+ "shots": 3,
+ "expect": [
+  {
+   "name": "the Rumble started",
+   "when": "any",
+   "check": "stage == 2 and mode == -2 and match_frames != 0xFFFF and match_frames > 30"
+  }
+ ]
+}

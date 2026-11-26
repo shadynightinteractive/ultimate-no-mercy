@@ -1,0 +1,34 @@
+# The arcade mod's references into arrays the six-man build moves (address -> new place via build_rom's layout).
+# OVLE arrays: only when ovl_e is loaded (in menus the same addresses are ovl_c/ovl_a BSS -- check each).
+src/arcade.h:32  80158150  HUD digits slot 0 +1f0  | #define NM_TITLE_IDLE      0x80158150u // s32: title idle frames; attract starts at 900; <0 = not co
+src/arcade.h:42  800a6028  slot pad slot 0 +0  | #define NM_SLOT_PAD        0x800A6028u // s32[4]: controller driving the slot (1-4), 0 = CPU
+src/arcade.h:43  800a4038  slot wrestler id slot 0 +0  | #define NM_SLOT_WRESTLER   0x800A4038u // s32[4]: wrestler id
+src/arcade.h:44  8009fe58  elimination time slot 0 +0  | #define NM_SLOT_ELIM_TIME  0x8009FE58u // s32[4]: match second the slot was eliminated, -1 = still i
+src/arcade.h:45  8009ed20  slot human flag slot 0 +0  | #define NM_SLOT_HUMAN      0x8009ED20u // u8[4]: 1 = slot driven by a controller (rebuilt every fram
+src/arcade.h:54  80158360  HUD digits slot 1 +16c  | #define NM_MENU_RECORDS    0x80158360u // menu screen n's record: + n * 0x138, u8 cursor at +5
+src/arcade.h:65  800a8958  slot costume slot 0 +0  | #define NM_SLOT_COSTUME    0x800A8958u // s32[4] costume (id >> 12)
+src/arcade.h:70  80159998  wrestlers slot 0 +8  | #define NM_WRESTLERS       0x80159998u
+src/arcade.h:77  80071f74  model buffer 2 slot 0 +1d4  | #define NM_ENTRANT_MTX     0x80071F74u // float[16] model matrix of the wrestler walking out (stage 
+src/logic.c:59  80076264  model loaded id slot 0 +0  | #define NM_SELECT_HOVER 0x80076264u // u16: wrestler shown at the superstar select (under the cursor
+src/logic.c:213  80154918  HUD panel sprite A slot 3 +1c  | // the new screen's set-up from the loop's switch (table 0x80154918), then the screen number.
+src/logic.c:218  801581c0  HUD digits slot 0 +260  | #define NM_PAGE_PENDING  0x801581C0u   // s16: the page the loading step opens
+src/logic.c:241  8015832c  HUD digits slot 1 +138  | RD16(0x8015832Cu) = 0;
+src/logic.c:254  80158340  HUD digits slot 1 +14c  | RD32(0x80158340u) = v;
+src/logic.c:460  800a4038  slot wrestler id slot 0 +0  | #define NM_SLOT_WRESTLER 0x800A4038u    // s32[4]: the wrestler in each match slot
+src/logic.c:587  80159998  wrestlers slot 0 +8  | #define NM_WRESTLER    0x80159998u
+src/logic.c:589  80159990  wrestlers slot 0 +0  | #define NM_TB          0x80159990u    // the wrestler structs as the game's code points at them (W -
+src/logic.c:590  8016b920  roster id per slot slot 0 +0  | #define NM_CAM_IDS     0x8016B920u    // s16[4]: the Superstar each slot shows the camera (-1: none)
+src/logic.c:595  800a3dd8  rumble per-slot record slot 0 +18  | #define NM_RR_FIELD3DD8 0x800A3DD8u   // s32 per slot (stride 0x1C): the entrant's list index
+src/logic.c:596  8009ed10  CPU difficulty slot 0 +0  | #define NM_RR_SLOT_B   0x8009ED10u    // s16 per slot: the entrant's table B entry
+src/logic.c:671  800aa084  team int slot 3 +0  | RD32(0x800AA084u) = 0xFFFFFFFFu;
+src/logic.c:674  80158154  HUD digits slot 0 +1f4  | RD8(0x80158154u) = 0; RD8(0x80158155u) = 3; RD8(0x80158156u) = ARENA_ROYAL_RUMBLE; RD8(0x80158157u) 
+src/logic.c:674  80158155  HUD digits slot 0 +1f5  | RD8(0x80158154u) = 0; RD8(0x80158155u) = 3; RD8(0x80158156u) = ARENA_ROYAL_RUMBLE; RD8(0x80158157u) 
+src/logic.c:674  80158156  HUD digits slot 0 +1f6  | RD8(0x80158154u) = 0; RD8(0x80158155u) = 3; RD8(0x80158156u) = ARENA_ROYAL_RUMBLE; RD8(0x80158157u) 
+src/logic.c:674  80158157  HUD digits slot 0 +1f7  | RD8(0x80158154u) = 0; RD8(0x80158155u) = 3; RD8(0x80158156u) = ARENA_ROYAL_RUMBLE; RD8(0x80158157u) 
+src/logic.c:675  80158158  HUD digits slot 0 +1f8  | RD8(0x80158158u) = 0xFF; RD8(0x80158159u) = (u8)(rumble_size + 2);
+src/logic.c:675  80158159  HUD digits slot 0 +1f9  | RD8(0x80158158u) = 0xFF; RD8(0x80158159u) = (u8)(rumble_size + 2);
+src/logic.c:943  80154668  HUD panel sprite A slot 0 +0  | static const u32 rr_hud_obj[3] = { 0x80154668u, 0x801556F0u, 0x80155B50u };
+src/logic.c:943  801556f0  HUD panel sprite slot 0 +0  | static const u32 rr_hud_obj[3] = { 0x80154668u, 0x801556F0u, 0x80155B50u };
+src/logic.c:943  80155b50  HUD panel sprite slot 0 +0  | static const u32 rr_hud_obj[3] = { 0x80154668u, 0x801556F0u, 0x80155B50u };
+src/logic_v3.c:33  80076264  model loaded id slot 0 +0  | #define NM_SELECT_HOVER 0x80076264u // u16: wrestler shown at the superstar select (under the cursor
+src/logic_v3.c:191  80154918  HUD panel sprite A slot 3 +1c  | // table, 0x80154918) and then storing the screen number. Doing just the store leaves the screen

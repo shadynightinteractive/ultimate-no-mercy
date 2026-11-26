@@ -1,0 +1,149 @@
+{
+  "about": "2026-11-21 lumberjack / lumberjack2: a Lumberjack match (src/lumberjack.c, docs/MATCH_SLOTS.md section 4) -- the QA one-on-one (The Rock vs Austin, both the CPU) with 12 lumberjacks drawn at random from the Superstar Select (qa_lumberjacks; the default count), 2 + 12 = 14 real match slots. Before the bell the group walk-out: one after the other from the stage, two lanes, round the ring to their posts, the bell held till they are there (lj_a / lj_b); the closest two lumberjacks out never under 40 apart. Every 30 s from 15 s in the second competitor walks out of the ring (qa_lj_out); every other time he climbs back in by himself 3 s later (qa_lj_esc: the lumberjacks let him -- they stand off); the other times the swarm beats on him, then a lumberjack rolls him back in: gets hold of him (the game's grapple), lets him go to the ring (the game's walk, 126) and in under the bottom rope (the game's slide in, 155). The random draw holds no women and no announcers (lj_f); brawls between rival lumberjacks only (lj_e); the lumberjacks never in the ring, never a side; the match ends by the one-on-one's own decision; 6x",
+  "match": "singles",
+  "wrestlers": [
+    "THE ROCK",
+    "STEVE AUSTIN"
+  ],
+  "costumes": [
+    0,
+    0
+  ],
+  "arena": "RAW IS WAR",
+  "control": [
+    "cpu",
+    "cpu"
+  ],
+  "options": {
+    "qa_lumberjacks": 12,
+    "qa_lj_out": 30,
+    "qa_lj_esc": 1
+  },
+  "matches": 1,
+  "seconds": 1500,
+  "speed": 6,
+  "shots": 10,
+  "expect": [
+    {
+      "name": "the match started",
+      "when": "any",
+      "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "a Lumberjack match: 12 lumberjacks present, 2 competitors, the engine counts 14",
+      "when": "match",
+      "check": "(bs_tries & 0xFF) == 12 and ((bs_step >> 8) & 0xFF) == 2 and (bs_step & 0xFF) == 14"
+    },
+    {
+      "name": "the competitors are The Rock and Austin, the lumberjacks other Superstars",
+      "when": "match",
+      "check": "s0_id == 0x0001 and s1_id == 0x0002 and (lj_j & 0xFFFF) not in (0, 1, 2, 0xFFFF) and (lj_k >> 16) not in (0, 1, 2, 0xFFFF)"
+    },
+    {
+      "name": "the random draw: 12 lumberjacks, none of them a woman or an announcer",
+      "when": "match",
+      "check": "(lj_f & 0xFF) == 12 and ((lj_f >> 8) & 0xFF) == 0 and ((lj_f >> 16) & 1) == 0"
+    },
+    {
+      "name": "the walk-out: all 12 came out and reached their posts, then the bell (the lead-in held for it)",
+      "when": "match",
+      "check": "(lj_a & 0xFF) == 12 and ((lj_a >> 8) & 0xFF) == 12 and (lj_b & 3) == 3 and ((lj_b >> 8) & 0xFF) >= 3"
+    },
+    {
+      "name": "the walk-out: the closest two lumberjacks walking down the ramp in the intro were never under 40 apart (no clipping)",
+      "when": "match",
+      "check": "(lj_b & 3) == 3 and (lj_a >> 16) >= 40"
+    },
+    {
+      "name": "the walk-out was as brief as an entrance (under 30 s)",
+      "when": "match",
+      "check": "(lj_b & 3) == 3 and ((lj_b >> 24) & 0xFF) <= 30"
+    },
+    {
+      "name": "full spirit at the bell: the lumberjacks' lowest spirit at the match's first step is 100 (lumberjack3)",
+      "when": "match",
+      "check": "(lj_b & 3) == 3 and (lj_i >> 24) == 100"
+    },
+    {
+      "name": "a competitor's hit on a lumberjack hurts him (the damage rule is between lumberjacks only; lumberjack3)",
+      "when": "match",
+      "check": "((lj_i >> 16) & 0xFF) >= 1"
+    },
+    {
+      "name": "no damage between lumberjacks: every lumberjack-on-lumberjack hit's damage put back (none stays: brawl hits 0)",
+      "when": "end",
+      "check": "((lj_e >> 24) & 0xFF) == 0"
+    },
+    {
+      "name": "a competitor left the ring (at least three times)",
+      "when": "match",
+      "check": "(bs_grabs & 0xFF) >= 3"
+    },
+    {
+      "name": "the lumberjacks went for him (at least 2 of them)",
+      "when": "match",
+      "check": "((bs_tries >> 8) & 0xFF) >= 2"
+    },
+    {
+      "name": "they hit him out there",
+      "when": "match",
+      "check": "((bs_step >> 24) & 0xFF) >= 1"
+    },
+    {
+      "name": "he climbed back in by himself (the QA escape), and was back in the ring that way",
+      "when": "match",
+      "check": "((lj_d >> 24) & 0xFF) >= 1 and (lj_d & 0xFF) >= 1 and ((lj_d >> 8) & 0xFF) >= 1"
+    },
+    {
+      "name": "the lumberjacks let him: no hit on his way back in",
+      "when": "match",
+      "check": "((lj_d >> 8) & 0xFF) >= 1 and ((lj_d >> 16) & 0xFF) == 0"
+    },
+    {
+      "name": "a roll-in: the lumberjacks rolled him back in -- started, sent in by his own buttons (the game's climb in; lumberjack4), back in the ring (either route back in: his own climb or a lumberjack's roll / throw -- the user 2026-11-25: \"Count either route\")",
+      "when": "match",
+      "check": "(lj_c & 0xFF) >= 1 and (((lj_c >> 16) & 0xFF) + ((lj_c >> 24) & 0xFF)) >= 1 and ((lj_c >> 24) & 0xFF) >= 1"
+    },
+    {
+      "name": "no brawl was ever between lumberjacks who are not rivals",
+      "when": "always",
+      "check": "((lj_e >> 16) & 0xFF) == 0"
+    },
+    {
+      "name": "no lumberjack was ever a side of the match",
+      "when": "always",
+      "check": "(bs_tries >> 24) == 0"
+    },
+    {
+      "name": "the lumberjacks stayed out of the ring (under 5 s in the ring / on the apron, all together)",
+      "when": "end",
+      "check": "((bs_tries >> 16) & 0xFF) < 150"
+    },
+    {
+      "name": "it ended by pinfall: at the match's end one competitor covering (68), the other pinned (69)",
+      "when": "match",
+      "check": "match_state == 4 and ((s0_phase == 68 and s1_phase == 69) or (s0_phase == 69 and s1_phase == 68))"
+    },
+    {
+      "name": "the decision was over the two competitors (one won: 0x4, one lost: 0x3), no lumberjack's result set",
+      "when": "match",
+      "check": "match_state == 4 and (((s0_flags & 7) == 4 and (s1_flags & 3) == 3) or ((s1_flags & 7) == 4 and (s0_flags & 3) == 3)) and (s2_flags & 7) == 0 and (s3_flags & 7) == 0 and (s4_flags & 7) == 0 and (s5_flags & 7) == 0"
+    },
+    {
+      "name": "no position ever went bad",
+      "when": "always",
+      "check": "finite(s0_x, s0_y, s0_z, s1_x, s1_y, s1_z, s2_x, s2_z, s5_x, s5_z)"
+    },
+    {
+      "name": "at their posts the lumberjacks stand still (lumberjack5, the user's 'twitching in place' -- b1's trace: taunts at the posts, about one move a lumberjack-second): no taunt there, under 1% of their time there in any state but standing, at most one move over 1 unit a 20 lumberjack-seconds (ROUND 9: his own moves -- the intro's end putting him at his post, and a man standing beside him pushing him, counted apart in the log)",
+      "when": "end",
+      "check": "(lj_m & 0xFFFF) >= 300 and ((lj_l >> 16) & 15) == 0 and (lj_l & 0xFFFF) * 10 <= (lj_m & 0xFFFF) * 3 and (lj_m >> 16) * 20 <= (lj_m & 0xFFFF)"
+    },
+    {
+      "name": "the match finished and the game quit by itself",
+      "when": "end",
+      "check": "matches >= 1 or stage != 2"
+    }
+  ],
+  "shot_when": "$c.stage -eq 2 -and $c.match_frames -ne 65535"
+}

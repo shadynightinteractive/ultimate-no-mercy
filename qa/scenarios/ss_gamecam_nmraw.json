@@ -1,0 +1,35 @@
+{
+  "about": "2026-11-20 (stagescale), the user after the 17:00 update: 'WM2000 and Revenge stages are MASSIVE during entrances at the stage view ... They look correct in match' -- No Mercy's own RAW IS WAR entrance (the reference: a No Mercy close scene, the same cameras) with the GAME'S OWN entrance cameras (the user's Regular default: LOW ENTRANCE CAMERA off; stage_cam_arcade false here, QA running in Arcade): the close shots and the walk-out looked at, the stage set's size against the Superstar",
+  "match": "rumble",
+  "wrestlers": [
+    "HOLLYWOOD HOGAN"
+  ],
+  "control": [
+    "cpu"
+  ],
+  "arena": "RAW IS WAR",
+  "options": {
+    "rumble_entrants": 4,
+    "rumble_interval": 60,
+    "titantron_screens": true,
+    "titantron_live": true,
+    "stage_cam_arcade": false,
+    "stage_cam_regular": false
+  },
+  "matches": 1,
+  "seconds": 120,
+  "shots": 0.5,
+  "shot_when": "$c.mode -eq 0 -and $c.screen -eq 42 -and $c.entrance_step -ge 1 -and $c.entrance_step -le 29",
+  "expect": [
+    {
+      "name": "the entrances ran",
+      "when": "any",
+      "check": "mode == 0 and screen == 42 and entrance_step >= 1 and entrance_step <= 29"
+    },
+    {
+      "name": "the arena is No Mercy's RAW IS WAR (venue 0)",
+      "when": "any",
+      "check": "venue == 0 and stage == 2"
+    }
+  ]
+}

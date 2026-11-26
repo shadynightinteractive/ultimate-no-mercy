@@ -1,0 +1,38 @@
+{
+  "about": "2026-10-31: costume variants (src/variants.c) and the select's Random (C-up). qa_variant 8: Random always draws the Undertaker (roster.c roster_random_ord, QA only) and the arcade then takes one of his family at random (variant_random_pick): eight presses, 1.5 s apart -- the 1999 Undertaker some of the times, the Undertaker the others; then player 1 picks the Undertaker's Type 1, the CPU the Rock. state.csv bs_tries = the select's Superstar under the cursor | costume << 16 | 1 << 24",
+  "match": "arcade",
+  "wrestlers": [
+    "0x0003",
+    "THE ROCK"
+  ],
+  "costumes": [
+    0,
+    0
+  ],
+  "matches": 0,
+  "seconds": 420,
+  "shots": 1.0,
+  "options": {
+    "free_play": true,
+    "attract_demos": false,
+    "qa_versus": 30,
+    "qa_variant": 8
+  },
+  "expect": [
+    {
+      "name": "Random landed on the 1999 Undertaker (his first free costume)",
+      "when": "any",
+      "check": "bs_tries == 0x0100000A"
+    },
+    {
+      "name": "Random landed on the Undertaker",
+      "when": "any",
+      "check": "bs_tries == 0x01000003"
+    },
+    {
+      "name": "the match: the Undertaker Type 1 vs the Rock",
+      "when": "any",
+      "check": "mode == -2 and match_frames != 0xFFFF and match_frames > 120 and s0_id == 0x0003 and s0_costume == 0 and s1_id == 0x0001"
+    }
+  ]
+}

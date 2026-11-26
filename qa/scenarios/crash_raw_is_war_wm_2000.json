@@ -1,0 +1,54 @@
+{
+ "about": "a real whip (A, then C-down) at a wall made from the models in RAW IS WAR WM 2000: at x 0, z 2230. The men are put in front of it every 15 s, the whipper on the ring's side. LOOK: he crashes into the thing in the picture, not in thin air, and stays out of it",
+ "wrestlers": [
+  "THE ROCK",
+  "STEVE AUSTIN"
+ ],
+ "costumes": [
+  0,
+  0
+ ],
+ "arena": "RAW IS WAR WM 2000",
+ "control": [
+  "pad1",
+  "pad2"
+ ],
+ "matches": 1,
+ "seconds": 130,
+ "shots": 2.0,
+ "options": {
+  "qa_ringstage": 135
+ },
+ "expect": [
+  {
+   "name": "the match started",
+   "when": "any",
+   "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+  },
+  {
+   "name": "nobody's position went bad",
+   "when": "always",
+   "check": "finite(s0_x, s0_y, s0_z, s1_x, s1_y, s1_z)"
+  },
+  {
+   "name": "no area change",
+   "when": "always",
+   "check": "bs_tries < 10"
+  },
+  {
+   "name": "whipped: running at it",
+   "when": "any",
+   "check": "s1_state == 3 and s1_z > 1930"
+  },
+  {
+   "name": "the crash: state 0x15 or a knockdown, in front of the wall or a prop in the way",
+   "when": "any",
+   "check": "(s1_state == 21 or s1_state == 45 or s1_state == 53) and s1_z > 1880 and s1_z < 2250"
+  },
+  {
+   "name": "never past the wall (a margin for an animation)",
+   "when": "always",
+   "check": "not (s1_z > 2290 and s1_z < 2530 and s1_x > -40 and s1_x < 40)"
+  }
+ ]
+}

@@ -1,0 +1,49 @@
+{
+  "about": "the announcer King's model goes bad in a Royal Rumble (drawn out of place near the camera, a black head, the match slowing down; 1540 bad matrices in the user's log, 2026-10-27): Bret Hart the player (slot 0), the CPU fighting for him, entrants coming in fast; Bret's moves (entries 0-69) forced to his back suplex (entry 73, his Revenge animation)",
+  "match": "rumble",
+  "wrestlers": [
+    "BRET HART"
+  ],
+  "control": [
+    "cpu"
+  ],
+  "options": {
+    "rumble_entrants": 20,
+    "rumble_interval": 10,
+    "announcers": true,
+    "commentary": true
+  },
+  "matches": 1,
+  "seconds": 900,
+  "shots": 6,
+  "expect": [
+    {
+      "name": "the Rumble started",
+      "when": "any",
+      "check": "stage == 2 and mode == -2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "Bret Hart is in it",
+      "when": "match",
+      "check": "s0_id == 0x060D or s1_id == 0x060D or s2_id == 0x060D or s3_id == 0x060D"
+    },
+    {
+      "name": "no model's matrices ever went bad (the announcers, the wrestlers, the table)",
+      "when": "always",
+      "check": "bad_mtx == 0"
+    },
+    {
+      "name": "Bret's back suplex was done (forced)",
+      "when": "end",
+      "check": "forced >= 5"
+    }
+  ],
+  "force": {
+    "slot": 0,
+    "entries": [
+      0,
+      69
+    ],
+    "as": 73
+  }
+}

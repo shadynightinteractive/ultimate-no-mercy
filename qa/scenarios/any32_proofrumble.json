@@ -1,0 +1,41 @@
+{
+  "about": "any32 proof copy of rumble_ring10 (fewer shots, shorter: the disk) -- 2026-11-06, the 32-slot work: a Royal Rumble with room for 10 in the ring (qa_rr_ring 10, 20 entrants, one every 10 s, nobody put out) -- a probe: what breaks past six (crashes, the pictures, the match's slot count); 6x",
+  "match": "rumble",
+  "wrestlers": [
+    "BRET HART"
+  ],
+  "control": [
+    "cpu"
+  ],
+  "options": {
+    "rumble_entrants": 20,
+    "rumble_interval": 10,
+    "qa_rr_ring": 10
+  },
+  "matches": 1,
+  "seconds": 600,
+  "speed": 6,
+  "shots": 30,
+  "expect": [
+    {
+      "name": "the Rumble started",
+      "when": "any",
+      "check": "stage == 2 and mode == -2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "the match has room for 10 (its slot count)",
+      "when": "match",
+      "check": "slots >= 10"
+    },
+    {
+      "name": "seven or more in the ring at once",
+      "when": "match",
+      "check": "in_ring >= 7"
+    },
+    {
+      "name": "ten in the ring at once",
+      "when": "match",
+      "check": "in_ring >= 10"
+    }
+  ]
+}

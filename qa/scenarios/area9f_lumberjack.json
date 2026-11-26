@@ -1,0 +1,50 @@
+{
+  "wrestlers": [
+    "0x010C",
+    "STEVE AUSTIN"
+  ],
+  "costumes": [
+    0,
+    0
+  ],
+  "control": [
+    "cpu",
+    "cpu"
+  ],
+  "arena": "RAW IS WAR",
+  "matches": 2,
+  "seconds": 900,
+  "speed": 6,
+  "shots": 2,
+  "options": {
+    "qa_area_trace": 3,
+    "qa_outfight": 600,
+    "qa_lumberjacks": 12
+  },
+  "expect": [
+    {
+      "name": "the match started",
+      "when": "any",
+      "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "no wrestler's position ever went bad",
+      "when": "always",
+      "check": "finite(s0_x, s0_y, s0_z, s1_x, s1_y, s1_z)"
+    },
+    {
+      "name": "Luger's moves were forced (entry 15 done)",
+      "when": "end",
+      "check": "forced >= 3"
+    }
+  ],
+  "about": "ljround9 (QA proof, not a check): the same move at the same spots in a Lumberjack match (12 lumberjacks) -- Lex Luger (slot 0, CPU) has every grapple move he picks (entries 0-69) done as his entry 15, revenge:126c_1270 (the front slam that goes on into the Sharpshooter; its man's file ends on the mat), and every 10 s he and Steve Austin (slot 1) are put on the floor at the next of six spots (logic.c qa_outfight_step: by the barricade, by the apron's edge, the aisle's foot, a corner); every man's place bits and each grapple move's files are traced (qa_area_trace_step, 'areatr'). The _off run is the same with movex.c keep_place off (the before)",
+  "force": {
+    "slot": 0,
+    "entries": [
+      0,
+      69
+    ],
+    "as": 15
+  }
+}

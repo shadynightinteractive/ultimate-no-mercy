@@ -1,0 +1,43 @@
+{
+ "about": "2026-11-02 pending: a man with no Titantron video (Rey Mysterio) first, The Rock with his second. The user: 'if a wrestler doesn't have a titantron video, the opponent's will play for him before it cuts to the close view of the stage, or sometimes an unrelated wrestler will appear on the titantron briefly'. Look at every shot of Rey's entrance: no video on the screen, the arena's own picture. state.csv's bs_step: tron_qa (tron.c)",
+ "wrestlers": [
+  "0x0112",
+  "0x0001"
+ ],
+ "matches": 0,
+ "seconds": 300,
+ "shots": 2.0,
+ "options": {
+  "free_play": true,
+  "attract_demos": false,
+  "qa_versus": 20,
+  "qa_variant": 16,
+  "titantron_screens": true,
+  "titantron_live": true
+ },
+ "shot_when": "$c.mode -eq 0 -and $c.screen -eq 42 -and $c.entrance_step -ge 1 -and $c.entrance_step -le 29",
+ "expect": [
+  {
+   "name": "his music on with no video: nothing picked, the screen's own picture",
+   "when": "any",
+   "check": "screen == 42 and entrance_step >= 1 and entrance_step <= 29 and (rr_kept_out & 0x10) != 0 and rr_put_out == 0 and (rr_kept_out & 0xF) == 0"
+  },
+  {
+   "name": "The Rock's own video on the screen",
+   "when": "any",
+   "check": "screen == 42 and entrance_step >= 1 and entrance_step <= 29 and (rr_kept_out & 0x1F) == 0x12 and rr_put_out > 0"
+  },
+  {
+   "name": "never another man's video while his music plays with none picked",
+   "when": "always",
+   "check": "not (screen == 42 and entrance_step >= 1 and entrance_step <= 29 and (rr_kept_out & 0xF) == 2 and rr_put_out == 0)"
+  },
+  {
+   "name": "no video on the screen once nobody is entering (the game's own pick after the last man)",
+   "when": "always",
+   "check": "not (screen == 42 and entrance_step >= 1 and entrance_step <= 29 and ((rr_kept_out >> 8) & 0xF) >= 4 and (rr_kept_out & 0xF) == 2)"
+  }
+ ],
+ "match": "arcade",
+ "arena": "RAW IS WAR"
+}

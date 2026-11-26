@@ -1,0 +1,37 @@
+{
+ "about": "startup 2026-11-19 (helper startup_ids): an import renumbered by an ID clash is still found by a select page that names him by his string ID + his old number. GAME: a first-started game whose player folder wrestlers\\Mine\\my_aki pins \"id\": \"0x0379\" (made by private\\scratch\\startup_ids\\test_place.ps1, case numonly: the import Revenge\\aki_man gets 0x03EC; its import_report.txt says so), run with -Installed on that game. Pages: qa\\pages_test\\ids_fallback.json ({\"id\": \"aki_man\", \"game_number\": \"0x0379\"} and the_rock, the rest hidden). Expect AKI Man (0x03EC) under the select's cursor -- by number alone the page would have shown the player's MY AKI (0x0379) and hidden him. The log should say '[pages] {\"id\":\"aki_man\",\"game_number\":\"0x0379\"}: game number 0x0379 isn't aki_man: found by his string ID'. qa_variant 1: bs_tries = the Superstar under the cursor | costume << 16 | 1 << 24.",
+ "match": "arcade",
+ "pages": "ids_fallback.json",
+ "wrestlers": [
+  "0x03EC",
+  "0x0002"
+ ],
+ "costumes": [
+  0,
+  0
+ ],
+ "matches": 0,
+ "seconds": 240,
+ "shots": 10,
+ "options": {
+  "free_play": true,
+  "attract_demos": false,
+  "qa_versus": 20,
+  "qa_variant": 1
+ },
+ "env": {
+  "SDL_GAMECONTROLLER_IGNORE_DEVICES_EXCEPT": "0x0000/0x0000"
+ },
+ "expect": [
+  {
+   "name": "AKI Man (renumbered 0x03EC) on the select by his string ID, under the cursor",
+   "when": "any",
+   "check": "(bs_tries & 0x1000000) != 0 and (bs_tries & 0xFFFF) == 0x03EC"
+  },
+  {
+   "name": "no model's matrices ever went bad",
+   "when": "always",
+   "check": "bad_mtx == 0"
+  }
+ ]
+}

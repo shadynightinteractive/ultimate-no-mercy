@@ -1,0 +1,33 @@
+{
+  "about": "every N64 input bindable (2026-11-19, roster_ctl): F2 > CONTROLS opened in the arcade's QA Royal Rumble (qa_op works there, not in a QA singles demo: logic.c qa_on 1 returns before the F2 menu) (qa_op 21) for a picture of the page with its KEYBOARD BUTTONS (P1) / CONTROLLER BUTTONS rows",
+  "match": "rumble",
+  "wrestlers": [
+    "STEVE AUSTIN"
+  ],
+  "control": [
+    "cpu"
+  ],
+  "matches": 0,
+  "seconds": 90,
+  "shots": 6,
+  "options": {
+    "rumble_entrants": 4,
+    "rumble_interval": 30,
+    "qa_op": 21,
+    "qa_op_at": 8,
+    "qa_modes": 1
+  },
+  "expect": [
+    {
+      "name": "the Rumble started",
+      "when": "any",
+      "check": "stage == 2 and mode == -2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "the CONTROLS page open (PG_CONTROLS 5)",
+      "when": "any",
+      "check": "((bs_tries >> 24) & 1) == 1 and ((bs_grabs >> 8) & 0xFF) == 5"
+    }
+  ],
+  "shot_when": "(($c.bs_grabs -shr 8) -band 0xFF) -eq 5"
+}

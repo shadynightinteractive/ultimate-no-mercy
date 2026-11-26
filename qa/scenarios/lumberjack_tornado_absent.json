@@ -1,0 +1,59 @@
+{
+  "about": "2026-11-21 lumberjack3: a wrestler this install's roster does not have, named in a match -- the old lumberjack_tornado with \"UNDERTAKER\" (0x000A, the built-in 1999 look, replaced here by WrestleMania 2000's Undertaker folder: no match record can be built for him; b6-b8 crashed at the bell). The coordinator: the game must never crash on it -- slots.c gives the slot a stand-in (his stock counterpart, else the first Superstar of the roster not in the match) and logs it ('slots: WARNING slot 3's Superstar 10 is not on this install's roster ... stand-in'). Austin and The Rock vs Triple H and \"UNDERTAKER\", tornado, 12 lumberjacks, 6x.",
+  "match": "tag",
+  "wrestlers": [
+    "STEVE AUSTIN",
+    "THE ROCK",
+    "TRIPLE H",
+    "UNDERTAKER"
+  ],
+  "costumes": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "arena": "RAW IS WAR",
+  "control": [
+    "cpu",
+    "cpu",
+    "cpu",
+    "cpu"
+  ],
+  "options": {
+    "qa_lumberjacks": 12,
+    "qa_lj_out": 30
+  },
+  "matches": 1,
+  "seconds": 1500,
+  "speed": 6,
+  "shots": 6,
+  "expect": [
+    {
+      "name": "the match started",
+      "when": "any",
+      "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "a Lumberjack tornado tag: 12 lumberjacks present, 4 competitors, the engine counts 16, a tag match",
+      "when": "match",
+      "check": "(bs_tries & 0xFF) == 12 and ((bs_step >> 8) & 0xFF) == 4 and (bs_step & 0xFF) == 16 and (flags & 0x2000) != 0 and (flags & 0x4000) == 0 and ((lj_h >> 24) & 0xFF) == 4"
+    },
+    {
+      "name": "slot 3 holds a stand-in, not the absent 0x000A, and has a moveset (the match went past the bell)",
+      "when": "match",
+      "check": "match_frames > 1500 and s3_id != 0x000A and s3_id != 0 and s3_id != 0xFFFF"
+    },
+    {
+      "name": "no position ever went bad",
+      "when": "always",
+      "check": "finite(s0_x, s0_y, s0_z, s1_x, s1_y, s1_z, s2_x, s2_z, s5_x, s5_z)"
+    },
+    {
+      "name": "the match finished and the game quit by itself",
+      "when": "end",
+      "check": "matches >= 1 or stage != 2"
+    }
+  ],
+  "shot_when": "$c.stage -eq 2 -and $c.match_frames -ne 65535"
+}

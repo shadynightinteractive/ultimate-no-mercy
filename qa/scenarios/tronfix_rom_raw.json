@@ -1,0 +1,33 @@
+{
+  "about": "tronfix (2026-11-25): the RAW IS WAR Titantron through a Royal Rumble's first two entrances (Steve Austin, then the first entrant), No Mercy Plus's themes and videos OFF (nmplus_media false: the game's own videos, read from the ROM), CPU, the game's clock in lockstep (-Lockstep -DrawShots): a picture every 0.1 game seconds, so two builds' screens are compared frame for frame (the user: 'No Mercy stock titantrons are glitching on the titantron')",
+  "match": "rumble",
+  "wrestlers": [
+    "STEVE AUSTIN"
+  ],
+  "control": [
+    "cpu"
+  ],
+  "arena": "RAW IS WAR",
+  "options": {
+    "rumble_entrants": 4,
+    "rumble_interval": 60,
+    "titantron_screens": true,
+    "titantron_live": true,
+    "nmplus_media": false
+  },
+  "matches": 1,
+  "seconds": 55,
+  "shots": 0.1,
+  "expect": [
+    {
+      "name": "the entrances ran",
+      "when": "any",
+      "check": "mode == 0 and screen == 42 and entrance_step >= 1 and entrance_step <= 29"
+    },
+    {
+      "name": "the arena is RAW IS WAR",
+      "when": "any",
+      "check": "venue == 0 and stage == 2"
+    }
+  ]
+}

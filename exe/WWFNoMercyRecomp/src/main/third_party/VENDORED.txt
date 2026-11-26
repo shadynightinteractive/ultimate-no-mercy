@@ -1,0 +1,15 @@
+Single-file sound decoders for theme files (arcade_media_decode.cpp), vendored 2026-11-10.
+
+From https://github.com/mackron/dr_libs at commit 50c1320697f3a5c18ed0ee1335595ba6e9547425 (master on 2026-11-10),
+unchanged. Licence: public domain (Unlicense) or MIT No Attribution, the user's choice; the text is at the end of each file.
+
+  dr_mp3.h   v0.7.5    sha256 7a6cc38b0afdb55cfc9eec991d9169d67beb8fd910be2995121510cdaa99c356
+  dr_flac.h  v0.13.5   sha256 3f010d3142a5b9df80a0bd8b325de54317468b1aff85abb257c86dbfefe9bd2a
+  dr_wav.h   v0.14.7   sha256 7c9660d75361ad6175e6217c63a1075c9512445c06bc951197fc479179f76b39
+
+(The version lines in the files say "UNRELEASED" / "TBD": this is the head of master, not a tagged release. Pinned by the
+commit above.)
+
+Ogg Vorbis: stb_vorbis v1.22 (public domain / MIT), already in the game at src/main/commentary/stb_vorbis.c for the
+commentary. Not copied here: arcade_media_decode.cpp includes that file's declarations only (STB_VORBIS_HEADER_ONLY); its
+code is compiled once, in commentary/arcade_commentary.cpp.

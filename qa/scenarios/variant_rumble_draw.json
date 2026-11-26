@@ -1,0 +1,37 @@
+{
+  "about": "2026-10-31: costume variants (src/variants.c): the 1999 Undertaker has no box of his own now -- the arcade Rumble's field still draws him (from the Undertaker's box's family). Austin the player; the field from the ported Superstars only (qa_rr_ports: 0x00A among them, reachable only through the Undertaker's box), 30 entrants (all of them), one-of-each off. state.csv (qa_variant 4): bs_step = where 0x00A / 0x003 are in the list (+1) | its size << 16",
+  "match": "rumble",
+  "wrestlers": [
+    "STEVE AUSTIN"
+  ],
+  "control": [
+    "cpu"
+  ],
+  "options": {
+    "rumble_entrants": 30,
+    "rumble_interval": 5,
+    "rumble_one_each": 0,
+    "qa_rr_ports": 1,
+    "qa_variant": 4
+  },
+  "matches": 1,
+  "seconds": 240,
+  "shots": 10,
+  "expect": [
+    {
+      "name": "the Rumble started",
+      "when": "any",
+      "check": "stage == 2 and mode == -2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "Austin is in it",
+      "when": "match",
+      "check": "0x0002 in (s0_id, s1_id, s2_id, s3_id)"
+    },
+    {
+      "name": "the 1999 Undertaker is in the field (drawn from the Undertaker's box)",
+      "when": "match",
+      "check": "(bs_step & 255) >= 2"
+    }
+  ]
+}

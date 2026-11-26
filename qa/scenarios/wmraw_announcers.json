@@ -1,0 +1,58 @@
+{
+  "about": "JR and King at No Mercy's announce table in the WM 2000 arena (the user, 2026-10-31: 'Add JR and King here'): the camera from the ring's -z side looking past the table at the moved barricade (z -690) and WM2000's crowd behind it -- the table between the ring and the barricade, JR / King seated at it, their chairs clear of the barricade, the steel steps at the corners, WM2000's floor carried out to the barricade (no black strip), the -z sign holders and hands behind the barricade, not through it",
+  "wrestlers": [
+    "THE ROCK",
+    "STEVE AUSTIN"
+  ],
+  "arena": "RAW IS WAR WM 2000",
+  "control": [
+    "cpu",
+    "cpu"
+  ],
+  "options": {
+    "announcers": true,
+    "commentary": true
+  },
+  "camera": {
+    "eye": [
+      0,
+      260,
+      -150
+    ],
+    "at": [
+      0,
+      80,
+      -700
+    ]
+  },
+  "matches": 0,
+  "seconds": 60,
+  "shots": 3,
+  "expect": [
+    {
+      "name": "the match started",
+      "when": "any",
+      "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "the arena is ours (arena_current 13)",
+      "when": "any",
+      "check": "venue == 13 and stage == 2"
+    },
+    {
+      "name": "JR and King were built (at the table: xring_table 1, no rules bit / ann_on 0)",
+      "when": "match",
+      "check": "ann_draw != 0xFFFF"
+    },
+    {
+      "name": "King is drawn",
+      "when": "match",
+      "check": "ann_draw != 0xFFFF and (ann_draw & 0x8000) == 0"
+    },
+    {
+      "name": "no model's matrices ever went bad",
+      "when": "always",
+      "check": "bad_mtx == 0"
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "about": "2026-10-31, The Giant (WCW/nWo Revenge's, 0x010A): the game's struggle rule on him: CPU Austin vs CPU Giant (540 lbs: a super heavyweight by func_80114CC4), every front grapple of Austin's done as his Scoop Slam (entry 4) -- the game turns it into entry 159 (move 4550, the struggling body slam)",
+  "wrestlers": [
+    "STEVE AUSTIN",
+    "THE GIANT"
+  ],
+  "control": [
+    "cpu",
+    "cpu"
+  ],
+  "arena": "RAW IS WAR",
+  "matches": 0,
+  "seconds": 180,
+  "shots": 2.0,
+  "force": {
+    "slot": 0,
+    "entries": [
+      1,
+      60
+    ],
+    "as": 4
+  },
+  "expect": [
+    {
+      "name": "the match started",
+      "when": "any",
+      "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "the struggling body slam on The Giant (the game's rule)",
+      "when": "match",
+      "check": "s0_move == 4550"
+    }
+  ]
+}

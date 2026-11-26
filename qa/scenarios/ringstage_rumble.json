@@ -1,0 +1,37 @@
+{
+  "about": "A Royal Rumble in RAW (the single-player one, CPU driving): entrants come down the ramp at their own height (func_8011D848 gives them y; no lift then), the eliminated leave up the aisle. LOOK at shots of entrants on the ramp: feet on it, not 160 in the air.",
+  "wrestlers": [
+    "THE ROCK",
+    "STEVE AUSTIN"
+  ],
+  "costumes": [
+    0,
+    0
+  ],
+  "arena": "RAW IS WAR",
+  "control": [
+    "cpu",
+    "cpu"
+  ],
+  "matches": 1,
+  "seconds": 240,
+  "shots": 3.0,
+  "options": {
+    "qa_ringstage": 1
+  },
+  "pads": [],
+  "expect": [
+    {
+      "name": "the match started",
+      "when": "any",
+      "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "nobody's position went bad",
+      "when": "always",
+      "check": "finite(s0_x, s0_y, s0_z, s1_x, s1_y, s1_z)"
+    }
+  ],
+  "shot_when": "$c.s0_z -gt 800 -or $c.s1_z -gt 800",
+  "match": "rumble"
+}

@@ -1,0 +1,35 @@
+{
+  "about": "2026-10-30, the user: dynamic pages: the shipped mod\\select_pages.json (the game's own thirteen written out) -- the same pages as without it (pages_none); R round all, then Random (C-up: tried as y, then x) four times; pages dumped",
+  "match": "arcade",
+  "matches": 0,
+  "seconds": 190,
+  "shots": 0.5,
+  "options": {
+    "free_play": true,
+    "attract_demos": false
+  },
+  "pads": [
+    "60.0 1 start 200",
+    "64.0 1 start 200",
+    "68.0 1 a 200",
+    "78.0 1 righttrigger 250",
+    "80.5 1 righttrigger 250",
+    "83.0 1 righttrigger 250",
+    "85.5 1 righttrigger 250",
+    "88.0 1 righttrigger 250",
+    "90.5 1 righttrigger 250",
+    "93.0 1 righttrigger 250",
+    "95.5 1 righttrigger 250",
+    "98.0 1 righttrigger 250",
+    "100.5 1 righttrigger 250",
+    "103.0 1 righttrigger 250",
+    "105.5 1 righttrigger 250",
+    "108.0 1 righttrigger 250",
+    "110.5 1 righttrigger 250",
+    "115.0 1 y 250",
+    "119.0 1 y 250",
+    "123.0 1 x 250",
+    "127.0 1 x 250"
+  ],
+  "expect": []
+}

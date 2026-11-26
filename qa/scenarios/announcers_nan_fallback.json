@@ -1,0 +1,18 @@
+{
+  "about": "The Royal Rumble glitch (2026-10-27): both announcers' poses became not a number, every frame; the scene's safety net, its list of models full, drew them at the world's origin -- JR and King one on the other in the middle of the ring, frozen, the game slowing down. Here King's pose is broken on purpose from 5 s in (qa_ann_nan): he must stay at his place, drawn, no bad matrix ever reaching the scene.",
+  "wrestlers": ["THE ROCK", "STEVE AUSTIN"],
+  "arena": "ROYAL RUMBLE",
+  "control": ["cpu", "cpu"],
+  "options": { "announcers": true, "commentary": true, "qa_ann_stand": 1, "qa_ann_nan": 1 },
+  "camera": { "eye": [0, 330, -1250], "at": [0, 40, 50] },
+  "matches": 0,
+  "seconds": 50,
+  "shots": 4,
+  "expect": [
+    { "name": "the match started", "when": "any", "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 300" },
+    { "name": "King's pose was broken (the case tested) and the fallback took it", "when": "end", "check": "ann_fallbacks > 100" },
+    { "name": "King stays at his place", "when": "always", "check": "king_bones == 0 or (abs(king_x - 55) < 1 and abs(king_z + 666) < 27)" },
+    { "name": "King is drawn", "when": "end", "check": "(ann_draw & 0x8000) == 0" },
+    { "name": "no bad matrix ever reached the scene", "when": "always", "check": "bad_mtx == 0" }
+  ]
+}

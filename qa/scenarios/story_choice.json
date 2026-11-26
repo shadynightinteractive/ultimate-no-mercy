@@ -1,0 +1,15 @@
+{
+  "about": "2026-10-31: a question in a custom story's scene (\"ask\") and branches on the answer: qa/stories_test/003_scene_choice.json. QA's A presses take the first option, so the scene's 'CHOICE 1: Good call.' line, the branch 'choice 1' (the pack's branch 0: clock 0) and node 2's '(choice 1 kept)' line are expected",
+  "match": "arcade",
+  "wrestlers": ["STEVE AUSTIN", null],
+  "matches": 0,
+  "seconds": 1500,
+  "shots": 3.0,
+  "options": { "free_play": true, "attract_demos": false, "custom_story": 1, "qa_story": 3 },
+  "expect": [
+    { "name": "the branch for choice 1 taken", "when": "any", "check": "clock == 0" },
+    { "name": "node 2 reached", "when": "any", "check": "matches >= 10200" }
+  ],
+  "shot_when": "$true",
+  "stories": ["003_scene_choice.json"]
+}

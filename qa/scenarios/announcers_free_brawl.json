@@ -1,0 +1,41 @@
+{
+  "about": "JR and King on their feet with no table (as broken), Superstars brawling outside by them, seen from behind the barricade as in the user's screenshot (2026-10-28: a man by them was drawn over them -- he was in group 5, they in 4): a Royal Rumble at RAW IS WAR, CPU men put outside every few seconds",
+  "match": "rumble",
+  "wrestlers": [
+    "STEVE AUSTIN"
+  ],
+  "control": [
+    "cpu"
+  ],
+  "arena": "RAW IS WAR",
+  "options": {
+    "rumble_entrants": 6,
+    "rumble_interval": 5,
+    "qa_rr_out": 4,
+    "announcers": true,
+    "commentary": true,
+    "qa_ann_stand": 2
+  },
+  "matches": 1,
+  "seconds": 110,
+  "shots": 1.5,
+  "camera": {
+    "eye": [
+      0,
+      230,
+      -1000
+    ],
+    "at": [
+      0,
+      80,
+      -300
+    ]
+  },
+  "expect": [
+    {
+      "name": "the match started",
+      "when": "any",
+      "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+    }
+  ]
+}

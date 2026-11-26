@@ -1,0 +1,30 @@
+{
+  "about": "2026-10-29, the user: Versus's MATCH page came up with no rows -- a Story match, back to the title, Start, player 2 joining on the championship list. The custom story (qa_story 3: chosen, the CPU plays), F2 RESET 20 s into its match (qa_op 9), the title, 1P Start (the story driven again), 2P's Start 8 s into that game (qa_p2 480, qa_p2_after_op)",
+  "match": "arcade",
+  "wrestlers": [
+    "STEVE AUSTIN",
+    null
+  ],
+  "matches": 0,
+  "seconds": 400,
+  "shots": 1.0,
+  "options": {
+    "free_play": true,
+    "attract_demos": false,
+    "custom_story": 1,
+    "qa_story": 3,
+    "qa_op": 9,
+    "qa_op_at": 20,
+    "qa_p2": 480,
+    "qa_p2_after_op": 1
+  },
+  "expect": [
+    {
+      "name": "the MATCH page reached",
+      "when": "any",
+      "check": "screen == 7"
+    }
+  ],
+  "shot_when": "$c.screen -eq 7",
+  "pads": []
+}

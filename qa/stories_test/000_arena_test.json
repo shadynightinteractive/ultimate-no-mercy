@@ -1,0 +1,24 @@
+{
+  "title": "Arena Test",
+  "menu": "Arena Test",
+  "championship": "world",
+  "cast": { "rival": "MANKIND" },
+  "vars": {},
+  "start": "one",
+  "nodes": {
+    "one": {
+      "chapter": "ARENA ONE",
+      "pages": ["King of the Ring."],
+      "match": { "type": "single", "slots": ["player", ["rival", "KANE"]], "arena": "King of the Ring" },
+      "requirement": "Arena test: King of the Ring.",
+      "branches": [ { "next": "two" } ]
+    },
+    "two": {
+      "chapter": "ARENA TWO",
+      "pages": ["WrestleMania."],
+      "match": { "type": "single", "slots": ["player", ["rival", "KANE"]], "arena": "WrestleMania" },
+      "requirement": "Arena test: WrestleMania.",
+      "branches": [ { "next": "end" } ]
+    }
+  }
+}

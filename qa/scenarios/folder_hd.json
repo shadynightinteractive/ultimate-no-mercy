@@ -1,0 +1,32 @@
+{
+  "about": "2026-11-05: wrestlers from folders (qa\\wrestlers_test): a full-detail model, photo and name from a folder, then a match against The Rock",
+  "match": "arcade",
+  "wrestlers": [
+    "0x0322",
+    "0x0001"
+  ],
+  "costumes": [
+    0,
+    0
+  ],
+  "matches": 0,
+  "seconds": 600,
+  "shots": 1.0,
+  "options": {
+    "free_play": true,
+    "attract_demos": false,
+    "qa_versus": 20
+  },
+  "expect": [
+    {
+      "name": "the match: the wrestler from a folder (player 1) vs The Rock (CPU)",
+      "when": "any",
+      "check": "mode == -2 and match_frames != 0xFFFF and match_frames > 120 and s0_id == 0x0322 and s0_pad == 1 and s1_id == 0x0001 and s1_pad == 0"
+    },
+    {
+      "name": "no model's matrices ever went bad",
+      "when": "always",
+      "check": "bad_mtx == 0"
+    }
+  ]
+}

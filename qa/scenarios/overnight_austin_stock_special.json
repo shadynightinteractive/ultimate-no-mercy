@@ -1,0 +1,51 @@
+{
+  "about": "overnight QA 2026-11-11, issue 5 control: stock Steve Austin as player 1, the same taunts with SPECIAL lit as overnight_austin2k15_special: the move numbers to match.",
+  "wrestlers": [
+    "0x0002",
+    "0x0001"
+  ],
+  "costumes": [
+    0,
+    0
+  ],
+  "arena": "RAW IS WAR",
+  "control": [
+    "pad1",
+    "pad2"
+  ],
+  "special": [
+    true,
+    false
+  ],
+  "matches": 0,
+  "seconds": 150,
+  "shots": 1.0,
+  "options": {
+    "qa_pspecial": 67,
+    "qa_hd_cam": 3,
+    "qa_special": 5
+  },
+  "expect": [
+    {
+      "name": "the match started",
+      "when": "any",
+      "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "slot 0 is 0x0002",
+      "when": "match",
+      "check": "s0_id == 0x0002"
+    },
+    {
+      "name": "his special taunt (move 14200) played",
+      "when": "any",
+      "check": "s0_move == 14200"
+    },
+    {
+      "name": "no model's matrices ever went bad",
+      "when": "always",
+      "check": "bad_mtx == 0"
+    }
+  ]
+}
+

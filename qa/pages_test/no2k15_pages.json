@@ -1,0 +1,10 @@
+{
+ "about": "QA (no2k15, 2026-11-23): a select_pages.json that still names the two WWE 2K15 test slots, taken out of the game -- by string ID, number, both, and name. Each is left out of his page, as anyone off the roster: no blank box, his neighbours close up (a page of 5: THE ROCK, STEVE AUSTIN, KANE, MANKIND, UNDERTAKER). The rest as the game's pages (append).",
+ "unlisted": "append",
+ "pages": [
+  {
+   "name": "RETIRED",
+   "wrestlers": ["the_rock", "stone_cold_2k15", "steve_austin", "0x011A", {"id": "the_rock_2k15", "game_number": "0x011B"}, "kane", "THE ROCK 2K15", "mankind", "0x011B", "undertaker"]
+  }
+ ]
+}

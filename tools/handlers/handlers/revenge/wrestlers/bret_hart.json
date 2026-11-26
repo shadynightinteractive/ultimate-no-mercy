@@ -1,0 +1,68 @@
+{
+ "about": "WCW/nWo Revenge port: what was chosen by hand for him (moved out of mod\\gen's tables by handlers\\extract_fixes.py, 2026-11-12). Edit here; the handler reads nothing else that is his alone.",
+ "string_id": "bret_hart",
+ "key": "brethart",
+ "legacy_game_id": "0x060D",
+ "name": "BRET HART",
+ "short_name": "HART",
+ "height": 13,
+ "weight": 134,
+ "music_slot": 63,
+ "video": 0,
+ "revenge": {
+  "moveset_file": "0x143",
+  "code": "0x008"
+ },
+ "moveset": {
+  "reference_ordinal": 15,
+  "allies": [
+   "0x060E",
+   "0x0603"
+  ],
+  "weight_class": [
+   1,
+   1,
+   0
+  ],
+  "stance": null,
+  "slot_overrides": {
+   "25": 16250,
+   "50": 930
+  },
+  "no_struggling_slam": false
+ },
+ "costumes": [
+  {
+   "capture": "L12",
+   "slot": 0
+  },
+  {
+   "capture": "at_bn1",
+   "slot": 0
+  },
+  {
+   "capture": "at_bn2",
+   "slot": 0
+  },
+  {
+   "capture": "at_bn3",
+   "slot": 0
+  }
+ ],
+ "skin": "no_mercy",
+ "photo_number": 112,
+ "photo": {
+  "photo": 112,
+  "shot": "data/revport/cap/cc2.png",
+  "box": [
+   195,
+   26,
+   245,
+   76
+  ]
+ },
+ "video_frames": {
+  "from": "revport/cap/tron_bret",
+  "count": 80
+ }
+}

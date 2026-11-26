@@ -1,0 +1,36 @@
+{
+  "title": "Bad Blood",
+  "menu": "Bad Blood",
+  "championship": "ic",
+  "cast": { "rival": "mankind", "champ": "chris_jericho" },
+  "vars": {},
+  "start": "brawl",
+  "nodes": {
+    "brawl": {
+      "chapter": "BAD BLOOD",
+      "pages": [
+        "{rival} jumped {player} in the parking lot.\nNobody saw it coming.",
+        "Tonight {player} gets even.\nAnything goes."
+      ],
+      "match": { "type": "single", "slots": ["player", ["rival", "kane"]] },
+      "requirement": "Hardcore grudge: {player} vs {rival}.\nWin to get a shot at the gold.",
+      "branches": [
+        { "if": "win", "money": 1000,
+          "pages": ["{player} has had the last word.\n{champ} is next."],
+          "next": "gold" },
+        { "pages": ["{rival} wins the war.\nTHE END"], "next": "end" }
+      ]
+    },
+    "gold": {
+      "chapter": "THE GOLD",
+      "pages": ["{champ} says {player} doesn't belong\nin the same ring as him."],
+      "match": { "type": "single", "slots": ["player", ["champ", "the_rock"]] },
+      "requirement": "Title match: {player} vs {champ}.",
+      "branches": [
+        { "if": "win", "money": 5000,
+          "pages": ["{player} is the new champion!\nTHE END"], "next": "end" },
+        { "pages": ["{champ} keeps the belt.\nTHE END"], "next": "end" }
+      ]
+    }
+  }
+}

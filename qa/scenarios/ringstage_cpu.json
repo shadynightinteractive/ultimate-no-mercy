@@ -1,0 +1,41 @@
+{
+  "about": "CPU against CPU in RAW, three minutes: they roam as the CPU likes; whips up the aisle happen. Checks only that nothing goes bad and the match ends properly (LOOK at any shot past z 800). The count-out still ends matches at ringside.",
+  "wrestlers": [
+    "THE ROCK",
+    "STEVE AUSTIN"
+  ],
+  "costumes": [
+    0,
+    0
+  ],
+  "arena": "RAW IS WAR",
+  "control": [
+    "cpu",
+    "cpu"
+  ],
+  "matches": 1,
+  "seconds": 240,
+  "shots": 3.0,
+  "options": {
+    "qa_ringstage": 1
+  },
+  "pads": [],
+  "expect": [
+    {
+      "name": "the match started",
+      "when": "any",
+      "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "nobody's position went bad",
+      "when": "always",
+      "check": "finite(s0_x, s0_y, s0_z, s1_x, s1_y, s1_z)"
+    },
+    {
+      "name": "RAW: no area change up to the stage (bs_tries: the area in play, never 10)",
+      "when": "always",
+      "check": "bs_tries != 10"
+    }
+  ],
+  "shot_when": "$c.s0_z -gt 800 -or $c.s1_z -gt 800"
+}

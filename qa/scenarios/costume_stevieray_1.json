@@ -1,0 +1,58 @@
+{
+  "about": "2026-11-01 attires (data\\revport\\attires\\ATTIRES.md): Stevie Ray's costume 1 of 5 -- Revenge's four: his red Harlem Heat singlet, the nWo shirt and jeans, the gold singlet, the purple flames tights (WCW/nWo Revenge's costume 1). One player's Versus (qa_versus): his box on the Superstar Select, first a tour of the Type arrows round all his costumes (C-right x8, C-left, C-right; a shot each), then the Type arrows to costume 1 (0x0111 Type 1) and A; the CPU's pick The Rock; the match (the CPU plays him after 20 s). Look at the select's model, the VS card and him in the ring: the attire and its colours as Revenge's (attires\\sheet_stevieray.png), head / mask, skin tone, hands / fingers.",
+  "match": "arcade",
+  "wrestlers": [
+    "0x0111",
+    "0x0001"
+  ],
+  "costumes": [
+    0,
+    0
+  ],
+  "matches": 0,
+  "seconds": 600,
+  "shots": 1.0,
+  "options": {
+    "free_play": true,
+    "attract_demos": false,
+    "qa_versus": 20,
+    "qa_variant": 1
+  },
+  "expect": [
+    {
+      "name": "the select: Stevie Ray, Type 1",
+      "when": "any",
+      "check": "bs_tries == 0x01000111"
+    },
+    {
+      "name": "Stevie Ray, Type 4",
+      "when": "any",
+      "check": "bs_tries == 0x01030111"
+    },
+    {
+      "name": "past his Type 4: his second ID (0x0118), Type 1",
+      "when": "any",
+      "check": "bs_tries == 0x01000118"
+    },
+    {
+      "name": "player 1 picked costume 1 (0x0111 Type 1)",
+      "when": "any",
+      "check": "bs_grabs == 0x00000111"
+    },
+    {
+      "name": "the CPU's pick: The Rock",
+      "when": "any",
+      "check": "(bs_step & 0xFFFF) == 0x0001"
+    },
+    {
+      "name": "the match: 0x0111 (player 1) vs The Rock (CPU)",
+      "when": "any",
+      "check": "mode == -2 and match_frames != 0xFFFF and match_frames > 120 and s0_id == 0x0111 and s0_pad == 1 and s1_id == 0x0001 and s1_pad == 0"
+    },
+    {
+      "name": "no model's matrices ever went bad",
+      "when": "always",
+      "check": "bad_mtx == 0"
+    }
+  ]
+}

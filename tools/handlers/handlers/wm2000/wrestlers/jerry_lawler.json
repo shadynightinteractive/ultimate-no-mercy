@@ -1,0 +1,17 @@
+{
+ "about": "WrestleMania 2000's JERRY\"THE KING\"LAWLER: what the handler is told for him (wm2kall, 2026-11-13). Everything else comes from the ROM.",
+ "string_id": "jerry_lawler",
+ "key": "jerry_lawler",
+ "wm2000": {
+  "roster_index": 49,
+  "game_id": "0x0904"
+ },
+ "moveset": {
+  "reference_ordinal": 64,
+  "reference_why": "Jim Ross: No Mercy's Lawler is his second costume"
+ },
+ "name": "JERRY LAWLER",
+ "name_why": "his record's JERRY\"THE KING\"LAWLER is past the 20 a full name holds, and has no spaces",
+ "class": "announcer",
+ "class_why": "the handler: the WWF's announcer (Raw, 1999-2000); WrestleMania 2000 has him in its group 9 with its officials"
+}

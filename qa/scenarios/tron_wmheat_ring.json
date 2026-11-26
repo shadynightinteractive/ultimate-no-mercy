@@ -1,0 +1,40 @@
+{
+  "about": "the Titantron on SUNDAY NIGHT HEAT's big screen (arena 17) during a match, from behind the ring: the hard camera's picture across the screen, the 3D truss round it",
+  "wrestlers": [
+    "STEVE AUSTIN",
+    "THE ROCK"
+  ],
+  "control": [
+    "cpu",
+    "cpu"
+  ],
+  "arena": "SUNDAY NIGHT HEAT",
+  "matches": 1,
+  "seconds": 75,
+  "shots": 6,
+  "options": {},
+  "camera": {
+    "eye": [
+      0,
+      300,
+      -650
+    ],
+    "at": [
+      0,
+      600,
+      1900
+    ]
+  },
+  "expect": [
+    {
+      "name": "the match started",
+      "when": "any",
+      "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "the arena is ours (arena_current 17)",
+      "when": "any",
+      "check": "venue == 17 and stage == 2"
+    }
+  ]
+}

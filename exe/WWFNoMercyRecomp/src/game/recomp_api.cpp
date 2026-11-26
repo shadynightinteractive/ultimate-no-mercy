@@ -1,0 +1,58 @@
+#include <algorithm>
+#include <cstdio>
+
+#include "recomp.h"
+#include "librecomp/helpers.hpp"
+#include "ultramodern/ultramodern.hpp"
+#include "ultramodern/config.hpp"
+
+// Game-side runtime API callable from MIPS patches (adapted from BMHero's
+// src/game/recomp_api.cpp). Every function here needs a matching address entry in
+// patches/syms.ld and is exposed to patches via the generated manual_patch_symbols
+// table — only implement (and list in syms.ld) what patches actually use.
+
+#include "../ra/ra_client.h"
+
+// Bridge for nomercy.toml `ignored` functions that aren't in N64Recomp's built-in
+// auto-ignore set: toml-ignored calls are emitted against the PLAIN name, while
+// librecomp exports only the `_recomp` shim.
+extern "C" void osDriveRomInit_recomp(uint8_t* rdram, recomp_context* ctx);
+extern "C" void osDriveRomInit(uint8_t* rdram, recomp_context* ctx) {
+    // First boot-time hook that holds the rdram base: hand it to the
+    // RetroAchievements prototype (no-op unless WCW_RA=1).
+    wcw::ra::notify_rdram(rdram);
+    osDriveRomInit_recomp(rdram, ctx);
+}
+
+extern "C" void recomp_puts(uint8_t* rdram, recomp_context* ctx) {
+    PTR(char) cur_str = _arg<0, PTR(char)>(rdram, ctx);
+    u32 length = _arg<1, u32>(rdram, ctx);
+
+    for (u32 i = 0; i < length; i++) {
+        fputc(MEM_B(i, (gpr)cur_str), stdout);
+    }
+    // Redirected stdout is fully buffered; without a flush, output sits in the CRT
+    // buffer and is lost if the process is killed (this is a debugging API — flush).
+    fflush(stdout);
+}
+
+extern "C" void recomp_exit(uint8_t* rdram, recomp_context* ctx) {
+    ultramodern::quit();
+}
+
+// Aspect ratio the game should build its 3D projection with (widescreen patch,
+// patches/widescreen.c). Same semantics as BMHero's: Original → the game's own ratio
+// unchanged; Expand → the window's ratio, never below the original (RT64's Expand
+// aspect mode then gives full-width perspective projections the wide viewport).
+extern "C" void recomp_get_target_aspect_ratio(uint8_t* rdram, recomp_context* ctx) {
+    _return(ctx, _arg<0, float>(rdram, ctx));      // (the game's own: the renderer shows more of the view for a wider shape)
+}
+
+// [wcw fix] Widescreen cull (aki-roadmap#47 / #5), called from the hand-edited func_800024F8
+// (tools/readd_hand_edits.py). The game drops an object when its center is past
+// |x| / (depth + 150) > 1.5 in view space, about 3.8x the 4:3 screen edge. In Expand the screen
+// is wider, so large set pieces whose center is past that line but which reach into the extra
+// width (barricade segments) vanished at the edges. The horizontal limit is scaled by how much
+// wider than 4:3 the screen is, keeping the game's own margin; 1 at Original, so 4:3 is unchanged.
+double arcade_view_cull_scale();
+extern "C" double wcw_widescreen_cull_scale() { return arcade_view_cull_scale(); }

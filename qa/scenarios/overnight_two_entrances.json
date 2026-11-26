@@ -1,0 +1,34 @@
+{
+  "about": "overnight QA 2026-11-11, media case 14: two entrances in a row, both folder wrestlers (pages: only FOLDER ROCK 0x0322 and FOLDER TEST GUY 0x0320): the files of the first, then the second's (or none). WCW_WRESTLERS_DIR picks which files each has.",
+  "match": "rumble",
+  "wrestlers": [
+    "0x0322"
+  ],
+  "control": [
+    "cpu"
+  ],
+  "arena": "RAW IS WAR",
+  "options": {
+    "rumble_entrants": 4,
+    "rumble_interval": 60,
+    "titantron_screens": true,
+    "titantron_live": true
+  },
+  "matches": 1,
+  "seconds": 120,
+  "shots": 0.5,
+  "shot_when": "$c.mode -eq 0 -and $c.screen -eq 42 -and $c.entrance_step -ge 1 -and $c.entrance_step -le 29",
+  "expect": [
+    {
+      "name": "the entrances ran",
+      "when": "any",
+      "check": "mode == 0 and screen == 42 and entrance_step >= 1 and entrance_step <= 29"
+    },
+    {
+      "name": "the arena is RAW IS WAR",
+      "when": "any",
+      "check": "venue == 0 and stage == 2"
+    }
+  ],
+  "pages": "..\\..\\scratch\\qa_overnight\\pages_two_folders.json"
+}

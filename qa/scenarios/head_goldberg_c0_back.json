@@ -1,0 +1,48 @@
+{
+  "about": "2026-11-03, the user: GOLDBERG's head against Revenge's (reference pictures). Both idle, a fixed camera close on his head in his corner, from the back: the whole head, no piece of another man's.",
+  "wrestlers": [
+    "GOLDBERG",
+    "THE ROCK"
+  ],
+  "costumes": [
+    0,
+    0
+  ],
+  "arena": "RAW IS WAR",
+  "control": [
+    "pad1",
+    "pad2"
+  ],
+  "camera": {
+    "eye": [
+      260,
+      248,
+      -260
+    ],
+    "at": [
+      180,
+      240,
+      -180
+    ]
+  },
+  "matches": 0,
+  "seconds": 70,
+  "shots": 3,
+  "expect": [
+    {
+      "name": "the match started",
+      "when": "any",
+      "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "GOLDBERG is in slot 0, his costume",
+      "when": "match",
+      "check": "s0_id == 0x010D and s0_costume == 0"
+    },
+    {
+      "name": "no model's matrices ever went bad",
+      "when": "always",
+      "check": "bad_mtx == 0"
+    }
+  ]
+}

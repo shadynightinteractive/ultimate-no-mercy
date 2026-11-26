@@ -1,0 +1,92 @@
+{
+  "about": "2026-11-21 lumberjack2: SELECT -- F2 LUMBERJACK MATCH > PICKED = SELECT, LUMBERJACKS 6: through Regular's own menus (qa_reg 13 + 16384) the Lumberjack Match row, then on the Superstar Select the two competitors (Austin for the player, The Rock for the CPU) and then the six lumberjacks, each picked on the select as a player picks (controller 1): Edge, Jeff Hardy, Matt Hardy, Trish Stratus (qa_lj_w1..4), then two more boxes; a woman is allowed when picked. The game's own rivals (each moveset's Rival 1-3: Jeff and Matt Hardy name Edge, Christian and Trish) make brawls among them possible -- QA: one every 10 s window with nobody out (qa_lj_brawl 101); never between non-rivals. The CPU plays the player from 20 s. (lumberjack3: the brawls play their moves but do no damage -- the damage put back; the picks read from lj_j / lj_k; the match's end and the menus after it are lumberjack_menu's to show: a CPU-vs-CPU match here outlasted 2400 s.)",
+  "match": "arcade",
+  "wrestlers": [
+    "STEVE AUSTIN",
+    "THE ROCK"
+  ],
+  "matches": 0,
+  "seconds": 900,
+  "shots": 4.0,
+  "options": {
+    "game_mode": "Regular",
+    "settings_version": 5,
+    "qa_modes": 1,
+    "qa_reg": 16397,
+    "lumberjacks": 4,
+    "lumberjack_pick": 1,
+    "qa_lj_w1": 1028,
+    "qa_lj_w2": 1031,
+    "qa_lj_w3": 1030,
+    "qa_lj_w4": 1797,
+    "qa_lj_brawl": 101
+  },
+  "expect": [
+    {
+      "name": "Regular all along",
+      "when": "always",
+      "check": "(bs_tries & 1) == 0 and (bs_tries >> 28) == 0"
+    },
+    {
+      "name": "A on the Lumberjack Match row asked for the Lumberjack match",
+      "when": "any",
+      "check": "((rr_put_out >> 13) & 1) == 1"
+    },
+    {
+      "name": "F2: 4 lumberjacks, PICKED = SELECT",
+      "when": "any",
+      "check": "(lj_h & 0xFF) == 4 and ((lj_h >> 8) & 1) == 1"
+    },
+    {
+      "name": "on the Superstar Select with PICKED = SELECT (the picks: the next check)",
+      "when": "any",
+      "check": "mode == 0 and screen in (26, 27) and ((lj_h >> 8) & 1) == 1"
+    },
+    {
+      "name": "the lumberjacks are the player's picks: Edge, Jeff Hardy, Matt Hardy, Trish Stratus (4, picked)",
+      "when": "any",
+      "check": "mode == -2 and match_frames != 0xFFFF and match_frames > 60 and (lj_f & 0xFF) == 4 and ((lj_f >> 16) & 1) == 1 and lj_j == (0x0404 | 0x0407 << 16) and lj_k == (0x0406 | 0x0705 << 16)"
+    },
+    {
+      "name": "picked, a woman may be a lumberjack (Trish Stratus: 1 not a wrestler among them, allowed when the player picks her)",
+      "when": "any",
+      "check": "mode == -2 and ((lj_f >> 8) & 0xFF) == 1"
+    },
+    {
+      "name": "rivals among them, by the game's own data (Jeff and Matt Hardy name Edge and Trish: 4 pairs at least)",
+      "when": "any",
+      "check": "mode == -2 and ((lj_f >> 24) & 0xFF) >= 4"
+    },
+    {
+      "name": "the walk-out of the 4, never under 40 apart (lumberjack5: walking down the ramp in the intro)",
+      "when": "any",
+      "check": "mode == -2 and (lj_a & 0xFF) == 4 and ((lj_a >> 8) & 0xFF) == 4 and (lj_b & 3) == 3 and (lj_a >> 16) >= 40"
+    },
+    {
+      "name": "rival lumberjacks brawled (QA: a brawl every window with nobody out): their moves landed (lumberjack-on-lumberjack hits), the game's damage of them put back",
+      "when": "any",
+      "check": "mode == -2 and ((lj_e >> 8) & 0xFF) >= 1 and (lj_i & 0xFF) >= 1 and ((lj_i >> 8) & 0xFF) >= 1"
+    },
+    {
+      "name": "no damage between lumberjacks: no brawling lumberjack's stamina ever went down (lumberjack3)",
+      "when": "always",
+      "check": "((lj_e >> 24) & 0xFF) == 0"
+    },
+    {
+      "name": "full spirit at the bell: the lumberjacks' lowest spirit at the match's first step is 100 (lumberjack3)",
+      "when": "any",
+      "check": "mode == -2 and (lj_b & 3) == 3 and (lj_i >> 24) == 100"
+    },
+    {
+      "name": "never a brawl between lumberjacks who are not rivals",
+      "when": "always",
+      "check": "((lj_e >> 16) & 0xFF) == 0"
+    },
+    {
+      "name": "no model's matrices ever went bad",
+      "when": "always",
+      "check": "bad_mtx == 0"
+    }
+  ],
+  "shot_when": "($c.mode -eq 0 -and $c.screen -in 25,26,27) -or ($c.mode -eq -2 -and $c.match_frames -ne 65535)"
+}

@@ -1,0 +1,22 @@
+{
+  "about": "2026-10-30, the user: dynamic pages: Random (C-up) four times on qa\\pages_test\\stress.json's 32 pages",
+  "match": "arcade",
+  "matches": 0,
+  "seconds": 160,
+  "shots": 0.5,
+  "options": {
+    "free_play": true,
+    "attract_demos": false
+  },
+  "pads": [
+    "60.0 1 start 200",
+    "64.0 1 start 200",
+    "68.0 1 a 200",
+    "80.0 1 y 300",
+    "86.0 1 y 300",
+    "92.0 1 y 300",
+    "98.0 1 y 300"
+  ],
+  "expect": [],
+  "pages": "stress.json"
+}

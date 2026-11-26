@@ -1,0 +1,14 @@
+{
+  "about": "2026-11-02 story upgrade phase 10: a story that doesn't compile (qa/stories_test/001_broken.json: a scene line by 'nobody') stays on the Custom Story list as 'ERROR: 001_broken' (it sorts first); QA picks the list's first story, so its reason shows as the list's rows ('001_broken.json: node 'one': step 2: ...'); the log has the [stories] line. Look at the shots of the list",
+  "match": "arcade",
+  "wrestlers": ["STEVE AUSTIN", null],
+  "matches": 0,
+  "seconds": 270,
+  "shots": 1.5,
+  "options": { "free_play": true, "attract_demos": false, "custom_story": 1, "qa_story": 3 },
+  "expect": [
+    { "name": "the list up", "when": "any", "check": "screen == 22" }
+  ],
+  "shot_when": "$c.screen -eq 22",
+  "stories": ["001_broken.json"]
+}

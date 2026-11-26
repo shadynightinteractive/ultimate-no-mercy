@@ -1,0 +1,30 @@
+{
+  "about": "the Revenge ports (2026-10-28): HOLLYWOOD HOGAN vs KEVIN NASH -- models, size, hands / skin, moves",
+  "wrestlers": [
+    "HOLLYWOOD HOGAN",
+    "KEVIN NASH"
+  ],
+  "control": [
+    "cpu",
+    "cpu"
+  ],
+  "matches": 1,
+  "seconds": 90,
+  "shots": 3,
+  "expect": [
+    {
+      "name": "the match started",
+      "when": "any",
+      "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "no model's matrices ever went bad",
+      "when": "always",
+      "check": "bad_mtx == 0"
+    }
+  ],
+  "costumes": [
+    0,
+    0
+  ]
+}

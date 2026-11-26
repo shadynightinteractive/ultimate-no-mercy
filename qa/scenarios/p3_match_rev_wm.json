@@ -1,0 +1,32 @@
+{
+ "about": "phase3 (2026-11-19): a match between a WCW/nWo Revenge wrestler (AKI Man 0x0379) and a WrestleMania 2000 wrestler (Al Snow 0x03C7), both imported natively on the first start from the player's ROMs",
+ "match": "arcade",
+ "wrestlers": [
+  "0x0379",
+  "0x03C7"
+ ],
+ "costumes": [
+  0,
+  0
+ ],
+ "matches": 0,
+ "seconds": 600,
+ "shots": 1.0,
+ "options": {
+  "free_play": true,
+  "attract_demos": false,
+  "qa_versus": 20
+ },
+ "expect": [
+  {
+   "name": "the match: Revenge's AKI Man (player 1) vs WM2000's Al Snow (CPU)",
+   "when": "any",
+   "check": "mode == -2 and match_frames != 0xFFFF and match_frames > 120 and s0_id == 0x0379 and s0_pad == 1 and s1_id == 0x03C7 and s1_pad == 0"
+  },
+  {
+   "name": "no model's matrices ever went bad",
+   "when": "always",
+   "check": "bad_mtx == 0"
+  }
+ ]
+}

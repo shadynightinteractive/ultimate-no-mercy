@@ -1,0 +1,44 @@
+{
+  "about": "(2026-11-17, pipefix: WCW_WRESTLERS_DIR = qa\\wrestlers_test, where 0x0322 lives.) playtest2 2026-11-16, the user's playtest item 2b: 'a separator line on the Titantron during videos'. Not settled on the CPU: no capture of it exists (visualfix's vf_tron_video is the game's cameras). This one holds the scenario's camera still on RAW IS WAR's screen (tron.c tron_place: centre 0, 710, 2695, 1160 wide) from the start, so the entrance videos fill a still frame; shots every 0.25 s while the entrances run. A folder wrestler (0x0322, qa/wrestlers_test: a native video) and the Rock (the game's own video). LOOK: a line across the screen -- where (the middle: the two halves the game draws into the 64 x 32 picture; the edge: the screen mesh's wrap; a panel joint: the arena's own screen parts), with which video (native or the game's), and whether 0.84's hold_edges removes it (run it on the 0.83 exe too). Crop the screen from each shot (x 380..900, y 120..420 of 1280 x 960 roughly) and compare rows: a row darker / lighter than both neighbours across the whole width is the line.",
+  "match": "rumble",
+  "wrestlers": [
+    "0x0322",
+    "0x0001"
+  ],
+  "control": [
+    "cpu"
+  ],
+  "arena": "RAW IS WAR",
+  "options": {
+    "rumble_entrants": 4,
+    "rumble_interval": 60,
+    "titantron_screens": true,
+    "titantron_live": true
+  },
+  "camera": {
+    "eye": [
+      0,
+      640,
+      1750
+    ],
+    "at": [
+      0,
+      710,
+      2695
+    ]
+  },
+  "matches": 1,
+  "seconds": 90,
+  "shots": 0.25,
+  "shot_when": "$c.mode -eq 0 -and $c.screen -eq 42 -and $c.entrance_step -ge 1 -and $c.entrance_step -le 29",
+  "expect": [
+    {
+      "name": "the entrances ran",
+      "when": "any",
+      "check": "mode == 0 and screen == 42 and entrance_step >= 1 and entrance_step <= 29"
+    }
+  ],
+  "env": {
+    "WCW_WRESTLERS_DIR": "<source>\\qa\\wrestlers_test"
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "about": "the analog stick in the settings (2026-11-20, controls -- the user: 'I still don't see the analog stick map-able in settings'): F2 > CONTROLS > ALL CONTROLLERS: BUTTONS & STICK opened in the QA Royal Rumble (qa_op 22), its first row ANALOG STICK asked for (qa_bind_row 20: the whole stick); the scripted pad 1 pushes its LEFT stick left -- the capture puts the N64 stick on the left stick (all four ways, '[pads] controllers (the default): the analog stick = the left stick', saved in controls_n64.json) and takes the left stick off the d-pad rows. Every 4 s again: with the capture over, LEFT on the ANALOG STICK row is the left stick again (the row's LEFT / RIGHT). Read the log and the copy's controls_n64.json after the run.",
+  "match": "rumble",
+  "wrestlers": [
+    "STEVE AUSTIN"
+  ],
+  "control": [
+    "cpu"
+  ],
+  "matches": 0,
+  "seconds": 100,
+  "shots": 4,
+  "options": {
+    "rumble_entrants": 4,
+    "rumble_interval": 30,
+    "qa_op": 22,
+    "qa_op_at": 8,
+    "qa_bind_row": 20,
+    "qa_modes": 1
+  },
+  "pads": [
+    "10.0 1 -leftx 400",
+    "10.0 repeat 4"
+  ],
+  "expect": [
+    {
+      "name": "the Rumble started",
+      "when": "any",
+      "check": "stage == 2 and mode == -2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "the ALL CONTROLLERS page open (PG_PADKEYS 11)",
+      "when": "any",
+      "check": "((bs_tries >> 24) & 1) == 1 and ((bs_grabs >> 8) & 0xFF) == 11"
+    },
+    {
+      "name": "the capture ended with the stick set and saved",
+      "when": "any",
+      "check": "((bs_grabs >> 24) & 0x7F) == 1"
+    },
+    {
+      "name": "never cancelled",
+      "when": "always",
+      "check": "((bs_grabs >> 24) & 0x7F) != 2"
+    }
+  ],
+  "shot_when": "(($c.bs_grabs -shr 8) -band 0xFF) -eq 11"
+}

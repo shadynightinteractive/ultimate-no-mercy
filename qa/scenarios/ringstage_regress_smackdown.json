@@ -1,0 +1,49 @@
+{
+ "about": "Another arena: the same whip at the same place must change area exactly as before (no RAW records, no lift, the count as ever). qa_ringstage 2 places them. CHECK bs_tries reaches 12 (SMACKDOWN's stage area), the lift stays 0.",
+ "wrestlers": [
+  "THE ROCK",
+  "STEVE AUSTIN"
+ ],
+ "costumes": [
+  0,
+  0
+ ],
+ "arena": "SMACKDOWN",
+ "control": [
+  "pad1",
+  "pad2"
+ ],
+ "matches": 1,
+ "seconds": 160,
+ "shots": 2.0,
+ "options": {
+  "qa_ringstage": 7
+ },
+ "expect": [
+  {
+   "name": "the match started",
+   "when": "any",
+   "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+  },
+  {
+   "name": "nobody's position went bad",
+   "when": "always",
+   "check": "finite(s0_x, s0_y, s0_z, s1_x, s1_y, s1_z)"
+  },
+  {
+   "name": "the area change still happens: area 12",
+   "when": "any",
+   "check": "bs_tries == 12"
+  },
+  {
+   "name": "no lift, ever",
+   "when": "always",
+   "check": "bs_grabs == 0"
+  },
+  {
+   "name": "the man never past the aisle's old end while in the ring's area",
+   "when": "always",
+   "check": "bs_tries >= 10 or s1_z < 900"
+  }
+ ]
+}

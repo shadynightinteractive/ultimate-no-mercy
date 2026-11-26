@@ -1,0 +1,48 @@
+{
+  "about": "the Royal Rumble freeze (2026-10-27): a model made as the match goes on has its palettes packed, and the game's skin colours went over the end of one of its display lists (skel.c pal_group_guard). Every entrant one brought over from another game (qa_rr_ports), entrants every 10 s; Bret the player, the CPU fighting for him, his back suplex from back grapples (qa_bsuplex)",
+  "match": "rumble",
+  "wrestlers": [
+    "BRET HART"
+  ],
+  "control": [
+    "cpu"
+  ],
+  "options": {
+    "rumble_entrants": 20,
+    "rumble_interval": 10,
+    "announcers": true,
+    "commentary": true,
+    "qa_bsuplex": 1,
+    "qa_rr_ports": 1
+  },
+  "matches": 1,
+  "seconds": 600,
+  "shots": 10,
+  "expect": [
+    {
+      "name": "the Rumble started",
+      "when": "any",
+      "check": "stage == 2 and mode == -2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "Bret Hart is in it",
+      "when": "match",
+      "check": "s0_id == 0x060D or s1_id == 0x060D or s2_id == 0x060D or s3_id == 0x060D"
+    },
+    {
+      "name": "no model's matrices ever went bad",
+      "when": "always",
+      "check": "bad_mtx == 0"
+    },
+    {
+      "name": "the announcers' poses stayed numbers",
+      "when": "always",
+      "check": "ann_fallbacks == 0"
+    },
+    {
+      "name": "every palette had No Mercy's room (the guard never needed: gen/nmpal.py)",
+      "when": "end",
+      "check": "pal_room_skipped == 0"
+    }
+  ]
+}

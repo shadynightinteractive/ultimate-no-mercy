@@ -1,0 +1,16 @@
+{
+  "about": "the announcer King's model going bad (drawn out of place, slowdown): Bret Hart (WCW/nWo Revenge port) against Jerry Lawler (0x0904 costume 1, the model the announcer King is made from), CPU vs CPU, three matches; the back suplex from a back grapple is the suspect",
+  "wrestlers": ["BRET HART", "0x0904"],
+  "costumes": [0, 1],
+  "arena": "RAW IS WAR",
+  "control": ["cpu", "cpu"],
+  "matches": 3,
+  "seconds": 900,
+  "shots": 6,
+  "expect": [
+    { "name": "the match started", "when": "any", "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30" },
+    { "name": "Bret Hart and Jerry Lawler", "when": "match", "check": "s0_id == 0x060D and s1_id == 0x0904 and s1_costume == 1" },
+    { "name": "no model's matrices ever went bad", "when": "always", "check": "bad_mtx == 0" },
+    { "name": "no wrestler's position ever went bad", "when": "always", "check": "finite(s0_x, s0_y, s0_z, s1_x, s1_y, s1_z)" }
+  ]
+}

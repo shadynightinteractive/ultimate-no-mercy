@@ -1,0 +1,40 @@
+{
+  "about": "2026-10-31, the user: 'Do the same for all remaining arenas' (as RAW IS WAR's, raw_stage): KING OF THE RING's stage up close in a match (a fixed camera over the aisle near the ring, a little to the side, looking at the whole stage): the close set (gen/arenas_stages.py) where the old one was, the old ramp / aisle as it was. Run with -Installed for the old set from the same camera.",
+  "wrestlers": [
+    "STEVE AUSTIN",
+    "THE ROCK"
+  ],
+  "arena": "KING OF THE RING",
+  "control": [
+    "cpu",
+    "cpu"
+  ],
+  "matches": 1,
+  "seconds": 50,
+  "shots": 6,
+  "options": {},
+  "camera": {
+    "eye": [
+      450,
+      550,
+      250
+    ],
+    "at": [
+      0,
+      650,
+      2600
+    ]
+  },
+  "expect": [
+    {
+      "name": "the match started",
+      "when": "any",
+      "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "the arena is KING OF THE RING",
+      "when": "any",
+      "check": "venue == 3 and stage == 2"
+    }
+  ]
+}

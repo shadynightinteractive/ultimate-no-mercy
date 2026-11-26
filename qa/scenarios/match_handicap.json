@@ -1,0 +1,51 @@
+{
+  "about": "2026-11-06: a handicap match made straight from the title, no menus (logic.c qa_demo_set: the attract demo set of that format, its records given the scenario's Superstars) -- the shots show the match type; 6x",
+  "match": "handicap",
+  "wrestlers": [
+    "STEVE AUSTIN",
+    "THE ROCK",
+    "TRIPLE H"
+  ],
+  "control": [
+    "cpu",
+    "cpu",
+    "cpu"
+  ],
+  "seconds": 240,
+  "arena": "RAW IS WAR",
+  "matches": 1,
+  "speed": 6,
+  "shots": 4,
+  "expect": [
+    {
+      "name": "the match started",
+      "when": "any",
+      "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "slot 1 has a Superstar in the match",
+      "when": "match",
+      "check": "s0_id != 0xFFFF and s0_id != 0"
+    },
+    {
+      "name": "slot 2 has a Superstar in the match",
+      "when": "match",
+      "check": "s1_id != 0xFFFF and s1_id != 0"
+    },
+    {
+      "name": "slot 3 has a Superstar in the match",
+      "when": "match",
+      "check": "s2_id != 0xFFFF and s2_id != 0"
+    },
+    {
+      "name": "no slot 4 (a 3-man match)",
+      "when": "always",
+      "check": "s3_id == 0xFFFF or s3_id == 0 or match_frames == 0xFFFF"
+    },
+    {
+      "name": "the game's match flags say handicap (0x20000, no three-way)",
+      "when": "match",
+      "check": "(flags & 0x20000) != 0 and (flags & 0x8000) == 0"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "about": "a recording (qa.ps1 -Record): the game as it is, played by a person, until they close it",
+  "mode": "record",
+  "matches": 0,
+  "seconds": 14400,
+  "shots": 10,
+  "shot_when": "$p = $global:qaKingPics; $global:qaKingPics = '{0}/{1}' -f $c.king_sum0, $c.king_sum1; ($null -ne $p) -and ($p -ne $global:qaKingPics) -and ($c.king_pic0 -ne 0)",
+  "expect": [
+    { "name": "no model's matrices ever went bad", "when": "always", "check": "bad_mtx == 0" },
+    { "name": "King's head pictures never written over", "when": "always", "check": "king_pic0 == 0 or True" }
+  ]
+}

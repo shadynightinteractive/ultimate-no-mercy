@@ -1,0 +1,3 @@
+{ "title": "Broken on purpose", "menu": "Broken",
+  "nodes": { "one": { "scene": [ { "place": "hall", "cast": ["player"] }, { "say": "Hi", "who": "nobody" } ],
+    "match": { "slots": ["player", "KANE"] } } } }

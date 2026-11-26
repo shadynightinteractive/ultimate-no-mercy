@@ -1,0 +1,34 @@
+{
+  "match": "rumble",
+  "wrestlers": [
+    "STEVE AUSTIN"
+  ],
+  "control": [
+    "cpu"
+  ],
+  "options": {
+    "rumble_entrants": 4,
+    "rumble_interval": 30,
+    "qa_op": 9,
+    "qa_op_at": 25,
+    "free_play": true,
+    "qa_p2": 480,
+    "qa_p2_after_op": 1
+  },
+  "seconds": 130,
+  "shots": 1.0,
+  "about": "2026-10-29 (the empty MATCH page): a Rumble, F2 RESET 25 s in (qa_op 9), the title, 1P Start, 2P's Start 8 s into that game (qa_p2 480 after the action) -- no story",
+  "matches": 0,
+  "expect": [
+    {
+      "name": "the MATCH page reached",
+      "when": "any",
+      "check": "screen == 7"
+    }
+  ],
+  "shot_when": "$c.screen -eq 7",
+  "pads": [
+    "55.0 1 start 200",
+    "65.0 1 start 200"
+  ]
+}

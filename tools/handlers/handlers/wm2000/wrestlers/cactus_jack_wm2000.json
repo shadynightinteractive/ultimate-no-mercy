@@ -1,0 +1,13 @@
+{
+ "about": "WrestleMania 2000's CACTUS JACK: what the handler is told for him (wm2kall, 2026-11-13). Everything else comes from the ROM.",
+ "string_id": "cactus_jack_wm2000",
+ "key": "cactus_jack_wm2000",
+ "wm2000": {
+  "roster_index": 5,
+  "game_id": "0x0005"
+ },
+ "moveset": {
+  "reference_ordinal": 7,
+  "reference_why": "No Mercy's own"
+ }
+}

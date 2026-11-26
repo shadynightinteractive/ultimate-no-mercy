@@ -1,0 +1,54 @@
+{
+ "about": "a real whip (A, then C-down) at a wall made from the models in SUPERBRAWL: at x 0, z 2290. The men are put in front of it every 15 s, the whipper on the ring's side. LOOK: he crashes into the thing in the picture, not in thin air, and stays out of it",
+ "wrestlers": [
+  "THE ROCK",
+  "STEVE AUSTIN"
+ ],
+ "costumes": [
+  0,
+  0
+ ],
+ "arena": "SUPERBRAWL",
+ "control": [
+  "pad1",
+  "pad2"
+ ],
+ "matches": 1,
+ "seconds": 130,
+ "shots": 2.0,
+ "options": {
+  "qa_ringstage": 135
+ },
+ "expect": [
+  {
+   "name": "the match started",
+   "when": "any",
+   "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+  },
+  {
+   "name": "nobody's position went bad",
+   "when": "always",
+   "check": "finite(s0_x, s0_y, s0_z, s1_x, s1_y, s1_z)"
+  },
+  {
+   "name": "no area change",
+   "when": "always",
+   "check": "bs_tries < 10"
+  },
+  {
+   "name": "whipped: running at it",
+   "when": "any",
+   "check": "s1_state == 3 and s1_z > 1990"
+  },
+  {
+   "name": "its back edge has nothing behind it: a teeter (no crash wall faces the ring with room in front)",
+   "when": "any",
+   "check": "s1_state == 193 and s1_z > 1940 and s1_z < 2310"
+  },
+  {
+   "name": "never past the wall (a margin for an animation)",
+   "when": "always",
+   "check": "not (s1_z > 2350 and s1_z < 2590 and s1_x > -40 and s1_x < 40)"
+  }
+ ]
+}

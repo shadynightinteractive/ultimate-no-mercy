@@ -1,0 +1,33 @@
+{
+ "about": "2026-11-02 pending: 'retries' and 'gameover' (found 2026-11-01: a retry replayed the scene, no match, the old result; then a loop forever). 013_retry.json: the match is lost at 0:15 by its script, 2 retries: three real matches, then a game over (the title or the list), never a results page without a match, never a loop",
+ "match": "arcade",
+ "wrestlers": [
+  "STEVE AUSTIN",
+  null
+ ],
+ "matches": 0,
+ "seconds": 900,
+ "shots": 2.0,
+ "options": {
+  "free_play": true,
+  "attract_demos": false,
+  "custom_story": 1,
+  "qa_story": 3
+ },
+ "expect": [
+  {
+   "name": "first match",
+   "when": "any",
+   "check": "matches == 10105 and mode == -2 and match_frames > 100"
+  },
+  {
+   "name": "the game over: the story ended",
+   "when": "end",
+   "check": "matches == 0"
+  }
+ ],
+ "shot_when": "$true",
+ "stories": [
+  "013_retry.json"
+ ]
+}

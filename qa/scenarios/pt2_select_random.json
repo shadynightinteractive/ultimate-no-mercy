@@ -1,0 +1,29 @@
+{
+  "about": "(2026-11-17, pipefix: 260 s -- the select comes at ~155 s of the game, the 150 s run ended on the menus, qa084.) playtest2 2026-11-16, the user's playtest item 13: 'Superstar Select, bottom right: the Random label (triangle + \"Ra...\") cut off by a white box' (screens\\2026-11-16\\elizabeth_ours_select.png; the user's picture shape is 16:9). Cause (playtest2): the lift dropped a parameter -- tools/lift/mips.py counts every `sw $sN, off($sp)` as a register kept for the caller, so a value passed on as a stack parameter looked unread and converted callers left the register out. The label is a menus' draw request: drawn with a stale a3 as its flags it moved right from game x ~237 to ~295 (QA hd_select 2026-11-13_141354 vs 2026-11-13_143823), past the picture's edge; at 16:9 the part past x 320 shows beside the picture (as the white box). hd_select's route (qa_versus 20); shots on the select. LOOK (1280 x 960): the yellow triangle and 'Random' whole, at about x 950..1100, y 850..890 (the upstream screenshot exe\\WWFNoMercyRecomp\\docs\\screenshots\\wrestler-select.png has it there); nothing cut at x 1280. Also 'Type 1', the name bar and '2P PRESS START' where 2026-11-13_122418 had them. (no2k15, 2026-11-23: the two WWE 2K15 test slots, 0x011A / 0x011B, are removed from the game -- stock Steve Austin 0x0002 and The Rock 0x0001 in their places here)",
+  "match": "arcade",
+  "wrestlers": [
+    "0x0002",
+    "0x0001"
+  ],
+  "costumes": [
+    0,
+    0
+  ],
+  "matches": 0,
+  "seconds": 260,
+  "shots": 1.0,
+  "options": {
+    "free_play": true,
+    "attract_demos": false,
+    "qa_versus": 20,
+    "qa_variant": 1
+  },
+  "expect": [
+    {
+      "name": "the CPU's pick: The Rock",
+      "when": "any",
+      "check": "(bs_step & 0xFFFF) == 0x0001"
+    }
+  ],
+  "shot_when": "$c.mode -eq 0 -and ($c.screen -eq 26 -or $c.screen -eq 27)"
+}

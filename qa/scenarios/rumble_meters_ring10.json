@@ -1,0 +1,44 @@
+{
+  "about": "2026-11-15 (gameplayfix, item 6): power meters in a Royal Rumble with 10 in the ring at once (qa_rr_ring 10, 20 entrants, one every 10 s; eliminations from 200 s). The user's spec: at most 8 meters (6 now: the places the engine has), each in a place of its own (top left / centre / right, bottom left / centre / right), none for the others in the ring, an eliminated man's meter to the next in the queue (entry order), a player's man always with one. LOOK at the shots: never more than six panels, none on top of another, none in the middle of the screen; after an elimination its place is filled by another man's panel (his name in it)",
+  "match": "rumble",
+  "wrestlers": [
+    "BRET HART"
+  ],
+  "control": [
+    "cpu"
+  ],
+  "arena": "MONDAY NITRO",
+  "options": {
+    "rumble_entrants": 20,
+    "rumble_interval": 10,
+    "qa_rr_ring": 10,
+    "qa_rr_out": 1,
+    "qa_rr_out_after": 200
+  },
+  "matches": 1,
+  "seconds": 900,
+  "speed": 6,
+  "shots": 5,
+  "expect": [
+    {
+      "name": "the Rumble started",
+      "when": "any",
+      "check": "stage == 2 and mode == -2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "the match has room for 10 (its slot count)",
+      "when": "match",
+      "check": "slots >= 10"
+    },
+    {
+      "name": "seven or more in the ring at once (meters handed out)",
+      "when": "match",
+      "check": "in_ring >= 7"
+    },
+    {
+      "name": "the Rumble ended (no crash)",
+      "when": "end",
+      "check": "matches >= 1"
+    }
+  ]
+}

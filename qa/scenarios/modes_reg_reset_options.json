@@ -1,0 +1,15 @@
+{
+  "about": "2026-11-07, the two modes phase 3 (W8): Regular -- F2's RESET TO TITLE with the game's OPTIONS page up (screen 18: the main menu's third page, Options): the title must come up and stay (phase 2 run 190019 saw the menus go on by themselves to the SmackDown Mall / Options page 3 s later). qa_reg 1033 = 1 + 8 + 1024: Start on the title, the main menu, RIGHT twice, Options, 3 s, F2 RESET TO TITLE, then 20 s on the title, quit (ATTRACT off: the title alone, no demo coming on it). state.csv (qa_modes): bs_grabs & 255 the driver's step (20 the reset on its way, 13 done); on the title bs_grabs >> 16 = NM_RETURN_SCREEN + 1.",
+  "match": "arcade",
+  "matches": 0,
+  "seconds": 320,
+  "shots": 1.0,
+  "options": { "game_mode": "Regular", "qa_modes": 1, "qa_reg": 1033, "attract_regular": false },
+  "expect": [
+    { "name": "the OPTIONS page reached (screen 18)", "when": "any", "check": "mode == 0 and screen == 18" },
+    { "name": "the reset asked", "when": "any", "check": "(bs_grabs & 255) == 20" },
+    { "name": "20 s on the title after it, the driver done", "when": "any", "check": "(bs_grabs & 255) == 13 and screen == 0" },
+    { "name": "on the title at the end", "when": "end", "check": "mode == 0 and screen == 0" }
+  ],
+  "shot_when": "$c.screen -in 0,4,18"
+}

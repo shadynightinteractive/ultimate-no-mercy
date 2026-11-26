@@ -1,0 +1,44 @@
+{
+  "wrestlers": [
+    "HOLLYWOOD HOGAN",
+    "KEVIN NASH"
+  ],
+  "control": [
+    "cpu",
+    "cpu"
+  ],
+  "arena": "MONDAY NITRO",
+  "matches": 1,
+  "shots": 0.5,
+  "expect": [
+    {
+      "name": "the match started",
+      "when": "any",
+      "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "the arena is ours (arena_current 10)",
+      "when": "any",
+      "check": "venue == 10 and stage == 2"
+    },
+    {
+      "name": "nobody's position went bad",
+      "when": "always",
+      "check": "finite(s0_x, s0_y, s0_z, s1_x, s1_y, s1_z)"
+    }
+  ],
+  "about": "2026-10-30, the user: 'can we see about getting the Monday Nitro and Halloween Havoc arenas into No Mercy?' -- Revenge's MONDAY NITRO (arena.c, gen/arenas.py: its stage set in WrestleMania's place, arena 11): a CPU match, the scenario's camera from the floor outside the ring, low, looking up across it: the near apron, both halves (its pieces, back to front, the aisle, its floor); the shots looked at",
+  "seconds": 30,
+  "camera": {
+    "eye": [
+      -150,
+      90,
+      -700
+    ],
+    "at": [
+      0,
+      50,
+      -280
+    ]
+  }
+}

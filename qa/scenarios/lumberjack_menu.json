@@ -1,0 +1,122 @@
+{
+  "about": "2026-11-21 lumberjack / lumberjack2; 2026-11-23 ljround8 (the user: \"How do I select lumberjacks? ... its ok if Lumberjack match goes on the previous screen (with Ladder match in regular mode)\"): the Lumberjack match through the game's own menus, Regular (qa_reg 13 + 16384): Multi Play -- the Lumberjack Match row under Ironman Match (the cursor on Ironman Match a moment, then DOWN, the page's own link, a moment on the row, A) > its MATCH page: Single / Tag / Triple Threat Match and the match's settings, Lumberjacks (RIGHT 13, LEFT 12) and Picked (RIGHT Select, A Random again) > A on Single Match > PLAYER 1P vs CPU > ARENA > RULES > the Superstar Select (Austin, The Rock) > the match card \"Lumberjack Match\" > the competitors' entrances > the lumberjacks' walk-out (12, at random) > the match (14 present); a competitor walks out every 30 s and is rolled back in; the results, the menus. Shots of Multi Play with the cursor on Ironman Match and on the row, and of the MATCH page.",
+  "match": "arcade",
+  "wrestlers": [
+    "STEVE AUSTIN",
+    "THE ROCK"
+  ],
+  "matches": 0,
+  "seconds": 1800,
+  "shots": 2.0,
+  "options": {
+    "game_mode": "Regular",
+    "settings_version": 5,
+    "qa_modes": 1,
+    "qa_reg": 16397,
+    "qa_lj_out": 30,
+    "qa_lj_menu": 0
+  },
+  "expect": [
+    {
+      "name": "Regular all along",
+      "when": "always",
+      "check": "(bs_tries & 1) == 0 and (bs_tries >> 28) == 0"
+    },
+    {
+      "name": "ljround8: Multi Play has the Lumberjack Match row (Regular: its definitions the mod's, one row more), its picture lent",
+      "when": "any",
+      "check": "mode == 0 and screen == 2 and (rr_kept_out & 0xF) != 15"
+    },
+    {
+      "name": "ljround8: DOWN from Ironman Match (the page's own link) landed on the Lumberjack Match row",
+      "when": "any",
+      "check": "(rr_kept_out & 0xF) != 15 and (rr_put_out & 0xF) == (rr_kept_out & 0xF)"
+    },
+    {
+      "name": "ljround8: A on it brought up the Lumberjack MATCH page (screen 7 built from its own row list: the types and the settings rows)",
+      "when": "any",
+      "check": "mode == 0 and screen == 7 and ((rr_kept_out >> 5) & 1) == 1 and ((rr_kept_out >> 4) & 1) == 1"
+    },
+    {
+      "name": "ljmenu10: the Lumberjack MATCH page is built with its own rows -- no frame of screen 7 ever showed a row not its page's (never Handicap or Cage on it; never a settings row on Exhibition's)",
+      "when": "always",
+      "check": "((rr_kept_out >> 6) & 1) == 0"
+    },
+    {
+      "name": "ljmenu10: the settings rows' pictures (Lumberjacks: N, Picked: ...) made by the first start from the ROM's label lettering, not blank",
+      "when": "any",
+      "check": "mode == 0 and screen == 7 and ((rr_kept_out >> 7) & 1) == 1"
+    },
+    {
+      "name": "ljround8: LUMBERJACKS from F2's 12: RIGHT made 13, LEFT 12 again",
+      "when": "any",
+      "check": "((rr_put_out >> 4) & 0x3F) == 13 and ((rr_put_out >> 10) & 0x3F) == 12"
+    },
+    {
+      "name": "ljround8: PICKED: RIGHT made it Select (on the page)",
+      "when": "any",
+      "check": "mode == 0 and screen == 7 and ((rr_kept_out >> 5) & 1) == 1 and ((rr_kept_out >> 14) & 1) == 1"
+    },
+    {
+      "name": "ljround8: A on Single Match asked for the Lumberjack match (one on one), PICKED back to Random by A",
+      "when": "any",
+      "check": "((rr_kept_out >> 15) & 1) == 1 and ((rr_kept_out >> 14) & 1) == 0"
+    },
+    {
+      "name": "the game's own PLAYER page reached (as Single Match)",
+      "when": "any",
+      "check": "mode == 0 and screen == 6"
+    },
+    {
+      "name": "the match card's caption is \"Lumberjack Match\" (the card asked for it, the Lumberjack match armed)",
+      "when": "any",
+      "check": "mode == 0 and screen == 25 and (lj_g & 0xFFFF) >= 1 and ((lj_g >> 24) & 1) == 1 and ((lj_g >> 16) & 0xFF) == 0"
+    },
+    {
+      "name": "the match: Austin (controller 1) vs The Rock (CPU), with lumberjacks in slots 2.. (the CPU's)",
+      "when": "any",
+      "check": "mode == -2 and match_frames != 0xFFFF and match_frames > 120 and s0_id == 0x0002 and s1_id == 0x0001 and s0_pad == 1 and s2_id != 0xFFFF and s5_id != 0xFFFF and s2_pad == 0 and s5_pad == 0"
+    },
+    {
+      "name": "the menus' 12 (F2's default, LEFT / RIGHT back to it) drawn at random, none a woman or an announcer",
+      "when": "any",
+      "check": "mode == -2 and (lj_h & 0xFF) == 12 and (lj_f & 0xFF) == 12 and ((lj_f >> 8) & 0xFF) == 0 and ((lj_f >> 16) & 1) == 0"
+    },
+    {
+      "name": "after the competitors' entrances, the group walk-out: 12 out, 12 at their posts, never under 40 apart, the bell held for it (lumberjack5: walking down the ramp in the intro)",
+      "when": "any",
+      "check": "mode == -2 and (lj_a & 0xFF) == 12 and ((lj_a >> 8) & 0xFF) == 12 and (lj_b & 3) == 3 and (lj_a >> 16) >= 40 and ((lj_b >> 8) & 0xFF) >= 3"
+    },
+    {
+      "name": "a competitor out of the ring was rolled back in, and was back in (either route back in: his own climb or a lumberjack's roll / throw -- the user 2026-11-25: \"Count either route\")",
+      "when": "any",
+      "check": "mode == -2 and ((rr_put_out >> 8) & 0xFF) >= 1 and (rr_kept_out & 0xFF) >= 1 and (((lj_c >> 16) & 0xFF) + ((lj_c >> 24) & 0xFF)) >= 1"
+    },
+    {
+      "name": "the match ended (its replay / results)",
+      "when": "any",
+      "check": "mode == -2 and match_state == 4"
+    },
+    {
+      "name": "the decision was over the two competitors, no lumberjack's result set",
+      "when": "any",
+      "check": "mode == -2 and match_state == 4 and (((s0_flags & 7) == 4 and (s1_flags & 3) == 3) or ((s1_flags & 7) == 4 and (s0_flags & 3) == 3)) and (s2_flags & 7) == 0 and (s3_flags & 7) == 0 and (s4_flags & 7) == 0 and (s5_flags & 7) == 0"
+    },
+    {
+      "name": "back on the game's menus after it, the driver done",
+      "when": "any",
+      "check": "(bs_grabs & 255) == 13"
+    },
+    {
+      "name": "at their posts the lumberjacks stand still (lumberjack5, the user's 'twitching in place' -- b1's trace: taunts at the posts, about one move a lumberjack-second): no taunt there, under 1% of their time there in any state but standing, at most one move over 1 unit a 20 lumberjack-seconds (ROUND 9: his own moves -- the intro's end putting him at his post, and a man standing beside him pushing him, counted apart in the log)",
+      "when": "end",
+      "check": "(lj_m & 0xFFFF) >= 100 and ((lj_l >> 16) & 15) == 0 and (lj_l & 0xFFFF) * 10 <= (lj_m & 0xFFFF) * 3 and (lj_m >> 16) * 20 <= (lj_m & 0xFFFF)"
+    },
+    {
+      "name": "no model's matrices ever went bad",
+      "when": "always",
+      "check": "bad_mtx == 0"
+    }
+  ],
+  "shot_when": "($c.mode -eq 0 -and $c.screen -in 2,7,25) -or ($c.mode -eq -2 -and $c.match_state -eq 1)"
+}

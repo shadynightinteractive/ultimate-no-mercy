@@ -1,0 +1,15 @@
+{
+  "about": "2026-10-31: a custom story's 3D scenes (storyc / arcade_stories \"scene\"): qa/stories_test/003_scene_interview.json -- the locker room, the hall (a walk-in), the ring, speech bubbles naming the Superstars, music on / off; an after-match scene (parking lot or pool hall). The CPU plays (qa_story 3); QA's A presses move the bubbles on",
+  "match": "arcade",
+  "wrestlers": ["STEVE AUSTIN", null],
+  "matches": 0,
+  "seconds": 900,
+  "shots": 3.0,
+  "options": { "free_play": true, "attract_demos": false, "custom_story": 1, "qa_story": 3 },
+  "expect": [
+    { "name": "the story's first node under way", "when": "any", "check": "matches >= 10100" },
+    { "name": "its match played", "when": "any", "check": "mode == -2" }
+  ],
+  "shot_when": "$true",
+  "stories": ["003_scene_interview.json"]
+}

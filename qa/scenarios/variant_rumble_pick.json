@@ -1,0 +1,41 @@
+{
+  "about": "2026-10-31: costume variants (src/variants.c) in the arcade's Royal Rumble: the player picks the 1999 Undertaker at the Rumble's select (the Undertaker's box, C-right past Type 4); ONE UNDERTAKER IN THE RUMBLE on: the field (drawn from every page's boxes and their variants) never has the stock Undertaker. state.csv (qa_variant 4): bs_step = where 0x00A / 0x003 are in the Rumble's list (+1; 0 none) | its size << 16",
+  "match": "rumble",
+  "wrestlers": [
+    "0x000A"
+  ],
+  "control": [
+    "cpu"
+  ],
+  "options": {
+    "rumble_entrants": 30,
+    "rumble_interval": 5,
+    "rumble_one_each": 1,
+    "qa_variant": 4
+  },
+  "matches": 1,
+  "seconds": 240,
+  "shots": 10,
+  "expect": [
+    {
+      "name": "the Rumble started",
+      "when": "any",
+      "check": "stage == 2 and mode == -2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "the player is the 1999 Undertaker (picked through the Undertaker's box)",
+      "when": "match",
+      "check": "s0_id == 0x000A"
+    },
+    {
+      "name": "the list: him first, 30 drawn, no stock Undertaker",
+      "when": "match",
+      "check": "(bs_step & 255) == 1 and ((bs_step >> 8) & 255) == 0 and (bs_step >> 16) == 30"
+    },
+    {
+      "name": "the stock Undertaker never in a slot",
+      "when": "always",
+      "check": "0x0003 not in (s0_id, s1_id, s2_id, s3_id, s4_id, s5_id)"
+    }
+  ]
+}

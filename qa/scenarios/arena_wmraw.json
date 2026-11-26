@@ -1,0 +1,46 @@
+{
+  "about": "WM2000's RAW IS WAR as the arcade's arena 13 (data/wmarena/WMARENA.md): a CPU singles match with the game's own cameras -- the ring (WM2000's mat, RAW IS WAR aprons, red ropes, black posts), barricades open on the stage side, WM2000's crowd (walls, tiers, the sign holders, the hands), the 3D entrance set as the stage with WM2000's ramp; No Mercy's announce table with JR and King and its steel steps (the user: 'Add JR and King here'), WM2000's -z barricade side out at -690 behind the table. Compare data/wmarena/port_*.png and rig/cap/fly1.png / cam26.png",
+  "wrestlers": [
+    "STEVE AUSTIN",
+    "THE ROCK"
+  ],
+  "control": [
+    "cpu",
+    "cpu"
+  ],
+  "arena": "RAW IS WAR WM 2000",
+  "matches": 1,
+  "seconds": 60,
+  "shots": 0.5,
+  "options": {
+    "announcers": true,
+    "commentary": true
+  },
+  "expect": [
+    {
+      "name": "the match started",
+      "when": "any",
+      "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "the arena is ours (arena_current 13)",
+      "when": "any",
+      "check": "venue == 13 and stage == 2"
+    },
+    {
+      "name": "JR and King were built (at the table: xring_table 1, no rules bit / ann_on 0)",
+      "when": "match",
+      "check": "ann_draw != 0xFFFF"
+    },
+    {
+      "name": "nobody's position went bad",
+      "when": "always",
+      "check": "finite(s0_x, s0_y, s0_z, s1_x, s1_y, s1_z)"
+    },
+    {
+      "name": "no model's matrices ever went bad",
+      "when": "always",
+      "check": "bad_mtx == 0"
+    }
+  ]
+}

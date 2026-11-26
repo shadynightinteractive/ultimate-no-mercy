@@ -1,0 +1,17 @@
+{
+  "about": "2026-10-31: the match options of custom stories (qa/stories_test/003_match_types.json): a tag match, a triple threat (hardcore rules), a handicap match (2 on 1, the player third), a four-way, a singles match with two run-ins, a World title match, a match in the parking lot -- each node goes on whatever the result. Look at each match card and that each match starts and ends",
+  "match": "arcade",
+  "wrestlers": ["STEVE AUSTIN", null],
+  "matches": 0,
+  "seconds": 3600,
+  "shots": 5.0,
+  "options": { "free_play": true, "attract_demos": false, "custom_story": 1, "qa_story": 3 },
+  "expect": [
+    { "name": "the tag match (node 1) played", "when": "any", "check": "matches >= 10100 and mode == -2" },
+    { "name": "the handicap match (node 3) reached", "when": "any", "check": "matches >= 10300" },
+    { "name": "the run-ins match (node 5) reached", "when": "any", "check": "matches >= 10500" },
+    { "name": "the parking lot match (node 7) reached", "when": "any", "check": "matches >= 10700" }
+  ],
+  "shot_when": "$c.screen -eq 23 -or $c.screen -eq 22 -or $c.screen -eq 25",
+  "stories": ["003_match_types.json"]
+}

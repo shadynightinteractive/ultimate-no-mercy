@@ -1,0 +1,13 @@
+{
+ "about": "WrestleMania 2000's GODFATHER: what the handler is told for him (wm2kall, 2026-11-13). Everything else comes from the ROM.",
+ "string_id": "godfather_wm2000",
+ "key": "godfather_wm2000",
+ "wm2000": {
+  "roster_index": 25,
+  "game_id": "0x0402"
+ },
+ "moveset": {
+  "reference_ordinal": 22,
+  "reference_why": "No Mercy's own"
+ }
+}

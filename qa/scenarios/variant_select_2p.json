@@ -1,0 +1,39 @@
+{
+  "about": "2026-10-31: costume variants (src/variants.c) on player 2's cursor. One player's Versus with a challenger (qa_versus, qa_versus_p2) and qa_variant 2: single player's picks Austin and, for the CPU, the 1999 Undertaker's Type 3 (C-right from the Undertaker's box, controller 1); player 2's Start 10 s in; the challenge's select: player 1 Austin on his controller, player 2 the 1999 Undertaker's Type 3 on HIS controller (C-right x6 from the Undertaker's Type 1). state.csv bs_tries = the select's Superstar under the cursor | costume << 16 | 1 << 24; bs_grabs / bs_step = picks 1 and 2",
+  "match": "arcade",
+  "wrestlers": [
+    "STEVE AUSTIN",
+    "0x000A"
+  ],
+  "costumes": [
+    0,
+    2
+  ],
+  "matches": 0,
+  "seconds": 700,
+  "shots": 1.0,
+  "options": {
+    "free_play": true,
+    "attract_demos": false,
+    "qa_versus": 20,
+    "qa_versus_p2": 1,
+    "qa_variant": 2
+  },
+  "expect": [
+    {
+      "name": "single player's match: Austin (player 1) vs the 1999 Undertaker Type 3 (CPU)",
+      "when": "any",
+      "check": "mode == -2 and match_frames != 0xFFFF and match_frames > 120 and s0_id == 0x0002 and s0_pad == 1 and s1_id == 0x000A and s1_costume == 2 and s1_pad == 0"
+    },
+    {
+      "name": "player 2's cursor on the 1999 Undertaker (cycled to him)",
+      "when": "any",
+      "check": "bs_tries == 0x0102000A and bs_grabs == 0x00000002"
+    },
+    {
+      "name": "the challenge's match: Austin (player 1) vs the 1999 Undertaker Type 3 (player 2)",
+      "when": "any",
+      "check": "mode == -2 and match_frames != 0xFFFF and match_frames > 120 and s0_id == 0x0002 and s0_pad == 1 and s1_id == 0x000A and s1_costume == 2 and s1_pad == 2"
+    }
+  ]
+}

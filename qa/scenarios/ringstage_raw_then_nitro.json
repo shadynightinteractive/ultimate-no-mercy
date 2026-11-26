@@ -1,0 +1,41 @@
+{
+  "about": "RAW first, then MONDAY NITRO in the same game: nothing of RAW's stays: Nitro's whip at the aisle's end changes area, no lift, after a RAW match; and the walls scenario walls_raw_then_nitro's checks by eye.",
+  "wrestlers": [
+    "THE ROCK",
+    "STEVE AUSTIN"
+  ],
+  "costumes": [
+    0,
+    0
+  ],
+  "arena": "RAW IS WAR",
+  "control": [
+    "cpu",
+    "cpu"
+  ],
+  "matches": 2,
+  "seconds": 400,
+  "shots": 6.0,
+  "options": {
+    "qa_ringstage": 1,
+    "qa_arena2": 11
+  },
+  "pads": [],
+  "expect": [
+    {
+      "name": "the match started",
+      "when": "any",
+      "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "nobody's position went bad",
+      "when": "always",
+      "check": "finite(s0_x, s0_y, s0_z, s1_x, s1_y, s1_z)"
+    },
+    {
+      "name": "no lift in Nitro (bs_grabs 0 once venue is the arcade's)",
+      "when": "end",
+      "check": "bs_grabs == 0"
+    }
+  ]
+}

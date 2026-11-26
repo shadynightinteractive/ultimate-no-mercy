@@ -1,0 +1,46 @@
+{
+  "about": "the Titantron hard camera with a full ring: a Royal Rumble (its arena has no screen: the hard camera made anyway, qa_tron 1), six in the ring soon -- its list and matrices (dbg_tron 8, 9: the most; 10: ran out)",
+  "match": "rumble",
+  "wrestlers": [
+    "BRET HART"
+  ],
+  "control": [
+    "cpu"
+  ],
+  "options": {
+    "rumble_entrants": 12,
+    "rumble_interval": 3,
+    "announcers": true,
+    "commentary": true,
+    "qa_rr_out": 0,
+    "qa_tron": 1
+  },
+  "matches": 1,
+  "seconds": 110,
+  "shots": 8,
+  "expect": [
+    {
+      "name": "the Rumble started",
+      "when": "any",
+      "check": "stage == 2 and mode == -2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "no eliminated Superstar back in the Rumble (eliminated, yet the slot's in-the-Rumble flag on and not out)",
+      "when": "always",
+      "check": "not ((s1_elim >= 0 and (s1_e1 & 0x10) and not (s1_flags & 1) and s1_id not in (0, 0xFFFF, 1)) or (s2_elim >= 0 and (s2_e1 & 0x10) and not (s2_flags & 1) and s2_id not in (0, 0xFFFF, 1)) or (s3_elim >= 0 and (s3_e1 & 0x10) and not (s3_flags & 1) and s3_id not in (0, 0xFFFF, 1)) or (s4_elim >= 0 and (s4_e1 & 0x10) and not (s4_flags & 1) and s4_id not in (0, 0xFFFF, 1)) or (s5_elim >= 0 and (s5_e1 & 0x10) and not (s5_flags & 1) and s5_id not in (0, 0xFFFF, 1)))"
+    }
+  ],
+  "arena": "RAW IS WAR",
+  "camera": {
+    "eye": [
+      0,
+      260,
+      -650
+    ],
+    "at": [
+      0,
+      170,
+      900
+    ]
+  }
+}

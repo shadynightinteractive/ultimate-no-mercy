@@ -1,0 +1,13 @@
+{
+ "about": "WrestleMania 2000's FAROOQ: what the handler is told for him (wm2kall, 2026-11-13). Everything else comes from the ROM.",
+ "string_id": "farooq",
+ "key": "farooq",
+ "wm2000": {
+  "roster_index": 10,
+  "game_id": "0x0105"
+ },
+ "moveset": {
+  "reference_ordinal": 33,
+  "reference_why": "No Mercy's own"
+ }
+}

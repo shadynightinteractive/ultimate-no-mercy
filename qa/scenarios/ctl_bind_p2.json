@@ -1,0 +1,23 @@
+{
+  "about": "per-player controller buttons (2026-11-19, roster_ctl round 2): F2 > CONTROLS > P2 CONTROLLER BUTTONS opened in the QA Royal Rumble (qa_op 25), a capture of C-UP asked for (qa_bind_row 7). Scripted pad 1 presses LB (must NOT bind: a player's page takes his own pad only) and R3 (SPECIAL's factory button: '[pads] player 1: SPECIAL held'); pad 2 presses L3, which binds P2's C-UP ('[pads] player 2: C_UP = L3', then 'player 2 in use: ... C_UP=L3 (own), Z=- (own): a key does one thing'); player 1 keeps the default. Read the log after the run.",
+  "match": "rumble",
+  "wrestlers": ["STEVE AUSTIN"],
+  "control": ["cpu"],
+  "matches": 0,
+  "seconds": 110,
+  "shots": 4,
+  "options": { "rumble_entrants": 4, "rumble_interval": 30, "qa_op": 25, "qa_op_at": 8, "qa_bind_row": 7, "qa_modes": 1 },
+  "pads": [
+    "10.0 1 leftshoulder 300",
+    "11.0 1 rightstick 300",
+    "12.5 2 leftstick 300",
+    "10.0 repeat 4"
+  ],
+  "expect": [
+    { "name": "the Rumble started", "when": "any", "check": "stage == 2 and mode == -2 and match_frames != 0xFFFF and match_frames > 30" },
+    { "name": "the P2 CONTROLLER BUTTONS page open (PG_P2KEYS 13)", "when": "any", "check": "((bs_tries >> 24) & 1) == 1 and ((bs_grabs >> 8) & 0xFF) == 13" },
+    { "name": "the capture ended with a binding set and saved", "when": "any", "check": "((bs_grabs >> 24) & 0x7F) == 1" },
+    { "name": "never cancelled", "when": "always", "check": "((bs_grabs >> 24) & 0x7F) != 2" }
+  ],
+  "shot_when": "(($c.bs_grabs -shr 8) -band 0xFF) -eq 13"
+}

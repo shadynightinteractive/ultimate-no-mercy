@@ -1,0 +1,17 @@
+{
+  "about": "Bret Hart's back suplex (his moveset entry 73: Falling Back Drop, his own WCW/nWo Revenge animation) over and over -- every move the CPU picks for him in entries 0-69 done as it -- in a singles match against Jerry Lawler; the scene must stay sound",
+  "wrestlers": ["BRET HART", "0x0904"],
+  "costumes": [0, 1],
+  "arena": "RAW IS WAR",
+  "control": ["cpu", "cpu"],
+  "force": { "slot": 0, "entries": [0, 69], "as": 73 },
+  "matches": 1,
+  "seconds": 300,
+  "shots": 3,
+  "expect": [
+    { "name": "the match started", "when": "any", "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30" },
+    { "name": "Bret's moves were forced (the back suplex done)", "when": "end", "check": "forced >= 5" },
+    { "name": "no model's matrices ever went bad", "when": "always", "check": "bad_mtx == 0" },
+    { "name": "no wrestler's position ever went bad", "when": "always", "check": "finite(s0_x, s0_y, s0_z, s1_x, s1_y, s1_z)" }
+  ]
+}

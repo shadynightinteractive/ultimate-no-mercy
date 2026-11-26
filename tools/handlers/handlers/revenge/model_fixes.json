@@ -1,0 +1,17 @@
+{
+ "about": "Per-wrestler model fixes for the Revenge import, as data (handlers/aki/facefit.py applies them after the hands step). Each entry: the fix and why.",
+ "wrestlers": {
+  "elizabeth": {
+   "face_lengthen": {
+    "part": 5,
+    "factor": 1.05,
+    "pivot_y": 73,
+    "keep_parts": [
+     4,
+     20
+    ]
+   },
+   "why": "2026-11-16, the user: her face a bit short ('let's make it slightly longer ... while staying faithful'). Revenge's face mesh is 20 x 14 (1.43); No Mercy's Stephanie's 21 x 14 (1.50). The lower face (under the eye line, y 73) brought down 1 unit at the chin; the eyes, forehead, hair and the neck join stay. Kimberly's is 23 x 14 (1.64): left as Revenge has it."
+  }
+ }
+}

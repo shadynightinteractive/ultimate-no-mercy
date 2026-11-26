@@ -1,0 +1,55 @@
+{
+  "about": "2026-11-07, the two modes phase 2 (W5, W8): Regular -- Start on the title, Single Play > Championship; the championship list with the Custom Story row in the Belt box's place (W5: its own lent label 0x852F, its links without a Survival row: UP from World Heavyweight lands on it); A -> the stories' list; A on the first story -> the game's Superstar Select (Steve Austin) -> the story's pages (A every 5 s) -> its first match; 20 s in, F2's QUIT MATCH (W8) -> Single Play's page, the story left (phase 3: not the game's way back through the results and the chapter card, where it was a loss and a retry); 3 s later F2's RESET TO TITLE (W8) -> the title. qa_reg 121 = 1 + 8 + 16 + 32 + 64. state.csv (qa_modes): bs_grabs & 255 = the driver's step (14 Single Play, 15 the list, 16 on the row, 17 the stories' list, 18 the select, 19 the story's pages, 11 the match, 12 after it, 13 done, 20 the reset on its way).",
+  "match": "arcade",
+  "wrestlers": [
+    "STEVE AUSTIN",
+    null
+  ],
+  "matches": 0,
+  "seconds": 900,
+  "shots": 6.0,
+  "options": {
+    "game_mode": "Regular",
+    "qa_modes": 1,
+    "qa_reg": 121,
+    "custom_story": 1
+  },
+  "expect": [
+    {
+      "name": "Regular all along",
+      "when": "always",
+      "check": "(bs_tries & 1) == 0"
+    },
+    {
+      "name": "the championship list reached (screen 22)",
+      "when": "any",
+      "check": "mode == 0 and screen == 22"
+    },
+    {
+      "name": "the stories' list opened and a story picked (on to the select)",
+      "when": "any",
+      "check": "(bs_grabs & 255) == 18"
+    },
+    {
+      "name": "the story's match",
+      "when": "any",
+      "check": "mode == -2 and match_frames != 0xFFFF and match_frames > 120 and s0_id == 0x0002"
+    },
+    {
+      "name": "F2 QUIT MATCH in the story's match: Single Play's page (3), the story left -- not a loss, no retry (phase 3)",
+      "when": "any",
+      "check": "(bs_grabs & 255) in (12, 13) and mode == 0 and screen == 3"
+    },
+    {
+      "name": "F2 RESET TO TITLE asked",
+      "when": "any",
+      "check": "(bs_grabs & 255) == 20"
+    },
+    {
+      "name": "on the title at the end",
+      "when": "end",
+      "check": "screen == 0 and mode == 0"
+    }
+  ],
+  "shot_when": "$c.mode -eq 0 -and $c.screen -in 22,26,27,23,0"
+}

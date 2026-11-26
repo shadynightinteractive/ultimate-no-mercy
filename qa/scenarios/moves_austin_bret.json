@@ -1,0 +1,22 @@
+{
+  "about": "Austin vs Bret Hart, CPU vs CPU: the moves they go into logged (QA_STATE + 0x400) -- the struggling body slam looked for (the user, 2026-10-28: Bret and Austin struggle to lift a man who isn't a super heavyweight)",
+  "wrestlers": [
+    "STEVE AUSTIN",
+    "BRET HART"
+  ],
+  "control": [
+    "cpu",
+    "cpu"
+  ],
+  "arena": "SMACKDOWN",
+  "matches": 1,
+  "seconds": 150,
+  "shots": 1.0,
+  "expect": [
+    {
+      "name": "the match started",
+      "when": "any",
+      "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "about": "ctrlsave 2026-11-25: as ctl_mode_save_n64 the other way -- the settings file holding CONTROL MODE N64, player 1's controller sets 6-BUTTON (RIGHT), F2 saves; ctl_mode_restart_6btn starts that game folder again.",
+  "match": "arcade",
+  "matches": 0,
+  "seconds": 50,
+  "shots": 5.0,
+  "options": {
+    "game_mode": "Regular",
+    "controls": "Regular",
+    "qa_ctlmode": true
+  },
+  "pads": [
+    "25.0 key F2 200",
+    "27.0 1 dpdown 120",
+    "27.6 1 dpdown 120",
+    "28.2 1 dpdown 120",
+    "28.8 1 dpdown 120",
+    "29.4 1 dpdown 120",
+    "30.0 1 dpdown 120",
+    "31.0 1 a 120",
+    "33.0 1 dpright 120",
+    "35.0 key F2 200"
+  ],
+  "expect": [
+    {
+      "name": "the settings were read: CONTROL MODE N64, as the settings file holds it",
+      "when": "any",
+      "check": "(bs_tries & 4) == 4 and (bs_grabs & 0xFF) == 1 and (bs_tries & 1) == 0"
+    },
+    {
+      "name": "F2 opened, on the CONTROLS page (player 1 went down the main page and pressed A)",
+      "when": "any",
+      "check": "(bs_tries & 2) == 2 and ((bs_tries >> 8) & 0xFF) == 5"
+    },
+    {
+      "name": "CONTROL MODE set to 6-BUTTON on that page, F2 not closed yet",
+      "when": "any",
+      "check": "(bs_tries & 3) == 3 and ((bs_tries >> 8) & 0xFF) == 5"
+    },
+    {
+      "name": "SAVE AND EXIT: F2 closed, CONTROL MODE 6-BUTTON, and the settings hold 6-BUTTON after the save",
+      "when": "any",
+      "check": "(bs_tries & 7) == 5 and (bs_grabs >> 16) >= 1 and ((bs_grabs >> 8) & 0xFF) == 2"
+    },
+    {
+      "name": "6-BUTTON at the end, F2 closed",
+      "when": "end",
+      "check": "(bs_tries & 7) == 5 and ((bs_grabs >> 8) & 0xFF) == 2"
+    }
+  ]
+}

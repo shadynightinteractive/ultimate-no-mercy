@@ -1,0 +1,38 @@
+{
+  "about": "visualfix 2026-11-15, the user's playtest item 7: 'in a Nitro Royal Rumble entrants first appear behind the Nitro stage logo, then phase through it'. The entrants started at z 2600 (ovl_e 0x801465D0[7]: venue 7, the base an arcade arena plays as), behind Nitro's logo board (z 2214, x +-84, y 34..202) and past the 3D stage's floor (it ends at z 2128); now at the arcade arena's own arrival spot (Nitro's z 2050, inside the gate: arena_ringstage.c ringstage_rumble_start). A QA Rumble at MONDAY NITRO, an entrant every 10 s, the game's own cameras; shots while anyone is walking in (state 163). Expect: no entrant walking in is ever further back than z 2100. LOOK: each entrant shows in front of the logo board and walks out through the gate, never cut by the board.",
+  "match": "rumble",
+  "wrestlers": [
+    "HOLLYWOOD HOGAN"
+  ],
+  "control": [
+    "cpu"
+  ],
+  "arena": "MONDAY NITRO",
+  "options": {
+    "rumble_entrants": 6,
+    "rumble_interval": 10,
+    "titantron_screens": true,
+    "titantron_live": true
+  },
+  "matches": 1,
+  "seconds": 150,
+  "shots": 0.5,
+  "shot_when": "$c.s0_phase -eq 163 -or $c.s1_phase -eq 163 -or $c.s2_phase -eq 163 -or $c.s3_phase -eq 163 -or $c.s4_phase -eq 163 -or $c.s5_phase -eq 163",
+  "expect": [
+    {
+      "name": "the arena is MONDAY NITRO",
+      "when": "any",
+      "check": "venue == 10 and stage == 2"
+    },
+    {
+      "name": "entrants came in (state 163 seen)",
+      "when": "any",
+      "check": "s0_phase == 163 or s1_phase == 163 or s2_phase == 163 or s3_phase == 163 or s4_phase == 163 or s5_phase == 163"
+    },
+    {
+      "name": "no entrant walking in is further back than z 2100",
+      "when": "always",
+      "check": "(s0_phase != 163 or s0_z <= 2100) and (s1_phase != 163 or s1_z <= 2100) and (s2_phase != 163 or s2_z <= 2100) and (s3_phase != 163 or s3_z <= 2100) and (s4_phase != 163 or s4_z <= 2100) and (s5_phase != 163 or s5_z <= 2100)"
+    }
+  ]
+}

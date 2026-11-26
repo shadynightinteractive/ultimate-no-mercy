@@ -1,0 +1,14 @@
+{
+  "about": "no2k15 (2026-11-23), step 0 of the retired-champion check: qa_removal 1's set-up on the install's own save -- KANE then THE ROCK made World Heavyweight champions (and the Tag Team title's), the save written (Regular mode: qa_reg 1 takes the title's Start to the game's own main menu, where the set-up runs) -- so the title has a former champion for the vacated title to show. The agent copies the save into no2k15_sidecar_make.",
+  "match": "arcade",
+  "matches": 0,
+  "seconds": 150,
+  "shots": 10.0,
+  "options": {
+    "game_mode": "Regular",
+    "settings_version": 5,
+    "qa_reg": 1,
+    "qa_removal": 1
+  },
+  "expect": []
+}

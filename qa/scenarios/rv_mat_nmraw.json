@@ -1,0 +1,45 @@
+{
+  "about": "revvisual 2026-11-20, the user: 'The arena/event logos on the wrestling mat on Revenge Arenas (that have it), the logo is still glitching out, clipping.' A CPU match at RAW IS WAR; from 12 s the scenario's camera low at the ring's side looking across the mat's centre (vf_mat_logo's). (The cause found with a test build's trace: the logo in list A bounced alone with the ring, apart from the mat; fixed in gen/arenas_ring.py.) LOOK: the logo whole and steady on the mat, nothing of the mat through it.",
+  "wrestlers": [
+    "THE ROCK",
+    "STEVE AUSTIN"
+  ],
+  "control": [
+    "cpu",
+    "cpu"
+  ],
+  "arena": "RAW IS WAR",
+  "matches": 1,
+  "seconds": 40,
+  "shots": 2,
+  "camera": {
+    "eye": [
+      0,
+      175,
+      -430
+    ],
+    "at": [
+      0,
+      90,
+      0
+    ],
+    "from": 12
+  },
+  "expect": [
+    {
+      "name": "the match started",
+      "when": "any",
+      "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "the arena is RAW IS WAR (arena_current 0)",
+      "when": "any",
+      "check": "venue == 0 and stage == 2"
+    },
+    {
+      "name": "nobody's position went bad",
+      "when": "always",
+      "check": "finite(s0_x, s0_y, s0_z, s1_x, s1_y, s1_z)"
+    }
+  ]
+}

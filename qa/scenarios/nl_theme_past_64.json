@@ -1,0 +1,17 @@
+{
+  "about": "nolimits 2026-11-12: a theme and Titantron video past the old 64 (WCW_WRESTLERS_DIR=scratch\\agents\\nolimits\\w300: 300 folders, each with theme.bin/theme.meta/video.bin). TEST WRESTLER 100 (0x0269) is folder 100 by name: his theme and video were the 100th, past FOLDER_THEMES / FOLDER_VIDEOS 64, so before the change he entered to his base's song. Pass (also read the log, check_log.ps1): '[media] entrance of 0x0269: native theme, native video'.",
+  "match": "rumble",
+  "wrestlers": ["0x0269"],
+  "control": ["cpu"],
+  "arena": "RAW IS WAR",
+  "options": { "rumble_entrants": 4, "rumble_interval": 60, "titantron_screens": true, "titantron_live": true },
+  "matches": 1,
+  "seconds": 120,
+  "shots": 0.5,
+  "shot_when": "$c.mode -eq 0 -and $c.screen -eq 42 -and $c.entrance_step -ge 1 -and $c.entrance_step -le 29",
+  "expect": [
+    { "name": "the entrances ran", "when": "any", "check": "mode == 0 and screen == 42 and entrance_step >= 1 and entrance_step <= 29" },
+    { "name": "TEST WRESTLER 100 is the player's man", "when": "any", "check": "s0_id == 0x0269" },
+    { "name": "no model's matrices ever went bad", "when": "always", "check": "bad_mtx == 0" }
+  ]
+}

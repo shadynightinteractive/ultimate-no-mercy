@@ -1,0 +1,53 @@
+{
+  "about": "no2k15 (2026-11-23): the player-1 check (the user's rule: no test build without one), after automerge_p1 -- a one-on-one PLAYED: player 1 (slot 0) is The Rock (0x0001) at his controller (qa_gr_p1 4: the guest referee test's player, after his opponent in and out of the ring, striking, grappling, struggling when down), STEVE AUSTIN (0x0002) the computer's -- the two men the removed 2K15 test slots copied -- on RAW IS WAR, MERGE SAME WRESTLERS on (their families now two members each). He plays as himself, hits his opponent, and the match ends with a decision.",
+  "match": "singles",
+  "wrestlers": [
+    "0x0001",
+    "0x0002"
+  ],
+  "costumes": [
+    0,
+    0
+  ],
+  "control": [
+    "pad1",
+    "cpu"
+  ],
+  "arena": "RAW IS WAR",
+  "options": {
+    "auto_merge": 1,
+    "qa_camprobe": 1,
+    "qa_gr_p1": 4
+  },
+  "matches": 1,
+  "seconds": 900,
+  "speed": 6,
+  "shots": 10,
+  "expect": [
+    {
+      "name": "the match started",
+      "when": "any",
+      "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "player 1 is The Rock on controller 1, Steve Austin the computer's",
+      "when": "match",
+      "check": "s0_id == 0x0001 and s0_pad == 1 and s1_id == 0x0002 and s1_pad == 0"
+    },
+    {
+      "name": "player 1 played: his controller pressed for at least 60 steps",
+      "when": "match",
+      "check": "(lj_g & 0xFFFF) >= 60"
+    },
+    {
+      "name": "player 1 hits his opponent (at least 3 times)",
+      "when": "match",
+      "check": "((lj_f & 0xFF) + ((lj_f >> 8) & 0xFF)) >= 3"
+    },
+    {
+      "name": "a decision: the match ended",
+      "when": "end",
+      "check": "matches >= 1"
+    }
+  ]
+}

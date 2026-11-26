@@ -1,0 +1,41 @@
+{
+  "about": "2026-11-06, the 32-slot work, the user's goal (a 32-in-the-ring Rumble proven): a Royal Rumble with room for 16 in the ring (qa_rr_ring 16, 30 entrants, one every 10 s, nobody put out) -- a probe: what breaks past 10 (crashes, buffers, the pictures, speed); 6x",
+  "match": "rumble",
+  "wrestlers": [
+    "BRET HART"
+  ],
+  "control": [
+    "cpu"
+  ],
+  "options": {
+    "rumble_entrants": 30,
+    "rumble_interval": 10,
+    "qa_rr_ring": 16
+  },
+  "matches": 1,
+  "seconds": 900,
+  "speed": 6,
+  "shots": 2,
+  "expect": [
+    {
+      "name": "the Rumble started",
+      "when": "any",
+      "check": "stage == 2 and mode == -2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "the match has room for 16 (its slot count)",
+      "when": "match",
+      "check": "slots >= 16"
+    },
+    {
+      "name": "12 or more in the ring at once",
+      "when": "match",
+      "check": "in_ring >= 12"
+    },
+    {
+      "name": "16 in the ring at once",
+      "when": "match",
+      "check": "in_ring >= 16"
+    }
+  ]
+}

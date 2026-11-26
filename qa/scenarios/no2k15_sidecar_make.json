@@ -1,0 +1,15 @@
+{
+  "about": "no2k15 (2026-11-23), step 1 of the retired-champion check: the game on its title (free play, no attract), and 200 frames after the save is read folder 0 is made the World Heavyweight champion and the save written (qa_seat_save 1) -- so the save and its sidecar (<save>.ours.json: that title's champion by string ID and game number, with the title bytes' check) are the game's own. The agent then copies them and changes the sidecar's champion to stone_cold_2k15 / 0x011A (no2k15_named).",
+  "match": "arcade",
+  "matches": 0,
+  "seconds": 60,
+  "shots": 10.0,
+  "options": {
+    "free_play": true,
+    "attract_demos": false,
+    "qa_seat_save": 1,
+    "qa_seat_folder": 0,
+    "qa_removal": 2
+  },
+  "expect": []
+}

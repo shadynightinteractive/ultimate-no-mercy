@@ -1,0 +1,39 @@
+{
+  "about": "JR and King seen from the front (2026-10-27: their chairs' backs were drawn over half of their chests -- the chairs had the same place in the draw order as them): a camera between the ring and the table, looking at them",
+  "wrestlers": [
+    "STEVE AUSTIN",
+    "THE ROCK"
+  ],
+  "arena": "RAW IS WAR",
+  "control": [
+    "cpu",
+    "cpu"
+  ],
+  "matches": 1,
+  "seconds": 70,
+  "shots": 5,
+  "camera": {
+    "eye": [
+      0,
+      140,
+      -470
+    ],
+    "at": [
+      0,
+      95,
+      -700
+    ]
+  },
+  "expect": [
+    {
+      "name": "the match started",
+      "when": "any",
+      "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "the announcers are in the frame's draw list (their bones' entries)",
+      "when": "match",
+      "check": "ann_listed > 0"
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "about": "2026-10-31: costume variants (src/variants.c) with UNDERTAKER 1999 off (taker99 false): the Undertaker's Type arrows go round his own four only (the tour: C-right x8, C-left, C-right); player 1 picks his Type 3; the 1999 Undertaker never shows. state.csv bs_tries = the select's Superstar under the cursor | costume << 16 | 1 << 24",
+  "match": "arcade",
+  "wrestlers": [
+    "0x0003",
+    "THE ROCK"
+  ],
+  "costumes": [
+    2,
+    0
+  ],
+  "matches": 0,
+  "seconds": 420,
+  "shots": 1.0,
+  "options": {
+    "free_play": true,
+    "attract_demos": false,
+    "qa_versus": 30,
+    "qa_variant": 1,
+    "taker99": false
+  },
+  "expect": [
+    {
+      "name": "the select: the Undertaker, Type 4",
+      "when": "any",
+      "check": "bs_tries == 0x01030003"
+    },
+    {
+      "name": "the Undertaker's Type 1 again after it",
+      "when": "any",
+      "check": "bs_tries == 0x01000003"
+    },
+    {
+      "name": "never the 1999 Undertaker",
+      "when": "always",
+      "check": "(bs_tries & 0xFFFF) != 0x000A and s0_id != 0x000A and s1_id != 0x000A"
+    },
+    {
+      "name": "the match: the Undertaker Type 3 (player 1) vs the Rock",
+      "when": "any",
+      "check": "mode == -2 and match_frames != 0xFFFF and match_frames > 120 and s0_id == 0x0003 and s0_costume == 2 and s1_id == 0x0001"
+    }
+  ]
+}

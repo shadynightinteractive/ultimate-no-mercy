@@ -1,0 +1,31 @@
+{
+  "about": "2026-10-31, the user plays: Mr. Perfect (his new theme) in a 4-man Rumble, entrants 3 and 4 ported (qa_rr_ports): their themes as they come in, then Mr. Perfect's when he wins",
+  "match": "rumble",
+  "wrestlers": [
+    "MR. PERFECT"
+  ],
+  "control": [
+    "pad1"
+  ],
+  "options": {
+    "rumble_entrants": 4,
+    "rumble_interval": 10,
+    "qa_rr_ports": 1,
+    "qa_special": 5
+  },
+  "matches": 1,
+  "seconds": 1500,
+  "shots": 1.0,
+  "expect": [
+    {
+      "name": "the Rumble started",
+      "when": "any",
+      "check": "stage == 2 and mode == -2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "the Rumble over, back on the championship list",
+      "when": "end",
+      "check": "matches >= 1"
+    }
+  ]
+}

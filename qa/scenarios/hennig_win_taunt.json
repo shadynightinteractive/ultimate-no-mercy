@@ -1,0 +1,49 @@
+{
+  "about": "2026-11-01, the user: Mr. Perfect's winning taunt -- 'he jumps up onto an invisible turnbuckle wherever he stands in the ring' (moveset slot 235, the taunt the game plays where the winner stands: func_800E67F0 phase 4 -> entry 235; his port took Revenge's win pose, his turnbuckle taunt 11240 Taunt 008, a slot-232 move). Perfect (CPU, SPECIAL at the bell) beats an idle player 2; the A presses after the match held off 15 s (qa_over_wait) so the taunt plays out: the shots looked at (him on the mat, not climbing air); state.csv s0_move during s0_phase 27 after match_state 4",
+  "wrestlers": [
+    "MR. PERFECT",
+    "THE ROCK"
+  ],
+  "control": [
+    "cpu",
+    "pad2"
+  ],
+  "special": [
+    true,
+    false
+  ],
+  "arena": "SMACKDOWN",
+  "matches": 1,
+  "seconds": 480,
+  "shots": 0.5,
+  "options": {
+    "qa_over_wait": 15
+  },
+  "expect": [
+    {
+      "name": "the match started",
+      "when": "any",
+      "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "the match ended",
+      "when": "any",
+      "check": "match_state == 4"
+    },
+    {
+      "name": "his winning taunt (state 27 after the match) is a mid-ring one (not 11240, the turnbuckle's)",
+      "when": "any",
+      "check": "match_state == 4 and s0_phase == 27 and s0_move != 11240 and s0_move != 0"
+    },
+    {
+      "name": "never the turnbuckle taunt after the match",
+      "when": "always",
+      "check": "not (match_state == 4 and s0_phase == 27 and s0_move == 11240)"
+    },
+    {
+      "name": "nobody's position went bad",
+      "when": "always",
+      "check": "finite(s0_x, s0_y, s0_z, s1_x, s1_y, s1_z)"
+    }
+  ]
+}

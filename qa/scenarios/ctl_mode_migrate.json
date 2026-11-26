@@ -1,0 +1,25 @@
+{
+  "about": "ctrlsave 2026-11-25: an update from an older version -- settings version 5 holding CONTROL MODE 6-BUTTON, which every save before the fix stored whatever was picked: the start-up's migration (settings version 6) puts it back to N64 once, and it comes up N64.",
+  "match": "arcade",
+  "matches": 0,
+  "seconds": 35,
+  "shots": 5.0,
+  "options": {
+    "game_mode": "Regular",
+    "settings_version": 5,
+    "controls": "Arcade",
+    "qa_ctlmode": true
+  },
+  "expect": [
+    {
+      "name": "the migration ran and the settings were read: CONTROL MODE N64",
+      "when": "any",
+      "check": "(bs_tries & 12) == 12 and (bs_grabs & 0xFF) == 1"
+    },
+    {
+      "name": "CONTROL MODE N64 all along once read",
+      "when": "always",
+      "check": "(bs_tries & 4) == 0 or (bs_tries & 1) == 0"
+    }
+  ]
+}

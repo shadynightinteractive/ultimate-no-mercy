@@ -1,0 +1,12 @@
+{
+  "about": "2026-11-07, the two modes: an existing install with the arcade on (settings_version 4, enabled on; game_mode not set -- mod.toml's default, Regular) starts Arcade -- the migration sets game_mode Arcade and settings_version 5. state.csv (qa_modes) bs_tries as modes_migrate_new. Shots: the attract with INSERT COIN.",
+  "match": "arcade",
+  "matches": 0,
+  "seconds": 120,
+  "shots": 2.0,
+  "options": { "game_mode": "Regular", "settings_version": 4, "enabled": true, "qa_modes": 1 },
+  "expect": [
+    { "name": "Arcade, the option set Arcade by the migration (2), found version 4, now 5", "when": "any", "check": "(bs_tries & 1) == 1 and ((bs_tries >> 2) & 1) == 1 and ((bs_tries >> 4) & 15) == 2 and ((bs_tries >> 8) & 255) == 4 and ((bs_tries >> 16) & 255) == 5" },
+    { "name": "Arcade all along", "when": "always", "check": "(bs_tries & 1) == 1" }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "about": "2026-11-04: does QA's Royal Rumble start? (a probe)",
+  "match": "rumble",
+  "wrestlers": [
+    "BRET HART"
+  ],
+  "control": [
+    "cpu"
+  ],
+  "options": {
+    "rumble_entrants": 20,
+    "rumble_interval": 8,
+    "announcers": true,
+    "commentary": false,
+    "qa_rr_ports": 1
+  },
+  "matches": 1,
+  "seconds": 280,
+  "shots": 30,
+  "expect": [
+    {
+      "name": "the Rumble started",
+      "when": "any",
+      "check": "stage == 2 and mode == -2 and match_frames != 0xFFFF and match_frames > 30"
+    }
+  ]
+}

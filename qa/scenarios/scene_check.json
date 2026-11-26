@@ -1,0 +1,45 @@
+{
+  "about": "2026-11-04: func_800028B4 rewritten native, proved: its output compared with the original every frame (game_stderr [scene]): a whole match with Steve Austin and The Rock (no2k15, 2026-11-23: the two WWE 2K15 test slots, 0x011A / 0x011B, are removed from the game -- stock Steve Austin 0x0002 and The Rock 0x0001 in their places here)",
+  "wrestlers": [
+    "0x0001",
+    "0x0002"
+  ],
+  "control": [
+    "cpu",
+    "cpu"
+  ],
+  "arena": "RAW IS WAR",
+  "matches": 1,
+  "seconds": 200,
+  "shots": 30,
+  "expect": [
+    {
+      "name": "the match started",
+      "when": "any",
+      "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "no model's matrices ever went bad",
+      "when": "always",
+      "check": "bad_mtx == 0"
+    },
+    {
+      "name": "nobody's position went bad",
+      "when": "always",
+      "check": "finite(s0_x, s0_y, s0_z, s1_x, s1_y, s1_z)"
+    },
+    {
+      "name": "The Rock in slot 0",
+      "when": "match",
+      "check": "s0_id == 0x0001"
+    },
+    {
+      "name": "Steve Austin in slot 1",
+      "when": "match",
+      "check": "s1_id == 0x0002"
+    }
+  ],
+  "options": {
+    "qa_hd_clock": 1
+  }
+}

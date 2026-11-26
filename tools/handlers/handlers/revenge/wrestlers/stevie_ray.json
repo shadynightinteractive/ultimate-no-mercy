@@ -1,0 +1,60 @@
+{
+ "about": "WCW/nWo Revenge port: what was chosen by hand for him (moved out of mod\\gen's tables by handlers\\extract_fixes.py, 2026-11-12). Edit here; the handler reads nothing else that is his alone.",
+ "string_id": "stevie_ray",
+ "key": "stevieray",
+ "legacy_game_id": "0x0111",
+ "name": "STEVIE RAY",
+ "short_name": "S. RAY",
+ "height": 17,
+ "weight": 192,
+ "music_slot": 77,
+ "video": 0,
+ "revenge": {
+  "moveset_file": "0x1F4",
+  "code": "0x108"
+ },
+ "moveset": {
+  "reference_ordinal": 33,
+  "allies": [
+   "0x0110"
+  ],
+  "weight_class": [
+   1,
+   1,
+   0
+  ],
+  "stance": null,
+  "slot_overrides": {},
+  "no_struggling_slam": true
+ },
+ "costumes": [
+  {
+   "capture": "hz_c0",
+   "slot": 1
+  },
+  {
+   "capture": "at_hz1",
+   "slot": 1
+  },
+  {
+   "capture": "at_hz2",
+   "slot": 1
+  },
+  {
+   "capture": "at_hz3",
+   "slot": 1
+  }
+ ],
+ "skin": "no_mercy",
+ "photo_number": 126,
+ "photo": {
+  "photo": 126,
+  "shot": "data/revport/ports4/cap/cc_stevie.png",
+  "box": [
+   193,
+   22,
+   243,
+   72
+  ]
+ }
+}

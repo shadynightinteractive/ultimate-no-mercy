@@ -1,0 +1,1702 @@
+[manifest]
+id = "nomercy_arcade"
+version = "0.86.0"
+display_name = "Ultimate No Mercy"
+short_description = "Coin-op mode: credits, attract demos, continues; 1 player = Story Mode, 2 players = Versus."
+description = """
+Runs WWF No Mercy like a coin-op.
+
+Insert coins with 5 (player 1) or 6 (player 2), then press Start (controller) or 1 / 2 (keyboard). \
+No main menu: one player goes straight to Story Mode's superstar select (men go for the World \
+Heavyweight title, women for the Women's title); two players go straight into Versus (Exhibition, \
+with all its match options). Only players who paid have working controllers; player 2 \
+can join any time with a coin and Start. Lose a match and you get CONTINUE? 10..0: a coin and Start carry on \
+right where you left off. If nobody continues, it's GAME OVER and back to the title.
+
+The stage walk gets a low camera looking up at the wrestler. Knocked-down wrestlers get up \
+without the slow hurt get-ups, and matches run 15% faster than the original (Arcade speed, below). \
+Big Show is back on the roster, in Chris Benoit's box, with Funaki, Gangrel, Mosh, Thrasher, Droz, Mideon, the Mean Street Posse, the 1999 Undertaker, Raven, William Regal, Tiger Ali Singh, Jeff Jarrett and The Blue Meanie (WrestleMania 2000's), and Bret Hart, Jim Neidhart, Hollywood Hogan, Kevin Nash, Scott Hall, Randy Savage and Mr. Perfect (WCW/nWo Revenge's: on a REVENGE page of their own), and The Giant (WCW/nWo Revenge's: in Big Show's box, the Type arrows go on past Big Show's costumes to his), and Sting, Lex Luger, Goldberg, Rick Steiner, Scott Steiner, Booker T, Stevie Ray, Rey Mysterio, Roddy Piper and Eric Bischoff (WCW/nWo Revenge's, ports4: on the REVENGE pages).
+
+F2 opens the operator menu, where all of these are set (and kept)."""
+authors = [ "Shady Night Media" ]
+game_id = "wwfnomercy"
+minimum_recomp_version = "0.1.0"
+dependencies = []
+optional_dependencies = []
+native_libraries = []
+
+[[manifest.config_options]]
+id = "game_mode"
+name = "Game mode"
+description = "Regular: No Mercy's own title, menus and attract, with all of the mod's enhancements. Arcade: the coin-op (credits, continues, attract with INSERT COIN, 1 player = Story Mode, 2 players = Versus). Takes effect at the next start-up (F2 > GAME SETTINGS > GAME MODE)."
+type = "Enum"
+options = [ "Regular", "Arcade" ]
+default = "Regular"
+
+[[manifest.config_options]]
+id = "enabled"
+name = "Arcade mode (old setting)"
+description = "The old on/off switch for the arcade, kept for installs from before the two modes: read once, when such an install first starts with them (on = Arcade, off = Regular). Game mode is the setting now."
+type = "Bool"
+default = true
+
+[[manifest.config_options]]
+id = "free_play"
+name = "Free play"
+description = "Start without inserting coins."
+type = "Bool"
+default = false
+
+[[manifest.config_options]]
+id = "continue_secs"
+name = "Continue timer"
+description = "Seconds to insert a coin and press Start after losing."
+type = "Enum"
+options = [ "5", "10", "15", "20", "25", "30" ]
+default = "10"
+
+[[manifest.config_options]]
+id = "attract_demos"
+name = "Attract demos"
+description = "Play CPU demo matches with random Superstars between title screens while nobody is playing."
+type = "Bool"
+default = true
+
+[[manifest.config_options]]
+id = "commentary"
+name = "Commentary (JR & King)"
+description = "Jim Ross and Jerry Lawler call the match: WWE '13's Attitude Era commentary (commentary.pak, next to the game)."
+type = "Bool"
+default = true
+
+[[manifest.config_options]]
+id = "commentary_volume"
+name = "Commentary volume"
+description = "How loud JR and King are."
+type = "Number"
+min = 0
+max = 100
+step = 10
+default = 80
+
+[[manifest.config_options]]
+id = "commentary_talk"
+name = "Commentary amount"
+description = "How much they talk: Light, Normal, Heavy, or Nonstop."
+type = "Enum"
+options = [ "Light", "Normal", "Heavy", "Nonstop" ]
+default = "Normal"
+
+[[manifest.config_options]]
+id = "commentary_splice"
+name = "New spliced commentary"
+description = "Now and then JR joins one of his own lead-ins to a Superstar's name, both cut from his real lines (\"What a move by\" ... \"Kurt Angle\"), matched by game and by how worked up he is."
+type = "Bool"
+default = true
+
+[[manifest.config_options]]
+id = "announcers"
+name = "JR & King at the table"
+description = "Jim Ross and Jerry Lawler seated at the announce table in every match (No Mercy's own models of them): they turn to the action, talk with their hands, flinch when the fight comes to them and stand when the table goes."
+type = "Bool"
+default = true
+
+[[manifest.config_options]]
+id = "fast_getup"
+name = "Fast get up (Arcade)"
+description = "Arcade mode: a wrestler knocked down gets up the game's quick way, never the slow hurt way -- unless someone with SPECIAL up is after him."
+type = "Bool"
+default = true
+
+[[manifest.config_options]]
+id = "fast_getup_regular"
+name = "Fast get up (Regular)"
+description = "Regular mode: as Fast get up (Arcade). Off: the game's own get-ups."
+type = "Bool"
+default = false
+
+[[manifest.config_options]]
+id = "regular_speed"
+name = "Game speed (Regular)"
+description = "Regular mode: matches run faster by the speed boost below. Off: the game's own speed. (Arcade mode's is Arcade speed.)"
+type = "Bool"
+default = false
+
+[[manifest.config_options]]
+id = "rumble_continue_arcade"
+name = "Rumble continue (Arcade)"
+description = "Arcade mode: a player eliminated from the Royal Rumble is held, and a credit and Start put him back in at full power. Off: his elimination is a lost match."
+type = "Bool"
+default = true
+
+[[manifest.config_options]]
+id = "rumble_continue_regular"
+name = "Rumble continue (Regular)"
+description = "Regular mode: a player eliminated from a Royal Rumble gets CONTINUE? and a countdown; Start puts him back in at full power. Off: the game's own Rumble."
+type = "Bool"
+default = false
+
+[[manifest.config_options]]
+id = "short_menus_arcade"
+name = "Abbreviated menus (Arcade)"
+description = "Arcade mode: Story Mode's chapter card, rules and match card go by by themselves, as do the story's pages and the Rumble's results table."
+type = "Bool"
+default = true
+
+[[manifest.config_options]]
+id = "short_menus_regular"
+name = "Abbreviated menus (Regular)"
+description = "Regular mode: Story Mode's rules and match card go by by themselves, as do the story's pages."
+type = "Bool"
+default = false
+
+[[manifest.config_options]]
+id = "splash_arcade"
+name = "Splash screens (Arcade)"
+description = "Arcade mode: the logos and the intro movie at power-on. Off: straight to the title."
+type = "Bool"
+default = true
+
+[[manifest.config_options]]
+id = "splash_regular"
+name = "Splash screens (Regular)"
+description = "Regular mode: the legal page, the logos and the intro movie at power-on, as the game has them. Off: straight to the title."
+type = "Bool"
+default = true
+
+[[manifest.config_options]]
+id = "attract_arcade"
+name = "Attract (Arcade)"
+description = "Arcade mode: the title goes on to the intro movie and demo matches when nobody is playing. Off: the title waits."
+type = "Bool"
+default = true
+
+[[manifest.config_options]]
+id = "attract_regular"
+name = "Attract (Regular)"
+description = "Regular mode: the title goes on to the game's own intro movie and demo matches when left alone. Off: the title waits."
+type = "Bool"
+default = true
+
+[[manifest.config_options]]
+id = "rumble_rules_arcade"
+name = "Rumble: over the top only (Arcade)"
+description = "Arcade mode: a Royal Rumble's RULES page opens with no pins, submissions or rope breaks -- out over the top rope is out."
+type = "Bool"
+default = true
+
+[[manifest.config_options]]
+id = "rumble_rules_regular"
+name = "Rumble: over the top only (Regular)"
+description = "Regular mode: as Rumble: over the top only (Arcade). Off: the game's own Rumble rules."
+type = "Bool"
+default = false
+
+[[manifest.config_options]]
+id = "stage_cam_arcade"
+name = "Low entrance camera (Arcade)"
+description = "Arcade mode: a low camera looking up at the wrestler on his stage walk."
+type = "Bool"
+default = true
+
+[[manifest.config_options]]
+id = "stage_cam_regular"
+name = "Low entrance camera (Regular)"
+description = "Regular mode: a low camera looking up at the wrestler on his stage walk (not in the attract's demos). Off: the game's own cameras."
+type = "Bool"
+default = false
+
+[[manifest.config_options]]
+id = "coin_sound"
+name = "Coin sound"
+description = "The sound a coin makes: one of the game's own (1-4), or none."
+type = "Enum"
+options = [ "Off", "1", "2", "3", "4" ]
+default = "1"
+
+[[manifest.config_options]]
+id = "rumble_ai"
+name = "Rumble: CPU goes for eliminations"
+description = "In a Royal Rumble the CPU goes after the most worn-down Superstar and tries to throw out anyone in DANGER (off: the game's own CPU)."
+type = "Bool"
+default = true
+
+[[manifest.config_options]]
+id = "unlock_all"
+name = "Unlock everything"
+description = "Everything the SmackDown Mall sells (attire, moves, props), the hidden Superstars and what the championships unlock, from the start (the game's own unlock flags: the save keeps them)."
+type = "Bool"
+default = true
+
+[[manifest.config_options]]
+id = "arcade_speed"
+name = "Arcade speed (Arcade mode's game speed)"
+description = "Matches run faster than in the original game (by the boost below), for an arcade pace. The music, the menus, the entrances before the bell and the replays keep their own speed. Off: the game's own speed."
+type = "Bool"
+default = true
+
+[[manifest.config_options]]
+id = "speed_boost"
+name = "Arcade speed boost (%)"
+description = "How much faster matches run with Arcade speed on."
+type = "Number"
+min = 5
+max = 30
+step = 5
+precision = 0
+default = 15
+
+[[manifest.config_options]]
+id = "rumble_entrants"
+name = "Royal Rumble Superstars"
+description = "How many Superstars take part in the single-player Royal Rumble (you included)."
+type = "Number"
+min = 2
+max = 40
+step = 1
+precision = 0
+default = 15
+
+[[manifest.config_options]]
+id = "lumberjacks"
+name = "Lumberjack match: lumberjacks"
+description = "How many lumberjacks stand round the ring in a Lumberjack match (Exhibition > MATCH > Lumberjack Match), drawn at random from the Superstar Select or picked there (lumberjack, 2026-11-21; 12 since lumberjack2)."
+type = "Number"
+min = 2
+max = 30
+step = 1
+precision = 0
+default = 12
+
+[[manifest.config_options]]
+id = "lumberjack_pick"
+name = "Lumberjack match: picked"
+description = "How the lumberjacks are chosen: 0 at random from the Superstar Select (wrestlers only: no women, no announcers), 1 the player picks each of them on the Superstar Select after the competitors (anyone he picks) (lumberjack2, 2026-11-21)."
+type = "Number"
+min = 0
+max = 1
+step = 1
+precision = 0
+default = 0
+
+[[manifest.config_options]]
+id = "lumberjack_match"
+name = "Lumberjack match: match"
+description = "Which match the Lumberjack Match row plays: 0 one on one, 1 triple threat, 2 tornado tag (all four legal at once) (lumberjack2, 2026-11-21)."
+type = "Number"
+min = 0
+max = 2
+step = 1
+precision = 0
+default = 0
+
+[[manifest.config_options]]
+id = "rumble_interval"
+name = "Royal Rumble entry time"
+description = "Seconds between Royal Rumble entrants."
+type = "Number"
+min = 10
+max = 120
+step = 5
+precision = 0
+default = 30
+
+[[manifest.config_options]]
+id = "rumble_ring"
+name = "Royal Rumble: in the ring at once"
+description = "How many Superstars a Royal Rumble has in the ring at once (4 to 32; 6 is the game's own)."
+type = "Number"
+min = 4
+max = 32
+step = 1
+precision = 0
+default = 6
+
+[[manifest.config_options]]
+id = "rumble_start4"
+name = "Royal Rumble: starts with four"
+description = "A Royal Rumble from the game's own menus starts with four in the ring. Off: two at the bell (one on one, as the real one), the rest on the clock."
+type = "Bool"
+default = false
+
+[[manifest.config_options]]
+id = "titantron"
+name = "Full Screen Titantrons"
+description = "Each entrance opens with the wrestler's Titantron video, full screen, as in the original game. Off: the video is cut and the wrestler walks straight out on the stage to their music."
+type = "Bool"
+default = false
+
+[[manifest.config_options]]
+id = "titantron_screens"
+name = "Titantron videos"
+description = "The arena's big screen plays the entering wrestler's Titantron video during the entrances."
+type = "Bool"
+default = true
+
+[[manifest.config_options]]
+id = "main_volume"
+name = "Main volume"
+description = "The whole game's volume."
+type = "Number"
+min = 0
+max = 100
+step = 5
+precision = 0
+default = 100
+
+[[manifest.config_options]]
+id = "rumble_strength"
+name = "Rumble strength"
+description = "How hard a controller rumbles."
+type = "Number"
+min = 0
+max = 100
+step = 5
+precision = 0
+default = 25
+
+[[manifest.config_options]]
+id = "stick_deadzone"
+name = "Stick dead zone"
+description = "How far a stick moves before it counts."
+type = "Number"
+min = 0
+max = 30
+step = 1
+precision = 0
+default = 5
+
+[[manifest.config_options]]
+id = "picture_window"
+name = "Display"
+description = "A window, or all of the screen."
+type = "Enum"
+options = [ "Window", "Full screen" ]
+default = "Window"
+
+[[manifest.config_options]]
+id = "picture_shape"
+name = "Picture shape"
+description = "4:3 is the game's own. Wider or narrower shows more of the view."
+type = "Enum"
+options = [ "4:3", "16:9", "16:10", "Ultra wide", "3:4", "9:16" ]
+default = "4:3"
+
+[[manifest.config_options]]
+id = "picture_smooth"
+name = "Smooth motion"
+description = "Pictures between the game's 30 updates a second."
+type = "Bool"
+default = true
+
+[[manifest.config_options]]
+id = "picture_limit"
+name = "Frame rate"
+description = "The screen's rate, or no limit."
+type = "Enum"
+options = [ "The screen's", "No limit" ]
+default = "The screen's"
+
+[[manifest.config_options]]
+id = "picture_crt"
+name = "CRT"
+description = "Our own CRT picture: off, scanlines, or the full tube."
+type = "Enum"
+options = [ "Off", "Scanlines", "Full" ]
+default = "Off"
+
+[[manifest.config_options]]
+id = "picture_hdr"
+name = "HDR"
+description = "HDR10, on a screen that can show it."
+type = "Bool"
+default = false
+
+[[manifest.config_options]]
+id = "titantron_live"
+name = "Titantron live camera"
+description = "During the match the arena's big screen shows a second camera's view of the match (the main camera doesn't go to it: you see it when the screen is in the shot)."
+type = "Bool"
+default = true
+
+[[manifest.config_options]]
+id = "rumble_no_women"
+name = "No women / announcers in the Rumble"
+description = "The single-player Royal Rumble's field leaves out the women (Chyna excepted), Jim Ross and Earl Hebner."
+type = "Bool"
+default = true
+
+[[manifest.config_options]]
+id = "rumble_one_each"
+name = "One Undertaker in the Rumble"
+description = "The single-player Royal Rumble has one version of a Superstar who is on the roster twice (the Undertaker and his 1999 look), not both."
+type = "Bool"
+default = true
+
+[[manifest.config_options]]
+id = "auto_merge"
+name = "Merge same wrestlers"
+description = "F2 > GAME SETTINGS > MERGE SAME WRESTLERS (automerge, 2026-11-23): 1 puts the same wrestler from each game in one box on the Superstar Select, as variants of one family -- the families the roster editor's Consolidate automatically makes, by the full name and the known-identity list (the game's data folder, aliases.json), No Mercy's own first. Each variant keeps his own moves, music, name and Titantron. Made at the start-up, no file written; a family families.json makes stays, the others added at its end. 0 (to start with): the boxes as the data has them. Read at the start-up: a change counts from the next one."
+type = "Number"
+min = 0
+max = 1
+step = 1
+precision = 0
+default = 0
+
+[[manifest.config_options]]
+id = "custom_story"
+name = "Custom story"
+description = "The championship list's Custom Story row: which story built into the mod (the Development folder's mod/stories) it starts, from 1. 0: no row (the list's Belt box as in the game)."
+type = "Number"
+min = 0
+max = 8
+step = 1
+precision = 0
+default = 1
+
+[[manifest.config_options]]
+id = "controls"
+name = "Control mode (Regular = N64, Arcade = 6-BUTTON)"
+description = "N64 (stored as Regular): No Mercy's own controls. 6-BUTTON (stored as Arcade): six buttons (STRIKE, GRAPPLE, RUN, DEFEND, ACTION, SPECIAL) and the joystick; SPECIAL taunts or, in a tie-up with SPECIAL lit, does the finisher; DEFEND + ACTION together picks whom you're after."
+type = "Enum"
+options = [ "Regular", "Arcade" ]
+default = "Regular"
+
+[[manifest.config_options]]
+id = "pad_swap"
+name = "Swap controllers 1 / 2"
+description = "Player 1 uses the second controller plugged in, player 2 the first."
+type = "Bool"
+default = false
+
+[[manifest.config_options]]
+id = "new_superstars"
+name = "New Superstars (old setting)"
+description = "Kept for settings made before the Superstars could be set one by one (the operator menu's WRESTLER OPTIONS)."
+type = "Bool"
+default = true
+
+[[manifest.config_options]]
+id = "settings_version"
+name = "Settings version (leave alone)"
+description = "Which factory-setting changes this machine has had."
+type = "Number"
+min = 0
+max = 100
+step = 1
+precision = 0
+default = 0
+
+[[manifest.config_options]]
+id = "nmplus_media"
+name = "No Mercy Plus themes and videos"
+description = "Every Superstar enters to No Mercy Plus V3's version of their theme, with its Titantron video (72 frames of footage). Off: the original game's themes and videos (Big Show keeps his)."
+type = "Bool"
+default = true
+
+[[manifest.config_options]]
+id = "selftest"
+name = "Self test (leave off)"
+description = "For diagnosis only: inserts a coin and starts a game by itself a few seconds after the title."
+type = "Bool"
+default = false
+
+# QA scenarios: set only by Development\qa.ps1, in its own copy of the game (logic.c "QA scenarios")
+[[manifest.config_options]]
+id = "qa_mode"
+name = "QA: scenario mode (leave at 0)"
+description = "For testing only: 1 = a singles match as below instead of the arcade, 2 = the single-player Royal Rumble."
+type = "Number"
+min = 0
+max = 2
+step = 1
+precision = 0
+default = 0
+
+[[manifest.config_options]]
+id = "qa_w1"
+name = "QA: Superstar 1"
+description = "For testing only: slot 1's Superstar ID (0: anyone)."
+type = "Number"
+min = 0
+max = 4095
+step = 1
+precision = 0
+default = 0
+
+[[manifest.config_options]]
+id = "qa_w2"
+name = "QA: Superstar 2"
+description = "For testing only: slot 2's Superstar ID (0: anyone)."
+type = "Number"
+min = 0
+max = 4095
+step = 1
+precision = 0
+default = 0
+
+[[manifest.config_options]]
+id = "qa_c1"
+name = "QA: costume 1"
+description = "For testing only: slot 1's costume (0-3)."
+type = "Number"
+min = 0
+max = 3
+step = 1
+precision = 0
+default = 0
+
+[[manifest.config_options]]
+id = "qa_c2"
+name = "QA: costume 2"
+description = "For testing only: slot 2's costume (0-3)."
+type = "Number"
+min = 0
+max = 3
+step = 1
+precision = 0
+default = 0
+
+[[manifest.config_options]]
+id = "qa_arena"
+name = "QA: arena"
+description = "For testing only: the arena (1-10 the game's, 11.. the WCW arenas, arena.c; 0: any)."
+type = "Number"
+min = 0
+max = 200
+step = 1
+precision = 0
+default = 0
+
+[[manifest.config_options]]
+id = "qa_arena2"
+name = "QA: arena from the second match"
+description = "For testing only: the arena of the second and later matches (as qa_arena; 0: qa_arena's)."
+type = "Number"
+min = 0
+max = 200
+step = 1
+precision = 0
+default = 0
+
+[[manifest.config_options]]
+id = "qa_ringstage"
+name = "QA: ring and stage"
+description = "For testing only: state.csv's bs_* columns show the area and the lifts (arena_ringstage.c); 2: the men put in the aisle; 256: CPU against CPU put up and down the ramp; 512: the stage's door and the way back."
+type = "Number"
+min = 0
+max = 1023
+step = 1
+precision = 0
+default = 0
+
+[[manifest.config_options]]
+id = "qa_walls"
+name = "QA: walls"
+description = "For testing only: state.csv's bs_* columns show the walls the match's collision uses (arena_ring.c)."
+type = "Number"
+min = 0
+max = 1
+step = 1
+precision = 0
+default = 0
+
+[[manifest.config_options]]
+id = "qa_ctl1"
+name = "QA: slot 1 controller"
+description = "For testing only: 0 the CPU, 1 controller 1, 2 controller 2."
+type = "Number"
+min = 0
+max = 2
+step = 1
+precision = 0
+default = 0
+
+[[manifest.config_options]]
+id = "qa_ctl2"
+name = "QA: slot 2 controller"
+description = "For testing only: 0 the CPU, 1 controller 1, 2 controller 2."
+type = "Number"
+min = 0
+max = 2
+step = 1
+precision = 0
+default = 0
+
+[[manifest.config_options]]
+id = "qa_w3"
+name = "QA: Superstar 3"
+description = "For testing only: slot 3's Superstar ID (0: anyone)."
+type = "Number"
+min = 0
+max = 4095
+step = 1
+precision = 0
+default = 0
+
+[[manifest.config_options]]
+id = "qa_w4"
+name = "QA: Superstar 4"
+description = "For testing only: slot 4's Superstar ID (0: anyone)."
+type = "Number"
+min = 0
+max = 4095
+step = 1
+precision = 0
+default = 0
+
+[[manifest.config_options]]
+id = "qa_c3"
+name = "QA: costume 3"
+description = "For testing only: slot 3's costume."
+type = "Number"
+min = 0
+max = 3
+step = 1
+precision = 0
+default = 0
+
+[[manifest.config_options]]
+id = "qa_c4"
+name = "QA: costume 4"
+description = "For testing only: slot 4's costume."
+type = "Number"
+min = 0
+max = 3
+step = 1
+precision = 0
+default = 0
+
+[[manifest.config_options]]
+id = "qa_ctl3"
+name = "QA: controller 3"
+description = "For testing only: slot 3 (0: the CPU, 1 / 2: a controller)."
+type = "Number"
+min = 0
+max = 2
+step = 1
+precision = 0
+default = 0
+
+[[manifest.config_options]]
+id = "qa_ctl4"
+name = "QA: controller 4"
+description = "For testing only: slot 4 (0: the CPU, 1 / 2: a controller)."
+type = "Number"
+min = 0
+max = 2
+step = 1
+precision = 0
+default = 0
+
+[[manifest.config_options]]
+id = "qa_demo_set"
+name = "QA: match format"
+description = "For testing only: the attract demo set a match is made from (1 singles, 6 tag, 7 triple threat, 8 handicap)."
+type = "Number"
+min = 0
+max = 8
+step = 1
+precision = 0
+default = 1
+
+[[manifest.config_options]]
+id = "qa_rules"
+name = "QA: rules"
+description = "For testing only: the game's rule preset for a QA match (0: the demo's own)."
+type = "Number"
+min = 0
+max = 63
+step = 1
+precision = 0
+default = 0
+
+[[manifest.config_options]]
+id = "qa_setup_flags"
+name = "QA: set-up flags"
+description = "For testing only: a QA match's set-up flags outright (0: its demo set's)."
+type = "Number"
+min = 0
+max = 1048575
+step = 1
+precision = 0
+default = 0
+
+[[manifest.config_options]]
+id = "qa_special"
+name = "QA: SPECIAL at the bell"
+description = "For testing only: 1 slot 1, 2 slot 2, 3 both; + 4: filled again every 5 s."
+type = "Number"
+min = 0
+max = 7
+step = 1
+precision = 0
+default = 0
+
+[[manifest.config_options]]
+id = "qa_fcycle"
+name = "QA: a ported Superstar's moves in turn"
+description = "For testing only: the forced moves are ext_late[this]'s Revenge-animated ones, each in turn (0: qa_fas)."
+type = "Number"
+min = 0
+max = 31
+step = 1
+precision = 0
+default = 0
+
+[[manifest.config_options]]
+id = "qa_over_wait"
+name = "QA: seconds before A after a match"
+description = "For testing only: a QA match over, the A presses (leaving the replay / the winner's celebration) start this many seconds after (2: as before)."
+type = "Number"
+min = 2
+max = 60
+step = 1
+precision = 0
+default = 2
+
+[[manifest.config_options]]
+id = "qa_fsub"
+name = "QA: a Superstar's holds in turn"
+description = "For testing only: qa_fslot's submissions (and moves going on to one) forced in turn where the game picks a move of the same place (2: his specials only; 3: his moves with animations of his own; 4: the entry qa_fas only)."
+type = "Number"
+min = 0
+max = 4
+step = 1
+default = 0
+
+[[manifest.config_options]]
+id = "qa_fslot"
+name = "QA: forced move, slot"
+description = "For testing only: 1-6 = that match slot's moves are forced (below); 0: none."
+type = "Number"
+min = 0
+max = 6
+step = 1
+precision = 0
+default = 0
+
+[[manifest.config_options]]
+id = "qa_ffrom"
+name = "QA: forced move, from entry"
+description = "For testing only: the first moveset entry replaced."
+type = "Number"
+min = 0
+max = 999
+step = 1
+precision = 0
+default = 0
+
+[[manifest.config_options]]
+id = "qa_fto"
+name = "QA: forced move, to entry"
+description = "For testing only: the last moveset entry replaced."
+type = "Number"
+min = 0
+max = 999
+step = 1
+precision = 0
+default = 0
+
+[[manifest.config_options]]
+id = "qa_fas"
+name = "QA: forced move, as entry"
+description = "For testing only: the moveset entry done instead."
+type = "Number"
+min = 0
+max = 999
+step = 1
+precision = 0
+default = 0
+
+[[manifest.config_options]]
+id = "qa_rr_out"
+name = "QA: Rumble eliminations every N s"
+description = "For testing only (QA Royal Rumble): every N seconds a CPU Superstar standing in the ring is put outside it (out, by the count-out rule); 0: never."
+type = "Number"
+min = 0
+max = 120
+step = 1
+precision = 0
+default = 0
+
+[[manifest.config_options]]
+id = "qa_rr_out_after"
+name = "QA: Rumble eliminations from"
+description = "For testing only: the game seconds into a QA Royal Rumble before its men are put out (0: from the start)."
+type = "Number"
+min = 0
+max = 1000
+step = 1
+precision = 0
+default = 0
+
+[[manifest.config_options]]
+id = "qa_rr_ring"
+name = "QA: Rumble ring size"
+description = "For testing only: how many a QA Royal Rumble has in the ring (0: the engine's own)."
+type = "Number"
+min = 0
+max = 32
+step = 1
+precision = 0
+default = 0
+
+[[manifest.config_options]]
+id = "qa_extras"
+name = "QA: extra wrestlers present"
+description = "For testing only (any32): a QA match (not a Royal Rumble) with this many extra wrestlers present after the match type's own, up to 32 in all (src/slots.c)."
+type = "Number"
+min = 0
+max = 30
+step = 1
+precision = 0
+default = 0
+
+[[manifest.config_options]]
+id = "qa_extras_rule"
+name = "QA: extra wrestlers' rule"
+description = "For testing only (any32): 0 ringside (the referee never counts a pin on them), 1 elimination (a pin of three puts one out; the match goes on)."
+type = "Number"
+min = 0
+max = 1
+step = 1
+precision = 0
+default = 0
+
+[[manifest.config_options]]
+id = "qa_extras_wait"
+name = "QA: extra wrestlers stand first"
+description = "For testing only (any32): the seconds of the match the extra wrestlers stand at their places round the ring before they join in."
+type = "Number"
+min = 0
+max = 600
+step = 1
+precision = 0
+default = 0
+
+[[manifest.config_options]]
+id = "qa_lumberjacks"
+name = "QA: a Lumberjack match"
+description = "For testing only (lumberjack): the QA one-on-one is a Lumberjack match with this many lumberjacks (src/lumberjack.c)."
+type = "Number"
+min = 0
+max = 30
+step = 1
+precision = 0
+default = 0
+
+[[manifest.config_options]]
+id = "qa_lj_out"
+name = "QA: a competitor walks out"
+description = "For testing only (lumberjack): every this many seconds (from 15 s in) the second competitor of a Lumberjack match walks out of the ring through the nearest ropes (0: never)."
+type = "Number"
+min = 0
+max = 600
+step = 1
+precision = 0
+default = 0
+
+[[manifest.config_options]]
+id = "qa_lj_esc"
+name = "QA: a competitor climbs back in"
+description = "For testing only (lumberjack2): every other QA walk-out (qa_lj_out) the competitor climbs back into the ring by himself 3 s after he is out, as a player would; the lumberjacks must let him."
+type = "Number"
+min = 0
+max = 1
+step = 1
+precision = 0
+default = 0
+
+[[manifest.config_options]]
+id = "qa_lj_brawl"
+name = "QA: lumberjack brawls"
+description = "For testing only (lumberjack2): 0 the match's own chance of a brawl between rival lumberjacks each 10 s (10%); 1 + a percent to use instead (101: every window)."
+type = "Number"
+min = 0
+max = 101
+step = 1
+precision = 0
+default = 0
+
+[[manifest.config_options]]
+id = "qa_lj_p1"
+name = "QA: player 1 plays a Lumberjack match"
+description = "For testing only (lumberjack4): player 1's controller is pressed as a player would -- after his opponent in and out of the ring, striking and grappling; 3: he also goes out by himself now and then, to have the lumberjacks on him; 7 (lumberjack5): out there he goes for the nearest lumberjack and strikes him; 15: only at a lumberjack at his post (the hit itself)."
+type = "Number"
+min = 0
+max = 15
+step = 1
+precision = 0
+default = 0
+
+[[manifest.config_options]]
+id = "qa_lj_menu"
+name = "QA: the Lumberjack MATCH page's driver"
+description = "For testing only (ljround8 / ljmenu10): with qa_reg 16384, the type the Regular driver chooses on the Lumberjack MATCH page -- 0 Single Match, 1 Tag Match, 2 Triple Threat Match; + 16 (ljmenu10): the page walked first (every row DOWN and UP, B, Exhibition's own page and back, the row again)."
+type = "Number"
+min = 0
+max = 31
+step = 1
+precision = 0
+default = 0
+
+[[manifest.config_options]]
+id = "qa_lj_trace"
+name = "QA: Lumberjack match trace"
+description = "For testing only (lumberjack5): the game's log traces 1 the lumberjacks at their posts (state, animation, facing, place, buttons), 2 player 1's strikes and the hurts on lumberjacks near him (src/lumberjack.c qa_trace); 4 (ljtwitch) every man every step (what he is doing, state, animation, facing, place, target, buttons, this code's writes: qa_jitter); 8 (ljround9) each move of a lumberjack at his post, with the man nearest him ('ljpost')."
+type = "Number"
+min = 0
+max = 15
+step = 1
+precision = 0
+default = 0
+
+[[manifest.config_options]]
+id = "qa_lj_behind"
+name = "QA: lumberjack grabs from behind"
+description = "For testing only (lumberjack5): the roll-in's roller grabs his man from behind, so the turn to the front (R, the pick-up button) is shown (src/lumberjack.c)."
+type = "Number"
+min = 0
+max = 1
+step = 1
+precision = 0
+default = 0
+
+[[manifest.config_options]]
+id = "qa_lj_set"
+name = "QA: the lumberjacks set"
+description = "For testing only (ljtwitch): 1 -- a QA Lumberjack match takes the twelve lumberjacks of the user's 2026-11-23 match (Savage, D-Lo Brown, La Parka, Brickowski, Taka Michinoku, British Bulldog, Shane McMahon, Han Zo Mon, Raven, Sting, X-Pac, Dean Malenko -- mostly imported men) instead of a draw (src/lumberjack.c)."
+type = "Number"
+min = 0
+max = 1
+step = 1
+precision = 0
+default = 0
+
+[[manifest.config_options]]
+id = "qa_lj_camx"
+name = "QA: qa_lj_camx"
+description = "For testing only (lumberjack5): the intro's camera: how far to the side of the ramp (0: the match's own) (src/lumberjack.c ramp_camera)."
+type = "Number"
+min = 0
+max = 2000
+step = 1
+precision = 0
+default = 0
+
+[[manifest.config_options]]
+id = "qa_lj_camy"
+name = "QA: qa_lj_camy"
+description = "For testing only (lumberjack5): the intro's camera: how high above the ramp (0: the match's own) (src/lumberjack.c ramp_camera)."
+type = "Number"
+min = 0
+max = 2000
+step = 1
+precision = 0
+default = 0
+
+[[manifest.config_options]]
+id = "qa_lj_camin"
+name = "QA: qa_lj_camin"
+description = "For testing only (lumberjack5): the intro's camera: how far toward the ring of the stretch's middle (0: the match's own) (src/lumberjack.c ramp_camera)."
+type = "Number"
+min = 0
+max = 2000
+step = 1
+precision = 0
+default = 0
+
+[[manifest.config_options]]
+id = "qa_lj_gap"
+name = "QA: qa_lj_gap"
+description = "For testing only (lumberjack5): the intro: the gap at which the next lumberjack sets off down the ramp (0: the match's own) (src/lumberjack.c ramp_camera)."
+type = "Number"
+min = 0
+max = 2000
+step = 1
+precision = 0
+default = 0
+
+[[manifest.config_options]]
+id = "qa_camprobe"
+name = "QA: the match camera in the state"
+description = "For testing only (guestref): state.csv's lj_a .. lj_e show the frame's camera (eye, the point looked at), its mode and shot, the special-shot flag and the referee's count."
+type = "Number"
+min = 0
+max = 1
+step = 1
+precision = 0
+default = 0
+
+[[manifest.config_options]]
+id = "qa_gr_p1"
+name = "QA: player 1 plays a Guest Referee match"
+description = "For testing only (guestref): player 1's controller is pressed as a player would -- 1: he is a competitor (after his opponent in and out of the ring, striking and grappling); 2: he is the guest referee (he keeps near the competitors, by a pinned man)."
+type = "Number"
+min = 0
+max = 2
+step = 1
+precision = 0
+default = 0
+
+[[manifest.config_options]]
+id = "qa_lj_w1"
+name = "QA: lumberjack pick 1"
+description = "For testing only (lumberjack2): the Superstar the Regular QA driver picks first as a lumberjack (an ID; 0: any box free)."
+type = "Number"
+min = 0
+max = 4095
+step = 1
+precision = 0
+default = 0
+
+[[manifest.config_options]]
+id = "qa_lj_w2"
+name = "QA: lumberjack pick 2"
+description = "For testing only (lumberjack2): the second lumberjack pick (an ID; 0: any box free)."
+type = "Number"
+min = 0
+max = 4095
+step = 1
+precision = 0
+default = 0
+
+[[manifest.config_options]]
+id = "qa_lj_w3"
+name = "QA: lumberjack pick 3"
+description = "For testing only (lumberjack2): the third lumberjack pick (an ID; 0: any box free)."
+type = "Number"
+min = 0
+max = 4095
+step = 1
+precision = 0
+default = 0
+
+[[manifest.config_options]]
+id = "qa_lj_w4"
+name = "QA: lumberjack pick 4"
+description = "For testing only (lumberjack2): the fourth lumberjack pick (an ID; 0: any box free)."
+type = "Number"
+min = 0
+max = 4095
+step = 1
+precision = 0
+default = 0
+
+[[manifest.config_options]]
+id = "qa_rr_ring_first"
+name = "QA: Rumble ring size, first match"
+description = "For testing only: the ring size of the first QA Royal Rumble when it differs from qa_rr_ring's (0: qa_rr_ring for every match)."
+type = "Number"
+min = 0
+max = 32
+step = 1
+precision = 0
+default = 0
+
+[[manifest.config_options]]
+id = "qa_void_off"
+name = "QA: ring void guard off"
+description = "For testing only: 1 turns the ring void guard off, to see whether a move leaves anyone in the void at all (0: the guard on)."
+type = "Number"
+min = 0
+max = 1
+step = 1
+precision = 0
+default = 0
+
+[[manifest.config_options]]
+id = "qa_area_trace"
+name = "QA: place-bit trace"
+description = "For testing only (ljround9): the game's log traces every man's place bits (+0x82) as they change and each grapple move's files with their end level (src/logic.c qa_area_trace_step, 'areatr'); 2 also each step a man is at the mat's height past the apron."
+type = "Number"
+min = 0
+max = 3
+step = 1
+precision = 0
+default = 0
+
+[[manifest.config_options]]
+id = "qa_outfight"
+name = "QA: the same fight outside"
+description = "For testing only (ljround9): every this many match frames slots qa_of_a and qa_of_b, both on their feet, are put on the floor at the next of six spots by the barricade, the apron's edge, the aisle's foot or a corner, facing each other (src/logic.c qa_outfight_step); 0 off."
+type = "Number"
+min = 0
+max = 36000
+step = 1
+precision = 0
+default = 0
+
+[[manifest.config_options]]
+id = "qa_of_a"
+name = "QA: the same fight outside, first slot"
+description = "For testing only (ljround9): qa_outfight's first man (the attacker's place)."
+type = "Number"
+min = 0
+max = 31
+step = 1
+precision = 0
+default = 0
+
+[[manifest.config_options]]
+id = "qa_of_b"
+name = "QA: the same fight outside, second slot"
+description = "For testing only (ljround9): qa_outfight's second man."
+type = "Number"
+min = 0
+max = 31
+step = 1
+precision = 0
+default = 1
+
+[[manifest.config_options]]
+id = "qa_place_keep_off"
+name = "QA: imported moves' end on the floor, off"
+description = "For testing only (ljround9): 1 turns off src/movex.c keep_place -- an imported move's animation that ends on the mat, started for a man on the floor, then moves him to the ring's place and height as before (the before, for the proof). 0: it ends where he is."
+type = "Number"
+min = 0
+max = 1
+step = 1
+precision = 0
+default = 0
+
+[[manifest.config_options]]
+id = "qa_of_stage"
+name = "QA: the same fight outside, on the ramp / stage"
+description = "For testing only (ljround10): with qa_outfight, only slot qa_of_b is put, on the ramp's middle and the stage's front by turns, facing the ring (src/logic.c qa_outfight_step)."
+type = "Number"
+min = 0
+max = 1
+step = 1
+precision = 0
+default = 0
+
+[[manifest.config_options]]
+id = "qa_watch1"
+name = "QA: watched word 1"
+description = "For testing only: a RAM offset (address - 0x80000000) whose writes the QA write-watch logs (0: none)."
+type = "Number"
+min = 0
+max = 8388607
+step = 1
+precision = 0
+default = 0
+
+[[manifest.config_options]]
+id = "qa_watch2"
+name = "QA: watched word 2"
+description = "For testing only: a RAM offset (address - 0x80000000) whose writes the QA write-watch logs (0: none)."
+type = "Number"
+min = 0
+max = 8388607
+step = 1
+precision = 0
+default = 0
+
+[[manifest.config_options]]
+id = "qa_table"
+name = "QA: run at the announce table"
+description = "For testing only (QA singles match): every 10 s the CPU's first Superstar is put beside the announce table and runs at it (C-up, the d-pad toward it) -- at the announcers' depth, then at the table's front, from either side. 2: the same with the table's collision as it was before the fix (to see the bug); 3: its side walls solid as well."
+type = "Number"
+min = 0
+max = 3
+step = 1
+precision = 0
+default = 0
+
+[[manifest.config_options]]
+id = "qa_headgrab"
+name = "QA: grapple the downed man"
+description = "For testing only (QA singles match): whenever slot 2 lies on the mat, slot 1 (the CPU) is put at his head, facing as he does, and grapples (A); 2: strikes (B)."
+type = "Number"
+min = 0
+max = 2
+step = 1
+precision = 0
+default = 0
+
+[[manifest.config_options]]
+id = "qa_pspecial"
+name = "QA: player 1's front special"
+description = "For testing only (QA singles match): slot 1's player's controller pressed for him -- with SPECIAL up, a grab (A) of the man in front of him, then the special (1: the stick, 2: C-right with the arcade controls; 3: no presses, the numbers only); + 16 a camera on the two."
+type = "Number"
+min = 0
+max = 31
+step = 1
+precision = 0
+default = 0
+
+[[manifest.config_options]]
+id = "qa_tron"
+name = "QA: Titantron hard camera anywhere"
+description = "For testing only: the Titantron's hard camera picture made in every match (1), even in an arena without the screen; 0: only where the screen is."
+type = "Number"
+min = 0
+max = 2
+step = 1
+precision = 0
+default = 0
+
+[[manifest.config_options]]
+id = "qa_story"
+name = "QA: a custom story"
+description = "For testing only: 1 = the CPU plays the player's matches in a custom story, 2 = the arcade goes to the Custom Story row by itself (free play), 3 = both, 6 = the game's own World Heavyweight story instead."
+type = "Number"
+min = 0
+max = 15
+step = 1
+precision = 0
+default = 0
+
+[[manifest.config_options]]
+id = "qa_versus"
+name = "QA: one player's Versus"
+description = "For testing only: the arcade drives one player to the championship list's Versus row, a Single Match against the CPU, the CPU playing the player's Superstar too after this many seconds, then back to the list (0: off)."
+type = "Number"
+min = 0
+max = 600
+step = 1
+precision = 0
+default = 0
+
+[[manifest.config_options]]
+id = "qa_versus_p2"
+name = "QA: a challenger in one player's Versus"
+description = "For testing only: with qa_versus, player 2 presses Start 10 s into the player's match (1); the challenge is played, then the winner is back on Versus's menu (0: no challenger)."
+type = "Number"
+min = 0
+max = 1
+step = 1
+precision = 0
+default = 0
+
+[[manifest.config_options]]
+id = "qa_variant"
+name = "QA: costume variants"
+description = "For testing only (variants.c): 1 a tour of the Superstar Select's Type arrows before player 1's first pick, 2 the challenge's picks on each player's own controller, 4 the Royal Rumble's list in the QA state, 8 Random (C-up) eight times before player 1's pick, always drawing the Undertaker, 16 the select's rows into the log as the look changes (2026-11-14) (bits; 0: off)."
+type = "Number"
+min = 0
+max = 31
+step = 1
+precision = 0
+default = 0
+
+[[manifest.config_options]]
+id = "family_number"
+name = "Family numbers on the Superstar Select"
+description = "A box holding a family of variants (families.json, a folder nested in a wrestler's, or the game's own: the Undertaker and Undertaker 1999 ...) shows which of them is under the cursor, 7 / 12, beside Type (2026-11-14). Off: the select's screen as the game draws it."
+type = "Enum"
+options = [ "Off", "On" ]
+default = "On"
+
+[[manifest.config_options]]
+id = "qa_variant_tour"
+name = "QA: the Type arrows' tour"
+description = "For testing only (variants.c, 2026-11-14): with QA: variants' tour, how many C-rights before the C-left and C-right (0: 8, a family of eight)."
+type = "Number"
+min = 0
+max = 255
+step = 1
+precision = 0
+default = 0
+
+[[manifest.config_options]]
+id = "qa_p2_after_op"
+name = "QA: player 2 joins after the operator action"
+description = "For testing only: qa_p2's frames counted only once qa_op has been done."
+type = "Number"
+min = 0
+max = 1
+step = 1
+precision = 0
+default = 0
+
+[[manifest.config_options]]
+id = "qa_p2"
+name = "QA: player 2 joins"
+description = "For testing only: player 2 presses Start this many frames into a game (0: never)."
+type = "Number"
+min = 0
+max = 100000
+step = 1
+precision = 0
+default = 0
+
+[[manifest.config_options]]
+id = "qa_seat_save"
+name = "QA: the save sidecar"
+description = "For testing only (2026-11-13, seatsroot): 1 makes folder qa_seat_folder the first title's champion and writes the save; 1 and 2 log every title's champion."
+type = "Number"
+min = 0
+max = 2
+step = 1
+precision = 0
+default = 0
+
+[[manifest.config_options]]
+id = "qa_seat_folder"
+name = "QA: the folder for qa_seat_save"
+description = "For testing only (2026-11-13, seatsroot): the folder wrestler (the game's number for his folder, from 0) qa_seat_save crowns."
+type = "Number"
+min = 0
+max = 100000
+step = 1
+precision = 0
+default = 0
+
+[[manifest.config_options]]
+id = "qa_rr_ports"
+name = "QA: Rumble entrants from other games"
+description = "For testing only (QA Royal Rumble): every entrant one of the Superstars brought over from other games."
+type = "Number"
+min = 0
+max = 1
+step = 1
+precision = 0
+default = 0
+
+[[manifest.config_options]]
+id = "qa_rr_first"
+name = "QA: the Rumble's first CPU entrant"
+description = "For testing only (rumblecrash, 2026-11-22): the QA Royal Rumble's first CPU entrant is this Superstar ID, taken as it is, unchecked -- one this install hasn't proves the empty-record guard (slots.c). 0: drawn as usual."
+type = "Number"
+min = 0
+max = 4095
+step = 1
+precision = 0
+default = 0
+
+[[manifest.config_options]]
+id = "qa_model_twin"
+name = "QA: folder models against the built-in"
+description = "For testing only (2026-11-12, handlers): a folder wrestler's own model compared with the built-in one the game made first, written to the log."
+type = "Number"
+min = 0
+max = 1
+step = 1
+precision = 0
+default = 0
+
+[[manifest.config_options]]
+id = "qa_rr_folders"
+name = "QA: Rumble entrants from folders"
+description = "For testing only (2026-11-13, handlers1; seatsroot the same): every entrant one of the wrestlers from folders -- to bring more models through a Rumble than the game file numbers' range holds at once, and more of them than the seats hold at once."
+type = "Number"
+min = 0
+max = 1
+step = 1
+precision = 0
+default = 0
+
+[[manifest.config_options]]
+id = "qa_moves_twin"
+name = "QA: movesets made from lists against the game's"
+description = "For testing only (2026-11-13, movesets): every moveset the match unpacks is also made from its list of slots and the two compared byte for byte; a folder wrestler's list, how many slots it changed. Written to the log."
+type = "Number"
+min = 0
+max = 1
+step = 1
+precision = 0
+default = 0
+
+[[manifest.config_options]]
+id = "qa_stock_twin"
+name = "QA: stock folders against the built-in"
+description = "For testing only (2026-11-13, nmhandler): each stock Superstar loaded from his folder compared with the built-in -- his records, moveset, models and photos as the game builds them -- written to the log."
+type = "Number"
+min = 0
+max = 1
+step = 1
+precision = 0
+default = 0
+
+[[manifest.config_options]]
+id = "qa_removal"
+name = "QA: removed stock Superstars"
+description = "For testing only (2026-11-13, removal): 1 -- with nobody removed, once the menus' code is in (the championship list) THE ROCK is made the World Heavyweight champion after KANE, THE ROCK and MANKIND the Tag Team champions after the DUDLEYS, exhibition preset 1 THE ROCK vs STEVE AUSTIN, and the save written; 2 -- the select pages, the titles, the presets, Story Mode's roles at each node and every man who comes into a match written to the log, for comparing runs."
+type = "Number"
+min = 0
+max = 3
+step = 1
+precision = 0
+default = 0
+
+[[manifest.config_options]]
+id = "qa_tags"
+name = "QA: roster tags"
+description = "For testing only (2026-11-21, rostertags): 1 -- once a Royal Rumble's field is drawn, each entrant's class, 20 more draws of its pool and 20 Lumberjack draws checked against the random pools' rule, the rival pairs among the field and set pairs asked of the rivals, written to the log ('tags:' lines)."
+type = "Number"
+min = 0
+max = 1
+step = 1
+precision = 0
+default = 0
+
+[[manifest.config_options]]
+id = "qa_bsuplex"
+name = "QA: scripted back suplex"
+description = "For testing only (QA Royal Rumble): every few seconds the player's Superstar is put behind a man, grabs him and does entry 73 (Bret's back suplex)."
+type = "Number"
+min = 0
+max = 1
+step = 1
+precision = 0
+default = 0
+
+[[manifest.config_options]]
+id = "qa_ann_nan"
+name = "QA: King's pose broken"
+description = "For testing only: 1 = King's pose made not a number from 5 s into the match (the announcers' fallback tested)."
+type = "Number"
+min = 0
+max = 1
+step = 1
+precision = 0
+default = 0
+
+[[manifest.config_options]]
+id = "qa_ann_stand"
+name = "QA: announcers standing"
+description = "For testing only: 1 = JR and King on their feet from the start (as when their table is broken)."
+type = "Number"
+min = 0
+max = 2
+step = 1
+precision = 0
+default = 0
+
+[[manifest.config_options]]
+id = "qa_list_dbg"
+name = "QA: story list debug"
+description = "For testing only."
+type = "Number"
+min = 0
+max = 7
+step = 1
+precision = 0
+default = 0
+
+[[manifest.config_options]]
+id = "qa_no_zbuf"
+name = "QA: no announcer depth"
+description = "For testing only: 1 = JR and King drawn without their depth buffer (as before 2026-10-28)."
+type = "Number"
+min = 0
+max = 1
+step = 1
+precision = 0
+default = 0
+
+[[manifest.config_options]]
+id = "qa_op"
+name = "QA: operator action"
+description = "For testing only: an operator-menu action done in the match (8 QUIT MATCH, 9 RESET TO TITLE; 20 the PICTURE page walked, 21 the CONTROLS page, 22 CONTROLLER BUTTONS (ALL), 23 KEYBOARD BUTTONS, 24-27 P1-P4 CONTROLLER BUTTONS)."
+type = "Number"
+min = 0
+max = 27
+step = 1
+precision = 0
+default = 0
+
+[[manifest.config_options]]
+id = "qa_ctlmode"
+name = "QA: CONTROL MODE in the state"
+description = "For testing only: state.csv's bs_tries / bs_grabs / bs_step carry CONTROL MODE as the settings load read it, as F2 sets it and as the settings hold it after a save, and player 1's presses and walk in a match (logic.c qa_state; qa\\scenarios\\ctl_mode_*)."
+type = "Bool"
+default = false
+
+[[manifest.config_options]]
+id = "qa_bind_row"
+name = "QA: a binding asked for"
+description = "For testing only: with qa_op 22-27, the buttons page's row (1 A .. 19 SPECIAL, 20 the whole analog stick) whose binding is asked for, as A / ENTER on it does."
+type = "Number"
+min = 0
+max = 20
+step = 1
+precision = 0
+default = 0
+
+[[manifest.config_options]]
+id = "qa_op_at"
+name = "QA: operator action at"
+description = "For testing only: the match second qa_op is done at."
+type = "Number"
+min = 0
+max = 900
+step = 1
+precision = 0
+default = 0
+
+[[manifest.config_options]]
+id = "qa_hd_clock"
+name = "QA: HD stopwatch"
+description = "For testing only: 1: how long the full-detail models' per-frame work takes, in the log."
+type = "Number"
+min = 0
+max = 1
+step = 1
+precision = 0
+default = 0
+
+[[manifest.config_options]]
+id = "qa_hd_cam"
+name = "QA: HD model camera"
+description = "For testing only: 1 = the scenario's camera (below) instead of the game's; N > 1: from N - 1 seconds into the match."
+type = "Number"
+min = 0
+max = 900
+step = 1
+precision = 0
+default = 0
+
+[[manifest.config_options]]
+id = "qa_cam"
+name = "QA: camera"
+description = "For testing only: 1 = the scenario's camera (below) instead of the game's; N > 1: from N - 1 seconds into the match."
+type = "Number"
+min = 0
+max = 900
+step = 1
+precision = 0
+default = 0
+
+[[manifest.config_options]]
+id = "qa_cam_ex"
+name = "QA: camera eye x"
+description = "For testing only: the coordinate + 3000."
+type = "Number"
+min = 0
+max = 6000
+step = 1
+precision = 0
+default = 3000
+
+[[manifest.config_options]]
+id = "qa_cam_ey"
+name = "QA: camera eye y"
+description = "For testing only: the coordinate + 3000."
+type = "Number"
+min = 0
+max = 6000
+step = 1
+precision = 0
+default = 3000
+
+[[manifest.config_options]]
+id = "qa_cam_ez"
+name = "QA: camera eye z"
+description = "For testing only: the coordinate + 3000."
+type = "Number"
+min = 0
+max = 6000
+step = 1
+precision = 0
+default = 3000
+
+[[manifest.config_options]]
+id = "qa_cam_ax"
+name = "QA: camera looking at x"
+description = "For testing only: the coordinate + 3000."
+type = "Number"
+min = 0
+max = 6000
+step = 1
+precision = 0
+default = 3000
+
+[[manifest.config_options]]
+id = "qa_cam_ay"
+name = "QA: camera looking at y"
+description = "For testing only: the coordinate + 3000."
+type = "Number"
+min = 0
+max = 6000
+step = 1
+precision = 0
+default = 3000
+
+[[manifest.config_options]]
+id = "qa_cam_az"
+name = "QA: camera looking at z"
+description = "For testing only: the coordinate + 3000."
+type = "Number"
+min = 0
+max = 6000
+step = 1
+precision = 0
+default = 3000
+
+[[manifest.config_options]]
+id = "qa_modes"
+name = "QA: the modes' state"
+description = "For testing only: state.csv's bs_* columns carry the two modes' state (the running mode, the migration, the arcade's menu changes found in the menus' data)."
+type = "Number"
+min = 0
+max = 1
+step = 1
+precision = 0
+default = 0
+
+[[manifest.config_options]]
+id = "qa_reg"
+name = "QA: Regular's menus driven"
+description = "For testing only, Regular mode: 1 Start on the title, to the main menu; 2 F2 opened there a while; 4 an Exhibition singles match through the game's own pages (qa_w1 for the player, qa_w2 for the CPU); 8 quit when done; 16 a story of ours from the championship list; 32 F2 QUIT MATCH 20 s into the match; 64 F2 RESET TO TITLE when done; 128 the ARENA page scrolled past ten rows; 256 a Royal Rumble from Multi Play; 512 the Retry Test story to its end; 1024 F2 RESET TO TITLE from the OPTIONS page; 2048 the Rumble NUMBER page's own rows changed; 4096 F2 BIG SHOW off on the select; 8192 the Rumble's player kept on his controller, Start on his CONTINUE?; 16384 the Lumberjack row; 32768 (with 4) Guest Referee instead of Exhibition (bits added; see logic.c qa_regular_frame)."
+type = "Number"
+min = 0
+max = 65535
+step = 1
+precision = 0
+default = 0
+
+[[manifest.config_options]]
+id = "qa_reg_right"
+name = "QA: UP presses on the Rumble's NUMBER page"
+description = "For testing only, with qa_reg 256: how many times UP is pressed on the Royal Rumble's NUMBER page (a change for that match only)."
+type = "Number"
+min = 0
+max = 20
+step = 1
+precision = 0
+default = 0
+
+[[manifest.config_options]]
+id = "qa_reg_order"
+name = "QA: the Rumble's ORDER row"
+description = "For testing only, with qa_reg 256: the row taken on the Royal Rumble's ORDER page, 1 the first shown (0: Random)."
+type = "Number"
+min = 0
+max = 17
+step = 1
+precision = 0
+default = 0
+
+[[manifest.config_options]]
+id = "menu_idle_secs"
+name = "Menu idle (Arcade)"
+description = "Arcade mode: seconds left alone at a menu before the cabinet goes back to its attract loop, the credits kept (0: never)."
+type = "Number"
+min = 0
+max = 300
+step = 30
+precision = 0
+default = 90
+
+[[manifest.config_options]]
+id = "qa_matches"
+name = "QA: matches, then quit"
+description = "For testing only: how many matches before the game quits (0: no end)."
+type = "Number"
+min = 0
+max = 99
+step = 1
+precision = 0
+default = 0
+
+[inputs]
+elf_path = "mod.elf"
+mod_filename = "nomercy_arcade"
+func_reference_syms_file = "/home/devbox/src/WWFNoMercyRecomp/syms/dump.toml"
+data_reference_syms_files = []
+additional_files = []

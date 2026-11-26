@@ -1,0 +1,35 @@
+{
+  "about": "2026-11-05: an arena from a folder (qa/arenas_test): RAW IS WAR with its stage palettes changed (no2k15, 2026-11-23: the two WWE 2K15 test slots, 0x011A / 0x011B, are removed from the game -- stock Steve Austin 0x0002 and The Rock 0x0001 in their places here)",
+  "wrestlers": [
+    "0x0001",
+    "0x0002"
+  ],
+  "arena": 24,
+  "control": [
+    "cpu",
+    "cpu"
+  ],
+  "matches": 1,
+  "seconds": 75,
+  "shots": 6,
+  "options": {},
+  "camera": {
+    "eye": [
+      0,
+      260,
+      -650
+    ],
+    "at": [
+      0,
+      170,
+      900
+    ]
+  },
+  "expect": [
+    {
+      "name": "the match started",
+      "when": "any",
+      "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "about": "2026-10-31, The Giant (WCW/nWo Revenge's, 0x010A): a singles match, CPU Giant vs CPU The Rock -- his model whole in the ring (head, hands / fingers, palettes), his size against the Rock's, no crash; the shots looked at -- LONG: 480 s, past match frame 6685 (the CPU match plays the same each run; the 2026-10-31 23:56 run stalled there while another project's 16-way compile had the machine; the 00:30 rerun stopped at 6543, its 300 s out)",
+  "wrestlers": [
+    "THE GIANT",
+    "THE ROCK"
+  ],
+  "control": [
+    "cpu",
+    "cpu"
+  ],
+  "arena": "RAW IS WAR",
+  "matches": 1,
+  "seconds": 480,
+  "shots": 2.0,
+  "expect": [
+    {
+      "name": "the match started",
+      "when": "any",
+      "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "no model's matrices ever went bad",
+      "when": "always",
+      "check": "bad_mtx == 0"
+    },
+    {
+      "name": "nobody's position went bad",
+      "when": "always",
+      "check": "finite(s0_x, s0_y, s0_z, s1_x, s1_y, s1_z)"
+    },
+    {
+      "name": "The Giant is in slot 0",
+      "when": "match",
+      "check": "s0_id == 0x010A"
+    }
+  ]
+}

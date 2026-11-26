@@ -1,0 +1,38 @@
+{
+  "about": "the hard camera's own viewpoint (tron.c hc_eye 820,420,0 -> 0,150,0) through the game's main camera, screens off: the reference for the Titantron's picture (2026-10-28 evening: the user saw the table / right barricade wrong in it)",
+  "wrestlers": [
+    "STEVE AUSTIN",
+    "THE ROCK"
+  ],
+  "control": [
+    "cpu",
+    "cpu"
+  ],
+  "arena": "RAW IS WAR",
+  "matches": 0,
+  "seconds": 60,
+  "shots": 3.0,
+  "options": {
+    "titantron_screens": false,
+    "titantron_live": false
+  },
+  "camera": {
+    "eye": [
+      820,
+      420,
+      0
+    ],
+    "at": [
+      0,
+      150,
+      0
+    ]
+  },
+  "expect": [
+    {
+      "name": "the match started",
+      "when": "any",
+      "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+    }
+  ]
+}

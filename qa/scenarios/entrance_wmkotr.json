@@ -1,0 +1,33 @@
+{
+  "about": "the entrances' close shots in KING OF THE RING WM 2000 (arena 19): WM2000's 3D entrance scene 3 behind the Superstar, placed as WM2000's own close shots have it (its pose spot at No Mercy's origin, as RAW IS WAR WM 2000's) -- the KING OF THE RING aprons, the 3D portal with its crown of lit spikes, the tunnel and the King of the Ring sign, the lit floor",
+  "match": "rumble",
+  "wrestlers": [
+    "HOLLYWOOD HOGAN"
+  ],
+  "control": [
+    "cpu"
+  ],
+  "arena": "KING OF THE RING WM 2000",
+  "options": {
+    "rumble_entrants": 4,
+    "rumble_interval": 60,
+    "titantron_screens": true,
+    "titantron_live": true
+  },
+  "matches": 1,
+  "seconds": 120,
+  "shots": 0.5,
+  "shot_when": "$c.mode -eq 0 -and $c.screen -eq 42 -and $c.entrance_step -ge 1 -and $c.entrance_step -le 29",
+  "expect": [
+    {
+      "name": "the entrances ran",
+      "when": "any",
+      "check": "mode == 0 and screen == 42 and entrance_step >= 1 and entrance_step <= 29"
+    },
+    {
+      "name": "the arena is ours (arena_current 19)",
+      "when": "any",
+      "check": "venue == 19 and stage == 2"
+    }
+  ]
+}

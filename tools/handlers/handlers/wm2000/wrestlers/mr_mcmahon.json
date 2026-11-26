@@ -1,0 +1,15 @@
+{
+ "about": "WrestleMania 2000's MR. McMAHON: what the handler is told for him (wm2kall, 2026-11-13). Everything else comes from the ROM.",
+ "string_id": "mr_mcmahon",
+ "key": "mr_mcmahon",
+ "wm2000": {
+  "roster_index": 8,
+  "game_id": "0x0103"
+ },
+ "moveset": {
+  "reference_ordinal": 61,
+  "reference_why": "No Mercy's own"
+ },
+ "class": "authority",
+ "class_why": "the handler: the WWF's owner, who wrestles -- No Mercy's own Mr. McMahon is in its Royal Rumble's field (he won the 1999 Royal Rumble); WrestleMania 2000's record gives him its non-wrestler's codes"
+}

@@ -1,0 +1,26 @@
+{
+  "match": "rumble",
+  "wrestlers": [
+    "STEVE AUSTIN"
+  ],
+  "control": [
+    "cpu"
+  ],
+  "options": {
+    "rumble_entrants": 4,
+    "rumble_interval": 30,
+    "qa_op": 20,
+    "qa_op_at": 8
+  },
+  "seconds": 110,
+  "shots": 1.0,
+  "about": "F2 > PICTURE, walked through in a match (2026-11-04): 16:9, CRT full, all of the screen and back, then SAVE AND EXIT: each applied at once; the saved settings checked after",
+  "matches": 0,
+  "expect": [
+    {
+      "name": "the Rumble started",
+      "when": "any",
+      "check": "stage == 2 and mode == -2 and match_frames != 0xFFFF and match_frames > 30"
+    }
+  ]
+}

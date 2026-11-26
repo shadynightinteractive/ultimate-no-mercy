@@ -1,0 +1,241 @@
+{
+ "title": "Upgrade test A: recast, conditions, voices, scene logic",
+ "menu": "Upgrade Test A",
+ "championship": "world",
+ "cast": {
+  "taker": [
+   "STEVE AUSTIN",
+   "KANE",
+   "UNDERTAKER"
+  ],
+  "buddy": [
+   "MANKIND",
+   "THE ROCK"
+  ],
+  "pal": [
+   "KANE",
+   "BIG SHOW"
+  ]
+ },
+ "vars": {
+  "heat": 0,
+  "answer": 0
+ },
+ "start": "one",
+ "nodes": {
+  "one": {
+   "chapter": "UPGRADE TEST A",
+   "pages": [
+    "RECAST: {taker} is the stand-in.\n{pal} too."
+   ],
+   "scene": {
+    "place": "locker room",
+    "cast": [
+     "player",
+     "taker"
+    ],
+    "steps": [
+     {
+      "say": "VOICE: {player.catchphrase}",
+      "who": "player"
+     },
+     {
+      "say": {
+       "STEVE AUSTIN": "VARIANT OK: Austin's own line.",
+       "default": "VARIANT BAD: the default line."
+      },
+      "who": "taker"
+     },
+     {
+      "say": {
+       "group:nwo": "GROUP BAD: nWo line.",
+       "group:face": "GROUP OK: a face's line.",
+       "default": "GROUP BAD: default."
+      },
+      "who": "taker"
+     },
+     {
+      "say": "{taker.nickname}, {taker.finisher}.",
+      "who": "taker"
+     },
+     {
+      "ask": "Pick one (QA takes 1).",
+      "options": [
+       "One",
+       "Two",
+       "Three"
+      ],
+      "who": "player",
+      "store": "answer"
+     },
+     {
+      "set": {
+       "heat": "+2"
+      }
+     },
+     {
+      "if": "answer == 1 or (heat >= 2 and not player in nwo)",
+      "then": [
+       {
+        "say": "LOGIC OK 1",
+        "who": "taker"
+       }
+      ],
+      "else": [
+       {
+        "say": "LOGIC BAD 1",
+        "who": "taker"
+       }
+      ]
+     },
+     {
+      "if": "player is STEVE AUSTIN and taker is KANE and pal in corporation",
+      "then": [
+       {
+        "say": "LOGIC OK 2",
+        "who": "taker"
+       }
+      ],
+      "else": [
+       {
+        "say": "LOGIC BAD 2",
+        "who": "taker"
+       }
+      ]
+     },
+     {
+      "if": "not choice 1",
+      "then": [
+       {
+        "say": "LOGIC BAD 3",
+        "who": "taker"
+       }
+      ],
+      "else": [
+       {
+        "say": "LOGIC OK 3",
+        "who": "taker"
+       }
+      ]
+     },
+     {
+      "if": "heat == 2 and not (answer == 2 or answer == 3)",
+      "then": [
+       {
+        "say": "{player.signoff}",
+        "who": "player"
+       }
+      ]
+     },
+     {
+      "who": "player",
+      "do": "taunt"
+     },
+     {
+      "who": "player",
+      "do": "stand"
+     }
+    ]
+   },
+   "match": {
+    "type": "single",
+    "slots": [
+     "player",
+     "taker"
+    ],
+    "script": [
+     {
+      "when": "time 1:00",
+      "do": "end",
+      "winner": "player",
+      "how": "pinfall"
+     }
+    ]
+   },
+   "requirement": "Recast test: {player} vs {taker}.",
+   "branches": [
+    {
+     "if": "(win or lose) and answer == 1 and heat == 2",
+     "set": {
+      "heat": "+1"
+     },
+     "next": "two",
+     "pages": [
+      "BRANCH OK: or / parens / stored answer."
+     ]
+    },
+    {
+     "next": "end",
+     "pages": [
+      "BRANCH BAD."
+     ]
+    }
+   ]
+  },
+  "two": {
+   "chapter": "UPGRADE TEST A 2",
+   "scene": {
+    "place": "hall",
+    "cast": [
+     "player",
+     "buddy"
+    ],
+    "steps": [
+     {
+      "if": "heat == 3",
+      "then": [
+       {
+        "say": "NODE 2 OK: heat 3, {buddy.insult}.",
+        "who": "buddy"
+       }
+      ],
+      "else": [
+       {
+        "say": "NODE 2 BAD",
+        "who": "buddy"
+       }
+      ]
+     }
+    ]
+   },
+   "match": {
+    "type": "single",
+    "slots": [
+     "player",
+     "pal"
+    ],
+    "script": [
+     {
+      "when": "time 0:40",
+      "do": "end",
+      "winner": "player",
+      "how": "submission"
+     }
+    ]
+   },
+   "requirement": "Recast test 2: {player} vs {pal}.",
+   "branches": [
+    {
+     "if": "win by submission",
+     "next": "end",
+     "pages": [
+      "HOW OK: win by submission."
+     ]
+    },
+    {
+     "if": "win by pinfall",
+     "next": "end",
+     "pages": [
+      "HOW BAD: pinfall."
+     ]
+    },
+    {
+     "next": "end",
+     "pages": [
+      "HOW BAD: other."
+     ]
+    }
+   ]
+  }
+ }
+}

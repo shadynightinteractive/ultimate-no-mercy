@@ -1,0 +1,28 @@
+{
+ "about": "2026-11-02 story upgrade, the text limits as the compilers enforce them: 48 characters a line, 28 an option, 3 lines a bubble, 7 a page, 3 a requirement, a 24-letter menu name, all of real text. Look: every line on the screen and in its bubble",
+ "match": "arcade",
+ "wrestlers": [
+  "STEVE AUSTIN",
+  null
+ ],
+ "matches": 0,
+ "seconds": 420,
+ "shots": 2.0,
+ "options": {
+  "free_play": true,
+  "attract_demos": false,
+  "custom_story": 1,
+  "qa_story": 3
+ },
+ "expect": [
+  {
+   "name": "the match reached",
+   "when": "any",
+   "check": "matches >= 10100 and mode == -2"
+  }
+ ],
+ "shot_when": "$true",
+ "stories": [
+  "011_limits.json"
+ ]
+}

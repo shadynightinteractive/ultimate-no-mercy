@@ -1,0 +1,59 @@
+{
+ "about": "WCW/nWo Revenge port: what was chosen by hand for him (moved out of mod\\gen's tables by handlers\\extract_fixes.py, 2026-11-12). Edit here; the handler reads nothing else that is his alone.",
+ "string_id": "eric_bischoff",
+ "key": "bischoff",
+ "legacy_game_id": "0x0114",
+ "name": "ERIC BISCHOFF",
+ "short_name": "BISCHOFF",
+ "height": 12,
+ "weight": 85,
+ "music_slot": 80,
+ "video": 0,
+ "revenge": {
+  "moveset_file": "0x13A",
+  "code": "0x20D"
+ },
+ "moveset": {
+  "reference_ordinal": 61,
+  "allies": [
+   "0x0105",
+   "0x0106",
+   "0x0107",
+   "0x010A"
+  ],
+  "weight_class": null,
+  "stance": null,
+  "slot_overrides": {},
+  "no_struggling_slam": true
+ },
+ "costumes": [
+  {
+   "capture": "rb_c0",
+   "slot": 1
+  },
+  {
+   "capture": "at_rb1",
+   "slot": 1
+  },
+  {
+   "capture": "at_rb2",
+   "slot": 1
+  },
+  {
+   "capture": "at_rb3",
+   "slot": 1
+  }
+ ],
+ "skin": "no_mercy",
+ "photo_number": 129,
+ "photo": {
+  "photo": 129,
+  "shot": "data/revport/ports4/cap/cc_bischoff.png",
+  "box": [
+   194,
+   32,
+   244,
+   82
+  ]
+ }
+}

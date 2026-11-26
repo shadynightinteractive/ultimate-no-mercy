@@ -1,0 +1,13 @@
+{
+ "about": "WrestleMania 2000's STEVE BLACKMAN: what the handler is told for him (wm2kall, 2026-11-13). Everything else comes from the ROM.",
+ "string_id": "steve_blackman_wm2000",
+ "key": "steve_blackman_wm2000",
+ "wm2000": {
+  "roster_index": 30,
+  "game_id": "0x0502"
+ },
+ "moveset": {
+  "reference_ordinal": 42,
+  "reference_why": "No Mercy's own"
+ }
+}

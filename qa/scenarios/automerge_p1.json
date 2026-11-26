@@ -1,0 +1,53 @@
+{
+  "about": "automerge (2026-11-23): F2's MERGE SAME WRESTLERS on -- a one-on-one PLAYED: player 1 (slot 0) is WrestleMania 2000's PRINCE ALBERT (0x03C0, in Albert's box as his variants) at his controller (qa_gr_p1 4: the guest referee test's player, after his opponent in and out of the ring, striking, grappling, struggling when down), the Undertaker the computer's, on RAW IS WAR. The playability check (the user's rule: no test build without a player-1 check): he plays as himself (his own number in slot 0, his theme from his folder), hits his opponent, and the match ends with a decision.",
+  "match": "singles",
+  "wrestlers": [
+    "0x03C0",
+    "0x0003"
+  ],
+  "costumes": [
+    0,
+    0
+  ],
+  "control": [
+    "pad1",
+    "cpu"
+  ],
+  "arena": "RAW IS WAR",
+  "options": {
+    "auto_merge": 1,
+    "qa_camprobe": 1,
+    "qa_gr_p1": 4
+  },
+  "matches": 1,
+  "seconds": 900,
+  "speed": 6,
+  "shots": 10,
+  "expect": [
+    {
+      "name": "the match started",
+      "when": "any",
+      "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "player 1 is Prince Albert (his own number) on controller 1, the Undertaker the computer's",
+      "when": "match",
+      "check": "s0_id == 0x03C0 and s0_pad == 1 and s1_id == 0x0003 and s1_pad == 0"
+    },
+    {
+      "name": "player 1 played: his controller pressed for at least 60 steps",
+      "when": "match",
+      "check": "(lj_g & 0xFFFF) >= 60"
+    },
+    {
+      "name": "player 1 hits his opponent (at least 3 times)",
+      "when": "match",
+      "check": "((lj_f & 0xFF) + ((lj_f >> 8) & 0xFF)) >= 3"
+    },
+    {
+      "name": "a decision: the match ended",
+      "when": "end",
+      "check": "matches >= 1"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "about": "rosterids 2026-11-12: the stock roster as folders (export_stock.py: 106 folders with \"builtin\", in No Mercy\\, No Mercy Plus\\, 2K15\\) plus Attitude\\Stone Cold (a second folder for the built-in Steve Austin: a copy of him, stone_cold 0x0069) and Attitude\the_rock (an ordinary folder named like the stock Rock: the_rock~2 0x00E8). WCW_WRESTLERS_DIR=scratch\u0007gents\rosterids\\w\\stock. The stock Austin (0x0002, named steve_austin by his folder) vs his copy.",
+  "match": "arcade",
+  "wrestlers": [
+    "0x0002",
+    "0x0069"
+  ],
+  "costumes": [
+    0,
+    0
+  ],
+  "matches": 0,
+  "seconds": 600,
+  "shots": 1.0,
+  "options": {
+    "free_play": true,
+    "attract_demos": false,
+    "qa_versus": 20
+  },
+  "expect": [
+    {
+      "name": "the match: the stock Steve Austin (his folder's ID steve_austin, 0x0002, player 1) vs his copy stone_cold (0x0069, CPU)",
+      "when": "any",
+      "check": "mode == -2 and match_frames != 0xFFFF and match_frames > 120 and s0_id == 0x0002 and s0_pad == 1 and s1_id == 0x0069 and s1_pad == 0"
+    },
+    {
+      "name": "no model's matrices ever went bad",
+      "when": "always",
+      "check": "bad_mtx == 0"
+    }
+  ]
+}

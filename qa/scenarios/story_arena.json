@@ -1,0 +1,33 @@
+{
+  "about": "2026-10-29: a story match's arena (storyc / arcade_stories \"arena\": node +A's low nibble = the venue byte): qa\\stories_test\u0000_arena_test.json -- King of the Ring (3), then WrestleMania (7); the CPU plays (qa_story 3)",
+  "match": "arcade",
+  "wrestlers": [
+    "STEVE AUSTIN",
+    null
+  ],
+  "matches": 0,
+  "seconds": 600,
+  "shots": 5.0,
+  "options": {
+    "free_play": true,
+    "attract_demos": false,
+    "custom_story": 1,
+    "qa_story": 3
+  },
+  "expect": [
+    {
+      "name": "a match at King of the Ring (3)",
+      "when": "any",
+      "check": "mode == -2 and venue == 3"
+    },
+    {
+      "name": "a match at WrestleMania (7)",
+      "when": "any",
+      "check": "mode == -2 and venue == 7"
+    }
+  ],
+  "shot_when": "$c.screen -eq 23 -or $c.screen -eq 22 -or $c.screen -eq 25",
+  "stories": [
+    "000_arena_test.json"
+  ]
+}

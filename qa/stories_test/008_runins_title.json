@@ -1,0 +1,187 @@
+{
+ "title": "Phase 6 B: run-ins, titles",
+ "menu": "Run-ins Test",
+ "championship": "world",
+ "cast": {
+  "a": "THE ROCK",
+  "b": "KANE",
+  "c": "UNDERTAKER"
+ },
+ "nodes": {
+  "opp": {
+   "chapter": "RUNIN OPP",
+   "pages": [
+    "RUNIN OPP: {c} runs in for {b}."
+   ],
+   "match": {
+    "slots": [
+     "player",
+     "b"
+    ],
+    "runins": [
+     {
+      "who": "c",
+      "helps": "opponents"
+     }
+    ],
+    "script": [
+     {
+      "when": "time 1:30",
+      "do": "end",
+      "winner": "player",
+      "how": "pinfall"
+     }
+    ]
+   },
+   "requirement": "RUNIN OPP match.",
+   "branches": [
+    {
+     "next": "pl"
+    }
+   ]
+  },
+  "pl": {
+   "chapter": "RUNIN PL",
+   "pages": [
+    "PL: {a} in for {player}, 0:15."
+   ],
+   "match": {
+    "slots": [
+     "player",
+     "b"
+    ],
+    "runins": [
+     {
+      "who": "a",
+      "helps": "player",
+      "at": "0:15"
+     }
+    ],
+    "script": [
+     {
+      "when": "time 1:30",
+      "do": "end",
+      "winner": "player",
+      "how": "pinfall"
+     }
+    ]
+   },
+   "requirement": "RUNIN PL match.",
+   "branches": [
+    {
+     "next": "both"
+    }
+   ]
+  },
+  "both": {
+   "chapter": "RUNIN BOTH",
+   "pages": [
+    "{c}, {b}, {a}, {player}."
+   ],
+   "match": {
+    "slots": [
+     "player",
+     "b"
+    ],
+    "runins": [
+     {
+      "who": "c",
+      "helps": "opponents"
+     },
+     {
+      "who": "a",
+      "helps": "player"
+     }
+    ],
+    "script": [
+     {
+      "when": "time 1:30",
+      "do": "end",
+      "winner": "player",
+      "how": "pinfall"
+     }
+    ]
+   },
+   "requirement": "RUNIN BOTH match.",
+   "branches": [
+    {
+     "next": "hc"
+    }
+   ]
+  },
+  "hc": {
+   "chapter": "RUNIN HANDICAP",
+   "pages": [
+    "HC: {a} for {b}, {c}."
+   ],
+   "match": {
+    "teams": [
+     [
+      "player"
+     ],
+     [
+      "b",
+      "c"
+     ]
+    ],
+    "runins": [
+     {
+      "who": "a"
+     }
+    ],
+    "script": [
+     {
+      "when": "time 1:30",
+      "do": "end",
+      "winner": "player",
+      "how": "pinfall",
+      "loser": "b"
+     }
+    ]
+   },
+   "requirement": "RUNIN HANDICAP match.",
+   "branches": [
+    {
+     "next": "title"
+    }
+   ]
+  },
+  "title": {
+   "chapter": "TITLE",
+   "pages": [
+    "TITLE: {player} vs {champion} for the belt."
+   ],
+   "match": {
+    "slots": [
+     "player",
+     "champion"
+    ],
+    "title": "world",
+    "script": [
+     {
+      "when": "time 0:40",
+      "do": "end",
+      "winner": "player",
+      "how": "pinfall"
+     }
+    ]
+   },
+   "requirement": "TITLE match.",
+   "branches": [
+    {
+     "if": "win",
+     "next": "end",
+     "pages": [
+      "TITLE WON: champion is {champion}."
+     ]
+    },
+    {
+     "next": "end",
+     "pages": [
+      "TITLE LOST."
+     ]
+    }
+   ]
+  }
+ }
+}

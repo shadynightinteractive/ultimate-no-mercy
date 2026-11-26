@@ -1,0 +1,62 @@
+{
+ "about": "romsets (2026-11-24): No Mercy Plus V3 WITHOUT WCW/nWo Revenge -- on an install whose roms hold only No Mercy (Rev 1), No Mercy v1.0 and the No Mercy Plus V3 patch. Before (main 0068a05) every built-in pack needed Revenge, so the first start made none and left all of No Mercy Plus's men out: Droz and Raven were given stand-ins (this FAILS there). Now the extras' tables and the content pack are made from No Mercy Plus alone. A one-on-one PLAYED: player 1 (slot 0, Droz 0x0509) at his controller (qa_gr_p1 4), Raven (0x060C) the CPU's. qa\romsets_check.py --sources NMP checks the install's pages and record.",
+ "match": "singles",
+ "wrestlers": [
+  "0x0509",
+  "0x060C"
+ ],
+ "costumes": [
+  0,
+  0
+ ],
+ "control": [
+  "pad1",
+  "cpu"
+ ],
+ "arena": "RAW IS WAR",
+ "options": {
+  "qa_camprobe": 1,
+  "qa_gr_p1": 4
+ },
+ "matches": 1,
+ "seconds": 900,
+ "speed": 6,
+ "shots": 30,
+ "expect": [
+  {
+   "name": "the match started",
+   "when": "any",
+   "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+  },
+  {
+   "name": "player 1 is 0x0509 on controller 1, 0x060C the computer's",
+   "when": "match",
+   "check": "s0_id == 0x0509 and s0_pad == 1 and s1_id == 0x060C and s1_pad == 0"
+  },
+  {
+   "name": "player 1 played: his controller pressed for at least 60 steps",
+   "when": "match",
+   "check": "(lj_g & 0xFFFF) >= 60"
+  },
+  {
+   "name": "player 1 hits his opponent (at least 3 times)",
+   "when": "match",
+   "check": "((lj_f & 0xFF) + ((lj_f >> 8) & 0xFF)) >= 3"
+  },
+  {
+   "name": "no model's matrices ever went bad",
+   "when": "always",
+   "check": "bad_mtx == 0"
+  },
+  {
+   "name": "no position ever went bad",
+   "when": "always",
+   "check": "finite(s0_x, s0_y, s0_z, s1_x, s1_y, s1_z)"
+  },
+  {
+   "name": "a decision: the match ended",
+   "when": "end",
+   "check": "matches >= 1"
+  }
+ ]
+}

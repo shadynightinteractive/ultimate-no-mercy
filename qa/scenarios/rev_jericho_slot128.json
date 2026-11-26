@@ -1,0 +1,52 @@
+{
+ "about": "2026-11-15 (gameplayfix, item 5): as rev_jericho_slot123 with his entry 128 (the same Revenge pair on 3880, where No Mercy's Jericho has 4060) -- DIAGNOSIS: ring_void_guard off (qa_void_off 1), so the void shows if the move makes it",
+ "wrestlers": [
+  "0x0371",
+  "LEX LUGER"
+ ],
+ "costumes": [
+  0,
+  0
+ ],
+ "arena": "MONDAY NITRO",
+ "control": [
+  "cpu",
+  "cpu"
+ ],
+ "matches": 1,
+ "seconds": 240,
+ "shots": 2.0,
+ "force": {
+  "slot": 0,
+  "entries": [
+   0,
+   291
+  ],
+  "as": 128
+ },
+ "expect": [
+  {
+   "name": "the match started",
+   "when": "any",
+   "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+  },
+  {
+   "name": "Jericho's forced move ran",
+   "when": "end",
+   "check": "forced > 0"
+  },
+  {
+   "name": "nobody's position went bad",
+   "when": "always",
+   "check": "finite(s0_x, s0_y, s0_z, s1_x, s1_y, s1_z)"
+  },
+  {
+   "name": "nobody at the mat's height beyond the apron (the void)",
+   "when": "always",
+   "check": "not (s0_y > 60 and (abs(s0_x) > 360 or abs(s0_z) > 360)) and not (s1_y > 60 and (abs(s1_x) > 360 or abs(s1_z) > 360))"
+  }
+ ],
+ "options": {
+  "qa_void_off": 1
+ }
+}

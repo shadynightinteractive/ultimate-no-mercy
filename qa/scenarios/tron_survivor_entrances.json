@@ -1,0 +1,33 @@
+{
+  "about": "the SURVIVOR SERIES screen during the entrances (data/tron_all/TRON_ALL.md): a Royal Rumble's first two entrances at SURVIVOR SERIES -- the video on the close-up scene's screen in the close shots (entrance steps 5 / 11), and on the stage's screen in the wide shots",
+  "match": "rumble",
+  "wrestlers": [
+    "STEVE AUSTIN"
+  ],
+  "control": [
+    "cpu"
+  ],
+  "arena": "SURVIVOR SERIES",
+  "options": {
+    "rumble_entrants": 4,
+    "rumble_interval": 60,
+    "titantron_screens": true,
+    "titantron_live": true
+  },
+  "matches": 1,
+  "seconds": 120,
+  "shots": 0.5,
+  "shot_when": "$c.mode -eq 0 -and $c.screen -eq 42 -and $c.entrance_step -ge 1 -and $c.entrance_step -le 29",
+  "expect": [
+    {
+      "name": "the entrances ran",
+      "when": "any",
+      "check": "mode == 0 and screen == 42 and entrance_step >= 1 and entrance_step <= 29"
+    },
+    {
+      "name": "the arena is SURVIVOR SERIES",
+      "when": "any",
+      "check": "venue == 5 and stage == 2"
+    }
+  ]
+}

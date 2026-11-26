@@ -1,0 +1,13 @@
+{
+ "about": "WrestleMania 2000's MATT HARDY: what the handler is told for him (wm2kall, 2026-11-13). Everything else comes from the ROM.",
+ "string_id": "matt_hardy_wm2000",
+ "key": "matt_hardy_wm2000",
+ "wm2000": {
+  "roster_index": 45,
+  "game_id": "0x0804"
+ },
+ "moveset": {
+  "reference_ordinal": 31,
+  "reference_why": "No Mercy's own"
+ }
+}

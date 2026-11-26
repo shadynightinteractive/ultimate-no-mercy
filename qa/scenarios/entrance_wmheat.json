@@ -1,0 +1,33 @@
+{
+  "about": "the entrances' close shots in SUNDAY NIGHT HEAT (arena 17): WM2000's 3D entrance scene 1 behind the Superstar, placed as WM2000's own close shots have it (its pose spot at No Mercy's origin, as RAW IS WAR WM 2000's) -- the HEAT aprons, RAW IS WAR's 3D set (truss, curtains, WWF doorway, Attitude towers) with the Sunday Night Heat screen and WM2000's ramp",
+  "match": "rumble",
+  "wrestlers": [
+    "HOLLYWOOD HOGAN"
+  ],
+  "control": [
+    "cpu"
+  ],
+  "arena": "SUNDAY NIGHT HEAT",
+  "options": {
+    "rumble_entrants": 4,
+    "rumble_interval": 60,
+    "titantron_screens": true,
+    "titantron_live": true
+  },
+  "matches": 1,
+  "seconds": 120,
+  "shots": 0.5,
+  "shot_when": "$c.mode -eq 0 -and $c.screen -eq 42 -and $c.entrance_step -ge 1 -and $c.entrance_step -le 29",
+  "expect": [
+    {
+      "name": "the entrances ran",
+      "when": "any",
+      "check": "mode == 0 and screen == 42 and entrance_step >= 1 and entrance_step <= 29"
+    },
+    {
+      "name": "the arena is ours (arena_current 17)",
+      "when": "any",
+      "check": "venue == 17 and stage == 2"
+    }
+  ]
+}

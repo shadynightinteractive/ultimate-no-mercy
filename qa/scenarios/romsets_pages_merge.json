@@ -1,0 +1,57 @@
+{
+ "about": "romsets (2026-11-24): romsets_pages with F2's MERGE SAME WRESTLERS on (auto_merge 1): the families the start-up makes, on an install with some of the source games -- every box still a Superstar the install has, and the exe's '[families]' lines for qa\romsets_check.py --merge.",
+ "match": "arcade",
+ "matches": 0,
+ "seconds": 185,
+ "shots": 3.0,
+ "options": {
+  "free_play": true,
+  "attract_demos": false,
+  "qa_removal": 2,
+  "auto_merge": 1
+ },
+ "pads": [
+  "60.0 1 start 200",
+  "64.0 1 start 200",
+  "68.0 1 a 200",
+  "80.0 1 righttrigger 250",
+  "83.0 1 righttrigger 250",
+  "86.0 1 righttrigger 250",
+  "89.0 1 righttrigger 250",
+  "92.0 1 righttrigger 250",
+  "95.0 1 righttrigger 250",
+  "98.0 1 righttrigger 250",
+  "101.0 1 righttrigger 250",
+  "104.0 1 righttrigger 250",
+  "107.0 1 righttrigger 250",
+  "110.0 1 righttrigger 250",
+  "113.0 1 righttrigger 250",
+  "116.0 1 righttrigger 250",
+  "119.0 1 righttrigger 250",
+  "122.0 1 righttrigger 250",
+  "125.0 1 righttrigger 250",
+  "128.0 1 righttrigger 250",
+  "131.0 1 righttrigger 250",
+  "134.0 1 righttrigger 250",
+  "137.0 1 righttrigger 250",
+  "140.0 1 righttrigger 250",
+  "143.0 1 righttrigger 250",
+  "146.0 1 righttrigger 250",
+  "149.0 1 righttrigger 250",
+  "152.0 1 righttrigger 250",
+  "155.0 1 righttrigger 250",
+  "158.0 1 righttrigger 250",
+  "161.0 1 righttrigger 250",
+  "164.0 1 righttrigger 250",
+  "167.0 1 righttrigger 250",
+  "170.0 1 righttrigger 250",
+  "173.0 1 righttrigger 250"
+ ],
+ "expect": [
+  {
+   "name": "no model's matrices ever went bad",
+   "when": "always",
+   "check": "bad_mtx == 0"
+  }
+ ]
+}

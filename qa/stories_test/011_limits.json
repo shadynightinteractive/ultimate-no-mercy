@@ -1,0 +1,71 @@
+{
+ "title": "Upgrade test D: the longest text",
+ "menu": "Upgrade Test D 24 letter",
+ "cast": {
+  "rival": "THE ROCK"
+ },
+ "nodes": {
+  "one": {
+   "chapter": "THE LONGEST CHAPTER TITLE",
+   "pages": [
+    "The quick brown fox jumped over all the lazy dog\nThe quick brown fox jumped over all the lazy dog\nThe quick brown fox jumped over all the lazy dog\nThe quick brown fox jumped over all the lazy dog\nThe quick brown fox jumped over all the lazy dog\nThe quick brown fox jumped over all the lazy dog\nThe quick brown fox jumped over all the lazy dog"
+   ],
+   "scene": {
+    "place": "hall",
+    "cast": [
+     "player",
+     "rival"
+    ],
+    "steps": [
+     {
+      "say": "The quick brown fox jumped over all the lazy dog\nThe quick brown fox jumped over all the lazy dog\nThe quick brown fox jumped over all the lazy dog",
+      "who": "rival"
+     },
+     {
+      "say": "{rival.catchphrase}\n{player.signoff}",
+      "who": "player"
+     },
+     {
+      "say": "{rival.nickname}, {rival.finisher}",
+      "who": "rival"
+     },
+     {
+      "ask": "The quick brown fox jumped over all the lazy dog",
+      "options": [
+       "Option with its 28 letters o",
+       "Two",
+       "Three",
+       "Four"
+      ],
+      "who": "player"
+     },
+     {
+      "narrate": "The quick brown fox jumped over all the lazy dog\nThe quick brown fox jumped over all the lazy dog\nThe quick brown fox jumped over all the lazy dog\nThe quick brown fox jumped over all the lazy dog\nThe quick brown fox jumped over all the lazy dog\nThe quick brown fox jumped over all the lazy dog\nThe quick brown fox jumped over all the lazy dog"
+     }
+    ]
+   },
+   "match": {
+    "slots": [
+     "player",
+     "rival"
+    ],
+    "script": [
+     {
+      "when": "time 0:15",
+      "do": "end",
+      "winner": "player"
+     }
+    ]
+   },
+   "requirement": "The quick brown fox jumped over all the lazy dog\nThe quick brown fox jumped over all the lazy dog\nThe quick brown fox jumped over all the lazy dog",
+   "branches": [
+    {
+     "next": "end",
+     "pages": [
+      "The quick brown fox jumped over all the lazy dog\nThe quick brown fox jumped over all the lazy dog\nThe quick brown fox jumped over all the lazy dog\nThe quick brown fox jumped over all the lazy dog\nThe quick brown fox jumped over all the lazy dog\nThe quick brown fox jumped over all the lazy dog\nThe quick brown fox jumped over all the lazy dog"
+     ]
+    }
+   ]
+  }
+ }
+}

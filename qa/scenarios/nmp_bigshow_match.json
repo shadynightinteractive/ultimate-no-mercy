@@ -1,0 +1,15 @@
+{
+ "about": "nmplus (2026-11-19): Big Show, there with any ROMs (mod extras.c: his option needs no other game) -- in his box (0x0201) against Kane, CPU vs CPU, a whole match. With only the No Mercy ROM he has Kane's moves (roster.c roster_bigshow_moveset), the game's own empty music and video slots, no photo; with No Mercy Plus V3, its moves, photo, theme and video. Run on scratch installs made with each set of ROMs (UNM_GAME).",
+ "wrestlers": ["0x0201", "0x0004"],
+ "costumes": [0, 0],
+ "control": ["cpu", "cpu"],
+ "matches": 1,
+ "seconds": 420,
+ "shots": 0.5,
+ "expect": [
+  { "name": "the match started", "when": "any", "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 120" },
+  { "name": "Big Show's box (0x0201) and Kane", "when": "match", "check": "s0_id == 0x0201 and s1_id == 0x0004" },
+  { "name": "no model's matrices ever went bad", "when": "always", "check": "bad_mtx == 0" },
+  { "name": "no wrestler's position ever went bad", "when": "always", "check": "finite(s0_x, s0_y, s0_z, s1_x, s1_y, s1_z)" }
+ ]
+}

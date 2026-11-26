@@ -1,0 +1,28 @@
+{
+ "about": "2026-11-02 story upgrade, phase 7 / 8 in each arena (014_tron_arenas.json): the close-up of the arena's own Titantron with Vince's video on it (the screen framed, the bubble over it), JR and King close at their table, in all the arenas with a screen, and SUMMERSLAM (no screen of its own: the full-screen cut). Look at each",
+ "match": "arcade",
+ "wrestlers": [
+  "STEVE AUSTIN",
+  null
+ ],
+ "matches": 0,
+ "seconds": 1500,
+ "shots": 2.0,
+ "options": {
+  "free_play": true,
+  "attract_demos": false,
+  "custom_story": 1,
+  "qa_story": 3
+ },
+ "expect": [
+  {
+   "name": "the last arena reached",
+   "when": "any",
+   "check": "matches >= 11100"
+  }
+ ],
+ "shot_when": "$c.screen -eq 23",
+ "stories": [
+  "014_tron_arenas.json"
+ ]
+}

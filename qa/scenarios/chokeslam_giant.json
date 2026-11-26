@@ -1,0 +1,45 @@
+{
+  "about": "2026-11-01, The Giant (0x010A): his finisher, the Huge Chokeslam (1520, his Revenge finisher byte for byte; his standing special, entry 70) -- every front grapple of his (entries 1..60) done as 70; idle player 2: the lift by the throat, the slam, the Rock down; the shots looked at. (qa_fsub 2 picked only entry 55, his Two Handed Choke Lift.)",
+  "wrestlers": [
+    "THE GIANT",
+    "THE ROCK"
+  ],
+  "control": [
+    "cpu",
+    "pad2"
+  ],
+  "arena": "SMACKDOWN",
+  "matches": 1,
+  "seconds": 200,
+  "shots": 0.5,
+  "force": {
+    "slot": 0,
+    "entries": [
+      1,
+      60
+    ],
+    "as": 70
+  },
+  "expect": [
+    {
+      "name": "the match started",
+      "when": "any",
+      "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "grapples forced",
+      "when": "any",
+      "check": "forced >= 1"
+    },
+    {
+      "name": "the Huge Chokeslam played",
+      "when": "match",
+      "check": "s0_move >= 1520 and s0_move <= 1529"
+    },
+    {
+      "name": "nobody's position went bad",
+      "when": "always",
+      "check": "finite(s0_x, s0_y, s0_z, s1_x, s1_y, s1_z)"
+    }
+  ]
+}

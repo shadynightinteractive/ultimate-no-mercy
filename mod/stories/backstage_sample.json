@@ -1,0 +1,89 @@
+{
+  "title": "Watch Your Back",
+  "menu": "Watch Your Back",
+  "championship": "world",
+  "cast": { "champ": "triple_h", "ally": "mankind", "heel": "kane" },
+  "start": "interview",
+  "nodes": {
+    "interview": {
+      "chapter": "WATCH YOUR BACK",
+      "scene": {
+        "place": "locker room",
+        "cast": ["player", "ally"],
+        "steps": [
+          { "say": "{player}! You hear what {champ} said?\nHe sent {heel} to take you out tonight.", "who": "ally" },
+          { "say": "Let him come. I've been waiting\nfor a shot at that title.", "who": "player" },
+          { "say": "Then you'll need somebody\nwatching your back out there.", "who": "ally" },
+          { "ask": "Do you want {ally} in your corner?", "options": ["Yes, watch my back", "No, I go alone"], "who": "player" },
+          { "if": "choice 1", "then": [
+              { "say": "Good. Nobody gets to you\nwithout going through me.", "who": "ally" }
+            ], "else": [
+              { "say": "Suit yourself, {player}.\nDon't say I didn't offer.", "who": "ally", "do": "stand" }
+            ] },
+          { "place": "hall", "cast": [{ "who": "heel", "at": 1 }, { "who": "champ", "at": 2 }] },
+          { "say": "Tonight you finish {player}.\nThen the title is safe.", "who": "champ" },
+          { "say": "Consider it done.", "who": "heel" }
+        ]
+      },
+      "match": { "type": "single", "slots": ["player", ["heel", "big_show"]], "arena": "RAW IS WAR" },
+      "requirement": "Singles match: {player} vs {heel}.\nWin, and the title shot is yours.",
+      "retries": 2,
+      "branches": [
+        { "if": "win and choice 1", "money": 1000, "next": "betrayal",
+          "pages": ["{player} beat {heel}!\nAnd {ally} was there all the way."] },
+        { "if": "win", "money": 1000, "next": "title",
+          "pages": ["{player} beat {heel} alone!"] },
+        { "next": "gameover" }
+      ]
+    },
+    "betrayal": {
+      "chapter": "THE TITLE SHOT",
+      "scene": [
+        { "place": "parking lot", "cast": [{ "who": "ally", "at": 1 }, { "who": "champ", "at": 2 }] },
+        { "say": "You get in that ring tonight,\nand you make sure he loses.", "who": "champ" },
+        { "say": "He trusts me.\nHe'll never see it coming.", "who": "ally" },
+        { "narrate": "{player} has no idea\nwhat {ally} has planned..." }
+      ],
+      "match": { "type": "single", "slots": ["player", ["champ", "the_rock"]], "title": "world",
+                 "runins": [{ "who": "ally", "helps": "opponents" }] },
+      "requirement": "World title match: {player} vs {champ}.\nWatch out for {ally}!",
+      "branches": [
+        { "if": "win", "money": 5000, "set": { "heel": "ally" }, "next": "revenge",
+          "pages": ["{player} won the title...\nin spite of {ally}!"] },
+        { "next": "end", "pages": ["{ally} cost {player} the title.\nTrust no one."] }
+      ]
+    },
+    "title": {
+      "chapter": "THE TITLE SHOT",
+      "scene": [
+        { "place": "ring", "cast": ["player", "champ"] },
+        { "say": "You want my title? Come take it!", "who": "champ" },
+        { "say": "Tonight it's mine.", "who": "player" }
+      ],
+      "match": { "type": "single", "slots": ["player", ["champ", "the_rock"]], "title": "world" },
+      "requirement": "World title match: {player} vs {champ}.",
+      "branches": [
+        { "if": "win", "money": 5000, "next": "end",
+          "scene": [
+            { "place": "ring", "cast": [{ "who": "player", "at": 4 }] },
+            { "say": "The new World Champion!", "who": "player" }
+          ] },
+        { "next": "end", "pages": ["{champ} keeps the title.\nThis isn't over."] }
+      ]
+    },
+    "revenge": {
+      "chapter": "PAYBACK",
+      "scene": [
+        { "place": "parking lot", "cast": ["player", "heel"] },
+        { "say": "Why, {heel}? I trusted you!", "who": "player" },
+        { "say": "Nothing personal.\nIt was always about the title.", "who": "heel" }
+      ],
+      "match": { "type": "single", "slots": ["player", ["heel", "kane"]], "location": "parking lot" },
+      "requirement": "Payback in the parking lot:\n{player} vs {heel}.",
+      "branches": [
+        { "if": "win", "money": 2000, "next": "end", "pages": ["Payback is served.\n{player} stands tall."] },
+        { "next": "end", "pages": ["{heel} gets the last laugh."] }
+      ]
+    }
+  }
+}

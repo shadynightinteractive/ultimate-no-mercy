@@ -1,0 +1,64 @@
+{
+ "about": "WCW/nWo Revenge port: what was chosen by hand for him (moved out of mod\\gen's tables by handlers\\extract_fixes.py, 2026-11-12). Edit here; the handler reads nothing else that is his alone.",
+ "string_id": "lex_luger",
+ "key": "luger",
+ "legacy_game_id": "0x010C",
+ "name": "LEX LUGER",
+ "short_name": "LUGER",
+ "height": 16,
+ "weight": 170,
+ "music_slot": 72,
+ "video": 0,
+ "revenge": {
+  "moveset_file": "0x1A9",
+  "code": "0x003"
+ },
+ "moveset": {
+  "reference_ordinal": 21,
+  "allies": [
+   "0x010B",
+   "0x0106",
+   "0x0108"
+  ],
+  "weight_class": [
+   1,
+   1,
+   0
+  ],
+  "stance": 0,
+  "slot_overrides": {
+   "235": 9880
+  },
+  "no_struggling_slam": true
+ },
+ "costumes": [
+  {
+   "capture": "sl_c0",
+   "slot": 1
+  },
+  {
+   "capture": "at_sl1",
+   "slot": 1
+  },
+  {
+   "capture": "at_sl2",
+   "slot": 1
+  },
+  {
+   "capture": "at_sl3",
+   "slot": 1
+  }
+ ],
+ "skin": "no_mercy",
+ "photo_number": 121,
+ "photo": {
+  "photo": 121,
+  "shot": "data/revport/ports4/cap/cc_luger.png",
+  "box": [
+   193,
+   23,
+   243,
+   73
+  ]
+ }
+}

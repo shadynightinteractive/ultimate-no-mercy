@@ -1,0 +1,26 @@
+{
+  "match": "arcade",
+  "matches": 0,
+  "seconds": 200,
+  "shots": 2.0,
+  "expect": [
+    {
+      "name": "the title up",
+      "when": "any",
+      "check": "mode == 0 and screen == 0"
+    },
+    {
+      "name": "PRESS START drawn on the title and its blink going (the counter moving in a second)",
+      "when": "any",
+      "check": "mode == 0 and screen == 0 and ((rr_next >> 16) & 255) > 10 and (rr_next >> 24) > ((rr_next >> 8) & 255)"
+    }
+  ],
+  "shot_when": "$c.mode -eq 0 -and $c.screen -eq 0",
+  "about": "2026-11-07, the two modes phase 3: Regular's title left alone (no driver; ATTRACT off in Regular so it stays) -- the game's own PRESS START (sprite 15 at 240,200). state.csv (qa_modes) on the title: rr_next = sprite 15's requests in the last second (& 255) | its blink counter's lowest (0x8014A5AC) << 8 | its draws << 16 | the counter's highest << 24 (logic.c qa_press_start_second). Shots of the title.",
+  "options": {
+    "game_mode": "Regular",
+    "settings_version": 5,
+    "qa_modes": 1,
+    "attract_regular": false
+  }
+}

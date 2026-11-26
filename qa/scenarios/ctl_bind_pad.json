@@ -1,0 +1,48 @@
+{
+  "about": "every N64 input bindable (2026-11-19, roster_ctl): F2 > CONTROLS > CONTROLLER BUTTONS opened in the arcade's QA Royal Rumble (qa_op works there, not in a QA singles demo: logic.c qa_on 1 returns before the F2 menu) (qa_op 22), a capture of SPECIAL (STICK PUSH) asked for (qa_bind_row 19), then the scripted pad's R3 (rightstick) binds it -- the exe saves controls_n64.json and logs '[pads] controllers: SPECIAL = R3'; the later R3 presses push player 1's stick ('[pads] player 1: SPECIAL held'). Read the log and the copy's controls_n64.json after the run.",
+  "match": "rumble",
+  "wrestlers": [
+    "STEVE AUSTIN"
+  ],
+  "control": [
+    "cpu"
+  ],
+  "matches": 0,
+  "seconds": 110,
+  "shots": 4,
+  "options": {
+    "rumble_entrants": 4,
+    "rumble_interval": 30,
+    "qa_op": 22,
+    "qa_op_at": 8,
+    "qa_bind_row": 19,
+    "qa_modes": 1
+  },
+  "pads": [
+    "10.0 1 rightstick 300",
+    "10.0 repeat 4"
+  ],
+  "expect": [
+    {
+      "name": "the Rumble started",
+      "when": "any",
+      "check": "stage == 2 and mode == -2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "the CONTROLLER BUTTONS page open (PG_PADKEYS 11)",
+      "when": "any",
+      "check": "((bs_tries >> 24) & 1) == 1 and ((bs_grabs >> 8) & 0xFF) == 11"
+    },
+    {
+      "name": "the capture ended with a binding set and saved",
+      "when": "any",
+      "check": "((bs_grabs >> 24) & 0x7F) == 1"
+    },
+    {
+      "name": "never cancelled",
+      "when": "always",
+      "check": "((bs_grabs >> 24) & 0x7F) != 2"
+    }
+  ],
+  "shot_when": "(($c.bs_grabs -shr 8) -band 0xFF) -eq 11"
+}

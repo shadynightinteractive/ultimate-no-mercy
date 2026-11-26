@@ -1,0 +1,36 @@
+{
+ "about": "c2hands (2026-11-19): with No Mercy + Revenge and NO WrestleMania 2000, a built-in Revenge port (Goldberg 0x010D, Revenge's own hands as modelled) on the Superstar Select: his box under the cursor, his model and photo. qa_variant 1: state.csv bs_tries = the select's Superstar under the cursor | costume << 16 | 1 << 24",
+ "match": "arcade",
+ "wrestlers": [
+  "0x010D",
+  "0x0379"
+ ],
+ "costumes": [
+  0,
+  0
+ ],
+ "matches": 0,
+ "seconds": 240,
+ "shots": 0.5,
+ "options": {
+  "free_play": true,
+  "attract_demos": false,
+  "qa_versus": 20,
+  "qa_variant": 1
+ },
+ "env": {
+  "SDL_GAMECONTROLLER_IGNORE_DEVICES_EXCEPT": "0x0000/0x0000"
+ },
+ "expect": [
+  {
+   "name": "his box on the select, under the cursor",
+   "when": "any",
+   "check": "(bs_tries & 0x1000000) != 0 and (bs_tries & 0xFFFF) == 0x010D"
+  },
+  {
+   "name": "no model's matrices ever went bad",
+   "when": "always",
+   "check": "bad_mtx == 0"
+  }
+ ]
+}

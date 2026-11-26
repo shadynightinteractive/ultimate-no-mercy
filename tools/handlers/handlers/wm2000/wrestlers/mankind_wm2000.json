@@ -1,0 +1,13 @@
+{
+ "about": "WrestleMania 2000's MANKIND: what the handler is told for him (wm2kall, 2026-11-13). Everything else comes from the ROM.",
+ "string_id": "mankind_wm2000",
+ "key": "mankind_wm2000",
+ "wm2000": {
+  "roster_index": 17,
+  "game_id": "0x0202"
+ },
+ "moveset": {
+  "reference_ordinal": 6,
+  "reference_why": "No Mercy's own"
+ }
+}

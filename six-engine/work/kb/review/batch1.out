@@ -1,0 +1,210 @@
+FUNC | func_80001A04 | boot-segment init: for 4 x 2 calls func_80001918(j,i,RGBA 0x808080FF) to set 4 RGBA color entries in two tables
+LOOP | func_80001A04 | uVar3 < 4 | UNSURE | 4 color entries (4 bytes each) in tables 0x80062B68 and 0x80062B88 (+DAT_80043610*0x10 buffer); inner loop uVar2 < 2 is an unused param; low-level main-segment code, likely not wrestler-related (possibly lights/per-port colors)
+TABLE | 0x80062B68 | 4 | func_80001A04 | indexed by i (0..3) + 0x10*DAT_80043610; RGBA color, written via func_80001918 (twin table 0x80062B88); meaning unknown
+CONST | func_80001A04 | func_80001918: (param_2 & 0xff) < 4 && param_1 < 2 | bounds of the 4-entry color table (not obviously slots)
+FUNC | func_80004EE8 | audio/IO helper: retries func_80003F3C/func_80004714 up to 4 times
+LOOP | func_80004EE8 | iVar1 * 0x10000 >> 0x10 < 4 | OTHER | retry count, no arrays
+FUNC | func_80008D6C | draws a 20x14 4bpp glyph into a texture buffer (nibble masks 0xf0/0xf)
+FUNC | func_8000A4DC | allocates and clears two pools (0x80 x 0x1C at PTR_DAT_80091c84, 0x28 x 0x58 at PTR_DAT_8009edd8)
+FUNC | func_8000D688 | builds an RDP texture-load display list for a texture/palette pair
+FUNC | func_8000E768 | sets byte +0x1A of a model-part object to (n OR 0x80) if n < 4
+CONST | func_8000E768 | param_2 < 4 | UNSURE: 4 possible values of a per-part render mode/index; called from func_80014DC8(model, n) for all 0x1C parts (stride 0xDC) of model block 0x80091CC0+model*0x1810; if n were a slot/port colour index it would need 6
+FUNC | func_8000F3B0 | emits tiled texture-rectangle RDP commands (display list)
+FUNC | func_800119A4 | one-time load of a 0x169B-entry u32 table into DAT_8006a220
+FUNC | func_80012130 | per-model animation/pose update (model index param_1): anim id/frame, root motion, bone matrices
+ARRAY | 0x80069F20 | 0xC0 | ? | MODEL | func_80012130 | indexed by model idx: +0 char flag, +1 char, +4 s16 current anim id, +6 s16 current frame, +0x18 matrix (0x80069F38)
+ARRAY | 0x800A1130 | 0xB24 | ? | MODEL | func_80012130 | model skeleton block (same array as context's 0x800A11D0/0xB24; lowest field touched): +0x0C (0x800A113C) x, +0x10 y, +0x14 (0x800A1144) z, +0x78, +0x80, +0xC4..+0xCC (0x800A11F4..), +0xD0..+0xD8 (0x800A1200..0x800A1208 root delta), +0x26C..+0x274 (0x800A139C..0x800A13A4); bones at +0x7C*n
+ARRAY | 0x80091CC0 | 0x1810 | ? | MODEL | func_80012130 | model render block: +0x1C (0x80091CDC) matrix out, +0xDC (PTR_DAT_80091d9c, ptr array stride 0x1810) +0x5C, +0xF8 (0x80091DB8), +0x138 (0x80091DF8); parts at +0xDC*n
+LOOP | func_80012130 | uVar10 < 0x17 | OTHER | bones 1..0x16 (stride 0x7C in 0x800A1130 block, 0xDC in 0x80091CC0 block)
+NOTE | func_80012130 | (int)param_1 == DAT_8009fde0 - 1 gives that model an extra y offset DAT_800a9352: "last model index" special case; DAT_8009fde0 may be a model count (value 0 in RAM image) - UNSURE, check when adding models
+FUNC | func_80012BE0 | builds the 0x13 bone matrices of one model (model idx param_1) from bone tables
+LOOP | func_80012BE0 | uVar9 < 0x14 | OTHER | bones (order table 0x80047EF8, parent 0x80047F0C, offsets 0x80047ED0 x2)
+ARRAY | 0x8006A268 | 1 | ? | MODEL | func_80012BE0 | char per model idx: selects a 4-byte entry in tables 0x80047F54/0x80047F68/0x80047F7C/0x80047FB8/0x80047FCC/0x80047FE0 (body-type/size class)
+ARRAY | 0x80091CDC | 0x1810 | ? | MODEL | func_80012BE0 | bone matrices written at model*0x1810 + bone*0xDC + 0x80091CDC (field of 0x80091CC0 block)
+FUNC | func_80014F5C | per-model post-anim update: per-bone ground/shadow flags and copies of part attributes (model idx param_1)
+LOOP | func_80014F5C | uVar4 < 0x14 | OTHER | bones 1..0x13 of model block 0x80091CC0+model*0x1810 (stride 0xDC) using 0x800A1200+model*0xB24
+LOOP | func_80014F5C | uVar4 < 3 | OTHER | 3 attachment sub-objects at model block +0x157C/+0x1594 (stride 0xDC)
+NOTE | func_80014F5C | model block 0x80091CC0 fields touched: +0xF4, +0x1D0, +0x2AC, +0x388, +0x464, +0x1148, +0x1224, +0x1300, +0x13DC, +0x14B8
+FUNC | func_80015B68 | per-model load state machine: for each of 4 model request slots, load/attach model data via func_800148F0/func_80014D7C
+LOOP | func_80015B68 | iVar10 < 4 | MODEL | 4 model load requests; iVar5 = model index passed to func_800148F0 (0x8008A980+m*0x270, 0x80070D20+m*4) and func_80014D7C
+ARRAY | 0x80076278 | 1 | 4 | MODEL | func_80015B68 | s8 load state per model (-1 idle, 0..3 steps)
+ARRAY | 0x80076270 | 2 | 4 | MODEL | func_80015B68 | s16 requested wrestler/costume id per model
+ARRAY | 0x80076264 | 2 | 4 | MODEL | func_80015B68 | s16 loaded id per model (copied from 0x80076270)
+ARRAY | 0x8007626C | 1 | 4 | MODEL | func_80015B68 | u8 per model (copied from 0x80070D12)
+ARRAY | 0x80070D12 | 2 | 4 | MODEL | func_80015B68 | s16 per model (variant/costume)
+NOTE | func_80015B68 | 0x80076264(4xs16),0x8007626C(4xu8),0x80070D12(4xs16, then 0x80070D20 stride-4 model array) are packed back to back: cannot grow to 6 in place, must be relocated
+ARRAY | 0x8008A980 | 0x270 | ? | MODEL | func_80015B68 | via func_800148F0(m)/func_80014D7C(m): model description block (context's 0x8008ABD4 is +0x254 of this)
+ARRAY | 0x80070D20 | 4 | ? | MODEL | func_80015B68 | via func_800148F0: per-model 4-byte entry
+FUNC | func_80019550 | updates per-model palette/texture tables for 2 colour groups (model idx param_1, part param_3)
+ARRAY | 0x800A4074 | 0x5B0 | ? | MODEL | func_80019550 | pointer at model*0x5B0 + part*0x34 + 0x800A4074 (same 0x5B0 model array as context's 0x800A4460)
+LOOP | func_80019550 | uVar5 < 2 | OTHER | 2 palette groups (0x8005002C u16 masks, 0x80050030 shifts)
+FUNC | func_8001E488 | init/update of a 4-piece decorative object (0x8007AC40) and 2 groups of 3 objects (0x8007B080)
+LOOP | func_8001E488 | uVar6 < 4 | OTHER | 4 pieces of one animated 3D/2D object at 0x8007AC40 stride 0xDC (data 0x800500E8/0x800500F0 = 4 u16 ids 0x4F6..0x4F9; piece 3 gets different scale); func_8001DF38 animates each piece differently, so not per wrestler
+LOOP | func_8001E488 | uVar6 < 2 / uVar12 < 3 | OTHER | 2 groups x 3 objects at 0x8007B080 stride 0x294/0xDC
+FUNC | func_8001EF40 | updates 12 objects (0x800771D0 stride 0xDC, 0x80077C20 stride 0x34)
+FUNC | func_8001F088 | positions 6 objects at 0x80082D40 stride 0xDC from table indexed by DAT_80083fde (6 is not a wrestler count)
+FUNC | func_80022178 | for each of 4 ring sides x 3 ropes, starts rope-shake animation if active
+LOOP | func_80022178 | iVar1 < 4 | OTHER | 4 ring sides (func_80022448 maps side via byte table 0x80052884, rope state 0x80084410 + side*0x78 + rope*0x28)
+LOOP | func_80022178 | iVar3 < 3 | OTHER | 3 ropes; table 0x80084590 stride 0xC (side) / 4 (rope)
+TABLE | 0x80084590 | 4 | func_80022178 | [side*3+rope] s16 pair (+0 >= 0, +2 != 0 -> active); ring ropes, not slots
+FUNC | func_80029C70 | audio: for each of DAT_8008d284 voices (stride 0x13C) with id == p1, set flags
+FUNC | func_8002AA90 | audio: initialise sound-player channel table from a parameter list
+FUNC | func_8002AD88 | returns max of first int over a NULL-terminated pointer list 0x80053124
+FUNC | func_8002D950 | audio: build RSP load command for a circular sample buffer
+FUNC | func_8002F470 | controller/rumble pak init sequence (libultra-style), tries 5 ids from 0x80053470
+FUNC | func_800D9990 | match main loop: fades, per-frame update, START to pause (func_800DAF18), end/restart handling
+LOOP | func_800D9990 | uVar6 < DAT_80151ed7 | UNSURE | over 0x800A6028 int entries: builds port mask DAT_80151ee0 |= 1 << (entry-1); entry value = controller port+1 (0 = CPU); count DAT_80151ed7 comes from match type (tag 2, 0x28000 3, 0x6000 4, +1 for 0x80000)
+LOOP | func_800D9990 | uVar6 < DAT_80151ed7 | PORT | tests bit uVar6 of port mask DAT_80151ee0 and pad 0x8009EDA6+uVar6*0xC & 0x1000 (START) -> DAT_80151ede = port+1; indexes pads by a count that is derived from the number of sides/wrestlers
+LOOP | func_800D9990 | uVar6 < 4 | PORT | pads 0x8009EDA6 stride 0xC & 0xF03F (any button)
+LOOP | func_800D9990 | uVar7 < 4 / uVar7 < 3 | OTHER | frame waits (func_800030F4)
+ARRAY | 0x800A6028 | 4 | 4 | UNSURE | func_800D9990 | int per HUD side/participant (only 0x800A6028..0x800A6034 referenced); value = controller port+1 or 0; iterated in parallel with HUD panels in func_800DEDE0 -> per slot in free-for-all modes, per team in tag
+MASK | func_800D9990 | DAT_80151ee0 = 0xf default; |= 1 << (port-1) | PORT | mask of controller ports allowed to pause; with 0x80000 it becomes mask<<1|1 (UNSURE why)
+CONST | func_800D9990 | DAT_80151ed7 = 4 when (DAT_80097ec0 & 0x6000) | max number of HUD sides/participants (4 = all wrestlers in rumble/4-way); same formula as DAT_80158e98 in func_800DDB10
+NOTE | func_800D9990 | if DAT_80151ed7 becomes 6 the START loop would read pads 4,5 (0x8009EDD4..) - bound it by 4 ports
+FUNC | func_800DAF18 | pause menu (param = port+1): 6 menu items, display-list triple buffer
+CONST | func_800DAF18 | DAT_80151fea wraps 0..5 | 6 pause-menu items (OTHER)
+CONST | func_800DAF18 | (DAT_80144731+1) % 3 | display-list triple buffer (OTHER)
+NOTE | func_800DAF18 | reads pad 0x8009EDA6 + (param-1)*0xC: param is a controller port+1 (PORT)
+FUNC | func_800DFDCC | shows (clears hide bit 0x80) 3 HUD sprite objects for each of 4 HUD panels
+LOOP | func_800DFDCC | uVar2 < 4 | SLOT | 4 HUD panels (one per wrestler/side; panel count DAT_80158e98 <= 4); object ptrs 0x8015467C, 0x80155B64, 0x80155704 stride 0xDC
+ARRAY | 0x80154668 | 0xDC | 4 | SLOT | func_800DFDCC | HUD panel sprite object (+0x14 ptr = 0x8015467C), per panel
+ARRAY | 0x801556F0 | 0xDC | 4 | SLOT | func_800DFDCC | HUD panel sprite object (+0x14 ptr = 0x80155704), per panel
+ARRAY | 0x80155B50 | 0xDC | 4 | SLOT | func_800DFDCC | HUD panel sprite object (+0x14 ptr = 0x80155B64), per panel
+FUNC | func_800E0D20 | HUD 3-digit counter (0..999) in group 0; hides all counter digits otherwise
+LOOP | func_800E0D20 | uVar5 < 3 | OTHER | 3 digits (0x80157F60 stride 0xDC, last-digit cache 0x801589B0)
+LOOP | func_800E0D20 | uVar5 < 4 | SLOT | 4 HUD counter groups (stride 0x294 = 3 digit objects) at 0x80157F60/0x80157F74; per HUD panel (func_800E0A0C draws one 2-digit counter per panel, count 2/3/4 by match type)
+ARRAY | 0x80157F60 | 0x294 | 4 | SLOT | func_800E0D20 | per HUD panel: 3 digit sprite objects of 0xDC (+0x14 ptr at 0x80157F74)
+ARRAY | 0x801589B0 | 3 | 4 | SLOT | func_800E0D20 | per HUD panel: 3 cached digit chars
+FUNC | func_800E1540 | sets one 4bpp texel in a texture
+FUNC | func_800E873C | wrestler action handler (corner/turnbuckle approach and follow-ups)
+TABLE | 0x8014D208 | 4 | func_800E873C | indexed by wrestler +0xCC (corner index from func_8012BE50); 4 angles -0x600,-0x200,0x200,0x600 = ring corners (OTHER)
+NOTE | func_800E873C | passes wrestler +0x9E to func_80017780 (model-index API); uses +0x18,+0x70,+0x74,+0x82,+0x84,+0x86,+0x8A,+0xA4,+0xCC,+0x10C,+0x120,+0x348
+FUNC | func_800EC484 | retarget: sort other active wrestlers by distance, pick nearest not equal to current +0x08/+0x0C, set +0x08
+LOOP | func_800EC484 | lVar6 < 4 | SLOT | wrestlers 0x80159990 stride 0x358: +0xA0 (0x80159A30) != -1, position +0x120 (0x80159AA4+0xC)
+LOOP | func_800EC484 | iVar7 = 3 .. -1 < iVar7 | SLOT | counts down from 3 clearing the 4-entry stack candidate array
+LOOP | func_800EC484 | iVar7 < 4 (x2) | SLOT | over the 4 sorted candidates
+NOTE | func_800EC484 | fixed stack array aiStack_68[9]+auStack_44[3] = 4 entries x 3 ints (slot, ?, distance): sized for 4 wrestlers, needs 6 entries
+NOTE | func_800EC484 | excludes self by comparing slot index with own +0x9E and calls func_800E144C(+0x9F byte, slot): +0x9E is used as the wrestler's own slot index
+FUNC | func_800EE0B8 | returns 1 if any active wrestler is in state 0xD0 or (0xBE with substate 0)
+LOOP | func_800EE0B8 | 3 < iVar2 | SLOT | wrestlers stride 0x358: +0xA0, +0x14 (0x801599A4) state, +0x18 (0x801599A8) substate
+FUNC | func_800EE130 | builds a bitmask: bits 4-7 = slots in state 0xC4, bits 0-3 = slots in state 0xBD/sub 3
+LOOP | func_800EE130 | iVar2 = 3 .. -1 < iVar2 (x2) | SLOT | counts down from slot 3 (offset 0xA08 = 3*0x358) over +0xA0, +0x14, +0x18
+MASK | func_800EE130 | result: bit (4+slot) for state 0xC4, bit slot for 0xBD | SLOT | 4 bits per group; consumer func_800DEDE0 tests 0x11 << panel; for 6 slots needs 6-bit groups (0x41 << slot)
+CONST | func_800EE130 | 0xa08 | 3*0x358 = offset of last slot
+FUNC | func_800F4BAC | CPU AI: decide whether to run in/break up (pin/tag interference) based on other wrestlers' states
+LOOP | func_800F4BAC | iVar4 < 4 | SLOT | wrestlers via PTR_DAT_8016b8ec (=0x80159990) stride 0x358: +0xA0, +0x14 == 0x80/0x82, +0x9E compared with self/opponent/other +0x9E
+LOOP | func_800F4BAC | iVar8 < 4 | SLOT | wrestlers stride 0x358: +0xA0, +0x9E, +0xE9, +0x80, +0x14 (!=0xA3), +0xF1, +0x120 position, +0x08 compared to self +0x9E
+LOOP | func_800F4BAC | 3 < iVar4 (while) | SLOT | wrestlers stride 0x358: +0xA0, +0x9E, +0x94, +0x120
+NOTE | func_800F4BAC | tag mode (0x1000): other = (self +0x9E) ^ 1, reads that wrestler's +0xA0,+0xE9,+0xF1 and checks self +0x08 == it: slot^1 pairing (per func_80115000 tag setup opponent = slot^1, partner = slot|2)
+NOTE | func_800F4BAC | wrestler +0x08 (target slot) compared directly with +0x9E: +0x9E behaves as slot index
+NOTE | func_800F4BAC | uses PTR_DAT_8016b8e8 (current wrestler), PTR_DAT_80159618 (its opponent), PTR_DAT_8016b92c (third wrestler), PTR_DAT_8015a6f0 (current AI state), 0x80159674 (opponent position)
+FUNC | func_800F8F48 | CPU AI: choose attack strategy (random 0..3) and dispatch
+CONST | func_800F8F48 | rand % 4, rand % 3 | AI strategy choice (OTHER)
+FUNC | func_800FDCD8 | CPU AI state step (wait/attack timing)
+FUNC | func_800FDEB8 | CPU AI state machine: move toward a ring side/direction 0..3 (AI +0x9C)
+TABLE | 0x80145C54 | 2 | func_800FDEB8 | u16[4] d-pad mask per direction (0x100,0x400,0x200,0x800); dir^2 = opposite (OTHER)
+TABLE | 0x80145C5C | 2 | func_800FDEB8 | u16[4] d-pad mask per direction (OTHER)
+TABLE | 0x80145C64 | 4 | func_800FDEB8 | u32[4] next direction {1,2,3,0} (OTHER)
+TABLE | 0x8014D218 | 2 | func_800FDEB8 | u16 indexed by direction AI+0x9C (OTHER)
+FUNC | func_800FEE64 | CPU AI state step (approach / grapple choice)
+ARRAY | 0x8016B718 | 1 | 4 | SLOT | func_800FEE64 | char indexed by wrestler +0x9E (slot/model); 4 bytes 0x8016B718..B then pointer at 0x8016B71C: packed, needs relocation for 6
+TABLE | 0x8014D258 | 2 | func_800FEE64 | u16 button masks indexed by func_800FF1B4 result / direction (OTHER)
+FUNC | func_80100174 | CPU AI state step (distance wait then attack)
+FUNC | func_80101D4C | CPU AI: pick a position index based on arena area DAT_80159628
+TABLE | 0x80145D74 | 0xC | func_80101D4C | indexed by DAT_80159628 (0x15..0x18, 4 arena spots) vec3 (OTHER)
+FUNC | func_80105134 | CPU AI: grapple/strike button choice
+FUNC | func_80106438 | CPU AI state machine: move along ring side +0x54 (0..3)
+TABLE | 0x8014D220 | 2 | func_80106438 | u16 indexed by AI +0x54 side (0..3) (OTHER)
+FUNC | func_80107E4C | CPU AI state machine (run/irish-whip follow-up)
+TABLE | 0x8014D258 | 2 | func_80107E4C | u16 d-pad combos indexed by 8-way direction (func_8012E1CC, ^4 = opposite) (OTHER)
+FUNC | func_8010A084 | CPU AI: choose one of 4 stick directions (table 0x80145F18 of 4 move ids, else rand%4)
+LOOP | func_8010A084 | iVar3 < 4 | OTHER | 4 directions/moves (0x80145F18 s16)
+FUNC | func_80110D7C | wrestler movement/action input handler (corners, ropes, apron)
+LOOP | func_80110D7C | iVar11 < 4 | OTHER | 4 ring corner positions 0x80146160 stride 0xC
+CONST | func_80110D7C | sVar9 - 1U & 3 | corner index arithmetic on +0xCC (OTHER)
+TABLE | 0x80146160 | 0xC | func_80110D7C | 4 ring corner vec3 (280,0,280...) (OTHER)
+FUNC | func_8011241C | jump-table dispatcher (11 cases at 0x80150938)
+FUNC | func_80114348 | per slot: load wrestler data/appearance from menu records (rumble/survival use entrant index)
+LOOP | func_80114348 | iVar5 < 4 | SLOT | 0x8016B570 (s16), wrestler +0xF8/+0xF9 (0x80159A88), 0x8009FE78 stride 0x40, 0x8009809C/0x80097FE4 stride 0x114
+ARRAY | 0x8016B570 | 2 | 4 | SLOT | func_80114348 | s16 per slot, -1 = slot unused (RAM: 1,0x405,-1,-1); next var at 0x8016B578: packed
+ARRAY | 0x8009FE78 | 0x40 | 4 | SLOT | func_80114348 | per-slot 0x40-byte block passed to func_8013CBAC
+ARRAY | 0x80097FE4 | 0x114 | ? | UNSURE | func_80114348 | wrestler record (0x8009809C = +0xB8): indexed by slot normally, by entrant index (+0xF8) in rumble mode (0x4000), so count may exceed 4
+ARRAY | 0x8009ED24 | 1 | 4 | SLOT | func_80114348 | u8 per slot = team/queue size (survival mode 0x4000000): +0xF8 = sum of sizes of lower slots, +0xF9 = +0xF8 + size
+NOTE | func_80114348 | wrestler +0xF8 = entrant/record index, +0xF9 = end of this slot's queue (mode 0x4000|0x4000000)
+FUNC | func_80115000 | match (re)start setup: per-slot placement, targets/partners by match type, ports, rumble state
+ARRAY | 0x80159608 | 4 | 4 | UNSURE | func_80115000 | int list (restart order?): low byte = slot, flags 0x100/0x200/0x400; flag 0x400 places relative to previous entry's slot (reads byte at 0x80159604+4*i+3, i.e. 0x80159604 for i=0); followed by PTR 0x80159618: packed
+LOOP | func_80115000 | 3 < iVar17 | SLOT | 4 entries of 0x80159608 -> slot; sets +0x82 (0x80159A12), +0x8C (0x80159A1C), +0xEF, +0xF3, +0xFC/+0x100/+0x104 pos, +0x10C angle, +0x18, +0xD0, +0x288..0x290, +0xF1
+LOOP | func_80115000 | iVar17 < 4 (after restart, x2) | SLOT | wrestlers stride 0x358: +0xA0, target +0x08 (0x80159998) state +0x14 == 0xA3 -> func_800EC484; +0x10C = angle to target position
+LOOP | func_80115000 | (int)uVar18 < 4 | SLOT | main per-slot setup: 0x80159990+slot*0x358, port 0x8016B9D0, tables 0x80146440/0x8014636C/0x80146450/0x80146460/0x80146470 indexed by slot
+LOOP | func_80115000 | iVar22 < 4 | SLOT | wrestlers (int*) +0x82, +0xE9, +0xFC, +0x08, +0x10C
+LOOP | func_80115000 | uVar18 = 2; uVar18 < 4 | SLOT | tag mode: slots 2,3 (partners) with +0xE9&2 are folded into slot uVar18&1 (+0x0C, +0xD8 <- slot's +0xA0, slot +0xA0 = -1, +0xE8 <- 0x800A8958[slot]); func_800159FC(slot,0)
+LOOP | func_80115000 | iVar22 < 4 | SLOT | rumble/survival: 0x8009ED24[i] == 1 -> wrestler +0xF1 (0x80159A81) |= 4
+LOOP | func_80115000 | iVar17 < 4 | SLOT | mode 0x2000000: wrestlers with +0xE9&0x10 get random +0xAA (0x80159A3A), +0xAC, +0xAE
+LOOP | func_80115000 | iVar22 < 4 / iVar17 < 4 (x3) | SLOT | port array 0x8016B9D0 (int per slot): port+1 -> port; in 0xC000 modes CPU slots get numbers above the max port
+LOOP | func_80115000 | iVar22 < 0xd60 | SLOT | rumble: per-slot 0x1C-byte record at 0x800A3DC0 (stride 0x1C) with wrestler stride 0x358; +0x18 = wrestler +0xF8
+CONST | func_80115000 | 0xd60 | 4 * 0x358 = end of wrestler array
+CONST | func_80115000 | DAT_80159214 = 4 | rumble: next entrant index = number of wrestlers in ring at start (DAT_80159210 = total entrants)
+CONST | func_80115000 | uRam8016b9d8 = 2; uRam8016b9dc = 3 | tag (no 0x80000/0x400000): ports of slots 2 and 3 forced to 2 and 3
+CONST | func_80115000 | uVar18 == 2 / uVar18 == 1 with 0x20000 | slot-specific overrides in 0x22000 modes (+0x0C = 2 for slot 2, +0x08 = 2 for slot 1)
+TABLE | 0x8014636C | 4 | func_80115000 | u32 per slot {0x10,0x20,0x40,0x80}: DAT_80097EC0 bit -> wrestler +0xE9 |= 0x20
+TABLE | 0x80146440 | 4 | func_80115000 | u32 per slot {1,2,4,8}: DAT_80097EC0 bit -> +0xE9 |= 8
+TABLE | 0x80146450 | 4 | func_80115000 | u32 per slot {0x100,0x200,0x400,0x800}: DAT_80097EC0 bit -> +0xE9 |= 4
+TABLE | 0x80146460 | 4 | func_80115000 | per slot s16 x,z apron start position (-180,-310),(180,310),(-180,-350),(180,350) (tag, +0xE9&1)
+TABLE | 0x80146470 | 1 | func_80115000 | s8 per slot initial target (+0x08) in 0x8000 mode {1,2,0,0}; followed by other data at 0x80146474: packed
+TABLE | 0x801465C0 | 2 | func_80115000 | u16 per slot {0x10,0x20,0x40,0x80} (then {1,2,4,8} at 0x801465C8): bits of DAT_8016b650, here indexed by slot&1
+TABLE | 0x8014D1E8 | 4 | func_80115000 | u32 angle per ring quadrant from func_8012EC28 (OTHER)
+TABLE | 0x8014638C | 6 | func_80115000 | restart positions (x,z,angle s16) indexed by arena spot, not slot (OTHER)
+ARRAY | 0x800A8958 | 4 | 4 | SLOT | func_80115000 | int per slot (menu data), slots 2,3 read as 0x800A8960/0x800A8964 and copied into wrestler +0xE8
+ARRAY | 0x800AA078 | 4 | 2 | UNSURE | func_80115000 | int indexed by slot&1 (team): non-zero -> DAT_8016b650 |= 0x801465C0[slot&1]
+ARRAY | 0x800A3DC0 | 0x1C | 4 | SLOT | func_80115000 | rumble per-slot record: +0/+1 human/CPU flags, +0x18 int entrant index
+MASK | func_80115000 | DAT_80097EC0 & 0x80146440/0x8014636C/0x80146450[slot] | SLOT | match-flags word packs 3 per-slot 4-bit fields in bits 0-11; match type flags start at 0x1000, so 6 slots do not fit without relocating the per-slot bits
+MASK | func_80115000 | DAT_8016b650 & 0xfff0 ; |= 0x801465C0[slot&1] ; |= 0x40 | SLOT | DAT_8016b650 has per-slot bits 0-3 and 4-7 (and 8-9 per func_8011CD60)
+NOTE | func_80115000 | tag (0x1000) legal men: +0x08 (target) = slot^1, +0x0C (partner) = slot|2 (or slot if 0x90000); apron: +0x08 = +0x0C = slot&1; teams are {0,2} vs {1,3}
+NOTE | func_80115000 | 0x4000 (rumble): +0x08 = slot^3; 0x8000: +0x08 = 0x80146470[slot]; 0x22000: +0x0C = slot^1, +0x08 = (slot&2)^2 or slot^2, flag 0x10 for even slots, flag 8 if port[slot] == port[slot^1]
+NOTE | func_80115000 | mode 0x20000 with slot 3 +0xE9&2: slot 3 folded into slot 2 (0x8015A438 = slot3 +0xA0 = -1, 0x8015A118 = slot2 +0xD8, 0x8015A480 = slot3 +0xE8, func_800159FC(3,0)) - hardcoded slot numbers
+NOTE | func_80115000 | restart flag 0x400 copies +0x288..+0x290 from fixed slot 0 (lw 0x288($s7), s7 = 0x80159990; Ghidra uRam80159c18)
+NOTE | func_80115000 | 0x80159608 list and 0x801595F8 lie inside the presumed control-input array 0x80159540+4*0x38 (slot 3 range 0x801595E8..0x8015961F): that array's real extent should be re-checked before growing it
+NOTE | func_80115000 | wrestler fields: +0x08 target, +0x0C partner, +0x14 state, +0x18 substate, +0x82, +0x8C, +0x9E, +0xA0, +0xAA/+0xAC/+0xAE, +0xD0, +0xD8, +0xE8, +0xE9, +0xEF, +0xF1, +0xF3, +0xF8, +0xFC/+0x100/+0x104, +0x10C, +0x288
+FUNC | func_801163C4 | handles the wrestler selected in DAT_80159204 (state +0x8A&0x400), else finds the first slot with that flag
+LOOP | func_801163C4 | 3 < iVar1 | SLOT | wrestlers stride 0x358: +0x8A (0x80159A1A) & 0x400
+ARRAY | 0x8016B8F0 | 0xC | 4 | SLOT | func_801163C4 | indexed by slot DAT_80159204: +0 (passed to func_80138E30), +4 int state, +8 int counter; 0x8016B920 follows: packed
+TABLE | 0x8014635E | 4 | func_801163C4 | s16 at state*4 (state DAT_80159200) (OTHER)
+NOTE | func_801163C4 | DAT_80159204 (slot, -1 none); its low half (DAT_80159204._2_2_) is passed as a model index to func_80017780, also uses +0x94, +0xAA
+FUNC | func_80118368 | per-slot input: copy controller pad (port 0x8016B9D0[slot]) or CPU AI output into the slot's input record, toggle human/CPU on button
+ARRAY | 0x80159540 | 0x38 | 4 | SLOT | func_80118368 | per-slot input: +0 held, +2 pressed, +4 stick x, +6 stick y, +8 byte "stick moved"
+ARRAY | 0x8016B9D0 | 4 | 4 | SLOT | func_80118368 | int per slot = controller port (value is PORT, index is SLOT)
+ARRAY | 0x801596C0 | 0xB0 | 4 | SLOT | func_80118368 | per-slot AI: +0 int, +0xC held, +0xE pressed, +0x12/+0x13 stick
+ARRAY | 0x800A3DC0 | 0x1C | 4 | SLOT | func_80118368 | rumble record per slot: +0 / +1 bytes set to 1
+NOTE | func_80118368 | pads 0x8009EDA4/0x8009EDA6/0x8009EDAA/0x8009EDAB stride 0xC indexed by port (PORT); wrestler fields +0x80, +0x88, +0xA4, +0xA6, +0xE9 (bit 8 = CPU), +0x2F6, +0x2F7, +0x2FC
+FUNC | func_8011CD60 | adds to a wrestler's spirit (+0xAA, max +0xAC); tag mode sets per-slot bits in DAT_8016b650
+CONST | func_8011CD60 | *(short *)(param_1 + 0x9e) < 2 | only slots 0/1 (tag legal-men slots) set the bits
+TABLE | 0x801465C0 | 2 | func_8011CD60 | u16 indexed by +0x9E: bit for DAT_8016b650
+TABLE | 0x801465B0 | 2 | func_8011CD60 | u16 indexed by +0x9E {0x100,0x200}: bit for DAT_8016b650
+MASK | func_8011CD60 | DAT_8016b650 |= table[+0x9E] | SLOT | per-slot bits indexed by +0x9E
+FUNC | func_8011E128 | ground height under wrestler (slot param_1) from arena collision lists
+NOTE | func_8011E128 | wrestler +0xFC/+0x100/+0x104 (0x80159A8C/90/94) via slot*0x358; table of lists 0x8014675C by arena area DAT_80159628 (OTHER)
+FUNC | func_80120560 | computes per-bone hit radii for a wrestler's model
+LOOP | func_80120560 | iVar4 < 0x14 | OTHER | bones 1..0x13 (0x800A11DC.. stride 0x7C inside 0x800A1130+model*0xB24, radius table 0x801467A0)
+ARRAY | 0x8016B728 | 0x70 | 4 | SLOT | func_80120560 | indexed by +0x9E: bone radii floats at +4*bone (0x8016B72C..), +0x50 (0x8016B778) = 180.0; 4 x 0x70 ends exactly at 0x8016B8E8 (PTR_DAT_8016b8e8 follows): packed
+FUNC | func_8012069C | hit test: find first candidate (wrestler slot < 100, or object id >= 100) in reach of the attacker
+NOTE | func_8012069C | candidate list from func_80120D98 is a 12-int stack array, 11 entries cleared (indices 0..10) and -1 terminated; slots and objects (>= 100) share it: enough for 5 other wrestlers but check builder bounds
+NOTE | func_8012069C | 0x8016B728/0x8016B778 (stride 0x70) indexed both by candidate slot iVar2 and by attacker +0x9E: model index == slot assumed
+NOTE | func_8012069C | wrestler +0x120..+0x128 pos, bone positions +0x114+0xC*bone (int idx 0x49 = +0x124 y); objects at 0x80166804 stride 0xB4
+FUNC | func_80125190 | action handler (move with a second wrestler): stores a slot in 0x80159280[ctx]
+ARRAY | 0x80159280 | 4 | 4 | UNSURE | func_80125190 | int indexed by *param_1 (action context index, probably slot) holding a slot; used as &DAT_80159990 + v*0xd6; 0x80159290 is a separate var: packed
+FUNC | func_80125900 | wrestler action handler (grapple/strike sequence)
+NOTE | func_80125900 | func_80126384 returns a slot or -1 -> &DAT_80159990 + slot*0xd6
+FUNC | func_80125F5C | checks whether an attack can connect against a target's state
+FUNC | func_80128374 | grapple pair positioning / turning
+TABLE | 0x801469C0 | 2 | func_80128374 | u16 button mask per direction +0x60 (0..3) (OTHER)
+TABLE | 0x801469C8 | 2 | func_80128374 | u16 button mask per direction (OTHER)
+TABLE | 0x8014D234 | 2 | func_80128374 | angle per direction index (OTHER)
+FUNC | func_8012FEDC | copies each model's bone positions into its wrestler struct (+0x120.., avg of bone 1 and 0x15 into +0x120)
+LOOP | func_8012FEDC | iVar9 < 0x2c90 | MODEL | 4 model instances 0x800A1200+i*0xB24 (bones stride 0x7C, 0x800A1C2C = +0xA2C) paired 1:1 with wrestler slot i (0x80159AA4+i*0x358, 0x80159AB0..B8)
+CONST | func_8012FEDC | 0x2c90 | 4 * 0xB24: exactly 4 model instances
+NOTE | func_8012FEDC | model instance i is used for wrestler slot i directly (no +0x9E lookup): models are 1:1 with slots, 6 slots need 6 model instances
+LOOP | func_8012FEDC | iVar8 < 0x14 | OTHER | bones 1..0x13
+FUNC | func_80141880 | releases a held object (weapon) from a wrestler and gives it a throw/drop trajectory
+NOTE | func_80141880 | objects at 0x8016AE18 stride 0xB4 indexed by wrestler +0x3C (OTHER); reads target (+0x08) wrestler's +0x82 (0x80159A12) by slot
+FUNC | osAiSetFrequency | libultra: set audio interface frequency
+FUNC | osInitialize | libultra: system initialisation

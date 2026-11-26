@@ -1,0 +1,30 @@
+{
+  "about": "2026-10-31, the user: 'Replace Taker's theme with this' (Downloads\\Taker.mp3 -> mod\\music\\Undertaker.mp3, a music slot of its own (78 since The Giant's 77) -- the game's old Undertaker sound left for its other uses; the stock Undertaker 0x003 only, the 1999 look 0x00A keeps WM2000's theme): UNDERTAKER's Rumble entrance (listen / the sound asked for logged at 0x807F33B0: his new slot's, not the old one) -- 2026-11-01: wrestlers by ID 0x0003: the name UNDERTAKER resolves to 0x00A in qa_tool.py (roster_ext.h's 1999 look has the same name and overrides; run 2026-11-01_025546 played 0x00A, sound 201 = his WM2000 slot 59)",
+  "match": "rumble",
+  "wrestlers": [
+    "0x0003"
+  ],
+  "control": [
+    "cpu"
+  ],
+  "options": {
+    "rumble_entrants": 6,
+    "rumble_interval": 10
+  },
+  "matches": 1,
+  "seconds": 70,
+  "shots": 1,
+  "shot_when": "$c.mode -eq 0 -and $c.screen -eq 42 -and $c.entrance_step -ge 1 -and $c.entrance_step -le 29",
+  "expect": [
+    {
+      "name": "the entrances ran",
+      "when": "any",
+      "check": "mode == 0 and screen == 42 and entrance_step >= 1 and entrance_step <= 29"
+    },
+    {
+      "name": "the Rumble started",
+      "when": "any",
+      "check": "stage == 2 and mode == -2 and match_frames != 0xFFFF and match_frames > 30"
+    }
+  ]
+}

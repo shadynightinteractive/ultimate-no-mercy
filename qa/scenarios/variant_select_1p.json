@@ -1,0 +1,58 @@
+{
+  "about": "2026-10-31, the user: Undertaker 1999 (0x000A) in the Undertaker's box as costume variants (src/variants.c). One player's Versus (qa_versus) with qa_variant 1: on the Undertaker's box a tour of the Type arrows -- C-right x8 (Undertaker Type 1-4, Undertaker 1999 Type 1-4, the Undertaker's Type 1 again), C-left (1999's Type 4), C-right (Undertaker Type 1), 1.25 s apart for the shots -- then C-right on to 1999's Type 2 and A; the CPU's pick on controller 1: the stock Undertaker's Type 4 (C-right round past 1999's taken Type 2). The match: 1999 Undertaker (his entrance, music, name) vs the Undertaker. state.csv bs_tries = the select's Superstar under the cursor | costume << 16 | 1 << 24; bs_grabs / bs_step = picks 1 and 2 (ID | costume << 16)",
+  "match": "arcade",
+  "wrestlers": [
+    "0x000A",
+    "0x0003"
+  ],
+  "costumes": [
+    1,
+    3
+  ],
+  "matches": 0,
+  "seconds": 600,
+  "shots": 1.0,
+  "options": {
+    "free_play": true,
+    "attract_demos": false,
+    "qa_versus": 30,
+    "qa_variant": 1
+  },
+  "expect": [
+    {
+      "name": "the select: the Undertaker, Type 1",
+      "when": "any",
+      "check": "bs_tries == 0x01000003"
+    },
+    {
+      "name": "the Undertaker, Type 4",
+      "when": "any",
+      "check": "bs_tries == 0x01030003"
+    },
+    {
+      "name": "past it: the 1999 Undertaker (his own ID), Type 1",
+      "when": "any",
+      "check": "bs_tries == 0x0100000A"
+    },
+    {
+      "name": "the 1999 Undertaker, Type 4",
+      "when": "any",
+      "check": "bs_tries == 0x0103000A"
+    },
+    {
+      "name": "player 1 picked the 1999 Undertaker, his Type 2",
+      "when": "any",
+      "check": "bs_grabs == 0x0001000A"
+    },
+    {
+      "name": "the CPU's pick: the Undertaker, Type 4",
+      "when": "any",
+      "check": "(bs_step & 0xFFFFFF) == 0x00030003"
+    },
+    {
+      "name": "the match: 0x000A costume 1 (player 1) vs 0x0003 costume 3 (CPU)",
+      "when": "any",
+      "check": "mode == -2 and match_frames != 0xFFFF and match_frames > 120 and s0_id == 0x000A and s0_costume == 1 and s0_pad == 1 and s1_id == 0x0003 and s1_costume == 3 and s1_pad == 0"
+    }
+  ]
+}

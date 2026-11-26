@@ -1,0 +1,53 @@
+{
+ "about": "WCW/nWo Revenge port: what was chosen by hand for him (moved out of mod\\gen's tables by handlers\\extract_fixes.py, 2026-11-12). Edit here; the handler reads nothing else that is his alone.",
+ "string_id": "booker_t_b",
+ "key": "booker_b",
+ "legacy_game_id": "0x0117",
+ "name": "BOOKER T",
+ "short_name": "BOOKER",
+ "height": 15,
+ "weight": 158,
+ "music_slot": 76,
+ "video": 0,
+ "revenge": {
+  "moveset_file": "0x140",
+  "code": "0x00B"
+ },
+ "moveset": {
+  "reference_ordinal": 23,
+  "allies": [
+   "0x0111"
+  ],
+  "weight_class": [
+   1,
+   1,
+   0
+  ],
+  "stance": null,
+  "slot_overrides": {
+   "235": 15380
+  },
+  "no_struggling_slam": true
+ },
+ "costumes": [
+  {
+   "capture": "hz_c1",
+   "slot": 0
+  }
+ ],
+ "skin": "no_mercy",
+ "photo_number": 125,
+ "second_look_of": "booker_t",
+ "about_look": "the flames tights in red",
+ "photo": {
+  "photo": 125,
+  "shot": "data/revport/ports4/cap/cc_booker.png",
+  "box": [
+   194,
+   20,
+   244,
+   70
+  ],
+  "same_as": "booker"
+ }
+}

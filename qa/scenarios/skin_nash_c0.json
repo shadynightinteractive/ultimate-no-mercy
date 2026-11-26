@@ -1,0 +1,48 @@
+{
+  "about": "2026-11-03: Kevin Nash in Revenge's own skin (REV_SKIN), far off: skin, hands, seams.",
+  "wrestlers": [
+    "KEVIN NASH",
+    "THE ROCK"
+  ],
+  "costumes": [
+    0,
+    0
+  ],
+  "arena": "RAW IS WAR",
+  "control": [
+    "pad1",
+    "pad2"
+  ],
+  "camera": {
+    "eye": [
+      -60,
+      262,
+      60
+    ],
+    "at": [
+      180,
+      235,
+      -180
+    ]
+  },
+  "matches": 0,
+  "seconds": 70,
+  "shots": 3,
+  "expect": [
+    {
+      "name": "the match started",
+      "when": "any",
+      "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "Nash in slot 0",
+      "when": "match",
+      "check": "s0_id == 0x106 and s0_costume == 0"
+    },
+    {
+      "name": "no model's matrices ever went bad",
+      "when": "always",
+      "check": "bad_mtx == 0"
+    }
+  ]
+}

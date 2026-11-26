@@ -1,0 +1,48 @@
+{
+  "about": "2026-11-07, the 32-slot work, the user's goal (a 32-in-the-ring Rumble proven): the end of a 32-slot Royal Rumble -- 32 entrants one every 10 s, room for 32 in the ring; from 330 game s on (all in) a CPU man put outside every 3 game s (qa_rr_out, qa_rr_out_after) down to a winner and the results screen; 6x",
+  "match": "rumble",
+  "wrestlers": [
+    "BRET HART"
+  ],
+  "control": [
+    "cpu"
+  ],
+  "options": {
+    "rumble_entrants": 32,
+    "rumble_interval": 10,
+    "qa_rr_ring": 32,
+    "qa_rr_out": 3,
+    "qa_rr_out_after": 330
+  },
+  "matches": 1,
+  "seconds": 1100,
+  "speed": 6,
+  "shots": 1,
+  "expect": [
+    {
+      "name": "the Rumble started",
+      "when": "any",
+      "check": "stage == 2 and mode == -2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "the match has room for 32 (its slot count)",
+      "when": "match",
+      "check": "slots >= 32"
+    },
+    {
+      "name": "thirty or more in the ring at once",
+      "when": "match",
+      "check": "in_ring >= 30"
+    },
+    {
+      "name": "no model's matrices ever went bad",
+      "when": "always",
+      "check": "bad_mtx == 0"
+    },
+    {
+      "name": "the Rumble was won (match_state 4: the winner decided)",
+      "when": "any",
+      "check": "match_state == 4"
+    }
+  ]
+}

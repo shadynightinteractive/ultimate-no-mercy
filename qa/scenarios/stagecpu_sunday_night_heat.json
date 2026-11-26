@@ -1,0 +1,45 @@
+{
+ "about": "(stages agent, 2026-11-20) CPU against CPU in SUNDAY NIGHT HEAT, both walked up and down the ramp: qa_ringstage 256 (arena_ringstage.c ringstage_qa) puts the two apart every 25 s of match once both are free to walk -- by the ring and on the stage, the other way round, at the aisle's end and at the back of the stage, the other way round -- and each CPU walks to his man. The measure is qa/stage_stuck.py on the run (stuck / shaking seconds: a CPU free to walk, outside the ring, away from his man, getting nowhere); the checks here only that nothing went bad. LOOK: the men on the ramp and the stage, nobody shaking in place.",
+ "wrestlers": [
+  "THE ROCK",
+  "STEVE AUSTIN"
+ ],
+ "costumes": [
+  0,
+  0
+ ],
+ "arena": "SUNDAY NIGHT HEAT",
+ "control": [
+  "cpu",
+  "cpu"
+ ],
+ "matches": 1,
+ "seconds": 240,
+ "shots": 30.0,
+ "options": {
+  "qa_ringstage": 257
+ },
+ "pads": [],
+ "expect": [
+  {
+   "name": "the match started",
+   "when": "any",
+   "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+  },
+  {
+   "name": "nobody's position went bad",
+   "when": "always",
+   "check": "finite(s0_x, s0_y, s0_z, s1_x, s1_y, s1_z)"
+  },
+  {
+   "name": "never a stage area: the old stage view (bs_tries: the area in play)",
+   "when": "always",
+   "check": "bs_tries < 10 or bs_tries >= 20"
+  },
+  {
+   "name": "a CPU went up onto the stage (its front: z 1790)",
+   "when": "any",
+   "check": "s0_z > 1790 or s1_z > 1790"
+  }
+ ]
+}

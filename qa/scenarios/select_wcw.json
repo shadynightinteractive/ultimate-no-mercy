@@ -1,0 +1,35 @@
+{
+  "about": "2026-10-30, the user: a WCW page of its own on the Superstar Select (roster.c's thirteen pages; gen/patches.py 'the Superstar Select's pages'): Start on the title, the first championship, then L from SUPERSTARS 1 (to the last page: WCW), R back, R round all thirteen. Bret, Neidhart, Hogan, Nash, Hall, Savage, Hennig on it; the shots looked at",
+  "match": "arcade",
+  "matches": 0,
+  "seconds": 150,
+  "shots": 0.5,
+  "options": {
+    "free_play": true,
+    "attract_demos": false
+  },
+  "pads": [
+    "60.0 1 start 200",
+    "64.0 1 start 200",
+    "68.0 1 a 200",
+    "80.0 1 lefttrigger 250",
+    "84.0 1 righttrigger 250",
+    "88.0 1 lefttrigger 250",
+    "92.0 1 lefttrigger 250",
+    "96.0 1 righttrigger 250",
+    "99.0 1 righttrigger 250",
+    "102.0 1 righttrigger 250",
+    "105.0 1 righttrigger 250",
+    "108.0 1 righttrigger 250",
+    "111.0 1 righttrigger 250",
+    "114.0 1 righttrigger 250",
+    "117.0 1 righttrigger 250",
+    "120.0 1 righttrigger 250",
+    "123.0 1 righttrigger 250",
+    "126.0 1 righttrigger 250",
+    "129.0 1 righttrigger 250",
+    "132.0 1 righttrigger 250",
+    "135.0 1 righttrigger 250"
+  ],
+  "expect": []
+}

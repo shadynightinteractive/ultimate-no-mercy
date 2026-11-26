@@ -1,0 +1,31 @@
+{
+  "title": "Revenge Arena Test",
+  "menu": "Revenge Arena Test",
+  "championship": "world",
+  "cast": { "rival": "MANKIND" },
+  "vars": {},
+  "start": "one",
+  "nodes": {
+    "one": {
+      "chapter": "ARENA ONE",
+      "pages": ["Monday Nitro."],
+      "match": { "type": "single", "slots": ["player", ["rival", "KANE"]], "arena": "Monday Nitro" },
+      "requirement": "Arena test: Monday Nitro.",
+      "branches": [ { "next": "two" } ]
+    },
+    "two": {
+      "chapter": "ARENA TWO",
+      "pages": ["Halloween Havoc."],
+      "match": { "type": "single", "slots": ["player", ["rival", "KANE"]], "arena": "Halloween Havoc" },
+      "requirement": "Arena test: Halloween Havoc.",
+      "branches": [ { "next": "three" } ]
+    },
+    "three": {
+      "chapter": "ARENA THREE",
+      "pages": ["WrestleMania."],
+      "match": { "type": "single", "slots": ["player", ["rival", "KANE"]], "arena": "WrestleMania" },
+      "requirement": "Arena test: WrestleMania.",
+      "branches": [ { "next": "end" } ]
+    }
+  }
+}

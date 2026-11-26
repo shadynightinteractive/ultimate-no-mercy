@@ -1,0 +1,135 @@
+diff --git a/recompinput/src/input_events.cpp b/recompinput/src/input_events.cpp
+index 71ff174..044fdf4 100644
+--- a/recompinput/src/input_events.cpp
++++ b/recompinput/src/input_events.cpp
+@@ -120,7 +120,9 @@ bool sdl_event_filter(void* userdata, SDL_Event* event) {
+         }
+ 
+         recompui::open_quit_game_prompt();
+-        recompui::activate_mouse();
++        if (!recompui::is_standalone()) {
++            recompui::activate_mouse();
++        }
+         break;
+     }
+     case SDL_EventType::SDL_MOUSEWHEEL:
+@@ -270,7 +272,8 @@ void handle_events() {
+ 
+         // Hide the cursor based on its enable state, but override visibility to false if the cursor is locked.
+         bool cursor_visible = recompui::get_cursor_visible();
+-        if (cursor_locked) {
++        // (Standalone: no menus to point at, so no mouse cursor over the game.)
++        if (cursor_locked || recompui::is_standalone()) {
+             cursor_visible = false;
+         }
+ 
+diff --git a/recompui/include/recompui/recompui.h b/recompui/include/recompui/recompui.h
+index 30c463b..e5880d9 100644
+--- a/recompui/include/recompui/recompui.h
++++ b/recompui/include/recompui/recompui.h
+@@ -95,6 +95,11 @@ namespace recompui {
+     void apply_color_hack();
+     void get_window_size(int& width, int& height);
+     void open_quit_game_prompt();
++    // [wcw standalone] The game alone, without the frontend's interface: no launcher, no config menu (Esc / the menu
++    // button), no quit prompt (closing the window quits), no mod installing by dropping files on the window. Set
++    // before recomp::start.
++    void set_standalone(bool standalone);
++    bool is_standalone();
+     bool get_cursor_visible();
+     void set_cursor_visible(bool visible);
+     void update_supported_options();
+diff --git a/recompui/lib/FindFreetype.cmake b/recompui/lib/FindFreetype.cmake
+index bbb8d6a..80c348e 100644
+--- a/recompui/lib/FindFreetype.cmake
++++ b/recompui/lib/FindFreetype.cmake
+@@ -1,5 +1,12 @@
+-set(FREETYPE_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/../freetype-windows-binaries/include)
+-set(FREETYPE_LIBRARIES "${CMAKE_CURRENT_SOURCE_DIR}/../freetype-windows-binaries/release static/vs2015-2022/win64/freetype.lib")
++if (MINGW AND RECOMPUI_FREETYPE_ROOT)
++	# [wcw mingw] The prebuilt freetype.lib is MSVC's (it pulls in MSVC's C runtime): a MinGW build links a
++	# freetype built for MinGW (the same version, 2.14.1) from RECOMPUI_FREETYPE_ROOT.
++	set(FREETYPE_INCLUDE_DIRS ${RECOMPUI_FREETYPE_ROOT}/include/freetype2)
++	set(FREETYPE_LIBRARIES ${RECOMPUI_FREETYPE_ROOT}/lib/libfreetype.a)
++else()
++	set(FREETYPE_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/../freetype-windows-binaries/include)
++	set(FREETYPE_LIBRARIES "${CMAKE_CURRENT_SOURCE_DIR}/../freetype-windows-binaries/release static/vs2015-2022/win64/freetype.lib")
++endif()
+ add_library(Freetype::Freetype STATIC IMPORTED)
+ set_target_properties(Freetype::Freetype PROPERTIES
+ 	IMPORTED_LOCATION ${FREETYPE_LIBRARIES}
+diff --git a/recompui/lib/RmlUi b/recompui/lib/RmlUi
+--- a/recompui/lib/RmlUi
++++ b/recompui/lib/RmlUi
+@@ -1 +1 @@
+-Subproject commit 7a06f27db04fe5d13a5dacc19b2b4544673a4eca
++Subproject commit 7a06f27db04fe5d13a5dacc19b2b4544673a4eca-dirty
+diff --git a/recompui/src/base/ui_state.cpp b/recompui/src/base/ui_state.cpp
+index f5d6ad6..d229530 100644
+--- a/recompui/src/base/ui_state.cpp
++++ b/recompui/src/base/ui_state.cpp
+@@ -34,8 +34,20 @@
+ #include "util/file.h"
+ 
+ static std::atomic_bool cursor_enabled = true;
++static std::atomic_bool standalone_mode = false;
++
++void recompui::set_standalone(bool standalone) {
++    standalone_mode.store(standalone);
++}
++bool recompui::is_standalone() {
++    return standalone_mode.load();
++}
+ 
+ void recompui::open_quit_game_prompt() {
++    if (recompui::is_standalone()) {
++        ultramodern::quit();
++        return;
++    }
+     recompui::open_choice_prompt(
+         "Are you sure you want to quit?",
+         "Any progress since your last save will be lost.",
+@@ -655,8 +667,8 @@ void draw_hook(plume::RenderCommandList* command_list, plume::RenderFramebuffer*
+         return;
+     }
+ 
+-    // Return to the launcher if no menu is open and the game isn't started.
+-    if (!recompui::is_any_context_shown() && !ultramodern::is_game_started()) {
++    // Return to the launcher if no menu is open and the game isn't started (standalone: there's no launcher).
++    if (!recompui::is_standalone() && !recompui::is_any_context_shown() && !ultramodern::is_game_started()) {
+         recompui::show_context(recompui::get_launcher_context_id(), "");
+     }
+     // [wcw] Hide the launcher once the game is running. WCW's minimal main.cpp boots the game
+@@ -819,7 +831,8 @@ void draw_hook(plume::RenderCommandList* command_list, plume::RenderFramebuffer*
+         }
+ 
+         // If the config menu isn't open and the game has been started and either the escape key or select button are pressed, open the config menu.
+-        if (!config_was_open && ultramodern::is_game_started()) {
++        // (Standalone: there's no config menu.)
++        if (!recompui::is_standalone() && !config_was_open && ultramodern::is_game_started()) {
+             bool open_config = false;
+ 
+             switch (cur_event.type) {
+@@ -1031,8 +1044,8 @@ void recompui::release_image(const std::string &src) {
+ }
+ 
+ void recompui::drop_files(const std::list<std::filesystem::path> &file_list) {
+-    // Prevent mod installation after the game has started.
+-    if (ultramodern::is_game_started()) {
++    // Prevent mod installation after the game has started (standalone: always; there's no mods menu to install to).
++    if (recompui::is_standalone() || ultramodern::is_game_started()) {
+         return;
+     }
+ 
+diff --git a/recompui/src/elements/ui_toggle.h b/recompui/src/elements/ui_toggle.h
+index 507bffb..856e531 100644
+--- a/recompui/src/elements/ui_toggle.h
++++ b/recompui/src/elements/ui_toggle.h
+@@ -2,6 +2,7 @@
+ 
+ #include "ui_element.h"
+ #include "ui_svg.h"
++#include <chrono>
+ 
+ namespace recompui {
+ 

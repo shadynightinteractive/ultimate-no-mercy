@@ -1,0 +1,16 @@
+{
+  "about": "2026-11-07, the two modes phase 2 (W12, W5): Regular -- a story of ours that ends in its game over: qa/stories_test/013_retry.json (its match lost at 0:15 by its script, 2 retries, then 'gameover'), picked on the stories' list from the championship list's Custom Story row (qa_reg 537 = 1 + 8 + 16 + 512: A through its pages, its matches play out by the script). Expect three matches, then -- the engine's game over (phase 10) -- back to the title the way RESET TO TITLE goes, the story let go; never a loop.",
+  "match": "arcade",
+  "wrestlers": [ "STEVE AUSTIN", null ],
+  "matches": 0,
+  "seconds": 1200,
+  "shots": 6.0,
+  "options": { "game_mode": "Regular", "qa_modes": 1, "qa_reg": 537, "custom_story": 1 },
+  "stories": [ "013_retry.json" ],
+  "expect": [
+    { "name": "Regular all along", "when": "always", "check": "(bs_tries & 1) == 0" },
+    { "name": "a story match", "when": "any", "check": "mode == -2 and match_frames != 0xFFFF and match_frames > 300" },
+    { "name": "on the title at the end, the driver done (the story over)", "when": "end", "check": "screen == 0 and mode == 0 and (bs_grabs & 255) == 13" }
+  ],
+  "shot_when": "$true"
+}

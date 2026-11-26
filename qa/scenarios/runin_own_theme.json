@@ -1,0 +1,31 @@
+{
+  "about": "2026-11-11, the user: a Rumble run-in plays the entering wrestler's own theme, on purpose. The folder wrestler (0x0322, with a theme.bin: run it with WCW_WRESTLERS_DIR=scratch\\qa_overnight\\w\\old) comes in first; five more come in at random. Before the fix (roster.c match_entry) a later entrant could ask for the first entrant's song (sound 0xF1, the folder theme): func_8000A690 was called without the costume. Read the sounds asked for from state.rdram.bin (0x807F33AC count, 0x807F33B0 the last 8): only the first is 0xF1",
+  "match": "rumble",
+  "wrestlers": [
+    "0x0322",
+    "0x0001"
+  ],
+  "control": [
+    "cpu"
+  ],
+  "arena": "RAW IS WAR",
+  "options": {
+    "rumble_entrants": 6,
+    "rumble_interval": 10
+  },
+  "matches": 1,
+  "seconds": 240,
+  "shots": 2,
+  "expect": [
+    {
+      "name": "the entrances ran",
+      "when": "any",
+      "check": "mode == 0 and screen == 42 and entrance_step >= 1 and entrance_step <= 29"
+    },
+    {
+      "name": "the Rumble started",
+      "when": "any",
+      "check": "stage == 2 and mode == -2 and match_frames != 0xFFFF and match_frames > 30"
+    }
+  ]
+}

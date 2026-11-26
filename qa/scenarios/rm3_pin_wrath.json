@@ -1,0 +1,59 @@
+{
+ "about": "revmoves3 (2026-11-21, the move audit's follow-up): Wrath (0x036F, Revenge import, slot 0, CPU) against The Rock (CPU), singles; his entry 27 -- 'revenge:1399_139b~1404@964' -- forced wherever the game picks a move of the same place (qa_fsub 4: the one entry). Its animations and hold block are No Mercy's 424 / 425 byte for byte (pins, 0x08002300 / 0x2300), and 964 / 965 pin too: expected to pin (74 / 75) -- the audit's composite slot, judged here.",
+ "match": "singles",
+ "wrestlers": [
+  "0x036F",
+  "THE ROCK"
+ ],
+ "costumes": [
+  0,
+  0
+ ],
+ "control": [
+  "cpu",
+  "cpu"
+ ],
+ "arena": "RAW IS WAR",
+ "matches": 0,
+ "seconds": 360,
+ "speed": 8,
+ "shots": 0,
+ "force": {
+  "slot": 0,
+  "entries": [
+   0,
+   291
+  ],
+  "as": 27
+ },
+ "options": {
+  "qa_fsub": 4
+ },
+ "expect": [
+  {
+   "name": "the match started",
+   "when": "any",
+   "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+  },
+  {
+   "name": "Wrath played his entry 27's move (964)",
+   "when": "any",
+   "check": "s0_move == 964 and s0_phase == 85"
+  },
+  {
+   "name": "it went on into its pin (74 / 75)",
+   "when": "any",
+   "check": "(s0_move == 964 or s0_move == 965) and s0_phase == 74 and s1_phase == 75"
+  },
+  {
+   "name": "no model's matrices ever went bad",
+   "when": "always",
+   "check": "bad_mtx == 0"
+  },
+  {
+   "name": "nobody's position went bad",
+   "when": "always",
+   "check": "finite(s0_x, s0_y, s0_z, s1_x, s1_y, s1_z)"
+  }
+ ]
+}

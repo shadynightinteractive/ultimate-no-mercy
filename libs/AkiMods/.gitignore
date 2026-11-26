@@ -1,0 +1,12 @@
+build/
+
+# Local-only agent instructions and plans (never committed)
+AGENTS.md
+CLAUDE.md
+docs/*-plan.md
+
+# This machine's tool paths (see common/tools.ps1)
+local-tools.ps1
+
+# Python bytecode
+__pycache__/

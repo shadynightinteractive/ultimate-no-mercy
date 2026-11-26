@@ -1,0 +1,5 @@
+{
+ "about": "romsets (2026-11-24): the head of WCW/nWo Revenge's move library (content\\movelib_revenge.bin, made on the first start from the player's Revenge ROM and our library_index.json): how many moves it numbers and its stamp -- the mod's move_lib.h MOVELIB_N and MOVELIB_STAMP, which the exe's library must have or the mod plays no library move at all. Without Revenge the exe keeps the library's numbers from library_index.json (its moves unplayable) under this stamp, so the libraries after it -- WrestleMania 2000's -- are numbered and played as with it. tools\\release\\make_package.ps1 checks these against the mod's move_lib.h.",
+ "moves": 783,
+ "stamp": "0xDF33F897"
+}

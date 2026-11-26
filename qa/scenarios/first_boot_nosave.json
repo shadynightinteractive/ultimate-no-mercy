@@ -1,0 +1,58 @@
+{
+  "about": "2026-11-12 (qa agent): the game's first start with no save -- modes_regular_boot (Regular from power-on, Start, the main menu, F2 GAME SETTINGS, EXIT WITHOUT SAVING, quit) with the copy's saves set aside (saves/wwf.nomercy.us.bin and the Controller Pak's .pak.bin, each with its .bak -- a first try with the .bin alone, 12:33, made no pack calls). With no save the game makes one, and the Controller Pak's note for the created Superstars, each packed: func_800E299C (a costume record) and func_800E2AC0 (a moveset), whose entry and return hooks (Big Show: bigshow.c bigshow_pack_pre / _post) no scenario reached before (<outside>/NOTES.md, the hook count table). The checks are modes_regular_boot's: the boot must go on to the main menu as with a save. The hooks' calls: NM_HOOK_COUNTS with the Stage 1 exe.",
+  "match": "arcade",
+  "matches": 0,
+  "seconds": 260,
+  "shots": 1.0,
+  "options": {
+    "game_mode": "Regular",
+    "settings_version": 5,
+    "qa_modes": 1,
+    "qa_reg": 11,
+    "titantron_live": false
+  },
+  "set_aside": [
+    "saves\\wwf.nomercy.us.bin",
+    "saves\\wwf.nomercy.us.bin.bak",
+    "saves\\wwf.nomercy.us.pak.bin",
+    "saves\\wwf.nomercy.us.pak.bin.bak"
+  ],
+  "expect": [
+    {
+      "name": "Regular all along (the running mode 0)",
+      "when": "always",
+      "check": "(bs_tries & 1) == 0"
+    },
+    {
+      "name": "the arcade's phase never left ATTRACT (no coin-op ran)",
+      "when": "always",
+      "check": "(bs_tries >> 28) == 0"
+    },
+    {
+      "name": "the title came up (the menus' screen 0)",
+      "when": "any",
+      "check": "mode == 0 and screen == 0 and (bs_step & 0x8000) != 0"
+    },
+    {
+      "name": "the game's own main menu (Multi Play / Single Play / Options)",
+      "when": "any",
+      "check": "mode == 0 and screen in (2, 3, 4) and (bs_grabs & 255) >= 2"
+    },
+    {
+      "name": "F2 opened over it, GAME SETTINGS",
+      "when": "any",
+      "check": "((bs_tries >> 24) & 1) == 1 and ((bs_grabs >> 8) & 255) == 1"
+    },
+    {
+      "name": "after EXIT WITHOUT SAVING (the settings read again): still Regular, the driver done",
+      "when": "any",
+      "check": "(bs_grabs & 255) == 13 and (bs_tries & 1) == 0 and ((bs_tries >> 24) & 1) == 0"
+    },
+    {
+      "name": "none of the arcade's menu changes in the menus' data, the list's own 10 rows",
+      "when": "always",
+      "check": "(bs_step & 0x8000) == 0 or (bs_step & 0x1FFF) == 10"
+    }
+  ],
+  "shot_when": "$c.screen -ge 0 -and $c.screen -le 4"
+}

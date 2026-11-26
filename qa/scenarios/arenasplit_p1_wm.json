@@ -1,0 +1,67 @@
+{
+ "about": "arenasplit (2026-11-24): a one-on-one PLAYED in SUNDAY NIGHT HEAT (arena 17) on an install with its source game alone -- player 1 (slot 0) at his controller (qa_gr_p1 4: after his opponent, striking, grappling, struggling when down), the CPU his opponent; the playability check: he plays, hits his opponent, a decision",
+ "match": "singles",
+ "wrestlers": [
+  "STEVE AUSTIN",
+  "THE ROCK"
+ ],
+ "costumes": [
+  0,
+  0
+ ],
+ "control": [
+  "pad1",
+  "cpu"
+ ],
+ "arena": "SUNDAY NIGHT HEAT",
+ "options": {
+  "qa_camprobe": 1,
+  "qa_gr_p1": 4
+ },
+ "matches": 1,
+ "seconds": 900,
+ "speed": 6,
+ "shots": 60,
+ "expect": [
+  {
+   "name": "the match started",
+   "when": "any",
+   "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+  },
+  {
+   "name": "in SUNDAY NIGHT HEAT (arena_current 17)",
+   "when": "match",
+   "check": "venue == 17"
+  },
+  {
+   "name": "player 1 on controller 1, the other the computer's",
+   "when": "match",
+   "check": "s0_pad == 1 and s1_pad == 0"
+  },
+  {
+   "name": "player 1 played: his controller pressed for at least 60 steps",
+   "when": "match",
+   "check": "(lj_g & 0xFFFF) >= 60"
+  },
+  {
+   "name": "player 1 hits his opponent (at least 3 times)",
+   "when": "match",
+   "check": "((lj_f & 0xFF) + ((lj_f >> 8) & 0xFF)) >= 3"
+  },
+  {
+   "name": "no model's matrices ever went bad",
+   "when": "always",
+   "check": "bad_mtx == 0"
+  },
+  {
+   "name": "no position ever went bad",
+   "when": "always",
+   "check": "finite(s0_x, s0_y, s0_z, s1_x, s1_y, s1_z)"
+  },
+  {
+   "name": "a decision: the match ended",
+   "when": "end",
+   "check": "matches >= 1"
+  }
+ ]
+}

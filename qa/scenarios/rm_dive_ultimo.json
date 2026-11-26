@@ -1,0 +1,65 @@
+{
+ "about": "revmoves (2026-11-20, the user: 'Ultimo dragon top turnbuckle move on a downed opponent glitches'): a handicap match, Ultimo Dragon (Revenge import 0x0376) and Kidman (0x0361) against The Rock, all CPU (two on one: The Rock is down often, so the down-target dives come). Ultimo's down-target dives (entries 261-264) done as his entry 261, 'revenge:1bc5_1bc6@12380': Revenge's own dive played on No Mercy's 12380, whose landings and miss ask the move for animations 2-4 (wrestler_state_121_125_dive_from_turnbuckle). Before the fix those were numbers past the library pair (no animation of the move); now Revenge's own 0x1BC7..0x1BC9. ('forced' counts the game's measuring of his moves at the bell too: not a sign of a dive.) Shots while he dives and the moment after. Matches one after another until the time is up (\"matches\": 0: a two-on-one match ends quickly); at 2x so the shots catch the dive (his first, about 25 s in, from the corner onto The Rock outside).",
+ "match": "handicap",
+ "wrestlers": [
+  "0x0376",
+  "0x0361",
+  "THE ROCK"
+ ],
+ "costumes": [
+  0,
+  0,
+  0
+ ],
+ "control": [
+  "cpu",
+  "cpu",
+  "cpu"
+ ],
+ "arena": "RAW IS WAR",
+ "matches": 0,
+ "seconds": 150,
+ "speed": 2,
+ "shots": 5.0,
+ "shot_when": "($c.s0_phase -ge 121 -and $c.s0_phase -le 125) -or ($c.s0_state -ge 121 -and $c.s0_state -le 125)",
+ "force": {
+  "slot": 0,
+  "entries": [
+   261,
+   264
+  ],
+  "as": 261
+ },
+ "expect": [
+  {
+   "name": "the match started",
+   "when": "any",
+   "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+  },
+  {
+   "name": "Ultimo Dragon and Kidman (Revenge) against The Rock",
+   "when": "match",
+   "check": "s0_id == 0x0376 and s1_id == 0x0361 and s2_id == 0x0001"
+  },
+  {
+   "name": "Ultimo dove off the turnbuckle with his library dive (121-125 on No Mercy's 12380)",
+   "when": "any",
+   "check": "s0_phase >= 121 and s0_phase <= 125 and s0_move == 12380"
+  },
+  {
+   "name": "Ultimo never went straight from his dive to knocked down (79): the state after a move comes from its last animation's end pose, and before the fix the dive's landing / miss played a number that was no animation of the move (Ultimo: 122 -> 79, popping up to the apron's height off the floor)",
+   "when": "always",
+   "check": "not (s0_state >= 121 and s0_state <= 125 and s0_phase == 79)"
+  },
+  {
+   "name": "no model's matrices ever went bad",
+   "when": "always",
+   "check": "bad_mtx == 0"
+  },
+  {
+   "name": "nobody's position went bad",
+   "when": "always",
+   "check": "finite(s0_x, s0_y, s0_z, s1_x, s1_y, s1_z, s2_x, s2_y, s2_z)"
+  }
+ ]
+}

@@ -1,0 +1,51 @@
+{
+  "about": "the analog stick on the keyboard (2026-11-20, controls): F2 > CONTROLS > KEYBOARD (P1): BUTTONS & STICK opened in the QA Royal Rumble (qa_op 23), the cursor on its first row, ANALOG STICK. The script, every 8 s: ENTER (the row's capture: its four keys in turn), then T, G, F, H -- the stick's up, down, left, right ('[pads] keyboard: STICK_UP = T' ..., saved in controls_n64.json). Scripted keys: the exe's vpad script 'key' lines (SDL's key state). Read the log and the copy's controls_n64.json after the run.",
+  "match": "rumble",
+  "wrestlers": [
+    "STEVE AUSTIN"
+  ],
+  "control": [
+    "cpu"
+  ],
+  "matches": 0,
+  "seconds": 100,
+  "shots": 3,
+  "options": {
+    "rumble_entrants": 4,
+    "rumble_interval": 30,
+    "qa_op": 23,
+    "qa_op_at": 8,
+    "qa_modes": 1
+  },
+  "pads": [
+    "10.0 key Return 200",
+    "11.0 key T 200",
+    "12.0 key G 200",
+    "13.0 key F 200",
+    "14.0 key H 200",
+    "10.0 repeat 8"
+  ],
+  "expect": [
+    {
+      "name": "the Rumble started",
+      "when": "any",
+      "check": "stage == 2 and mode == -2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "the KEYBOARD page open (PG_KEYS 10)",
+      "when": "any",
+      "check": "((bs_tries >> 24) & 1) == 1 and ((bs_grabs >> 8) & 0xFF) == 10"
+    },
+    {
+      "name": "a capture ended with a key set and saved",
+      "when": "any",
+      "check": "((bs_grabs >> 24) & 0x7F) == 1"
+    },
+    {
+      "name": "never cancelled",
+      "when": "always",
+      "check": "((bs_grabs >> 24) & 0x7F) != 2"
+    }
+  ],
+  "shot_when": "(($c.bs_grabs -shr 8) -band 0xFF) -eq 10"
+}

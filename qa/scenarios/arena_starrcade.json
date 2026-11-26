@@ -1,0 +1,32 @@
+{
+  "wrestlers": [
+    "HOLLYWOOD HOGAN",
+    "KEVIN NASH"
+  ],
+  "control": [
+    "cpu",
+    "cpu"
+  ],
+  "arena": "STARRCADE",
+  "matches": 1,
+  "shots": 0.5,
+  "expect": [
+    {
+      "name": "the match started",
+      "when": "any",
+      "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "the arena is ours (arena_current 16)",
+      "when": "any",
+      "check": "venue == 16 and stage == 2"
+    },
+    {
+      "name": "nobody's position went bad",
+      "when": "always",
+      "check": "finite(s0_x, s0_y, s0_z, s1_x, s1_y, s1_z)"
+    }
+  ],
+  "about": "2026-11-01 evening (arenas-rev, 0.38.23): Revenge's STARRCADE as an arcade arena of its own (its 3D entrance stage is the in-match stage): the blue gable arch on two pairs of pillars, the WCW STARRCADE triangle logo with its Aki plaque, more pillars either side, the blue floor, light-beam aisle; the mat's STARRCADE logo, grey aprons -- 2026-10-31, the user: 'import Bash at the Beach arena' -- Revenge's STARRCADE in WrestleMania's place (arena 16): a CPU match through the game's own cameras -- the stage behind the ring, nothing drawn over what it shouldn't be; the shots looked at",
+  "seconds": 150
+}

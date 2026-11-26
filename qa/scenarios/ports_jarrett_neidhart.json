@@ -1,0 +1,31 @@
+{
+  "about": "the 'never-ending display list' freeze (2026-10-27): two ported Superstars whose palettes sit right before their display lists -- Jeff Jarrett (0x030B) and Jim Neidhart (0x060E) -- in a singles match, CPU vs CPU. The exe watches each slot's part 1 palette + 0xE0 (WCW_WATCH_MOD): in the frozen Rumble 32 bytes written there ran over Jarrett's display list's end. A write there is in game_stderr.txt with what wrote it",
+  "wrestlers": [
+    "JEFF JARRETT",
+    "JIM NEIDHART"
+  ],
+  "control": [
+    "cpu",
+    "cpu"
+  ],
+  "matches": 1,
+  "seconds": 180,
+  "shots": 8,
+  "expect": [
+    {
+      "name": "the match started",
+      "when": "any",
+      "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "Jarrett is in it",
+      "when": "match",
+      "check": "s0_id == 0x030B or s1_id == 0x030B"
+    },
+    {
+      "name": "no model's matrices ever went bad",
+      "when": "always",
+      "check": "bad_mtx == 0"
+    }
+  ]
+}

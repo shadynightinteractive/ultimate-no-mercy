@@ -1,0 +1,81 @@
+{
+ "title": "Pair 2",
+ "menu": "Pair Test",
+ "championship": "world",
+ "cast": {
+  "rival": {
+   "id": "the_rock",
+   "game_number": "0x0002"
+  },
+  "boss": {
+   "id": "kane"
+  }
+ },
+ "start": "one",
+ "nodes": {
+  "one": {
+   "chapter": "PAIR TEST",
+   "pages": [
+    "{rival} waits for {player}."
+   ],
+   "scene": [
+    {
+     "place": "locker room",
+     "cast": [
+      "player",
+      {
+       "who": {
+        "id": "nobody_at_all",
+        "game_number": "0x0002"
+       }
+      }
+     ]
+    },
+    {
+     "say": "You're done, {player}!",
+     "who": {
+      "id": "nobody_at_all",
+      "game_number": "0x0002"
+     }
+    }
+   ],
+   "match": {
+    "type": "single",
+    "slots": [
+     "player",
+     [
+      "rival",
+      {
+       "game_number": "0x0101"
+      }
+     ]
+    ],
+    "runins": [
+     {
+      "who": {
+       "id": "mankind"
+      },
+      "helps": "opponents",
+      "at": "0:45"
+     }
+    ]
+   },
+   "requirement": "Pair test: {player} vs {rival}.",
+   "branches": [
+    {
+     "if": "win",
+     "set": {
+      "rival": {
+       "id": "the_rock",
+       "game_number": 2
+      }
+     },
+     "next": "end"
+    },
+    {
+     "next": "end"
+    }
+   ]
+  }
+ }
+}

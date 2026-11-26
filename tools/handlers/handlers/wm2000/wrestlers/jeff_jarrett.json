@@ -1,0 +1,21 @@
+{
+ "about": "WrestleMania 2000 port: what was chosen by hand for him (moved out of mod\\gen's tables, 2026-11-12, handlers). His photo was made by hand (mod/src/jarrett_photo.h's comment says how): it is his fix, kept as jeff_jarrett.photo.bin beside this.",
+ "string_id": "jeff_jarrett",
+ "key": "jarrett",
+ "legacy_game_id": "0x030B",
+ "name": "JEFF JARRETT",
+ "short_name": "JARRETT",
+ "height": 13,
+ "weight": 130,
+ "music_slot": 14,
+ "video": 58,
+ "wm2000": {
+  "roster_index": 29,
+  "looks_index": 29,
+  "moves_file": "0x3F8",
+  "abilities_file": "0x3F7"
+ },
+ "moveset": {
+  "reference_ordinal": 12
+ }
+}

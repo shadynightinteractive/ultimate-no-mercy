@@ -1,0 +1,16 @@
+{
+  "about": "2026-11-19, the user: 'During matches, the wrestlers' shadows sometimes vanish for a moment and come back' and 'the Titantron screen flickers a lot' (the general arena view, the stage further from the camera). A CPU vs CPU singles match at RAW IS WAR with the live Titantron, the game's own cameras, at the real pace (no -Speed, -Lockstep or -DrawShots: they change how pictures are timed); the runner sets WCW_VIEW_TRACE to count, picture by picture, the shadows' samples that pass the depth test and what the Titantron shows",
+  "wrestlers": ["THE ROCK", "STEVE AUSTIN"],
+  "costumes": [0, 0],
+  "arena": "RAW IS WAR",
+  "control": ["cpu", "cpu"],
+  "options": { "titantron_screens": true, "titantron_live": true },
+  "matches": 1,
+  "seconds": 100,
+  "shots": 25,
+  "expect": [
+    { "name": "the match started", "when": "any", "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30" },
+    { "name": "the arena is RAW IS WAR", "when": "match", "check": "venue == 0" },
+    { "name": "no position ever went bad", "when": "always", "check": "finite(s0_x, s0_y, s0_z, s1_x, s1_y, s1_z)" }
+  ]
+}

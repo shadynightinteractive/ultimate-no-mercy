@@ -1,0 +1,39 @@
+{
+  "title": "Scene Test: Interview",
+  "menu": "Scene Test",
+  "championship": "world",
+  "cast": { "rival": "STEVE AUSTIN", "boss": "VINCE McMAHON" },
+  "start": "one",
+  "nodes": {
+    "one": {
+      "chapter": "SCENE TEST",
+      "pages": ["A 3D scene follows:\nthe locker room, the hall, the ring."],
+      "scene": [
+        { "place": "locker room", "cast": ["player", "rival"] },
+        { "music": "on" },
+        { "say": "LOCKER ROOM. {player}, you're done!", "who": "rival" },
+        { "say": "We'll see about that, {rival}.", "who": "player" },
+        { "camera": "wide" },
+        { "wait": 60 },
+        { "narrate": "Meanwhile, in the hall..." },
+        { "place": "hall", "cast": [{ "who": "boss", "at": 2 }] },
+        { "who": "rival", "do": "walk" },
+        { "say": "HALL. Boss, I want {player}\none on one. Tonight.", "who": "rival" },
+        { "say": "You've got it.", "who": "boss" },
+        { "music": "off" },
+        { "place": "ring", "cast": ["player", "rival"] },
+        { "say": "RING. Let's go!", "who": "player" }
+      ],
+      "match": { "type": "single", "slots": ["player", ["rival", "KANE"]] },
+      "requirement": "Scene test: {player} vs {rival}.",
+      "branches": [
+        { "if": "win", "next": "end", "scene": [
+            { "place": "parking lot", "cast": ["rival"] },
+            { "say": "PARKING LOT. This isn't over!", "who": "rival" } ] },
+        { "next": "end", "scene": [
+            { "place": "pool hall", "cast": ["player"] },
+            { "say": "POOL HALL. I'll get him next time.", "who": "player" } ] }
+      ]
+    }
+  }
+}

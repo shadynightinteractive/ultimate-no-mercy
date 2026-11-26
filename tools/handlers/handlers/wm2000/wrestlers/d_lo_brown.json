@@ -1,0 +1,13 @@
+{
+ "about": "WrestleMania 2000's D' LO BROWN: what the handler is told for him (wm2kall, 2026-11-13). Everything else comes from the ROM.",
+ "string_id": "d_lo_brown",
+ "key": "d_lo_brown",
+ "wm2000": {
+  "roster_index": 28,
+  "game_id": "0x0405"
+ },
+ "moveset": {
+  "reference_ordinal": 23,
+  "reference_why": "No Mercy's own"
+ }
+}

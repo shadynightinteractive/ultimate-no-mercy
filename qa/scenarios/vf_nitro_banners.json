@@ -1,0 +1,40 @@
+{
+  "about": "(2026-11-17, pipefix: \"from\" 20 -> 10. The mod turns the camera on at match frame from x 60 (logic.c qa_frame) and the match clock runs 30 a second, so 20 held it from the match's 40th second -- about 45 s into the run, the last 15 s only -- and qa_checks --from 22 read mostly the game's moving cameras (qa084: \"the still camera did not take hold\"). With 10: still from the match's 20th second, about 25 s into the run; run the checks --from 27.) visualfix 2026-11-15, the user's playtest item 1: 'the Nitro logo on the background banners flickers'. MONDAY NITRO's stage set has two steel plates (Revenge t03) with the red WCW Monday Nitro logo (t11) on them, both at z 2216 (one plane). A CPU match; from 20 s the scenario's own camera, still, on the aisle looking at the back of the stage (the plates at x +-232..368, y 136..464), so nothing in the top half moves -- shots every 0.25 s. A tie in depth is a mottle of the two pictures (steel showing through the logo in patches), still while the camera is; it moves when the camera does. Checks: qa_checks.py hf <run> <twin's run> --from 22 -- the top half's fine grain under 0.85 x the twin's (vf_nitro_banners_old, WCW_NATIVE_PLANES=0: the layers as before, the negative control); qa_checks.py flicker <run> --from 22 -- nothing flips between shots. LOOK: the red logos whole on their plates in every shot; then the game's own cameras (the first 20 s): no shimmer on the banners.",
+  "wrestlers": [
+    "HOLLYWOOD HOGAN",
+    "KEVIN NASH"
+  ],
+  "control": [
+    "cpu",
+    "cpu"
+  ],
+  "arena": "MONDAY NITRO",
+  "matches": 1,
+  "seconds": 60,
+  "shots": 0.25,
+  "camera": {
+    "eye": [
+      0,
+      300,
+      1350
+    ],
+    "at": [
+      0,
+      300,
+      2216
+    ],
+    "from": 10
+  },
+  "expect": [
+    {
+      "name": "the match started",
+      "when": "any",
+      "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "the arena is MONDAY NITRO (arena_current 10)",
+      "when": "any",
+      "check": "venue == 10 and stage == 2"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "about": "2026-11-19, the user: 'In a match (the general arena view, when the stage is further from the camera), the Titantron screen flickers a lot.' A CPU vs CPU singles match at RAW IS WAR with the live Titantron, seen by a camera of the scenario's own from behind the far side of the ring, the stage set and its screen some 3,000 units off -- at the real pace; the runner's WCW_VIEW_TRACE says, picture by picture, what the screen showed",
+  "wrestlers": ["THE ROCK", "STEVE AUSTIN"],
+  "costumes": [0, 0],
+  "arena": "RAW IS WAR",
+  "control": ["cpu", "cpu"],
+  "options": { "titantron_screens": true, "titantron_live": true },
+  "matches": 1,
+  "seconds": 75,
+  "shots": 25,
+  "camera": { "eye": [0, 320, -900], "at": [0, 200, 1600] },
+  "expect": [
+    { "name": "the match started", "when": "any", "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30" },
+    { "name": "the arena is RAW IS WAR", "when": "match", "check": "venue == 0" }
+  ]
+}

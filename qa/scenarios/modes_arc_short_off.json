@@ -1,0 +1,15 @@
+{
+  "about": "2026-11-07, the two modes phase 3 (W9): Arcade with ABBREVIATED MENUS off -- as menu_from_attract, a coin and Start during an attract demo: the game lands on the game's own main menu (Multi Play, screen 2), not the championship list, and stays there for the players (nothing pressed: 40 s on it). state.csv (qa_modes) bs_tries >> 28 = the arcade's phase (1 PLAY).",
+  "match": "arcade",
+  "matches": 0,
+  "seconds": 260,
+  "shots": 2.0,
+  "options": { "free_play": false, "attract_demos": true, "qa_modes": 1, "short_menus_arcade": false },
+  "pads": [ "185.0 1 back 200", "186.0 1 start 200" ],
+  "expect": [
+    { "name": "a game started and on the game's main menu (Multi Play)", "when": "any", "check": "(bs_tries >> 28) == 1 and mode == 0 and screen == 2" },
+    { "name": "never taken to the championship list", "when": "always", "check": "screen != 22" },
+    { "name": "still on the main menu at the end, in the game", "when": "end", "check": "(bs_tries >> 28) == 1 and mode == 0 and screen in (2, 3, 4)" }
+  ],
+  "shot_when": "$c.screen -in 2,3,4"
+}

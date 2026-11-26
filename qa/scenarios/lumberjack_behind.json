@@ -1,0 +1,53 @@
+{
+  "about": "2026-11-22 lumberjack5: the user's correction (verbatim: 'I believe it's the same button to pick them up from the ground'): a lumberjack who has his man in a REAR grapple turns him to a front one with R, the pick-up button, before the roll-in's walk and throw -- never the C-up shoulder lift. CPU against CPU; the second competitor walks out every 30 s (qa_lj_out), and the roller grabs him from behind on purpose (qa_lj_behind) so the turn is shown. The game's log has a line for each hold from behind and each turn (grab flags, states, how far the two face apart).",
+  "match": "singles",
+  "wrestlers": [
+    "STEVE AUSTIN",
+    "THE ROCK"
+  ],
+  "costumes": [
+    0,
+    0
+  ],
+  "control": [
+    "cpu",
+    "cpu"
+  ],
+  "arena": "RAW IS WAR",
+  "options": {
+    "qa_lumberjacks": 12,
+    "qa_lj_out": 30,
+    "qa_lj_behind": 1
+  },
+  "matches": 3,
+  "seconds": 600,
+  "speed": 6,
+  "shots": 10,
+  "expect": [
+    {
+      "name": "the match started",
+      "when": "any",
+      "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "a roll-in hold from behind happened (the roller grabbed from behind, qa_lj_behind)",
+      "when": "match",
+      "check": "((lj_o >> 20) & 15) >= 1"
+    },
+    {
+      "name": "the roller turned his man round to face him with R, the pick-up button (the game's turn from a rear grapple: the man spun to face him and let go), then took him from the front -- the user's 'flip the opponent to a front grapple first'",
+      "when": "match",
+      "check": "((lj_l >> 20) & 15) >= 1"
+    },
+    {
+      "name": "a lumberjack holding a man from behind never pressed C-up (the shoulder lift: the user's b33 'Doomsday Device')",
+      "when": "always",
+      "check": "((lj_o >> 16) & 15) == 0"
+    },
+    {
+      "name": "a man was thrown back into the ring from a lumberjack's hold",
+      "when": "match",
+      "check": "((lj_o >> 24) & 7) >= 1"
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "about": "2026-11-01, Rey Mysterio (WCW/nWo Revenge's, 0x0112; data\revport\\ports4\\PORTS4.md): a singles match, CPU Rey Mysterio vs CPU The Rock -- his model whole in the ring (head, hands / fingers, attire, palettes), his size against the Rock's, no crash; the shots looked at",
+  "wrestlers": [
+    "REY MYSTERIO",
+    "THE ROCK"
+  ],
+  "control": [
+    "cpu",
+    "cpu"
+  ],
+  "arena": "RAW IS WAR",
+  "matches": 1,
+  "seconds": 300,
+  "shots": 2.0,
+  "expect": [
+    {
+      "name": "the match started",
+      "when": "any",
+      "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "no model's matrices ever went bad",
+      "when": "always",
+      "check": "bad_mtx == 0"
+    },
+    {
+      "name": "nobody's position went bad",
+      "when": "always",
+      "check": "finite(s0_x, s0_y, s0_z, s1_x, s1_y, s1_z)"
+    },
+    {
+      "name": "Rey Mysterio is in slot 0",
+      "when": "match",
+      "check": "s0_id == 0x0112"
+    }
+  ]
+}

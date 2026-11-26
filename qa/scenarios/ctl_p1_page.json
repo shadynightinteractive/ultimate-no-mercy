@@ -1,0 +1,15 @@
+{
+  "about": "per-player controller buttons (2026-11-19, roster_ctl round 2): F2 > CONTROLS > P1 CONTROLLER BUTTONS opened in the QA Royal Rumble (qa_op 24), for a picture of a player's page as it is (his own rows yellow, the default's grey). With a round-1 controls_n64.json (no \"players\") put in the game folder first, the log's '[pads] ... in use' lines show it read as the default for every player.",
+  "match": "rumble",
+  "wrestlers": ["STEVE AUSTIN"],
+  "control": ["cpu"],
+  "matches": 0,
+  "seconds": 90,
+  "shots": 6,
+  "options": { "rumble_entrants": 4, "rumble_interval": 30, "qa_op": 24, "qa_op_at": 8, "qa_modes": 1 },
+  "expect": [
+    { "name": "the Rumble started", "when": "any", "check": "stage == 2 and mode == -2 and match_frames != 0xFFFF and match_frames > 30" },
+    { "name": "the P1 CONTROLLER BUTTONS page open (PG_P1KEYS 12)", "when": "any", "check": "((bs_tries >> 24) & 1) == 1 and ((bs_grabs >> 8) & 0xFF) == 12" }
+  ],
+  "shot_when": "(($c.bs_grabs -shr 8) -band 0xFF) -eq 12"
+}

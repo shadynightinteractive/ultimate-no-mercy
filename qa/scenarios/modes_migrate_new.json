@@ -1,0 +1,12 @@
+{
+  "about": "2026-11-07, the two modes: a new install (settings_version 0; game_mode at mod.toml's default, Regular; enabled at its default, on) starts Regular -- the migration leaves game_mode alone and writes settings_version 5. state.csv (qa_modes) bs_tries: bit 0 the running mode, bit 2 the option as saved, bits 4-7 the migration (0 none), bits 8-15 settings_version as found, 16-23 as now. Shots: the title with the game's own PRESS START, no INSERT COIN.",
+  "match": "arcade",
+  "matches": 0,
+  "seconds": 120,
+  "shots": 2.0,
+  "options": { "game_mode": "Regular", "settings_version": 0, "enabled": true, "qa_modes": 1 },
+  "expect": [
+    { "name": "Regular, the option kept Regular, no migration of the mode, found version 0, now 5", "when": "any", "check": "(bs_tries & 1) == 0 and ((bs_tries >> 2) & 1) == 0 and ((bs_tries >> 4) & 15) == 0 and ((bs_tries >> 8) & 255) == 0 and ((bs_tries >> 16) & 255) == 5" },
+    { "name": "Regular all along", "when": "always", "check": "(bs_tries & 1) == 0" }
+  ]
+}

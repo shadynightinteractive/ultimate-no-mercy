@@ -1,0 +1,13 @@
+{
+ "about": "WrestleMania 2000's MEAT: what the handler is told for him (wm2kall, 2026-11-13). Everything else comes from the ROM.",
+ "string_id": "meat",
+ "key": "meat",
+ "wm2000": {
+  "roster_index": 33,
+  "game_id": "0x0505"
+ },
+ "moveset": {
+  "reference_ordinal": 4,
+  "reference_why": "none in No Mercy: Kane, as for a man of 200 lbs and over"
+ }
+}

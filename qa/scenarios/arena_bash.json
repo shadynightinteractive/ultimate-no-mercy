@@ -1,0 +1,32 @@
+{
+  "wrestlers": [
+    "HOLLYWOOD HOGAN",
+    "KEVIN NASH"
+  ],
+  "control": [
+    "cpu",
+    "cpu"
+  ],
+  "arena": "BASH AT THE BEACH",
+  "matches": 1,
+  "shots": 0.5,
+  "expect": [
+    {
+      "name": "the match started",
+      "when": "any",
+      "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "the arena is ours (arena_current 12)",
+      "when": "any",
+      "check": "venue == 12 and stage == 2"
+    },
+    {
+      "name": "nobody's position went bad",
+      "when": "always",
+      "check": "finite(s0_x, s0_y, s0_z, s1_x, s1_y, s1_z)"
+    }
+  ],
+  "about": "2026-10-31, the user: 'import Bash at the Beach arena' -- Revenge's BASH AT THE BEACH in WrestleMania's place (arena 12): a CPU match through the game's own cameras -- the stage behind the ring, nothing drawn over what it shouldn't be; the shots looked at",
+  "seconds": 150
+}

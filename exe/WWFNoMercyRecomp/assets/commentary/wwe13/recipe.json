@@ -1,0 +1,15 @@
+{
+ "name": "WWE '13 (Wii)",
+ "source": "wwe13",
+ "pack": "wwe13.pak",
+ "comment_packet": "03766f726269730d0000004c61766636302e31362e313030010000001f000000656e636f6465723d4c61766336302e33312e313032206c6962766f7262697301",
+ "rate": 20000,
+ "trim": "silenceremove=start_periods=1:start_threshold=-50dB,areverse,silenceremove=start_periods=1:start_threshold=-50dB,areverse",
+ "encoder": "libvorbis q0 (FFmpeg 6.1 libvorbis encoder and Ogg muxer, as packbuild/comm_encode.cpp)",
+ "target_sha1": "97cc39d15544a9bf984aad380a45a72edc4731d2",
+ "old_target_sha1": "22812f22b1b76c6d9e39b6574929d09f4b43746c",
+ "target_clips": 4149,
+ "target_lines": 5160,
+ "made_from": "the real WWE '13 (Wii) disc (S3XE78, an RVZ image) by this builder (packbuild): the canonical pack since the user's decision of 2026-11-18 -- 4,149 clips (3,998 whole lines + 151 pieces of lines), 820 whole lines and 60 pieces byte for byte the developer's old pack, every other clip the same sound (duration exact, loudness within 0.071 dB, correlation >= 0.990 after decoding); the same bytes on Windows and Linux. The old pack (old_target_sha1; its clips' SHA-1 in clips.tsv sha1) is reference only: the AI-free pack of 2026-11-14 (sha1 8fedf2c2cd45e3d44c416604269e20d1ba615d1f) less Legends of WrestleMania's 1,249 clips (the user's decision: WWE '13 only) -- its 4,149 clips byte for byte; the index's text replaced by tags (way:N / count:N / -, the user's decision 2026-11-18: no transcripts in the release) and its moves table made from the player's own No Mercy ROM (moves_refs.tsv). With the text, the same clips gave 4d8aeb435d24fda55d0ba78fa480c52ea34691f7.",
+ "index": "lines.tsv: tags, not text (tools/commentary/make_tags.py); moves: moves_refs.tsv + the player's ROM"
+}

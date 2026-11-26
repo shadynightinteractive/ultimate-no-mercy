@@ -1,0 +1,31 @@
+{
+  "about": "2026-10-30, the user: \"We just need Hogan's leg drop to land, the opponent to get hit and take damage as if it's a powerful finishing move\" -- HOLLYWOOD HOGAN (the CPU), SPECIAL kept full (qa_special 5), put at an end of the Rock whenever he lies on the mat and grappling (qa_headgrab: the ends in turn), nothing forced: at the head the game's own pick is his ground special (155: the People's Elbow special with his taunt and leg drop, revanims legdrop_pair). The Rock's body health in state.csv bs_tries (x10). The leg landing, the Rock reacting and staying down, the damage: looked at",
+  "wrestlers": [
+    "HOLLYWOOD HOGAN",
+    "THE ROCK"
+  ],
+  "control": [
+    "cpu",
+    "pad2"
+  ],
+  "arena": "SMACKDOWN",
+  "matches": 1,
+  "seconds": 300,
+  "shots": 0.5,
+  "expect": [
+    {
+      "name": "the match started",
+      "when": "any",
+      "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "nobody's position went bad",
+      "when": "always",
+      "check": "finite(s0_x, s0_y, s0_z, s1_x, s1_y, s1_z)"
+    }
+  ],
+  "options": {
+    "qa_special": 5,
+    "qa_headgrab": 1
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "about": "no2k15 (2026-11-23): what still names a 2K15 test slot after they are taken out. (1) The save and sidecar of no2k15_sidecar_make, the sidecar's champion changed to stone_cold_2k15 / 0x011A (put in by QA_SET_ASIDE): the World Heavyweight title is VACATED (the rule for a removed wrestler's title) and the save written so -- the log's [sidecar] / [removal] lines, and qa_seat_save 2's [seats] title 0 line (no champion). (2) A story naming them by string ID, number, string ID + number and name (qa stories_test no2k15_retired.json): it compiles, each name played by his stand-in -- STEVE AUSTIN 0x0002, THE ROCK 0x0001 (the [stories] lines). (3) A select_pages.json naming them the same ways (qa pages_test no2k15_pages.json): each left out, no blank box (qa_removal 2's page dump). Then the select and a match: The Rock (player 1) vs the Undertaker.",
+  "match": "arcade",
+  "wrestlers": [
+    "0x0001",
+    "0x0003"
+  ],
+  "costumes": [
+    0,
+    0
+  ],
+  "matches": 0,
+  "seconds": 420,
+  "shots": 2.0,
+  "pages": "no2k15_pages.json",
+  "stories": [
+    "no2k15_retired.json"
+  ],
+  "options": {
+    "free_play": true,
+    "attract_demos": false,
+    "qa_versus": 30,
+    "qa_seat_save": 2,
+    "qa_removal": 2
+  },
+  "expect": [
+    {
+      "name": "never a 2K15 slot under any cursor",
+      "when": "always",
+      "check": "(bs_tries & 0xFFFF) != 0x011A and (bs_tries & 0xFFFF) != 0x011B"
+    },
+    {
+      "name": "the match: The Rock (player 1) vs the Undertaker (CPU)",
+      "when": "any",
+      "check": "mode == -2 and match_frames != 0xFFFF and match_frames > 120 and s0_id == 0x0001 and s0_pad == 1 and s1_id == 0x0003"
+    }
+  ]
+}

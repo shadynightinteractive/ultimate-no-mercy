@@ -1,0 +1,15 @@
+{
+  "about": "closing the game mid-match shuts it down cleanly (the exe's quit timer takes the same way as closing the window)",
+  "wrestlers": ["BRET HART", "THE ROCK"],
+  "arena": "SMACKDOWN",
+  "control": ["cpu", "cpu"],
+  "matches": 0,
+  "seconds": 45,
+  "shots": 5,
+  "expect": [
+    { "name": "the match started", "when": "any", "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30" },
+    { "name": "Bret Hart is in slot 0", "when": "match", "check": "s0_id == 0x060D" },
+    { "name": "the arena is SMACKDOWN", "when": "match", "check": "venue == 2" },
+    { "name": "no position ever went bad", "when": "always", "check": "finite(s0_x, s0_y, s0_z, s1_x, s1_y, s1_z)" }
+  ]
+}

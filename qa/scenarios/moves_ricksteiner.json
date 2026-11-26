@@ -1,0 +1,48 @@
+{
+  "about": "2026-11-01, Rick Steiner (WCW/nWo Revenge's, 0x010E; data\revport\\ports4\\PORTS4.md): his moves with Revenge animations of their own, each in turn (qa_fcycle 22: ext_late's index; forced only on a grab that holds the man), the opponent an idle player 2; the shots looked at",
+  "wrestlers": [
+    "RICK STEINER",
+    "THE ROCK"
+  ],
+  "control": [
+    "cpu",
+    "pad2"
+  ],
+  "arena": "SMACKDOWN",
+  "matches": 1,
+  "seconds": 300,
+  "shots": 0.5,
+  "force": {
+    "slot": 0,
+    "entries": [
+      0,
+      99
+    ],
+    "as": 0
+  },
+  "options": {
+    "qa_fcycle": 22
+  },
+  "expect": [
+    {
+      "name": "the match started",
+      "when": "any",
+      "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "moves forced",
+      "when": "any",
+      "check": "forced >= 3"
+    },
+    {
+      "name": "no model's matrices ever went bad",
+      "when": "always",
+      "check": "bad_mtx == 0"
+    },
+    {
+      "name": "nobody's position went bad",
+      "when": "always",
+      "check": "finite(s0_x, s0_y, s0_z, s1_x, s1_y, s1_z)"
+    }
+  ]
+}

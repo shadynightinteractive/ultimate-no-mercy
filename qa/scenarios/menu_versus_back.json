@@ -1,0 +1,28 @@
+{
+  "about": "two players into Versus (player 2 by qa_p2), MATCH -> (PLAYER passed) -> ARENA, then B, B and pick again (2026-10-28: the menu vanished, the user)",
+  "match": "arcade",
+  "matches": 0,
+  "seconds": 170,
+  "shots": 1.0,
+  "options": {
+    "free_play": true,
+    "attract_demos": true,
+    "qa_p2": 300
+  },
+  "pads": [
+    "70.5 1 start 200",
+    "96.0 1 a 150",
+    "100.0 1 x 150",
+    "100.0 2 x 150",
+    "100.4 1 x 150",
+    "100.4 2 x 150",
+    "104.0 1 a 150",
+    "108.0 1 x 150",
+    "108.0 2 x 150",
+    "110.0 1 x 150",
+    "110.0 2 x 150",
+    "111.0 1 a 150",
+    "115.0 1 a 150"
+  ],
+  "expect": []
+}

@@ -1,0 +1,56 @@
+{
+  "about": "2026-11-22 guestref: a Guest Referee match with player 1 THE REFEREE -- Mankind (slot 2) at controller 1 (qa_gr_p1 2: he keeps near the competitors; at a pin he walks to the man covering, makes him his target (C-right) and counts with C-left presses -- the referee's count, state 166, one beat a press: logic.c / guestref.c), Steve Austin vs The Rock the computer's, on RAW IS WAR. Checks: the player referee counts a pin and the match ends with a decision; the camera keeps him in view (the game's own shot for a player referee; qa_camprobe, guestref_cam.py).",
+  "match": "triple",
+  "setup_flags": 129,
+  "wrestlers": [
+    "STEVE AUSTIN",
+    "THE ROCK",
+    "MANKIND"
+  ],
+  "costumes": [
+    0,
+    0,
+    0
+  ],
+  "control": [
+    "cpu",
+    "cpu",
+    "pad1"
+  ],
+  "arena": "RAW IS WAR",
+  "options": {
+    "qa_camprobe": 1,
+    "qa_gr_p1": 2
+  },
+  "matches": 2,
+  "seconds": 900,
+  "speed": 6,
+  "shots": 10,
+  "expect": [
+    {
+      "name": "the match started",
+      "when": "any",
+      "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "a referee match: the match flags hold 0x80000 (the guest referee) with the singles bits 0x1400",
+      "when": "match",
+      "check": "(flags & 0x81400) == 0x81400"
+    },
+    {
+      "name": "player 1 is the referee (slot 2, controller 1), the competitors the computer's",
+      "when": "match",
+      "check": "s2_pad == 1 and s0_pad == 0 and s1_pad == 0"
+    },
+    {
+      "name": "the player referee counted (state 166, the count on the HUD)",
+      "when": "match",
+      "check": "s2_phase == 166"
+    },
+    {
+      "name": "a decision: a match ended",
+      "when": "end",
+      "check": "matches >= 1"
+    }
+  ]
+}

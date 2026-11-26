@@ -1,0 +1,13 @@
+{
+ "about": "WrestleMania 2000's DEBRA: what the handler is told for him (wm2kall, 2026-11-13). Everything else comes from the ROM.",
+ "string_id": "debra",
+ "key": "debra",
+ "wm2000": {
+  "roster_index": 71,
+  "game_id": "0x0A05"
+ },
+ "moveset": {
+  "reference_ordinal": 51,
+  "reference_why": "none in No Mercy: Stephanie McMahon, the women's looks base"
+ }
+}

@@ -1,0 +1,44 @@
+{
+  "wrestlers": [
+    "HOLLYWOOD HOGAN",
+    "KEVIN NASH"
+  ],
+  "control": [
+    "cpu",
+    "cpu"
+  ],
+  "arena": "WRESTLEMANIA",
+  "matches": 1,
+  "shots": 0.5,
+  "expect": [
+    {
+      "name": "the match started",
+      "when": "any",
+      "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "the arena is the base (WrestleMania)",
+      "when": "any",
+      "check": "venue == 7 and stage == 2"
+    },
+    {
+      "name": "nobody's position went bad",
+      "when": "always",
+      "check": "finite(s0_x, s0_y, s0_z, s1_x, s1_y, s1_z)"
+    }
+  ],
+  "about": "the game's own WrestleMania from arena_*_ring's camera, raised to the light truss and its banners: what the base arena shows there (arena.c)",
+  "seconds": 45,
+  "camera": {
+    "eye": [
+      0,
+      160,
+      -900
+    ],
+    "at": [
+      150,
+      520,
+      0
+    ]
+  }
+}

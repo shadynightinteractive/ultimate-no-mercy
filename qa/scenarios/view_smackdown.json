@@ -1,0 +1,22 @@
+{
+  "about": "native window: SmackDown, a WCW port against a stock man: a port's model, the oval screen",
+  "wrestlers": [
+    "0x0105",
+    "0x0003"
+  ],
+  "control": [
+    "cpu",
+    "cpu"
+  ],
+  "matches": 1,
+  "seconds": 120,
+  "shots": 20,
+  "expect": [
+    {
+      "name": "the match started",
+      "when": "any",
+      "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+    }
+  ],
+  "arena": "SMACKDOWN"
+}

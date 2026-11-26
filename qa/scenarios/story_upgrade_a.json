@@ -1,0 +1,21 @@
+{
+  "about": "2026-11-02 story upgrade, phases 1-4 (+9's time trigger / end): qa/stories_test/005_upgrade_a.json played as STEVE AUSTIN. Recast: taker [AUSTIN, KANE, UNDERTAKER] -> KANE, buddy MANKIND, pal [KANE, BIG SHOW] -> BIG SHOW (bs_tries = 4 | 6 << 16, bs_grabs = 0x201); voice tokens, per-player and group lines, ask + store, set, scene ifs on or / not / parens / player is / role is / role in (the shots: every line reads OK, none BAD); node 1's match ended at 1:00 by the script (pinfall, player); branch 0 (or / parens / the stored answer: clock 0 then); node 2 vs BIG SHOW, ended at 0:40 by submission -> 'HOW OK' (pal_wm_skipped = 2: how)",
+  "match": "arcade",
+  "wrestlers": ["STEVE AUSTIN", null],
+  "matches": 0,
+  "seconds": 900,
+  "shots": 3.0,
+  "options": { "free_play": true, "attract_demos": false, "custom_story": 1, "qa_story": 3 },
+  "expect": [
+    { "name": "recast: taker KANE, buddy MANKIND", "when": "any", "check": "bs_tries == 393220" },
+    { "name": "recast: pal BIG SHOW", "when": "any", "check": "bs_grabs == 513" },
+    { "name": "node 1's match: AUSTIN vs KANE", "when": "any", "check": "matches >= 10100 and matches < 10200 and mode == -2 and s0_id == 0x0002 and s1_id == 0x0004" },
+    { "name": "node 2's match: AUSTIN vs BIG SHOW", "when": "any", "check": "matches >= 10200 and mode == -2 and s0_id == 0x0002 and s1_id == 0x0201" },
+    { "name": "store + set: heat 2, answer 1", "when": "any", "check": "pal_room_skipped == 2 and pal_calls == 1" },
+    { "name": "branch 0 (or / parens / stored answer)", "when": "any", "check": "clock == 0" },
+    { "name": "node 2 reached", "when": "any", "check": "matches >= 10200" },
+    { "name": "the last match: by submission", "when": "any", "check": "pal_wm_skipped == 2 and matches >= 10200" }
+  ],
+  "shot_when": "$true",
+  "stories": ["005_upgrade_a.json"]
+}

@@ -1,0 +1,64 @@
+{
+ "about": "WCW/nWo Revenge port: what was chosen by hand for him (moved out of mod\\gen's tables by handlers\\extract_fixes.py, 2026-11-12). Edit here; the handler reads nothing else that is his alone.",
+ "string_id": "goldberg",
+ "key": "goldberg",
+ "legacy_game_id": "0x010D",
+ "name": "GOLDBERG",
+ "short_name": "GOLDBERG",
+ "height": 15,
+ "weight": 185,
+ "music_slot": 73,
+ "video": 0,
+ "revenge": {
+  "moveset_file": "0x16D",
+  "code": "0x00A"
+ },
+ "moveset": {
+  "reference_ordinal": 2,
+  "allies": [
+   "0x010B",
+   "0x010C"
+  ],
+  "weight_class": [
+   1,
+   1,
+   0
+  ],
+  "stance": null,
+  "slot_overrides": {
+   "188": 6200,
+   "235": 15370
+  },
+  "no_struggling_slam": true
+ },
+ "costumes": [
+  {
+   "capture": "gp_c0",
+   "slot": 0
+  },
+  {
+   "capture": "at_gp1",
+   "slot": 0
+  },
+  {
+   "capture": "at_gp2",
+   "slot": 0
+  },
+  {
+   "capture": "at_gp3",
+   "slot": 0
+  }
+ ],
+ "skin": "revenge",
+ "photo_number": 122,
+ "photo": {
+  "photo": 122,
+  "shot": "data/revport/ports4/cap/cc_goldberg.png",
+  "box": [
+   194,
+   25,
+   244,
+   75
+  ]
+ }
+}

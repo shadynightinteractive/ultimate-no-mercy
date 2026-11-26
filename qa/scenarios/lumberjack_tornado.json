@@ -1,0 +1,94 @@
+{
+  "about": "2026-11-21 lumberjack2: a Lumberjack TORNADO TAG (src/lumberjack.c, docs/MATCH_SLOTS.md section 4) -- the QA tag match (Austin and The Rock against Triple H and The Undertaker -- by ID 0x0003, lumberjack3: the name UNDERTAKER resolves to 0x000A, the built-in 1999 look, which an install with WrestleMania 2000's Undertaker folder replaces, so it is on no roster there and its match record is never built: b6-b8's crash at the bell -- all the CPU) played tornado (rules 0x40: all four legal, all four in the ring at once) with 12 lumberjacks: 4 + 12 = 16 real match slots on the per-slot model (match flags 0x2000, no Rumble machinery); the walk-out, then the match; every 30 s the fourth competitor walks out (qa_lj_out), the lumberjacks roll him back in; the lumberjacks never a side; the tag match's own decision; 6x",
+  "match": "tag",
+  "wrestlers": [
+    "STEVE AUSTIN",
+    "THE ROCK",
+    "TRIPLE H",
+    "0x0003"
+  ],
+  "costumes": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "arena": "RAW IS WAR",
+  "control": [
+    "cpu",
+    "cpu",
+    "cpu",
+    "cpu"
+  ],
+  "options": {
+    "qa_lumberjacks": 12,
+    "qa_lj_out": 30
+  },
+  "matches": 1,
+  "seconds": 1500,
+  "speed": 6,
+  "shots": 6,
+  "expect": [
+    {
+      "name": "the match started",
+      "when": "any",
+      "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "a Lumberjack tornado tag: 12 lumberjacks present, 4 competitors, the engine counts 16, a tag match",
+      "when": "match",
+      "check": "(bs_tries & 0xFF) == 12 and ((bs_step >> 8) & 0xFF) == 4 and (bs_step & 0xFF) == 16 and (flags & 0x2000) != 0 and (flags & 0x4000) == 0 and ((lj_h >> 24) & 0xFF) == 4"
+    },
+    {
+      "name": "tornado: all four in the ring at once just after the bell (the second men too, not on the apron)",
+      "when": "match",
+      "check": "match_frames > 30 and match_frames < 300 and abs(s1_x) < 200 and abs(s1_z) < 200 and abs(s3_x) < 200 and abs(s3_z) < 200 and abs(s0_x) < 200 and abs(s2_x) < 200"
+    },
+    {
+      "name": "the walk-out: all 12 out and at their posts, never under 40 apart (lumberjack5: walking down the ramp in the intro)",
+      "when": "match",
+      "check": "(lj_a & 0xFF) == 12 and ((lj_a >> 8) & 0xFF) == 12 and (lj_b & 3) == 3 and (lj_a >> 16) >= 40"
+    },
+    {
+      "name": "a competitor left the ring, the lumberjacks went for him",
+      "when": "match",
+      "check": "(bs_grabs & 0xFF) >= 1 and ((bs_tries >> 8) & 0xFF) >= 2"
+    },
+    {
+      "name": "rolled back in: sent in by his own buttons (the game's climb in; lumberjack4), back in the ring (either route back in: his own climb or a lumberjack's roll / throw -- the user 2026-11-25: \"Count either route\")",
+      "when": "match",
+      "check": "(((lj_c >> 16) & 0xFF) + ((lj_c >> 24) & 0xFF)) >= 1 and ((lj_c >> 24) & 0xFF) >= 1"
+    },
+    {
+      "name": "the decision was over the competitors: a side won (0x4 on a competitor), no lumberjack's result set",
+      "when": "match",
+      "check": "match_state == 4 and ((s0_flags & 7) == 4 or (s1_flags & 7) == 4 or (s2_flags & 7) == 4 or (s3_flags & 7) == 4) and (s4_flags & 7) == 0 and (s5_flags & 7) == 0"
+    },
+    {
+      "name": "no lumberjack was ever a side of the match",
+      "when": "always",
+      "check": "(bs_tries >> 24) == 0"
+    },
+    {
+      "name": "the lumberjacks stayed out of the ring (under 5 s in the ring / on the apron, all together)",
+      "when": "end",
+      "check": "((bs_tries >> 16) & 0xFF) < 150"
+    },
+    {
+      "name": "no position ever went bad",
+      "when": "always",
+      "check": "finite(s0_x, s0_y, s0_z, s1_x, s1_y, s1_z, s2_x, s2_z, s5_x, s5_z)"
+    },
+    {
+      "name": "at their posts the lumberjacks stand still (lumberjack5, the user's 'twitching in place' -- b1's trace: taunts at the posts, about one move a lumberjack-second): no taunt there, under 1% of their time there in any state but standing, at most one move over 1 unit a 20 lumberjack-seconds (ROUND 9: his own moves -- the intro's end putting him at his post, and a man standing beside him pushing him, counted apart in the log)",
+      "when": "end",
+      "check": "(lj_m & 0xFFFF) >= 300 and ((lj_l >> 16) & 15) == 0 and (lj_l & 0xFFFF) * 10 <= (lj_m & 0xFFFF) * 3 and (lj_m >> 16) * 20 <= (lj_m & 0xFFFF)"
+    },
+    {
+      "name": "the match finished and the game quit by itself",
+      "when": "end",
+      "check": "matches >= 1 or stage != 2"
+    }
+  ],
+  "shot_when": "$c.stage -eq 2 -and $c.match_frames -ne 65535"
+}

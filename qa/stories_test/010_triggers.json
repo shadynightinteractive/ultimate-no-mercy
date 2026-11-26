@@ -1,0 +1,392 @@
+{
+ "title": "Upgrade test C: mid-match triggers",
+ "menu": "Upgrade Test C",
+ "championship": "world",
+ "cast": {
+  "rival": "KANE",
+  "pal": "UNDERTAKER"
+ },
+ "start": "tko",
+ "nodes": {
+  "tko": {
+   "chapter": "END TKO",
+   "pages": [
+    "END TKO: {player}."
+   ],
+   "match": {
+    "slots": [
+     "player",
+     "rival"
+    ],
+    "script": [
+     {
+      "when": "time 0:15",
+      "do": "end",
+      "winner": "player",
+      "how": "tko"
+     }
+    ]
+   },
+   "requirement": "END TKO match.",
+   "branches": [
+    {
+     "if": "win by tko",
+     "next": "dq",
+     "pages": [
+      "END TKO OK."
+     ]
+    },
+    {
+     "next": "dq",
+     "pages": [
+      "END TKO OTHER."
+     ]
+    }
+   ]
+  },
+  "dq": {
+   "chapter": "END DQ",
+   "pages": [
+    "END DQ: {player}."
+   ],
+   "match": {
+    "slots": [
+     "player",
+     "rival"
+    ],
+    "script": [
+     {
+      "when": "time 0:15",
+      "do": "end",
+      "winner": "player",
+      "how": "dq"
+     }
+    ]
+   },
+   "requirement": "END DQ match.",
+   "branches": [
+    {
+     "if": "win by dq",
+     "next": "count",
+     "pages": [
+      "END DQ OK."
+     ]
+    },
+    {
+     "next": "count",
+     "pages": [
+      "END DQ OTHER."
+     ]
+    }
+   ]
+  },
+  "count": {
+   "chapter": "END COUNT",
+   "pages": [
+    "END COUNT: {player}."
+   ],
+   "match": {
+    "slots": [
+     "player",
+     "rival"
+    ],
+    "script": [
+     {
+      "when": "time 0:15",
+      "do": "end",
+      "winner": "rival",
+      "how": "countout"
+     }
+    ]
+   },
+   "requirement": "END COUNT match.",
+   "branches": [
+    {
+     "if": "lose by countout",
+     "next": "sub",
+     "pages": [
+      "END COUNT OK."
+     ]
+    },
+    {
+     "next": "sub",
+     "pages": [
+      "END COUNT OTHER."
+     ]
+    }
+   ]
+  },
+  "sub": {
+   "chapter": "END SUBMIT",
+   "pages": [
+    "END SUBMIT: {player}."
+   ],
+   "match": {
+    "slots": [
+     "player",
+     "rival"
+    ],
+    "script": [
+     {
+      "when": "time 0:15",
+      "do": "end",
+      "winner": "player",
+      "how": "submission"
+     }
+    ]
+   },
+   "requirement": "END SUBMIT match.",
+   "branches": [
+    {
+     "if": "win by submission and (player is STEVE AUSTIN)",
+     "next": "health",
+     "pages": [
+      "END SUBMIT OK."
+     ]
+    },
+    {
+     "next": "health",
+     "pages": [
+      "END SUBMIT OTHER."
+     ]
+    }
+   ]
+  },
+  "health": {
+   "chapter": "HEALTH",
+   "pages": [
+    "HEALTH: {player}."
+   ],
+   "match": {
+    "slots": [
+     "player",
+     "rival"
+    ],
+    "script": [
+     {
+      "when": "health rival < 80%",
+      "do": "end",
+      "winner": "player",
+      "how": "pinfall"
+     },
+     {
+      "when": "time 3:00",
+      "do": "end",
+      "winner": "player",
+      "how": "pinfall"
+     }
+    ]
+   },
+   "requirement": "HEALTH match.",
+   "branches": [
+    {
+     "next": "out",
+     "pages": [
+      "HEALTH done."
+     ]
+    }
+   ]
+  },
+  "out": {
+   "chapter": "OUTSIDE",
+   "pages": [
+    "OUTSIDE: {player}."
+   ],
+   "match": {
+    "slots": [
+     "player",
+     "rival"
+    ],
+    "script": [
+     {
+      "when": "rival outside",
+      "do": "end",
+      "winner": "player",
+      "how": "countout"
+     },
+     {
+      "when": "player outside",
+      "do": "end",
+      "winner": "rival",
+      "how": "countout"
+     },
+     {
+      "when": "time 3:00",
+      "do": "end",
+      "winner": "player",
+      "how": "pinfall"
+     }
+    ],
+    "rules": "normal"
+   },
+   "requirement": "OUTSIDE match.",
+   "branches": [
+    {
+     "next": "hold",
+     "pages": [
+      "OUTSIDE done."
+     ]
+    }
+   ]
+  },
+  "hold": {
+   "chapter": "HOLD",
+   "pages": [
+    "HOLD: {player}."
+   ],
+   "match": {
+    "slots": [
+     "player",
+     "rival"
+    ],
+    "script": [
+     {
+      "when": "rival in a hold",
+      "do": "end",
+      "winner": "player",
+      "how": "submission"
+     },
+     {
+      "when": "player in a hold",
+      "do": "end",
+      "winner": "rival",
+      "how": "submission"
+     },
+     {
+      "when": "time 4:00",
+      "do": "end",
+      "winner": "player",
+      "how": "pinfall"
+     }
+    ],
+    "rules": "submission"
+   },
+   "requirement": "HOLD match.",
+   "branches": [
+    {
+     "next": "fin",
+     "pages": [
+      "HOLD done."
+     ]
+    }
+   ]
+  },
+  "fin": {
+   "chapter": "FINISHER",
+   "pages": [
+    "FINISHER: {player}."
+   ],
+   "match": {
+    "slots": [
+     "player",
+     "rival"
+    ],
+    "script": [
+     {
+      "when": "finisher by player",
+      "do": "end",
+      "winner": "player",
+      "how": "pinfall"
+     },
+     {
+      "when": "finisher by rival",
+      "do": "end",
+      "winner": "rival",
+      "how": "pinfall"
+     },
+     {
+      "when": "time 4:00",
+      "do": "end",
+      "winner": "player",
+      "how": "pinfall"
+     }
+    ]
+   },
+   "requirement": "FINISHER match.",
+   "branches": [
+    {
+     "next": "rules",
+     "pages": [
+      "FINISHER done."
+     ]
+    }
+   ]
+  },
+  "rules": {
+   "chapter": "RULES",
+   "pages": [
+    "RULES: {player}."
+   ],
+   "match": {
+    "slots": [
+     "player",
+     "rival"
+    ],
+    "script": [
+     {
+      "when": "time 0:10",
+      "do": "no dq"
+     },
+     {
+      "when": "time 0:20",
+      "do": "no countout"
+     },
+     {
+      "when": "time 0:40",
+      "do": "end",
+      "winner": "player",
+      "how": "pinfall"
+     }
+    ]
+   },
+   "requirement": "RULES match.",
+   "branches": [
+    {
+     "next": "late",
+     "pages": [
+      "RULES done."
+     ]
+    }
+   ]
+  },
+  "late": {
+   "chapter": "LATE RUNIN",
+   "pages": [
+    "LATE RUNIN: {player}."
+   ],
+   "match": {
+    "slots": [
+     "player",
+     "rival"
+    ],
+    "script": [
+     {
+      "when": "time 0:20",
+      "do": "runin"
+     },
+     {
+      "when": "time 1:15",
+      "do": "end",
+      "winner": "player",
+      "how": "pinfall"
+     }
+    ],
+    "runins": [
+     {
+      "who": "pal",
+      "helps": "opponents"
+     }
+    ]
+   },
+   "requirement": "LATE RUNIN match.",
+   "branches": [
+    {
+     "next": "end",
+     "pages": [
+      "LATE RUNIN done."
+     ]
+    }
+   ]
+  }
+ }
+}

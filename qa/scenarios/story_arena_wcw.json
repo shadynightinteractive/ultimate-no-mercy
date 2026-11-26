@@ -1,0 +1,38 @@
+{
+  "about": "2026-10-30, the user: arenas unlimited -- a story's arena of ours (storyc / arcade_stories: the node's venue the base, the arena in the pack's arena list; story.c story_xarena, logic.c chooses it): qa\\stories_test\u0002_arena_wcw.json -- Monday Nitro (arena 10), Halloween Havoc (11), then WrestleMania (7, the game's own again); the CPU plays (qa_story 3). The state's venue column is arena.c's arena_current()",
+  "match": "arcade",
+  "wrestlers": [
+    "STEVE AUSTIN",
+    null
+  ],
+  "matches": 0,
+  "seconds": 1500,
+  "shots": 5.0,
+  "options": {
+    "free_play": true,
+    "attract_demos": false,
+    "custom_story": 1,
+    "qa_story": 3
+  },
+  "expect": [
+    {
+      "name": "a match in Monday Nitro (10)",
+      "when": "any",
+      "check": "mode == -2 and venue == 10"
+    },
+    {
+      "name": "a match in Halloween Havoc (11)",
+      "when": "any",
+      "check": "mode == -2 and venue == 11"
+    },
+    {
+      "name": "then WrestleMania, the game's own (7)",
+      "when": "any",
+      "check": "mode == -2 and venue == 7"
+    }
+  ],
+  "shot_when": "$c.screen -eq 23 -or $c.screen -eq 22 -or $c.screen -eq 25",
+  "stories": [
+    "002_arena_wcw.json"
+  ]
+}

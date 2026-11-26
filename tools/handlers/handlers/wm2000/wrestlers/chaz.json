@@ -1,0 +1,13 @@
+{
+ "about": "WrestleMania 2000's CHAZ: what the handler is told for him (wm2kall, 2026-11-13). Everything else comes from the ROM.",
+ "string_id": "chaz",
+ "key": "chaz",
+ "wm2000": {
+  "roster_index": 35,
+  "game_id": "0x0507"
+ },
+ "moveset": {
+  "reference_ordinal": 4,
+  "reference_why": "none in No Mercy: Kane, as for a man of 200 lbs and over"
+ }
+}

@@ -1,0 +1,36 @@
+{
+  "title": "Upgrade test B: Titantron, taunts, JR and King",
+  "menu": "Upgrade Test B",
+  "championship": "world",
+  "cast": { "boss": "VINCE McMAHON", "rival": "THE ROCK" },
+  "start": "one",
+  "nodes": {
+    "one": {
+      "chapter": "UPGRADE TEST B",
+      "scene": {
+        "place": "ring", "cast": [{ "who": "player", "at": 1 }],
+        "steps": [
+          { "say": "TRON 1: Vince! Get out here!", "who": "player" },
+          { "tron": "boss", "say": ["TRON 2: You want me, {player}?", "TRON 3: You get {rival} tonight!"] },
+          { "say": "TRON 4: back in the ring.", "who": "player" },
+          { "who": "player", "do": "taunt" },
+          { "say": "TAUNT 1 done.", "who": "player" },
+          { "who": "player", "do": "taunt 2", "wait": 100 },
+          { "who": "player", "do": "win taunt", "wait": 100 },
+          { "who": "player", "do": "stand" },
+          { "commentary": "jr", "say": ["TABLE 1: Business is about to pick up!"] },
+          { "commentary": "king", "say": "TABLE 2: Puppies, JR!" },
+          { "say": "TABLE 3: back on {player}.", "who": "player" },
+          { "narrate": "Backstage..." },
+          { "place": "hall", "cast": ["player"] },
+          { "tron": "boss", "say": "TRON 5: no screen here (bubble only)." }
+        ]
+      },
+      "match": { "type": "single", "slots": ["player", "rival"],
+                 "script": [ { "when": "time 0:45", "do": "end", "winner": "player", "how": "pinfall" } ] },
+      "requirement": "Tron test: {player} vs {rival}.",
+      "branches": [ { "if": "win by pinfall", "next": "end", "pages": ["END OK: win by pinfall."] },
+                    { "next": "end", "pages": ["END BAD."] } ]
+    }
+  }
+}

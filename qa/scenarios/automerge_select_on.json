@@ -1,0 +1,60 @@
+{
+  "about": "automerge (2026-11-23): F2's MERGE SAME WRESTLERS on (auto_merge 1). WrestleMania 2000's PRINCE ALBERT (0x03C0, a known identity of No Mercy's ALBERT in the editor's data\\aliases.json) is in Albert's box (0x0508) after Albert's own four. One player's Versus (qa_versus) with qa_variant 1: on Albert's box a tour of the Type arrows -- C-right x8 (Albert Type 1-4, Prince Albert Type 1-4, Albert's Type 1 again), C-left (Prince Albert's Type 4), C-right (Albert Type 1), 1.25 s apart for the shots -- then C-right on to Prince Albert's Type 1 and A; the CPU's pick on controller 1: the Undertaker. The match: Prince Albert (his own number, name, music, moves) vs the Undertaker. state.csv bs_tries = the select's Superstar under the cursor | costume << 16 | 1 << 24; bs_grabs / bs_step = picks 1 and 2 (ID | costume << 16)",
+  "match": "arcade",
+  "wrestlers": [
+    "0x03C0",
+    "0x0003"
+  ],
+  "costumes": [
+    0,
+    0
+  ],
+  "matches": 0,
+  "seconds": 600,
+  "shots": 1.0,
+  "options": {
+    "free_play": true,
+    "attract_demos": false,
+    "qa_versus": 30,
+    "qa_variant": 1,
+    "qa_variant_tour": 8,
+    "auto_merge": 1
+  },
+  "expect": [
+    {
+      "name": "the select: Albert, Type 1",
+      "when": "any",
+      "check": "bs_tries == 0x01000508"
+    },
+    {
+      "name": "Albert, Type 4",
+      "when": "any",
+      "check": "bs_tries == 0x01030508"
+    },
+    {
+      "name": "past him in the same box: Prince Albert (his own number), Type 1",
+      "when": "any",
+      "check": "bs_tries == 0x010003C0"
+    },
+    {
+      "name": "Prince Albert, Type 4",
+      "when": "any",
+      "check": "bs_tries == 0x010303C0"
+    },
+    {
+      "name": "player 1 picked Prince Albert, his Type 1",
+      "when": "any",
+      "check": "bs_grabs == 0x000003C0"
+    },
+    {
+      "name": "the CPU's pick: the Undertaker",
+      "when": "any",
+      "check": "(bs_step & 0xFFFF) == 0x0003"
+    },
+    {
+      "name": "the match: Prince Albert (player 1) vs the Undertaker (CPU)",
+      "when": "any",
+      "check": "mode == -2 and match_frames != 0xFFFF and match_frames > 120 and s0_id == 0x03C0 and s0_pad == 1 and s1_id == 0x0003 and s1_pad == 0"
+    }
+  ]
+}

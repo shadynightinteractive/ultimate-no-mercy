@@ -1,0 +1,43 @@
+{
+  "about": "2026-11-01, Booker T (WCW/nWo Revenge's, 0x0110; data\revport\\ports4\\PORTS4.md): his own Revenge animations (qa_fsub 3) forced in turn where the game picks a move of the same place; idle player 2. Each move his, whole, both men placed right: the shots looked at",
+  "wrestlers": [
+    "BOOKER T",
+    "THE ROCK"
+  ],
+  "control": [
+    "cpu",
+    "pad2"
+  ],
+  "arena": "SMACKDOWN",
+  "matches": 4,
+  "seconds": 480,
+  "shots": 0.5,
+  "force": {
+    "slot": 0,
+    "entries": [
+      0,
+      291
+    ],
+    "as": 0
+  },
+  "options": {
+    "qa_fsub": 3
+  },
+  "expect": [
+    {
+      "name": "the match started",
+      "when": "any",
+      "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "own moves forced",
+      "when": "any",
+      "check": "forced >= 1"
+    },
+    {
+      "name": "nobody's position went bad",
+      "when": "always",
+      "check": "finite(s0_x, s0_y, s0_z, s1_x, s1_y, s1_z)"
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "about": "revvisual 2026-11-20, the user: 'Revenge Wrestlers without titantrons seem to have The Rock's titantron. They should have none unless a video is in their folder.' The arcade's versus (tron_novideo_a's way): Kanyon (Revenge, no video in his folder; based on The Rock) enters first, Al Snow (WrestleMania 2000, video.bin in his folder) second, at RAW IS WAR with the Titantron screens on. state.csv's rr_put_out / rr_kept_out: tron_qa (tron.c) -- the video picked, the screen's mode, his music, the entrant. Look at every shot of Kanyon's entrance: no video on the screen, the arena's own picture; Al Snow's own video on his.",
+  "wrestlers": [
+    "0x036B",
+    "0x03C7"
+  ],
+  "matches": 0,
+  "seconds": 300,
+  "shots": 2.0,
+  "options": {
+    "free_play": true,
+    "attract_demos": false,
+    "qa_versus": 20,
+    "qa_variant": 16,
+    "titantron_screens": true,
+    "titantron_live": true
+  },
+  "shot_when": "$c.mode -eq 0 -and $c.screen -eq 42 -and $c.entrance_step -ge 1 -and $c.entrance_step -le 29",
+  "expect": [
+    {
+      "name": "Kanyon's music on with no video: nothing picked, the screen's own picture",
+      "when": "any",
+      "check": "screen == 42 and entrance_step >= 1 and entrance_step <= 29 and (rr_kept_out & 0xF10) == 0x010 and rr_put_out == 0 and (rr_kept_out & 0xF) == 0"
+    },
+    {
+      "name": "never a video picked or shown while Kanyon (entrant 0) enters",
+      "when": "always",
+      "check": "not (screen == 42 and entrance_step >= 1 and entrance_step <= 29 and (rr_kept_out & 0xF10) == 0x010 and (rr_put_out != 0 or (rr_kept_out & 0xF) == 2))"
+    },
+    {
+      "name": "Al Snow's own video on the screen",
+      "when": "any",
+      "check": "screen == 42 and entrance_step >= 1 and entrance_step <= 29 and (rr_kept_out & 0xF1F) == 0x112"
+    }
+  ],
+  "match": "arcade",
+  "arena": "RAW IS WAR"
+}

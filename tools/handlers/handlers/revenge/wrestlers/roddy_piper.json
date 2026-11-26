@@ -1,0 +1,60 @@
+{
+ "about": "WCW/nWo Revenge port: what was chosen by hand for him (moved out of mod\\gen's tables by handlers\\extract_fixes.py, 2026-11-12). Edit here; the handler reads nothing else that is his alone.",
+ "string_id": "roddy_piper",
+ "key": "piper",
+ "legacy_game_id": "0x0113",
+ "name": "RODDY PIPER",
+ "short_name": "PIPER",
+ "height": 13,
+ "weight": 127,
+ "music_slot": 79,
+ "video": 0,
+ "revenge": {
+  "moveset_file": "0x1D0",
+  "code": "0x007"
+ },
+ "moveset": {
+  "reference_ordinal": 6,
+  "allies": [
+   "0x010B"
+  ],
+  "weight_class": [
+   1,
+   1,
+   0
+  ],
+  "stance": null,
+  "slot_overrides": {},
+  "no_struggling_slam": true
+ },
+ "costumes": [
+  {
+   "capture": "gp_c0",
+   "slot": 1
+  },
+  {
+   "capture": "at_gp1",
+   "slot": 1
+  },
+  {
+   "capture": "at_gp2",
+   "slot": 1
+  },
+  {
+   "capture": "at_gp3",
+   "slot": 1
+  }
+ ],
+ "skin": "no_mercy",
+ "photo_number": 128,
+ "photo": {
+  "photo": 128,
+  "shot": "data/revport/ports4/cap/cc_piper.png",
+  "box": [
+   193,
+   25,
+   243,
+   75
+  ]
+ }
+}

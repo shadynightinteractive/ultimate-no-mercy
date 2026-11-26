@@ -1,0 +1,13 @@
+{
+ "about": "WrestleMania 2000's PAUL BEARER: what the handler is told for him (wm2kall, 2026-11-13). Everything else comes from the ROM.",
+ "string_id": "paul_bearer",
+ "key": "paul_bearer",
+ "wm2000": {
+  "roster_index": 15,
+  "game_id": "0x010B"
+ },
+ "moveset": {
+  "reference_ordinal": 64,
+  "reference_why": "a manager: Jim Ross, No Mercy's heavy non-wrestler"
+ }
+}

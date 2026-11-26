@@ -1,0 +1,53 @@
+{
+  "about": "2026-11-06: a tag match made straight from the title, no menus (logic.c qa_demo_set: the attract demo set of that format, its records given the scenario's Superstars) -- the shots show the match type; 6x",
+  "match": "tag",
+  "wrestlers": [
+    "STEVE AUSTIN",
+    "THE ROCK",
+    "TRIPLE H",
+    "UNDERTAKER"
+  ],
+  "control": [
+    "cpu",
+    "cpu",
+    "cpu",
+    "cpu"
+  ],
+  "seconds": 240,
+  "arena": "RAW IS WAR",
+  "matches": 1,
+  "speed": 6,
+  "shots": 4,
+  "expect": [
+    {
+      "name": "the match started",
+      "when": "any",
+      "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "slot 1 has a Superstar in the match",
+      "when": "match",
+      "check": "s0_id != 0xFFFF and s0_id != 0"
+    },
+    {
+      "name": "slot 2 has a Superstar in the match",
+      "when": "match",
+      "check": "s1_id != 0xFFFF and s1_id != 0"
+    },
+    {
+      "name": "slot 3 has a Superstar in the match",
+      "when": "match",
+      "check": "s2_id != 0xFFFF and s2_id != 0"
+    },
+    {
+      "name": "slot 4 has a Superstar in the match",
+      "when": "match",
+      "check": "s3_id != 0xFFFF and s3_id != 0"
+    },
+    {
+      "name": "the game's match flags say tag (0x2000)",
+      "when": "match",
+      "check": "(flags & 0x2000) != 0"
+    }
+  ]
+}

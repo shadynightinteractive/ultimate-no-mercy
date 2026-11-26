@@ -1,0 +1,61 @@
+{
+  "about": "ljmenu10, 2026-11-24 (the user: \"The options to select single, tag, triple threat, etc. briefly flash to show 'Cage' 'handicap', etc. Make sure you are not overlaying. It should be a proper menu. Also the text for those options needs to match the text of the other menu items exactly.\"): the Lumberjack MATCH page walked, Regular (qa_reg 13 + 16384, qa_lj_menu 16): Multi Play's Lumberjack Match row > its MATCH page, built by the game's own page set-up from the page's own row list (Single / Tag / Triple Threat Match, Lumberjacks: 12, Picked: Random); the cursor DOWN over every row and UP again; B to Multi Play; Exhibition's own page (its five rows the game's again) and back; the Lumberjack row again; Lumberjacks RIGHT 13 / LEFT 12, Picked RIGHT Select / A Random; A on Single Match > PLAYER. Every frame of screen 7 is checked by the mod (a row shown that is not its page's); its shots every 2 s (a frame-by-frame copy of qa.ps1 was used for the proof).",
+  "match": "arcade",
+  "wrestlers": [
+    "STEVE AUSTIN",
+    "THE ROCK"
+  ],
+  "matches": 0,
+  "seconds": 270,
+  "shots": 2.0,
+  "options": {
+    "game_mode": "Regular",
+    "settings_version": 5,
+    "qa_modes": 1,
+    "qa_reg": 16397,
+    "qa_lj_menu": 16
+  },
+  "expect": [
+    {
+      "name": "Regular all along",
+      "when": "always",
+      "check": "(bs_tries & 1) == 0 and (bs_tries >> 28) == 0"
+    },
+    {
+      "name": "ljmenu10: A on Multi Play's Lumberjack Match row brought up the Lumberjack MATCH page, built with its own five rows",
+      "when": "any",
+      "check": "mode == 0 and screen == 7 and ((rr_kept_out >> 5) & 1) == 1 and ((rr_kept_out >> 4) & 1) == 1"
+    },
+    {
+      "name": "ljmenu10: no frame of screen 7 ever showed a row not its page's (the Lumberjack page: only its five rows -- never Handicap or Cage; Exhibition's page: never a settings row)",
+      "when": "always",
+      "check": "((rr_kept_out >> 6) & 1) == 0"
+    },
+    {
+      "name": "ljmenu10: the settings rows' pictures were made by the first start from the ROM's label lettering (not blank)",
+      "when": "any",
+      "check": "mode == 0 and screen == 7 and ((rr_kept_out >> 7) & 1) == 1"
+    },
+    {
+      "name": "LUMBERJACKS from F2's 12: RIGHT made 13, LEFT 12 again",
+      "when": "any",
+      "check": "((rr_put_out >> 4) & 0x3F) == 13 and ((rr_put_out >> 10) & 0x3F) == 12"
+    },
+    {
+      "name": "PICKED: RIGHT made it Select (on the page)",
+      "when": "any",
+      "check": "mode == 0 and screen == 7 and ((rr_kept_out >> 5) & 1) == 1 and ((rr_kept_out >> 14) & 1) == 1"
+    },
+    {
+      "name": "A on Single Match asked for the Lumberjack match (one on one), PICKED back to Random by A",
+      "when": "any",
+      "check": "((rr_kept_out >> 15) & 1) == 1 and ((rr_kept_out >> 14) & 1) == 0"
+    },
+    {
+      "name": "the game's own PLAYER page reached (as Single Match)",
+      "when": "any",
+      "check": "mode == 0 and screen == 6"
+    }
+  ],
+  "shot_when": "($c.mode -eq 0 -and $c.screen -in 2,7)"
+}

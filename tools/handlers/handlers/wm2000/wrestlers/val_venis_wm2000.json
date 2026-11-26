@@ -1,0 +1,13 @@
+{
+ "about": "WrestleMania 2000's VAL VENIS: what the handler is told for him (wm2kall, 2026-11-13). Everything else comes from the ROM.",
+ "string_id": "val_venis_wm2000",
+ "key": "val_venis_wm2000",
+ "wm2000": {
+  "roster_index": 24,
+  "game_id": "0x0401"
+ },
+ "moveset": {
+  "reference_ordinal": 24,
+  "reference_why": "No Mercy's own"
+ }
+}

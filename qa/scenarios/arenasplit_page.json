@@ -1,0 +1,45 @@
+{
+ "about": "arenasplit (2026-11-24): the ARENA page on an install -- two players into Versus, MATCH -> ARENA, down 22 rows one at a time (the 10-row window scrolls past the bottom row, then wraps to the top), a shot after each: which arenas the page offers, in which order.",
+ "match": "arcade",
+ "matches": 0,
+ "seconds": 132,
+ "shots": 1.2,
+ "options": {
+  "free_play": true,
+  "attract_demos": true,
+  "qa_p2": 300
+ },
+ "pads": [
+  "70.5 1 start 200",
+  "96.0 1 a 150",
+  "101.0 1 dpdown 150",
+  "102.2 1 dpdown 150",
+  "103.4 1 dpdown 150",
+  "104.6 1 dpdown 150",
+  "105.8 1 dpdown 150",
+  "107.0 1 dpdown 150",
+  "108.2 1 dpdown 150",
+  "109.4 1 dpdown 150",
+  "110.6 1 dpdown 150",
+  "111.8 1 dpdown 150",
+  "113.0 1 dpdown 150",
+  "114.2 1 dpdown 150",
+  "115.4 1 dpdown 150",
+  "116.6 1 dpdown 150",
+  "117.8 1 dpdown 150",
+  "119.0 1 dpdown 150",
+  "120.2 1 dpdown 150",
+  "121.4 1 dpdown 150",
+  "122.6 1 dpdown 150",
+  "123.8 1 dpdown 150",
+  "125.0 1 dpdown 150",
+  "126.2 1 dpdown 150"
+ ],
+ "expect": [
+  {
+   "name": "the ARENA page came up",
+   "when": "any",
+   "check": "mode == 0 and screen == 5"
+  }
+ ]
+}

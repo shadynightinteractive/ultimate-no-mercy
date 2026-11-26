@@ -1,0 +1,16 @@
+{
+  "about": "King's head a black block in the Royal Rumble (the user's screenshots), but drawn right in a singles match from the same camera (announcers_from_behind): the same camera just behind King, on his feet, through a Royal Rumble as entrants come in (each one's model and pictures loaded mid-match). His head must stay his.",
+  "match": "rumble",
+  "wrestlers": ["BRET HART"],
+  "control": ["cpu"],
+  "options": { "rumble_entrants": 15, "rumble_interval": 10, "announcers": true, "commentary": true, "qa_ann_stand": 1 },
+  "camera": { "eye": [55, 165, -880], "at": [20, 60, -200] },
+  "matches": 0,
+  "seconds": 300,
+  "shots": 5,
+  "expect": [
+    { "name": "the Rumble ran", "when": "any", "check": "stage == 2 and mode == -2 and match_frames != 0xFFFF and match_frames > 300" },
+    { "name": "King is drawn", "when": "match", "check": "ann_draw != 0xFFFF and (ann_draw & 0x8000) == 0" },
+    { "name": "no model's matrices ever went bad", "when": "always", "check": "bad_mtx == 0" }
+  ]
+}

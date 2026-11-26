@@ -1,0 +1,14 @@
+{
+  "about": "the struggling slam fix, the game's own rule kept: CPU Austin vs CPU Andre the Giant (562 lbs: super heavyweight), every front grapple of Austin's done as his Scoop Slam (entry 4) -- the game turns it into entry 159 (move 4550, the struggling body slam). Needs qa_move_log_offsets.patch.",
+  "wrestlers": ["STEVE AUSTIN", "ANDRE THE GIANT"],
+  "control": ["cpu", "cpu"],
+  "arena": "RAW IS WAR",
+  "matches": 0,
+  "seconds": 180,
+  "shots": 2.0,
+  "force": { "slot": 0, "entries": [1, 60], "as": 4 },
+  "expect": [
+    { "name": "the match started", "when": "any", "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30" },
+    { "name": "the struggling body slam on Andre (the game's rule)", "when": "match", "check": "s0_move == 4550" }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "title": "Arena Test WM",
+  "menu": "Arena Test WM",
+  "championship": "world",
+  "cast": {
+    "rival": "MANKIND"
+  },
+  "vars": {},
+  "start": "one",
+  "nodes": {
+    "one": {
+      "chapter": "ARENA ONE",
+      "pages": [
+        "WrestleMania."
+      ],
+      "match": {
+        "type": "single",
+        "slots": [
+          "player",
+          [
+            "rival",
+            "KANE"
+          ]
+        ],
+        "arena": "WrestleMania"
+      },
+      "requirement": "Arena test: WrestleMania.",
+      "branches": [
+        {
+          "next": "end"
+        }
+      ]
+    }
+  }
+}

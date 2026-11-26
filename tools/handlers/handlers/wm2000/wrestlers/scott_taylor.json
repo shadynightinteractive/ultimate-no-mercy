@@ -1,0 +1,13 @@
+{
+ "about": "WrestleMania 2000's SCOTT TAYLOR: what the handler is told for him (wm2kall, 2026-11-13). Everything else comes from the ROM.",
+ "string_id": "scott_taylor",
+ "key": "scott_taylor",
+ "wm2000": {
+  "roster_index": 43,
+  "game_id": "0x0802"
+ },
+ "moveset": {
+  "reference_ordinal": 28,
+  "reference_why": "No Mercy's own (Scotty Too Hotty)"
+ }
+}

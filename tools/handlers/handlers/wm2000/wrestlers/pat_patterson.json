@@ -1,0 +1,13 @@
+{
+ "about": "WrestleMania 2000's PAT PATTERSON: what the handler is told for him (wm2kall, 2026-11-13). Everything else comes from the ROM.",
+ "string_id": "pat_patterson",
+ "key": "pat_patterson",
+ "wm2000": {
+  "roster_index": 46,
+  "game_id": "0x0901"
+ },
+ "moveset": {
+  "reference_ordinal": 61,
+  "reference_why": "a non-wrestler: Mr. McMahon, No Mercy's"
+ }
+}

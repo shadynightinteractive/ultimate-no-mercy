@@ -1,0 +1,46 @@
+{
+  "about": "WrestleMania 2000's WRESTLEMANIA WM 2000 as the arcade's arena 21 (gen/arenas_wm.py venue 5; data/wmarena/all/ALL.md): a CPU singles match with the game's own cameras -- WM2000's mat, red ropes, black posts, the WRESTLEMANIA aprons, the big chrome '2000 WWF WrestleMania' logo over the stage, the white aisle and the truss pieces on the floor beside it (at 0.8 of the close scene's size, WM2000's own match size); WM2000's crowd; No Mercy's announce table with JR and King and its steps (WM2000's -z barricade out at -690 behind it). Compare data/wmarena/all/port_wm_*.png",
+  "wrestlers": [
+    "STEVE AUSTIN",
+    "THE ROCK"
+  ],
+  "control": [
+    "cpu",
+    "cpu"
+  ],
+  "arena": "WRESTLEMANIA WM 2000",
+  "matches": 1,
+  "seconds": 60,
+  "shots": 0.5,
+  "options": {
+    "announcers": true,
+    "commentary": true
+  },
+  "expect": [
+    {
+      "name": "the match started",
+      "when": "any",
+      "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "the arena is ours (arena_current 21)",
+      "when": "any",
+      "check": "venue == 21 and stage == 2"
+    },
+    {
+      "name": "JR and King were built (at the table: xring_table 1, no rules bit / ann_on 0)",
+      "when": "match",
+      "check": "ann_draw != 0xFFFF"
+    },
+    {
+      "name": "nobody's position went bad",
+      "when": "always",
+      "check": "finite(s0_x, s0_y, s0_z, s1_x, s1_y, s1_z)"
+    },
+    {
+      "name": "no model's matrices ever went bad",
+      "when": "always",
+      "check": "bad_mtx == 0"
+    }
+  ]
+}

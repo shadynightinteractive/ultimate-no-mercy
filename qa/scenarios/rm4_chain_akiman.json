@@ -1,0 +1,54 @@
+{
+ "about": "revmoves3 round 4 (2026-11-21, the user: 'whatever Revenge does'): AKI Man (0x0379, Revenge import, slot 0, CPU) against The Rock (CPU), singles; his entry 58 -- 'revenge:1165_1168@1116 -> @5612' -- forced wherever the game picks a move of the same place (qa_fsub 4). Revenge's own move data: his code goes on (byte 15 = 155, the code at No Mercy's entry 183: the combo's next strike); 1116 ends; No Mercy's 5612 (the same animations byte for byte) goes on to 183. qa\\move_audit.py analyze reads the run.",
+ "match": "singles",
+ "wrestlers": [
+  "0x0379",
+  "THE ROCK"
+ ],
+ "costumes": [
+  0,
+  0
+ ],
+ "control": [
+  "cpu",
+  "cpu"
+ ],
+ "arena": "RAW IS WAR",
+ "matches": 0,
+ "seconds": 360,
+ "speed": 8,
+ "shots": 0,
+ "force": {
+  "slot": 0,
+  "entries": [
+   0,
+   291
+  ],
+  "as": 58
+ },
+ "options": {
+  "qa_fsub": 4
+ },
+ "expect": [
+  {
+   "name": "the match started",
+   "when": "any",
+   "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+  },
+  {
+   "name": "AKI Man played his entry 58's move (1116 before, 5612 after)",
+   "when": "any",
+   "check": "s0_move == 1116 or s0_move == 5612"
+  },
+  {
+   "name": "no model's matrices ever went bad",
+   "when": "always",
+   "check": "bad_mtx == 0"
+  },
+  {
+   "name": "nobody's position went bad",
+   "when": "always",
+   "check": "finite(s0_x, s0_y, s0_z, s1_x, s1_y, s1_z)"
+  }
+ ]
+}

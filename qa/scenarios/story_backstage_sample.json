@@ -1,0 +1,14 @@
+{
+  "about": "2026-10-31: the sample mod/stories\backstage_sample.json (first on the list: 'backstage_sample' sorts before 'bad_blood' / 'the_grudge'): the locker-room interview with a question (QA's A: option 1), the hall, then the betrayal path (win and choice 1) -> a World title match with a run-in, ...",
+  "match": "arcade",
+  "wrestlers": ["STEVE AUSTIN", null],
+  "matches": 0,
+  "seconds": 2400,
+  "shots": 3.0,
+  "options": { "free_play": true, "attract_demos": false, "custom_story": 1, "qa_story": 3 },
+  "expect": [
+    { "name": "the story ran", "when": "any", "check": "matches >= 10100" },
+    { "name": "its first match played", "when": "any", "check": "mode == -2" }
+  ],
+  "shot_when": "$true"
+}

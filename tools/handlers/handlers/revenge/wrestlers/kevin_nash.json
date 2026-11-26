@@ -1,0 +1,66 @@
+{
+ "about": "WCW/nWo Revenge port: what was chosen by hand for him (moved out of mod\\gen's tables by handlers\\extract_fixes.py, 2026-11-12). Edit here; the handler reads nothing else that is his alone.",
+ "string_id": "kevin_nash",
+ "key": "nash",
+ "legacy_game_id": "0x0106",
+ "name": "KEVIN NASH",
+ "short_name": "NASH",
+ "height": 25,
+ "weight": 267,
+ "music_slot": 66,
+ "video": 0,
+ "revenge": {
+  "moveset_file": "0x1BE",
+  "code": "0x203"
+ },
+ "moveset": {
+  "reference_ordinal": 3,
+  "allies": [
+   "0x0107",
+   "0x0105",
+   "0x0102"
+  ],
+  "weight_class": [
+   1,
+   1,
+   0
+  ],
+  "stance": 3,
+  "slot_overrides": {
+   "25": 16250,
+   "50": 1020,
+   "188": 5690
+  },
+  "no_struggling_slam": true
+ },
+ "costumes": [
+  {
+   "capture": "hh_c0",
+   "slot": 1
+  },
+  {
+   "capture": "at_hh1",
+   "slot": 1
+  },
+  {
+   "capture": "at_hh2",
+   "slot": 1
+  },
+  {
+   "capture": "at_hh3",
+   "slot": 1
+  }
+ ],
+ "skin": "revenge",
+ "photo_number": 115,
+ "photo": {
+  "photo": 115,
+  "shot": "data/revport/ports/cap/cc_nash.png",
+  "box": [
+   196,
+   13,
+   246,
+   63
+  ]
+ }
+}

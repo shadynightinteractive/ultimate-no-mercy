@@ -1,0 +1,38 @@
+{
+  "about": "z-order (2026-10-28 evening, the user: announce table and right barricade vs the crowd): RAW IS WAR singles, CPU vs CPU, a camera behind the announce table on the right looking at the stage, as the user's shot -- Titantron OFF",
+  "wrestlers": [
+    "STEVE AUSTIN",
+    "THE ROCK"
+  ],
+  "control": [
+    "cpu",
+    "cpu"
+  ],
+  "arena": "RAW IS WAR",
+  "matches": 0,
+  "seconds": 75,
+  "shots": 3.0,
+  "options": {
+    "titantron_screens": false,
+    "titantron_live": false
+  },
+  "camera": {
+    "eye": [
+      330,
+      230,
+      -1150
+    ],
+    "at": [
+      -20,
+      90,
+      150
+    ]
+  },
+  "expect": [
+    {
+      "name": "the match started",
+      "when": "any",
+      "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+    }
+  ]
+}

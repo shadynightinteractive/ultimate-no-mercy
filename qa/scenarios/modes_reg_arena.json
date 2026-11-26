@@ -1,0 +1,16 @@
+{
+  "about": "2026-11-07, the two modes phase 2 (W6, W9): Regular -- an Exhibition singles match through the game's own pages (qa_reg 141 = 1 + 4 + 8 + 128): on the ARENA page DOWN twelve times -- past the page's ten rows, its window moving on to the mod's arenas (arena.c) -- then A; the match is in one of ours (venue column: 10 + k). Also F2's per-mode defaults left as they are: Regular's GAME SPEED, FAST GET UP, low entrance camera off (the entrances with the game's own cameras: shots).",
+  "match": "arcade",
+  "wrestlers": [ "STEVE AUSTIN", "THE ROCK" ],
+  "matches": 0,
+  "seconds": 1500,
+  "shots": 2.0,
+  "options": { "game_mode": "Regular", "qa_modes": 1, "qa_reg": 141 },
+  "expect": [
+    { "name": "Regular all along", "when": "always", "check": "(bs_tries & 1) == 0" },
+    { "name": "the ARENA page (screen 5)", "when": "any", "check": "mode == 0 and screen == 5" },
+    { "name": "the match in one of the mod's arenas (venue 10 and on)", "when": "any", "check": "mode == -2 and match_frames != 0xFFFF and match_frames > 120 and venue >= 10" },
+    { "name": "back on the menus, the driver done", "when": "any", "check": "(bs_grabs & 255) == 13" }
+  ],
+  "shot_when": "($c.mode -eq 0 -and $c.screen -eq 5) -or ($c.mode -eq 0 -and $c.screen -eq 42 -and $c.entrance_step -ge 1)"
+}

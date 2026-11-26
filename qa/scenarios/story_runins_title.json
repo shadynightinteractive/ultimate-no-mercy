@@ -1,0 +1,48 @@
+{
+ "about": "2026-11-02 story upgrade phase 6: run-ins and a title match (qa/stories_test/008_runins_title.json, as STEVE AUSTIN): the opponents' run-in (UNDERTAKER for KANE, 0:30), the player's (THE ROCK, 0:15: in slot 2 now -- the side is the slot), both, a handicap run-in, a world title match vs the champion. Ended at 1:30 / 0:40 by the scripts. Look: who runs in, and when, and whom he attacks; the title card (the state lists a singles match's first two slots only: the run-in men are judged from the shots)",
+ "match": "arcade",
+ "wrestlers": [
+  "STEVE AUSTIN",
+  null
+ ],
+ "matches": 0,
+ "seconds": 2400,
+ "shots": 4.0,
+ "options": {
+  "free_play": true,
+  "attract_demos": false,
+  "custom_story": 1,
+  "qa_story": 3
+ },
+ "expect": [
+  {
+   "name": "run-in for the opponents: slot 3 UNDERTAKER",
+   "when": "any",
+   "check": "matches >= 10100 and matches < 10200 and mode == -2 and match_frames != 0xFFFF and match_frames > 200 and s0_id == 0x0002 and s1_id == 0x0004"
+  },
+  {
+   "name": "run-in for the player: slot 2 THE ROCK",
+   "when": "any",
+   "check": "matches >= 10200 and matches < 10300 and mode == -2 and match_frames != 0xFFFF and match_frames > 200 and s0_id == 0x0002 and s1_id == 0x0004"
+  },
+  {
+   "name": "both",
+   "when": "any",
+   "check": "matches >= 10300 and matches < 10400 and mode == -2 and match_frames != 0xFFFF and match_frames > 200 and s0_id == 0x0002 and s1_id == 0x0004"
+  },
+  {
+   "name": "handicap run-in: slot 3 THE ROCK",
+   "when": "any",
+   "check": "matches >= 10400 and matches < 10500 and mode == -2 and match_frames != 0xFFFF and match_frames > 200 and s0_id == 0x0004 and s1_id == 0x0003 and s2_id == 0x0002"
+  },
+  {
+   "name": "the title match reached",
+   "when": "any",
+   "check": "matches >= 10500 and mode == -2"
+  }
+ ],
+ "shot_when": "$c.mode -eq -2 -or $c.screen -eq 23",
+ "stories": [
+  "008_runins_title.json"
+ ]
+}

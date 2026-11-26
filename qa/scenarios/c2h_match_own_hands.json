@@ -1,0 +1,15 @@
+{
+ "about": "c2hands (2026-11-19): with No Mercy + Revenge and NO WrestleMania 2000, the two kinds of Revenge model that keep Revenge's own hands -- AKI Man (0x0379, a Revenge import: no bare skin, so not No Mercy's hands) against Goldberg (0x010D, a built-in Revenge port: REV_SKIN) -- CPU vs CPU, a whole match. Their hands are Revenge's own pictures on their own meshes as modelled (SKEL_WM_OWNHANDS: hands.c never poses them with WrestleMania 2000's meshes).",
+ "wrestlers": ["0x0379", "0x010D"],
+ "costumes": [0, 0],
+ "control": ["cpu", "cpu"],
+ "matches": 1,
+ "seconds": 420,
+ "shots": 2.0,
+ "expect": [
+  { "name": "the match started", "when": "any", "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 120" },
+  { "name": "AKI Man (Revenge import) and Goldberg (Revenge port)", "when": "match", "check": "s0_id == 0x0379 and s1_id == 0x010D" },
+  { "name": "no model's matrices ever went bad", "when": "always", "check": "bad_mtx == 0" },
+  { "name": "no wrestler's position ever went bad", "when": "always", "check": "finite(s0_x, s0_y, s0_z, s1_x, s1_y, s1_z)" }
+ ]
+}

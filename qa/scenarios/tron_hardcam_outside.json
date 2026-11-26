@@ -1,0 +1,39 @@
+{
+  "about": "the Titantron hard camera with men outside the ring (2026-10-28: a man outside on the TV camera's near side was drawn over the ring in the screen's picture): a Royal Rumble at RAW IS WAR, CPU men put outside every few seconds, the camera on the big screen",
+  "match": "rumble",
+  "wrestlers": [
+    "STEVE AUSTIN"
+  ],
+  "control": [
+    "cpu"
+  ],
+  "arena": "RAW IS WAR",
+  "options": {
+    "rumble_entrants": 6,
+    "rumble_interval": 5,
+    "qa_rr_out": 5,
+    "titantron_live": true
+  },
+  "matches": 1,
+  "seconds": 120,
+  "shots": 1.5,
+  "camera": {
+    "eye": [
+      0,
+      260,
+      -650
+    ],
+    "at": [
+      0,
+      170,
+      900
+    ]
+  },
+  "expect": [
+    {
+      "name": "the match started",
+      "when": "any",
+      "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+    }
+  ]
+}

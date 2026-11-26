@@ -1,0 +1,13 @@
+{
+ "about": "WrestleMania 2000's BRIAN CHRISTOPHER: what the handler is told for him (wm2kall, 2026-11-13). Everything else comes from the ROM.",
+ "string_id": "brian_christopher",
+ "key": "brian_christopher",
+ "wm2000": {
+  "roster_index": 42,
+  "game_id": "0x0801"
+ },
+ "moveset": {
+  "reference_ordinal": 27,
+  "reference_why": "No Mercy's own (Grand Master Sexay)"
+ }
+}

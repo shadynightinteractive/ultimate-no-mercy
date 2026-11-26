@@ -1,0 +1,63 @@
+{
+  "about": "2026-11-21 lumberjack2: Arcade mode's Lumberjack Match row (the user: right after Ladder Match) -- one player's Versus driven as a player would (qa_versus 20, qa_reg 16384): the championship list's Versus row, its MATCH page: the cursor on Ladder Match, DOWN (the page's own link) lands on the Lumberjack Match row, A -- Single Match's pages, the select (Austin, The Rock), the card captioned \"Lumberjack Match\", the entrances, the walk-out of F2's 12, the match (the CPU plays the player from 20 s), the results.",
+  "match": "arcade",
+  "wrestlers": [
+    "STEVE AUSTIN",
+    "THE ROCK"
+  ],
+  "costumes": [
+    0,
+    0
+  ],
+  "matches": 0,
+  "seconds": 1500,
+  "shots": 4.0,
+  "options": {
+    "game_mode": "Arcade",
+    "free_play": true,
+    "attract_demos": false,
+    "qa_versus": 20,
+    "qa_reg": 16384
+  },
+  "env": {
+    "SDL_GAMECONTROLLER_IGNORE_DEVICES_EXCEPT": "0x0000/0x0000"
+  },
+  "expect": [
+    {
+      "name": "Arcade's MATCH page: the Lumberjack Match row shown (the seventh, under Ladder Match)",
+      "when": "any",
+      "check": "mode == 0 and screen == 7 and ((rr_put_out >> 12) & 1) == 1"
+    },
+    {
+      "name": "DOWN from Ladder Match landed on it (row 6)",
+      "when": "any",
+      "check": "((rr_put_out >> 8) & 0xF) == 6"
+    },
+    {
+      "name": "A on it asked for the Lumberjack match",
+      "when": "any",
+      "check": "((rr_put_out >> 13) & 1) == 1"
+    },
+    {
+      "name": "the match card's caption \"Lumberjack Match\"",
+      "when": "any",
+      "check": "mode == 0 and screen == 25 and (lj_g & 0xFFFF) >= 1 and ((lj_g >> 24) & 1) == 1"
+    },
+    {
+      "name": "the match: a one on one with 12 lumberjacks after the walk-out",
+      "when": "any",
+      "check": "mode == -2 and match_frames != 0xFFFF and match_frames > 120 and (lj_f & 0xFF) == 12 and (lj_b & 3) == 3 and s2_id != 0xFFFF"
+    },
+    {
+      "name": "the match ended, the decision over the two competitors",
+      "when": "any",
+      "check": "mode == -2 and match_state == 4 and (((s0_flags & 7) == 4 and (s1_flags & 3) == 3) or ((s1_flags & 7) == 4 and (s0_flags & 3) == 3)) and (s2_flags & 7) == 0"
+    },
+    {
+      "name": "no model's matrices ever went bad",
+      "when": "always",
+      "check": "bad_mtx == 0"
+    }
+  ],
+  "shot_when": "($c.mode -eq 0 -and $c.screen -in 7,25) -or ($c.mode -eq -2 -and $c.match_frames -ne 65535)"
+}

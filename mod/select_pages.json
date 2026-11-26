@@ -1,0 +1,63 @@
+{
+  "about": "The Superstar Select's pages (Ultimate No Mercy). Each page: a name (capitals, up to 15 letters) and its Superstars, in the order the select shows them (three across, three down: nine on a page; more than nine go on over pages of their own: NAME 2, ...). Up to 32 pages. A Superstar by his string ID (\"the_rock\", a wrestler folder's name; stories\\_roster.json has the built-in ones as \"@ID:...\"; also undertaker_1999, chris_benoit, caw_1 .. caw_18 for the Create-a-Wrestler boxes), by his number (\"0x0105\"), or both ({\"id\": \"aki_man\", \"game_number\": \"0x0379\"}: the string ID decides when the number is someone else's); or {\"game\": \"WCW/nWo Revenge\"}: every wrestler imported from that game (his wrestler.json \"source\": {\"game\": ...}), in folder order. chris_benoit is Benoit wherever he is (his own box when there's no big_show). Names (\"THE ROCK\") still work in older files. Anyone off the roster (the operator menu's) is left out, and so is a costume variant (UNDERTAKER 1999: he is in the UNDERTAKER's box, his Type arrows past the last costume), and a page left with nobody isn't shown. \"rumble\": false keeps a page out of the Royal Rumble's random draw. \"unlisted\": \"append\" puts everyone these pages leave out on pages of their own at the end (MORE, MORE 2, ...: the game's own first, then the added Superstars, then wrestler folders no page names -- other games', mods' and packs'); \"hide\" leaves them off the select. Mistakes are written in NoMercyRecompiled.log ([pages] ...); with no page anyone is on, the game's own pages. Delete this file for the game's own pages (the in-game page editor's).",
+  "unlisted": "append",
+  "pages": [
+    {
+      "name": "SUPERSTARS 1",
+      "wrestlers": ["the_rock", "triple_h", "steve_austin", "undertaker", "kane", "mankind", "chris_jericho", "kurt_angle", "chris_benoit"]
+    },
+    {
+      "name": "SUPERSTARS 2",
+      "wrestlers": ["rikishi", "scotty_too_hotty", "grand_master_sexay", "buh_buh_ray_dudley", "jeff_hardy", "edge", "d_von_dudley", "matt_hardy", "christian"]
+    },
+    {
+      "name": "SUPERSTARS 3",
+      "wrestlers": ["tazz", "eddie_guerrero", "chyna", "faarooq", "bradshaw", "dean_malenko", "x_pac", "road_dogg", "mr_ass"]
+    },
+    {
+      "name": "SUPERSTARS 4",
+      "wrestlers": ["steven_richards", "bull_buchanan", "godfather", "val_venis", "test", "albert", "steve_blackman", "al_snow", "taka_michinoku"]
+    },
+    {
+      "name": "SUPERSTARS 5",
+      "wrestlers": ["hardcore_holly", "crash", "perry_saturn", "essa_rios", "dlo_brown", "mark_henry", "big_boss_man", "british_bulldog", "viscera"]
+    },
+    {
+      "name": "LADIES",
+      "rumble": false,
+      "wrestlers": ["stephanie_mcmahon", "tori", "trish_stratus", "the_kat", "terri", "lita", "ivory"]
+    },
+    {
+      "name": "HIDDEN 1",
+      "rumble": false,
+      "wrestlers": ["vince_mcmahon", "shane_mcmahon", "linda_mcmahon", "earl_hebner", "jim_ross", "mae_young", "ho"]
+    },
+    {
+      "name": "HIDDEN 2",
+      "rumble": false,
+      "wrestlers": ["shawn_michaels", "cactus_jack", "mick_foley", "ken_shamrock", "andre_the_giant", "big_show"]
+    },
+    {
+      "name": "EDIT 1",
+      "rumble": false,
+      "wrestlers": ["caw_1", "caw_2", "caw_3", "caw_4", "caw_5", "caw_6", "caw_7", "caw_8", "caw_9"]
+    },
+    {
+      "name": "EDIT 2",
+      "rumble": false,
+      "wrestlers": ["caw_10", "caw_11", "caw_12", "caw_13", "caw_14", "caw_15", "caw_16", "caw_17", "caw_18"]
+    },
+    {
+      "name": "REVENGE",
+      "wrestlers": ["bret_hart", "jim_neidhart", "hollywood_hogan", "kevin_nash", "scott_hall", "randy_savage", "mr_perfect", "the_giant", "sting", "lex_luger", "goldberg", "rick_steiner", "scott_steiner", "booker_t", "stevie_ray", "rey_mysterio", "roddy_piper", "eric_bischoff", {"game": "WCW/nWo Revenge"}]
+    },
+    {
+      "name": "WM 2000",
+      "wrestlers": ["jeff_jarrett", "the_blue_meanie", {"game": "WWF WrestleMania 2000"}]
+    },
+    {
+      "name": "NO MERCY PLUS",
+      "wrestlers": ["funaki", "gangrel", "mosh", "thrasher", "droz", "mideon", "pete_gas", "rodney", "joey_abs", "raven", "william_regal", "tiger_ali_singh"]
+    }
+  ]
+}

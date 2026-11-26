@@ -1,0 +1,51 @@
+{
+ "about": "revmoves3 round 4 (2026-11-21, the user: 'whatever Revenge does'): Shogun (0x037A, Revenge import, slot 0, CPU) against The Rock (CPU), singles; his entry 91 -- 'revenge:1705_1706@3142 -> @3372' -- forced wherever the game picks a front-grapple move (entries 5-69 -> 91: a catch of a running man, which the CPU didn't come to in 360 s). Revenge: goes on (byte 15 = 196, at No Mercy's entry 236: the ground grapple); 3142 ends; No Mercy's 3372 (its animations byte for byte) goes on to 236. qa\\move_audit.py analyze --as 91 reads the run.",
+ "match": "singles",
+ "wrestlers": [
+  "0x037A",
+  "THE ROCK"
+ ],
+ "costumes": [
+  0,
+  0
+ ],
+ "control": [
+  "cpu",
+  "cpu"
+ ],
+ "arena": "RAW IS WAR",
+ "matches": 0,
+ "seconds": 360,
+ "speed": 8,
+ "shots": 0,
+ "force": {
+  "slot": 0,
+  "entries": [
+   5,
+   69
+  ],
+  "as": 91
+ },
+ "expect": [
+  {
+   "name": "the match started",
+   "when": "any",
+   "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+  },
+  {
+   "name": "Shogun played his entry 91's move (3142 before, 3372 after)",
+   "when": "any",
+   "check": "s0_move == 3142 or s0_move == 3372"
+  },
+  {
+   "name": "no model's matrices ever went bad",
+   "when": "always",
+   "check": "bad_mtx == 0"
+  },
+  {
+   "name": "nobody's position went bad",
+   "when": "always",
+   "check": "finite(s0_x, s0_y, s0_z, s1_x, s1_y, s1_z)"
+  }
+ ]
+}

@@ -1,0 +1,31 @@
+{
+  "about": "2026-10-31, the user: Hogan's leg drop with B, as in Revenge -- HOLLYWOOD HOGAN (the CPU), SPECIAL kept full (qa_special 5), put at the head of the Rock whenever he lies on the mat, a strike (B: qa_headgrab 2). state.csv: bs_step slot 0's last moveset entry | count << 16, bs_tries the Rock's body health x10, s1_state his state. The entry the game takes for SPECIAL + B at the head; the leg drop landing, him struck and staying down, the damage: looked at",
+  "wrestlers": [
+    "HOLLYWOOD HOGAN",
+    "THE ROCK"
+  ],
+  "control": [
+    "cpu",
+    "pad2"
+  ],
+  "arena": "SMACKDOWN",
+  "matches": 1,
+  "seconds": 240,
+  "shots": 0.5,
+  "expect": [
+    {
+      "name": "the match started",
+      "when": "any",
+      "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "nobody's position went bad",
+      "when": "always",
+      "check": "finite(s0_x, s0_y, s0_z, s1_x, s1_y, s1_z)"
+    }
+  ],
+  "options": {
+    "qa_special": 5,
+    "qa_headgrab": 2
+  }
+}

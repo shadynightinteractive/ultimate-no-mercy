@@ -1,0 +1,44 @@
+{
+ "about": "arenasplit (2026-11-24): the arcade's arena 18, ROYAL RUMBLE WM 2000, on an install with its own source game: a CPU singles match in it (two of No Mercy's own) -- it loads (arena_current 18 through the match), plays a game minute and more, nothing goes bad; the shots looked at for a blank or broken set",
+ "match": "singles",
+ "wrestlers": [
+  "STEVE AUSTIN",
+  "THE ROCK"
+ ],
+ "control": [
+  "cpu",
+  "cpu"
+ ],
+ "arena": "ROYAL RUMBLE WM 2000",
+ "matches": 1,
+ "seconds": 240,
+ "speed": 6,
+ "shots": 40,
+ "expect": [
+  {
+   "name": "the match started",
+   "when": "any",
+   "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+  },
+  {
+   "name": "the arena is ROYAL RUMBLE WM 2000 (arena_current 18)",
+   "when": "any",
+   "check": "venue == 18 and stage == 2"
+  },
+  {
+   "name": "it played a game minute in it",
+   "when": "any",
+   "check": "venue == 18 and stage == 2 and match_frames != 0xFFFF and match_frames > 3600"
+  },
+  {
+   "name": "no model's matrices ever went bad",
+   "when": "always",
+   "check": "bad_mtx == 0"
+  },
+  {
+   "name": "nobody's position went bad",
+   "when": "always",
+   "check": "finite(s0_x, s0_y, s0_z, s1_x, s1_y, s1_z)"
+  }
+ ]
+}

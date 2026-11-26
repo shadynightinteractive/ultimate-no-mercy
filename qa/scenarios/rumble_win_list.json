@@ -1,0 +1,30 @@
+{
+  "match": "rumble",
+  "wrestlers": [
+    "RANDY SAVAGE"
+  ],
+  "control": [
+    "cpu"
+  ],
+  "options": {
+    "rumble_entrants": 4,
+    "rumble_interval": 5,
+    "qa_rr_out": 4
+  },
+  "matches": 1,
+  "seconds": 900,
+  "shots": 0.5,
+  "about": "2026-10-30, the user: 'when I won a Rumble, it brought me back to Single Player mode selection (story, rumble, etc) and the text selections were gone'. The player's Superstar (the CPU fighting for him) wins a 4-man Rumble (the others put out, qa_rr_out); the results' Next, then the championship list: its rows must be there (the shots after the match looked at)",
+  "expect": [
+    {
+      "name": "the Rumble started",
+      "when": "any",
+      "check": "stage == 2 and mode == -2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "the Rumble ended (a winner: back on the championship list)",
+      "when": "end",
+      "check": "matches >= 1"
+    }
+  ]
+}

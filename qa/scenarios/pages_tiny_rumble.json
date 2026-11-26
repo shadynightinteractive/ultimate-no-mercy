@@ -1,0 +1,31 @@
+{
+  "about": "2026-10-30, the user: dynamic pages, 'the game should not break': qa\\pages_test\tiny.json (THE ROCK and KANE, everyone else hidden) -- a Royal Rumble from it (THE ROCK picked): the select, the entrants drawn from a field of one, the match on",
+  "match": "rumble",
+  "wrestlers": [
+    "THE ROCK"
+  ],
+  "control": [
+    "cpu"
+  ],
+  "options": {
+    "rumble_entrants": 6,
+    "rumble_interval": 10
+  },
+  "matches": 1,
+  "seconds": 120,
+  "shots": 1,
+  "shot_when": "$c.mode -eq 0 -and $c.screen -eq 42 -and $c.entrance_step -ge 1 -and $c.entrance_step -le 29",
+  "expect": [
+    {
+      "name": "the entrances ran",
+      "when": "any",
+      "check": "mode == 0 and screen == 42 and entrance_step >= 1 and entrance_step <= 29"
+    },
+    {
+      "name": "the Rumble started",
+      "when": "any",
+      "check": "stage == 2 and mode == -2 and match_frames != 0xFFFF and match_frames > 30"
+    }
+  ],
+  "pages": "tiny.json"
+}

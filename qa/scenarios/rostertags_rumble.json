@@ -1,0 +1,28 @@
+{
+  "about": "2026-11-21 (rostertags): the random pools' one rule and the rivals. A QA Royal Rumble of 40 drawn from every page (the imports' too) with NO WOMEN / ANNOUNCERS on; option qa_tags makes the mod log ([removal] 'tags:' lines) each entrant's class, 20 more draws of the Rumble's pool and 20 Lumberjack draws of 30 (any woman, valet, manager, announcer, referee or official drawn is a BAD line), the rival pairs among the field, and set pairs asked of roster_rivals (stock, ports, folders; yes and no). Read the log with scratch\\rostertags\\tagsum.py.",
+  "match": "rumble",
+  "wrestlers": [
+    "THE ROCK"
+  ],
+  "control": [
+    "cpu"
+  ],
+  "options": {
+    "rumble_entrants": 40,
+    "rumble_interval": 8,
+    "rumble_no_women": 1,
+    "announcers": false,
+    "commentary": false,
+    "qa_tags": 1
+  },
+  "matches": 1,
+  "seconds": 90,
+  "shots": 3,
+  "expect": [
+    {
+      "name": "the Rumble started",
+      "when": "any",
+      "check": "stage == 2 and mode == -2 and match_frames != 0xFFFF and match_frames > 30"
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "about": "2026-11-07, the two modes phase 3 (W9 Regular's Rumble continue): a Royal Rumble from Regular's own menus (qa_reg 8449 = 1 + 256 + 8192) with RUMBLE CONTINUE on in Regular. The CPU plays the player's Superstar (Steve Austin) from 10 s, and once the game eliminates him his controller is his again -- as a player's is when he's thrown out -- (a player standing still is never thrown out: run 200733, 20 minutes of game; put on the floor he isn't out under the game's own rules); then his CONTINUE? and countdown (PLAYER 1, shots), Start every 2 s puts him back in at full power. 10 entrants, ring 6, every 15 s. state.csv (qa_modes), in the match: rr_next = times put back | held out << 8 | the driver's hand-backs << 16 | 0xC0 << 24.",
+  "match": "arcade",
+  "wrestlers": [
+    "STEVE AUSTIN",
+    null
+  ],
+  "matches": 0,
+  "seconds": 1500,
+  "shots": 6.0,
+  "options": {
+    "game_mode": "Regular",
+    "qa_modes": 1,
+    "qa_reg": 8449,
+    "rumble_continue_regular": true,
+    "rumble_entrants": 10,
+    "rumble_ring": 6,
+    "rumble_interval": 15,
+    "rumble_ai": true
+  },
+  "expect": [
+    {
+      "name": "the game-menu Rumble live",
+      "when": "any",
+      "check": "mode == -2 and (bs_step >> 28) == 3"
+    },
+    {
+      "name": "the player out and held: CONTINUE?",
+      "when": "any",
+      "check": "mode == -2 and (rr_next >> 24) == 0xC0 and ((rr_next >> 8) & 255) == 1"
+    },
+    {
+      "name": "Start put him back in",
+      "when": "any",
+      "check": "mode == -2 and (rr_next >> 24) == 0xC0 and (rr_next & 255) >= 1"
+    }
+  ],
+  "shot_when": "$c.mode -eq -2 -and (($c.rr_next -shr 8) -band 255) -eq 1"
+}

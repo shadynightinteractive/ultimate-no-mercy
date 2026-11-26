@@ -1,0 +1,13 @@
+{
+ "about": "QA (startup 2026-11-19): the string-ID fallback. AKI Man named by his string ID AND his old Revenge number; in a game where a player's folder took 0x0379 the import was renumbered (0x03EC), so the page must find him by aki_man. The rest hidden.",
+ "unlisted": "hide",
+ "pages": [
+  {
+   "name": "IDS",
+   "wrestlers": [
+    {"id": "aki_man", "game_number": "0x0379"},
+    "the_rock"
+   ]
+  }
+ ]
+}

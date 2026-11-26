@@ -1,0 +1,56 @@
+{
+ "about": "revmoves3 (2026-11-21, the move audit's follow-up): Van Hammer (0x036A, Revenge import, slot 0, CPU) against The Rock (CPU), singles; his entry 181 -- 'revenge:187d_187e@5380' -- forced wherever the game picks a front-grapple move (entries 5-69 -> 181: with the same-place force it never came up in 480 s). His Revenge move's animations end with the man lying (pose 46); No Mercy's 5380 goes on by its record to entry 70. qa\\move_audit.py analyze --as 181 reads the run (PLACE on: the men apart as the move goes on into the next; the state after).",
+ "match": "singles",
+ "wrestlers": [
+  "0x036A",
+  "THE ROCK"
+ ],
+ "costumes": [
+  0,
+  0
+ ],
+ "control": [
+  "cpu",
+  "cpu"
+ ],
+ "arena": "RAW IS WAR",
+ "matches": 0,
+ "seconds": 300,
+ "speed": 8,
+ "shots": 0,
+ "force": {
+  "slot": 0,
+  "entries": [
+   5,
+   69
+  ],
+  "as": 181
+ },
+ "expect": [
+  {
+   "name": "the match started",
+   "when": "any",
+   "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+  },
+  {
+   "name": "Van Hammer played his entry 181's move (5380)",
+   "when": "any",
+   "check": "s0_move == 5380 and s0_phase == 85"
+  },
+  {
+   "name": "the two men never began a move that goes on from another (95 / 96, the next move after 85 / 86) more than 80 apart (No Mercy's own: 12-60)",
+   "when": "always",
+   "check": "not (s0_phase == 95 and s1_phase == 96 and s0_state == 85 and math.hypot(s0_x - s1_x, s0_z - s1_z) > 80)"
+  },
+  {
+   "name": "no model's matrices ever went bad",
+   "when": "always",
+   "check": "bad_mtx == 0"
+  },
+  {
+   "name": "nobody's position went bad",
+   "when": "always",
+   "check": "finite(s0_x, s0_y, s0_z, s1_x, s1_y, s1_z)"
+  }
+ ]
+}

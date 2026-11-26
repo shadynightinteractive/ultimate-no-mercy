@@ -1,0 +1,78 @@
+{
+ "about": "2026-11-02 story upgrade phase 9: qa/stories_test/010_triggers.json as STEVE AUSTIN: each ending a script can set (tko, dq, count-out for the opponent, submission; the shots: the game's own result banner, replay, results line, and the branch's page says OK), then each condition (health, outside, a hold, a finisher: the fired bit says which trigger, the 'time' fallback is the last bit), the rule changes (the state's top bits: DQ on, count-out on), a run-in held till its trigger at 0:20. A fired trigger's bit in rr_kept_out",
+ "match": "arcade",
+ "wrestlers": [
+  "STEVE AUSTIN",
+  null
+ ],
+ "matches": 0,
+ "seconds": 2400,
+ "shots": 3.0,
+ "options": {
+  "free_play": true,
+  "attract_demos": false,
+  "custom_story": 1,
+  "qa_story": 3
+ },
+ "expect": [
+  {
+   "name": "tko: how 5",
+   "when": "any",
+   "check": "matches >= 10100 and matches < 10200 and pal_wm_skipped == 5"
+  },
+  {
+   "name": "dq: how 3",
+   "when": "any",
+   "check": "matches >= 10200 and matches < 10300 and pal_wm_skipped == 3"
+  },
+  {
+   "name": "count-out: how 4",
+   "when": "any",
+   "check": "matches >= 10300 and matches < 10400 and pal_wm_skipped == 4"
+  },
+  {
+   "name": "submission: how 2",
+   "when": "any",
+   "check": "matches >= 10400 and matches < 10500 and pal_wm_skipped == 2"
+  },
+  {
+   "name": "health: its own trigger fired (bit 0)",
+   "when": "any",
+   "check": "matches >= 10500 and matches < 10600 and (rr_kept_out & 1) == 1"
+  },
+  {
+   "name": "outside: its own trigger fired (bit 0 or 1)",
+   "when": "any",
+   "check": "matches >= 10600 and matches < 10700 and (rr_kept_out & 3) != 0"
+  },
+  {
+   "name": "hold: its trigger or the time fallback fired (the CPU may not take a hold in 4:00; 2026-11-02_091857 saw it fire)",
+   "when": "any",
+   "check": "matches >= 10700 and matches < 10800 and (rr_kept_out & 7) != 0"
+  },
+  {
+   "name": "finisher: its own trigger fired (bit 0 or 1)",
+   "when": "any",
+   "check": "matches >= 10800 and matches < 10900 and (rr_kept_out & 3) != 0"
+  },
+  {
+   "name": "rules: DQ on at the start",
+   "when": "any",
+   "check": "matches >= 10900 and matches < 11000 and mode == -2 and match_frames > 100 and (rr_kept_out & 1) == 0 and (rr_kept_out & 0x4000) != 0"
+  },
+  {
+   "name": "rules: no DQ, no count-out after their triggers",
+   "when": "any",
+   "check": "matches >= 10900 and matches < 11000 and mode == -2 and (rr_kept_out & 3) == 3 and (rr_kept_out & 0xC000) == 0"
+  },
+  {
+   "name": "late run-in: its trigger fired (the man himself: the shots; slots past the match's two aren't in the state)",
+   "when": "any",
+   "check": "matches >= 11000 and mode == -2 and (rr_kept_out & 1) == 1"
+  }
+ ],
+ "shot_when": "$c.mode -eq -2 -or $c.screen -eq 23",
+ "stories": [
+  "010_triggers.json"
+ ]
+}

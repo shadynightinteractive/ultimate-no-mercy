@@ -1,0 +1,40 @@
+{
+  "about": "the Titantron on the WM 2000 arena's big screen during a match, from behind the ring (as tron_raw_ring): the hard camera's picture across the screen (x -404..404, y 456..908: tron_panels_all.h row 13), its own 3D truss round it",
+  "wrestlers": [
+    "STEVE AUSTIN",
+    "THE ROCK"
+  ],
+  "control": [
+    "cpu",
+    "cpu"
+  ],
+  "arena": "RAW IS WAR WM 2000",
+  "matches": 1,
+  "seconds": 75,
+  "shots": 6,
+  "options": {},
+  "camera": {
+    "eye": [
+      0,
+      300,
+      -650
+    ],
+    "at": [
+      0,
+      600,
+      1900
+    ]
+  },
+  "expect": [
+    {
+      "name": "the match started",
+      "when": "any",
+      "check": "stage == 2 and match_frames != 0xFFFF and match_frames > 30"
+    },
+    {
+      "name": "the arena is ours (arena_current 13)",
+      "when": "any",
+      "check": "venue == 13 and stage == 2"
+    }
+  ]
+}
